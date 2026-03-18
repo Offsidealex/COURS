@@ -1,0 +1,218 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 3PM}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{14pt}
+
+\renewcommand{\arraystretch}{1.8}
+
+\frenchbsetup{StandardLists=true}
+
+\begin{document}
+
+%------------------------------------------------------------
+% TITRE
+%------------------------------------------------------------
+\begin{center}
+  {\LARGE\textbf{TP : Le chou rouge comme indicateur de pH}}
+\end{center}
+
+\hrule
+\vspace{3mm}
+
+\noindent Nom : \dotfill \quad Prénom : \dotfill
+
+\vspace{3mm}
+\hrule
+\vspace{5mm}
+
+%------------------------------------------------------------
+% PARTIE 1 -- PRÉPARATION DU JUS DE CHOU ROUGE
+%------------------------------------------------------------
+
+\textbf{\large Préparation du jus de chou rouge -- l'indicateur coloré}
+
+\vspace{3mm}
+
+\begin{itemize}
+  \item Hacher le chou et le mettre dans un bécher en pyrex avec environ 50 mL d'eau.
+  \item Chauffer le mélange jusqu'à ébullition.
+  \item Eteindre et laisser refroidir quelques minutes.
+  \item Filtrer en utilisant un entonnoir et du papier filtre. Recueillir la solution filtrée dans un erlen-meyer. On obtient un liquide bleu sombre qui servira d'indicateur coloré.
+  \item Introduire le liquide obtenu dans un flacon compte-gouttes.
+\end{itemize}
+
+\begin{tcolorbox}[colback=orange!10!white, colframe=orange!80!black]
+\textbf{Appeler le professeur.}
+\end{tcolorbox}
+
+\vspace{5mm}
+
+%------------------------------------------------------------
+% PARTIE 2 -- APPLICATIONS
+%------------------------------------------------------------
+
+\textbf{\large Applications}
+
+\vspace{5mm}
+
+%--- A. Echelle de teintes (expérience soude/acide) ---
+\textbf{Echelle de teintes}
+
+\vspace{3mm}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+  \item Verser dans un tube à essais 1 cm d'acide chlorhydrique de concentration $10^{-1}$~mol/L. Ajouter 5 gouttes de l'indicateur coloré. Ajouter progressivement de la soude à la concentration $10^{-1}$~mol/L.
+
+  \vspace{2mm}
+  \textbf{Qu'observe-t-on ? Interpréter.}
+
+  \cadreblanc{30}
+
+  \item À présent, faire l'opération inverse, c'est-à-dire :
+  \begin{itemize}
+    \item Verser dans un tube à essai 1 cm de la soude à la concentration $10^{-1}$~mol/L.
+    \item Ajouter 5 gouttes de l'indicateur coloré.
+    \item Ajouter progressivement d'acide chlorhydrique de concentration $10^{-1}$~mol/L.
+  \end{itemize}
+
+  \vspace{2mm}
+  \textbf{Qu'observe-t-on ? Interpréter.}
+
+  \cadreblanc{30}
+
+\end{enumerate}
+
+\vspace{3mm}
+
+%--- B. Echelle des teintes (6 tubes) ---
+\textbf{Echelle des teintes :}
+
+\vspace{3mm}
+
+Préparer 6 tubes à essais, et les disposer de la gauche vers la droite :
+
+\vspace{2mm}
+
+Verser dans chaque tube à essai, sur une hauteur d'environ 4 cm, la solution de pH correspondant.
+
+\vspace{3mm}
+
+\begin{center}
+\begin{tabular}{|c|l|c|}
+\hline
+\textbf{Tube} & \textbf{Solution} & \textbf{pH} \\
+\hline
+1 & Acide chlorhydrique & 1 \\
+\hline
+2 & Vinaigre & 3 \\
+\hline
+3 & Solution tampon & 4 \\
+\hline
+4 & Eau d'Évian & 7 \\
+\hline
+5 & Solution tampon & 10 \\
+\hline
+6 & Hydroxyde de sodium & 13 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{3mm}
+
+Verser environ 12 gouttes d'indicateur coloré préparé dans chaque tube. Compléter le tableau :
+
+\vspace{3mm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{pH} & \textbf{1} & \textbf{3} & \textbf{4} & \textbf{7} & \textbf{10} & \textbf{13} \\
+\hline
+\textbf{Couleur} & & & & & & \\[14pt]
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{3mm}
+
+\begin{tcolorbox}[colback=orange!10!white, colframe=orange!80!black]
+\textbf{Appeler le professeur.}
+\end{tcolorbox}
+
+\vspace{5mm}
+
+%--- C. Evaluation du pH ---
+\textbf{Evaluation du pH}
+
+\vspace{3mm}
+
+Verser dans un tube à essais 1 cm de la solution de pH inconnu. Ajouter quelques gouttes de l'indicateur coloré. Observer la couleur et encadrer le pH de la solution.
+
+\vspace{5mm}
+
+\begin{center}
+\framebox[3cm]{\rule{0pt}{8mm}} \quad $<$ \quad pH \quad $<$ \quad \framebox[3cm]{\rule{0pt}{8mm}}
+\end{center}
+
+\vspace{7mm}
+
+%------------------------------------------------------------
+% PARTIE 3 -- REMISE EN ÉTAT
+%------------------------------------------------------------
+
+\textbf{\large 3. Remise en état du poste de travail}
+
+\vspace{3mm}
+
+\begin{itemize}
+  \item Jeter la solution de chou rouge dans l'évier.
+  \item Récupérer les solutions dans le récipient \og Tri des déchets Acide et Base \fg{}.
+  \item Nettoyer puis ranger le matériel.
+\end{itemize}
+
+\begin{tcolorbox}[colback=orange!10!white, colframe=orange!80!black]
+\textbf{Appeler le professeur.}
+\end{tcolorbox}
+
+\end{document}

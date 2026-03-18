@@ -1,0 +1,382 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{qrcode}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 3PM}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+\setlength{\parindent}{0pt}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\frenchbsetup{StandardLists=true}
+
+\begin{document}
+
+\begin{center}
+ \LARGE{Chapitre 4 - Les ions}
+\end{center}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+L'eau que nous buvons, le sel que nous utilisons en cuisine, les batteries de nos téléphones... tous contiennent des ions. Un ion est un atome qui a perdu ou gagné des électrons. Les ions sont présents partout dans notre environnement et jouent un rôle essentiel dans de nombreux phénomènes.
+
+\vspace{3mm}
+
+\textbf{1. Rappels sur l'atome} \\
+
+\textbf{1.1. Structure de l'atome}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Un atome est constitué d'un noyau au centre, autour duquel des électrons sont en mouvement.
+
+Le noyau contient :
+\begin{itemize}
+    \item Des protons, portant chacun une charge élémentaire positive (notée +e)
+    \item Des neutrons, ne portant pas de charge électrique
+    \item Les électrons portent une charge élémentaire négative (notée -e) et tournent autour du noyau.
+    \end{itemize}
+}
+\end{tcolorbox}
+
+
+\textbf{Propriété : } Un atome est électriquement neutre : il possède autant de protons que d'électrons. \\
+
+\textbf{Exemple : } L'atome de sodium (symbole Na) possède 11 protons dans son noyau, il contient donc aussi 11 électrons. L'atome de chlore (symbole Cl) possède 17 protons et 17 électrons. \\
+
+\textbf{2. Qu'est-ce qu'un ion ?} \\
+
+\textbf{2.1. Définition d'un ion}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Un \textbf{ion} est un atome (ou un groupe d'atomes) qui a perdu ou gagné un ou plusieurs électrons.
+
+Un ion n'est donc plus électriquement neutre : il porte une charge électrique positive ou négative.
+}
+\end{tcolorbox}
+
+
+
+\textbf{Remarque : } Lors de la formation d'un ion, seul le nombre d'électrons change. Le noyau (donc le nombre de protons) reste identique. \\
+
+
+\textbf{2.2. Les cations : ions positifs}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Un \textbf{cation} est un ion qui a perdu un ou plusieurs électrons.
+
+Il possède donc plus de protons que d'électrons : sa charge globale est positive.
+
+On note un cation en écrivant le symbole de l'atome suivi d'un exposant indiquant le nombre de charges positives.
+}
+\end{tcolorbox}
+
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+
+\begin{multicols}{2}
+
+\textbf{Exemple : } L'ion sodium \ch{Na+}
+
+\begin{itemize}
+    \item L'atome de sodium possède 11 protons et 11 électrons
+    \item Il perd 1 électron pour former l'ion sodium
+    \item L'ion sodium possède donc 11 protons et 10 électrons
+    \item Sa charge est positive : \ch{Na+}
+\end{itemize}
+
+\textbf{Exemple : } L'ion cuivre (II) \ch{Cu^{2+}}
+
+\begin{itemize}
+    \item L'atome de cuivre possède 29 protons et 29 électrons
+    \item Il perd 2 électrons pour former l'ion cuivre (II)
+    \item L'ion cuivre (II) possède donc 29 protons et 27 électrons
+    \item Sa charge est positive : \ch{Cu^{2+}}
+\end{itemize}
+}
+\end{tcolorbox}
+
+\textbf{2.3. Les anions : ions négatifs}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Un \textbf{anion} est un ion qui a gagné un ou plusieurs électrons.
+
+Il possède donc plus d'électrons que de protons : sa charge globale est négative.
+
+On note un anion en écrivant le symbole de l'atome suivi d'un exposant indiquant le nombre de charges négatives.
+    
+\end{multicols}}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Exemple : } L'ion chlorure \ch{Cl-}
+
+\begin{itemize}
+    \item L'atome de chlore possède 17 protons et 17 électrons
+    \item Il gagne 1 électron pour former l'ion chlorure
+    \item L'ion chlorure possède donc 17 protons et 18 électrons
+    \item Sa charge est négative : \ch{Cl-}
+\end{itemize}
+}
+\end{tcolorbox}
+
+
+
+\textbf{3. Les principaux ions à connaître} \\
+\begin{multicols}{2}
+\textbf{3.1. Les ions monoatomiques}
+
+Les ions monoatomiques sont formés d'un seul atome. Voici les principaux ions monoatomiques à connaître :
+
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Nom de l'ion} & \textbf{Formule} & \textbf{Type} \\
+\hline
+Ion sodium & \ch{Na+} & Cation \\
+\hline
+Ion potassium & \ch{K+} & Cation \\
+\hline
+Ion cuivre (II) & \ch{Cu^{2+}} & Cation \\
+\hline
+Ion fer (II) & \ch{Fe^{2+}} & Cation \\
+\hline
+Ion fer (III) & \ch{Fe^{3+}} & Cation \\
+\hline
+Ion zinc & \ch{Zn^{2+}} & Cation \\
+\hline
+Ion argent & \ch{Ag+} & Cation \\
+\hline
+Ion chlorure & \ch{Cl-} & Anion \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{5mm}
+
+\textbf{3.2. Les ions polyatomiques}
+
+Certains ions sont formés de plusieurs atomes liés entre eux :
+
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Nom de l'ion} & \textbf{Formule} \\
+\hline
+Ion hydroxyde & \ch{HO-} \\
+\hline
+Ion sulfate & \ch{SO4^{2-}} \\
+\hline
+Ion carbonate & \ch{CO3^{2-}} \\
+\hline
+Ion nitrate & \ch{NO3-} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{5mm}
+
+\textbf{Remarque : } L'ion hydroxyde \ch{HO-} est aussi noté \ch{OH-}. \\
+
+\end{multicols}
+
+\textbf{4. Comment reconnaître certains ions ?} \\
+
+\textbf{4.1. Principe des tests de reconnaissance}
+
+Il existe des tests chimiques qui permettent d'identifier la présence de certains ions dans une solution. Ces tests consistent à ajouter un réactif qui va réagir avec l'ion recherché et former un précipité coloré. \\
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Un \textbf{précipité} est un solide qui se forme dans une solution lorsqu'on ajoute un réactif.
+
+La couleur du précipité permet d'identifier l'ion présent dans la solution.
+}
+\end{tcolorbox}
+
+
+\textbf{4.2. Test de l'ion chlorure \ch{Cl-}}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Réactif utilisé : } Solution de nitrate d'argent (\ch{Ag+} + \ch{NO3-})
+
+\textbf{Observation : } Formation d'un précipité blanc qui noircit à la lumière
+
+\textbf{Conclusion : } La solution testée contient des ions chlorure \ch{Cl-}
+}
+\end{tcolorbox}
+
+
+\textbf{4.3. Test de l'ion cuivre (II) \ch{Cu^{2+}}}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Réactif utilisé : } Solution d'hydroxyde de sodium (\ch{Na+} + \ch{HO-})
+
+\textbf{Observation : } Formation d'un précipité bleu
+
+\textbf{Conclusion : } La solution testée contient des ions cuivre (II) \ch{Cu^{2+}}
+}
+\end{tcolorbox}
+
+
+\textbf{4.4. Test de l'ion fer (II) \ch{Fe^{2+}}}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Réactif utilisé : } Solution d'hydroxyde de sodium (\ch{Na+} + \ch{HO-})
+
+\textbf{Observation : } Formation d'un précipité vert
+
+\textbf{Conclusion : } La solution testée contient des ions fer (II) \ch{Fe^{2+}}
+}
+\end{tcolorbox}
+
+\textbf{4.5. Test de l'ion fer (III) \ch{Fe^{3+}}}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Réactif utilisé : } Solution d'hydroxyde de sodium (\ch{Na+} + \ch{HO-})
+
+\textbf{Observation : } Formation d'un précipité rouille (brun-orangé)
+
+\textbf{Conclusion : } La solution testée contient des ions fer (III) \ch{Fe^{3+}}
+}
+\end{tcolorbox}
+
+\textbf{4.6. Test de l'ion zinc \ch{Zn^{2+}}}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Réactif utilisé : } Solution d'hydroxyde de sodium (\ch{Na+} + \ch{HO-})
+
+\textbf{Observation : } Formation d'un précipité blanc
+
+\textbf{Conclusion : } La solution testée contient des ions zinc \ch{Zn^{2+}}
+}
+\end{tcolorbox}
+
+\textbf{4.7. Tableau récapitulatif des tests}
+
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Ion recherché} & \textbf{Réactif} & \textbf{Couleur du précipité} \\
+\hline
+\ch{Cl-} & Nitrate d'argent & Blanc (noircit à la lumière) \\
+\hline
+\ch{Cu^{2+}} & Hydroxyde de sodium & Bleu \\
+\hline
+\ch{Fe^{2+}} & Hydroxyde de sodium & Vert \\
+\hline
+\ch{Fe^{3+}} & Hydroxyde de sodium & Rouille (brun-orangé) \\
+\hline
+\ch{Zn^{2+}} & Hydroxyde de sodium & Blanc \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{5mm}
+
+\textbf{Remarque : } Attention, les ions chlorure et les ions zinc donnent tous deux un précipité blanc, mais avec des réactifs différents (nitrate d'argent pour \ch{Cl-} et hydroxyde de sodium pour \ch{Zn^{2+}}). \\
+
+
+\textbf{5. Les solutions ioniques} \\
+
+\textbf{5.1. Définition}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Une \textbf{solution ionique} est une solution qui contient des ions dissous dans l'eau.
+
+Les ions sont en mouvement dans la solution et ne sont plus liés entre eux.
+}
+\end{tcolorbox}
+
+
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Exemple : } L'eau salée
+
+Le sel de cuisine (chlorure de sodium) a pour formule chimique \ch{NaCl}.
+
+Lorsqu'on dissout du sel dans l'eau, les ions sodium \ch{Na+} et les ions chlorure \ch{Cl-} se séparent et se dispersent dans l'eau.
+
+L'eau salée est donc une solution ionique contenant des ions \ch{Na+} et des ions \ch{Cl-}.
+}
+\end{tcolorbox}
+
+
+\textbf{5.2. Électroneutralité d'une solution ionique}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Une solution ionique est toujours \textbf{électriquement neutre}.
+
+Cela signifie que la charge totale apportée par les cations (ions positifs) est égale à la charge totale apportée par les anions (ions négatifs).
+}
+\end{tcolorbox}
+
+
+\end{document}

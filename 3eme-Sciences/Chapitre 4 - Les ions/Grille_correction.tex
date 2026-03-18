@@ -1,0 +1,220 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[landscape,left=1cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\usepackage{multicol}
+\setlength{\columnsep}{8mm}
+\setlength{\columnseprule}{0.4pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 3PM}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête d'exercice pleine largeur
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+	{\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+	{\large Chapitre 4 -- Les ions \hspace{1cm} 3PM \hspace{1cm} \textbf{Total : /30 points}}
+\end{center}
+
+\vspace{2mm}
+
+\begin{multicols}{2}
+
+% ===================== EXERCICE 1 =====================
+\exotitle{Exercice 1 : Connaissances de cours}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	1 & Atome (ou groupe d'atomes) ayant gagné ou perdu des électrons $\Rightarrow$ charge électrique & 1 \\
+	\hline
+	\multirow{2}{*}{2} & \textbf{Cation} : ion chargé \textbf{positivement}, a \textbf{perdu} des électrons & 1 \\
+	\cline{2-3}
+	& \textbf{Anion} : ion chargé \textbf{négativement}, a \textbf{gagné} des électrons & 1 \\
+	\hline
+	3 & En gagnant ou en perdant des électrons (le noyau ne change pas) & 1 \\
+	\hline
+	4 & Deux ions parmi : \ch{Cl-}, \ch{Cu^{2+}}, \ch{Fe^{3+}}, \ch{Fe^{2+}}, \ch{Al^{3+}} \ldots \quad (0,5 pt chacun) & 1 \\
+	\hline
+	5 & \textbf{VRAI} -- somme charges(+) = somme charges(--) & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{/6} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 2 =====================
+\exotitle{Exercice 2 : Composition de l'ion aluminium \ch{Al^{3+}}}{/5 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	1 & \textbf{Cation} (charge positive +3) \quad 0,5 pt réponse + 0,5 pt justification & 1 \\
+	\hline
+	2 & \textbf{13 protons} (le nombre de protons ne change pas) & 1 \\
+	\hline
+	3 & \textbf{10 électrons} \quad Calcul : $13 - 3 = 10$ \quad (0,5 pt calcul + 1 pt réponse) & 1,5 \\
+	\hline
+	4 & A \textbf{perdu 3 électrons} \quad (1 pt ``perdu'' + 0,5 pt ``3'') & 1,5 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{/5} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 3 =====================
+\exotitle{Exercice 3 : Compléter le tableau}{/5 pts}
+
+\vspace{1mm}
+
+{\footnotesize\textit{1 pt par ligne -- 0,25 pt par case correcte}}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|X|c|c|c|c|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Particule} & \textbf{Protons} & \textbf{Électrons} & \textbf{Atome/Ion} & \textbf{Formule} & \textbf{/1 pt} \\
+	\hline
+	Calcium        & 20 & 20 & Atome & \ch{Ca}      & 1 \\
+	\hline
+	Ion calcium    & 20 & 18 & Ion   & \ch{Ca^{2+}} & 1 \\
+	\hline
+	Oxygène        & 8  & 8  & Atome & \ch{O}       & 1 \\
+	\hline
+	Ion oxyde      & 8  & 10 & Ion   & \ch{O^{2-}}  & 1 \\
+	\hline
+	Ion cuivre (II)& 29 & 27 & Ion   & \ch{Cu^{2+}} & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{5}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{/5} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 4 =====================
+\exotitle{Exercice 4 : Tests de reconnaissance}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	\multirow{2}{*}{1} & \textbf{Ion fer (III) \ch{Fe^{3+}}} & 1 \\
+	\cline{2-3}
+	& Précipité rouille/brun-orangé avec NaOH & 1 \\
+	\hline
+	\multirow{2}{*}{2} & \textbf{Ion chlorure \ch{Cl-}} & 1 \\
+	\cline{2-3}
+	& Précipité blanc noircissant à la lumière avec \ch{AgNO3} & 1 \\
+	\hline
+	\multirow{2}{*}{3} & \textbf{Ion cuivre (II) \ch{Cu^{2+}}} & 1 \\
+	\cline{2-3}
+	& Précipité bleu avec NaOH & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 4}} & \textbf{/6} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 5 =====================
+\exotitle{Exercice 5 : Tableau des tests de reconnaissance}{/4 pts}
+
+\vspace{1mm}
+
+{\footnotesize\textit{1 pt par ligne -- 0,5 pt réactif + 0,5 pt résultat. Accepter ``soude'' pour NaOH.}}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|X|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Ion} & \textbf{Réactif} & \textbf{Résultat positif} & \textbf{/1 pt} \\
+	\hline
+	Ion chlorure \ch{Cl-}       & \ch{AgNO3} & Précipité blanc noircissant à la lumière & 1 \\
+	\hline
+	Ion cuivre (II) \ch{Cu^{2+}}& NaOH       & Précipité bleu & 1 \\
+	\hline
+	Ion fer (II) \ch{Fe^{2+}}   & NaOH       & Précipité vert & 1 \\
+	\hline
+	Ion fer (III) \ch{Fe^{3+}}  & NaOH       & Précipité rouille (brun-orangé) & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{3}{|r|}{\textbf{Sous-total Exercice 5}} & \textbf{/4} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 6 =====================
+\exotitle{Exercice 6 : Analyse de l'ion chlorure \ch{Cl-}}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	\multirow{2}{*}{1} & \textbf{17 protons} (le nombre de protons ne change pas) & 1 \\
+	\cline{2-3}
+	& \textbf{18 électrons} \quad ($17 + 1$ électron gagné) & 1 \\
+	\hline
+	\multirow{2}{*}{2} & \textbf{Anion} (charge négative --1) & 1 \\
+	\cline{2-3}
+	& A gagné 1 électron $\Rightarrow$ charge négative & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 6}} & \textbf{/4} \\
+	\hline
+\end{tabularx}
+
+\end{multicols}
+
+\end{document}

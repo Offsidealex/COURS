@@ -1,0 +1,279 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 3PM}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+\setlength{\parindent}{0pt}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\arraystretch}{2}
+
+\frenchbsetup{StandardLists=true}
+
+\begin{document}
+
+\begin{center}
+ \LARGE{Chapitre 5 - Le pH}
+\end{center}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+Le pH est une grandeur que l'on retrouve sur de nombreux produits du quotidien : gel douche, eau minérale, produits ménagers... Il permet de caractériser le caractère acide, neutre ou basique d'une solution aqueuse. Comprendre le pH, c'est aussi comprendre pourquoi certains produits sont dangereux et comment les manipuler en toute sécurité.
+
+\vspace{3mm}
+
+\textbf{1. Qu'est-ce que le pH ?} \\
+
+\textbf{1.1. Définition}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Le \textbf{pH} (potentiel hydrogène) est une grandeur chimique qui mesure le caractère \textbf{acide}, \textbf{neutre} ou \textbf{basique} d'une solution aqueuse.
+
+\begin{itemize}
+    \item Le pH est un nombre \textbf{sans unité}.
+    \item Il est compris entre \textbf{0} et \textbf{14} pour les solutions aqueuses usuelles.
+\end{itemize}
+}
+\end{tcolorbox}
+
+
+\textbf{1.2. L'échelle de pH}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  % Barre de couleur dégradée
+  \foreach \x in {0,1,...,14} {
+    \pgfmathsetmacro{\r}{max(0, 1 - \x/7)}
+    \pgfmathsetmacro{\b}{max(0, (\x-7)/7)}
+    \pgfmathsetmacro{\g}{1 - abs(\x-7)/7}
+    \definecolor{phcol}{rgb}{\r,\g,\b}
+    \fill[phcol] (\x,0) rectangle (\x+1,1);
+    \node at (\x+0.5, 0.5) {\textbf{\x}};
+  }
+  % Contour
+  \draw[thick] (0,0) rectangle (15,1);
+  % Annotations
+  \draw[thick, <->] (0,-0.3) -- (7,-0.3);
+  \node at (3.5,-0.7) {\textbf{Solution acide}};
+  \node at (7.5,-0.7) {\textbf{Neutre}};
+  \draw[thick, <->] (8,-0.3) -- (15,-0.3);
+  \node at (11.5,-0.7) {\textbf{Solution basique}};
+  % Flèches qualitatives
+  \draw[thick, ->] (0,1.3) -- (7,1.3);
+  \node at (3.5,1.6) {\small de plus en plus acide};
+  \draw[thick, ->] (15,1.3) -- (8,1.3);
+  \node at (11.5,1.6) {\small de plus en plus basique};
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+    \item Si \textbf{pH $< 7$} : la solution est \textbf{acide}.
+    \item Si \textbf{pH $= 7$} : la solution est \textbf{neutre}.
+    \item Si \textbf{pH $> 7$} : la solution est \textbf{basique} (ou alcaline).
+\end{itemize}
+}
+\end{tcolorbox}
+
+
+\textbf{Attention : } Plus le pH est \textbf{bas} (proche de 0), plus la solution est \textbf{acide}. Plus le pH est \textbf{élevé} (proche de 14), plus la solution est \textbf{basique}. \\
+
+\textbf{2. Exemples de pH de solutions courantes} \\
+
+\begin{center}
+\begin{tabular}{|l|c|l||l|c|l|}
+\hline
+\textbf{Solution} & \textbf{pH} & \textbf{Caractère} & \textbf{Solution} & \textbf{pH} & \textbf{Caractère} \\
+\hline
+Savon & $\approx 10$ & Basique & Sang & $\approx 7{,}4$ & Faiblement basique \\
+\hline
+Jus de citron & $\approx 2$ & Acide & Vinaigre & $\approx 3$ & Acide \\
+\hline
+Eau de Javel & $\approx 12$ & Basique & Eau pure & $7$ & Neutre \\
+\hline
+Lait & $\approx 6{,}5$ & Faiblement acide & Soude caustique & $\approx 14$ & Basique \\
+\hline
+Eau de mer & $\approx 8$ & Basique & Pluie normale & $\approx 5{,}5$ & Acide \\
+\hline
+Acide chlorhydrique & $\approx 1{,}5$ & Acide & Jus d'orange & $\approx 3{,}5$ & Acide \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{3mm}
+
+\textbf{3. Comment mesurer le pH ?} \\
+
+\textbf{3.1. Le papier pH (ou papier indicateur universel)}
+
+\begin{itemize}
+    \item On trempe une bandelette de papier pH dans la solution.
+    \item Le papier change de couleur.
+    \item On compare la couleur obtenue avec une \textbf{échelle de teintes} fournie.
+    \item Précision : $\pm 1$ unité de pH environ.
+\end{itemize}
+
+\textbf{3.2. Les indicateurs colorés} \\
+
+\textbf{3.2.1. Les indicateurs chimiques} \\
+
+Certaines substances chimiques changent de couleur selon le pH de la solution :
+
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{|l|l|c|l|}
+\hline
+\textbf{Indicateur} & \textbf{Couleur en milieu acide} & \textbf{Zone de virage} & \textbf{Couleur en milieu basique} \\
+\hline
+Hélianthine & Rouge & 3,1 -- 4,4 & Jaune \\
+\hline
+Bleu de bromothymol (BBT) & Jaune & 6,0 -- 7,6 & Bleu \\
+\hline
+Phénolphtaléine & Incolore & 8,2 -- 10,0 & Rose \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{3mm}
+
+\textbf{3.2.2. Le jus de chou rouge : un indicateur coloré naturel} \\
+
+Le jus de chou rouge est un indicateur coloré \textbf{naturel}. Il change de couleur en fonction du pH de la solution dans laquelle il est ajouté :
+
+\begin{itemize}
+    \item En milieu \textbf{acide} : couleur \textbf{rouge/rose}.
+    \item En milieu \textbf{neutre} : couleur \textbf{violet}.
+    \item En milieu \textbf{basique} : couleur \textbf{vert/jaune}.
+\end{itemize}
+
+\textbf{3.3. Le pH-mètre}
+
+\begin{itemize}
+    \item C'est un appareil électronique muni d'une \textbf{sonde} (électrode).
+    \item On plonge la sonde dans la solution et l'appareil affiche directement la valeur du pH.
+    \item C'est la méthode la plus \textbf{précise} : $\pm 0{,}1$ unité de pH.
+\end{itemize}
+
+\textbf{4. Acidité, basicité et ions} \\
+
+\textbf{4.1. Les ions responsables}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\begin{itemize}
+    \item Le caractère \textbf{acide} d'une solution est dû à la présence d'ions \textbf{hydrogène} : \ch{H+}.
+    \item Le caractère \textbf{basique} d'une solution est dû à la présence d'ions \textbf{hydroxyde} : \ch{HO-}.
+\end{itemize}
+}
+\end{tcolorbox}
+
+
+\textbf{5. Effet de la dilution sur le pH} \\
+
+\textbf{5.1. Définition de la dilution}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Diluer} une solution, c'est ajouter de l'eau (solvant) à cette solution. La quantité de soluté reste la même, mais le \textbf{volume} augmente, donc la \textbf{concentration} diminue.
+}
+\end{tcolorbox}
+
+
+\textbf{5.2. Conséquence sur le pH}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\begin{itemize}
+    \item Lorsqu'on \textbf{dilue une solution acide}, le pH \textbf{augmente} (il se rapproche de 7).
+    \item Lorsqu'on \textbf{dilue une solution basique}, le pH \textbf{diminue} (il se rapproche de 7).
+    \item La dilution rapproche toujours le pH de la \textbf{neutralité} (pH = 7).
+    \item Par dilution, le pH d'une solution acide ne peut \textbf{jamais dépasser 7}, et celui d'une solution basique ne peut \textbf{jamais descendre en dessous de 7}.
+\end{itemize}
+}
+\end{tcolorbox}
+
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=left,
+    xlabel={Volume d'eau ajouté},
+    ylabel={pH},
+    xmin=0, xmax=10,
+    ymin=0, ymax=14,
+    ytick={0,1,...,14},
+    xtick=\empty,
+    width=10cm, height=7cm,
+    grid=major,
+    grid style={dashed, gray!30},
+    legend style={at={(0.98,0.5)}, anchor=east},
+  ]
+  % Solution acide diluée
+  \addplot[red, ultra thick, smooth, domain=0.1:10, samples=100] {7 - 5*exp(-0.3*x)};
+  \addlegendentry{Solution acide diluée}
+  % Solution basique diluée
+  \addplot[blue, ultra thick, smooth, domain=0.1:10, samples=100] {7 + 5*exp(-0.3*x)};
+  \addlegendentry{Solution basique diluée}
+  % Ligne pH = 7
+  \addplot[black, dashed, thick] coordinates {(0,7)(10,7)};
+  \node at (axis cs:9.5,7.5) {\small pH = 7};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace{3mm}
+
+\textbf{6. Sécurité} \\
+
+Les solutions très acides (pH $\leq 1$) et très basiques (pH $\geq 13$) sont \textbf{corrosives}. Elles peuvent provoquer des brûlures chimiques. Il faut porter des \textbf{lunettes de protection} et des \textbf{gants} lors de leur manipulation. \\
+
+\textbf{Remarque : } Le pictogramme de corrosion (SGH05) figure sur les flacons de ces produits. \\
+
+\end{document}

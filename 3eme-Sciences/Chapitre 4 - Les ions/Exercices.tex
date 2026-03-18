@@ -1,0 +1,408 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{qrcode}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 3PM}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+	\medskip\framebox[\linewidth][c]{%
+		\rule{0mm}{#1mm}}\par
+	\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+\setlength{\parindent}{0pt}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\frenchbsetup{StandardLists=true}
+
+\begin{document}
+	
+	\begin{center}
+		\LARGE{Chapitre 4 - Les ions - EXERCICES}
+		
+		
+		
+	\end{center}
+	
+	\normalsize
+	
+	\hrule\
+	\\[0,2cm]
+	
+	\textbf{Exercice 1 : Vrai ou Faux} \\
+	
+	Indiquer si les affirmations suivantes sont vraies ou fausses. 
+	
+	\begin{enumerate}
+		\item Un ion est un atome qui a gagné ou perdu des protons. \acocher
+		
+		
+		\item Un cation est un ion chargé positivement. \acocher
+		
+		
+		\item L'ion chlorure \ch{Cl-} a gagné un électron. \acocher
+		
+		
+		
+		\item Une solution ionique peut être chargée électriquement. \acocher
+		
+		
+		\item L'atome de sodium possède 11 protons et l'ion sodium \ch{Na+} possède 12 protons. \acocher
+		
+		
+		
+	\end{enumerate}
+	
+	
+	
+	\textbf{Exercice 2 : Atome ou ion ?} \\
+	
+	Compléter le tableau suivant :
+	
+	\vspace{5mm}
+	
+	\begin{center}
+		\begin{tabular}{|l|c|c|c|c|}
+			\hline
+			\textbf{Particule} & \textbf{Nombre de protons} & \textbf{Nombre d'électrons} & \textbf{Atome ou ion ?} & \textbf{Formule} \\
+			\hline
+			Sodium & 11 & 11 & & \\
+			\hline
+			& 11 & 10 & & \\
+			\hline
+			Chlore & 17 & 17 & & \\
+			\hline
+			& 17 & 18 & & \\
+			\hline
+			& 29 & 27 & & \ch{Cu^{2+}} \\
+			\hline
+			Fer & 26 & 26 & & \\
+			\hline
+			& 26 & 23 & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{5mm}
+	
+	
+	
+	\textbf{Exercice 3 : Cation ou anion ?} \\
+	
+	Pour chaque ion, indiquer s'il s'agit d'un cation ou d'un anion, puis préciser combien d'électrons ont été perdus ou gagnés par rapport à l'atome.
+	
+	\begin{enumerate}
+		\item Ion potassium \ch{K+}
+		
+		\cadreblanc{15}
+		
+		\item Ion zinc \ch{Zn^{2+}}
+		
+		\cadreblanc{15}
+		
+		\item Ion sulfate \ch{SO4^{2-}}
+		
+		\cadreblanc{15}
+		
+		\item Ion fer (III) \ch{Fe^{3+}}
+		
+		\cadreblanc{15}
+		
+		\item Ion hydroxyde \ch{HO-}
+		
+		\cadreblanc{15}
+	\end{enumerate}
+	
+	\vfill
+	
+	\textbf{Exercice 4 : Composition des ions} \\
+	
+	L'atome de fer possède 26 protons et 26 électrons.
+	
+	\begin{enumerate}
+		\item Combien de protons et d'électrons possède l'ion fer (II) \ch{Fe^{2+}} ?
+		
+		\cadreblanc{15}
+		
+		\item Combien de protons et d'électrons possède l'ion fer (III) \ch{Fe^{3+}} ?
+		
+		\cadreblanc{15}
+		
+		\item Expliquer pourquoi ces deux ions ne portent pas la même charge.
+		
+		\cadreblanc{15}
+	\end{enumerate}
+	
+	\vfill
+	
+	\newpage
+	
+	\textbf{Exercice 5 : Tests de reconnaissance} \\
+	
+	On réalise des tests sur trois solutions notées A, B et C. Voici les résultats obtenus :
+	
+	\begin{itemize}
+		\item Solution A + hydroxyde de sodium → précipité bleu
+		\item Solution B + hydroxyde de sodium → précipité vert
+		\item Solution C + nitrate d'argent → précipité blanc qui noircit à la lumière
+	\end{itemize}
+	
+	\vspace{5mm}
+	
+	\begin{enumerate}
+		\item Quel ion est présent dans la solution A ? Justifier.
+		
+		\cadreblanc{20}
+		
+		\item Quel ion est présent dans la solution B ? Justifier.
+		
+		\cadreblanc{20}
+		
+		\item Quel ion est présent dans la solution C ? Justifier.
+		
+		\cadreblanc{20}
+	\end{enumerate}
+	
+	\vfill
+	
+	\textbf{Exercice 6 : Identifier le bon test} \\
+	
+	On dispose de 4 solutions contenant respectivement des ions cuivre (II), fer (II), fer (III) et zinc. Pour chaque solution, indiquer :
+	
+	\begin{enumerate}[label=\alph*)]
+		\item Le réactif à utiliser pour identifier l'ion
+		\item La couleur du précipité obtenu
+	\end{enumerate}
+	
+	\vspace{5mm}
+	
+	\textbf{Solution 1 :} Ions cuivre (II) \ch{Cu^{2+}}
+	
+	\cadreblanc{20}
+	
+	\textbf{Solution 2 :} Ions fer (II) \ch{Fe^{2+}}
+	
+	\cadreblanc{20}
+	
+	\textbf{Solution 3 :} Ions fer (III) \ch{Fe^{3+}}
+	
+	\cadreblanc{20}
+	
+	\textbf{Solution 4 :} Ions zinc \ch{Zn^{2+}}
+	
+	\cadreblanc{20}
+	
+	\vfill
+	
+	
+	
+	\textbf{Exercice 7 : Électroneutralité des solutions} \\
+	
+	Une solution ionique est toujours électriquement neutre.
+	
+	\vspace{5mm}
+	
+	\textbf{1.} Solution de chlorure de sodium \ch{NaCl}
+	
+	\begin{enumerate}[label=\alph*)]
+		\item Quels sont les ions présents dans cette solution ?
+		
+		\cadreblanc{15}
+		
+		\item Quelle est la charge de chaque ion ?
+		
+		\cadreblanc{15}
+		
+		\item Vérifier que la solution est électriquement neutre.
+		
+		\cadreblanc{15}
+	\end{enumerate}
+	
+	\vspace{5mm}
+	
+	\textbf{2.} Solution de sulfate de cuivre (II) \ch{CuSO4}
+	
+	\begin{enumerate}[label=\alph*)]
+		\item Quels sont les ions présents dans cette solution ?
+		
+		\cadreblanc{15}
+		
+		\item Quelle est la charge de chaque ion ?
+		
+		\cadreblanc{15}
+		
+		\item Vérifier que la solution est électriquement neutre.
+		
+		\cadreblanc{15}
+	\end{enumerate}
+	
+	\vfill
+	
+	\newpage
+	
+	\textbf{Exercice 8 : Formules des composés ioniques} \\
+	
+	Trouver la formule chimique des composés ioniques formés par les ions suivants :
+	
+	\vspace{5mm}
+	
+	\textbf{1.} Ions sodium \ch{Na+} et ions chlorure \ch{Cl-}
+	
+	\cadreblanc{15}
+	
+	\textbf{2.} Ions cuivre (II) \ch{Cu^{2+}} et ions chlorure \ch{Cl-}
+	
+	\cadreblanc{15}
+	
+	\textbf{3.} Ions sodium \ch{Na+} et ions sulfate \ch{SO4^{2-}}
+	
+	\cadreblanc{15}
+	
+	\textbf{4.} Ions zinc \ch{Zn^{2+}} et ions hydroxyde \ch{HO-}
+	
+	\cadreblanc{15}
+	
+	\textbf{5.} Ions fer (III) \ch{Fe^{3+}} et ions chlorure \ch{Cl-}
+	
+	\cadreblanc{15}
+	
+	\vspace{5mm}
+	
+	\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+		{
+			\textbf{Méthode :} Pour trouver la formule d'un composé ionique, il faut que la charge totale positive soit égale à la charge totale négative.
+			
+			\textbf{Exemple :} Ions aluminium \ch{Al^{3+}} et ions chlorure \ch{Cl-}
+			
+			Pour équilibrer les charges, il faut 3 ions \ch{Cl-} (3 fois -1 = -3) pour 1 ion \ch{Al^{3+}} (+3).
+			
+			La formule est donc : \ch{AlCl3}
+		}
+	\end{tcolorbox}
+	
+	\vfill
+	
+	\newpage
+	
+	\textbf{Exercice 9 : Problème - L'eau de mer} \\
+	
+	L'eau de mer contient principalement les ions suivants (concentrations en g/L) :
+	
+	\begin{itemize}
+		\item Ions sodium \ch{Na+} : 10,8 g/L
+		\item Ions chlorure \ch{Cl-} : 19,4 g/L
+		\item Ions magnésium \ch{Mg^{2+}} : 1,3 g/L
+		\item Ions sulfate \ch{SO4^{2-}} : 2,7 g/L
+	\end{itemize}
+	
+	\vspace{5mm}
+	
+	\begin{enumerate}
+		\item Parmi ces ions, quels sont les cations ? Quels sont les anions ?
+		
+		\cadreblanc{20}
+		
+		\item L'eau de mer a-t-elle un goût salé ? Justifier en citant le composé ionique responsable de ce goût.
+		
+		\cadreblanc{20}
+		
+		\item Quel test pourrait-on réaliser pour vérifier la présence d'ions chlorure dans l'eau de mer ? Décrire le résultat attendu.
+		
+		\cadreblanc{25}
+		
+		\item Expliquer pourquoi l'eau de mer conduit le courant électrique alors que l'eau pure ne le conduit pas.
+		
+		\cadreblanc{25}
+	\end{enumerate}
+	
+	\vfill
+	
+	\newpage
+	
+	\textbf{Exercice 10 : Situation concrète - Les piles} \\
+	
+	Les piles électriques fonctionnent grâce au déplacement d'ions. Dans une pile alcaline (pile classique AA ou AAA), on trouve notamment des ions zinc \ch{Zn^{2+}} et des ions hydroxyde \ch{HO-}.
+	
+	\vspace{5mm}
+	
+	\begin{enumerate}
+		\item L'ion zinc est-il un cation ou un anion ? Justifier.
+		
+		\cadreblanc{20}
+		
+		\item L'atome de zinc possède 30 protons. Combien d'électrons possède l'ion zinc \ch{Zn^{2+}} ?
+		
+		\cadreblanc{20}
+		
+		\item L'ion hydroxyde \ch{HO-} est-il un cation ou un anion ?
+		
+		\cadreblanc{15}
+		
+		\item Les ions hydroxyde et les ions zinc forment ensemble un composé ionique. Quelle est la formule de ce composé ? (Aide : penser à l'électroneutralité)
+		
+		\cadreblanc{25}
+	\end{enumerate}
+	
+	\vfill
+	
+	\textbf{Exercice 11 : Recherche documentaire} \\
+	
+	À l'aide de tes connaissances ou en effectuant une recherche, réponds aux questions suivantes :
+	
+	\vspace{5mm}
+	
+	\begin{enumerate}
+		\item Citer deux boissons du commerce qui contiennent des ions. Quels ions y trouve-t-on principalement ?
+		
+		\cadreblanc{25}
+		
+		\item Pourquoi ajoute-t-on du sel sur les routes en hiver ? Quel lien avec les ions ?
+		
+		\cadreblanc{25}
+		
+		\item Qu'est-ce qu'une eau « dure » ? Quels ions sont responsables de la dureté de l'eau ?
+		
+		\cadreblanc{25}
+	\end{enumerate}
+	
+	\vfill
+	
+\end{document}
