@@ -1,0 +1,1013 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\def\nbR{\ensuremath{\mathrm{I\! R}}}
+\usepackage{amsmath}
+\usepackage{awesomebox}
+\DeclareMathOperator{\e}{e}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+\usepackage{caption}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage{multicol}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{\textcolor{red}{\textbf{VERSION PROFESSEUR}} -- 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tkz-tab}
+\usetikzlibrary{arrows}
+\usepackage{pifont}
+
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+\usepackage[tikz]{bclogo}
+
+\def\N{{\mathbb N}}
+\def\Z{{\mathbb Z}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\def\e{{\text{e}}}
+\def\dt{{\text{d}t}}
+
+\newcommand{\ud}{\mathrm{d}}
+
+% Boîte de correction bleue
+\newcommand{\cor}[1]{%
+  \begin{tcolorbox}[
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt, right=4pt, top=3pt, bottom=3pt,
+    before skip=2mm, after skip=3mm
+  ]
+  \color{blue!80!black}#1
+  \end{tcolorbox}%
+}
+
+% Boîte de résultat (vert)
+\newcommand{\res}[1]{%
+  \begin{tcolorbox}[
+    colback=green!5!white,
+    colframe=green!50!black,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=4pt, right=4pt, top=2pt, bottom=2pt,
+    before skip=1mm, after skip=2mm
+  ]
+  \color{green!40!black}#1
+  \end{tcolorbox}%
+}
+
+% Compteur et boîte pour les exercices
+\newcounter{numexos}
+\setcounter{numexos}{0}
+\newcommand{\bex}[2]{%
+\def\bextitle{#1}%
+\addtocounter{numexos}{1}%
+\begin{tcolorbox}[colback=white,colframe=black!30,arc=3pt,boxrule=0.6pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  \textbf{Exercice~\thenumexos\ifx\bextitle\empty\else~:~~#1\fi}\par
+  #2%
+\end{tcolorbox}}
+
+% Compteur et boîte pour les propriétés
+\newcounter{nump}
+\setcounter{nump}{0}
+\newcommand{\bprop}[2]{%
+\addtocounter{nump}{1}%
+\begin{tcolorbox}[colback=white,colframe=teal!60,arc=3pt,boxrule=0.8pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  \textbf{Propriété~\thenump\ifx\relax#1\relax\else~:~~#1\fi}\par
+  \smallskip #2%
+\end{tcolorbox}}
+
+% Réponse inline en bleu
+\newcommand{\ans}[1]{\textcolor{blue!80!black}{\textbf{#1}}}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\setlength{\columnseprule}{.25mm}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1cm}}
+\renewcommand{\arraystretch}{1.4}
+
+\newtcolorbox{mybox}{colback=white!10!white,colframe=black!5!black}
+
+\newcommand{\bdef}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~Définition~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+\newcommand{\rem}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~Remarque~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+\newcommand{\bpre}[1]
+{\begin{bclogo}[couleur = white,logo=, barre=none, arrondi = 0.1]
+{~Prérequis~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{mybox}
+\begin{center}
+\textbf{\LARGE CHAPITRE 6 -- Probabilités conditionnelles}
+\end{center}
+\end{mybox}
+
+\vfill
+
+\begin{center}
+\begin{minipage}{14cm}
+\begin{bclogo}[couleur = white, arrondi = 0.1]
+{~Objectifs~:}
+~~
+\begin{itemize}
+  \item Construire un arbre ou un tableau de probabilités en lien avec une situation donnée.
+  \item Explorer l'arbre ou le tableau de probabilités pour déterminer des probabilités.
+  \item Calculer la probabilité d'un événement connaissant ses probabilités conditionnelles relatives à une partition de l'univers.
+  \item Utiliser ou justifier l'indépendance de deux événements.
+\end{itemize}
+\end{bclogo}
+\end{minipage}
+\end{center}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{Rappels}{}
+
+\begin{enumerate}
+  \item $P(A)=0{,}7$, $P(B)=0{,}5$, $P(A\cap B)=0{,}3$. Calculer $P(A\cup B)$.
+
+  \cor{$P(A\cup B)=P(A)+P(B)-P(A\cap B)=0{,}7+0{,}5-0{,}3=\mathbf{0{,}9}$}
+
+  \item $A$ et $B$ incompatibles, $P(A)=0{,}2$, $P(B)=0{,}2$. Calculer $P(A\cup B)$.
+
+  \cor{$A$ et $B$ incompatibles $\Rightarrow P(A\cap B)=0$, donc $P(A\cup B)=0{,}2+0{,}2=\mathbf{0{,}4}$}
+
+  \item $P(\bar{A})=0{,}2$, $P(B)=0{,}4$, $P(A\cap B)=0{,}2$. Calculer $P(A\cup B)$.
+
+  \cor{$P(A)=1-P(\bar{A})=0{,}8$, donc $P(A\cup B)=0{,}8+0{,}4-0{,}2=\mathbf{1}$}
+\end{enumerate}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{Jeux à gratter}{%
+Une société souhaite mettre sur le marché un nouveau jeu à gratter. La première case présente un soleil ou une lune ; la seconde case présente un cœur ou un pique. Sur \np{10000} tickets :
+\begin{itemize}
+  \item $10\,\%$ comportent un soleil ;
+  \item $1\,\%$ des tickets avec un soleil comportent un cœur ;
+  \item $0{,}5\,\%$ des tickets avec une lune comportent un cœur.
+\end{itemize}
+}
+
+\textbf{1.} Compléter le tableau :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{white} & Avec un soleil & Avec une lune & Total \\
+\hline
+\rowcolor{white} Avec un cœur  & \ans{10} & \ans{45} & \ans{55} \\
+\hline
+\rowcolor{white} Avec un pique & \ans{990} & \ans{\np{8955}} & \ans{\np{9945}} \\
+\hline
+\rowcolor{white} Total & \ans{\np{1000}} & \ans{\np{9000}} & \np{10000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\cor{$10\,\%\times\np{10000}=\np{1000}$ soleils. $1\,\%\times\np{1000}=10$ (soleil+cœur). $0{,}5\,\%\times\np{9000}=45$ (lune+cœur).}
+
+\textbf{2.} Calculer la probabilité que le ticket comporte un cœur.
+
+\cor{$P(\text{cœur})=\dfrac{55}{\np{10000}}=\mathbf{0{,}0055}$}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{QCM -- Machines A et B}{%
+Deux machines A et B produisent une pièce. On a prélevé \np{3000} pièces de A et \np{2000} de B.
+Pour A~: $2\,\%$ défaut C seul, $5\,\%$ défaut T seul, $1\,\%$ les deux défauts.
+Pour B~: $3\,\%$ défaut C seul, $4\,\%$ défaut T seul, $2\,\%$ les deux défauts.
+}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\rowcolor{white} & C seul & T seul & C et T & Ni C ni T & Total \\
+\hline
+\rowcolor{white} Machine A & \ans{60} & \ans{150} & \ans{30} & \ans{\np{2760}} & \ans{\np{3000}} \\
+\hline
+\rowcolor{white} Machine B & \ans{60} & \ans{80} & \ans{40} & \ans{\np{1820}} & \ans{\np{2000}} \\
+\hline
+\rowcolor{white} Total & \ans{120} & \ans{230} & \ans{70} & \ans{\np{4580}} & \np{5000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{multicols}{2}
+\noindent 1. La probabilité que la pièce vienne de A :
+\begin{itemize}[label=$\square$]
+  \item \ans{\ding{52}} a) $\dfrac{3}{5}$
+  \item b) $\dfrac{2}{5}$
+  \item c) Le tableau ne permet pas de conclure
+\end{itemize}
+
+2. La proba pour le défaut C seul :
+\begin{itemize}[label=$\square$]
+  \item \ans{\ding{52}} a) $0{,}024$
+  \item b) $0{,}02$
+  \item c) $0{,}03$
+  \item d) $0{,}120$
+\end{itemize}
+
+\columnbreak
+
+3. La proba pour le défaut T seul :
+\begin{itemize}[label=$\square$]
+  \item \ans{\ding{52}} a) $\dfrac{23}{500}$
+  \item b) $\dfrac{3}{50}$
+  \item c) $\dfrac{7}{500}$
+  \item d) $\dfrac{1}{20}$
+\end{itemize}
+
+4. La proba pour au moins l'un des défauts :
+\begin{itemize}[label=$\square$]
+  \item a) $0{,}014$
+  \item b) $0{,}06$
+  \item c) $0{,}038$
+  \item \ans{\ding{52}} d) $0{,}084$
+\end{itemize}
+\end{multicols}
+
+\cor{\textit{Détail~:} $\frac{120}{5000}=0{,}024$ ; $\frac{230}{5000}=\frac{23}{500}$ ; $\frac{120+230+70}{5000}=\frac{420}{5000}=0{,}084$.}
+
+\vfill
+
+%------------------------------------------------------------------
+\bpre{\textbf{Pièces défectueuses dans la production}\\[2pt]
+Dans un atelier, deux machines A et B produisent des pièces. $40\,\%$ proviennent de A dont $5\,\%$ sont défectueuses. $2\,\%$ des pièces de B sont défectueuses.
+
+\textbf{1.} Compléter le tableau ($\np{5000}$ pièces en tout) :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{white} & Produites par A & Produites par B & Total \\
+\hline
+\rowcolor{white} Défectueuses & \ans{100} & \ans{60} & \ans{160} \\
+\hline
+\rowcolor{white} Non défectueuses & \ans{\np{1900}} & \ans{\np{2940}} & \ans{\np{4840}} \\
+\hline
+\rowcolor{white} Total & \ans{\np{2000}} & \ans{\np{3000}} & \np{5000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\cor{$40\,\%\times\np{5000}=\np{2000}$ pièces de A ; $5\,\%\times\np{2000}=100$ défectueuses de A ; $2\,\%\times\np{3000}=60$ défectueuses de B.}
+
+\textbf{2.} Calculer $P(A)$, $P(B)$ et $P(D)$ :
+
+\begin{multicols}{3}
+\cor{$P(A)=\dfrac{\np{2000}}{\np{5000}}=\mathbf{0{,}4}$}
+\cor{$P(B)=\dfrac{\np{3000}}{\np{5000}}=\mathbf{0{,}6}$}
+\cor{$P(D)=\dfrac{160}{\np{5000}}=\mathbf{0{,}032}$}
+\end{multicols}
+
+\textbf{3.} Définir $A\cap D$ et calculer sa probabilité.
+
+\cor{$A\cap D$~: \og la pièce est de A \textbf{et} défectueuse\fg. \quad$P(A\cap D)=\dfrac{100}{\np{5000}}=0{,}02$}
+
+\textbf{4.} Parmi les pièces défectueuses, calculer la probabilité qu'elle vienne de A.
+
+\cor{Sur $160$ pièces défectueuses, $100$ viennent de A~:
+$$P_D(A)=\frac{100}{160}=\frac{5}{8}=\mathbf{0{,}625}$$}
+
+\textbf{5.} Calculer $\dfrac{P(A\cap D)}{P(D)}$ et comparer.
+
+\cor{$\dfrac{P(A\cap D)}{P(D)}=\dfrac{0{,}02}{0{,}032}=\dfrac{5}{8}=0{,}625=P_D(A)$ \quad\checkmark\quad C'est la définition de la probabilité conditionnelle.}
+}
+
+\vfill
+
+%------------------------------------------------------------------
+\bpre{\textbf{Tirage dans une urne}\\[2pt]
+Une urne contient 3 boules blanches (B) et 2 boules rouges (R). On tire successivement 2 boules sans remise.
+
+\begin{multicols}{2}
+\begin{center}
+\begin{tikzpicture}[scale=0.55]
+\fill (0,0) circle (1pt);
+\node[circle,draw] (r1) at (2.5,2)  {R};
+\node[circle,draw] (b1) at (2.5,-2) {B};
+\node[circle,draw] (r21) at (5.5,3)  {R};
+\node[circle,draw] (b21) at (5.5,1)  {B};
+\node[circle,draw] (r22) at (5.5,-1) {R};
+\node[circle,draw] (b22) at (5.5,-3) {B};
+\draw (0,0) -- (r1); \draw (0,0) -- (b1);
+\draw (r1) -- (r21); \draw (r1) -- (b21);
+\draw (b1) -- (r22); \draw (b1) -- (b22);
+% Probabilités
+\node[above,blue!80!black,font=\small] at (1.2,1.2) {$\frac{2}{5}$};
+\node[below,blue!80!black,font=\small] at (1.2,-1.2) {$\frac{3}{5}$};
+\node[above,blue!80!black,font=\tiny] at (4,2.6) {$\frac{1}{4}$};
+\node[below,blue!80!black,font=\tiny] at (4,1.4) {$\frac{3}{4}$};
+\node[above,blue!80!black,font=\tiny] at (4,-1.4) {$\frac{2}{4}$};
+\node[below,blue!80!black,font=\tiny] at (4,-2.6) {$\frac{2}{4}$};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+  \item Nombre de tirages distincts possibles.
+  \cor{$5\times4=20$ tirages ordonnés (ou $\binom{5}{2}=10$ non ordonnés).}
+  \item Probabilité d'obtenir deux rouges.
+  \cor{$P(RR)=\frac{2}{5}\times\frac{1}{4}=\frac{1}{10}$}
+  \item Probabilité d'obtenir deux blanches.
+  \cor{$P(BB)=\frac{3}{5}\times\frac{2}{4}=\frac{3}{10}$}
+  \item Probabilité d'obtenir deux couleurs différentes.
+  \cor{$P=1-\frac{1}{10}-\frac{3}{10}=\frac{6}{10}=\frac{3}{5}$}
+\end{enumerate}
+\end{multicols}
+}
+
+\vfill
+
+%------------------------------------------------------------------
+\bpre{\textbf{Contrôle de production}\\[2pt]
+Le contrôle de \np{10000} pièces a donné :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+& Défaut longueur & Pas de défaut longueur & Total \\
+\hline
+Défaut surface & 6 & 294 & 300 \\
+\hline
+Pas de défaut surface & 194 & \np{9506} & \np{9700} \\
+\hline
+Total & 200 & \np{9800} & \np{10000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{1.} Calculer $P(L)$ et $P(S)$.
+
+\begin{multicols}{2}
+\cor{$P(L)=\dfrac{200}{\np{10000}}=\mathbf{0{,}02}$}
+\cor{$P(S)=\dfrac{300}{\np{10000}}=\mathbf{0{,}03}$}
+\end{multicols}
+
+\textbf{2.} Calculer $P(S\cap L)$. Comparer $P(S\cap L)$ et $P(S)\times P(L)$.
+
+\cor{$P(S\cap L)=\dfrac{6}{\np{10000}}=0{,}0006$\quad;\quad$P(S)\times P(L)=0{,}03\times0{,}02=0{,}0006$\\[4pt]
+On a $P(S\cap L)=P(S)\times P(L)$ : $S$ et $L$ sont \textbf{indépendants}.}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\begin{minipage}{14cm}
+\begin{bclogo}[couleur = white,logo=\bcinfo, arrondi = 0.1]{~Introduction~:}
+~~
+On fait remonter à la correspondance de $1654$ entre Pascal et Fermat l'acte de naissance du calcul des probabilités.
+
+Après trois siècles de recherche, le calcul des probabilités a pu fournir les bases théoriques nécessaires au développement de la statistique.
+
+Le but des probabilités est de rationaliser le hasard : quelles sont les chances d'obtenir un résultat suite à une expérience aléatoire ?
+~~
+\end{bclogo}
+\end{minipage}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+\begin{center}\textbf{1. Vocabulaire des événements}\end{center}
+\end{mybox}
+
+\begin{mybox}
+\begin{center}\textbf{1.1. Vocabulaire}\end{center}
+\end{mybox}
+
+\begin{itemize}[label=\ding{228}]
+  \item Chaque résultat possible d'une expérience aléatoire est une \underline{éventualité}.
+  \item L'ensemble des éventualités est l'\underline{univers}, noté $\Omega$.
+  \item Un \underline{événement} est une partie de $\Omega$.
+  \item Un événement à une seule éventualité est un \underline{événement élémentaire}.
+  \item L'\underline{événement impossible} $\varnothing$ ne contient aucune éventualité.
+  \item L'\underline{événement certain} est $\Omega$.
+  \item L'\underline{événement contraire} de $A$ est $\bar{A}$ : les éléments de $\Omega$ qui ne sont pas dans $A$. On a $A\cup\bar{A}=\Omega$ et $A\cap\bar{A}=\varnothing$.
+\end{itemize}
+
+\cor{%
+\textbf{Exemple~:} On lance un dé à 6 faces. $\Omega=\{1,2,3,4,5,6\}$.\\
+$A=\text{\og nombre pair\fg}=\{2,4,6\}$\quad;\quad$\bar{A}=\{1,3,5\}$ (impair).\\
+\og obtenir 7\fg{} est \textbf{impossible} ($\varnothing$)\quad;\quad$\Omega$ est \textbf{certain}.}
+
+Dans toute la suite, $A$ et $B$ désignent deux événements de l'univers $\Omega$.
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+\begin{center}\textbf{1.2. Intersection et réunion des événements}\end{center}
+\end{mybox}
+
+\fbox{\begin{minipage}{16.6cm}
+\begin{itemize}[label=\ding{228}]
+  \item \underline{Intersection} $A\cap B$ (« $A$ et $B$ ») : éventualités appartenant à $A$ \textbf{et} à $B$.
+  \item \underline{Réunion} $A\cup B$ (« $A$ ou $B$ ») : éventualités appartenant à $A$ \textbf{ou} à $B$.
+\end{itemize}
+\begin{center}
+  Si $A\cap B=\varnothing$, on dit que $A$ et $B$ sont \underline{disjoints} ou \underline{incompatibles}.
+\end{center}
+\end{minipage}}
+
+\cor{%
+\textbf{Exemple~:} $\Omega=\{1,2,3,4,5,6\}$, $A=\{2,4,6\}$ (pair), $B=\{3,6\}$ (multiple de 3).\\
+$A\cap B=\{6\}$\quad;\quad$A\cup B=\{2,3,4,6\}$.\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\draw[thick] (-2.5,-1.7) rectangle (2.5,1.7);
+\node at (-2.1,1.4) {$\Omega$};
+\draw[fill=blue!20,opacity=0.5] (-0.7,0) circle (1.2cm);
+\node at (-1.2,0) {$A$};
+\draw[fill=green!20,opacity=0.5] (0.7,0) circle (1.2cm);
+\node at (1.2,0) {$B$};
+\node at (0,0) {\small$A\cap B$};
+\node[below] at (0,-1.4) {\small$A\cup B$ = zones bleue et verte};
+\end{tikzpicture}
+\end{center}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+\begin{center}\textbf{1.3. Représentation des événements}\end{center}
+\end{mybox}
+
+\textbf{Diagrammes de Venn}
+
+\begin{center}
+\begin{multicols}{4}
+\begin{tikzpicture}[scale=0.45]
+\newcommand{\cA}{(0,0.67) circle (1cm)}
+\newcommand{\cB}{(0,-0.67) circle (1cm)}
+\fill[blue!20,even odd rule] \cA \cB;
+\draw[blue] \cA; \draw[blue] \cB;
+\node[above] at (0,-2.3) {\small\ans{$A\cup B$}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.45]
+\newcommand{\cA}{(0,0.67) circle (1cm)}
+\newcommand{\cB}{(0,-0.67) circle (1cm)}
+\draw[blue] \cA; \draw[blue] \cB;
+\begin{scope}\clip \cA;\fill[blue!20] \cB;\end{scope}
+\node[above] at (0,-2.3) {\small\ans{$A\cap B$}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.45]
+\newcommand{\cA}{(0,0.67) circle (1cm)}
+\newcommand{\cB}{(0,-0.67) circle (1cm)}
+\begin{scope}\clip(-1.1,0)rectangle(1.1,1.8);\fill[blue!20]\cA;\draw[blue]\cA;\end{scope}
+\begin{scope}\clip(-1.1,-1.8)rectangle(1.1,0);\fill[blue!20]\cB;\draw[blue]\cB;\end{scope}
+\node[above] at (0,-2.3) {\small\ans{$A\cup B$, $A\cap B=\varnothing$}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.45]
+\newcommand{\cA}{(0,0.67) circle (1cm)}
+\newcommand{\cB}{(0,-0.67) circle (1cm)}
+\fill[blue!20] \cB;
+\draw[blue,fill=white] \cA;
+\draw[blue] \cB;
+\node[above] at (0,-2.3) {\small\ans{$B\cap\bar{A}$}};
+\end{tikzpicture}
+\end{multicols}
+\end{center}
+
+\vfill
+
+\textbf{Tableau}~~On jette deux dés à 4 faces et on calcule le \textbf{produit} :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$\times$ & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\
+\hline
+\textbf{1} & \ans{1} & \ans{2} & \ans{3} & \ans{4} \\
+\hline
+\textbf{2} & \ans{2} & \ans{4} & \ans{6} & \ans{8} \\
+\hline
+\textbf{3} & \ans{3} & \ans{6} & \ans{9} & \ans{12} \\
+\hline
+\textbf{4} & \ans{4} & \ans{8} & \ans{12} & \ans{16} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vfill
+
+\textbf{Arbre}~~On lance une pièce 3 fois ($P=$ pile, $F=$ face) :
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\fill(0,0)circle(1pt);
+\foreach \n/\y in {P/4,F/-4}
+  \node[circle,draw](l1\n) at(3,\y){\n};
+\foreach \n/\y in {P/6,F/2}
+  \node[circle,draw](l2P\n) at(6,\y){\n};
+\foreach \n/\y in {P/-2,F/-6}
+  \node[circle,draw](l2F\n) at(6,\y){\n};
+\foreach \n/\y in {P/7,F/5}
+  \node[circle,draw](l3PP\n) at(9,\y){\n};
+\foreach \n/\y in {P/3,F/1}
+  \node[circle,draw](l3PF\n) at(9,\y){\n};
+\foreach \n/\y in {P/-1,F/-3}
+  \node[circle,draw](l3FP\n) at(9,\y){\n};
+\foreach \n/\y in {P/-5,F/-7}
+  \node[circle,draw](l3FF\n) at(9,\y){\n};
+\draw(0,0)--(l1P); \draw(0,0)--(l1F);
+\draw(l1P)--(l2PP); \draw(l1P)--(l2PF);
+\draw(l1F)--(l2FP); \draw(l1F)--(l2FF);
+\draw(l2PP)--(l3PPP); \draw(l2PP)--(l3PPF);
+\draw(l2PF)--(l3PFP); \draw(l2PF)--(l3PFF);
+\draw(l2FP)--(l3FPP); \draw(l2FP)--(l3FPF);
+\draw(l2FF)--(l3FFP); \draw(l2FF)--(l3FFF);
+\node[above,blue!80!black,font=\tiny] at(1.5,2.3){$\frac{1}{2}$};
+\node[below,blue!80!black,font=\tiny] at(1.5,-2.3){$\frac{1}{2}$};
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+\begin{center}\textbf{2. Calcul de probabilités}\end{center}
+\end{mybox}
+
+\bdef{%
+\textcolor{blue!80!black}{%
+Dans un univers $\Omega$ fini à $n$ éventualités \textbf{équiprobables}, la probabilité d'un événement $A$ est~:
+$$\boxed{P(A)=\frac{\text{Card}(A)}{\text{Card}(\Omega)}=\frac{\text{nombre d'éventualités favorables}}{\text{nombre total d'éventualités}}}$$
+}}
+
+\rem{Dans un exercice, on reconnaît l'équiprobabilité aux expressions : dé \underline{non pipé}, boules \underline{indiscernables} au toucher, tirage au \underline{hasard}\dots}
+
+\vfill
+
+\bprop{}{%
+Soit $A$ et $B$ deux événements :
+\begin{itemize}[label=\ding{217}]
+  \item $P(\varnothing)=0$ \quad;\quad $P(\Omega)=1$ \quad;\quad $0\leq P(A)\leq 1$
+  \item $P(\bar{A})=1-P(A)$
+  \item $P(A\cup B)=P(A)+P(B)-P(A\cap B)$
+\end{itemize}
+}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{}{On considère $E=\{1,2,\ldots,20\}$. On choisit un nombre au hasard.}
+
+\begin{enumerate}
+  \item $A$ : \og le nombre est multiple de $3$ \fg
+
+  \cor{$A=\{3,6,9,12,15,18\}$ \quad Card$(A)=6$}
+
+  \item $B$ : \og le nombre est multiple de $2$ \fg
+
+  \cor{$B=\{2,4,6,8,10,12,14,16,18,20\}$ \quad Card$(B)=10$}
+
+  \item Calculer $P(A)$, $P(\bar{A})$, $P(B)$, $P(A\cap B)$ et $P(A\cup B)$.
+
+  \cor{%
+  $P(A)=\dfrac{6}{20}=\dfrac{3}{10}=0{,}3$\quad;\quad
+  $P(\bar{A})=1-\dfrac{3}{10}=\dfrac{7}{10}=0{,}7$\\[4pt]
+  $P(B)=\dfrac{10}{20}=\dfrac{1}{2}=0{,}5$\\[4pt]
+  $A\cap B=\{6,12,18\}$ (multiples de 6) \quad$\Rightarrow$\quad$P(A\cap B)=\dfrac{3}{20}=0{,}15$\\[4pt]
+  $P(A\cup B)=\dfrac{3}{10}+\dfrac{1}{2}-\dfrac{3}{20}=\dfrac{6+10-3}{20}=\dfrac{13}{20}=0{,}65$}
+\end{enumerate}
+
+\vfill
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+\begin{center}\textbf{3. Probabilités conditionnelles}\end{center}
+\end{mybox}
+
+\begin{mybox}
+\begin{center}\textbf{3.1. Définition}\end{center}
+\end{mybox}
+
+\bdef{%
+\textcolor{blue!80!black}{%
+Soient $A$ et $B$ deux événements avec $P(B)\neq 0$. La \textbf{probabilité conditionnelle de $A$ sachant $B$} est~:
+$$\boxed{P_B(A)=P(A|B)=\frac{P(A\cap B)}{P(B)}}$$
+On note aussi $P(A/B)$.}}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{}{On lance un dé à 6 faces équilibré. $B$~: \og numéro pair\fg. $A$~: \og numéro multiple de $3$\fg.
+
+Calculer $P_B(A)$ de deux manières.}
+
+\begin{multicols}{2}
+\cor{\textbf{Méthode 1 (univers réduit)}\\
+$B=\{2,4,6\}$. Parmi ces 3 valeurs, seul $6$ est multiple de $3$.\\[4pt]
+$P_B(A)=\dfrac{1}{3}$}
+\cor{\textbf{Méthode 2 (formule)}\\
+$P(B)=\frac{3}{6}=\frac{1}{2}$\quad;\quad$A\cap B=\{6\}$, $P(A\cap B)=\frac{1}{6}$\\[4pt]
+$P_B(A)=\dfrac{1/6}{1/2}=\dfrac{1}{3}$}
+\end{multicols}
+
+\vfill
+
+\bprop{Formule des probabilités composées}{%
+Pour $P(B)\neq0$ et $P(A)\neq0$~:
+$$\boxed{P(A\cap B)=P(B)\times P_B(A)=P(A)\times P_A(B)}$$}
+
+\textit{Démonstration~:} $P_B(A)=\dfrac{P(A\cap B)}{P(B)}\Rightarrow P(A\cap B)=P(B)\,P_B(A)$ et de même pour $P_A(B)$. \hfill$\square$
+
+\vfill
+
+\bprop{$P_B$ est une probabilité}{%
+Si $P(B)\neq0$, $P_B$ vérifie les mêmes propriétés que $P$~:
+\begin{itemize}
+  \item $P_B(\varnothing)=0$ \quad;\quad $P_B(\Omega)=P_B(B)=1$ \quad;\quad $0\leq P_B(A)\leq1$
+  \item $P_B(\bar{A})=1-P_B(A)$
+  \item $P_B(A\cup C)=P_B(A)+P_B(C)-P_B(A\cap C)$
+\end{itemize}}
+
+\vfill
+
+\bprop{Formule des probabilités totales}{%
+Si $\{B,\bar{B}\}$ est une partition de $\Omega$~:
+$$\boxed{P(A)=P(B)\times P_B(A)+P(\bar{B})\times P_{\bar{B}}(A)}$$
+Plus généralement, si $\{B_1,\ldots,B_n\}$ est une partition de $\Omega$~:
+$$P(A)=\sum_{i=1}^{n}P(B_i)\times P_{B_i}(A)$$}
+
+\textit{Démonstration~:} $P(A)=P(A\cap B)+P(A\cap\bar{B})=P(B)\,P_B(A)+P(\bar{B})\,P_{\bar{B}}(A)$. \hfill$\square$
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+\begin{center}\textbf{3.2. Exemple de calcul par différentes méthodes}\end{center}
+\end{mybox}
+
+\bex{}{%
+Dans un atelier, $M_1$ fournit $60\,\%$ de la production (dont $6{,}3\,\%$ défectueuses) et $M_2$ le reste (dont $4\,\%$ défectueuses). On tire une pièce au hasard.}
+
+\begin{enumerate}
+\item \textbf{Formules de probabilités conditionnelles}
+
+\begin{enumerate}
+  \item Probabilité d'une pièce défectueuse sachant qu'elle vient de $M_1$ ?
+
+  \ans{$P_{M_1}(D)=0{,}063$}
+
+  \item Probabilité d'une pièce défectueuse sachant qu'elle vient de $M_2$ ?
+
+  \ans{$P_{M_2}(D)=0{,}04$}
+
+  \item Probabilité de prélever une pièce défectueuse ?
+
+  \cor{$P(D)=P(M_1)\times P_{M_1}(D)+P(M_2)\times P_{M_2}(D)=0{,}6\times0{,}063+0{,}4\times0{,}04=0{,}0378+0{,}016=\mathbf{0{,}0538}$}
+\end{enumerate}
+
+\item \textbf{Tableau} (production de \np{10000} pièces)
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|l|c|c|c|}
+\hline
+& Pièces de $M_1$ & Pièces de $M_2$ & Total \\
+\hline
+Défectueuses & \ans{378} & \ans{160} & \ans{538} \\
+\hline
+Conformes & \ans{\np{5622}} & \ans{\np{3840}} & \ans{\np{9462}} \\
+\hline
+Total & \ans{\np{6000}} & \ans{\np{4000}} & \np{10000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\cor{$P(D)=\dfrac{538}{\np{10000}}=\mathbf{0{,}0538}$ \quad (même résultat \checkmark)}
+
+\item \textbf{Arbre des probabilités conditionnelles}
+
+\cor{%
+\begin{tikzpicture}[scale=0.9,every node/.style={font=\small}]
+\fill(0,0)circle(1pt);
+\node(m1) at(3,1.5){$M_1$}; \node(m2) at(3,-1.5){$M_2$};
+\node(d1) at(6,2.5){$D$}; \node(nd1) at(6,0.5){$\bar{D}$};
+\node(d2) at(6,-0.5){$D$}; \node(nd2) at(6,-2.5){$\bar{D}$};
+\draw(0,0)--(m1)node[midway,above]{\textcolor{blue!80!black}{$0{,}6$}};
+\draw(0,0)--(m2)node[midway,below]{\textcolor{blue!80!black}{$0{,}4$}};
+\draw(m1)--(d1)node[midway,above]{\textcolor{blue!80!black}{$0{,}063$}};
+\draw(m1)--(nd1)node[midway,below]{\textcolor{blue!80!black}{$0{,}937$}};
+\draw(m2)--(d2)node[midway,above]{\textcolor{blue!80!black}{$0{,}04$}};
+\draw(m2)--(nd2)node[midway,below]{\textcolor{blue!80!black}{$0{,}96$}};
+\node[right,blue!80!black,font=\scriptsize] at(6.3,2.5){$P(M_1\cap D)=0{,}6\times0{,}063=0{,}0378$};
+\node[right,blue!80!black,font=\scriptsize] at(6.3,0.5){$P(M_1\cap\bar{D})=0{,}6\times0{,}937=0{,}5622$};
+\node[right,blue!80!black,font=\scriptsize] at(6.3,-0.5){$P(M_2\cap D)=0{,}4\times0{,}04=0{,}016$};
+\node[right,blue!80!black,font=\scriptsize] at(6.3,-2.5){$P(M_2\cap\bar{D})=0{,}4\times0{,}96=0{,}384$};
+\end{tikzpicture}
+
+$P(D)=0{,}0378+0{,}016=\mathbf{0{,}0538}$ \checkmark}
+\end{enumerate}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+\begin{center}\textbf{3.3. Événements indépendants}\end{center}
+\end{mybox}
+
+\bdef{%
+\textcolor{blue!80!black}{%
+$A$ et $B$ sont \textbf{indépendants} si et seulement si~:
+$$\boxed{P(A\cap B)=P(A)\times P(B)}$$
+Conséquence~: si $P(B)\neq0$, $A$ et $B$ indépendants $\Leftrightarrow P_B(A)=P(A)$ (connaître $B$ ne modifie pas la probabilité de $A$).}}
+
+\rem{Indépendance $\neq$ incompatibilité. Deux événements incompatibles de probabilité non nulle ne sont pas indépendants.}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{}{On tire au hasard une carte d'un jeu de 32 cartes. $A=$~tirer un as, $B=$~tirer un cœur, $C=$~tirer un as rouge.}
+
+\textbf{Indépendance de $A$ et $B$ :}
+\cor{%
+$P(A)=\dfrac{4}{32}=\dfrac{1}{8}$\quad;\quad
+$P(B)=\dfrac{8}{32}=\dfrac{1}{4}$\quad;\quad
+$P(A\cap B)=\dfrac{1}{32}$ (as de cœur)\\[4pt]
+$P(A)\times P(B)=\dfrac{1}{8}\times\dfrac{1}{4}=\dfrac{1}{32}=P(A\cap B)$ \quad$\Rightarrow$ $A$ et $B$ sont \textbf{indépendants}.}
+
+\textbf{Indépendance de $B$ et $C$ :}
+\cor{%
+$P(C)=\dfrac{2}{32}=\dfrac{1}{16}$ (as rouge)\quad;\quad
+$P(B\cap C)=\dfrac{1}{32}$ (as de cœur)\\[4pt]
+$P(B)\times P(C)=\dfrac{1}{4}\times\dfrac{1}{16}=\dfrac{1}{64}\neq\dfrac{1}{32}=P(B\cap C)$ \quad$\Rightarrow$ $B$ et $C$ ne sont \textbf{pas indépendants}.}
+
+\vfill
+
+\bprop{}{Si $A$ et $B$ sont indépendants, alors $A$ et $\bar{B}$ ; $\bar{A}$ et $B$ ; $\bar{A}$ et $\bar{B}$ sont aussi indépendants.}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{}{%
+\begin{center}\textit{Les résultats seront arrondis à $10^{-5}$.}\end{center}
+Un atelier assemble un moteur. $D$~: \og la machine est défaillante\fg. $A$~: \og l'alerte est donnée\fg.\\
+$P(D)=0{,}001$\,;\; l'alarme se déclenche dans 99 cas sur 100 si défaillante\,;\; dans 5 cas sur 1000 si non défaillante.}
+
+\begin{enumerate}
+\item Donner $P(D)$, $P_D(A)$ et $P_{\bar{D}}(A)$.
+
+\begin{multicols}{3}
+\cor{$P(D)=\mathbf{0{,}001}$}
+\cor{$P_D(A)=\mathbf{0{,}99}$}
+\cor{$P_{\bar{D}}(A)=\dfrac{5}{1000}=\mathbf{0{,}005}$}
+\end{multicols}
+
+\item
+\begin{enumerate}
+  \item Calculer $P(A\cap D)$ et $P(A\cap\bar{D})$.
+
+  \cor{$P(A\cap D)=0{,}001\times0{,}99=\mathbf{0{,}00099}$\\[2pt]
+  $P(A\cap\bar{D})=0{,}999\times0{,}005=\mathbf{0{,}004995}$}
+
+  \item En déduire $P(A)$.
+
+  \cor{$P(A)=0{,}00099+0{,}004995=\mathbf{0{,}005985}$}
+\end{enumerate}
+
+\item L'alerte est donnée. Calculer $P_A(\bar{D})$ (probabilité de fausse alerte) à $10^{-2}$.
+
+\cor{$P_A(\bar{D})=\dfrac{P(A\cap\bar{D})}{P(A)}=\dfrac{0{,}004995}{0{,}005985}\approx\mathbf{0{,}83}$\\[4pt]
+\textbf{Interprétation~:} Quand l'alarme sonne, il y a $83\,\%$ de chances que ce soit une fausse alerte.}
+\end{enumerate}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{}{%
+$C$~: \og la calculatrice a un défaut de clavier\fg\,;\; $A$~: \og la calculatrice a un défaut d'affichage\fg.\\
+$P(C)=0{,}04$\,;\; $P_C(A)=0{,}03$\,;\; $P_{\bar{C}}(\bar{A})=0{,}94$. Probabilités arrondies au millième.}
+
+\begin{enumerate}
+\item Identifier les probabilités de l'énoncé.
+
+\cor{$P_{\bar{C}}(\bar{A})=0{,}94$\quad;\quad
+$P_{\bar{C}}(A)=1-0{,}94=0{,}06$\quad;\quad
+$P(C)=0{,}04$, $P(\bar{C})=0{,}96$}
+
+\item Construire un arbre pondéré.
+
+\cor{%
+\begin{tikzpicture}[scale=0.85,every node/.style={font=\small}]
+\fill(0,0)circle(1pt);
+\node(c) at(3,1.5){$C$}; \node(cb) at(3,-1.5){$\bar{C}$};
+\node(a1) at(6,2.3){$A$}; \node(ab1) at(6,0.7){$\bar{A}$};
+\node(a2) at(6,-0.7){$A$}; \node(ab2) at(6,-2.3){$\bar{A}$};
+\draw(0,0)--(c)node[midway,above]{\textcolor{blue!80!black}{$0{,}04$}};
+\draw(0,0)--(cb)node[midway,below]{\textcolor{blue!80!black}{$0{,}96$}};
+\draw(c)--(a1)node[midway,above]{\textcolor{blue!80!black}{$0{,}03$}};
+\draw(c)--(ab1)node[midway,below]{\textcolor{blue!80!black}{$0{,}97$}};
+\draw(cb)--(a2)node[midway,above]{\textcolor{blue!80!black}{$0{,}06$}};
+\draw(cb)--(ab2)node[midway,below]{\textcolor{blue!80!black}{$0{,}94$}};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,2.3){$0{,}04\times0{,}03=0{,}001$};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,0.7){$0{,}04\times0{,}97=0{,}039$};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,-0.7){$0{,}96\times0{,}06=0{,}058$};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,-2.3){$0{,}96\times0{,}94=0{,}902$};
+\end{tikzpicture}}
+
+\item
+\begin{enumerate}
+  \item Calculer la probabilité que la calculatrice présente les \textbf{deux} défauts.
+
+  \cor{$P(A\cap C)=0{,}04\times0{,}03=\mathbf{0{,}001}$}
+
+  \item Calculer la probabilité d'un défaut d'affichage sans défaut de clavier.
+
+  \cor{$P(A\cap\bar{C})=0{,}96\times0{,}06=\mathbf{0{,}058}$}
+
+  \item En déduire $P(A)$.
+
+  \cor{$P(A)=0{,}001+0{,}058=\mathbf{0{,}059}$}
+
+  \item Montrer que $P(\bar{A}\cap\bar{C})\approx0{,}902$.
+
+  \cor{$P(\bar{A}\cap\bar{C})=P(\bar{C})\times P_{\bar{C}}(\bar{A})=0{,}96\times0{,}94=0{,}9024\approx\mathbf{0{,}902}$ \checkmark}
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{}{%
+Machine A : \np{1500} disques/jour, machine B : \np{3000} disques/jour.\\
+$P_A(D)=0{,}02$ (défaut sachant A)\,;\; $P_B(D)=0{,}035$ (défaut sachant B).}
+
+\begin{enumerate}
+\item Calculer $P(A)$, $P(B)$ et $P(D)$.
+
+\cor{$P(A)=\dfrac{\np{1500}}{\np{4500}}=\dfrac{1}{3}\approx0{,}333$\quad;\quad
+$P(B)=\dfrac{\np{3000}}{\np{4500}}=\dfrac{2}{3}\approx0{,}667$\\[4pt]
+$P(D)=\dfrac{1}{3}\times0{,}02+\dfrac{2}{3}\times0{,}035=\dfrac{0{,}02+0{,}07}{3}=\dfrac{0{,}09}{3}=\mathbf{0{,}03}$}
+
+\item Le disque a un défaut. Quelle est la probabilité qu'il vienne de A ? de B ?
+
+\cor{$P_D(A)=\dfrac{P(A\cap D)}{P(D)}=\dfrac{(1/3)\times0{,}02}{0{,}03}=\dfrac{0{,}02}{0{,}09}=\dfrac{2}{9}\approx\mathbf{0{,}222}$\\[4pt]
+$P_D(B)=\dfrac{P(B\cap D)}{P(D)}=\dfrac{(2/3)\times0{,}035}{0{,}03}=\dfrac{0{,}07}{0{,}09}=\dfrac{7}{9}\approx\mathbf{0{,}778}$\\[4pt]
+Vérification~: $P_D(A)+P_D(B)=\frac{2}{9}+\frac{7}{9}=1$ \checkmark}
+\end{enumerate}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{}{%
+Tableau d'élèves utilisant l'application Toktok (probabilités au millième)~:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+& Filles & Garçons & Total \\
+\hline
+Utilisent Toktok & 148 & 171 & 319 \\
+\hline
+N'utilisent pas Toktok & 81 & 50 & 131 \\
+\hline
+Total & 229 & 221 & 450 \\
+\hline
+\end{tabular}
+\end{center}
+$G$~: \og garçon\fg\,;\; $T$~: \og utilise Toktok\fg.}
+
+\begin{enumerate}
+\item Calculer $P(G)$.
+
+\cor{$P(G)=\dfrac{221}{450}\approx\mathbf{0{,}491}$}
+
+\item Montrer que $P(G\cap T)=0{,}38$.
+
+\cor{$P(G\cap T)=\dfrac{171}{450}=0{,}38$ \checkmark}
+
+\item Calculer la probabilité de prélever la fiche d'une fille sachant que l'élève n'utilise pas Toktok.
+
+\cor{$P_{\bar{T}}(\bar{G})=\dfrac{P(\bar{G}\cap\bar{T})}{P(\bar{T})}=\dfrac{81/450}{131/450}=\dfrac{81}{131}\approx\mathbf{0{,}618}$}
+
+\item Calculer $P_T(G)$ et interpréter.
+
+\cor{$P_T(G)=\dfrac{171/450}{319/450}=\dfrac{171}{319}\approx\mathbf{0{,}536}$\\[4pt]
+\textbf{Interprétation~:} Parmi les élèves utilisant Toktok, environ $53{,}6\,\%$ sont des garçons.}
+\end{enumerate}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{}{%
+$A$~: \og comprimé conforme\fg\,;\; $B$~: \og comprimé refusé\fg.\\
+$P(A)=0{,}98$\,;\; un comprimé conforme est \emph{accepté} avec prob. $0{,}98$\,;\; un non-conforme est refusé avec prob. $0{,}99$.}
+
+\begin{enumerate}
+\item Calculer $P_A(B)$, $P(B\cap A)$ et $P(B\cap\bar{A})$.
+
+\cor{$P_A(B)=1-0{,}98=\mathbf{0{,}02}$ (conforme mais refusé)\\[4pt]
+$P(B\cap A)=P(A)\times P_A(B)=0{,}98\times0{,}02=\mathbf{0{,}0196}$\\[4pt]
+$P(\bar{A})=0{,}02$\quad;\quad$P_{\bar{A}}(B)=0{,}99$\quad;\quad
+$P(B\cap\bar{A})=0{,}02\times0{,}99=\mathbf{0{,}0198}$}
+
+\item
+\begin{enumerate}
+  \item La probabilité qu'un comprimé soit refusé~:
+
+  \cor{$P(B)=P(B\cap A)+P(B\cap\bar{A})=0{,}0196+0{,}0198=\mathbf{0{,}0394}$}
+
+  \item La probabilité qu'un comprimé refusé soit conforme (à $10^{-4}$)~:
+
+  \cor{$P_B(A)=\dfrac{P(A\cap B)}{P(B)}=\dfrac{0{,}0196}{0{,}0394}\approx\mathbf{0{,}4975}$}
+\end{enumerate}
+\end{enumerate}
+
+\vfill
+
+%------------------------------------------------------------------
+\bex{}{%
+Un commercial visite deux clients. $P(A)=0{,}25$ ($A$~: le $1^{\text{er}}$ achète)\,;\; $P_A(B)=0{,}4$\,;\; $P_{\bar{A}}(B)=0{,}25$ ($B$~: le $2^{\text{e}}$ achète).}
+
+\textbf{1.} Arbre pondéré :
+
+\cor{%
+\begin{tikzpicture}[scale=0.85,every node/.style={font=\small}]
+\fill(0,0)circle(1pt);
+\node(a) at(3,1.5){$A$}; \node(ab) at(3,-1.5){$\bar{A}$};
+\node(b1) at(6,2.3){$B$}; \node(bb1) at(6,0.7){$\bar{B}$};
+\node(b2) at(6,-0.7){$B$}; \node(bb2) at(6,-2.3){$\bar{B}$};
+\draw(0,0)--(a)node[midway,above]{\textcolor{blue!80!black}{$0{,}25$}};
+\draw(0,0)--(ab)node[midway,below]{\textcolor{blue!80!black}{$0{,}75$}};
+\draw(a)--(b1)node[midway,above]{\textcolor{blue!80!black}{$0{,}4$}};
+\draw(a)--(bb1)node[midway,below]{\textcolor{blue!80!black}{$0{,}6$}};
+\draw(ab)--(b2)node[midway,above]{\textcolor{blue!80!black}{$0{,}25$}};
+\draw(ab)--(bb2)node[midway,below]{\textcolor{blue!80!black}{$0{,}75$}};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,2.3){$P(A\cap B)=0{,}25\times0{,}4=0{,}10$};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,0.7){$P(A\cap\bar{B})=0{,}25\times0{,}6=0{,}15$};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,-0.7){$P(\bar{A}\cap B)=0{,}75\times0{,}25=0{,}1875$};
+\node[right,blue!80!black,font=\scriptsize] at(6.2,-2.3){$P(\bar{A}\cap\bar{B})=0{,}75\times0{,}75=0{,}5625$};
+\end{tikzpicture}}
+
+\textbf{2.} Calculer $P(B)$.
+
+\cor{$P(B)=P(A\cap B)+P(\bar{A}\cap B)=0{,}10+0{,}1875=\mathbf{0{,}2875}$}
+
+\textbf{3.} Probabilité qu'un seul client achète.
+
+\cor{$P(\text{un seul})=P(A\cap\bar{B})+P(\bar{A}\cap B)=0{,}15+0{,}1875=\mathbf{0{,}3375}$}
+
+\end{document}

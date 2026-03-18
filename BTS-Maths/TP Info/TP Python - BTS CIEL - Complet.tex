@@ -1,0 +1,662 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{amsmath,amssymb}
+\usepackage[left=1.8cm,right=1.8cm,top=2cm,bottom=1.8cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{enumitem}
+\usepackage{array,multirow,booktabs}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{listings}
+
+%----------------------------------------------------------------------
+% Style Python
+%----------------------------------------------------------------------
+\lstdefinestyle{python}{%
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{NavyBlue}\bfseries,
+  commentstyle=\color{OliveGreen}\itshape,
+  stringstyle=\color{BrickRed},
+  backgroundcolor=\color{gray!8},
+  frame=single, rulecolor=\color{gray!40},
+  breaklines=true, showstringspaces=false,
+  tabsize=4, numbers=left,
+  numberstyle=\tiny\color{gray!60},
+  numbersep=8pt, xleftmargin=15pt,
+  literate={é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {à}{{\`a}}1
+           {â}{{\^a}}1 {ù}{{\`u}}1 {î}{{\^i}}1 {ç}{{\c{c}}}1}
+\lstset{style=python}
+
+%----------------------------------------------------------------------
+% En-tête / pied de page
+%----------------------------------------------------------------------
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\setlength{\headheight}{14pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[C]{\textit{TP Python -- BTS CIEL 1\iere{} année}}
+\fancyhead[R]{Année 2025--2026}
+\fancyfoot[L]{Alexis RUIZ}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{}
+
+%----------------------------------------------------------------------
+% Boîtes
+%----------------------------------------------------------------------
+\definecolor{tphdr}{RGB}{30,80,160}
+\definecolor{evalbar}{RGB}{90,140,90}
+\definecolor{totalrow}{RGB}{255,215,60}
+
+\newtcolorbox{tptitre}[2]{%
+  title={\large\bfseries TP\,#1\enspace---\enspace#2
+         \hfill\normalsize\textbf{/10 pts}},
+  colback=tphdr!10, colframe=tphdr, coltitle=white,
+  arc=3mm, boxrule=1.2pt}
+
+\newtcolorbox{objectifbox}{%
+  colback=OliveGreen!8, colframe=OliveGreen!50,
+  arc=2mm, boxrule=0.8pt, fontupper=\small}
+
+\newtcolorbox{codebox}[1]{%
+  title={\bfseries\small Exemple : #1},
+  colback=gray!7, colframe=gray!50,
+  arc=2mm, boxrule=0.8pt}
+
+% Séparateur grille
+\newcommand{\sepgrille}[1]{%
+  \vspace{3mm}
+  \noindent\colorbox{evalbar!20}{\parbox{\dimexpr\linewidth-2\fboxsep}{%
+    \centering\small\bfseries\color{evalbar!70!black}
+    Grille d'évaluation -- TP #1}}
+  \vspace{2mm}}
+
+%----------------------------------------------------------------------
+% Colonnes tableau évaluation
+%----------------------------------------------------------------------
+\newcolumntype{I}{>{\centering\arraybackslash}p{0.5cm}}
+\newcolumntype{J}{>{\raggedright\arraybackslash}p{8.5cm}}
+\newcolumntype{U}{>{\centering\arraybackslash}p{0.85cm}}
+\newcolumntype{G}{>{\centering\arraybackslash}p{1.3cm}}
+\newcolumntype{H}{>{\raggedright\arraybackslash}p{3.2cm}}
+
+\newcommand{\evalhdr}{%
+  \cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+  \cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+  \cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+  \cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+  \cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline}
+
+\renewcommand{\arraystretch}{1.8}
+\newcommand{\bul}{\textbullet\ }
+
+%======================================================================
+\begin{document}
+%======================================================================
+
+%----------------------------------------------------------------------
+% PAGE DE GARDE
+%----------------------------------------------------------------------
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{1.5cm}
+  {\Huge\bfseries TP Python}\\[0.4cm]
+  {\Large BTS CIEL --- 1\iere{} année}\\[0.3cm]
+  {\large Lycée Denis Diderot \quad | \quad Année 2025--2026}\\[2cm]
+  \rule{12cm}{0.8pt}\\[0.8cm]
+  {\large\bfseries NOM : \underline{\hspace{6cm}}}\\[0.7cm]
+  {\large\bfseries Prénom : \underline{\hspace{5.5cm}}}\\[0.7cm]
+  {\large\bfseries Groupe : \underline{\hspace{5.6cm}}}\\[1.2cm]
+  \rule{12cm}{0.8pt}\\[1.2cm]
+  {\renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{|c|l|c|}
+    \hline
+    \rowcolor{tphdr!25}
+    \textbf{TP} & \textbf{Thème} & \textbf{/10} \\ \hline
+    1  & Variables et types de données           & \\ \hline
+    2  & Structures conditionnelles              & \\ \hline
+    3  & Boucles \texttt{for} et \texttt{while}  & \\ \hline
+    4  & Fonctions                               & \\ \hline
+    5  & Listes                                  & \\ \hline
+    6  & Chaînes de caractères                   & \\ \hline
+    7  & Dictionnaires                           & \\ \hline
+    8  & Fichiers et gestion d'erreurs           & \\ \hline
+    9  & \texttt{numpy} et \texttt{matplotlib}   & \\ \hline
+    10 & Projet : calculatrice électronique      & \\ \hline
+    \rowcolor{gray!20}
+    \multicolumn{2}{|r|}{\textbf{Total}} & \textbf{/100} \\ \hline
+  \end{tabular}}
+\end{center}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{1}{Variables et types de données}
+  Contexte : loi d'Ohm \enspace $U = R \times I$ \enspace $P = U \times I$
+\end{tptitre}
+
+\begin{objectifbox}
+  Déclarer des variables, utiliser les types \texttt{int}, \texttt{float}, \texttt{str}, effectuer des calculs et afficher des résultats formatés.
+\end{objectifbox}
+
+\begin{codebox}{déclaration et affichage}
+\begin{lstlisting}
+R = 470          # résistance en ohms (int)
+I = 0.02         # courant en ampères (float)
+U = R * I
+print(f"Tension U = {U} V")
+print(type(R))   # affiche <class 'int'>
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Déclarer \texttt{R = 470} et \texttt{I = 0.02}, calculer et afficher la tension \texttt{U}. Vérifier que $U = 9{,}4$ V.
+  \item \textbf{[2 pts]} Utiliser \texttt{type()} pour afficher le type de \texttt{R}, \texttt{I} et d'une variable \texttt{nom = "Résistance"}.
+  \item \textbf{[2 pts]} Demander \texttt{R} et \texttt{I} à l'utilisateur avec \texttt{input()}, convertir en \texttt{float()}, recalculer et afficher \texttt{U}.
+  \item \textbf{[2 pts]} Calculer $P = U \times I$, afficher avec \texttt{round(P, 4)} et l'unité watts.
+  \item \textbf{[2 pts]} Afficher un résumé avec f-string : \texttt{R = ... $\Omega$ | I = ... A | U = ... V | P = ... W}
+\end{enumerate}
+
+\sepgrille{1}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul\texttt{R=470} et \texttt{I=0.02} déclarés \newline
+    \bul\texttt{U = R * I} calculé \newline
+    \bul Affichage correct : \texttt{U = 9.4 V}
+    & 2 & & \\ \hline
+2 & \bul\texttt{type()} appelé sur \texttt{R}, \texttt{I} et \texttt{nom} \newline
+    \bul \texttt{int}, \texttt{float}, \texttt{str} identifiés
+    & 2 & & \\ \hline
+3 & \bul\texttt{input()} utilisé pour \texttt{R} et \texttt{I} \newline
+    \bul Conversion \texttt{float()} appliquée \newline
+    \bul \texttt{U} recalculé et affiché
+    & 2 & & \\ \hline
+4 & \bul\texttt{P = U * I} calculé \newline
+    \bul\texttt{round(P, 4)} utilisé \newline
+    \bul Unité « watts » présente
+    & 2 & & \\ \hline
+5 & \bul f-string utilisé \newline
+    \bul \texttt{R}, \texttt{I}, \texttt{U}, \texttt{P} avec unités ($\Omega$, A, V, W)
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 1}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{2}{Structures conditionnelles}
+  Contexte : seuils de tension dans un circuit électronique
+\end{tptitre}
+
+\begin{objectifbox}
+  Utiliser \texttt{if}, \texttt{elif}, \texttt{else} et les opérateurs logiques \texttt{and}, \texttt{or} pour prendre des décisions.
+\end{objectifbox}
+
+\begin{codebox}{structure conditionnelle}
+\begin{lstlisting}
+U = float(input("Tension U (V) : "))
+if U > 5.5:
+    print("Tension élevée")
+elif U >= 4.5:
+    print("Tension nominale")
+else:
+    print("Tension faible")
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Une LED est passante si $U > 2{,}0$ V. Écrire un programme qui affiche \texttt{"LED allumée"} ou \texttt{"LED éteinte"} selon la valeur saisie.
+  \item \textbf{[2 pts]} Classifier la tension de sortie d'un régulateur en 3 zones : \textbf{faible} ($U < 4{,}5$ V), \textbf{nominale} ($4{,}5 \leq U \leq 5{,}5$ V), \textbf{élevée} ($U > 5{,}5$ V). Utiliser \texttt{elif}.
+  \item \textbf{[2 pts]} Un système se déclenche si $U > 12$ V \textbf{ET} $I > 2$ A. Utiliser \texttt{and}. Tester 3 combinaisons.
+  \item \textbf{[2 pts]} Afficher la table de vérité d'une porte AND pour $A, B \in \{0, 1\}$ avec deux boucles \texttt{for} imbriquées.
+  \item \textbf{[2 pts]} Un thermostat coupe le chauffage si $T > 22$°C, l'allume si $T < 18$°C, affiche \texttt{"Maintien"} sinon.
+\end{enumerate}
+
+\sepgrille{2}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul\texttt{if / else} présents \newline
+    \bul Seuil 2{,}0\,V correct \newline
+    \bul Affichage \texttt{"LED allumée"} / \texttt{"LED éteinte"}
+    & 2 & & \\ \hline
+2 & \bul\texttt{elif} utilisé (3 branches) \newline
+    \bul Seuils 4{,}5\,V et 5{,}5\,V corrects \newline
+    \bul Libellés « faible / nominale / élevée »
+    & 2 & & \\ \hline
+3 & \bul\texttt{and} utilisé \newline
+    \bul Seuils U\,>\,12\,V et I\,>\,2\,A \newline
+    \bul 3 combinaisons testées
+    & 2 & & \\ \hline
+4 & \bul Deux \texttt{for} imbriqués (A et B dans \{0,1\}) \newline
+    \bul Condition AND correcte \newline
+    \bul 4 lignes de table de vérité
+    & 2 & & \\ \hline
+5 & \bul Seuils 18\,°C et 22\,°C corrects \newline
+    \bul \texttt{"Maintien"} entre les deux bornes \newline
+    \bul \texttt{input()} utilisé
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 2}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{3}{Boucles \texttt{for} et \texttt{while}}
+  Contexte : mesures répétées et simulations
+\end{tptitre}
+
+\begin{objectifbox}
+  Maîtriser \texttt{for} (nombre d'itérations connu) et \texttt{while} (condition de sortie). Utiliser \texttt{range()}, accumuler des valeurs.
+\end{objectifbox}
+
+\begin{codebox}{exemples de boucles}
+\begin{lstlisting}
+for i in range(1, 10, 2):   # 1, 3, 5, 7, 9
+    print(i)
+
+U = 100
+compteur = 0
+while U >= 1:
+    U /= 2
+    compteur += 1
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Afficher les 12 premières valeurs de la série E12 en multipliant $R_0 = 10\ \Omega$ par $\times 1{,}2115$ à chaque tour. Arrondir à l'entier.
+  \item \textbf{[2 pts]} Avec une boucle \texttt{while}, diviser $U = 100$ V par 2 jusqu'à $U < 1$ V. Afficher le nombre d'itérations.
+  \item \textbf{[2 pts]} Calculer $\sum_{k=1}^{n} k$ avec une boucle \texttt{for}. Vérifier avec la formule $n(n+1)/2$.
+  \item \textbf{[2 pts]} Programme de devinette : l'ordinateur choisit un nombre entre 1 et 100 (\texttt{random.randint}), l'utilisateur propose jusqu'à trouver. Afficher le nombre de tentatives.
+  \item \textbf{[2 pts]} Afficher une table de multiplication de 1 à 5 avec deux boucles imbriquées. Aligner les colonnes avec \texttt{:>4d}.
+\end{enumerate}
+
+\sepgrille{3}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul Boucle \texttt{for} sur 12 itérations \newline
+    \bul Facteur $\times 1{,}2115$ appliqué \newline
+    \bul Arrondi à l'entier et affiché
+    & 2 & & \\ \hline
+2 & \bul\texttt{while U >= 1} correct \newline
+    \bul Division par 2 à chaque tour \newline
+    \bul Nombre d'itérations affiché
+    & 2 & & \\ \hline
+3 & \bul Accumulation dans un \texttt{for} \newline
+    \bul Somme correcte, vérif. $n(n+1)/2$ affichée
+    & 2 & & \\ \hline
+4 & \bul\texttt{random.randint(1, 100)} utilisé \newline
+    \bul Boucle \texttt{while} jusqu'à la bonne réponse \newline
+    \bul Nombre de tentatives affiché
+    & 2 & & \\ \hline
+5 & \bul Deux \texttt{for} imbriqués \newline
+    \bul Format \texttt{:>4d} pour l'alignement \newline
+    \bul Table complète et lisible
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 3}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{4}{Fonctions}
+  Contexte : bibliothèque de calculs électroniques réutilisables
+\end{tptitre}
+
+\begin{objectifbox}
+  Définir des fonctions avec \texttt{def}, passer des paramètres, utiliser \texttt{return}, les valeurs par défaut et retourner plusieurs résultats.
+\end{objectifbox}
+
+\begin{codebox}{définition et appel}
+\begin{lstlisting}
+def loi_ohm(R, I):
+    """Retourne U = R * I"""
+    return R * I
+
+tension = loi_ohm(470, 0.02)   # appel
+print(f"U = {tension} V")
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Écrire \texttt{loi\_ohm(R, I)} qui retourne $U = R \times I$. Tester avec $R = 1000\ \Omega$ et $I = 0{,}015$ A.
+  \item \textbf{[2 pts]} Écrire \texttt{bilan\_puissance(R, I)} qui retourne un tuple $(U, P)$. Décompacter le résultat dans deux variables.
+  \item \textbf{[2 pts]} Écrire \texttt{resistance\_serie(*args)} qui accepte un nombre quelconque de résistances et retourne leur somme. Tester avec 3 puis 5 valeurs.
+  \item \textbf{[2 pts]} Écrire \texttt{resistance\_parallele(R1, R2=100)} avec valeur par défaut. Tester sans préciser \texttt{R2}.
+  \item \textbf{[2 pts]} Écrire \texttt{convertir\_tension(U, unite="V")} qui convertit en mV, V ou kV. Tester les 3 cas.
+\end{enumerate}
+
+\sepgrille{4}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul\texttt{def loi\_ohm(R, I):} définie \newline
+    \bul\texttt{return U} présent \newline
+    \bul Appel correct, résultat 15\,V
+    & 2 & & \\ \hline
+2 & \bul Tuple \texttt{(U, P)} retourné \newline
+    \bul Décompactage \texttt{u, p = ...} correct
+    & 2 & & \\ \hline
+3 & \bul\texttt{*args} dans la signature \newline
+    \bul Somme correcte \newline
+    \bul Testé avec 3 et 5 résistances
+    & 2 & & \\ \hline
+4 & \bul Valeur par défaut \texttt{R2=100} \newline
+    \bul Formule $R_p = R_1 R_2/(R_1+R_2)$ \newline
+    \bul Appel sans \texttt{R2} fonctionnel
+    & 2 & & \\ \hline
+5 & \bul Paramètre \texttt{unite} présent \newline
+    \bul 3 conversions correctes \newline
+    \bul Valeur par défaut \texttt{"V"} opérationnelle
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 4}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{5}{Listes}
+  Contexte : traitement d'une série de mesures de tension
+\end{tptitre}
+
+\begin{objectifbox}
+  Créer, indexer, modifier des listes ; utiliser \texttt{append}, \texttt{remove}, \texttt{sort} ; parcourir avec \texttt{for} ; utiliser \texttt{min}, \texttt{max}, \texttt{sum}, \texttt{len}.
+\end{objectifbox}
+
+\begin{codebox}{manipulation de listes}
+\begin{lstlisting}
+mesures = [4.98, 5.02, 4.95, 5.10, 4.88]
+print(mesures[0])      # 4.98
+print(mesures[-1])     # 4.88
+mesures.append(5.05)
+print(len(mesures))    # 6
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Créer la liste \texttt{[4.98, 5.02, 4.95, 5.10, 4.88, 5.01, 4.97, 5.08]}. Afficher le 1\ier{} élément, le dernier et l'élément d'indice 4.
+  \item \textbf{[2 pts]} Ajouter \texttt{5.15} avec \texttt{append()}, supprimer \texttt{4.88} avec \texttt{remove()}. Afficher la liste et sa longueur.
+  \item \textbf{[2 pts]} Calculer et afficher la moyenne, la valeur minimale et maximale avec \texttt{sum()}, \texttt{min()}, \texttt{max()}, \texttt{len()}.
+  \item \textbf{[2 pts]} Créer \texttt{hors\_limites} contenant les mesures en dehors de $[4{,}90\ V ; 5{,}10\ V]$ à l'aide d'une boucle \texttt{for}.
+  \item \textbf{[2 pts]} Trier la liste avec \texttt{sort()} et extraire le premier tiers avec le slicing.
+\end{enumerate}
+
+\sepgrille{5}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul Liste de 8 éléments créée \newline
+    \bul Accès \texttt{[0]}, \texttt{[-1]}, \texttt{[4]} corrects
+    & 2 & & \\ \hline
+2 & \bul\texttt{append(5.15)} utilisé \newline
+    \bul\texttt{remove(4.88)} utilisé \newline
+    \bul\texttt{len()} correct
+    & 2 & & \\ \hline
+3 & \bul Moyenne avec \texttt{sum()/len()} \newline
+    \bul\texttt{min()} et \texttt{max()} corrects
+    & 2 & & \\ \hline
+4 & \bul Boucle \texttt{for} + condition hors $[4{,}90\,;\,5{,}10]$\,V \newline
+    \bul\texttt{append()} dans \texttt{hors\_limites}
+    & 2 & & \\ \hline
+5 & \bul\texttt{sort()} appliqué, liste triée affichée \newline
+    \bul Slicing premier tiers correct
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 5}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{6}{Chaînes de caractères}
+  Contexte : analyse de trames de communication série ASCII
+\end{tptitre}
+
+\begin{objectifbox}
+  Concaténation, indexation, méthodes \texttt{upper/lower}, \texttt{split}, \texttt{strip}, \texttt{startswith}, \texttt{find}, formatage avec f-strings.
+\end{objectifbox}
+
+\begin{codebox}{méthodes principales}
+\begin{lstlisting}
+trame = "START:12.5:STOP"
+print(trame.split(":"))       # ['START', '12.5', 'STOP']
+print(trame.startswith("ST")) # True
+print(trame[6:9])             # 12.
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Déclarer \texttt{trame = "START:12.5:STOP"}. Afficher sa longueur, le 1\ier{} caractère, le dernier et les caractères d'indices 6 à 8.
+  \item \textbf{[2 pts]} Décomposer la trame avec \texttt{split(":")}, stocker dans \texttt{parties} et afficher séparément début, valeur et fin.
+  \item \textbf{[2 pts]} Écrire \texttt{valider\_trame(t)} qui retourne \texttt{True} si la trame commence par \texttt{"START"} et finit par \texttt{"STOP"}. Tester 3 trames.
+  \item \textbf{[2 pts]} Construire avec f-string : \texttt{"[INFO] Capteur 3 -- Valeur : 12.50 V -- Statut : OK"} à partir de variables \texttt{num=3}, \texttt{val=12.5}, \texttt{statut="OK"}.
+  \item \textbf{[2 pts]} Écrire \texttt{compter\_char(chaine, car)} qui compte les occurrences de \texttt{car} sans \texttt{.count()}. Tester en comptant les \texttt{":"} dans la trame.
+\end{enumerate}
+
+\sepgrille{6}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul\texttt{len(trame)} correct (15) \newline
+    \bul\texttt{trame[0]}, \texttt{trame[-1]} corrects \newline
+    \bul Slicing \texttt{trame[6:9]} correct
+    & 2 & & \\ \hline
+2 & \bul\texttt{split(":")} utilisé \newline
+    \bul 3 parties stockées et affichées
+    & 2 & & \\ \hline
+3 & \bul\texttt{startswith} et \texttt{endswith} utilisés \newline
+    \bul Retourne \texttt{True}/\texttt{False} \newline
+    \bul 3 trames testées
+    & 2 & & \\ \hline
+4 & \bul f-string utilisé \newline
+    \bul Variables \texttt{num}, \texttt{val}, \texttt{statut} insérées \newline
+    \bul Format exact
+    & 2 & & \\ \hline
+5 & \bul Boucle \texttt{for} sans \texttt{.count()} \newline
+    \bul Résultat correct
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 6}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{7}{Dictionnaires}
+  Contexte : catalogue de composants électroniques
+\end{tptitre}
+
+\begin{objectifbox}
+  Créer, lire, modifier des dictionnaires ; utiliser \texttt{keys()}, \texttt{values()}, \texttt{items()} ; travailler avec des dictionnaires imbriqués.
+\end{objectifbox}
+
+\begin{codebox}{dictionnaire simple}
+\begin{lstlisting}
+composant = {"référence": "R470", "valeur": 470, "tolérance": 5}
+print(composant["valeur"])   # 470
+composant["tolérance"] = 1   # modification
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Créer un dictionnaire \texttt{resistances} avec 4 entrées (\texttt{"R1"} à \texttt{"R4"}). Afficher la valeur de \texttt{"R3"} et le nombre total d'entrées.
+  \item \textbf{[2 pts]} Ajouter \texttt{"R5": 2200}, supprimer \texttt{"R2"} avec \texttt{del}. Vérifier avec \texttt{in} que \texttt{"R2"} n'est plus présent.
+  \item \textbf{[2 pts]} Parcourir avec \texttt{.items()} et afficher chaque résistance au format : \texttt{Référence : R1 | Valeur : 470 $\Omega$}.
+  \item \textbf{[2 pts]} Créer un dictionnaire imbriqué où chaque composant a les attributs \texttt{valeur}, \texttt{tolérance} et \texttt{stock}. Afficher le stock du 2\ieme{} composant.
+  \item \textbf{[2 pts]} Écrire \texttt{chercher\_stock(catalogue, seuil)} qui retourne les références dont le stock est inférieur au seuil. Tester avec \texttt{seuil=10}.
+\end{enumerate}
+
+\sepgrille{7}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul Dict avec 4 résistances créé \newline
+    \bul Accès \texttt{["R3"]} correct, \texttt{len()} = 4
+    & 2 & & \\ \hline
+2 & \bul Ajout \texttt{"R5"} opérationnel \newline
+    \bul\texttt{del} exécuté \newline
+    \bul\texttt{"R2" in dict} → \texttt{False}
+    & 2 & & \\ \hline
+3 & \bul\texttt{.items()} dans la boucle \newline
+    \bul Format d'affichage correct
+    & 2 & & \\ \hline
+4 & \bul Dict imbriqué avec 3 attributs \newline
+    \bul Accès stock du 2e composant correct
+    & 2 & & \\ \hline
+5 & \bul Fonction définie, filtre correct \newline
+    \bul Test \texttt{seuil=10} fonctionnel
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 7}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{8}{Fichiers et gestion d'erreurs}
+  Contexte : datalogger -- enregistrement de mesures
+\end{tptitre}
+
+\begin{objectifbox}
+  Ouvrir, lire, écrire des fichiers avec \texttt{open()} et \texttt{with} ; utiliser le module \texttt{csv} ; gérer les erreurs avec \texttt{try / except}.
+\end{objectifbox}
+
+\begin{codebox}{lecture et écriture}
+\begin{lstlisting}
+with open("mesures.txt", "w", encoding="utf-8") as f:
+    f.write("5.02\n")
+
+with open("mesures.txt", "r", encoding="utf-8") as f:
+    for ligne in f:
+        print(ligne.strip())
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Créer \texttt{log.txt} et y écrire 5 tensions générées avec \texttt{random.uniform(4.9, 5.1)}.
+  \item \textbf{[2 pts]} Lire \texttt{log.txt} ligne par ligne, convertir en \texttt{float} et calculer la moyenne. Afficher le résultat.
+  \item \textbf{[2 pts]} Utiliser \texttt{csv.writer} pour créer \texttt{mesures.csv} avec 3 colonnes (index, temps\_s, tension\_V) et 10 lignes (\texttt{temps = index * 0.1}).
+  \item \textbf{[2 pts]} Lire \texttt{mesures.csv} avec \texttt{csv.DictReader} et afficher uniquement les lignes où la tension est hors de $[4{,}90\ V ; 5{,}10\ V]$.
+  \item \textbf{[2 pts]} Entourer la lecture d'un \texttt{try / except FileNotFoundError} avec un message clair. Tester avec un nom de fichier inexistant.
+\end{enumerate}
+
+\sepgrille{8}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul\texttt{with open(..., "w")} utilisé \newline
+    \bul\texttt{random.uniform(4.9, 5.1)} \newline
+    \bul 5 lignes dans \texttt{log.txt}
+    & 2 & & \\ \hline
+2 & \bul Lecture ligne par ligne \newline
+    \bul\texttt{float()} appliqué \newline
+    \bul Moyenne calculée et affichée
+    & 2 & & \\ \hline
+3 & \bul\texttt{csv.writer} utilisé \newline
+    \bul 3 colonnes, 10 lignes, \texttt{temps = index * 0.1}
+    & 2 & & \\ \hline
+4 & \bul\texttt{csv.DictReader} utilisé \newline
+    \bul Filtre hors $[4{,}90\,;\,5{,}10]$\,V correct
+    & 2 & & \\ \hline
+5 & \bul\texttt{try / except FileNotFoundError} présent \newline
+    \bul Message clair, testé avec fichier inexistant
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 8}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{9}{Modules \texttt{numpy} et \texttt{matplotlib}}
+  Contexte : visualisation d'un signal sinusoïdal
+\end{tptitre}
+
+\begin{objectifbox}
+  Utiliser \texttt{numpy} pour les calculs vectoriels et \texttt{matplotlib.pyplot} pour tracer des courbes. Générer $u(t) = A\sin(2\pi f t)$ et visualiser.
+\end{objectifbox}
+
+\begin{codebox}{signal sinusoïdal de base}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+
+f, A = 50, 5
+t = np.linspace(0, 0.04, 1000)
+u = A * np.sin(2 * np.pi * f * t)
+plt.plot(t, u)
+plt.show()
+\end{lstlisting}
+\end{codebox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Créer un tableau de 1000 points sur $[0\ ;\ 0{,}04\ s]$ avec \texttt{np.linspace}. Calculer $u = 5\sin(2\pi \cdot 50 \cdot t)$. Afficher les 5 premières valeurs.
+  \item \textbf{[2 pts]} Tracer $u(t)$ avec \texttt{plt.plot()}. Ajouter un titre, des labels d'axes et une grille.
+  \item \textbf{[2 pts]} Superposer $u_1 = 5\sin(2\pi \cdot 50 \cdot t)$ et $u_3 = 1{,}5\sin(2\pi \cdot 150 \cdot t)$ en couleurs différentes.
+  \item \textbf{[2 pts]} Tracer le signal composite $u = u_1 + u_3$. Ajouter une légende avec \texttt{plt.legend()} pour les 3 courbes.
+  \item \textbf{[2 pts]} Calculer \texttt{np.max(u)} et $U_\mathrm{eff} = \sqrt{\mathrm{mean}(u^2)}$. Vérifier que $U_\mathrm{eff} \approx A/\sqrt{2}$.
+\end{enumerate}
+
+\sepgrille{9}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul\texttt{np.linspace(0, 0.04, 1000)} correct \newline
+    \bul $u = A\sin(2\pi ft)$ vectoriel \newline
+    \bul\texttt{print(u[:5])} affiché
+    & 2 & & \\ \hline
+2 & \bul\texttt{plt.plot(t, u)} présent \newline
+    \bul Titre + labels + \texttt{plt.grid()}
+    & 2 & & \\ \hline
+3 & \bul $u_1$ et $u_3$ calculés \newline
+    \bul 2 courbes superposées, couleurs différentes
+    & 2 & & \\ \hline
+4 & \bul $u = u_1 + u_3$ par addition de tableaux \newline
+    \bul\texttt{plt.legend()} avec 3 courbes nommées
+    & 2 & & \\ \hline
+5 & \bul\texttt{np.max(u)} affiché \newline
+    \bul $U_\mathrm{eff} = \sqrt{\mathrm{mean}(u^2)}$ calculée \newline
+    \bul Vérification $\approx A/\sqrt{2}$ affichée
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 9}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{10}{Projet : calculatrice électronique interactive}
+  Bilan des compétences -- application complète
+\end{tptitre}
+
+\begin{objectifbox}
+  Concevoir une application complète mobilisant toutes les compétences : fonctions, boucles, conditions, fichiers, formatage. Le code doit être structuré et commenté.
+\end{objectifbox}
+
+\begin{enumerate}[leftmargin=*, label=\textbf{Q\arabic*.}]
+  \item \textbf{[2 pts]} Écrire \texttt{menu()} qui affiche les 4 options + quitter (0) et retourne le choix. Gérer les saisies non entières avec \texttt{try/except ValueError}.
+  \item \textbf{[2 pts]} Écrire \texttt{module\_loi\_ohm()} : demander 2 grandeurs parmi $U$, $R$, $I$, calculer la 3\ieme{} et afficher le résultat avec unité.
+  \item \textbf{[2 pts]} Écrire \texttt{module\_diviseur()} : calculer $U_s = U_e \times \dfrac{R_2}{R_1+R_2}$. Saisir $U_e$, $R_1$, $R_2$ et afficher $U_s$.
+  \item \textbf{[2 pts]} Écrire \texttt{module\_led()} : calculer $R = (U_\mathrm{alim} - U_\mathrm{LED})/I_\mathrm{LED}$ avec valeurs par défaut $U_\mathrm{LED}=2{,}0$ V et $I_\mathrm{LED}=0{,}02$ A.
+  \item \textbf{[2 pts]} Assembler dans une boucle \texttt{while True}. Enregistrer chaque calcul dans \texttt{historique.txt} avec \texttt{datetime.now()}.
+\end{enumerate}
+
+\sepgrille{10}
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline \evalhdr
+1 & \bul Menu affiché avec 4 options + quitter \newline
+    \bul\texttt{while True} présent \newline
+    \bul\texttt{try/except ValueError} opérationnel
+    & 2 & & \\ \hline
+2 & \bul Fonction \texttt{module\_loi\_ohm()} définie \newline
+    \bul 2 grandeurs saisies, 3e calculée \newline
+    \bul Résultat avec unité affiché
+    & 2 & & \\ \hline
+3 & \bul Formule $U_s = U_e R_2/(R_1+R_2)$ correcte \newline
+    \bul Saisies et affichage opérationnels
+    & 2 & & \\ \hline
+4 & \bul Formule $R=(U_\mathrm{alim}-U_\mathrm{LED})/I_\mathrm{LED}$ correcte \newline
+    \bul Valeurs par défaut 2{,}0\,V et 0{,}02\,A
+    & 2 & & \\ \hline
+5 & \bul 4 modules appelés selon le choix \newline
+    \bul\texttt{historique.txt} en mode ajout \texttt{"a"} \newline
+    \bul\texttt{datetime.now()} enregistré
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 10}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+\end{document}

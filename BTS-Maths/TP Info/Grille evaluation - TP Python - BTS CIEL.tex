@@ -1,0 +1,441 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{amsmath,amssymb}
+\usepackage[left=1.5cm,right=1.5cm,top=1.8cm,bottom=1.5cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{array,multirow,booktabs}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\definecolor{tphdr}{RGB}{30,80,160}
+\definecolor{rowhdr}{RGB}{180,210,240}
+\definecolor{totalrow}{RGB}{255,215,60}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\setlength{\headheight}{14pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[C]{\textit{Grille d'évaluation -- TP Python -- 1BTS CIEL}}
+\fancyhead[R]{Année 2025--2026}
+\fancyfoot[L]{Alexis RUIZ}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{}
+
+\newtcolorbox{tptitre}[2]{%
+  title={\large\bfseries TP\,#1\enspace---\enspace#2
+         \hfill\normalsize\textbf{/10 pts}},
+  colback=tphdr!10, colframe=tphdr, coltitle=white,
+  arc=3mm, boxrule=1.2pt}
+
+% Colonnes du tableau d'évaluation
+\newcolumntype{I}{>{\centering\arraybackslash}p{0.5cm}}
+\newcolumntype{J}{>{\raggedright\arraybackslash}p{9.3cm}}
+\newcolumntype{U}{>{\centering\arraybackslash}p{0.85cm}}
+\newcolumntype{G}{>{\centering\arraybackslash}p{1.3cm}}
+\newcolumntype{H}{>{\raggedright\arraybackslash}p{3.6cm}}
+
+\renewcommand{\arraystretch}{1.9}
+\newcommand{\bul}{\textbullet\ }  % bullet court
+
+%======================================================================
+\begin{document}
+%======================================================================
+
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{1.5cm}
+  {\Huge\bfseries Grille d'évaluation}\\[0.4cm]
+  {\Large Travaux Pratiques Python}\\[0.3cm]
+  {\large BTS CIEL --- 1\iere{} année \quad | \quad Lycée Denis Diderot}\\[2cm]
+  \rule{12cm}{0.8pt}\\[0.8cm]
+  {\large\bfseries NOM : \underline{\hspace{6cm}}}\\[0.7cm]
+  {\large\bfseries Prénom : \underline{\hspace{5.5cm}}}\\[0.7cm]
+  {\large\bfseries Groupe : \underline{\hspace{5.6cm}}}\\[1.2cm]
+  \rule{12cm}{0.8pt}\\[1.2cm]
+  {\renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{|c|l|c|c|}
+    \hline
+    \rowcolor{rowhdr}
+    \textbf{TP} & \textbf{Thème} & \textbf{/10} & \textbf{Visa} \\
+    \hline
+    1  & Variables et types de données           & & \\ \hline
+    2  & Structures conditionnelles              & & \\ \hline
+    3  & Boucles \texttt{for} et \texttt{while}  & & \\ \hline
+    4  & Fonctions                               & & \\ \hline
+    5  & Listes                                  & & \\ \hline
+    6  & Chaînes de caractères                   & & \\ \hline
+    7  & Dictionnaires                           & & \\ \hline
+    8  & Fichiers et gestion d'erreurs           & & \\ \hline
+    9  & \texttt{numpy} et \texttt{matplotlib}   & & \\ \hline
+    10 & Projet : calculatrice électronique      & & \\ \hline
+    \rowcolor{gray!20}
+    \multicolumn{2}{|r|}{\textbf{Total}} & \multicolumn{2}{c|}{\textbf{/100}} \\ \hline
+  \end{tabular}}
+\end{center}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{1}{Variables et types de données}
+  Contexte : loi d'Ohm \enspace $U = R \times I$ \enspace $P = U \times I$
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul\texttt{R=470} et \texttt{I=0.02} déclarés \newline
+    \bul\texttt{U = R * I} calculé \newline
+    \bul Affichage correct : \texttt{U = 9.4 V}
+    & 2 & & \\ \hline
+2 & \bul\texttt{type()} appelé sur \texttt{R}, \texttt{I} et \texttt{nom} \newline
+    \bul \texttt{int}, \texttt{float}, \texttt{str} correctement identifiés
+    & 2 & & \\ \hline
+3 & \bul\texttt{input()} utilisé pour \texttt{R} et \texttt{I} \newline
+    \bul Conversion \texttt{float()} appliquée \newline
+    \bul \texttt{U} recalculé et affiché avec la saisie
+    & 2 & & \\ \hline
+4 & \bul\texttt{P = U * I} calculé \newline
+    \bul\texttt{round(P, 4)} utilisé \newline
+    \bul Unité « watts » présente dans l'affichage
+    & 2 & & \\ \hline
+5 & \bul f-string utilisé \newline
+    \bul \texttt{R}, \texttt{I}, \texttt{U}, \texttt{P} affichés avec leurs unités ($\Omega$, A, V, W)
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 1}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{2}{Structures conditionnelles}
+  Contexte : seuils de tension dans un circuit électronique
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul\texttt{if / else} présents \newline
+    \bul Seuil 2{,}0\,V correct \newline
+    \bul Affichage \texttt{"LED allumée"} / \texttt{"LED éteinte"}
+    & 2 & & \\ \hline
+2 & \bul\texttt{elif} utilisé (3 branches) \newline
+    \bul Seuils 4{,}5\,V et 5{,}5\,V corrects \newline
+    \bul Libellés « faible / nominale / élevée » affichés
+    & 2 & & \\ \hline
+3 & \bul\texttt{and} utilisé pour combiner les conditions \newline
+    \bul Seuils U\,>\,12\,V et I\,>\,2\,A corrects \newline
+    \bul 3 combinaisons testées avec résultats corrects
+    & 2 & & \\ \hline
+4 & \bul Deux boucles \texttt{for} imbriquées (A et B dans \{0,1\}) \newline
+    \bul Condition AND correcte \newline
+    \bul 4 lignes de table de vérité affichées
+    & 2 & & \\ \hline
+5 & \bul Seuils 18\,°C et 22\,°C corrects \newline
+    \bul \texttt{"Maintien"} affiché entre les deux bornes \newline
+    \bul \texttt{input()} utilisé pour saisir T
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 2}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{3}{Boucles \texttt{for} et \texttt{while}}
+  Contexte : mesures répétées et simulations
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul Boucle \texttt{for} sur 12 itérations \newline
+    \bul Facteur $\times 1{,}2115$ appliqué à chaque tour \newline
+    \bul Valeurs arrondies à l'entier et affichées
+    & 2 & & \\ \hline
+2 & \bul\texttt{while U >= 1} (ou équivalent) \newline
+    \bul Division par 2 à chaque itération \newline
+    \bul Nombre d'itérations affiché
+    & 2 & & \\ \hline
+3 & \bul Accumulation correcte dans une boucle \texttt{for} \newline
+    \bul Somme égale à $n(n+1)/2$, vérification affichée
+    & 2 & & \\ \hline
+4 & \bul\texttt{random.randint(1, 100)} utilisé \newline
+    \bul Boucle \texttt{while} jusqu'à la bonne réponse \newline
+    \bul Nombre de tentatives affiché à la fin
+    & 2 & & \\ \hline
+5 & \bul Deux boucles \texttt{for} imbriquées \newline
+    \bul Format \texttt{:>4d} (ou équivalent) pour l'alignement \newline
+    \bul Table complète et lisible
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 3}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{4}{Fonctions}
+  Contexte : bibliothèque de calculs électroniques réutilisables
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul\texttt{def loi\_ohm(R, I):} correctement définie \newline
+    \bul\texttt{return U} présent \newline
+    \bul Appel avec $R=1000$, $I=0{,}015$ et résultat correct (15\,V)
+    & 2 & & \\ \hline
+2 & \bul Fonction retourne un tuple \texttt{(U, P)} \newline
+    \bul Décompactage \texttt{u, p = bilan\_puissance(...)} correct
+    & 2 & & \\ \hline
+3 & \bul\texttt{*args} utilisé dans la signature \newline
+    \bul Somme des résistances correcte \newline
+    \bul Testé avec 3 puis 5 résistances
+    & 2 & & \\ \hline
+4 & \bul Valeur par défaut \texttt{R2=100} dans la signature \newline
+    \bul Formule $R_p = R_1 R_2 / (R_1+R_2)$ correcte \newline
+    \bul Appel sans préciser \texttt{R2} fonctionnel
+    & 2 & & \\ \hline
+5 & \bul Paramètre \texttt{unite} présent \newline
+    \bul 3 conversions correctes (mV, V, kV) \newline
+    \bul Valeur par défaut \texttt{"V"} opérationnelle
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 4}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{5}{Listes}
+  Contexte : traitement d'une série de mesures de tension
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul Liste de 8 éléments correctement créée \newline
+    \bul Accès \texttt{[0]}, \texttt{[-1]}, \texttt{[4]} affichés et corrects
+    & 2 & & \\ \hline
+2 & \bul\texttt{append(5.15)} utilisé \newline
+    \bul\texttt{remove(4.88)} utilisé \newline
+    \bul\texttt{len()} donne la bonne longueur
+    & 2 & & \\ \hline
+3 & \bul Moyenne calculée avec \texttt{sum()/len()} \newline
+    \bul\texttt{min()} et \texttt{max()} corrects et affichés
+    & 2 & & \\ \hline
+4 & \bul Boucle \texttt{for} sur la liste \newline
+    \bul Condition hors $[4{,}90\,;\,5{,}10]$\,V correcte \newline
+    \bul\texttt{append()} dans la liste \texttt{hors\_limites}
+    & 2 & & \\ \hline
+5 & \bul\texttt{sort()} appliqué et liste triée affichée \newline
+    \bul Slicing correct pour extraire le premier tiers
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 5}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{6}{Chaînes de caractères}
+  Contexte : analyse de trames de communication série ASCII
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul\texttt{len(trame)} correct (15) \newline
+    \bul\texttt{trame[0]} et \texttt{trame[-1]} corrects \newline
+    \bul Slicing \texttt{trame[6:9]} correct
+    & 2 & & \\ \hline
+2 & \bul\texttt{split(":")} utilisé \newline
+    \bul 3 parties stockées et affichées séparément
+    & 2 & & \\ \hline
+3 & \bul\texttt{startswith("START")} et \texttt{endswith("STOP")} utilisés \newline
+    \bul Fonction retourne \texttt{True}/\texttt{False} \newline
+    \bul 3 trames différentes testées
+    & 2 & & \\ \hline
+4 & \bul f-string utilisé \newline
+    \bul Variables \texttt{num}, \texttt{val}, \texttt{statut} insérées \newline
+    \bul Format exact correspondant à l'énoncé
+    & 2 & & \\ \hline
+5 & \bul Boucle \texttt{for} sur les caractères \newline
+    \bul Compteur incrémenté sans \texttt{.count()} \newline
+    \bul Résultat identique à \texttt{trame.count(":")}
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 6}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{7}{Dictionnaires}
+  Contexte : catalogue de composants électroniques
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul Dictionnaire avec 4 résistances créé \newline
+    \bul Accès \texttt{dict["R3"]} correct \newline
+    \bul\texttt{len()} retourne 4
+    & 2 & & \\ \hline
+2 & \bul Ajout \texttt{"R5": 2200} opérationnel \newline
+    \bul\texttt{del dict["R2"]} exécuté \newline
+    \bul\texttt{"R2" in dict} retourne \texttt{False}
+    & 2 & & \\ \hline
+3 & \bul\texttt{.items()} utilisé dans la boucle \texttt{for} \newline
+    \bul Format d'affichage correct pour chaque résistance
+    & 2 & & \\ \hline
+4 & \bul Dictionnaire imbriqué avec 3 attributs par composant \newline
+    \bul Accès au stock du 2e composant correct
+    & 2 & & \\ \hline
+5 & \bul Fonction \texttt{chercher\_stock(catalogue, seuil)} définie \newline
+    \bul Filtre sur stock\,<\,seuil correct \newline
+    \bul Test avec \texttt{seuil=10} fonctionnel
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 7}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{8}{Fichiers et gestion d'erreurs}
+  Contexte : datalogger -- enregistrement de mesures
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul\texttt{with open(..., "w")} utilisé \newline
+    \bul\texttt{random.uniform(4.9, 5.1)} pour générer les valeurs \newline
+    \bul Fichier \texttt{log.txt} créé avec 5 lignes
+    & 2 & & \\ \hline
+2 & \bul Lecture ligne par ligne avec \texttt{with open(..., "r")} \newline
+    \bul Conversion \texttt{float()} appliquée \newline
+    \bul Moyenne calculée et affichée
+    & 2 & & \\ \hline
+3 & \bul\texttt{csv.writer} utilisé \newline
+    \bul 3 colonnes (index, temps, tension) présentes \newline
+    \bul 10 lignes avec \texttt{temps = index * 0.1}
+    & 2 & & \\ \hline
+4 & \bul\texttt{csv.DictReader} utilisé \newline
+    \bul Filtre hors $[4{,}90\,;\,5{,}10]$\,V correct \newline
+    \bul Lignes hors limites affichées
+    & 2 & & \\ \hline
+5 & \bul\texttt{try / except FileNotFoundError} présent \newline
+    \bul Message d'erreur clair affiché \newline
+    \bul Testé avec un nom de fichier inexistant
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 8}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{9}{Modules \texttt{numpy} et \texttt{matplotlib}}
+  Contexte : visualisation d'un signal sinusoïdal
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul\texttt{np.linspace(0, 0.04, 1000)} correct \newline
+    \bul $u = A \cdot \sin(2\pi f t)$ calculé vectoriellement \newline
+    \bul 5 premières valeurs affichées avec \texttt{print(u[:5])}
+    & 2 & & \\ \hline
+2 & \bul\texttt{plt.plot(t, u)} présent \newline
+    \bul Titre et labels d'axes ajoutés \newline
+    \bul\texttt{plt.grid()} activé
+    & 2 & & \\ \hline
+3 & \bul $u_1$ (50\,Hz) et $u_3$ (150\,Hz) calculés \newline
+    \bul Deux courbes superposées sur la même figure \newline
+    \bul Couleurs différentes
+    & 2 & & \\ \hline
+4 & \bul Signal composite $u = u_1 + u_3$ par addition de tableaux \newline
+    \bul\texttt{plt.legend()} avec 3 courbes nommées
+    & 2 & & \\ \hline
+5 & \bul\texttt{np.max(u)} calculé et affiché \newline
+    \bul $U_\mathrm{eff} = \sqrt{\mathrm{mean}(u^2)}$ calculée \newline
+    \bul Vérification $U_\mathrm{eff} \approx A/\sqrt{2}$ affichée
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 9}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+%======================================================================
+\clearpage
+\begin{tptitre}{10}{Projet : calculatrice électronique interactive}
+  Bilan des compétences -- application complète
+\end{tptitre}\vspace{2mm}
+
+\noindent\begin{tabular}{|I|J|U|G|H|}
+\hline
+\cellcolor{tphdr}\textcolor{white}{\textbf{Q}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Critères observables}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{/pts}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Note}} &
+\cellcolor{tphdr}\textcolor{white}{\textbf{Observations}} \\ \hline
+1 & \bul Menu affiché avec les 4 options + quitter (0) \newline
+    \bul Boucle \texttt{while True} présente \newline
+    \bul\texttt{try / except ValueError} pour la saisie du choix
+    & 2 & & \\ \hline
+2 & \bul Fonction \texttt{module\_loi\_ohm()} définie \newline
+    \bul 2 grandeurs demandées, 3e calculée \newline
+    \bul Résultat affiché avec unité
+    & 2 & & \\ \hline
+3 & \bul Fonction \texttt{module\_diviseur()} définie \newline
+    \bul Formule $U_s = U_e \times R_2/(R_1+R_2)$ correcte \newline
+    \bul Saisies et affichage du résultat opérationnels
+    & 2 & & \\ \hline
+4 & \bul Fonction \texttt{module\_led()} définie \newline
+    \bul Formule $R = (U_\mathrm{alim} - U_\mathrm{LED})/I_\mathrm{LED}$ correcte \newline
+    \bul Valeurs par défaut $U_\mathrm{LED}=2{,}0$\,V et $I_\mathrm{LED}=0{,}02$\,A
+    & 2 & & \\ \hline
+5 & \bul Boucle principale appelle les 4 modules selon le choix \newline
+    \bul Fichier \texttt{historique.txt} ouvert en mode ajout (\texttt{"a"}) \newline
+    \bul Date et heure enregistrées avec \texttt{datetime.now()}
+    & 2 & & \\ \hline
+\rowcolor{totalrow}
+\multicolumn{3}{|r|}{\textbf{Total TP 10}} & \textbf{/10} & \\ \hline
+\end{tabular}
+
+\end{document}

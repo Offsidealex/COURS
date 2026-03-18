@@ -1,0 +1,225 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{Séries de Fourier}
+\cfoot{\thepage}
+
+\tcbset{
+  formulebox/.style={colback=blue!5!white, colframe=blue!50!black, fonttitle=\bfseries, title=#1},
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black, fonttitle=\bfseries, title=#1},
+  reponsebox/.style={colback=gray!5!white, colframe=gray!40!black, sharp corners, boxrule=0.5pt, left=4pt, right=4pt, top=4pt, bottom=4pt}
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Activité -- Séries de Fourier}} \\[0.3cm]
+  {\Large Calcul de $a_0$ : la valeur moyenne d'un signal périodique} \\[0.2cm]
+  \rule{0.6\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.5cm}
+
+%% --- RAPPEL DE COURS ---
+\begin{tcolorbox}[formulebox={Rappel : valeur moyenne d'un signal périodique}]
+  Soit $f$ une fonction périodique de période $T$. Le coefficient $a_0$ représente la \textbf{valeur moyenne} de $f$ sur une période :
+  \[
+    \boxed{a_0 = \frac{1}{T} \int_0^{T} f(t)\, dt}
+  \]
+  \textbf{Interprétation physique :} $a_0$ correspond à la \textbf{composante continue} du signal, c'est-à-dire la valeur autour de laquelle le signal oscille.
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+%% --- EXERCICE 1 ---
+\begin{tcolorbox}[exobox={Exercice 1 -- Signal créneau}]
+  On considère le signal périodique $f$ de période $T = 2$ défini sur $[0\,;\,2[$ par :
+  \[
+    f(t) = \begin{cases} 3 & \text{si } 0 \leq t < 1 \\ -1 & \text{si } 1 \leq t < 2 \end{cases}
+  \]
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$},
+      ylabel={$f(t)$},
+      xmin=-2.5, xmax=4.5,
+      ymin=-2, ymax=4,
+      xtick={-2,-1,0,1,2,3,4},
+      ytick={-1,0,1,2,3},
+      width=12cm, height=5cm,
+      grid=major,
+      grid style={dashed, gray!30},
+    ]
+    % Période [-2, 0[
+    \addplot[blue, ultra thick, domain=-2:-1] {3};
+    \addplot[blue, ultra thick, domain=-1:0] {-1};
+    % Période [0, 2[
+    \addplot[blue, ultra thick, domain=0:1] {3};
+    \addplot[blue, ultra thick, domain=1:2] {-1};
+    % Période [2, 4[
+    \addplot[blue, ultra thick, domain=2:3] {3};
+    \addplot[blue, ultra thick, domain=3:4] {-1};
+    % Points de discontinuité
+    \addplot[blue, dashed, thin] coordinates {(1,3)(1,-1)};
+    \addplot[blue, dashed, thin] coordinates {(3,3)(3,-1)};
+    \addplot[blue, dashed, thin] coordinates {(-1,3)(-1,-1)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\alph*)}]
+  \item Rappeler la valeur de la période $T$ et identifier les bornes d'intégration.
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+  \item Écrire l'intégrale permettant de calculer $a_0$ en la décomposant selon les deux intervalles.
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+  \item Calculer $a_0$.
+  \begin{tcolorbox}[reponsebox, height=2.5cm]\end{tcolorbox}
+  \item Tracer en pointillé rouge la droite $y = a_0$ sur le graphique ci-dessus. Le résultat est-il cohérent graphiquement ?
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+\end{enumerate}
+
+\vspace{0.3cm}
+
+%% --- EXERCICE 2 ---
+\begin{tcolorbox}[exobox={Exercice 2 -- Signal en dents de scie}]
+  On considère le signal périodique $g$ de période $T = 4$ défini sur $[0\,;\,4[$ par :
+  \[
+    g(t) = \frac{3}{4}\,t
+  \]
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$},
+      ylabel={$g(t)$},
+      xmin=-4.5, xmax=8.5,
+      ymin=-0.5, ymax=4,
+      xtick={-4,-2,0,2,4,6,8},
+      ytick={0,1,2,3},
+      width=12cm, height=5cm,
+      grid=major,
+      grid style={dashed, gray!30},
+    ]
+    \addplot[red, ultra thick, domain=-4:0] {0.75*(x+4)};
+    \addplot[red, ultra thick, domain=0:4] {0.75*x};
+    \addplot[red, ultra thick, domain=4:8] {0.75*(x-4)};
+    % Discontinuités
+    \addplot[red, dashed, thin] coordinates {(0,3)(0,0)};
+    \addplot[red, dashed, thin] coordinates {(4,3)(4,0)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\alph*)}]
+  \item Deviner graphiquement la valeur de $a_0$ avant tout calcul. Justifier.
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+  \item Écrire l'intégrale permettant de calculer $a_0$.
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+  \item Calculer $a_0$. Le résultat confirme-t-il votre intuition graphique ?
+  \begin{tcolorbox}[reponsebox, height=3cm]\end{tcolorbox}
+\end{enumerate}
+
+\vspace{0.3cm}
+
+%% --- EXERCICE 3 ---
+\begin{tcolorbox}[exobox={Exercice 3 -- Signal sinusoïdal redressé}]
+  On considère le signal périodique $h$ de période $T = \pi$ défini par :
+  \[
+    h(t) = \left| \sin(t) \right|
+  \]
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$},
+      ylabel={$h(t)$},
+      xmin=-3.5, xmax=10,
+      ymin=-0.3, ymax=1.5,
+      xtick={-3.14159,0,3.14159,6.28318,9.42478},
+      xticklabels={$-\pi$,$0$,$\pi$,$2\pi$,$3\pi$},
+      ytick={0,0.5,1},
+      width=12cm, height=5cm,
+      grid=major,
+      grid style={dashed, gray!30},
+      samples=200,
+    ]
+    \addplot[green!60!black, ultra thick, domain=-3.14159:9.5] {abs(sin(deg(x)))};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\alph*)}]
+  \item Justifier que la période de $h$ est bien $T = \pi$.
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+  \item Simplifier $|{\sin(t)}|$ sur l'intervalle $[0\,;\,\pi]$.
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+  \item Écrire puis calculer l'intégrale donnant $a_0$.
+
+  \textit{Rappel :} $\displaystyle\int_0^{\pi} \sin(t)\,dt = \Big[-\cos(t)\Big]_0^{\pi}$
+  \begin{tcolorbox}[reponsebox, height=3cm]\end{tcolorbox}
+  \item Donner la valeur exacte de $a_0$ puis une valeur approchée à $10^{-2}$ près.
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+\end{enumerate}
+
+\vspace{0.3cm}
+
+%% --- EXERCICE 4 (Synthèse) ---
+\begin{tcolorbox}[exobox={Exercice 4 -- Synthèse}]
+  On considère le signal périodique $s$ de période $T = 6$ défini sur $[0\,;\,6[$ par :
+  \[
+    s(t) = \begin{cases} 2t & \text{si } 0 \leq t < 3 \\ 0 & \text{si } 3 \leq t < 6 \end{cases}
+  \]
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\alph*)}]
+  \item Tracer le signal $s$ sur l'intervalle $[-6\,;\,12]$ dans le repère ci-dessous.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=middle,
+        xlabel={$t$},
+        ylabel={$s(t)$},
+        xmin=-6.5, xmax=12.5,
+        ymin=-1, ymax=7,
+        xtick={-6,-3,0,3,6,9,12},
+        ytick={0,1,2,3,4,5,6},
+        width=14cm, height=6cm,
+        grid=major,
+        grid style={dashed, gray!30},
+      ]
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \item Estimer graphiquement la valeur de $a_0$.
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+  \item Décomposer l'intégrale sur les deux intervalles et calculer $a_0$.
+  \begin{tcolorbox}[reponsebox, height=4cm]\end{tcolorbox}
+  \item Quelle est l'interprétation physique de cette valeur si $s(t)$ représente une tension en volts ?
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+\end{enumerate}
+
+\end{document}

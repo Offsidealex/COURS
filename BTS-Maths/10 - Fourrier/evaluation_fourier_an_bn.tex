@@ -1,0 +1,175 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{Évaluation -- Séries de Fourier}
+\cfoot{\thepage}
+
+\tcbset{
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black, fonttitle=\bfseries, title=#1},
+  reponsebox/.style={colback=gray!5!white, colframe=gray!40!black, sharp corners, boxrule=0.5pt, left=4pt, right=4pt, top=4pt, bottom=4pt}
+}
+
+\newcommand{\dt}{\mathrm{d}t}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Évaluation -- Séries de Fourier}} \\[0.2cm]
+  {\Large Calcul des coefficients $a_0$, $a_n$ et $b_n$} \\[0.2cm]
+  \rule{0.6\textwidth}{0.4pt} \\[0.2cm]
+  {\normalsize Durée : 1 heure \quad -- \quad Calculatrice autorisée} \\[0.1cm]
+  {\normalsize Le barème est donné à titre indicatif.}
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Nom :} \dotfill \quad \textbf{Prénom :} \dotfill \quad \textbf{Classe :} \dotfill
+
+\vspace{0.3cm}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\textbf{Rappels :} Soit $f$ une fonction périodique de période $T$ et de pulsation $\omega = \dfrac{2\pi}{T}$. Son développement en série de Fourier est :
+\[
+  S(t) = a_0 + \sum_{n=1}^{+\infty}\!\bigl(a_n\cos(n\omega t)+b_n\sin(n\omega t)\bigr)
+\]
+avec \quad
+$\displaystyle a_0 = \frac{1}{T}\int_0^{T} f(t)\,\dt$,\quad
+$\displaystyle a_n = \frac{2}{T}\int_0^{T} f(t)\cos(n\omega t)\,\dt$,\quad
+$\displaystyle b_n = \frac{2}{T}\int_0^{T} f(t)\sin(n\omega t)\,\dt$.
+}}
+
+\vspace{0.4cm}
+
+%% ================================================================
+%% EXERCICE 1 — 10 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 1 \hfill \normalfont\textit{(10 points)}}]
+  On considère la fonction $f$ périodique de période $T = 2$, définie sur $[0\,;\,2[$ par :
+  \[
+    f(t) = \begin{cases} 4 & \text{si } 0 \leq t < 1 \\ 0 & \text{si } 1 \leq t < 2 \end{cases}
+  \]
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$},
+      ylabel={$f(t)$},
+      xmin=-2.5, xmax=6.5,
+      ymin=-0.5, ymax=5.5,
+      xtick={-2,-1,0,1,2,3,4,5,6},
+      ytick={0,1,2,3,4},
+      width=13cm, height=4.8cm,
+      grid=major,
+      grid style={dashed, gray!30},
+    ]
+    \addplot[blue, ultra thick, domain=-2:-1] {4};
+    \addplot[blue, ultra thick, domain=-1:0]  {0};
+    \addplot[blue, ultra thick, domain=0:1]   {4};
+    \addplot[blue, ultra thick, domain=1:2]   {0};
+    \addplot[blue, ultra thick, domain=2:3]   {4};
+    \addplot[blue, ultra thick, domain=3:4]   {0};
+    \addplot[blue, ultra thick, domain=4:5]   {4};
+    \addplot[blue, ultra thick, domain=5:6]   {0};
+    \addplot[blue, dashed, thin] coordinates {(-1,4)(-1,0)};
+    \addplot[blue, dashed, thin] coordinates {(1,4)(1,0)};
+    \addplot[blue, dashed, thin] coordinates {(3,4)(3,0)};
+    \addplot[blue, dashed, thin] coordinates {(5,4)(5,0)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Donner la valeur de la pulsation $\omega$ de ce signal. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=1.2cm]\end{tcolorbox}
+
+  \item Calculer $a_0$. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=2.5cm]\end{tcolorbox}
+
+  \item Calculer $a_n$ pour tout entier $n \geq 1$. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=3cm]\end{tcolorbox}
+
+  \item Calculer $b_n$ pour tout entier $n \geq 1$.
+        En déduire les valeurs numériques de $b_1$, $b_2$ et $b_3$
+        (valeurs exactes ou arrondies au centième). \hfill \textit{(4 pts)}
+  \begin{tcolorbox}[reponsebox, height=5cm]\end{tcolorbox}
+
+  \item Écrire le développement en série de Fourier $S(t)$ de la fonction $f$ jusqu'à $n = 3$. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+\end{enumerate}
+
+\newpage
+
+%% ================================================================
+%% EXERCICE 2 — 10 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 2 \hfill \normalfont\textit{(10 points)}}]
+  On considère la fonction $f$ \textbf{paire}, périodique de période $T = 4$, définie sur $[0\,;\,4[$ par :
+  \[
+    f(t) = \begin{cases} 1 & \text{si } 0 \leq t < 1 \\ 0 & \text{si } 1 \leq t < 3 \\ 1 & \text{si } 3 \leq t < 4 \end{cases}
+  \]
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Tracer le signal $f$ sur $[-4\,;\,8]$ dans le repère ci-dessous. \hfill \textit{(2 pts)}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=middle,
+        xlabel={$t$},
+        ylabel={$f(t)$},
+        xmin=-4.5, xmax=8.5,
+        ymin=-0.4, ymax=1.8,
+        xtick={-4,-3,-2,-1,0,1,2,3,4,5,6,7,8},
+        ytick={0,1},
+        width=14cm, height=4.5cm,
+        grid=major,
+        grid style={dashed, gray!30},
+      ]
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \item Justifier que $b_n = 0$ pour tout entier $n \geq 1$. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=1.5cm]\end{tcolorbox}
+
+  \item Pour une fonction \textbf{paire} de période $T$, on a :
+        $\displaystyle a_0 = \frac{2}{T}\int_0^{T/2} f(t)\,\dt$.
+
+  Calculer $a_0$. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=2.5cm]\end{tcolorbox}
+
+  \item Pour une fonction \textbf{paire} de période $T$, on a :
+        $\displaystyle a_n = \frac{4}{T}\int_0^{T/2} f(t)\cos(n\omega t)\,\dt$.
+
+  \begin{enumerate}[label=\textbf{\alph*.}]
+    \item Calculer $a_n$ en fonction de $n$. \hfill \textit{(3 pts)}
+    \begin{tcolorbox}[reponsebox, height=4.5cm]\end{tcolorbox}
+    \item En déduire les valeurs de $a_1$, $a_2$ et $a_3$
+          (valeurs exactes ou arrondies au centième). \hfill \textit{(1 pt)}
+    \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+  \end{enumerate}
+
+  \item Écrire le développement en série de Fourier $S(t)$ de la fonction $f$ jusqu'à $n = 3$. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+\end{enumerate}
+
+\end{document}

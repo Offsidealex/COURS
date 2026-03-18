@@ -1,0 +1,468 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{pgffor}
+\usepackage{booktabs}
+
+\geometry{margin=2.5cm}
+\setlength{\headheight}{14.5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{TP Info -- Parité des fonctions}
+\cfoot{\thepage}
+
+% ---- Couleurs ----
+\definecolor{exobg}{RGB}{232,240,254}
+\definecolor{exoframe}{RGB}{70,130,220}
+\definecolor{rappelbg}{RGB}{255,243,220}
+\definecolor{rappelframe}{RGB}{230,150,30}
+\definecolor{repbg}{RGB}{245,255,245}
+\definecolor{repframe}{RGB}{80,170,80}
+\definecolor{fichierbg}{RGB}{240,240,255}
+\definecolor{fichierframe}{RGB}{100,100,200}
+\definecolor{defbg}{RGB}{255,235,235}
+\definecolor{defframe}{RGB}{200,60,60}
+
+% ---- Boîtes ----
+\newmdenv[backgroundcolor=rappelbg, linecolor=rappelframe, linewidth=1.5pt,
+    roundcorner=5pt, innertopmargin=8pt, innerbottommargin=8pt]{rappelbox}
+
+\newmdenv[backgroundcolor=exobg, linecolor=exoframe, linewidth=1.5pt,
+    roundcorner=5pt, innertopmargin=8pt, innerbottommargin=8pt]{exercicebox}
+
+\newmdenv[backgroundcolor=fichierbg, linecolor=fichierframe, linewidth=1.5pt,
+    roundcorner=5pt, innertopmargin=6pt, innerbottommargin=6pt]{fichierbox}
+
+\newmdenv[backgroundcolor=defbg, linecolor=defframe, linewidth=1.5pt,
+    roundcorner=5pt, innertopmargin=8pt, innerbottommargin=8pt]{definitionbox}
+
+% ---- Cadre réponse ----
+\newcommand{\cadreReponse}[1][4]{%
+    \begin{mdframed}[backgroundcolor=repbg, linecolor=repframe, linewidth=1pt,
+        roundcorner=4pt, innertopmargin=6pt, innerbottommargin=6pt]
+    \textcolor{repframe}{\small\textit{Réponse :}}\\[#1\baselineskip]
+    \end{mdframed}%
+}
+
+% ---------------------------------------------------------------
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+    {\LARGE \textbf{TP Info -- Parité des fonctions (2h) }}\\[4pt]
+    {\large Fonctions paires, impaires et décomposition}\\[4pt]
+
+\end{center}
+
+
+
+\noindent\textbf{Nom :} \dotfill \quad \textbf{Prénom :} \dotfill \quad \textbf{Classe :} \makebox[3cm]{\dotfill}
+
+\medskip
+
+\hrule
+
+\medskip
+
+% ---------------------------------------------------------------
+\section*{Objectifs}
+
+Ce TP a pour but d'explorer la notion de parité des fonctions de manière visuelle et numérique à l'aide de Python.
+
+À l'issue de ce TP, vous serez capables de :
+\begin{itemize}
+    \item Identifier graphiquement une fonction paire ou impaire ;
+    \item Vérifier numériquement la parité d'une fonction ;
+    \item Décomposer une fonction quelconque en partie paire et partie impaire ;
+    \item Faire le lien entre la parité et les coefficients de Fourier.
+\end{itemize}
+
+\begin{fichierbox}
+\textbf{Fichiers Python fournis :}\\[4pt]
+\begin{tabular}{ll}
+    \texttt{ex1\_observation.py}   & Exercice 1 -- Observation graphique \\
+    \texttt{ex2\_verification.py}  & Exercice 2 -- Vérification numérique \\
+    \texttt{ex3\_decomposition.py} & Exercice 3 -- Décomposition paire + impaire \\
+    \texttt{ex4\_lien\_fourier.py} & Exercice 4 -- Lien avec les coefficients de Fourier \\
+\end{tabular}
+\end{fichierbox}
+
+% ---------------------------------------------------------------
+\section{Rappels -- Fonctions paires et impaires}
+
+\begin{definitionbox}
+\textbf{Définition.} Soit $f$ une fonction définie sur un intervalle symétrique par rapport à $0$ (c'est-à-dire que si $x$ est dans le domaine, alors $-x$ aussi).
+
+\begin{itemize}
+    \item $f$ est \textbf{paire} si : $\forall x,\quad f(-x) = f(x)$\\
+    \textit{Graphiquement : symétrie par rapport à l'axe des ordonnées (Oy).}
+
+    \item $f$ est \textbf{impaire} si : $\forall x,\quad f(-x) = -f(x)$\\
+    \textit{Graphiquement : symétrie par rapport à l'origine O.}
+\end{itemize}
+\end{definitionbox}
+
+\medskip
+
+\begin{rappelbox}
+\textbf{Propriétés utiles :}
+\begin{itemize}
+    \item Paire $\times$ Paire = \textbf{Paire} \hfill Impaire $\times$ Impaire = \textbf{Paire}
+    \item Paire $\times$ Impaire = \textbf{Impaire}
+    \item $\displaystyle\int_{-a}^{a} f(x)\,dx = 2\int_{0}^{a} f(x)\,dx$ si $f$ est paire
+    \item $\displaystyle\int_{-a}^{a} f(x)\,dx = 0$ si $f$ est impaire
+\end{itemize}
+\end{rappelbox}
+
+\newpage
+
+
+% ---------------------------------------------------------------
+\section{Exercice 1 -- Observation graphique \hfill\normalsize\texttt{ex1\_observation.py}}
+
+\begin{fichierbox}
+Lancez le script \texttt{ex1\_observation.py}. Il affiche six fonctions différentes ainsi que leur symétrique $f(-x)$ en pointillés.
+\end{fichierbox}
+
+\begin{exercicebox}
+\textbf{Question 1.1 :} Pour chacune des six fonctions affichées, cochez la case correspondante.
+
+\medskip
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Fonction} & \textbf{Paire} & \textbf{Impaire} & \textbf{Ni l'une ni l'autre} \\
+    \hline
+    $f(x) = \cos(x)$           & $\square$ & $\square$ & $\square$ \\
+    \hline
+    $f(x) = \sin(x)$           & $\square$ & $\square$ & $\square$ \\
+    \hline
+    $f(x) = x^2$               & $\square$ & $\square$ & $\square$ \\
+    \hline
+    $f(x) = x^3$               & $\square$ & $\square$ & $\square$ \\
+    \hline
+    $f(x) = e^x$               & $\square$ & $\square$ & $\square$ \\
+    \hline
+    $f(x) = \cos(x) + \sin(x)$ & $\square$ & $\square$ & $\square$ \\
+    \hline
+\end{tabular}
+\end{center}
+\end{exercicebox}
+
+\begin{exercicebox}
+\textbf{Question 1.2 :} Le deuxième graphique montre les symétries caractéristiques.
+\begin{enumerate}[label=\alph*)]
+    \item Décrivez en une phrase ce que vous observez pour la fonction paire $\cos(x)$.
+    \item Décrivez en une phrase ce que vous observez pour la fonction impaire $\sin(x)$.
+    \item Que vaut $f(0)$ pour une fonction impaire ? Justifiez à partir de la définition.
+\end{enumerate}
+\end{exercicebox}
+
+\cadreReponse[9]
+
+%
+
+\newpage
+
+ ---------------------------------------------------------------
+\section{Exercice 2 -- Vérification numérique \hfill\normalsize\texttt{ex2\_verification.py}}
+
+\begin{rappelbox}
+\textbf{Principe :}
+\begin{itemize}
+    \item Si $f$ est \textbf{paire} $\Rightarrow f(x) - f(-x) = 0$ $\Rightarrow \max|f(x)-f(-x)| \approx 0$
+    \item Si $f$ est \textbf{impaire} $\Rightarrow f(x) + f(-x) = 0$ $\Rightarrow \max|f(x)+f(-x)| \approx 0$
+\end{itemize}
+\end{rappelbox}
+
+% ---- Partie A ----
+\subsection{Partie A -- Observation}
+
+\begin{fichierbox}
+Lancez le script \texttt{ex2\_verification.py} tel quel. Il teste les fonctions $\cos(x)$, $\sin(x)$, $x^2$ et $x^3$.
+\end{fichierbox}
+
+\begin{exercicebox}
+\textbf{Question 2.1 :} Recopiez les résultats affichés dans le terminal et indiquez la parité constatée.
+
+\medskip
+\renewcommand{\arraystretch}{2}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Fonction} & $\max|f(x)-f(-x)|$ & $\max|f(x)+f(-x)|$ & \textbf{Parité constatée} \\
+    \hline
+    $\cos(x)$ & & & \\
+    \hline
+    $\sin(x)$ & & & \\
+    \hline
+    $x^2$ & & & \\
+    \hline
+    $x^3$ & & & \\
+    \hline
+\end{tabular}
+\end{center}
+\end{exercicebox}
+
+\begin{exercicebox}
+\textbf{Question 2.2 :} Observez les graphiques affichés (courbe $f(x)$ et $f(-x)$ en pointillés).
+\begin{enumerate}[label=\alph*)]
+    \item Pour une fonction paire, que remarquez-vous entre la courbe et son symétrique ?
+    \item Pour une fonction impaire, que remarquez-vous ?
+\end{enumerate}
+\end{exercicebox}
+
+\cadreReponse[4]
+
+\newpage
+
+% ---- Partie B ----
+\subsection{Partie B -- Compléter le script}
+
+\begin{fichierbox}
+Ouvrez \texttt{ex2\_verification.py} dans l'éditeur. Ajoutez les deux fonctions suivantes à la liste \texttt{fonctions} en remplaçant les commentaires prévus à cet effet :
+\begin{itemize}
+    \item $f(x) = x^2 \cdot \cos(x)$
+    \item $f(x) = x \cdot \sin(x)$
+\end{itemize}
+Sauvegardez puis relancez le script.
+\end{fichierbox}
+
+\begin{rappelbox}
+\textbf{Cours -- Parité d'un produit de fonctions}
+
+\medskip
+Soient $f$ et $g$ deux fonctions définies sur un intervalle symétrique par rapport à $0$.
+
+\medskip
+\renewcommand{\arraystretch}{1.6}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Nature de $f$} & \textbf{Nature de $g$} & \textbf{Nature de $f \times g$} \\
+    \hline
+    Paire & Paire & Paire \\
+    \hline
+    Impaire & Impaire & Paire \\
+    \hline
+    Paire & Impaire & Impaire \\
+    \hline
+\end{tabular}
+\end{center}
+
+\medskip
+\textbf{Démonstration (cas paire $\times$ impaire) :}\\
+On note $h = f \times g$. Calculons $h(-x)$ :
+\[
+    h(-x) = f(-x) \cdot g(-x) = f(x) \cdot \big(-g(x)\big) = -h(x)
+\]
+donc $h$ est impaire. \hfill $\square$
+
+\medskip
+\textbf{Exemples :}
+\begin{itemize}
+    \item $x^2$ est paire, $\cos(x)$ est paire $\Rightarrow$ $x^2\cos(x)$ est \ldots\ldots\ldots\ldots
+    \item $x$ est impaire, $\sin(x)$ est impaire $\Rightarrow$ $x\sin(x)$ est \ldots\ldots\ldots\ldots
+\end{itemize}
+\end{rappelbox}
+
+\medskip
+
+\begin{exercicebox}
+\textbf{Question 2.3 :} En vous appuyant sur le cours ci-dessus, prédisez la parité de ces deux fonctions.
+
+\medskip
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{|l|p{4cm}|c|}
+    \hline
+    \textbf{Fonction} & \textbf{Justification} & \textbf{Parité prévue} \\
+    \hline
+    $x^2 \cdot \cos(x)$ & & \\[10pt]
+    \hline
+    $x \cdot \sin(x)$ & & \\[10pt]
+    \hline
+\end{tabular}
+\end{center}
+\end{exercicebox}
+
+\newpage 
+
+
+\begin{exercicebox}
+\textbf{Question 2.4 :} Lancez le script complété et recopiez les résultats. Vos prévisions sont-elles confirmées ?
+
+\medskip
+\renewcommand{\arraystretch}{2}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Fonction} & $\max|f(x)-f(-x)|$ & $\max|f(x)+f(-x)|$ & \textbf{Parité constatée} \\
+    \hline
+    $x^2 \cdot \cos(x)$ & & & \\
+    \hline
+    $x \cdot \sin(x)$ & & & \\
+    \hline
+\end{tabular}
+\end{center}
+\end{exercicebox}
+
+\cadreReponse[5]
+
+
+% ---------------------------------------------------------------
+\section{Exercice 3 -- Décomposition paire + impaire \hfill\normalsize\texttt{ex3\_decomposition.py}}
+
+\begin{rappelbox}
+\textbf{Théorème.} Toute fonction $f$ définie sur un intervalle symétrique peut s'écrire de manière unique :
+\[
+    f(x) = \underbrace{\frac{f(x) + f(-x)}{2}}_{\text{partie paire } f_p(x)} + \underbrace{\frac{f(x) - f(-x)}{2}}_{\text{partie impaire } f_i(x)}
+\]
+\end{rappelbox}
+
+% ---- Question 3.1 : calcul à la main ----
+\begin{exercicebox}
+\textbf{Question 3.1 :} On considère $f(x) = x^2 + x$.
+\begin{enumerate}[label=\alph*)]
+    \item Calculez à la main la partie paire $f_p(x)$ et la partie impaire $f_i(x)$ en appliquant les formules du théorème.
+    \item Ce résultat était-il prévisible ? (regardez les termes de $f$ séparément)
+\end{enumerate}
+\end{exercicebox}
+
+\cadreReponse[6]
+
+% ---- Question 3.2 : f(x) = exp(x) ----
+\begin{exercicebox}
+\textbf{Question 3.2 :} On considère maintenant $f(x) = e^x$. Calculez à la main la partie paire $f_p(x)$ et la partie impaire $f_i(x)$ en appliquant les formules du théorème.
+\end{exercicebox}
+
+\cadreReponse[6]
+
+
+\begin{rappelbox}
+\textbf{Cours -- Fonctions hyperboliques}
+
+\medskip
+Les deux fonctions obtenues à la question 3.2 sont des fonctions classiques de l'analyse :
+
+\medskip
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+    \hline
+    \textbf{Nom} & \textbf{Notation} & \textbf{Définition} \\
+    \hline
+    Cosinus hyperbolique & $\cosh(x)$ & $\dfrac{e^x + e^{-x}}{2}$ \\
+    \hline
+    Sinus hyperbolique   & $\sinh(x)$ & $\dfrac{e^x - e^{-x}}{2}$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\medskip
+On a donc la décomposition : $\quad e^x = \cosh(x) + \sinh(x)$
+
+\medskip
+\textbf{Propriétés :}
+\begin{itemize}
+    \item $\cosh$ est une fonction \textbf{paire} : $\cosh(-x) = \cosh(x)$
+    \item $\sinh$ est une fonction \textbf{impaire} : $\sinh(-x) = -\sinh(x)$
+    \item $\cosh^2(x) - \sinh^2(x) = 1$ \hfill (analogue à $\cos^2 + \sin^2 = 1$)
+\end{itemize}
+\end{rappelbox}
+
+\begin{fichierbox}
+Lancez le script \texttt{ex3\_decomposition.py}. Il trace la décomposition de $x^2+x$ puis celle de $e^x = \cosh(x) + \sinh(x)$. Vérifiez visuellement que la somme des deux parties redonne bien la fonction originale.
+\end{fichierbox}
+
+
+% ---------------------------------------------------------------
+\section{Exercice 4 -- Lien avec les séries de Fourier \hfill\normalsize\texttt{ex4\_lien\_fourier.py}}
+
+\begin{fichierbox}
+Lancez le script \texttt{ex4\_lien\_fourier.py}. Il calcule les coefficients de Fourier de trois fonctions périodiques (paire, impaire, quelconque) et affiche des diagrammes en barres.
+\end{fichierbox}
+
+/vfill 
+
+
+\begin{rappelbox}
+\textbf{Lien parité -- coefficients de Fourier :} \\[4mm]
+\begin{itemize}
+    \item Si $f$ est \textbf{paire} $\Rightarrow b_n = 0$ pour tout $n$ (la série ne contient que des cosinus) \\[2mm]
+    
+    
+    \item Si $f$ est \textbf{impaire} $\Rightarrow a_0 = 0$ et $a_n = 0$ pour tout $n$ (que des sinus)\\[2mm]
+    
+    \item Si $f$ est \textbf{quelconque} $\Rightarrow$ tous les coefficients peuvent être non nuls \\[2mm]
+\end{itemize}
+\end{rappelbox}
+
+\vfill 
+
+
+
+
+\begin{exercicebox}
+\textbf{Question 4.1 :} Observez les diagrammes en barres affichés par le script.
+
+\medskip
+\begin{enumerate}[label=\alph*)]
+    \item Pour la fonction triangle (paire), les coefficients $b_n$ sont-ils nuls ? Cela confirme-t-il la propriété ci-dessus ?
+\end{enumerate}
+\end{exercicebox}
+
+\cadreReponse[1]
+
+\vfill 
+
+\begin{exercicebox}
+\begin{enumerate}[label=\alph*), start=2]
+    \item Pour la fonction créneau (impaire), que valent $a_0$ et les $a_n$ ?
+\end{enumerate}
+\end{exercicebox}
+
+\cadreReponse[1]
+
+\vfill 
+
+\begin{exercicebox}
+\begin{enumerate}[label=\alph*), start=3]
+    \item Pour $f(x) = e^x$ (périodisée), tous les coefficients sont-ils non nuls ? Qu'en concluez-vous sur la parité de cette fonction ?
+\end{enumerate}
+\end{exercicebox}
+
+\cadreReponse[1]
+
+\vfill 
+
+\newpage
+
+
+\begin{exercicebox}
+\textbf{Question 4.2 (démonstration) :} Montrez analytiquement que si $f$ est impaire et $T$-périodique, alors :
+\[
+    a_n = \frac{2}{T}\int_0^T f(x)\cos\!\left(\frac{2\pi n x}{T}\right)dx = 0
+\]
+\textit{Indication : $\cos$ est paire, et le produit paire $\times$ impaire est impaire.}
+\end{exercicebox}
+
+\cadreReponse[6]
+
+
+
+\end{document}

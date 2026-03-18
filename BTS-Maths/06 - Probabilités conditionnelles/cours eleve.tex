@@ -1,0 +1,1221 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{ae,lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\def\nbR{\ensuremath{\mathrm{I\! R}}}
+\usepackage{amsmath}
+\DeclareMathOperator{\e}{e}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+\usepackage{caption}
+\usepackage{ProfCollege}
+\usepackage{calc}
+
+
+
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage{multicol}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{Chapitre 6 - Probabilités conditionnelles -  \thepage}
+\fancyfoot[R]{2024-25}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{pstricks,pst-plot}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usetikzlibrary{arrows}
+\usepackage{pifont}
+
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\V}{\overrightarrow}
+\newcommand{\Rep}{(O;\V{u};\V{v})} 
+
+\newcounter{numexos}%Création d'un compteur qui s'appelle numexos
+\setcounter{numexos}{0}%initialisation du compteur
+\newcommand{\exercice}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{numexos}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textcolor{black}{\normalsize Exercice\,\thenumexos\,}\,#1%Met en noir Exercice et la valeur du compteur appelée par \thenumeexos
+}
+
+\newcounter{numact}%Création d'un compteur qui s'appelle numexos
+\setcounter{numact}{0}%initialisation du compteur
+\newcommand{\activit}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{numact}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textcolor{black}{A\thenumexos\,}\,#1%Met en noir Exercice et la valeur du compteur appelée par \thenumeexos
+}
+
+\newcounter{nump}%Création d'un compteur qui s'appelle numexos
+\setcounter{nump}{0}%initialisation du compteur
+\newcommand{\propriete}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{nump}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textcolor{black}{Propriété\,\thenump\,}\,#1%Met en noir Exercice et la valeur du compteur appelée par \thenumeexos
+}
+
+
+
+\newcommand{\bex}[2]
+{\begin{bclogo}[couleur = white,logo= , barre=none,  arrondi = 0.1]
+{~\exercice:~~{#1}}
+~~
+{#2}
+~~
+\end{bclogo}}
+
+\newcommand{\act}[3]
+{\begin{bclogo}[couleur = white,logo=,  arrondi = 0.1,barre=none]
+{~\activit:~~{#2}}
+~~
+{#2}
+~~
+~~
+\end{bclogo}
+\vspace{3mm}
+\cadre{{#3}}
+}
+
+\newcommand{\rem}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~Remarque~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+\newcommand{\bpre}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~\normalsize Prérequis~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+
+
+\newcommand{\intro}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~Introduction~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+
+\newcommand{\bdef}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~Définition~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+
+\newcommand{\bprop}[2]
+{\begin{bclogo}[couleur =white ,logo= , barre=none,  arrondi = 0.1]
+{~\propriete:~~{#1}}
+~~
+{#2}
+~~
+\end{bclogo}}
+
+
+
+
+\newcommand{\cadre}[1]
+{\begin{bclogo}[couleur = white,logo=,  arrondi = 0.1,barre=none]
+~~
+{%
+\rule{0mm}{#1mm}}\par
+\medskip
+~~
+\end{bclogo}}
+
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\setlength{\columnseprule}{.25mm}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+
+\usepackage[tikz]{bclogo} 
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1cm}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\newtcolorbox{mybox}{colback=white,
+colframe=black!5!black}
+\begin{mybox}
+\begin{center}    
+\textbf{\Large CHAPITRE 6 - LES PROBABILITÉS CONDITIONNELLES}\end{center}
+\end{mybox}
+\vfill
+
+\begin{bclogo}[couleur = white,logo=\bcinfo,  arrondi = 0.1]
+{~Ojectifs~:}
+~~
+\begin{itemize}
+\item Construire un arbre ou un tableau de probabilités en lien avec une situation donnée.
+\item Explorer l'arbre ou le tableau de probabilités pour déterminer des probabilités.
+\item Calculer la probabilité d'un événement connaissant ses probabilités conditionnelles relatives à une partition de l'univers.
+\item Ultiser ou justifier l'indépendance de deux événements.  
+\end{itemize}
+~~
+\end{bclogo}
+
+\vfill 
+
+
+\bex{Rappels }{}
+\cadre{1}
+
+
+\begin{enumerate}
+	\item $P(A)=0,7 ~~~~ P(B)=0,5 ~~~~ P(A\cap B)=0,3$. Calculer $P(A\cup B)$.\\[3pt] 
+    
+	\dotfill
+    
+	\item $A$ et $B$ sont incompatibles $P(A)=0,2 ~~~~ P(B)=0,2 $. Calculer $P(A\cup B)$.\\[3pt] 
+    
+	\dotfill
+    
+	\item $P(\bar{A})=0,2 ~~~~ P(B)=0,4 ~~~~ P(A\cap B)=0,2$. Calculer $P(A\cup B)$.\\[3pt] 
+    
+	\dotfill
+    
+\end{enumerate}
+
+
+\vfill 
+
+
+\bex{ Jeux à gratter} { 
+Une société souhaite mettre sur le marché un nouveau jeu à gratter dont le principe est le suivant : 
+   \begin{itemize}
+   		\item la première case représente soit une soleil soit une lune.  
+   		\item la seconde case représente soit un coeur soit un pique.
+   		\item la société souhaite commercialiser 10 000 tickets répondant aux contraintes suivantes : 
+   			\begin{itemize}
+   			\item 10\% de ces tickets comportent un soleil
+   			\item 1\% des tickets présentant un soleil comportent un cœur. 
+   			\item 0,5\% des tickets présentant une lune comportent un cœur.  
+   			\end{itemize}
+   \end{itemize}
+   }
+
+  
+   	  1. Compléter le tableau suivant : \\
+      \begin{center}
+          
+   	  \begin{tabular} { | c | c | c | c | }
+   \hline
+ \rowcolor{white}     & Avec un soleil & Avec une lune & Total \\
+   \hline 
+   \rowcolor{white}     Avec un coeur  & ~~ & ~~ & ~~ \\
+   \hline
+   \rowcolor{white}      Avec un pique  & ~~ & ~~ & ~~  \\
+   \hline
+   \rowcolor{white}      Total  & ~~ & ~~ & 10 000   \\
+   \hline
+ \end{tabular}
+  \end{center}
+  
+ 2.  Un joueur achète un ticket. Calculer la probabilité que ce ticket comporte un cœur.
+ \cadre{5}
+
+
+ \vfill
+
+ \bex{QCM}
+ {
+ \vspace{2mm}
+ Deux machines A et B produisent une même type de pièce. On a prélevé 3 000 unités sortant de la machine A et 2 000 de la machine B. Ces pièces peuvent présenter deux types de défauts : un défaut de couleur noté C, et un défaut de taille noté T.\\
+Pour la machine A, 2\% des pièces présentent uniquement le défaut C, 5\% uniquement le défaut T et 1\% les deux défauts.\\
+Pour la machine B, 3\% des pièces présentent uniquement le défaut C, 4\% uniquement le défaut T et 2\% les deux défauts.\\
+On pourra éventuellement se servir du tableau ci-dessous : \\[5 pt]
+ 
+
+\begin{center}
+\begin{tabular} { | c | c | c | c | c | c | }
+   \hline
+ \rowcolor{white}      & C seul & T seul & C et T & Ni C ni T & Total \\
+   \hline 
+ \rowcolor{white}   Machine A  & ~~ & ~~ & ~~ & ~~& ~~\\
+   \hline
+\rowcolor{white}    Machine B  & ~~ & ~~ & ~~& ~~& ~~\\
+   \hline
+\rowcolor{white}    Total  & ~~ & ~~ & ~~& ~~ & 5 000  \\
+   \hline
+ \end{tabular}
+ \end{center}
+ \vspace{4mm}
+ 
+ On prend au hasard une pièce parmi les 5 000 prélevées ; toutes les pièces ont la même chance d'être choisies. 
+}
+
+
+
+\begin{multicols}{2}
+
+1. la probabilité que la pièce soit fabriquée par la machine A est : 
+
+\begin{itemize}[label=$\square$]
+             \item   a) $\dfrac{3}{5}$
+  
+             \item   b) $\dfrac{2}{5}$
+  
+             \item   c) Le tableau ne permet pas de conclure
+\end{itemize}
+\bigskip
+
+
+2. la probabilité que la pièce présente uniquement le défaut C est  : 
+
+\begin{itemize}[label=$\square$]
+             \item   a) $0,024$
+  
+             \item   b) $0,02$
+  
+             \item   c) $0,03$
+             
+             \item   d) $0,120$
+             
+\end{itemize}
+\columnbreak
+
+
+3. la probabilité que la pièce présente uniquement le défaut T est  : 
+
+\begin{itemize}[label=$\square$]
+             \item   a) $\dfrac{23}{500}$
+  
+             \item   b) $\dfrac{3}{50}$
+  
+             \item   c) $\dfrac{7}{500}$
+             
+             \item   d) $\dfrac{1}{20}$
+             
+\end{itemize}
+\bigskip
+
+4. la probabilité que la pièce présente au moins l'un des deux défauts est : 
+
+\begin{itemize}[label=$\square$]
+             \item   a) $0,014$
+  
+             \item   b) $0,06$
+  
+             \item   c) $0,038$
+             
+             \item   d) $0,084$
+             
+\end{itemize}
+\bigskip
+\end{multicols}
+}
+
+\vfill
+
+\bpre{Pièces défectueuses dans la production 
+
+Dans un atelier, deux machines A et B produisent des pièces identiques. 40\% proviennent de A dont 5\% sont défectueuses. D'autre part 2\% des pièces produites par B sont défectueuses.  \\[2 pt] }
+
+1. A l'aide des données de l'énoncé compléter le tableau suivant :\\
+\begin{center}
+\begin{tabular} { | c | c | c | c | }
+   \hline
+ \rowcolor{white}     & Produites par A & Produites par B & Total \\
+   \hline 
+ \rowcolor{white}  Défectueuses  & ~~ & ~~& ~~\\
+   \hline
+\rowcolor{white}   Non défectueuses   & ~~& ~~& ~~\\
+   \hline
+\rowcolor{white}   Total  & ~~& ~~ & 5 000  \\
+   \hline
+ \end{tabular}
+\end{center}
+ 
+\vspace{5pt}
+
+2. On prélève au hasard une pièce dans la production. Toutes les pièces sont supposées être identiques et indiscernables au toucher. Les tirages sont donc équiprobables. \\[2 pt]
+Calculer la probabilité des évènements suivants :
+\begin{multicols}{3}
+A : "la pièce à été fabriquée par la machine A"\\[2 pt]
+\cadre{1}
+B : "la pièce à été fabriquée par la machine B"\\[2 pt]
+\cadre{1}
+D : "la pièce est défectueuse"\\[2 pt]
+\cadre{4}
+\end{multicols}
+
+
+3. Définir par une phrase l'évènement A $\cap$ D puis calculer sa probabilité.\\[2 pt]
+\cadre{2}
+
+
+
+
+4. On prélève au hasard une pièce parmi l'ensemble des pièces défectueuses. Calculer la probabilité que la pièce ait été produite par la machine A. \\[2 pt]
+\cadre{15}
+
+5. Calculer $\dfrac{P(A \cap D)}{P(D)}$ et comparer avec le résultat précédent.\\[2 pt]
+\cadre{5}
+
+
+
+\textbf{Remarque : }\\
+\cadre{1}
+\vspace{0.5cm}
+
+
+
+ \vspace{2mm}
+
+\bpre{\textbf{Tirage dans une urne } \\
+ \vspace{-2mm}
+Une urne contient 3 boules blanches et 2 boules rouges indiscernables au toucher.
+On tire successivement deux boules sans remettre la première dans l'urne. \\[2pt]
+}
+\begin{multicols}{2}
+~~\\
+\begin{center}
+
+\begin{tikzpicture}[scale=0.5]
+\fill (0,0) circle (1pt);
+\node[circle,draw] (b11) at (2,2) {R};
+
+\node[circle,draw] (b13) at (2,-2) {B};
+
+\node[circle,draw] (b21) at (5,3) {R};
+\node[circle,draw] (b22) at (5,1) {B};
+\node[circle,draw] (b23) at (5,-1) {R};
+\node[circle,draw] (b24) at (5,-3) {B};
+
+
+
+\draw (0,0) -- (b11.south west);
+
+\draw (0,0) -- (b13.north west);
+
+\draw (b11.north east) -- (b21.west);
+\draw (b11.south east) -- (b22.west);
+\draw (b13.north east) -- (b23.west);
+\draw (b13.south east) -- (b24.west);
+
+\end{tikzpicture}
+    
+\end{center}
+
+1. Déterminer le nombre de tirages distincts possibles.\\[1pt]
+\cadreblanc{8}
+2. Calculer la probabilité d'obtenir deux boules rouges.\\[1pt]
+\cadreblanc{8}
+3. Calculer la probabilité d'obtenir deux boules blanches.\\[1pt]
+\cadreblanc{8}
+4. Calculer la probabilité d'avoir deux boules de couleur différente. \\[1pt]
+\cadreblanc{8}
+
+\end{multicols}
+
+\bpre{\textbf{Contrôle de production}
+
+Le contrôle de la production de 10 000 pièces dans un atelier a donné les résultats suivants : }
+\begin{center}
+\begin{tabular} { | c | c | c | c | }
+   \hline
+      & Défaut de longueur & Pas de défaut de longueur & Total \\
+   \hline 
+   Défaut de surface  & 6 & 294 & 300\\
+   \hline
+   Pas de défaut de surface   &194& 9 506&  9700\\
+   \hline
+   Total  & 200 & 9800 & 10 000  \\
+   \hline
+ \end{tabular}
+\end{center}
+
+1. On prélève au hasard une pièce dans la production totale . Les tirages sont équiprobables. Calculer la probabilité des événements suivants.
+\begin{multicols}{2} 
+	L : "la pièce présente un défaut de longueur"\\
+	\cadreblanc{8}
+	S : "la pièce présente un défaut de surface"\\
+	\cadreblanc{8}
+\end{multicols}
+2. Calculer la probabilité de l'évènement S $\cap$ L. Comparer $P(S \cap L)$ et $P(S) \times P(L)$.\\
+\cadre{-2}
+\dotfill
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\intro{
+On fait remonter à la correspondance de $1654$ entre Pascal et Fermat, sur un problème de jeu de hasard, l'acte de naissance du calcul des probabilités.
+
+Après trois siècles de recherche, le calcul des probabilités a pu fournir, au début du $XX^{e}$ siècle, les bases théoriques nécessaires au développement de la statistique et a investi de très nombreux domaines de la vie scientifique, économique et sociale.
+
+Le but des probabilités est d'essayer de rationaliser le hasard : quelles sont les chances d'obtenir un résultat suite à une expérience aléatoire ?\\
+Quelles chances ai-je d'obtenir "pile" en lançant une pièce de monnaie ? Quelles chances ai-je d'obtenir "$6$" en lançant un dé ? Quelles chances ai-je de valider la grille gagnante du loto ?
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mybox}
+\begin{center}    
+\textbf{1. Vocabulaire des événements}
+\end{center}
+\end{mybox}
+
+\begin{mybox}
+\begin{center}    
+\textbf{1.1 Vocabulaire}
+\end{center}
+\end{mybox}
+
+
+
+   \begin{dinglist}{228}
+      \item Chaque résultat possible et prévisible d'une expérience aléatoire est appelé \underline{éventualité} liée à \\ \hspace*{0.3cm} l'expérience aléatoire.
+      \item L'ensemble formé par les éventualités est appelé \underline{univers}, il est très souvent noté $\Omega$.
+      \item Un \underline{événement} d'une expérience aléatoire est une partie quelconque de l'univers,
+      \item Un événement ne comprenant qu'une seule éventualité est un \underline{événement élémentaire}.
+      \item L'événement qui ne contient aucune éventualité est l'\underline{événement impossible}, noté $\varnothing$,
+      \item L'événement composé de toutes les éventualités est appelé \underline{événement certain}.
+      \item Pour tout événement $A$ il existe un événement noté $\overline{A}$ et appelé \underline{événement contraire} de $A$ \\ \hspace*{0.3cm} qui est composé des éléments de $\Omega$ qui ne sont pas dans A.\\
+   \hspace*{0.3cm} On a en particulier $A\cup\overline{A}=\Omega$ et $A\cap\overline{A}=\varnothing$.
+   \end{dinglist}
+
+
+\smallskip
+\cadre{70}
+
+Dans toute la suite du cours, on suppose que $\Omega$ est l'univers associé à une expérience aléatoire, et $A$ et $B$ deux événements associés à cet univers.
+
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mybox}
+\begin{center}    
+\textbf{1.2. Intersection et réunion des évènements }
+\end{center}
+\end{mybox}
+
+\fbox{\begin{minipage}{16.6cm}{
+   \begin{dinglist}{228}
+      \item \underline{Intersection d'événements} : événement constitué des éventualités appartenant à $A$ et à $B$ noté $A\cap B$ (se lit "$A$ inter $B$" ou "$A$ et $B$"),
+      \item \underline{Réunion d'événements} : événement constitué des éventualités appartenant à $A$ ou à $B$ noté $A\cup B$ (se lit "$A$ union $B$" ou "$A$ ou $B$").
+   \end{dinglist}
+
+
+
+  \begin{center}
+      
+   Si $A\cap B=\varnothing$, on dit que les événements sont \underline{disjoints} ou \underline{incompatibles}.
+   \end{center}
+
+}
+\end{minipage}
+}
+
+\cadre{5}
+
+\cadre{30}
+
+\begin{mybox}
+\begin{center}    
+\textbf{1.3. Représentation des évènements}
+\end{center}
+\end{mybox}
+
+\textbf{Diagrammes ou patates}
+
+\begin{center}
+    
+\begin{multicols}{4}
+
+\begin{tikzpicture}
+\newcommand{\cercleA}{(0,0.67) circle (1cm)}
+\newcommand{\cercleB}{(0,-0.67) circle (1cm)}
+\fill[fill=blue!20,even odd rule] \cercleA \cercleB;
+\draw[color=blue] \cercleA;
+\draw[color=blue] \cercleB;
+\end{tikzpicture}
+
+\cadreblanc{15}
+
+\begin{tikzpicture}
+\newcommand{\cercleA}{(0,0.67) circle (1cm)}
+\newcommand{\cercleB}{(0,-0.67) circle (1cm)}
+\draw[color=blue] \cercleA;
+\draw[color=blue] \cercleB;
+\begin{scope}
+\clip \cercleA;
+\draw[color=blue,fill=blue!20] \cercleB;
+\end{scope}
+\begin{scope}
+\clip \cercleB;
+\draw[color=blue] \cercleA;
+\end{scope}
+\end{tikzpicture}
+
+\cadreblanc{15}
+
+\begin{tikzpicture}
+\newcommand{\cercleA}{(0,0.67) circle (1cm)}
+\newcommand{\cercleB}{(0,-0.67) circle (1cm)}
+\begin{scope}
+\clip (-1.05,0) rectangle (1.05,1.7);
+\draw[color=blue,fill=blue!20] \cercleA;
+\end{scope}
+\begin{scope}
+\clip (-1.05,-1.7) rectangle (1.05,0);
+\draw[color=blue,fill=blue!20] \cercleB;
+\end{scope}
+\end{tikzpicture}
+
+\cadreblanc{15}
+
+\begin{tikzpicture}
+\newcommand{\cercleA}{(0,0.67) circle (1cm)}
+\newcommand{\cercleB}{(0,-0.67) circle (1cm)}
+\fill[fill=blue!20] \cercleB;
+\draw[color=blue,fill=white] \cercleA;
+\draw[color=blue] \cercleB;
+\end{tikzpicture}
+
+\cadreblanc{15}
+
+\end{multicols}
+\end{center}
+
+\vfill 
+
+\textbf{Tableaux}
+
+On jette deux dés à quatre faces (tétraèdre régulier) et on calcule le produit des deux nombres obtenus :
+
+\begin{center}
+   \begin{tabular}{|c|c|c|c|c|}
+      \hline 
+      & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ 
+      \hline
+      \textbf{1} & $1$ & $ $ & $ $ & $ $ \\ 
+      \hline
+      \textbf{2} & $ $ & $ $ & $ $ & $ $ \\ 
+      \hline 
+      \textbf{3} & $ $ & $ $ & $ $ & $ $ \\ 
+      \hline 
+      \textbf{4} & $ $& $ $ & $ $ & $ $ \\ 
+      \hline 
+   \end{tabular} 
+\end{center}
+
+\vfill
+
+\newpage
+
+\textbf{Arbres}
+
+On lance une pièce de monnaie trois fois se suite, on peut schématiser cette expérience par un arbre :
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\fill (0,0) circle (1pt);
+\node[circle,draw] (b11) at (3,4) {P};
+\node[circle,draw] (b13) at (3,-4) {F};
+
+\node[circle,draw] (b21) at (6,6) {P};
+\node[circle,draw] (b22) at (6,2) {F};
+\node[circle,draw] (b23) at (6,-2) {P};
+\node[circle,draw] (b24) at (6,-6) {F};
+
+\node[circle,draw] (b31) at (9,7) {P};
+\node[circle,draw] (b32) at (9,5) {F};
+\node[circle,draw] (b33) at (9,3) {P};
+\node[circle,draw] (b34) at (9,1) {F};
+\node[circle,draw] (b35) at (9,-1) {P};
+\node[circle,draw] (b36) at (9,-3) {F};
+\node[circle,draw] (b37) at (9,-5) {P};
+\node[circle,draw] (b38) at (9,-7) {F};
+
+
+\draw (0,0) -- (b11.south west);
+
+\draw (0,0) -- (b13.north west);
+
+\draw (b11.north east) -- (b21.west);
+\draw (b11.south east) -- (b22.west);
+\draw (b13.north east) -- (b23.west);
+\draw (b13.south east) -- (b24.west);
+
+\draw (b21.north east) -- (b31.west);
+\draw (b21.south east) -- (b32.west);
+\draw (b22.north east) -- (b33.west);
+\draw (b22.south east) -- (b34.west);
+\draw (b23.north east) -- (b35.west);
+\draw (b23.south east) -- (b36.west);
+\draw (b24.north east) -- (b37.west);
+\draw (b24.south east) -- (b38.west);
+
+
+\end{tikzpicture}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{mybox}
+\begin{center}    
+\textbf{2. Calcul de probabilités}
+\end{center}
+\end{mybox}
+
+\cadre{45}
+
+\vfill 
+
+\rem{
+
+Dans un exercice, pour signifier qu'on est dans une situation d'équiprobabilité on a généralement dans l'énoncé une expression du type :
+  \begin{itemize}
+     \item on lance un dé \underline{non pipé},
+     \item dans une urne, il y a des boules \underline{indiscernables} au toucher,
+     \item on rencontre au \underline{hasard} une personne parmi \dots
+  \end{itemize}
+}
+
+\vfill 
+
+\newpage
+
+\bprop{}{}
+\vspace{8mm}
+\begin{center}
+\fbox{
+\begin{minipage}{10cm}
+{Soit $A$ et $B$ deux événements, on a les propriétés suivantes :  
+
+\vspace{3mm}
+
+
+   \begin{dinglist}{217}
+      \item $P(\varnothing)=0$. \vspace{3mm}
+      
+      \item $P(\Omega)=1$.  \vspace{3mm}
+      
+      \item $0 \leqslant P(A) \leqslant 1$.  \vspace{3mm}
+      
+      \item $P(\overline{A})=1-P(A)$.  \vspace{3mm}
+      
+      \item $P(A\cup B)=P(A)+P(B)-P(A\cap B)$.  \vspace{3mm}
+      
+   \end{dinglist}
+}
+\end{minipage}
+}
+\end{center}
+
+
+\vfill 
+
+\bex{}{
+   On considère l'ensemble $E$ des entiers de $1$ à $20$. On choisit l'un de ces nombres au hasard. 
+   }
+   \vspace{8mm}
+   \begin{enumerate}
+
+
+       
+  \item $A$ est l'événement : " le nombre est multiple de $3$ " :\\[2 pt]
+  \cadre{1} 
+  
+   \item $B$ est l'événement : " le nombre est multiple de $2$ " :\\[2 pt]
+  \cadre{1}
+   
+   \item Calcul des probabilités : calculer $P(A)$, $P(\overline{A})=1-P(A)$, $P(B)$, $P(A \cap B)$ et $P(A \cup B)$\\[2pt]
+\cadre {35}
+
+   \end{enumerate}
+
+
+\vfill 
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mybox}
+\begin{center}    
+\textbf{3. Probabilités conditionnelles}
+
+\end{center}
+\end{mybox}
+
+\vspace{5mm}
+
+\begin{mybox}
+\begin{center}    
+\textbf{3.1. Définition}
+\end{center}
+\end{mybox}
+
+
+
+\cadreblanc{45}
+
+
+
+
+   \begin{center}
+       
+  \textbf{On trouve aussi la notation $P(A/B)$ pour $P_B(A)$.}
+ \end{center}
+
+
+
+\bex{}{
+   On considère l'expérience aléatoire consistant à lancer un dé à $6$ faces, équilibré. On suppose que toutes les faces sont équiprobables, et on définit les événements :
+   \begin{itemize}
+      \item $B$ : "la face obtenue porte un numéro pair" ;
+      \item $A$ : "la face obtenue porte un numéro multiple de $3$".
+   \end{itemize}
+   }
+
+Déterminons la probabilité d'obtenir un numéro multiple de $3$, sachant qu'on a un numéro pair de deux manières différentes.
+\begin{multicols}{2}
+\cadre{20}
+\cadre{20}
+\end{multicols}
+
+
+
+ 
+\vspace{-3mm}
+\bprop{}{}
+
+\cadre{15}
+
+
+
+\fbox{Démonstration :} Pour $P(B)\neq 0$ et $P(A)\neq 0$, on peut écrire : \\
+\begin{itemize}
+   \item $P_B(A)=\dfrac{P(A\cap B)}{P(B)}$ d'où $P(A\cap B)=P(B)P_B(A).$
+   \item $P_A(B)=\dfrac{P(A\cap B)}{P(A)}$ d'où $P(A\cap B)=P(A)P_A(B).$
+\end{itemize}
+
+\newpage 
+
+\bprop{}{}
+\vspace{5mm}
+\cadre{60}
+
+
+\smallskip
+
+
+   Ce théorème revient à dire qu'une probabilité conditionnelle relative à un événement $S$ a toutes les propriétés habituelles du calcul des probabilités.
+
+
+\smallskip
+
+\bprop{}{}
+\vspace{3mm}
+\cadre{40}
+
+
+
+\underline{Démonstration :} \\[2mm]
+$P(A)=P(A\cap B)+P(A\cap \overline{B})=P_B(A)~P(B)+P_{\overline{B}}(A)~P(\overline{B})$.
+
+\vfill 
+
+
+\newpage
+
+\begin{mybox}
+\begin{center}    
+\textbf{3.2. Exemple de calcul de probabilités conditionnelles par différentes méthodes }
+\end{center}
+\end{mybox}
+
+\bex{}{
+   Dans un atelier, deux machines $M_1$ et $M_2$ découpent des pièces métalliques identiques. $M_1$ fournit $60\%$ de la production (parmi lesquelles $6,3\%$ sont défectueuses), le reste étant fourni par $M_2$ (dont $4\%$ de la production est défectueuse).\\
+   La production du jour est constituée des pièces produites par les deux machines, et on en tire en fin de soirée une pièce au hasard (tous les prélèvements sont supposés équiprobables).}
+   \begin{enumerate}
+      \item Utilisation des formules des probabilités conditionnelles.
+      \begin{enumerate}
+          \item Quelle est la probabilité de prélever une pièce défectueuse, sachant qu'elle est produite par $M_1$ ?
+          
+           
+          \dotfill 
+          \item Quelle est la probabilité de prélever une pièce défectueuse, sachant qu'elle est produite par $M_2$ ?
+        
+           
+          \dotfill 
+          \item Quelle est la probabilité de prélever une pièce défectueuse ?
+           
+          \dotfill 
+       \end{enumerate}
+       \item Utilisation d'un tableau : 
+       on suppose maintenant que la production est composée de $10000$ pièces.
+       \begin{enumerate}
+          \item Compléter le tableau suivant qui décrit la production du jour : \\
+             \begin{tabular}{|l|l|l|l|}
+                 \hline
+                   & Nombre de pièces    & Nombre de pièces & \\
+                
+                & produites par $M_1$   & produites par $M_2$ & ~~~~~~~Total ~~~~~~~\\
+                 \hline
+                Nombre de pièces défectueuses & & & \\
+                 \hline
+                Nombre de pièces conformes & & & \\
+                 \hline
+                Total & & & \\
+                 \hline
+             \end{tabular}
+             \vspace{1mm}
+
+         \item Quelle est la probabilité de prélever une pièce défectueuse ?
+
+         \dotfill 
+      \end{enumerate}
+      \item Utilisation d'un arbre des probabilités conditionnelles
+      \begin{enumerate}
+         \item Dresser un arbre des probabilités conditionnelles relatif à la situation proposée.
+         \begin{center}
+             \begin{minipage}{7cm}
+                 \cadre{40}
+             \end{minipage}
+         \end{center}
+         \item Quelle est la probabilité de prélever une pièce défectueuse ?
+          \vspace{1mm}
+          
+         \dotfill
+      \end{enumerate}
+   \end{enumerate}
+
+
+
+
+
+\newpage
+
+\begin{mybox}
+\begin{center}    
+\textbf{3.3. Événements indépendants}
+\end{center}
+\end{mybox}
+
+
+\cadre{30}
+\bex{}{
+   On considère le tirage au hasard d'une carte d'un jeu de $32$ cartes.\\
+   
+   ~~~~~~~~~~~~~~~~~~$A=$ Tirer un as, \hfill $B=$ Tirer un coeur \hfill et  \hfill $C=$ Tirer un as rouge.~~~~~~~~~~~~~~~~~~
+      }
+   \vspace{3mm}
+   Indépendance de $A$ et $B$ :
+\cadre{25}   
+ \vspace{3mm}
+   Indépendance de $B$ et $C$ :
+   
+\cadre{25}
+
+
+
+
+\smallskip
+
+\rem{
+   Dans le cas où $A$ et $B$ sont des événements de probabilités non nulles, on a 
+   \begin{itemize}
+      \item $P(A\cap B)=P(B)P_B(A)=P(A)P_A(B)=P(A).P(B)$, d'où :
+      \item $P_B(A)=P(A)$ et $P_A(B)=P(B)$.
+   \end{itemize}
+}
+\bprop{}{
+   Si $A$ et $B$ sont des événements indépendants, alors : $A$ et $\overline{B}$ ; $\overline{A}$ et $B$ ; $\overline{A}$ et $\overline{B}$ sont également des événements indépendants.}
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \newpage
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\bex{}{
+\begin{center}
+\textbf{Dans cet exercice, sauf mention contraire, les résultats approchés sont à arrondir à}~ \boldmath  $10^{-5}$\unboldmath \end{center}
+
+Un atelier d'une usine d'automobiles est chargé de l'assemblage d'un moteur. 
+On s'intéresse, un jour donné, à une machine assurant l'installation de la poulie. Cette machine peut connaître une défaillance susceptible d'être détectée par un système d'alerte. 
+
+Le système d'alerte peut aussi se déclencher sans raison. 
+
+Une étude du service de contrôle a montré que :
+\begin{enumerate}
+\item[\textbullet] La probabilité que la machine soit défaillante est égale à 0,001.
+\item[\textbullet] Lorsque la machine est défaillante, l'alarme se déclenche dans 99 cas sur 100.
+\item[\textbullet] Lorsque la machine est n'est pas défaillante, l'alarme se déclenche dans 5 sur 1000.
+\end{enumerate} 
+
+On note $D$ l'événement : "la machine est défaillante" et on note $A$ l'événement : "l'alerte est donnée". }
+
+\begin{enumerate}
+\item  Donner les probabilités $P(D) ~;~ P_{D}(A)$ et $P_{\overline{D}}(A)$.
+
+\begin{multicols}{3}
+	\cadre{5}
+	\cadre{5}
+	\cadre{5}
+\end{multicols}
+
+\item \begin{enumerate}
+\item Calculer les probabilités des événements suivants $A \cap D$ et $A \cap \overline{D}$\\
+\vspace{-1mm}
+
+\cadre{1}
+\cadre{1}
+\item En déduire $P(A)$\\
+\vspace{-1mm}
+\cadre{1}
+\end{enumerate}
+\item   L'alerte est donnée. Calculer la probabilité qu'il s'agisse d'une "fausse alerte ", c'est-à-dire $P_A(\overline{D})$. Arrondir à $10^{-2}$.
+
+\cadre{10}
+\end{enumerate}
+
+
+\bigskip
+
+\newpage
+
+\bex{}{
+Une entreprise vend des calculatrices d'une certaine marque. \\
+Le service après-vente s'est aperçu qu'elles pouvaient présenter deux types de défaut, l'un lié au clavier et l'autre lié à l'affichage. \\
+Des études statistiques ont permis à l'entreprise d'utiliser la modélisation suivante. 
+\begin{itemize}
+    \item La probabilité pour une calculatrice tirée au hasard de présenter un défaut de clavier est égale à 0,04. 
+    \item En présence du défaut de clavier, la probabilité que la calculatrice soit en panne d'affichage est de 0,03. 
+    \item En l'absence de défaut de clavier, la probabilité de ne pas présenter de défaut d'affichage est de 0,94. 
+\end{itemize}
+On note C l'événement "la calculatrice présente un défaut de clavier " et A l'événement "la calculatrice présente un défaut d'affichage " \\
+Dans cet exercice, les probabilités seront écrites sous forme de nombres décimaux arrondis au millième. 
+}
+\begin{enumerate}
+    \item Préciser à l'aide de l'énoncé les probabilités suivantes 
+    \begin{enumerate}
+        \item $\mathrm{P_{\overline{C}}(\overline{A})}$ \dotfill 
+        \vspace{3mm}
+        \item $\mathrm{P_{\overline{C}}(A)}$ \dotfill 
+        \vspace{3mm}
+        \item $\mathrm{P(C)}$ \dotfill 
+        \vspace{3mm}
+    \end{enumerate}
+    \item Construire un arbre pondéré décrivant l'énoncé 
+    \begin{center}
+
+    \begin{minipage}{10cm}
+     \cadre{30}
+     \end{minipage}
+             
+    \end{center}
+
+    \item On choisit une calculatrice de cette marque au hasard 
+
+    \begin{enumerate}
+        \item Calculer la probabilité pour que la calculatrice présente les deux défauts. 
+
+        \dotfill 
+
+        \item Calculer la probabilité pour que la calculatrice présente le défaut d'affichage mais pas le défaut de clavier. 
+
+        \dotfill 
+
+        \item En déduire P(A) 
+
+        \dotfill 
+
+        \item Montrer que la probabilité de l'événement "la calculatrice ne présente aucun défaut " arrondie au millième est égale à 0,902. 
+
+        \dotfill 
+        
+        
+    \end{enumerate}
+
+
+\end{enumerate}
+
+\bex{}{
+Deux machines A et B fabriquent des disques. La machine A produit 1500 disques par jours ; la machine B produit 3000 disques par jour. \\
+La probabilité pour qu'un disque ait un défaut est de 0,02 sachant qu'il est produit par la machine A et de 0,035 sachant qu'il est produit par la machine B. On tire au hasard un disque dans la production du jour. 
+}
+
+\begin{enumerate}
+    \item Calculer la probabilité des événements suivants : 
+    \begin{enumerate}
+        \item A : "Le disque est produit par la machine A" : \dotfill 
+        \vspace{3mm}
+        \item B : "Le disque est produit par la machine B" : \dotfill 
+        \vspace{3mm}
+        \item D : "Le disque a un défaut" : \dotfill 
+    \end{enumerate}
+    \item Le disque a un défaut .
+    \begin{enumerate}
+        \item Quelle est la probabilité qu'il ait été produit par la machine A ? \dotfill 
+        \vspace{3mm}
+        \item Quelle est la probabilité qu'il ait été produit par la machine B ? \dotfill 
+    \end{enumerate}
+
+\end{enumerate}
+
+\vspace{3mm}
+
+\bex{}{
+On arrondira les probabilité au millième. \\
+Dans un lycée, le foyer des lycéens a dénombré les élèves utilisant l'application Toktok. La répartition de ces élèves est donnée dans le tableau suivant : 
+\begin{center}
+
+        \begin{tabular}{|c|c|c|c|}
+        \hline
+             & Filles   & Garçons  & Total  \\
+        \hline
+            Utilisent Toktok & 148 & 171 & 319 \\
+        \hline
+             N'utilisent pas Toktok & 81 & 50 & 131 \\
+        \hline
+             Total & 229 & 221  & 450 \\
+        \hline
+        \end{tabular}
+
+\end{center}
+On prélève au hasard une fiche dans le fichier des élèves du lycée. On admettra que toutes les fiches ont la même probabilité d'être prélevées. On note l’événement \textbf{G}, "la fiche prélevée est celle d'un garçon ";  l’événement \textbf{T}, "la fiche prélevée est celle d'un élève qui utilise Toktok "  
+}
+
+\begin{enumerate}
+    \item Calculer la probabilité de prélever la fiche d'un garçon
+
+    \vspace{3mm}
+    \dotfill 
+
+    \item Montrer que la probabilité de prélever la fiche d'un garçon utilisant l'application Toktok est égale à 0,38 . 
+
+    \vspace{3mm}
+    \dotfill
+    
+    \item Calculer la probabilité de prélever la fiche d'une fille sachant que l'élève correspondant n'utilise pas l'application Toktok. 
+
+    
+    \vspace{3mm}
+    \dotfill
+
+    \item Calculer la probabilité $\mathrm{P_T(G)}$ et interpréter le résultat. 
+
+   
+    \vspace{3mm}
+    \dotfill 
+
+    
+\end{enumerate}
+
+\newpage
+
+\bex{}{
+Une société de produit pharmaceutiques fabrique en très grande quantité un type de comprimés. \\
+Un comprimé est conforme si sa masse exprimée en gramme appartient à l'intervalle [1,2 ; 1,3]. La probabilité qu'un comprimé soit conforme est de 0,98. \\
+On note :\\[-8mm]
+\begin{itemize}
+    \item A - L'événement un comprimé est conforme 
+    \item B - l'événement un comprimé est refusé
+    \item un comprimé conforme est accepté avec une probabilité de 0,98
+    \item un comprimé qui n'est pas conforme est refusé avec une probabilité de 0,99.
+\end{itemize}
+
+}
+
+\begin{enumerate}
+ \item Calculer les probabilités suivantes :
+ \begin{enumerate}
+     \item $\mathrm{P_A(B)}=$ \dotfill 
+     \vspace{3mm}
+     \item $\mathrm{P(B \cap A)}=$ \dotfill 
+     \vspace{3mm}
+     \item $\mathrm{P(B \cap \overline{A})}=$ \dotfill 
+ \end{enumerate}
+
+ \item Calculer
+
+  \begin{enumerate}
+      \item la probabilité qu'un comprimé soit refusé : \dotfill 
+
+      \vspace{3mm}
+
+      \item la probabilité qu'un comprimé soit conforme, sachant qu'il est refusé, à $10^{-4}$
+
+       \vspace{1mm}
+       \dotfill 
+       
+      
+  \end{enumerate}
+
+\end{enumerate}
+
+
+\bex{}{
+Au cours d’une journée, un commercial se déplace pour visiter deux de ses clients afin de leur proposer l’achat d’un produit
+de grande consommation.\\
+Au vu de son expérience, le commercial estime que : \\
+– la probabilité que le premier client visité achète le produit est égale à 0,25 ; \\
+– si le premier client achète le produit, la probabilité que le deuxième client visité achète le produit est égale à 0,4 ; \\
+– si le premier client n’achète pas le produit, la probabilité que le deuxième client visité achète le produit est égale à 0,25 ; \\
+On note A l’événement « Le premier client achète le produit ». \\ 
+On note B l’événement « Le second client achète le produit ». \\
+}
+
+1. Réaliser un arbre pondéré décrivant cette situation.
+\begin{center}
+
+    \begin{minipage}{7cm}
+     \cadre{20}
+     \end{minipage}
+             
+    \end{center}
+
+2. Calculer la probabilité de l’événement B. \dotfill 
+
+\vspace{2mm}
+3. Déterminer la probabilité qu’un seul client achète le produit. 
+\dotfill 
+
+
+
+
+
+
+
+\end{document}

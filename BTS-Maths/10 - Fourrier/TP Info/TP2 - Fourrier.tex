@@ -1,0 +1,408 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{mdframed}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+\geometry{margin=2.5cm}
+\setlength{\headheight}{14.5pt}
+
+% En-tête et pied de page
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{TP Info -- Séries de Fourier}
+\cfoot{\thepage}
+
+% ---- Couleurs ----
+\definecolor{exobg}{RGB}{232,240,254}
+\definecolor{exoframe}{RGB}{70,130,220}
+\definecolor{rappelbg}{RGB}{255,243,220}
+\definecolor{rappelframe}{RGB}{230,150,30}
+\definecolor{repbg}{RGB}{245,255,245}
+\definecolor{repframe}{RGB}{80,170,80}
+\definecolor{fichierbg}{RGB}{240,240,255}
+\definecolor{fichierframe}{RGB}{100,100,200}
+
+% ---- Boîte : rappel théorique ----
+\newmdenv[
+    backgroundcolor=rappelbg,
+    linecolor=rappelframe,
+    linewidth=1.5pt,
+    roundcorner=5pt,
+    innertopmargin=8pt,
+    innerbottommargin=8pt,
+]{rappelbox}
+
+% ---- Boîte : exercice / question ----
+\newmdenv[
+    backgroundcolor=exobg,
+    linecolor=exoframe,
+    linewidth=1.5pt,
+    roundcorner=5pt,
+    innertopmargin=8pt,
+    innerbottommargin=8pt,
+]{exercicebox}
+
+% ---- Boîte : fichier Python à lancer ----
+\newmdenv[
+    backgroundcolor=fichierbg,
+    linecolor=fichierframe,
+    linewidth=1.5pt,
+    roundcorner=5pt,
+    innertopmargin=6pt,
+    innerbottommargin=6pt,
+]{fichierbox}
+
+% ---- Boîte réponse (lignes vides pour l'élève) ----
+\newcommand{\cadreReponse}[1][4]{%
+    \begin{mdframed}[
+        backgroundcolor=repbg,
+        linecolor=repframe,
+        linewidth=1pt,
+        roundcorner=4pt,
+        innertopmargin=6pt,
+        innerbottommargin=6pt,
+    ]
+    \vspace{#1\baselineskip}
+    \end{mdframed}%
+}
+
+% ---- Formatage des titres (12pt, numérotation avec points) ----
+\titleformat{\section}[block]{\normalsize\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}[block]{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+% Pour \foreach
+\usepackage{pgffor}
+
+% ---------------------------------------------------------------
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+    {\LARGE \textbf{TP Info -- Séries de Fourier 2}}\\[4pt]
+    {\large Calcul des coefficients et tracé des approximations}\\[8pt]
+    \rule{0.6\linewidth}{0.4pt}\\[6pt]
+    {\small Durée : 2 heures \quad -- \quad Documents autorisés : cours, aide Python}
+\end{center}
+
+\medskip
+\noindent\textbf{Nom :} \dotfill \quad \textbf{Prénom :} \dotfill \quad \textbf{Classe :} \makebox[3cm]{\dotfill}
+
+\bigskip
+
+\hrule
+
+% ---------------------------------------------------------------
+\section*{Objectifs}
+
+Ce TP a pour but de mettre en œuvre le calcul numérique des coefficients de Fourier d'une fonction périodique, puis de visualiser les approximations partielles de la série de Fourier associée.
+
+À l'issue de ce TP, vous serez capables de :
+\begin{itemize}
+    \item Calculer numériquement les coefficients $a_0$, $a_n$ et $b_n$ d'une série de Fourier ;
+    \item Reconstruire l'approximation partielle d'ordre $N$ d'une fonction ;
+    \item Visualiser le phénomène de Gibbs ;
+    \item Mesurer l'erreur d'approximation.
+\end{itemize}
+
+\begin{fichierbox}
+\textbf{Fichiers Python fournis :} ouvrez le dossier du TP, vous y trouverez les scripts suivants à lancer dans l'ordre des exercices.\\[4pt]
+\begin{tabular}{ll}
+    \texttt{ex1\_creneau.py}  & Exercice 1 -- Fonction créneau \\
+    \texttt{ex2\_triangle.py} & Exercice 2 -- Fonction triangle \\
+    \texttt{ex3\_erreur.py}   & Exercice 3 -- Erreur d'approximation \\
+    \texttt{ex4\_libre.py}    & Exercice 4 -- Fonction au choix (à modifier) \\
+\end{tabular}\\[4pt]
+Pour lancer un script : ouvrir un terminal dans le dossier du TP, puis taper \texttt{python ex1\_creneau.py}
+\end{fichierbox}
+
+% ---------------------------------------------------------------
+\section{Rappels théoriques}
+
+\begin{rappelbox}
+Soit $f$ une fonction $T$-périodique, intégrable sur une période. Sa \textbf{série de Fourier} est :
+\[
+    f(x) \;\approx\; \frac{a_0}{2} + \sum_{n=1}^{+\infty} \left[ a_n \cos\!\left(\frac{2\pi n x}{T}\right) + b_n \sin\!\left(\frac{2\pi n x}{T}\right) \right]
+\]
+avec les \textbf{coefficients de Fourier} :
+\[
+    a_0 = \frac{2}{T} \int_{0}^{T} f(x)\, dx
+    \qquad
+    a_n = \frac{2}{T} \int_{0}^{T} f(x)\cos\!\left(\frac{2\pi n x}{T}\right) dx \]
+    
+    \[b_n = \frac{2}{T} \int_{0}^{T} f(x)\sin\!\left(\frac{2\pi n x}{T}\right) dx \]
+
+\end{rappelbox}
+
+\medskip
+L'\textbf{approximation partielle} d'ordre $N$ est :
+\[
+    S_N(x) = \frac{a_0}{2} + \sum_{n=1}^{N} \left[ a_n \cos\!\left(\frac{2\pi n x}{T}\right) + b_n \sin\!\left(\frac{2\pi n x}{T}\right) \right]
+\]
+
+% ---------------------------------------------------------------
+\section{Exercice 1 -- Fonction créneau \hfill\normalsize\texttt{ex1\_creneau.py}}
+
+\begin{fichierbox}
+Lancez le script \texttt{ex1\_creneau.py}. Il trace la fonction créneau, calcule les coefficients $a_0$, $a_n$, $b_n$ pour $n=1,\ldots,10$, puis affiche les approximations partielles $S_N$ pour $N \in \{1, 3, 5, 15, 50\}$.
+\end{fichierbox}
+
+On s'intéresse à la \textbf{fonction créneau} $T$-périodique avec $T = 2\pi$ :
+\[
+    f(x) = \begin{cases} 1 & \text{si } x \in [0, \pi[ \\ -1 & \text{si } x \in [\pi, 2\pi[ \end{cases}
+\]
+
+\subsection{Observation de la fonction}
+
+\begin{exercicebox}
+\textbf{Question 1.1 :} Observez le premier graphique affiché par le script.
+\end{exercicebox}
+
+\medskip
+\noindent\textbf{a)} La fonction créneau est-elle paire, impaire, ou ni l'une ni l'autre ?
+
+\cadreReponse[1]
+
+\noindent\textbf{b)} Qu'en déduisez-vous sur les coefficients $a_n$ ($n \geq 1$) ?
+
+\cadreReponse[1]
+\fbox{fermer la fenêtre du graphique. } 
+
+\subsection{Coefficients de Fourier} 
+
+\begin{exercicebox}
+\textbf{Question 1.2 :} Analysez le tableau de coefficients affiché dans le terminal.
+\end{exercicebox}
+
+\medskip
+\noindent\textbf{a)} Les valeurs numériques de $a_n$ confirment-elles votre réponse à la question 1.1 ?
+
+\cadreReponse[2]
+
+\noindent\textbf{b)} Recopiez les cinq premières valeurs non nulles de $b_n$ dans le tableau ci-dessous.
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    $n$ & 1 & 2 & 3 & 4 & 5 \\
+    \hline
+    $b_n$ & \hspace{2cm} & \hspace{2cm} & \hspace{2cm} & \hspace{2cm} & \hspace{2cm} \\
+    \hline
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent\textbf{c)} Pour quelles valeurs de $n$ les coefficients $b_n$ sont-ils nuls ?
+
+\cadreReponse[1]
+
+\newpage
+
+\subsection{Approximations partielles et phénomène de Gibbs}
+
+\begin{exercicebox}
+\textbf{Question 1.3 :} Observez les graphiques des approximations $S_N$.
+\end{exercicebox}
+
+\vfill 
+
+\noindent\textbf{a)} Que constatez-vous aux points de discontinuité ($-2\pi$, $-\pi$, 0, $\pi$ et $2\pi$ )quand $N$ augmente ? 
+
+\cadreReponse[3]
+
+\vfill  
+
+
+\noindent\textbf{b)} Modifiez la liste \texttt{ordres} dans le script pour ajouter $N = 100$. Le phénomène disparaît-il complètement ?
+
+\cadreReponse[2]
+
+\vfill  
+
+
+\begin{rappelbox}
+\textbf{Le phénomène de Gibbs.}
+Lorsqu'on approche par une série de Fourier une fonction présentant une \textbf{discontinuité de saut} (comme la fonction créneau), il apparaît des oscillations parasites de part et d'autre du saut : c'est le \textbf{phénomène de Gibbs}.
+
+Ce phénomène a deux caractéristiques remarquables :
+\begin{itemize}
+    \item Quand $N$ augmente, les oscillations se \textbf{resserrent} autour du point de discontinuité, mais leur amplitude \textbf{ne diminue pas} : elle reste voisine de $9\,\%$ de la hauteur du saut.
+    \item Le phénomène \textbf{ne disparaît jamais}, quelle que soit la valeur de $N$ : c'est une limite fondamentale des séries de Fourier pour les fonctions discontinues.
+\end{itemize}
+
+En revanche, pour une fonction \textbf{continue} (comme la fonction triangle), ce phénomène n'existe pas et la convergence est bien meilleure.
+\end{rappelbox}
+
+% ---------------------------------------------------------------
+
+\vfill 
+
+\section{Exercice 2 -- Fonction triangle \hfill\normalsize\texttt{ex2\_triangle.py}}
+
+\begin{fichierbox}
+Lancez le script \texttt{ex2\_triangle.py}. Il calcule les coefficients et trace les approximations de la fonction triangle.
+\end{fichierbox}
+
+\vfill 
+
+On étudie la \textbf{fonction triangle} $T$-périodique avec $T = 2\pi$ :
+\[
+    f(x) = \left| x - \pi \right| - \frac{\pi}{2}, \quad x \in [0, 2\pi[
+\]
+
+\vfill 
+
+\newpage 
+
+
+\begin{exercicebox}
+\textbf{Question 2.1 :} Parité et coefficients.
+\end{exercicebox}
+
+\medskip
+\noindent\textbf{a)} La fonction triangle est-elle paire, impaire, ou ni l'une ni l'autre ? Qu'en déduisez-vous sur les $b_n$ ?
+
+\cadreReponse[2]
+
+\noindent\textbf{b)} Vérifiez sur le tableau affiché que $a_0 \approx 0$ et que les $b_n$ sont bien nuls.
+
+\cadreReponse[2]
+
+\begin{exercicebox}
+\textbf{Question 2.2 :} Comparaison de la convergence.
+\end{exercicebox}
+
+\medskip
+\noindent\textbf{a)} Comparez les graphiques $S_N$ pour $N = 1, 5, 20$ avec ceux de l'exercice 1 au même ordre. Laquelle des deux fonctions est mieux approchée à ordre $N$ égal ?
+
+\cadreReponse[3]
+
+\noindent\textbf{b)} La fonction triangle est-elle continue ? Dérivable ? Quel lien peut-on faire avec la vitesse de convergence ?
+
+\cadreReponse[3]
+
+% ---------------------------------------------------------------
+\section{Exercice 3 -- Mesure de l'erreur d'approximation \hfill\normalsize\texttt{ex3\_erreur.py}}
+
+\begin{fichierbox}
+Lancez le script \texttt{ex3\_erreur.py}. Il calcule et trace l'erreur quadratique moyenne entre $f$ et $S_N$ en fonction de $N$, pour les deux fonctions étudiées. \textbf{Attention, le calcul peut prendre quelques secondes.}
+\end{fichierbox}
+
+\medskip
+L'\textbf{erreur quadratique} d'ordre $N$ est définie par :
+\[
+    \varepsilon_N = \sqrt{\frac{1}{P} \sum_{k=1}^{P} \left( f(x_k) - S_N(x_k) \right)^2}
+\]
+où $x_1, \ldots, x_P$ est une discrétisation de la période.
+
+\begin{exercicebox}
+\textbf{Question 3.1 :} Analysez les courbes de convergence (graphique en échelle logarithmique).
+\end{exercicebox}
+
+\medskip
+\noindent\textbf{a)} Quelle fonction converge le plus rapidement ? Cela confirme-t-il vos observations de l'exercice 2 ?
+
+\cadreReponse[2]
+
+\noindent\textbf{b)} Les courbes semblent-elles linéaires sur le graphique en échelle log ? Qu'indique une droite sur ce type de graphique ?
+
+\cadreReponse[2]
+
+\noindent\textbf{c)} D'après le tableau affiché dans le terminal, à partir de quel ordre $N$ l'erreur sur le créneau passe-t-elle en dessous de $0.1$ ?
+
+\cadreReponse[2]
+
+% ---------------------------------------------------------------
+\section{Exercice 4 -- Fonction au choix \hfill\normalsize\texttt{ex4\_libre.py}}
+
+\begin{fichierbox}
+Ouvrez le fichier \texttt{ex4\_libre.py} dans un éditeur. Modifiez la fonction \texttt{f\_libre} en remplaçant le corps par la formule de votre choix ci-dessous, puis sauvegardez et lancez le script.
+\end{fichierbox}
+
+\medskip
+Choisissez \textbf{une} des fonctions suivantes (cochez votre choix) :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|c|l|l|}
+    \hline
+    \textbf{Choix} & \textbf{Nom} & \textbf{Formule} \\
+    \hline
+    $\square$ & Dent de scie    & $f(x) = \dfrac{x \bmod T}{T} - \dfrac{1}{2}$ \\
+    \hline
+    $\square$ & Gaussienne périodique & $f(x) = e^{-\cos(x)}$ \\
+    \hline
+    $\square$ & Parabolique     & $f(x) = (x - \pi)^2 - \dfrac{\pi^2}{3}$ \quad pour $x \in [0, 2\pi[$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\begin{exercicebox}
+\textbf{Question 4.1 :} Pour la fonction choisie, répondez aux questions suivantes après avoir lancé le script.
+\end{exercicebox}
+
+\medskip
+\noindent\textbf{a)} Notez les valeurs de $a_0$, $a_1$, $b_1$ affichées.
+
+\cadreReponse[2]
+
+\noindent\textbf{b)} La fonction est-elle paire, impaire ? Cela se confirme-t-il sur les coefficients ?
+
+\cadreReponse[2]
+
+\noindent\textbf{c)} La convergence est-elle plus rapide que pour le créneau ? Justifiez par la régularité de la fonction.
+
+\cadreReponse[3]
+
+% ---------------------------------------------------------------
+\section*{Bilan}
+
+\begin{exercicebox}
+\textbf{Question de synthèse :} Complétez le tableau récapitulatif suivant.
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{|l|c|c|c|c|}
+    \hline
+    \textbf{Fonction} & \textbf{Continue ?} & \textbf{Paire / Impaire} & \textbf{$b_n = 0$ ?} & \textbf{Convergence} \\
+    \hline
+    Créneau  & & & & \\
+    \hline
+    Triangle & & & & \\
+    \hline
+    Votre choix & & & & \\
+    \hline
+\end{tabular}
+\end{center}
+
+\medskip
+Quelle relation générale peut-on établir entre la \textbf{régularité} d'une fonction et la \textbf{vitesse de décroissance} de ses coefficients de Fourier ?
+\end{exercicebox}
+
+\cadreReponse[5]
+
+\vspace{1cm}
+\hrule
+\vspace{0.3cm}
+\begin{center}
+\textit{Bon courage !}
+\end{center}
+
+\end{document}

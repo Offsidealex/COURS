@@ -1,0 +1,252 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{setspace}
+\singlespacing
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{tikz}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+
+% Couleurs identiques à la grille de correction
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{pifont}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\newcounter{numexos}
+\setcounter{numexos}{0}
+\newcommand{\bex}[2]{%
+\def\bextitle{#1}%
+\addtocounter{numexos}{1}%
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,colframe=exoheader,
+  colbacktitle=exoheader,coltitle=white,
+  fonttitle=\bfseries,
+  title={Exercice~\thenumexos\ifx\bextitle\empty\else~--~~#1\fi},
+  boxrule=0.8pt,arc=3pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  #2%
+\end{tcolorbox}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\parindent}{0pt}
+
+\newtcolorbox{titrebox}{colback=exolight,colframe=exoheader,arc=3pt,boxrule=1.5pt}
+
+\begin{document}
+
+\textbf{NOM :} \underline{\hspace{6cm}} \hfill \textbf{Classe :} \underline{\hspace{3cm}}\\[2mm]
+\textbf{Prénom :} \underline{\hspace{5.5cm}}\\[4mm]
+\hrule
+\vspace{3mm}
+
+\begin{titrebox}
+\begin{center}
+\textbf{\LARGE Évaluation -- Probabilités conditionnelles}\\[2mm]
+\large Durée : 1 heure \hfill Barème : \textbf{/20}
+\end{center}
+\end{titrebox}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+\bex{Vocabulaire \hfill \textit{4 points}}{%
+\smallskip
+\textbf{Partie A -- Vrai ou Faux.} \textit{(2 pts)}
+Indiquer si chaque affirmation est vraie ou fausse. En cas de réponse fausse, donner la formule correcte.
+
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{|L{11.5cm}|c|L{2cm}|}
+\hline
+\rowcolor{exolight}\textbf{Affirmation} & \textbf{V / F} & \textbf{Correction} \\
+\hline
+Pour tout événement $A$ : $P(\bar{A}) = 1 + P(A)$ & & \\
+\hline
+Si $A$ et $B$ sont incompatibles alors $P(A \cup B) = P(A) + P(B)$ & & \\
+\hline
+La probabilité conditionnelle de $A$ sachant $B$ est
+$P_B(A) = \dfrac{P(A \cap B)}{P(B)}$ & & \\
+\hline
+Si $A$ et $B$ sont indépendants alors $P(A \cap B) = P(A) + P(B)$ & & \\
+\hline
+\end{tabular}
+}
+
+\vspace{2mm}
+
+\bex{}{%
+\smallskip
+\textbf{Partie B -- Associer.} \textit{(2 pts)}
+Relier chaque expression à sa description en traçant une flèche.
+
+\vspace{3mm}
+\begin{tabular}{p{4cm} p{3cm} p{6.5cm}}
+$P(A \cup B)$ & \hspace{1cm}$\bullet$ & $\bullet$\hspace{0.5cm} Probabilité que $A$ se réalise \\[6mm]
+$P(A \cap B)$ & \hspace{1cm}$\bullet$ & $\bullet$\hspace{0.5cm} Probabilité que $A$ ou $B$ se réalise \\[6mm]
+$P_B(A)$ & \hspace{1cm}$\bullet$ & $\bullet$\hspace{0.5cm} Probabilité que $A$ et $B$ se réalisent\\[6mm]
+$P(A)$ & \hspace{1cm}$\bullet$ & $\bullet$\hspace{0.5cm} Probabilité de $A$ sachant $B$ \\[3mm]
+\end{tabular}
+}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{Arbre à compléter \hfill \textit{4 points}}{%
+\smallskip
+Une urne contient \textbf{4 boules rouges} et \textbf{6 boules bleues} indiscernables au toucher.
+On tire successivement deux boules \textbf{sans remise}.
+
+On note $R$ l'événement \og obtenir une boule rouge \fg{} et $B$ l'événement \og obtenir une boule bleue \fg.
+}
+
+\textbf{1.} Compléter l'arbre de probabilités ci-dessous en remplaçant chaque $\boldsymbol{?}$ par la valeur manquante. \hfill\textit{(2 pts)}
+
+\vspace{3mm}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  % Racine
+  \fill (0,0) circle (3pt);
+  % Niveau 1
+  \node[circle,draw,inner sep=4pt] (R1) at (4,2.4) {$R$};
+  \node[circle,draw,inner sep=4pt] (B1) at (4,-2.4) {$B$};
+  % Niveau 2
+  \node[circle,draw,inner sep=4pt] (RR) at (8,3.6) {$R$};
+  \node[circle,draw,inner sep=4pt] (RB) at (8,1.2) {$B$};
+  \node[circle,draw,inner sep=4pt] (BR) at (8,-1.2) {$R$};
+  \node[circle,draw,inner sep=4pt] (BB) at (8,-3.6) {$B$};
+  % Branches
+  \draw (0,0) -- (R1.west);
+  \draw (0,0) -- (B1.west);
+  \draw (R1.east) -- (RR.west);
+  \draw (R1.east) -- (RB.west);
+  \draw (B1.east) -- (BR.west);
+  \draw (B1.east) -- (BB.west);
+  % Étiquettes branche 1er niveau
+  \node at (1.3, 1.5) {$\dfrac{2}{5}$};
+  \node at (1.3,-1.2) {\large$\boldsymbol{....}$};
+  % Étiquettes branche 2e niveau
+  \node at (6.1, 3.3)  {\large$\boldsymbol{....}$};
+  \node at (6.1, 1.3)  {$\dfrac{2}{3}$};
+  \node at (6.1,-1.3)  {$\dfrac{4}{9}$};
+  \node at (6.1,-3.3)  {\large$\boldsymbol{....}$};
+  % Résultats à droite
+  \node[right] at (8.4, 3.6) {$P(R,R) = \ldots\ldots$};
+  \node[right] at (8.4, 1.2) {$P(R,B) = \ldots\ldots$};
+  \node[right] at (8.4,-1.2) {$P(B,R) = \ldots\ldots$};
+  \node[right] at (8.4,-3.6) {$P(B,B) = \ldots\ldots$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2.} Calculer la probabilité d'obtenir \textbf{deux boules rouges}. \hfill\textit{(1 pt)}
+
+\cadreblanc{12}
+
+\textbf{3.} Calculer la probabilité d'obtenir \textbf{au moins une boule rouge}. \hfill\textit{(1 pt)}
+
+\cadreblanc{14}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{Construction et utilisation d'un arbre \hfill \textit{6 points}}{%
+\smallskip
+Une entreprise s'approvisionne auprès de deux fournisseurs $S_1$ et $S_2$.
+\begin{itemize}
+  \item $40\,\%$ des composants proviennent de $S_1$, les autres viennent de $S_2$.
+  \item Parmi les composants de $S_1$, $4\,\%$ sont défectueux.
+  \item Parmi les composants de $S_2$, $2\,\%$ sont défectueux.
+\end{itemize}
+On note $D$ l'événement \og le composant est défectueux \fg{}.
+On prélève un composant au hasard.
+}
+
+\textbf{1.} Construire un arbre pondéré représentant la situation. \hfill\textit{(2 pts)}
+
+\cadreblanc{45}
+
+\textbf{2.} Calculer $P(S_1 \cap D)$ et $P(S_2 \cap D)$. \hfill\textit{(1 pt)}
+
+\cadreblanc{16}
+
+\textbf{3.} En déduire la probabilité $P(D)$ qu'un composant prélevé soit défectueux. \hfill\textit{(1 pt)}
+
+\cadreblanc{16}
+
+\textbf{4.} Sachant que le composant est défectueux, calculer la probabilité qu'il provienne de $S_1$.
+On utilisera la formule $P_D(S_1)=\dfrac{P(S_1 \cap D)}{P(D)}$. \hfill\textit{(2 pts)}
+
+\cadreblanc{20}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{Tableau de probabilités \hfill \textit{6 points}}{%
+\smallskip
+Un hôpital analyse les séjours de $\np{2000}$ patients répartis entre deux services :
+\begin{itemize}
+  \item Le service $A$ accueille $60\,\%$ des patients, le service $B$ accueille les autres.
+  \item Dans le service $A$, $8\,\%$ des patients présentent une complication post-opératoire.
+  \item Dans le service $B$, $5\,\%$ des patients présentent une complication post-opératoire.
+\end{itemize}
+On note $C$ l'événement \og le patient présente une complication \fg.
+}
+
+\textbf{1.} Compléter le tableau ci-dessous. \hfill\textit{(2 pts)}
+
+\begin{center}
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|L{5cm}|c|c|c|}
+\hline
+\rowcolor{exolight} & Service $A$ & Service $B$ & Total \\
+\hline
+Avec complication $C$ & \hspace{2.5cm} & \hspace{2.5cm} & \\
+\hline
+Sans complication $\bar{C}$ & & & \\
+\hline
+Total & & & $\np{2000}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{2.} En déduire $P(C)$. \hfill\textit{(1 pt)}
+
+\cadreblanc{14}
+
+\textbf{3.} Définir par une phrase l'événement $A \cap C$ puis calculer $P(A \cap C)$. \hfill\textit{(1 pt)}
+
+\cadreblanc{16}
+
+\textbf{4.} Sachant qu'un patient présente une complication, calculer la probabilité qu'il soit dans le service $A$.
+On utilisera la formule $P_C(A)=\dfrac{P(A \cap C)}{P(C)}$.
+Interpréter le résultat. \hfill\textit{(2 pts)}
+
+\cadreblanc{24}
+
+\end{document}

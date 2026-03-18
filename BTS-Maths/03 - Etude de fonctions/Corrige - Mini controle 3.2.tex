@@ -1,0 +1,285 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{multicol}
+\usepackage{pstricks,pst-plot}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{tkz-base}
+\usepackage{pgfplots,mathtools}
+\pgfplotsset{compat=1.12}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{Mini Contrôle -- CORRIGÉ}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\setlength{\columnseprule}{.25mm}
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\newcommand*\cochevrai{\textcolor{red}{$\boxtimes$}}
+\DeclareMathOperator{\e}{e}
+
+\begin{document}
+\center \LARGE{MINI CONTRÔLE - 3.3 (15 minutes) -- \textcolor{red}{CORRIGÉ}}\
+\\[0,3cm]
+\normalsize
+\hrule\
+\\[0,2cm]
+\flushleft
+\hrule\
+\\[0,2cm]
+
+\textbf{Exercice 1 :} Déterminer la nature des fonctions définies par leur représentation graphique.\\ En cas de périodicité, déterminer également la valeur de la période $T$.\\[5mm]
+
+\begin{multicols}{2}
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.25} \def\ymax{1.2}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=ForestGreen][domain=-3.5:3.55][line width=1.5pt] plot[red](\x,{sin(3.14*\x r)});
+\end{tikzpicture}
+
+\acocher~~~~ fonction paire \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction impaire}} \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction périodique ~~~~ $T=2$}} \\
+\acocher~~~~ Aucune réponse possible \\
+
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.25} \def\ymax{1.2}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=black][domain=-3.5:3.55][line width=1.5pt] plot[red](\x,{cos((1.5*pi)*(\x) r)});
+\end{tikzpicture}
+
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction paire}} \\
+\acocher~~~~ fonction impaire \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction périodique ~~~~ $T=\dfrac{4}{3}$}} \\
+\acocher~~~~ Aucune réponse possible \\
+
+\end{multicols}
+
+\begin{multicols}{2}
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.25} \def\ymax{2.2}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=red][domain=0:2][line width=1.5pt] plot(\x,{2-\x});
+	\draw[samples=400][color=red][domain=-2:0][line width=1.5pt] plot(\x,{\x+2});
+	\draw[samples=400][color=red][domain=2:3.55][line width=1.5pt] plot(\x,{\x-2});
+	\draw[samples=400][color=red][domain=-3.55:-2][line width=1.5pt] plot(\x,{-\x-2});
+\end{tikzpicture}
+
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction paire}} \\
+\acocher~~~~ fonction impaire \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction périodique ~~~~ $T=4$}} \\
+\acocher~~~~ Aucune réponse possible \\
+
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.55} \def\ymax{1.55}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=blue][domain=-3.5:-3][line width=1.5pt] plot[red](\x,{0});
+	\draw[samples=400][color=blue][domain=-3:-2][line width=1.5pt] plot[red](\x,{-1});
+	\draw[samples=400][color=blue][domain=-2:-1][line width=1.5pt] plot[red](\x,{1});
+	\draw[samples=400][color=blue][domain=-1:0][line width=1.5pt] plot[red](\x,{0});
+	\draw[samples=400][color=blue][domain=0:1][line width=1.5pt] plot[red](\x,{-1});
+	\draw[samples=400][color=blue][domain=1:2][line width=1.5pt] plot[red](\x,{1});
+	\draw[samples=400][color=blue][domain=2:3][line width=1.5pt] plot[red](\x,{0});
+	\draw[samples=400][color=blue][domain=3:3.5][line width=1.5pt] plot[red](\x,{-1});
+\end{tikzpicture}
+
+\acocher~~~~ fonction paire \\
+\acocher~~~~ fonction impaire \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction périodique ~~~~ $T=3$}} \\
+\acocher~~~~ Aucune réponse possible \\
+
+\end{multicols}
+
+\begin{multicols}{2}
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.25} \def\ymax{1.2}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=BrickRed][domain=-3.5:3.55][line width=1.5pt] plot[red](\x,{sin(3.14*(\x+1.3) r)});
+\end{tikzpicture}
+
+\acocher~~~~ fonction paire \\
+\acocher~~~~ fonction impaire \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction périodique ~~~~ $T=2$}} \\
+\acocher~~~~ Aucune réponse possible \\
+
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.25} \def\ymax{1.2}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=gray][domain=-3.5:3.55][line width=1.5pt] plot[red](\x,{0.5*(cos((1.5*pi)*(\x) r)-0.5)});
+\end{tikzpicture}
+
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction paire}} \\
+\acocher~~~~ fonction impaire \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction périodique ~~~~ $T=\dfrac{4}{3}$}} \\
+\acocher~~~~ Aucune réponse possible \\
+
+\end{multicols}
+
+\begin{multicols}{2}
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.25} \def\ymax{1.2}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=violet][domain=-3.5:3.55][line width=1.5pt] plot(\x,{cos(3.14*(\x) r)*(\x*0.32)});
+	\clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+
+\acocher~~~~ fonction paire \\
+\cochevrai~~~~ \textbf{\textcolor{red}{fonction impaire}} \\
+\acocher~~~~ fonction périodique ~~~~ $T= .............$ \\
+\acocher~~~~ Aucune réponse possible \\
+
+\begin{tikzpicture}
+	\def\xmin{-3.5} \def\xmax{3.55} \def\ymin{-1.25} \def\ymax{1.2}
+	\tikzstyle{axe}=[->,>=stealth']
+	\tikzstyle{grille}= [step=1, very thin]
+	\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left] {$t$};
+	\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+	\foreach \x in {-3,-2,-1,0,1,2,3}
+		\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};
+	\foreach \y in {-1,1}
+		\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};
+	\draw[samples=400][color=orange][domain=-3.5:3.16][line width=1.5pt] plot(\x,{sin(3.14*(\x) r)*(exp(\x)*0.1)});
+	\clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+
+\acocher~~~~ fonction paire \\
+\acocher~~~~ fonction impaire \\
+\acocher~~~~ fonction périodique ~~~~ $T= .............$ \\
+\cochevrai~~~~ \textbf{\textcolor{red}{Aucune réponse possible}} \\
+
+\end{multicols}
+
+\newpage
+
+\fcolorbox{black}{white}{\textbf{Exercice 2 : Savoir étudier la parité des fonctions}}\\[5pt]
+Étudier la parité des fonctions suivantes :
+
+\begin{multicols}{2}
+\center{$f(x)=3x^2-1$}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Domaine de définition : $\mathbb{R}$, symétrique par rapport à 0.\\[3mm]
+$f(-x) = 3(-x)^2-1 = 3x^2-1 = f(x)$\\[3mm]
+\textbf{\textcolor{red}{$f$ est une fonction paire.}}
+\end{tcolorbox}
+
+\center{$g(x)=x^5+x^3+x$}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Domaine de définition : $\mathbb{R}$, symétrique par rapport à 0.\\[3mm]
+$g(-x) = (-x)^5+(-x)^3+(-x) = -x^5-x^3-x = -g(x)$\\[3mm]
+\textbf{\textcolor{red}{$g$ est une fonction impaire.}}
+\end{tcolorbox}
+\end{multicols}
+
+\begin{multicols}{2}
+\center{$h(x)=\dfrac{-5x}{2x^2+4}$}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Domaine : $\mathbb{R}$ (dénominateur toujours $> 0$), symétrique par rapport à 0.\\[3mm]
+$h(-x) = \dfrac{-5(-x)}{2(-x)^2+4} = \dfrac{5x}{2x^2+4} = -h(x)$\\[3mm]
+\textbf{\textcolor{red}{$h$ est une fonction impaire.}}
+\end{tcolorbox}
+
+\center{$j(x)=3x^2+\dfrac{1}{x^2}$}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Domaine : $\mathbb{R}^*$, symétrique par rapport à 0.\\[3mm]
+$j(-x) = 3(-x)^2+\dfrac{1}{(-x)^2} = 3x^2+\dfrac{1}{x^2} = j(x)$\\[3mm]
+\textbf{\textcolor{red}{$j$ est une fonction paire.}}
+\end{tcolorbox}
+\end{multicols}
+
+\begin{multicols}{2}
+\center{$k(x)=x^4-2x^2+5$}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Domaine de définition : $\mathbb{R}$, symétrique par rapport à 0.\\[3mm]
+$k(-x) = (-x)^4-2(-x)^2+5 = x^4-2x^2+5 = k(x)$\\[3mm]
+\textbf{\textcolor{red}{$k$ est une fonction paire.}}
+\end{tcolorbox}
+
+\center{$l(x)=\dfrac{x^3}{x^2+1}$}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Domaine : $\mathbb{R}$ (dénominateur toujours $> 0$), symétrique par rapport à 0.\\[3mm]
+$l(-x) = \dfrac{(-x)^3}{(-x)^2+1} = \dfrac{-x^3}{x^2+1} = -l(x)$\\[3mm]
+\textbf{\textcolor{red}{$l$ est une fonction impaire.}}
+\end{tcolorbox}
+\end{multicols}
+
+\end{document}

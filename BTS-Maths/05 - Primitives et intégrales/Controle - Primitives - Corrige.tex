@@ -1,0 +1,206 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{pgfpages}
+\pgfpagesuselayout{2 on 1}[a4paper,landscape]
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{fouriernc}
+\DeclareMathOperator{\e}{e}
+
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Lycée Denis Diderot}
+\rhead{Classe 1BTS \quad -- \quad \textcolor{red}{\textbf{CORRIGÉ}}}
+\cfoot{\thepage}
+\rfoot{\today}
+\lfoot{Alexis RUIZ}
+
+\tcbset{
+  exobox/.style={colback=gray!10!white, colframe=gray!50!black,
+                 fonttitle=\bfseries, title=#1},
+  corrigebox/.style={colback=green!5!white, colframe=green!50!black,
+                     sharp corners, boxrule=0.5pt,
+                     left=6pt, right=6pt, top=4pt, bottom=4pt}
+}
+
+\renewcommand{\arraystretch}{2}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{CONTRÔLE -- Primitives 1}} \\[0.2cm]
+  \textcolor{red}{\Large\textbf{--- CORRIGÉ ---}} \\[0.1cm]
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.4cm}
+
+%% ================================================================
+%% EXERCICE 1 — 3 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 1 \quad Calcul de primitives \hfill \normalfont\textit{(3 points)}}]
+  Donner \textbf{une} primitive des fonctions suivantes sur $I$.
+\end{tcolorbox}
+
+\begin{multicols}{3}
+\begin{center}
+
+$f_1(x) = 5$
+\begin{tcolorbox}[corrigebox]
+  $F_1(x) = 5x$
+\end{tcolorbox}
+
+$f_2(x) = x^3$
+\begin{tcolorbox}[corrigebox]
+  $F_2(x) = \dfrac{x^4}{4}$
+\end{tcolorbox}
+
+$f_3(x) = -\dfrac{1}{x^2}$
+\begin{tcolorbox}[corrigebox]
+  $F_3(x) = \dfrac{1}{x}$
+\end{tcolorbox}
+
+$f_4(x) = \dfrac{6}{x}$
+\begin{tcolorbox}[corrigebox]
+  $F_4(x) = 6\ln|x|$
+\end{tcolorbox}
+
+$f_5(x) = \e^x$
+\begin{tcolorbox}[corrigebox]
+  $F_5(x) = \e^x$
+\end{tcolorbox}
+
+$f_6(x) = 2\cos(2x)$
+\begin{tcolorbox}[corrigebox]
+  $F_6(x) = \sin(2x)$
+\end{tcolorbox}
+
+\end{center}
+\end{multicols}
+
+\textit{\small Rappel : on vérifie par dérivation — ex. $F_3'(x) = -\dfrac{1}{x^2} = f_3(x)$ \checkmark \quad $F_6'(x) = 2\cos(2x) = f_6(x)$ \checkmark}
+
+\vspace{0.5cm}
+
+%% ================================================================
+%% EXERCICE 2 — 4 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 2 \quad Calcul de primitives \hfill \normalfont\textit{(4 points)}}]
+  Donner \textbf{une} primitive des fonctions suivantes sur $I$.
+\end{tcolorbox}
+
+\medskip
+\textbf{$f_1(x) = 2x^2 - 6x + 3$} \hfill \textit{(1,5 pt)}
+
+\begin{tcolorbox}[corrigebox]
+  On intègre terme à terme :
+  \[
+    F_1(x) = \frac{2x^3}{3} - \frac{6x^2}{2} + 3x = \frac{2x^3}{3} - 3x^2 + 3x
+  \]
+  \textbf{Vérification :} $F_1'(x) = 2x^2 - 6x + 3 = f_1(x)$ \checkmark
+\end{tcolorbox}
+
+\medskip
+\textbf{$f_2(x) = x + 1 + \dfrac{1}{x}$} \hfill \textit{(1,5 pt)}
+
+\begin{tcolorbox}[corrigebox]
+  On intègre terme à terme (sur $]0\,;\,+\infty[$ par exemple) :
+  \[
+    F_2(x) = \frac{x^2}{2} + x + \ln|x|
+  \]
+  \textbf{Vérification :} $F_2'(x) = x + 1 + \dfrac{1}{x} = f_2(x)$ \checkmark
+\end{tcolorbox}
+
+\medskip
+\textbf{$f_3(x) = 2x(x^2 + 1)$} \hfill \textit{(1 pt)}
+
+\begin{tcolorbox}[corrigebox]
+  \begin{multicols}{2}
+  \textbf{Méthode 1 — Développement :}
+  \[
+    f_3(x) = 2x^3 + 2x \implies F_3(x) = \frac{x^4}{2} + x^2
+  \]
+
+  \columnbreak
+
+  \textbf{Méthode 2 — Forme $u'\cdot u$ :}
+
+  On pose $u = x^2 + 1$, alors $u' = 2x$, donc $f_3 = u' \cdot u$.
+  \[
+    F_3(x) = \frac{(x^2+1)^2}{2}
+  \]
+  \end{multicols}
+  \textit{Les deux réponses sont équivalentes (elles diffèrent d'une constante $\frac{1}{2}$).}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+%% ================================================================
+%% EXERCICE 3 — 2 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 3 \quad Calcul d'une primitive particulière \hfill \normalfont\textit{(2 points)}}]
+  Soit $f$ définie sur $]0\,;\,+\infty[$ par $f(x) = 2x - 1$.\\
+  Déterminer la primitive $F$ de $f$ sur $]0\,;\,+\infty[$ qui s'annule pour $x = 2$.
+\end{tcolorbox}
+
+\vfill
+
+\begin{tcolorbox}[corrigebox]
+  \textbf{Étape 1 — Forme générale des primitives de $f$ :}
+  \[
+    F(x) = x^2 - x + C \qquad (C \in \mathbb{R})
+  \]
+
+  \textbf{Étape 2 — Condition $F(2) = 0$ :}
+  \[
+    F(2) = 0 \implies 4 - 2 + C = 0 \implies 2 + C = 0 \implies C = -2
+  \]
+
+  \textbf{Conclusion :}
+  \[
+    \boxed{F(x) = x^2 - x - 2}
+  \]
+
+  \textit{Vérification : $F'(x) = 2x - 1 = f(x)$ \checkmark \quad et \quad $F(2) = 4 - 2 - 2 = 0$ \checkmark}
+\end{tcolorbox}
+
+\vfill
+
+%% ================================================================
+%% EXERCICE 4 — 1 point
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 4 \quad La primitive est donnée \hfill \normalfont\textit{(1 point)}}]
+  Vérifier que $F(x) = \dfrac{x+1}{x+2}$ est une primitive de $f(x) = \dfrac{1}{(x+2)^2}$.
+\end{tcolorbox}
+
+\vfill
+
+\begin{tcolorbox}[corrigebox]
+  Il suffit de montrer que $F'(x) = f(x)$.
+
+  $F$ est un quotient ; on applique la formule $\left(\dfrac{u}{v}\right)' = \dfrac{u'v - uv'}{v^2}$ avec $u = x+1$ et $v = x+2$ :
+
+  \[
+    F'(x) = \frac{(x+1)' \cdot (x+2) - (x+1) \cdot (x+2)'}{(x+2)^2}
+           = \frac{1 \cdot (x+2) - (x+1) \cdot 1}{(x+2)^2}
+           = \frac{x + 2 - x - 1}{(x+2)^2}
+           = \frac{1}{(x+2)^2}
+  \]
+
+  On obtient bien $F'(x) = \dfrac{1}{(x+2)^2} = f(x)$, donc $F$ est une primitive de $f$. \checkmark
+\end{tcolorbox}
+
+\vfill
+
+\end{document}

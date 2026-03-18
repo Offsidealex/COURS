@@ -1,0 +1,1027 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{ae,lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\def\nbR{\ensuremath{\mathrm{I\! R}}}
+\usepackage{amsmath}
+\DeclareMathOperator{\e}{e}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+\usepackage{caption}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage{multicol}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{Chapitre 5 - Calcul Intégral -  \thepage}
+\fancyfoot[R]{2025-26}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{pstricks,pst-plot}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usetikzlibrary{arrows}
+\usepackage{pifont}
+
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\V}{\overrightarrow}
+\newcommand{\Rep}{(O;\V{u};\V{v})} 
+\newcommand{\cadreblanc}[1]{%
+	\medskip\framebox[\linewidth][c]{%
+		\rule{0mm}{#1mm}}\par
+	\medskip}
+\setlength{\columnseprule}{.25mm}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+
+\usepackage[tikz]{bclogo} 
+\usepackage{pgfplots,mathtools}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\faEye}{black}}
+
+
+\newcommand{\cadre}[1]
+{\begin{bclogo}[couleur = white,logo=,  arrondi = 0.3,barre=none]
+		{%
+			\rule{0mm}{#1mm}}\par
+		\medskip
+\end{bclogo}}
+
+
+\begin{document}
+	
+	
+	\newtcolorbox{mybox}{colback=white!10!white,
+		colframe=white!5!black}
+	\begin{mybox}
+		\begin{center}    
+			\textbf{\LARGE CHAPITRE 5 - LE CALCUL DES INTÉGRALES}\end{center}
+	\end{mybox}
+	\vfill
+	\begin{bclogo}[couleur = white!10,logo=\bcinfo,  arrondi = 0.1]
+		{~Ojectifs~:}
+		~~
+		\begin{itemize}
+			\item Calculer les primitives d'une fonction.
+			\item Déterminer une intégrale pour déterminer une aire, une valeur moyenne.
+			
+			
+			
+		\end{itemize}
+		~~
+	\end{bclogo}
+	
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{{1.Les primitives d'une fonction.}}    
+		\end{center}
+		
+	\end{mybox}
+	\begin{mybox}
+		\begin{center}
+			\textbf{{1.1. Les primitives des fonctions usuelles.}}
+		\end{center}  
+	\end{mybox}
+	
+	
+	\cadre{20}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Propriétés}}
+	
+	\cadre{20}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Remarques :}}
+	
+	Si dans un exercice, la question est : 
+	\begin{itemize}[label=$\bullet$]
+		\item   Donner les primitives de la fonction $f$ : Il faut écrire celles-ci sous la forme $F(x)+k$.
+		\item   Donner une primitive de la fonction $f$ : On peut écrire $F(x)$
+		\item   Donner la primitive de $f$ qui vérifie la condition $F(x_0)=a$, alors il faut déterminer la constante $k$.
+	\end{itemize}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exemples.}}
+	
+	Donner les primitives de la fonction $f$ définie par $f(x)=x+1$.
+	
+	\cadre{15}
+	
+	Donnez la primitive de la fonction $f$ vérifiant $F(1)=0$.
+	
+	\cadre{20}
+	
+	
+	
+	
+	
+	
+	\begin{center}
+		Tableau des primitives usuelles
+	\end{center}
+	
+	
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{3.5}
+		\begin{tabularx}{0.7\linewidth}{|c||*{2}{>{\centering \arraybackslash}X|}}
+			\hline 
+			$f(x)$ & $F(x)$ \\ 
+			\hline 
+			$k$($k$ constante réelle) &  \\ 
+			\hline 
+			$x^n$ (avec $n \ne -1$) &  \\ 
+			\hline 
+			$\dfrac{1}{x}$ & \\ 
+			\hline 
+			$\e^x$ &  \\ 
+			\hline 
+			$\sin(x)$ &  \\ 
+			\hline 
+			$\cos(x)$ &  \\ 
+			\hline 
+			$\dfrac{1}{1+x^2}$ &  \\ 
+			
+			\hline 
+			
+		\end{tabularx}
+		
+	\end{center}
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{{A1.Lorsque une primitive est donnée.}}}
+	
+	Vérifier que la fonction $F$ est une primitive de la fonction $f$ sur l'intervalle $I$.
+	
+	En déduire une autre primitive de $f$ sur $I$.
+	
+	\begin{multicols}{2}
+		\begin{center}
+			{
+				$f(x)=2x+2$ et $F(x)=x^2+2x-1 $
+				\cadre{30}
+				$f(x)= \e^x(\e^x-1)$ et $F(x)=\dfrac{(\e^x-1)^2}{2}$
+				\cadre{26}
+			}
+		\end{center}
+	\end{multicols}
+	
+	\fcolorbox{black}{white!10!}{\textbf{{A2. Primitives des fonctions usuelles.}}}
+	
+	Donner une primitive des fonctions suivantes sur $I$. 
+	
+	\vspace{-3mm}
+	
+	\begin{multicols}{4}
+		\begin{center}
+			{
+				$f(x)=3$ 
+				\cadre{5}
+				$g(x)= \e$
+				\cadre{5}
+				$h(x)=x^5$
+				\cadre{5}
+				$k(x)=\dfrac{1}{x^4}$
+				\cadre{1}
+			}
+		\end{center}
+	\end{multicols}
+	
+		\vspace{-5mm}
+	
+	\fcolorbox{black}{white!10!}{\textbf{{A3. Calcul de primitives.}}}
+	
+	Donner une primitive des fonctions suivantes sur $I$. 
+	
+	\begin{multicols}{4}
+		\begin{center}
+			{
+				$f(x)=x^4$ 
+				
+				\cadre {3}
+				$g(x)=\dfrac{1}{x^3}$
+				\cadre {0}
+				$h(x)=-\dfrac{3}{2\sqrt{x}}$
+				\cadre{0}
+				$k(x)=\dfrac{6}{x^2}$
+				\cadre{0}
+			}
+		\end{center}
+	\end{multicols}
+	
+	\vspace{-5mm}
+	
+	\fcolorbox{black}{white!10!}{\textbf{{Exercice 1.}}}
+	
+	Donner une primitive des fonctions suivantes sur $\mathbb{R}$. 
+	
+	\begin{multicols}{3}
+		\begin{center}
+			{
+				$f(x)=x^2-3x+2$ 
+				\cadre{15}
+				$g(x)=-x^3+2\e^x-x+1$
+				\cadre{15}
+				$h(x)=2x(x^2+1)^2$
+				\cadre{15}
+				
+			}
+		\end{center}
+	\end{multicols}
+	
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{1.2. Calcul de primitives} 
+		\end{center}
+		
+	\end{mybox}
+	
+	
+	
+	\cadre{15}
+	\fcolorbox{black}{white!10!}{\textbf{Exemples :} }
+	
+	une primitive de $u'(x)\cos(u(x))$ est $sin(u(x))$. 
+	\cadre{5}
+	une primitive de $\dfrac{u'(x)}{u(x)}$ est $\ln(u(x))$ avec $u(x)>0$ 
+	\cadre{15}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{1.8}
+		\begin{tabularx}{1\linewidth}{|c|*{4}{>{\centering \arraybackslash}X|}}
+			\hline 
+			$f(x)$ & $F(x)$& $f(x)$ & $F(x)$  \\ 
+			\hline 
+			$u'(x)(u(x))^n$ (avec $n \ne -1$ )&  & $a\sin(ax+b)$ &   \\ 
+			\hline 
+			$\dfrac{u'(x)}{u(x)}$ &  & $a\cos(ax+b)$ &  \\ 
+			
+			\hline 
+			$u'(x)\e^{u(x)}$ &  & $\dfrac{u'(x)}{1+(u(x))^2}$ &  \\ 
+			
+			\hline 
+			
+		\end{tabularx}
+		
+	\end{center}
+	
+	\newpage
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{{A3. Calcul de primitives.}}}
+	\begin{multicols}{3}
+		\begin{center}
+			{
+				$f(x)=2\sin(3x-1)$ 
+				\cadre{40}
+				$g(x)=\dfrac{3x}{(4x^2+1)^2}$
+				\cadre{35}
+				$h(x)=(3x+1)^3$
+				\cadre{40}
+				
+			}
+		\end{center}
+	\end{multicols}
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 4. Calcul de primitives - Formule $u'\e^{u}$.}}\\[2 mm]
+	
+	Déterminer une primitive des fonctions suivantes sur $\mathbb{R}$ : 
+	
+	\begin{multicols}{2}
+		$f(x)= x\e^{x^2}$
+		\cadre{31}
+		
+		$g(x)=5x\e^{\frac{x^2}{2}}$
+		\cadre{30}
+		
+		
+		
+	\end{multicols}
+	
+	\fcolorbox{black}{white!10!}{\textbf{{{Exercice 5. Calcul de primitives - Décomposition de rationnels.}}}}\\[2 mm]
+	
+	Déterminer les réels a et b puis déterminer une primitive de la fonction.
+	
+	\begin{multicols}{2}
+		$f(x)=\dfrac{2x}{(x+1)(x-2)} = \dfrac{a}{x+1} + \dfrac{b}{x-2}$
+		\cadre{80}
+		$g(x)=\dfrac{5}{(x+3)(2x+1)} = \dfrac{a}{x+3} + \dfrac{b}{2x+1}$
+		\cadre{80}
+	\end{multicols} 
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2. Intégrale d'une fonction.}  
+		\end{center}
+	\end{mybox}
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.1 Définition.}
+		\end{center}
+		
+	\end{mybox}
+	
+	
+	
+	Si la fonction est dérivable sur l'intervalle $[a;b]$ on sait que cette fonction admet des primitives. Soit la fonction $F'$ l'une de celles-ci. Nous rappelons que si $F$ et $G$ sont deux primitives de la fonction $f$ alors il existe un réel $k$ tel que tout $x$ de $[a;b]$ on ait : $F(x)=G(x)+k$. 
+	\begin{center}\color{BrickRed}{
+			On remarque que $F(b)-F(a)=G(b)+{k}-G(a)-k$. \\
+			La différence ne dépend donc pas du réel $k$ choisit.}
+	\end{center}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Définition :}}
+	
+	\cadre {25}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Notation :}}\\
+	
+	\cadre {12}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exemple :}} ~~calculer $\displaystyle \int_{0}^{1} (\e^{-2x}+1) \, \mathrm{d}x$\\
+	
+	\cadre {30}
+	
+	\fcolorbox{black}{white!10!}{\textbf{A6. Calcul d'intégrales : }}~~Calculer chacune des intégrales suivantes :
+	\begin{multicols}{2}
+		\begin{center}
+			$I_1=\displaystyle \int_{0}^{1} \e^{2x}\, \mathrm{d}x$
+			\cadre{55}
+			$I_2=\displaystyle \int_{0}^{\pi} \cos\left(2x+\dfrac{\pi}{3}\right)\, \mathrm{d}x$
+			\cadre{55}
+			
+		\end{center}
+	\end{multicols}
+	
+	\begin{multicols}{2}
+		\begin{center}
+			$I_3=\displaystyle \int_{0}^{1} \dfrac{x}{x^2+1}\, \mathrm{d}x$
+			\cadre{80}
+			$I_4=\displaystyle \int_{0}^{1} 3x\e^{x^2}\, \mathrm{d}x$
+			\cadre{80}
+		\end{center}
+		
+	\end{multicols}
+	
+	\fcolorbox{black}{white!10!}{\textbf{A7. Faire apparaître une forme connue : }}~~Calculer chacune des intégrales suivantes :
+	\begin{multicols}{2}
+		\begin{center}
+			$I_1=\displaystyle \int_{1}^{\e} \dfrac{\ln(x)}{x}\, \mathrm{d}x$
+			\cadre{80}
+			$I_2=\displaystyle \int_{2}^{\e} \dfrac{1}{x \ln(x)}\, \mathrm{d}x$
+			\cadre{80}
+			
+		\end{center}
+	\end{multicols}
+	
+	\newpage
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 4: }} Calculer chacune des intégrales suivantes :\\
+	\begin{multicols}{3}
+		\begin{center}
+			$I_1=\displaystyle \int_{0}^{1} (x+1)(x^2+2x-1)\, \mathrm{d}x$
+			\vfill\cadre{90}
+			$I_2=\displaystyle \int_{2}^{3} \dfrac{2x-1}{x^2-x+1}\, \mathrm{d}x$
+			\vfill\cadre{90}
+			$I_3=\displaystyle \int_{0}^{1} \dfrac{4}{x^2+1}\, \mathrm{d}x$
+			\vfill\cadre{90}
+		\end{center}
+	\end{multicols}
+	
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 5: }}~~Calculer chacune des intégrales suivantes :\\
+	\begin{multicols}{3}
+		\begin{center}
+			$I_2=\displaystyle \int_{0}^{\pi} 2\cos\left(2x+\dfrac{\pi}{3}\right)\, \mathrm{d}x$
+			\vfill\cadre{80}
+			$I_2=\displaystyle \int_{-\pi}^{\pi} \cos(2x)\, \mathrm{d}x$
+			\vfill\cadre{80}
+			$I_3=\displaystyle \int_{\frac{-\pi}{2}}^{\frac{\pi}{2}} \sin(3x)\, \mathrm{d}x$
+			\vfill\cadre{80}
+		\end{center}
+	\end{multicols}
+	
+	\vspace{2cm}
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 6: }}~~Calculer chacune des intégrales suivantes :\\
+	\begin{multicols}{3}
+		\begin{center}
+			$I_1=\displaystyle \int_{0}^{1} \e^{-2x}\, \mathrm{d}x$
+			\cadre{40}
+			$I_2=\displaystyle \int_{-1}^{1} x\e^{x^2}\, \mathrm{d}x$
+			\cadre{40}
+			$I_3=\displaystyle \int_{0}^{\frac{1}{2}} \e^{2x+1}\, \mathrm{d}x$
+			\cadre{40}
+		\end{center}
+	\end{multicols}
+	
+	\vfill
+	\hrule
+	\vfill
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.2. Propriétés de l'intégrale}
+		\end{center}
+	\end{mybox}
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.2.1 Linéarité}
+		\end{center}
+		
+	\end{mybox}
+	
+	\cadre{50}
+	
+	\vfill
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.2.2 Additivité des intervalles (relation de Chasles)}
+		\end{center}
+		
+	\end{mybox}
+	\cadre{40}
+	
+	\vfill 
+	
+	\newpage
+	
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.2.3 Intégrales et ordre}
+		\end{center}
+	\end{mybox}
+	
+	\cadre{60}
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.3 Interprétation graphique de l'intégrale}
+		\end{center}
+	\end{mybox}
+	
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.3.1 Cas d'une fonction positive}
+		\end{center}
+	\end{mybox}
+	
+	
+	Nous admettons le résultat suivant :
+	
+	\cadre {60}
+	
+	\fbox{%
+		\begin{minipage}{0.98\textwidth}
+			\textbf{Bon à savoir : } 
+			l'unité d'aire est donnée par l'aire du rectangle de OI et OJ où $\vec{i}=\vec{OI}$ et $\vec{j}=\vec{OJ}$.
+		\end{minipage}
+	}
+	
+	\begin{multicols}{2}
+		\begin{center}
+			\begin{tikzpicture}[x=2cm, y=0.85cm]
+			\def\xmin{-0.8} \def\xmax{3.3} \def\ymin{-0.6} \def\ymax{5.7}
+			% Petits carreaux
+			\draw[xstep=0.25,ystep=0.25,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+			% Grands carreaux
+			\draw[xstep=0.5,ystep=0.5,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+			% Aire bleue (unité d'aire)
+			\fill[blue!20] (0,0) rectangle (1,1);
+			\draw[blue!60,thin] (0,0) rectangle (1,1);
+			\node[blue!80!black,font=\small] at (0.5,0.45) {$b=1$};
+			% Aire orange sous f de 1 à 2
+			\fill[orange!25] (1,0)--(1,3)--(2,5)--(2,0)--cycle;
+			\draw[orange!80!black,thin] (1,0)--(1,3)--(2,5)--(2,0)--cycle;
+			\node[orange!80!black,font=\small] at (1.5,1.7) {$a=4$};
+			% Axes
+			\draw[->,>=stealth',thick] (\xmin,0)--(\xmax,0) node[right]{\small$x$};
+			\draw[->,>=stealth',thick] (0,\ymin)--(0,\ymax) node[above]{\small$y$};
+			% Graduations x
+			\foreach \x in {-0.5,0.5,1,1.5,2,2.5,3}
+				\draw (\x,2pt)--(\x,-5pt) node[below]{\tiny$\x$};
+			% Graduations y
+			\foreach \y in {0.5,1,...,5}
+				\draw (2pt,\y)--(-5pt,\y) node[left]{\tiny$\y$};
+			% Courbe f(x)=2x+1
+			\draw[thick,domain=-0.3:2.35,samples=2] plot(\x,{2*\x+1});
+		\end{tikzpicture}
+		\end{center}
+		
+		\fcolorbox{black}{white!10!}{Exemple} : sur la figure ci-contre a été représenté la fonction définie par $f(x)= 2x+1$. L'aire en bleu correspond à une unité d'aire. L'aire en rouge est donnée par la formule: \\[0.2cm]
+		$\displaystyle \int_{1}^{2} 2x+1\, \mathrm{d}x$ = 
+	\end{multicols}
+	
+	
+	
+	
+	
+	
+	\newpage
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.3.2 Cas d'une fonction négative.}
+		\end{center}
+	\end{mybox}
+	
+	\begin{center}
+		
+		\fbox{Pour une fonction négative sur un intervalle $[a;b]$, l'aire est donnée par $-\displaystyle \int_{a}^{b} f(x)\, \mathrm{d}x$}\\[2mm]
+		
+	\end{center}
+	
+	\vspace{5mm}
+	
+	\begin{multicols}{2}
+		\begin{center}
+			\begin{tikzpicture}[x=1cm, y=1cm]
+			\def\xmin{-0.4} \def\xmax{7.0} \def\ymin{-2.4} \def\ymax{2.4}
+			% Petits carreaux (pi/4 en x)
+			\foreach \k in {0,1,...,8}
+				\draw[very thin,orange!25] ({\k*pi/4},\ymin)--({\k*pi/4},\ymax);
+			\foreach \y in {-2,-1.5,-1,-0.5,0,0.5,1,1.5,2}
+				\draw[very thin,orange!25] (\xmin,\y)--(\xmax,\y);
+			% Grands carreaux (pi/2 en x)
+			\foreach \k in {0,1,...,4}
+				\draw[thin,orange!55] ({\k*pi/2},\ymin)--({\k*pi/2},\ymax);
+			\foreach \y in {-2,-1,0,1,2}
+				\draw[thin,orange!55] (\xmin,\y)--(\xmax,\y);
+			% Aire bleue entre pi et 2pi
+			\fill[blue!30] ({pi},0)
+				-- plot[domain={pi}:{2*pi},samples=100](\x,{2*sin(\x r)})
+				-- cycle;
+			% Axes
+			\draw[->,>=stealth',thick] (\xmin,0)--(\xmax,0) node[right]{\small$x$};
+			\draw[->,>=stealth',thick] (0,\ymin)--(0,\ymax) node[above]{\small$y$};
+			% Graduations x
+			\draw ({pi},3pt)--({pi},-6pt) node[below]{\small$\pi$};
+			\draw ({2*pi},3pt)--({2*pi},-6pt) node[below]{\small$2\pi$};
+			% Graduations y
+			\foreach \y in {-2,-1,1,2}
+				\draw (3pt,\y)--(-6pt,\y) node[left]{\small$\y$};
+			% Courbe f(x)=2sin(x)
+			\draw[thick,blue!80!black,domain=0:{2*pi+0.3},samples=200]
+				plot(\x,{2*sin(\x r)});
+			\node[blue!80!black,font=\small] at (0.4,-1.8) {$f$};
+		\end{tikzpicture}
+		\end{center}
+		La fonction représentée ci-contre est la fonction définie par $f(x)=2\sin(x)$. L'aire en bleu vaut :\\[2mm]
+		
+		$-\displaystyle \int_{\pi}^{2\pi} 2\sin(x)\, \mathrm{d}x=$
+		
+		$~~~~~~~~~~~~~~\Bigg[-2\cos(x)\Bigg]_\pi^{2\pi} = 2\cos(2\pi)-2\cos(\pi) = 4$
+	\end{multicols}
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{A8. Calcul d'une aire }}\\
+	
+	On considère la fonction $f$ définie sur l'intervalle $]3;+\infty[$ par $f(x)=\dfrac{-4x+4}{x^2-2x-3}$. \\
+	On appelle $C$ la courbe représentant la fonction $f$ dans le repère orthonormal $(O;\vec{i};\vec{j})$ d'unité 2cm. \\
+	
+	1. Donner le sens de variation de la fonction et sa limite en $+\infty$. Déduire de ce résultat le signe de $f(x)$. \\Vous utiliserez la calculatrice\\[2mm]
+	\cadre{40}
+	
+	2. Montrer que $f(x)$ peut s'écrire sous la forme $\dfrac{a}{x+1} + \dfrac{b}{x-3}$ \\[2mm]
+	\cadre{40}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
+	%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	3. Calculer l'aire en $cm^2$ de la partie du plan limité par la courbe $C$, l'axe des abscisses, les droites d'équation $x=4$ et $x=6$. \\
+	\cadre{50}
+	
+	\begin{mybox}
+		\begin{center}
+			\textbf{2.4. Valeur moyenne d'une fonction sur un intervalle}
+		\end{center}
+	\end{mybox}
+	
+	
+	
+	
+	\cadre{40}
+	
+	Ce réel est parfois noté $\bar{f}$ ou $m$ (lorsqu'il n'y a pas d'ambiguïté avec le minimum d'une fonction). 
+	
+	\vspace{1cm}
+	
+	\fcolorbox{black}{orange!10!}{\textbf{A9. Valeur moyenne de fonctions non dérivables(par observation graphique)}}\\
+	
+	Pour chacune des fonctions représentées sur les graphiques ci-dessous donner sans calcul la valeur moyenne de la fonction sur l'intervalle $[0 ; 4]$, sur le second graphique la fonction est nulle sur $[2 ; 4]$.
+	
+	\begin{multicols}{3}
+		
+		\begin{center}  
+			\begin{tikzpicture}
+				% Dimensions du repere
+				\def\xmin{-0.15} \def\xmax{4.1} \def\ymin{-0.25} \def\ymax{2.3}
+				% Styles des axes et de la grille
+				
+				\tikzstyle{axe}=[->,>=stealth']
+				\tikzstyle{grille}= [step=1, very thin]
+				% Grille
+				\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax); 
+				% Annotations axes et unites
+				\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left]  {$t$};
+				\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+				\foreach \x in {0,1,2,3,4} 
+				\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};	
+				\foreach \y in {1,2} 
+				\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};	
+				\draw[ color=red] [domain=-0.15:2][line width=1.5pt] plot[red](\x,\x);
+				\draw[ color=red] [domain=2:4.1][line width=1.5pt] plot[red](\x,\x-2);
+				
+				
+			\end{tikzpicture} 
+			\vfill
+			\cadre{40}
+			
+			\begin{tikzpicture}
+				% Dimensions du repere
+				\def\xmin{-0.15} \def\xmax{4.1} \def\ymin{-0.25} \def\ymax{2.3}
+				% Styles des axes et de la grille
+				
+				\tikzstyle{axe}=[->,>=stealth']
+				\tikzstyle{grille}= [step=1, very thin]
+				% Grille
+				\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax); 
+				% Annotations axes et unites
+				\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left]  {$t$};
+				\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+				\foreach \x in {0,1,2,3,4} 
+				\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};	
+				\foreach \y in {1,2} 
+				\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};	
+				\draw[ color=red] [domain=-0.15:1][line width=1.5pt] plot[blue](\x,2);
+				\draw[ color=red] [domain=1:2][line width=1.5pt] plot[blue](\x,1);
+				\draw[ color=red] [domain=2:3][line width=1.5pt] plot[blue](\x,2);
+				\draw[ color=red] [domain=3:4][line width=1.5pt] plot[blue](\x,1);
+				
+			\end{tikzpicture} 
+			
+			
+			
+			\vfill\cadre{40}
+			
+			\begin{tikzpicture}
+				% Dimensions du repere
+				\def\xmin{-0.15} \def\xmax{4.1} \def\ymin{-0.25} \def\ymax{2.3}
+				% Styles des axes et de la grille
+				
+				\tikzstyle{axe}=[->,>=stealth']
+				\tikzstyle{grille}= [step=1, very thin]
+				% Grille
+				\draw [grille] (\xmin,\ymin) grid (\xmax,\ymax); 
+				% Annotations axes et unites
+				\draw [axe, thick] (\xmin,0)--(\xmax,0) node[above left]  {$t$};
+				\draw [axe, thick] (0,\ymin)--(0,\ymax) node[below right] {$y$};
+				\foreach \x in {0,1,2,3,4} 
+				\draw (\x,1pt)--(\x,-1pt) node [below right]{$\x$};	
+				\foreach \y in {1,2} 
+				\draw (1pt,\y)--(-1pt,\y) node [left]{$\y$};	
+				\draw[ color=red] [domain=-0.15:2][line width=1.5pt] plot[green](\x,\x);
+				\draw[ color=red] [domain=2:4][line width=1.5pt] plot[green](\x,4-\x);
+				
+			\end{tikzpicture} 
+			
+			
+			
+			\vfill\cadre{40}
+		\end{center}
+	\end{multicols}
+	
+	\newpage
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 7.}} On considère la fonction $f$ définie par  :
+	$
+	\left\{
+	\begin{array}{lll}
+		\mbox{$f$ est de période $2\pi$} \\
+		\mbox{$f(x)=\sin(x)$ pour $0 \leq x \leq \pi$} \\
+		\mbox{$f(x)=0$ pour $\pi \leq x \leq 2\pi$} \\
+	\end{array}
+	\right.
+	$
+	
+	1. Réprésenter la fonction $f$ sur l'intervalle $[-2\pi ; 4\pi]$\\
+	\begin{center}
+
+	\begin{tikzpicture}[x=0.9cm, y=2.5cm]
+	% 1 unité tikz-x = pi/2  =>  -2pi=-4, 4pi=8
+	\def\xmin{-4.6} \def\xmax{8.8} \def\ymin{-0.15} \def\ymax{1.25}
+	% Petits carreaux
+	\draw[xstep=0.25,ystep=0.1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Grands carreaux (1 unité)
+	\draw[xstep=1,ystep=0.5,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Axes
+	\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+	\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+	% Graduations x (multiples de pi = 2 unités tikz)
+	\foreach \n/\lab in {-4/{-2\pi},-2/{-\pi},2/{\pi},4/{2\pi},6/{3\pi},8/{4\pi}}
+		\draw[blue!70!black] (\n,2pt)--(\n,-5pt) node[below]{\small$\lab$};
+	% Demi-graduations (pi/2)
+	\foreach \n in {-3,-1,1,3,5,7}
+		\draw[blue!70!black] (\n,1pt)--(\n,-3pt);
+	% Graduations y
+	\foreach \y in {0.5,1}
+		\draw[blue!70!black] (2pt,\y)--(-4pt,\y) node[left]{\small$\y$};
+\end{tikzpicture}
+	\end{center}
+	
+	
+	2. Calculer sa valeur moyenne sur $[0 ; 2\pi]$\\
+	
+	\cadre{60}
+	
+	3. Interpréter graphiquement ce résultat. 
+	
+	\cadre{20}
+	
+	\newpage
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 8.}} On considère la fonction $f$ définie par  :
+	$
+	\left\{
+	\begin{array}{lll}
+		\mbox{$f$ est de période $3$} \\
+		\mbox{$f(x)=x$  pour $0 \leq x \leq 1$} \\
+		\mbox{$f(x)=1$  pour $1 \leq x \leq 2$} \\
+		\mbox{$f(x)=3-x$  pour $2 \leq x \leq 3$}
+	\end{array}
+	\right.
+	$
+	
+	1. Représenter la fonction $f$ sur l'intervalle $[-3 ; 6]$\\
+	
+	\begin{center}
+		
+		\begin{tikzpicture}[x=1.5cm, y=4cm]
+	\def\xmin{-3.4} \def\xmax{6.4} \def\ymin{-0.2} \def\ymax{1.25}
+	% Petits carreaux
+	\draw[xstep=0.25,ystep=0.1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Grands carreaux
+	\draw[xstep=1,ystep=0.2,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Axes
+	\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+	\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+	% Graduations x
+	\foreach \x in {-3,-2,-1,1,2,3,4,5,6}
+		\draw[blue!70!black] (\x,2pt)--(\x,-5pt) node[below]{\small$\x$};
+	% Graduations y
+	\foreach \y in {0.2,0.4,0.6,0.8,1.0}
+		\draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+\end{tikzpicture}
+	\end{center}
+	
+	2. Calculer sa valeur moyenne sur $[0 ; 3]$\\
+	
+	\cadre{60}
+	
+	3. Interpréter graphiquement ce résultat. 
+	
+	\cadre{20}
+	
+	\newpage
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 9.}} On considère la fonction $f$ définie par  :
+	$
+	\left\{
+	\begin{array}{lll}
+		\mbox{$f$ est paire de période $4$} \\
+		\mbox{$f(x)=x$  pour $0 \leq x \leq 1$} \\
+		\mbox{$f(x)=1$  pour $1 \leq x \leq 2$} \\
+	\end{array}
+	\right.
+	$
+	
+	1. Représenter la fonction $f$ sur l'intervalle $[-3 ; 6]$\\
+	
+	\begin{center}
+		
+		\begin{tikzpicture}[x=1.5cm, y=4cm]
+	\def\xmin{-3.4} \def\xmax{6.4} \def\ymin{-0.2} \def\ymax{1.25}
+	% Petits carreaux
+	\draw[xstep=0.25,ystep=0.1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Grands carreaux
+	\draw[xstep=1,ystep=0.2,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Axes
+	\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+	\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+	% Graduations x
+	\foreach \x in {-3,-2,-1,1,2,3,4,5,6}
+		\draw[blue!70!black] (\x,2pt)--(\x,-5pt) node[below]{\small$\x$};
+	% Graduations y
+	\foreach \y in {0.2,0.4,0.6,0.8,1.0}
+		\draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+\end{tikzpicture}
+	\end{center}
+	
+	2. Calculer sa valeur moyenne sur $[0 ; 4]$\\
+	
+	\cadre{60}
+	
+	3. Interpréter graphiquement ce résultat. 
+	
+	\cadre{20}
+	
+	\newpage
+	
+	
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 10. Faire le point avec un QCM.}}
+	
+	Pour chaque question indiquer \textbf{la} bonne réponse : 
+	
+	\bigskip
+	
+	\begin{multicols}{2}
+		
+		1. L'intégrale $I=\displaystyle \int_{-2}^{2} \dfrac{1}{x+1} \mathrm{d}x$
+		\begin{itemize}[label=$\square$]
+			\item   a) n'existe pas
+			\item   b) vaut 0
+			\item   c) vaut $2\ln(3)$
+		\end{itemize}
+		
+		
+		2. L'intégrale $I=\displaystyle \int_{0}^{1} \dfrac{1}{x^2+1} \mathrm{d}x$
+		\begin{itemize}[label=$\square$]
+			\item   a) vaut $\ln2$
+			\item   b) vaut $\dfrac{\pi}{4}$
+			\item   c) vaut $-\dfrac{1}{2}$
+		\end{itemize}
+		
+		
+		3. L'intégrale $I=\displaystyle \int_{-2}^{2} \dfrac{1}{(x+1)(x-1)} \mathrm{d}x$
+		\begin{itemize}[label=$\square$]
+			\item   a) vaut $2\displaystyle \int_{0}^{2} \dfrac{1}{(x+1)(x-1)} \mathrm{d}x$
+			\item   b) n'existe pas
+			\item   c) vaut $2\ln2$
+		\end{itemize}
+		
+		
+		4. L'intégrale $I=\displaystyle \int_{2}^{\e} \ln(x) \mathrm{d}x$
+		\begin{itemize}[label=$\square$]
+			\item   a) vaut $\dfrac{1}{\e}-\dfrac{1}{2}$
+			\item   b) vaut $1$
+			\item   c) vaut $2-2\ln2$
+		\end{itemize}
+		
+		5. L'intégrale $I=\displaystyle \int_{0}^{1} t\e^t \mathrm{d}t$
+		\begin{itemize}[label=$\square$]
+			\item   a) vaut $\e$
+			\item   b) vaut $1$
+			\item   c) vaut $\e -1$
+		\end{itemize}
+		
+		6. La valeur moyenne de $f(x)=x$ sur l'intervalle $[0;2]$
+		\begin{itemize}[label=$\square$]
+			\item   a) vaut $1$
+			\item   b) vaut $2$
+			\item   c) vaut $4$
+		\end{itemize}
+		
+	\end{multicols}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 11}}\\
+	$E$ désigne un réel de l'intervalle $]0 ; 3[$. On considère la fonction $f$ dédinie sur $\mathbb{R}$, paire, et de période 5 telle que : 
+	$$
+	f(x) = \left\{
+	\begin{array}{ll}
+		E\times t & \mbox{si } 0 \leq t \leq 1\\
+		(3-E)\times t+2E-3 & \mbox{si } 1 \leq t \leq 2\\
+		3 & \mbox{si } 2 \leq t \leq \dfrac{5}{2}\\ 
+	\end{array}
+	\right.
+	$$
+	
+	1. Représenter la fonction $f$ sur l'intervalle $[-5 ; 10]$\\
+	
+	\begin{tikzpicture}[x=1cm, y=1.2cm]
+	\def\xmin{-5.4} \def\xmax{10.5} \def\ymin{-0.4} \def\ymax{3.5}
+	% Petits carreaux
+	\draw[xstep=0.25,ystep=0.25,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Grands carreaux
+	\draw[xstep=1,ystep=0.5,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+	% Axes
+	\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+	\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+	% Graduations x
+	\foreach \x in {-5,-4,-3,-2,-1}
+		\draw[blue!70!black] (\x,2pt)--(\x,-5pt) node[below]{\small$\x$};
+	\foreach \x in {1,2,...,10}
+		\draw[blue!70!black] (\x,2pt)--(\x,-5pt) node[below]{\small$\x$};
+	% Graduations y
+	\foreach \y in {0.5,1,1.5,2,2.5,3}
+		\draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+\end{tikzpicture}
+	
+	\newpage
+	
+	2. Montrer que la valeur moyenne de $f$ sur une période est $\bar{f}=\dfrac{2(E+3)}{5}$\\
+	\cadre{30}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 12 : Préparation du DS}}
+	
+	En utilisant la formule des primitives, donner une valeur exacte des intégrales suivantes : 
+	
+	\begin{multicols}{3}
+		
+		$I=\displaystyle \int_{-1}^{0} (x^3+2x^2-1) \mathrm{d}x$
+		
+		\cadre{30}
+		
+		$J=\displaystyle \int_{0}^{2} \e^x \mathrm{d}x$
+		
+		\cadre{30}
+		
+		$K=\displaystyle \int_{\frac{\pi}{4}}^{\frac{\pi}{3}} \sin(4x) ~\mathrm{d}x$
+		
+		\cadre{30}
+		
+	\end{multicols}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 13 : Préparation du DS}}
+	
+	En utilisant les formules suivantes, calculer une valeur exacte de $A=\displaystyle \int_{\frac{\pi}{6}}^{\frac{\pi}{4}} \cos^2(x) ~\mathrm{d}x$ \\avec $\cos(2x)= \cos^2(x) - \sin^2(x) $ et $\cos^2(x) + \sin^2(x) = 1$
+	
+	\cadre{20}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 14 : Préparation du DS}}
+	
+	Soit la fonction $f : x \mapsto \dfrac{3x+1}{x^2-1}$ définie sur $\mathbb{R}\setminus\lbrace{-1;1}\rbrace$.\\
+	\begin{enumerate}
+		\item Déterminer les réels $a$ et $b$ tels que : \\
+		$$ f(x)=\dfrac{a}{x-1} + \dfrac{b}{x+1}$$
+		\cadre{30}
+		\newpage 
+		
+		
+		\item Calculer $\displaystyle \int_{0}^{\frac{1}{2}}f(x) ~\mathrm{d}x$
+
+		\cadre{20}
+		
+	\end{enumerate}
+	
+	\fcolorbox{black}{white!10!}{\textbf{Exercice 15 : Application en Sciences Physiques}}
+	
+	\'A toute grandeur périodique de période $T$, on associe en physique sa valeur efficace : 
+	
+	$$V^2 = \dfrac{\displaystyle \int_{T}^{ }f(x)^2 ~\mathrm{d}x}{T}$$ où $\displaystyle \int_{T}^{ }f(x)^2 ~\mathrm{d}x$ désigne l'intégrale de $f(x)^2$ sur un intervalle quelconque de longueur $T$.
+	
+	On considère une tension donnée par $u(t)=A\cos(\omega t)$, où $A$ est un réel positif. 
+	
+	\begin{enumerate}
+		\item Justifier que $u$ est périodique de période $T=\dfrac{2\pi}{\omega}$. 
+		
+		\cadre{20}
+		
+		\item  On admet que pour tout $x$ réel, on a : 
+		$$\cos^2(x)=\dfrac{1+\cos2x}{2}$$
+		
+		En déduire le calcul de la valeur efficace de $u$
+		
+		\cadre{50}
+		
+		\item Expliquer le commentaire suivant "pour une grandeur sinusoïdale, sa valeur efficace est sa valeur crête divisée par $\sqrt{2}$
+		
+		\cadre{20}
+	\end{enumerate}
+	
+	
+	
+\end{document}
+

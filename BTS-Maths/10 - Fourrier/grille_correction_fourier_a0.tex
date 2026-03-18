@@ -1,0 +1,143 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\setlength{\extrarowheight}{1mm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 2BTS}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête d'exercice pleine largeur
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+	{\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+	{\large Séries de Fourier -- Calcul de $a_0$ \hspace{1cm} 2BTS \hspace{1cm} \textbf{Total : /20 points}}
+\end{center}
+
+\vspace{2mm}
+
+% ===================== EXERCICE 1 =====================
+\exotitle{Exercice 1 : Signal créneau $f(t)$, $T = 4$}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	1 & $T = 4$ \quad On intègre de $0$ à $T = 4$ & 1 \\
+	\hline
+	\multirow{2}{*}{2} & Formule correcte : $a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(t)\,dt$ & 1 \\
+	\cline{2-3}
+	& Décomposition sur les deux intervalles : $a_0 = \dfrac{1}{4}\left[\displaystyle\int_0^2 5\,dt + \int_2^4 (-3)\,dt\right]$ & 1 \\
+	\hline
+	\multirow{3}{*}{3} & Calcul des primitives : $\left[5t\right]_0^2 = 10$ \quad et \quad $\left[-3t\right]_2^4 = -12-(-6) = -6$ & 1 \\
+	\cline{2-3}
+	& $a_0 = \dfrac{1}{4}\left[10 + (-6)\right] = \dfrac{1}{4} \times 4$ & 0,5 \\
+	\cline{2-3}
+	& \textbf{Résultat encadré :} $a_0 = 1$ & 0,5 \\
+	\hline
+	4 & Droite $y = 1$ tracée sur le graphique \quad + \quad justification de cohérence & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{/6} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 2 =====================
+\exotitle{Exercice 2 : Signal $g(t)$, $T = \pi$}{/7 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	\multirow{2}{*}{1} & Formule correcte : $a_0 = \dfrac{1}{\pi}\displaystyle\int_0^{\pi} g(t)\,dt$ & 1 \\
+	\cline{2-3}
+	& Décomposition : $a_0 = \dfrac{1}{\pi}\left[\displaystyle\int_0^{\pi/2} \sin(t)\,dt + \int_{\pi/2}^{\pi} 1\,dt\right]$ & 1 \\
+	\hline
+	\multirow{3}{*}{2} & Primitive correcte : $\displaystyle\int_0^{\pi/2} \sin(t)\,dt = \left[-\cos(t)\right]_0^{\pi/2}$ & 0,5 \\
+	\cline{2-3}
+	& Application : $-\cos\!\left(\dfrac{\pi}{2}\right) - (-\cos(0)) = 0 + 1$ & 1 \\
+	\cline{2-3}
+	& \textbf{Résultat :} $\displaystyle\int_0^{\pi/2}\sin(t)\,dt = 1$ & 0,5 \\
+	\hline
+	\multirow{2}{*}{3} & Calcul de $\displaystyle\int_{\pi/2}^{\pi} 1\,dt = \left[t\right]_{\pi/2}^{\pi} = \pi - \dfrac{\pi}{2} = \dfrac{\pi}{2}$ & 1 \\
+	\cline{2-3}
+	& \textbf{Résultat exact :} $a_0 = \dfrac{1}{\pi}\left[1 + \dfrac{\pi}{2}\right] = \dfrac{1}{\pi} + \dfrac{1}{2}$ & 1 \\
+	\hline
+	4 & $a_0 \approx 0{,}318 + 0{,}500$ \quad \textbf{Résultat :} $a_0 \approx 0{,}82$ & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{/7} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 3 =====================
+\exotitle{Exercice 3 : Tension $u(t)$, $T = 3\,\text{ms}$}{/7 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	\multirow{2}{*}{1} & Signal correctement tracé sur une première période & 1 \\
+	\cline{2-3}
+	& Répétition correcte (2\up{e} période) + discontinuités bien représentées & 1 \\
+	\hline
+	2 & $a_0 = \dfrac{1}{3}\left[\displaystyle\int_0^1 4t\,dt + \int_1^2 4\,dt + \int_2^3 0\,dt\right]$ & 1,5 \\
+	\hline
+	\multirow{4}{*}{3} & $\displaystyle\int_0^1 4t\,dt = \left[2t^2\right]_0^1 = 2$ & 0,5 \\
+	\cline{2-3}
+	& $\displaystyle\int_1^2 4\,dt = \left[4t\right]_1^2 = 8 - 4 = 4$ & 0,5 \\
+	\cline{2-3}
+	& $\displaystyle\int_2^3 0\,dt = 0$ & 0,5 \\
+	\cline{2-3}
+	& $a_0 = \dfrac{1}{3}\left[2 + 4 + 0\right] = \dfrac{6}{3}$ \quad \textbf{Résultat :} $a_0 = 2\,\text{V}$ & 1 \\
+	\hline
+	4 & $a_0$ représente la \textbf{composante continue} (valeur moyenne) de $u(t)$ \quad $a_0 = 2\,\text{V}$ & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{/7} \\
+	\hline
+\end{tabularx}
+
+
+\end{document}

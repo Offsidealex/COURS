@@ -1,0 +1,226 @@
+\documentclass[9pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[landscape,left=1cm,right=1cm,top=1.2cm,bottom=0.8cm]{geometry}
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{multirow,tabularx,booktabs,array}
+\usepackage{colortbl}
+\usepackage{fouriernc}
+\usepackage{fancyhdr}
+
+\DeclareMathOperator{\e}{e}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\setlength{\headheight}{13.6pt}
+\addtolength{\topmargin}{-1.6pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe 1BTS}
+\fancyfoot[C]{Grille de correction -- Chapitre 4 Dérivation}
+\fancyfoot[R]{Année 2025 -- 2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+\definecolor{exohdr}{RGB}{30,100,180}
+\definecolor{sousligne}{RGB}{220,232,248}
+\definecolor{soustotal}{RGB}{255,220,80}
+
+\renewcommand{\arraystretch}{1.15}
+
+% Commande pour l'en-tête d'exercice
+\newcommand{\exoheader}[3]{%
+  \multicolumn{3}{|l|}{\cellcolor{exohdr}%
+    \textcolor{white}{\textbf{Exercice #1 : #2}}\hfill
+    \textcolor{white}{\textbf{/#3 pts}}%
+  }\\
+}
+
+% Commande pour la ligne sous-en-tête
+\newcommand{\colheader}{%
+  \rowcolor{sousligne}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+}
+
+% Commande pour la ligne sous-total
+\newcommand{\soustotalrow}[2]{%
+  \rowcolor{soustotal}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice #1}} & \textbf{/#2} \\
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[4pt]
+  Dérivation -- Exercices 3 à 7 \hspace{1cm} Classe 1BTS \hspace{1cm} \textbf{Total : /20 points}
+\end{center}
+
+\vspace{2mm}
+
+\setlength{\columnsep}{6mm}
+\begin{multicols}{2}
+
+%-----------------------------------------------------------------------
+% EXERCICE 3
+%-----------------------------------------------------------------------
+\noindent
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}p{0.6cm}|X|>{\centering\arraybackslash}p{1.1cm}|}
+\hline
+\exoheader{3}{Dérivées produit -- fonctions composées}{4}
+\hline
+\colheader
+\hline
+\multirow{3}{*}{$f$}
+  & Règle du produit $(uv)'$ ; $u=\e^{3x}$, $u'=3\e^{3x}$, $v=2x+1$, $v'=2$ & 0,75 \\
+\cline{2-3}
+  & Développement : $3\e^{3x}(2x+1)+2\e^{3x}$ & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $f'(x)=\e^{3x}(6x+5)$ & 0,75 \\
+\hline
+\multirow{3}{*}{$g$}
+  & Règle du produit ; $u=x^2-x+1$, $u'=2x-1$, $v=\e^{-x}$, $v'=-\e^{-x}$ & 0,75 \\
+\cline{2-3}
+  & Développement : $(2x-1)\e^{-x}-(x^2-x+1)\e^{-x}$ & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $g'(x)=\e^{-x}(-x^2+3x-2)$ & 0,75 \\
+\hline
+\soustotalrow{3}{4}
+\hline
+\end{tabularx}
+
+\vfill
+
+%-----------------------------------------------------------------------
+% EXERCICE 4
+%-----------------------------------------------------------------------
+\noindent
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}p{0.6cm}|X|>{\centering\arraybackslash}p{1.1cm}|}
+\hline
+\exoheader{4}{Terme à terme et dérivée de $\ln(u)$}{3,5}
+\hline
+\colheader
+\hline
+\multirow{3}{*}{$f$}
+  & Dérivation terme à terme de $\dfrac{x^2}{4}-\dfrac{1}{4}-\dfrac{\ln x}{2}$ & 0,5 \\
+\cline{2-3}
+  & $f'(x)=\dfrac{x}{2}-\dfrac{1}{2x}$ & 0,75 \\
+\cline{2-3}
+  & Mise au même dénominateur : \textbf{Résultat :} $f'(x)=\dfrac{x^2-1}{2x}$ & 0,75 \\
+\hline
+\multirow{3}{*}{$g$}
+  & Identification de $[\ln u]'=\dfrac{u'}{u}$ avec $u=1+\e^x$, $u'=\e^x$ & 0,5 \\
+\cline{2-3}
+  & Application de la formule & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $g'(x)=\dfrac{\e^x}{1+\e^x}$ & 0,5 \\
+\hline
+\soustotalrow{4}{3,5}
+\hline
+\end{tabularx}
+
+\vfill
+
+%-----------------------------------------------------------------------
+% EXERCICE 5
+%-----------------------------------------------------------------------
+\noindent
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}p{0.6cm}|X|>{\centering\arraybackslash}p{1.1cm}|}
+\hline
+\exoheader{5}{Quotient et propriétés du $\ln$}{3,5}
+\hline
+\colheader
+\hline
+\multirow{4}{*}{$f$}
+  & Règle du quotient $\left(\dfrac{u}{v}\right)'$ ; $u'=\e^x+\e^{-x}$, $v'=\e^x-\e^{-x}$ & 0,5 \\
+\cline{2-3}
+  & Développement : $(\e^x+\e^{-x})^2-(\e^x-\e^{-x})^2$ & 0,5 \\
+\cline{2-3}
+  & Simplification : numérateur $= 4$ & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $f'(x)=\dfrac{4}{(\e^x+\e^{-x})^2}$ & 0,5 \\
+\hline
+\multirow{3}{*}{$g$}
+  & Utilisation de $\ln\!\left(\dfrac{a}{b}\right)=\ln a - \ln b$ & 0,5 \\
+\cline{2-3}
+  & Dérivation correcte de chaque terme & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $g'(x)=\dfrac{2}{1-x^2}$ & 0,5 \\
+\hline
+\soustotalrow{5}{3,5}
+\hline
+\end{tabularx}
+
+\columnbreak
+
+%-----------------------------------------------------------------------
+% EXERCICE 6
+%-----------------------------------------------------------------------
+\noindent
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}p{0.6cm}|X|>{\centering\arraybackslash}p{1.1cm}|}
+\hline
+\exoheader{6}{Dérivées produit}{4}
+\hline
+\colheader
+\hline
+\multirow{4}{*}{$f$}
+  & Règle du produit ; $u=x^2$, $u'=2x$, $v=\ln x$, $v'=\dfrac{1}{x}$ & 0,5 \\
+\cline{2-3}
+  & Développement : $2x\ln x + x^2\cdot\dfrac{1}{x}$ & 0,5 \\
+\cline{2-3}
+  & Factorisation par $x$ & 0,25 \\
+\cline{2-3}
+  & \textbf{Résultat :} $f'(x)=x(2\ln x+1)$ & 0,75 \\
+\hline
+\multirow{4}{*}{$g$}
+  & Règle du produit ; $u=x^2-1$, $u'=2x$, $v=\e^{2x}$, $v'=2\e^{2x}$ & 0,5 \\
+\cline{2-3}
+  & Développement : $2x\e^{2x}+2(x^2-1)\e^{2x}$ & 0,5 \\
+\cline{2-3}
+  & Factorisation par $2\e^{2x}$ & 0,25 \\
+\cline{2-3}
+  & \textbf{Résultat :} $g'(x)=2\e^{2x}(x^2+x-1)$ & 0,75 \\
+\hline
+\soustotalrow{6}{4}
+\hline
+\end{tabularx}
+
+\vfill
+
+%-----------------------------------------------------------------------
+% EXERCICE 7
+%-----------------------------------------------------------------------
+\noindent
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}p{0.6cm}|X|>{\centering\arraybackslash}p{1.1cm}|}
+\hline
+\exoheader{7}{Fonctions composées avancées}{4}
+\hline
+\colheader
+\hline
+\multirow{4}{*}{$f$}
+  & Identification de $[\e^u]'=u'\e^u$ avec $u(x)=\dfrac{2x-1}{2-x}$ & 0,25 \\
+\cline{2-3}
+  & Calcul de $u'(x)$ par règle du quotient & 0,5 \\
+\cline{2-3}
+  & $u'(x)=\dfrac{3}{(2-x)^2}$ correct & 0,75 \\
+\cline{2-3}
+  & \textbf{Résultat :} $f'(x)=\dfrac{3\,\e^{\frac{2x-1}{2-x}}}{(2-x)^2}$ & 0,5 \\
+\hline
+\multirow{3}{*}{$g$}
+  & Utilisation de $\ln\!\left(\dfrac{a}{b}\right)=\ln a - \ln b$ et $\ln(\e^x)=x$ & 0,5 \\
+\cline{2-3}
+  & Dérivation : $g'(x)=1-\dfrac{\e^x}{\e^x+1}$ & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $g'(x)=\dfrac{1}{\e^x+1}$ & 0,5 \\
+\hline
+\soustotalrow{7}{4}
+\hline
+\end{tabularx}
+
+\vfill
+
+\noindent\textit{Note sur 20 = total obtenu $+ 1$ point de présentation et rédaction.}
+
+\end{multicols}
+
+\end{document}

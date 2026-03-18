@@ -1,0 +1,614 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb,amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=1.8cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable,most}
+\usepackage{listings}
+
+%----------------------------------------------------------------------
+% Style listings Python
+%----------------------------------------------------------------------
+\lstdefinestyle{python}{%
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{NavyBlue}\bfseries,
+  commentstyle=\color{OliveGreen}\itshape,
+  stringstyle=\color{BrickRed},
+  backgroundcolor=\color{gray!8},
+  frame=single,
+  rulecolor=\color{gray!40},
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=4,
+  numbers=left,
+  numberstyle=\tiny\color{gray!60},
+  numbersep=8pt,
+  xleftmargin=18pt,
+  literate=
+    {é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1 {à}{{\`a}}1
+    {â}{{\^a}}1 {ù}{{\`u}}1 {û}{{\^u}}1 {ô}{{\^o}}1
+    {î}{{\^i}}1 {ï}{{\"i}}1 {ç}{{\c{c}}}1 {É}{{\'E}}1
+}
+\lstset{style=python}
+
+%----------------------------------------------------------------------
+% En-tête / pied de page
+%----------------------------------------------------------------------
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\setlength{\headheight}{14pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[C]{\textit{TP Python -- BTS CIEL 1\iere{} année}}
+\fancyhead[R]{Classe 1BTS}
+\fancyfoot[L]{Alexis RUIZ}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Année 2025--2026}
+
+%----------------------------------------------------------------------
+% Boîtes tcolorbox
+%----------------------------------------------------------------------
+\newtcolorbox{tptitre}[2]{%
+  title={\Large\bfseries TP\,#1\enspace---\enspace#2
+         \hfill\normalsize\textbf{/10 pts}},
+  colback=NavyBlue!9,
+  colframe=NavyBlue!55!black,
+  coltitle=white,
+  arc=3mm, boxrule=1.5pt,
+  before upper={\vspace{1mm}}, after upper={\vspace{1mm}}
+}
+
+\newtcolorbox{objectifbox}[1]{%
+  title={\bfseries Objectif},
+  colback=OliveGreen!8,
+  colframe=OliveGreen!55!black,
+  coltitle=white,
+  arc=2mm, boxrule=1pt,
+  fontupper=\small
+}
+
+\newtcolorbox{astucebox}{%
+  title={\bfseries Aide / Rappel},
+  colback=Goldenrod!12,
+  colframe=Goldenrod!70!black,
+  coltitle=white,
+  arc=2mm, boxrule=1pt,
+  fontupper=\small
+}
+
+\newtcolorbox{codebox}[1]{%
+  title={\bfseries\small Exemple : #1},
+  colback=gray!7,
+  colframe=gray!55,
+  arc=2mm, boxrule=0.8pt
+}
+
+\newtcolorbox{appelbox}{%
+  colback=Maroon!8,
+  colframe=Maroon!60!black,
+  arc=2mm, boxrule=1pt,
+  fontupper=\small\bfseries\color{Maroon}
+}
+
+%----------------------------------------------------------------------
+% Commande cadre réponse
+%----------------------------------------------------------------------
+\newcommand{\cadreblanc}[1]{%
+  \medskip\framebox[\linewidth][c]{\rule{0mm}{#1mm}}\par\medskip}
+
+%----------------------------------------------------------------------
+% Compteur de questions (se remet à 0 à chaque TP)
+%----------------------------------------------------------------------
+\newcounter{qnum}
+\newcommand{\resetq}{\setcounter{qnum}{0}}
+\newcommand{\q}[2]{%
+  \stepcounter{qnum}%
+  \noindent\textbf{Question \theqnum{} \normalfont(#2 pt\ifnum#2>1s\fi)} -- #1\par\smallskip}
+
+%======================================================================
+\begin{document}
+%======================================================================
+
+%----------------------------------------------------------------------
+% PAGE DE GARDE
+%----------------------------------------------------------------------
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{2cm}
+  {\Huge\bfseries Travaux Pratiques Python}\\[0.5cm]
+  {\Large BTS CIEL --- 1\iere{} année}\\[0.3cm]
+  {\large Lycée Denis Diderot \quad --- \quad Année 2025--2026}\\[2cm]
+  \rule{12cm}{1pt}\\[0.6cm]
+  {\large\bfseries NOM : \underline{\hspace{6cm}}}\\[0.6cm]
+  {\large\bfseries Prénom : \underline{\hspace{5.5cm}}}\\[0.6cm]
+  {\large\bfseries Groupe : \underline{\hspace{5.6cm}}}\\[1cm]
+  \rule{12cm}{1pt}\\[1.5cm]
+  \begin{tabular}{|c|l|c|}
+    \hline
+    \rowcolor{NavyBlue!20}
+    \textbf{TP} & \textbf{Thème} & \textbf{Note /10} \\
+    \hline
+    1  & Variables et types de données          & \hspace{1.5cm} \\
+    \hline
+    2  & Structures conditionnelles             & \\
+    \hline
+    3  & Boucles \texttt{for} et \texttt{while} & \\
+    \hline
+    4  & Fonctions                              & \\
+    \hline
+    5  & Listes                                 & \\
+    \hline
+    6  & Chaînes de caractères                  & \\
+    \hline
+    7  & Dictionnaires                          & \\
+    \hline
+    8  & Fichiers et gestion d'erreurs          & \\
+    \hline
+    9  & Modules \texttt{numpy} et \texttt{matplotlib} & \\
+    \hline
+    10 & Projet : calculatrice électronique     & \\
+    \hline
+    \rowcolor{gray!15}
+    \multicolumn{2}{|r|}{\textbf{Total}} & \textbf{/100} \\
+    \hline
+  \end{tabular}
+\end{center}
+\vfill
+{\footnotesize\textit{Chaque TP est noté sur 10 points. Le document de réponse est à rendre en fin de séance ou à déposer sur le réseau pédagogique.}}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{1}{Variables et types de données}
+  Contexte : calcul électronique avec la loi d'Ohm \quad $U = R \times I$ \quad $P = U \times I$
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Déclarer des variables, utiliser les types \texttt{int}, \texttt{float}, \texttt{str}, effectuer des calculs et afficher des résultats formatés.
+\end{objectifbox}
+
+\begin{codebox}{déclaration et affichage}
+\begin{lstlisting}
+R = 470          # résistance en ohms (int)
+I = 0.02         # courant en ampères (float)
+nom = "Circuit"  # chaîne de caractères (str)
+U = R * I
+print(f"Tension U = {U} V")
+print(type(R))   # affiche <class 'int'>
+\end{lstlisting}
+\end{codebox}
+
+\q{Ouvrir un nouveau fichier Python nommé \texttt{tp1.py}. Déclarer les variables \texttt{R = 470} et \texttt{I = 0.02}, puis calculer et afficher la tension \texttt{U}. Vérifier que le résultat est $U = 9{,}4$ V.}{2}
+\cadreblanc{20}
+
+\q{Utiliser la fonction \texttt{type()} pour afficher le type de \texttt{R}, \texttt{I} et d'une variable \texttt{nom = "Résistance"}. Indiquer ci-dessous les trois types obtenus.}{2}
+\cadreblanc{14}
+
+\q{Demander à l'utilisateur de saisir la valeur de \texttt{R} et de \texttt{I} avec \texttt{input()}.\\Convertir les saisies en \texttt{float}, recalculer \texttt{U} et l'afficher.}{2}
+\cadreblanc{22}
+
+\q{Calculer la puissance dissipée $P = U \times I$. Afficher le résultat arrondi à 4 décimales avec \texttt{round()} et avec un f-string indiquant l'unité (watts).}{2}
+\cadreblanc{18}
+
+\q{Compléter le programme pour afficher un résumé formaté avec des f-strings sur plusieurs lignes~:
+\texttt{R = ... $\Omega$ | I = ... A | U = ... V | P = ... W}}{2}
+\cadreblanc{22}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification avant de passer à la suite.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{2}{Structures conditionnelles}
+  Contexte : gestion de seuils dans un circuit électronique
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Utiliser \texttt{if}, \texttt{elif}, \texttt{else} et les opérateurs logiques \texttt{and}, \texttt{or}, \texttt{not} pour prendre des décisions dans un programme.
+\end{objectifbox}
+
+\begin{astucebox}
+\begin{lstlisting}
+if condition:
+    # bloc exécuté si vrai
+elif autre_condition:
+    # sinon si ...
+else:
+    # sinon
+\end{lstlisting}
+Opérateurs de comparaison : \texttt{==}, \texttt{!=}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}
+\end{astucebox}
+
+\q{Une LED rouge est passante si la tension à ses bornes dépasse $2{,}0$ V. Écrire un programme qui demande la tension \texttt{U} et affiche \texttt{"LED allumée"} ou \texttt{"LED éteinte"} selon le cas.}{2}
+\cadreblanc{24}
+
+\q{Un régulateur de tension classifie la tension de sortie en 3 zones :
+  $U < 4{,}5$ V : \textbf{tension faible},
+  $4{,}5 \leq U \leq 5{,}5$ V : \textbf{tension nominale},
+  $U > 5{,}5$ V : \textbf{tension élevée}.
+  Écrire le programme avec \texttt{elif}.}{2}
+\cadreblanc{26}
+
+\q{Un système de protection se déclenche si la tension dépasse $12$ V \textbf{ET} si le courant dépasse $2$ A. Écrire le programme utilisant \texttt{and}. Tester avec $(U=13, I=1)$, $(U=13, I=3)$, $(U=10, I=3)$.}{2}
+\cadreblanc{26}
+
+\q{Écrire un programme qui affiche la table de vérité de la porte logique AND pour deux entrées \texttt{A} et \texttt{B} valant 0 ou 1. Utiliser deux boucles \texttt{for} imbriquées et une condition.}{2}
+\cadreblanc{26}
+
+\q{Un thermostat coupe le chauffage si $T > 22$°C et l'allume si $T < 18$°C. Entre les deux, il maintient l'état précédent (afficher \texttt{"Maintien"}). Demander $T$ à l'utilisateur et afficher l'action.}{2}
+\cadreblanc{22}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{3}{Boucles \texttt{for} et \texttt{while}}
+  Contexte : répétitions, comptages, simulations de mesures
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Maîtriser les boucles \texttt{for} (nombre d'itérations connu) et \texttt{while} (condition de sortie), utiliser \texttt{break}, \texttt{continue} et \texttt{range()}.
+\end{objectifbox}
+
+\begin{codebox}{exemples de boucles}
+\begin{lstlisting}
+for i in range(5):          # 0, 1, 2, 3, 4
+    print(i)
+
+for i in range(1, 10, 2):   # 1, 3, 5, 7, 9
+    print(i)
+
+compteur = 0
+while compteur < 3:
+    print(compteur)
+    compteur += 1
+\end{lstlisting}
+\end{codebox}
+
+\q{Afficher les 12 premières valeurs de la série E12 de résistances en multipliant une valeur de départ par $\sqrt[12]{10} \approx 1{,}2115$. Partir de $R_0 = 10\ \Omega$ et afficher chaque valeur arrondie à l'entier.}{2}
+\cadreblanc{24}
+
+\q{Écrire une boucle \texttt{while} qui commence avec une tension $U = 100$ V et la divise par 2 à chaque itération jusqu'à ce qu'elle soit inférieure à $1$ V. Afficher le nombre d'itérations nécessaires.}{2}
+\cadreblanc{24}
+
+\q{Écrire un programme qui calcule la somme des $n$ premiers entiers $1 + 2 + \cdots + n$ avec une boucle \texttt{for}. Demander $n$ à l'utilisateur. Vérifier avec la formule $\dfrac{n(n+1)}{2}$.}{2}
+\cadreblanc{22}
+
+\q{Programme de devinette : l'ordinateur choisit un nombre entre 1 et 100 avec \texttt{random.randint(1, 100)}. L'utilisateur propose des valeurs jusqu'à trouver. Afficher le nombre de tentatives.}{2}
+\cadreblanc{26}
+
+\q{Afficher la table de multiplication des résistances de 1 à 5 (comme pour $R_{\text{série}} = R_1 + R_2$, toutes combinaisons). Utiliser deux boucles \texttt{for} imbriquées et aligner les colonnes avec \texttt{:>4d}.}{2}
+\cadreblanc{24}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{4}{Fonctions}
+  Contexte : bibliothèque de calculs électroniques réutilisables
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Définir des fonctions avec \texttt{def}, passer des paramètres, utiliser \texttt{return}, les valeurs par défaut et les fonctions renvoyant plusieurs résultats.
+\end{objectifbox}
+
+\begin{codebox}{définition et appel d'une fonction}
+\begin{lstlisting}
+def loi_ohm(R, I):
+    """Retourne la tension U = R * I"""
+    U = R * I
+    return U
+
+# Appel
+tension = loi_ohm(470, 0.02)
+print(f"U = {tension} V")
+\end{lstlisting}
+\end{codebox}
+
+\q{Écrire une fonction \texttt{loi\_ohm(R, I)} qui retourne la tension $U = R \times I$. La tester avec $R = 1000\ \Omega$ et $I = 0{,}015$ A.}{2}
+\cadreblanc{22}
+
+\q{Écrire une fonction \texttt{bilan\_puissance(R, I)} qui retourne un \textbf{tuple} $(U, P)$ où $U = R \times I$ et $P = R \times I^2$. L'appeler et décompacter le résultat dans deux variables.}{2}
+\cadreblanc{22}
+
+\q{Écrire une fonction \texttt{resistance\_serie(*args)} qui accepte un nombre quelconque de résistances et retourne leur somme. Tester avec 3, puis 5 résistances.}{2}
+\cadreblanc{22}
+
+\q{Écrire une fonction \texttt{resistance\_parallele(R1, R2)} qui calcule $R_p = \dfrac{R_1 \times R_2}{R_1 + R_2}$. Ajouter une valeur par défaut \texttt{R2=100}. Tester avec $R_1 = 200\ \Omega$ sans préciser $R_2$.}{2}
+\cadreblanc{22}
+
+\q{Créer une fonction \texttt{convertir\_tension(U, unite="V")} qui convertit une tension selon l'unité demandée (\texttt{"mV"}, \texttt{"V"} ou \texttt{"kV"}) et retourne la valeur convertie. Tester les 3 cas.}{2}
+\cadreblanc{24}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{5}{Listes}
+  Contexte : traitement d'une série de mesures de tension
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Créer, indexer, modifier des listes ; utiliser les méthodes \texttt{append}, \texttt{remove}, \texttt{sort} ; parcourir une liste avec \texttt{for} ; utiliser \texttt{min}, \texttt{max}, \texttt{sum}, \texttt{len}.
+\end{objectifbox}
+
+\begin{codebox}{manipulation de listes}
+\begin{lstlisting}
+mesures = [4.98, 5.02, 4.95, 5.10, 4.88]
+print(mesures[0])      # premier élément : 4.98
+print(mesures[-1])     # dernier : 4.88
+mesures.append(5.05)   # ajout en fin
+print(len(mesures))    # longueur : 6
+\end{lstlisting}
+\end{codebox}
+
+\q{Créer une liste \texttt{mesures} contenant les 8 valeurs suivantes (en volts) :
+\texttt{[4.98, 5.02, 4.95, 5.10, 4.88, 5.01, 4.97, 5.08]}.
+Afficher le premier élément, le dernier et l'élément d'indice 4.}{2}
+\cadreblanc{18}
+
+\q{Ajouter la valeur \texttt{5.15} avec \texttt{append()}. Supprimer la valeur \texttt{4.88} avec \texttt{remove()}. Afficher la liste mise à jour et sa longueur.}{2}
+\cadreblanc{20}
+
+\q{Calculer et afficher la \textbf{moyenne}, la valeur \textbf{minimale} et la valeur \textbf{maximale} de la liste \texttt{mesures}. Utiliser \texttt{sum()}, \texttt{min()}, \texttt{max()} et \texttt{len()}.}{2}
+\cadreblanc{20}
+
+\q{Créer une nouvelle liste \texttt{hors\_limites} contenant uniquement les mesures qui sont \textbf{en dehors} de l'intervalle $[4{,}90\ V ;\ 5{,}10\ V]$. Utiliser une boucle \texttt{for} et \texttt{append()}.}{2}
+\cadreblanc{24}
+
+\q{Trier la liste \texttt{mesures} avec \texttt{sort()} et afficher la liste triée. Extraire ensuite le \textbf{premier tiers} de la liste triée avec le slicing (\texttt{liste[debut:fin]}).}{2}
+\cadreblanc{22}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{6}{Chaînes de caractères}
+  Contexte : analyse de trames de communication série (protocole ASCII)
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Manipuler les chaînes de caractères : concaténation, indexation, méthodes \texttt{upper/lower}, \texttt{split}, \texttt{strip}, \texttt{startswith}, \texttt{find}, formatage avec f-strings.
+\end{objectifbox}
+
+\begin{codebox}{méthodes principales}
+\begin{lstlisting}
+trame = "START:12.5:STOP"
+print(trame.upper())          # START:12.5:STOP
+print(trame.split(":"))       # ['START', '12.5', 'STOP']
+print(trame.startswith("ST")) # True
+print(len(trame))             # 15
+print(trame[6:9])             # 12.
+\end{lstlisting}
+\end{codebox}
+
+\q{Déclarer \texttt{trame = "START:12.5:STOP"}. Afficher sa longueur, le 1\ier{} caractère, le dernier caractère et les caractères d'indices 6 à 8 (slicing).}{2}
+\cadreblanc{20}
+
+\q{Décomposer la trame avec \texttt{split(":")}. Stocker le résultat dans une liste \texttt{parties}. Afficher séparément le marqueur de début, la valeur et le marqueur de fin.}{2}
+\cadreblanc{22}
+
+\q{Écrire une fonction \texttt{valider\_trame(t)} qui retourne \texttt{True} si la trame commence par \texttt{"START"} \textbf{et} se termine par \texttt{"STOP"}, \texttt{False} sinon. Tester avec 3 trames différentes.}{2}
+\cadreblanc{24}
+
+\q{Construire un message de log formaté avec f-string :
+\texttt{"[INFO] Capteur 3 -- Valeur : 12.50 V -- Statut : OK"}
+à partir de variables \texttt{num=3}, \texttt{val=12.5}, \texttt{statut="OK"}.}{2}
+\cadreblanc{20}
+
+\q{Écrire une fonction \texttt{compter\_char(chaine, car)} qui compte le nombre d'occurrences du caractère \texttt{car} dans \texttt{chaine} sans utiliser \texttt{.count()}. Tester en comptant les \texttt{":"} dans la trame.}{2}
+\cadreblanc{24}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{7}{Dictionnaires}
+  Contexte : catalogue de composants électroniques
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Créer, lire, modifier des dictionnaires ; utiliser \texttt{keys()}, \texttt{values()}, \texttt{items()} ; travailler avec des dictionnaires imbriqués ; rechercher des valeurs.
+\end{objectifbox}
+
+\begin{codebox}{dictionnaire simple}
+\begin{lstlisting}
+composant = {
+    "référence": "R470",
+    "valeur": 470,
+    "unité": "Ohm",
+    "tolérance": 5
+}
+print(composant["valeur"])   # 470
+composant["tolérance"] = 1   # modification
+\end{lstlisting}
+\end{codebox}
+
+\q{Créer un dictionnaire \texttt{resistances} avec 4 résistances. Chaque clé est la référence (\texttt{"R1"}, \texttt{"R2"}, ...) et la valeur est la résistance en ohms. Afficher la valeur de \texttt{"R3"} et le nombre total d'entrées.}{2}
+\cadreblanc{20}
+
+\q{Ajouter une résistance \texttt{"R5": 2200} avec l'opérateur \texttt{[]=}. Supprimer \texttt{"R2"} avec \texttt{del}. Vérifier si \texttt{"R2"} est encore dans le dictionnaire avec \texttt{in}.}{2}
+\cadreblanc{20}
+
+\q{Parcourir le dictionnaire \texttt{resistances} avec \texttt{.items()} et afficher, pour chaque résistance, la référence et la valeur au format :
+\texttt{Référence : R1 | Valeur : 470 $\Omega$}}{2}
+\cadreblanc{22}
+
+\q{Créer un dictionnaire \texttt{catalogue} imbriqué où chaque composant possède les attributs \texttt{valeur}, \texttt{tolérance} et \texttt{stock}. Afficher le stock du 2\ieme{} composant.}{2}
+\cadreblanc{24}
+
+\q{Écrire une fonction \texttt{chercher\_stock(catalogue, seuil)} qui retourne la liste des références dont le stock est \textbf{inférieur} au seuil. Tester avec \texttt{seuil=10}.}{2}
+\cadreblanc{24}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{8}{Fichiers et gestion d'erreurs}
+  Contexte : datalogger -- enregistrement de mesures dans un fichier
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Ouvrir, lire, écrire des fichiers texte avec \texttt{open()} et le gestionnaire \texttt{with} ; utiliser le module \texttt{csv} ; gérer les erreurs avec \texttt{try / except}.
+\end{objectifbox}
+
+\begin{codebox}{lecture et écriture de fichier}
+\begin{lstlisting}
+# Écriture
+with open("mesures.txt", "w", encoding="utf-8") as f:
+    f.write("5.02\n")
+    f.write("4.98\n")
+
+# Lecture
+with open("mesures.txt", "r", encoding="utf-8") as f:
+    for ligne in f:
+        print(ligne.strip())
+\end{lstlisting}
+\end{codebox}
+
+\q{Écrire un programme qui crée un fichier \texttt{log.txt} et y écrit 5 lignes de mesures simulées (utiliser \texttt{random.uniform(4.9, 5.1)} pour générer des tensions aléatoires entre 4,9 V et 5,1 V).}{2}
+\cadreblanc{24}
+
+\q{Écrire un programme qui lit \texttt{log.txt} ligne par ligne, convertit chaque ligne en \texttt{float} et calcule la moyenne des valeurs lues. Afficher le résultat.}{2}
+\cadreblanc{22}
+
+\q{Utiliser le module \texttt{csv} pour créer un fichier \texttt{mesures.csv} avec les colonnes \texttt{index, temps\_s, tension\_V}. Générer 10 lignes avec \texttt{temps = index * 0.1} et une tension aléatoire.}{2}
+\cadreblanc{26}
+
+\q{Écrire un programme qui lit \texttt{mesures.csv} avec \texttt{csv.DictReader} et affiche uniquement les lignes où la tension est hors de l'intervalle $[4{,}90\ V ;\ 5{,}10\ V]$.}{2}
+\cadreblanc{24}
+
+\q{Entourer la lecture du fichier d'un bloc \texttt{try / except FileNotFoundError} pour afficher un message d'erreur clair si le fichier n'existe pas. Tester en donnant un nom de fichier inexistant.}{2}
+\cadreblanc{22}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{9}{Modules \texttt{numpy} et \texttt{matplotlib}}
+  Contexte : visualisation d'un signal sinusoïdal -- analyse fréquentielle
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Utiliser \texttt{numpy} pour les calculs vectoriels sur des tableaux et \texttt{matplotlib.pyplot} pour tracer des courbes. Générer un signal $u(t) = A\sin(2\pi f t)$ et le visualiser.
+\end{objectifbox}
+
+\begin{codebox}{signal sinusoïdal de base}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+
+f = 50          # fréquence en Hz
+A = 5           # amplitude en V
+t = np.linspace(0, 0.04, 1000)   # 0 à 40 ms
+u = A * np.sin(2 * np.pi * f * t)
+
+plt.plot(t, u)
+plt.show()
+\end{lstlisting}
+\end{codebox}
+
+\q{Créer un tableau de 1000 points de temps \texttt{t} sur la plage $[0\ s;\ 0{,}04\ s]$ avec \texttt{np.linspace}. Calculer $u(t) = 5\sin(2\pi \cdot 50 \cdot t)$ et afficher les 5 premières valeurs du tableau.}{2}
+\cadreblanc{20}
+
+\q{Tracer la courbe $u(t)$ avec \texttt{plt.plot()}. Ajouter un titre \texttt{"Signal sinusoïdal 50 Hz"}, des labels sur les axes (\texttt{"Temps (s)"} et \texttt{"Tension (V)"}), une grille avec \texttt{plt.grid()}.}{2}
+\cadreblanc{20}
+
+\q{Sur le même graphique, superposer le signal fondamental $u_1(t) = 5\sin(2\pi \cdot 50 \cdot t)$ et son harmonique 3 $u_3(t) = 1{,}5\sin(2\pi \cdot 150 \cdot t)$. Utiliser des couleurs différentes.}{2}
+\cadreblanc{20}
+
+\q{Calculer et tracer le signal composite $u(t) = u_1(t) + u_3(t)$ en ajoutant les deux tableaux numpy. Ajouter une légende avec \texttt{plt.legend()} pour identifier les 3 courbes.}{2}
+\cadreblanc{20}
+
+\q{Calculer les valeurs suivantes à partir du tableau $u$ :
+  valeur maximale (\texttt{np.max}), valeur efficace $U_{\text{eff}} = \sqrt{\text{moyenne}(u^2)}$ avec \texttt{np.sqrt} et \texttt{np.mean}.
+  Afficher ces résultats. Vérifier que $U_{\text{eff}} \approx A/\sqrt{2}$.}{2}
+\cadreblanc{22}
+
+\begin{appelbox}
+  \centering Appeler le professeur pour vérification et validation du graphique.
+\end{appelbox}
+
+%======================================================================
+\clearpage
+\resetq
+\begin{tptitre}{10}{Projet : calculatrice électronique interactive}
+  Bilan des compétences -- application complète
+\end{tptitre}
+
+\begin{objectifbox}{}
+  Concevoir une application complète en Python en mobilisant toutes les compétences acquises : fonctions, boucles, conditions, fichiers, formatage. Le programme doit être structuré, lisible et fonctionnel.
+\end{objectifbox}
+
+\begin{astucebox}
+Le projet est évalué sur la \textbf{qualité du code} (lisibilité, nommage, commentaires) autant que sur les fonctionnalités. Penser à tester chaque fonction individuellement avant de les assembler.
+\end{astucebox}
+
+\q{Écrire une fonction \texttt{menu()} qui affiche le menu principal suivant et retourne le choix de l'utilisateur (entier 1 à 4, ou 0 pour quitter) :
+\begin{center}
+\texttt{1 -- Loi d'Ohm \quad 2 -- Diviseur de tension \quad 3 -- Résistances en parallèle \quad 4 -- Résistance de LED \quad 0 -- Quitter}
+\end{center}
+Intégrer la gestion du cas où la saisie n'est pas un entier (\texttt{try/except ValueError}).}{2}
+\cadreblanc{28}
+
+\q{Écrire la fonction \texttt{module\_loi\_ohm()} : demande deux des trois grandeurs ($U$, $R$, $I$) parmi celles que l'utilisateur connaît, calcule la troisième et affiche le résultat avec son unité.}{2}
+\cadreblanc{28}
+
+\q{Écrire la fonction \texttt{module\_diviseur()} qui calcule la tension de sortie d'un pont diviseur :
+$U_s = U_e \times \dfrac{R_2}{R_1 + R_2}$.
+Demander $U_e$, $R_1$ et $R_2$ à l'utilisateur, calculer et afficher $U_s$.}{2}
+\cadreblanc{24}
+
+\q{Écrire la fonction \texttt{module\_led()} qui calcule la résistance de limitation d'une LED :
+$R = \dfrac{U_{\text{alim}} - U_{\text{LED}}}{I_{\text{LED}}}$.
+Proposer des valeurs par défaut $U_{\text{LED}} = 2{,}0$ V et $I_{\text{LED}} = 0{,}02$ A.}{2}
+\cadreblanc{24}
+
+\q{Assembler toutes les fonctions dans une boucle principale \texttt{while True} qui affiche le menu, appelle la bonne fonction selon le choix, et enregistre chaque calcul effectué dans un fichier \texttt{historique.txt} avec la date et l'heure (\texttt{datetime.now()}).}{2}
+\cadreblanc{30}
+
+\begin{appelbox}
+  \centering Démonstration finale devant le professeur -- présenter l'application en fonctionnement.
+\end{appelbox}
+
+\vfill
+{\small\textit{Critères de notation du TP 10 : fonctionnalité (6 pts) + qualité du code et commentaires (2 pts) + fichier historique opérationnel (2 pts).}}
+
+%======================================================================
+\end{document}

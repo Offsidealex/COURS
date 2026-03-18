@@ -1,0 +1,159 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14.5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{GRILLE DE CORRECTION -- TP Parité}
+\cfoot{\thepage}
+
+\definecolor{headbg}{RGB}{70,130,220}
+\definecolor{exobg}{RGB}{232,240,254}
+\definecolor{totalbg}{RGB}{255,230,230}
+
+% ---------------------------------------------------------------
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+    {\LARGE \textbf{Grille de correction -- TP Parité des fonctions}}\\[4pt]
+    {\large\color{gray} Total : \textbf{20 points}}
+\end{center}
+
+\hrule\medskip
+
+\noindent\textbf{Nom :} \dotfill \quad \textbf{Prénom :} \dotfill \quad \textbf{Classe :} \makebox[3cm]{\dotfill}
+
+\bigskip
+
+% ---------------------------------------------------------------
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{|p{0.5cm}|p{7.5cm}|p{5.5cm}|c|}
+    \hline
+    \rowcolor[RGB]{70,130,220}
+    \multicolumn{2}{|l|}{\textcolor{white}{\textbf{Critère évalué}}} & \textcolor{white}{\textbf{Éléments attendus}} & \textcolor{white}{\textbf{Points}} \\
+    \hline
+
+    % ---- Exercice 1 ----
+    \multicolumn{4}{|l|}{\cellcolor{exobg}\textbf{Exercice 1 -- Observation graphique} \hfill \textit{/4 pts}} \\
+    \hline
+    \multirow{2}{*}{1.1} & Identification des 6 fonctions dans le tableau
+    & 6 cases correctes (0,25 pt chacune) : cos paire, sin impaire, x\textsuperscript{2} paire, x\textsuperscript{3} impaire, e\textsuperscript{x} ni/ni, cos+sin ni/ni
+    & \textbf{1,5} \\
+    \cline{2-4}
+    & Aucune case manquante ou contradictoire & Pénalité $-0,25$ par erreur & \\
+    \hline
+    \multirow{3}{*}{1.2} & a) Description symétrie de cos(x) & Symétrie par rapport à Oy, les deux courbes se superposent & \textbf{0,5} \\
+    \cline{2-4}
+    & b) Description symétrie de sin(x) & Symétrie par rapport à l'origine O, f(-x) = $-$f(x) & \textbf{0,5} \\
+    \cline{2-4}
+    & c) $f(0) = 0$ pour une fonction impaire & Calcul : $f(-0)=-f(0) \Rightarrow f(0)=0$ avec justification & \textbf{1,5} \\
+    \hline
+
+    % ---- Exercice 2 ----
+    \multicolumn{4}{|l|}{\cellcolor{exobg}\textbf{Exercice 2 -- Vérification numérique} \hfill \textit{/6 pts}} \\
+    \hline
+    2.1 & Tableau des résultats (4 fonctions)
+    & Valeurs recopiées correctement + parité constatée juste pour chaque ligne (0,25 pt $\times$ 4)
+    & \textbf{1} \\
+    \hline
+    \multirow{2}{*}{2.2} & a) Observation fonction paire & Les deux courbes se superposent & \textbf{0,5} \\
+    \cline{2-4}
+    & b) Observation fonction impaire & Courbe $f(-x)$ = image miroir verticale de $f(x)$ & \textbf{0,5} \\
+    \hline
+    \multirow{2}{*}{2.3} & Prédiction parité de $x^2\cos(x)$ & Justification paire$\times$paire = paire, conclusion : paire & \textbf{1} \\
+    \cline{2-4}
+    & Prédiction parité de $x\sin(x)$ & Justification impaire$\times$impaire = paire, conclusion : paire & \textbf{1} \\
+    \hline
+    \multirow{2}{*}{2.4} & Tableau résultats des 2 nouvelles fonctions & Valeurs et parités correctes (0,5 pt $\times$ 2) & \textbf{1} \\
+    \cline{2-4}
+    & Conclusion : prévisions confirmées & Rédaction claire et cohérente avec le tableau & \textbf{1} \\
+    \hline
+
+    % ---- Exercice 3 ----
+    \multicolumn{4}{|l|}{\cellcolor{exobg}\textbf{Exercice 3 -- Décomposition paire + impaire} \hfill \textit{/5 pts}} \\
+    \hline
+    \multirow{3}{*}{3.1} & Calcul de $f_p(x)$ pour $f(x) = x^2+x$ & Application de la formule ; résultat : $f_p(x) = x^2$ & \textbf{1} \\
+    \cline{2-4}
+    & Calcul de $f_i(x)$ pour $f(x) = x^2+x$ & Application de la formule ; résultat : $f_i(x) = x$ & \textbf{1} \\
+    \cline{2-4}
+    & b) Résultat prévisible ? & Oui : x\textsuperscript{2} est paire et x est impaire, la décomposition sépare naturellement les termes & \textbf{0,5} \\
+    \hline
+    \multirow{2}{*}{3.2} & Calcul de $f_p(x)$ pour $f(x) = e^x$ & $f_p(x) = \frac{e^x+e^{-x}}{2} = \cosh(x)$ & \textbf{1,25} \\
+    \cline{2-4}
+    & Calcul de $f_i(x)$ pour $f(x) = e^x$ & $f_i(x) = \frac{e^x-e^{-x}}{2} = \sinh(x)$ & \textbf{1,25} \\
+    \hline
+
+    % ---- Exercice 4 ----
+    \multicolumn{4}{|l|}{\cellcolor{exobg}\textbf{Exercice 4 -- Lien avec les séries de Fourier} \hfill \textit{/5 pts}} \\
+    \hline
+    4.1a & Fonction triangle (paire) : $b_n$ nuls ? & Oui, observation + lien avec la propriété du cours & \textbf{1} \\
+    \hline
+    4.1b & Créneau (impaire) : valeurs de $a_0$ et $a_n$ & $a_0 = 0$ et $a_n = 0$, série uniquement en sinus & \textbf{1} \\
+    \hline
+    4.1c & $e^x$ périodisée : conclusion sur la parité & Coefficients non nuls $\Rightarrow$ ni paire ni impaire & \textbf{1} \\
+    \hline
+    \multirow{3}{*}{4.2} & Écriture de $a_n$ sur $[-T/2, T/2]$ & Bonne formule intégrale & \textbf{0,5} \\
+    \cline{2-4}
+    & Étude de parité de l'intégrande $h(x) = f(x)\cos(\cdot)$ & $h(-x) = -f(x)\cos(\cdot) = -h(x)$ donc $h$ impaire & \textbf{1} \\
+    \cline{2-4}
+    & Conclusion : intégrale d'une fonction impaire sur $[-T/2, T/2]$ & $\int_{-T/2}^{T/2} h = 0$ donc $a_n = 0$ & \textbf{0,5} \\
+    \hline
+
+    % ---- TOTAL ----
+    \multicolumn{3}{|r|}{\cellcolor{totalbg}\textbf{TOTAL}} & \cellcolor{totalbg}\textbf{/20} \\
+    \hline
+\end{tabular}
+
+\bigskip
+
+% ---- Tableau de synthèse ----
+\begin{center}
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{|p{3.2cm}|c|c|c|c|c|}
+    \hline
+    \textbf{Exercice} & Ex. 1 & Ex. 2 & Ex. 3 & Ex. 4 & \textbf{Total} \\
+    \hline
+    \textbf{Barème} & /4 & /6 & /5 & /5 & \textbf{/20} \\
+    \hline
+    \textbf{Note} & \hspace{1.5cm} & \hspace{1.5cm} & \hspace{1.5cm} & \hspace{1.5cm} & \\
+    \hline
+\end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Observations :}\\[30pt]
+
+\noindent\rule{\textwidth}{0.4pt}
+
+\bigskip
+
+% ---- Barème de conversion ----
+\noindent\textbf{Barème de conversion (indicatif) :}
+
+\medskip
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \textbf{Points} & $\geq 18$ & $\geq 16$ & $\geq 14$ & $\geq 12$ & $\geq 10$ & $\geq 8$ & $< 8$ \\
+    \hline
+    \textbf{Appréciation} & Excellent & Très bien & Bien & Assez bien & Passable & Insuffisant & Médiocre \\
+    \hline
+\end{tabular}
+\end{center}
+
+\end{document}

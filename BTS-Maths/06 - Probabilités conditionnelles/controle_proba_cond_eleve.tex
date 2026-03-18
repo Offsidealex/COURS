@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{setspace}
+\singlespacing
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{tikz}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+\usepackage{tcolorbox}
+\usepackage{pifont}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\newcounter{numexos}
+\setcounter{numexos}{0}
+\newcommand{\bex}[2]{%
+\def\bextitle{#1}%
+\addtocounter{numexos}{1}%
+\begin{tcolorbox}[colback=white,colframe=black!30,arc=3pt,boxrule=0.6pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  \textbf{Exercice~\thenumexos\ifx\bextitle\empty\else~--~~#1\fi}\par
+  #2%
+\end{tcolorbox}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\parindent}{0pt}
+
+\newtcolorbox{titrebox}{colback=white,colframe=black,arc=3pt,boxrule=1.5pt}
+
+\begin{document}
+
+\textbf{NOM :} \underline{\hspace{6cm}} \hfill \textbf{Classe :} \underline{\hspace{3cm}}\\[2mm]
+\textbf{Prénom :} \underline{\hspace{5.5cm}}\\[4mm]
+\hrule
+\vspace{3mm}
+
+\begin{titrebox}
+\begin{center}
+\textbf{\LARGE Contrôle -- Probabilités conditionnelles}\\[2mm]
+\large Durée : 45 minutes \hfill Barème : \textbf{/10}
+\end{center}
+\end{titrebox}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+\bex{Tableau de probabilités \hfill \normalfont\textit{6 points}}{%
+\smallskip
+Une entreprise fabrique des écrans plats sur deux chaînes de production~:
+\begin{itemize}
+  \item $70\,\%$ des écrans sont produits par la chaîne $C_1$ et $30\,\%$ par la chaîne $C_2$.
+  \item Parmi les écrans de $C_1$, $2\,\%$ présentent un défaut d'affichage.
+  \item Parmi les écrans de $C_2$, $3{,}5\,\%$ présentent un défaut d'affichage.
+\end{itemize}
+On note $D$ l'événement \og l'écran présente un défaut d'affichage \fg. On prélève $\np{10000}$ écrans.
+}
+
+\textbf{1.} Compléter le tableau ci-dessous. \hfill \textit{(2 pts)}
+
+\begin{center}
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|L{4.5cm}|c|c|c|}
+\hline
+ & Chaîne $C_1$ & Chaîne $C_2$ & Total \\
+\hline
+Avec défaut $D$ & \hspace{2.5cm} & \hspace{2.5cm} & \\
+\hline
+Sans défaut $\bar{D}$ & & & \\
+\hline
+Total & & & $\np{10000}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{2.} En déduire $P(D)$. \hfill \textit{(1 pt)}
+
+\cadreblanc{15}
+
+\textbf{3.} Définir l'événement $C_1 \cap D$ et calculer $P(C_1 \cap D)$. \hfill \textit{(1 pt)}
+
+\cadreblanc{18}
+
+\textbf{4.} Sachant qu'un écran est défectueux, calculer la probabilité qu'il provienne de la chaîne $C_1$.
+On pourra utiliser la formule $P_D(C_1)=\dfrac{P(C_1 \cap D)}{P(D)}$. \hfill \textit{(2 pts)}
+
+\cadreblanc{22}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+\bex{Indépendance de deux événements \hfill \normalfont\textit{4 points}}{%
+\smallskip
+On examine $\np{1000}$ pièces sorties d'une ligne de production pour deux types de défauts~: un défaut de \textbf{forme} ($F$) et un défaut de \textbf{couleur} ($C$).
+
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|L{5cm}|c|c|c|}
+\hline
+ & Défaut $F$ & Pas de défaut $F$ & Total \\
+\hline
+Défaut $C$ & 10 & 70 & 80 \\
+\hline
+Pas de défaut $C$ & 40 & 880 & 920 \\
+\hline
+Total & 50 & 950 & $\np{1000}$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\textbf{1.} Calculer $P(F)$ et $P(C)$. \hfill \textit{(1 pt)}
+
+\cadreblanc{14}
+
+\textbf{2.} Calculer $P(F \cap C)$. \hfill \textit{(1 pt)}
+
+\cadreblanc{14}
+
+\textbf{3.} Calculer $P(F) \times P(C)$. Comparer avec $P(F \cap C)$ et conclure quant à l'indépendance des événements $F$ et $C$. \hfill \textit{(2 pts)}
+
+\cadreblanc{22}
+
+\end{document}

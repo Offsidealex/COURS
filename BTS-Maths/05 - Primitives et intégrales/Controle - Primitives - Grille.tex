@@ -1,0 +1,143 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\setlength{\extrarowheight}{1mm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\DeclareMathOperator{\e}{e}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe 1BTS}
+\fancyfoot[C]{}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.5}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête d'exercice pleine largeur
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Contrôle -- Primitives 1 \hspace{1cm} 1BTS \hspace{1cm} \textbf{Total : /10 points}}
+\end{center}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 1 =====================
+\exotitle{Exercice 1 \quad Calcul de primitives immédiates}{/3 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Fonction} & \textbf{Primitive attendue (ou équivalente à une constante près)} & \textbf{Pts} \\
+  \hline
+  $f_1(x)=5$ & $F_1(x) = 5x$ & 0,5 \\
+  \hline
+  $f_2(x)=x^3$ & $F_2(x) = \dfrac{x^4}{4}$ & 0,5 \\
+  \hline
+  $f_3(x)=-\dfrac{1}{x^2}$ & $F_3(x) = \dfrac{1}{x}$ \quad (car $\left(\frac{1}{x}\right)' = -\frac{1}{x^2}$) & 0,5 \\
+  \hline
+  $f_4(x)=\dfrac{6}{x}$ & $F_4(x) = 6\ln|x|$ & 0,5 \\
+  \hline
+  $f_5(x)=\e^x$ & $F_5(x) = \e^x$ & 0,5 \\
+  \hline
+  $f_6(x)=2\cos(2x)$ & $F_6(x) = \sin(2x)$ \quad (car $\sin'(2x)=2\cos(2x)$) & 0,5 \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== EXERCICE 2 =====================
+\exotitle{Exercice 2 \quad Calcul de primitives}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Fonction} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{$f_1 = 2x^2 - 6x + 3$}
+    & Intégration terme à terme correcte & 0,5 \\
+  \cline{2-3}
+    & \textbf{Résultat :} $F_1(x) = \dfrac{2x^3}{3} - 3x^2 + 3x$ & 1 \\
+  \hline
+  \multirow{2}{*}{$f_2 = x + 1 + \dfrac{1}{x}$}
+    & Traitement de $\dfrac{1}{x}$ : primitive $\ln|x|$ & 0,5 \\
+  \cline{2-3}
+    & \textbf{Résultat :} $F_2(x) = \dfrac{x^2}{2} + x + \ln|x|$ & 1 \\
+  \hline
+  \multirow{2}{*}{$f_3 = 2x(x^2+1)$}
+    & Développement $2x^3+2x$ ou reconnaissance $u'u$ avec $u=x^2+1$ & 0,5 \\
+  \cline{2-3}
+    & \textbf{Résultat :} $F_3(x) = \dfrac{x^4}{2} + x^2$ \; ou \; $\dfrac{(x^2+1)^2}{2}$ & 0,5 \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== EXERCICE 3 =====================
+\exotitle{Exercice 3 \quad Primitive particulière}{/2 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  Forme générale correcte : $F(x) = x^2 - x + C$ & 0,5 \\
+  \hline
+  Écriture de la condition : $F(2) = 0 \implies 4 - 2 + C = 0$ & 0,5 \\
+  \hline
+  Calcul de $C$ : $C = -2$ & 0,5 \\
+  \hline
+  \textbf{Résultat encadré :} $F(x) = x^2 - x - 2$ & 0,5 \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== EXERCICE 4 =====================
+\exotitle{Exercice 4 \quad Vérification par dérivation}{/1 pt}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  Calcul de $F'(x)$ par la formule du quotient :
+  $F'(x) = \dfrac{(x+2)-(x+1)}{(x+2)^2} = \dfrac{1}{(x+2)^2}$ & 0,5 \\
+  \hline
+  Conclusion explicite : $F'(x) = f(x)$, donc $F$ est une primitive de $f$ & 0,5 \\
+  \hline
+\end{tabularx}
+
+\end{document}

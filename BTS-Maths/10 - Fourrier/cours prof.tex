@@ -1,0 +1,1224 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\def\nbR{\ensuremath{\mathrm{I\! R}}}
+\usepackage{amsmath}
+\usepackage{awesomebox}
+\DeclareMathOperator{\e}{e}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+\usepackage{caption}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage{multicol}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{\textcolor{red}{\textbf{VERSION PROFESSEUR}} -- 2BTS}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{tkz-tab}
+\usetikzlibrary{arrows}
+\usepackage{pifont}
+
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+\usepackage[tikz]{bclogo}
+
+\def\N{{\mathbb N}}
+\def\Z{{\mathbb Z}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\def\e{{\text{e}}}
+\def\dt{{\text{d}t}}
+
+\newcommand{\ud}{\mathrm{d}}
+
+% Boîte de correction bleue
+\newcommand{\cor}[1]{%
+  \begin{tcolorbox}[
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt, right=4pt, top=3pt, bottom=3pt,
+    before skip=2mm, after skip=3mm
+  ]
+  \color{blue!80!black}#1
+  \end{tcolorbox}%
+}
+
+% Boîte de résultat (vert)
+\newcommand{\res}[1]{%
+  \begin{tcolorbox}[
+    colback=green!5!white,
+    colframe=green!50!black,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=4pt, right=4pt, top=2pt, bottom=2pt,
+    before skip=1mm, after skip=2mm
+  ]
+  \color{green!40!black}#1
+  \end{tcolorbox}%
+}
+
+\newcounter{numexos}
+\setcounter{numexos}{0}
+\newcommand{\bex}[2]{%
+\def\bextitle{#1}%
+\addtocounter{numexos}{1}%
+\begin{tcolorbox}[colback=white,colframe=black!30,arc=3pt,boxrule=0.6pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  \textbf{Exercice~\thenumexos\ifx\bextitle\empty\else~:~~#1\fi}\par
+  #2%
+\end{tcolorbox}}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\setlength{\columnseprule}{.25mm}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1cm}}
+\renewcommand{\arraystretch}{1.4}
+
+\newtcolorbox{mybox}{colback=white!10!white,colframe=black!5!black}
+
+\newcommand{\bdef}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~Définition~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+\newcommand{\rem}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{~Remarque~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+\newcommand{\bpre}[1]
+{\begin{bclogo}[couleur = white,logo=, barre=none, arrondi = 0.1]
+{~Prérequis~:}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{mybox}
+\begin{center}
+\textbf{\LARGE CHAPITRE 10 -- Séries de Fourier}
+\end{center}
+\end{mybox}
+
+\vfill 
+
+\begin{center}
+\begin{minipage}{14cm}
+\begin{bclogo}[couleur = white, arrondi = 0.1]
+{~Capacités attendues~:}
+~~
+\begin{itemize}
+\item Calculer les coefficients de Fourier dans des cas simples.
+\item Savoir identifier le bon développement en série de Fourier d'une fonction donnée.
+\item Savoir calculer la valeur approchée d'une valeur efficace d'une fonction en utilisant son développement en série de Fourier.
+\end{itemize}
+\end{bclogo}
+\end{minipage}
+\end{center}
+
+\vfill 
+
+
+\bpre{%
+\setstretch{0.85}
+On considère la fonction $f$ définie sur $\mathbb{R}$ par :
+\begin{center}
+$\begin{cases}
+f(x) &\textrm{est paire}\\
+f(x)&\textrm {est de période }2\pi \\
+f(x)=1  & \textrm {pour~~} x \in \left[0;\dfrac{\pi}{2} \right]\\
+f(x)=0  & \textrm {pour~~} x \in \left]\dfrac{\pi}{2};\pi \right]\\
+\end{cases}$
+\end{center}
+\begin{enumerate}
+    \item Représenter dans le repère ci-dessous la fonction $f$ sur l'intervalle $[-\pi;2\pi]$.
+\end{enumerate}
+}
+
+\vfill 
+
+
+\begin{center}
+\begin{tikzpicture}[x=2cm, y=4cm]
+\def\xmin{-2.3} \def\xmax{4.3} \def\ymin{-0.15} \def\ymax{1.25}
+\draw[xstep=0.25,ystep=0.1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[xstep=1,ystep=0.5,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+\foreach \n/\lab in {-2/{-\pi},-1/{-\frac{\pi}{2}},1/{\frac{\pi}{2}},2/{\pi},3/{\frac{3\pi}{2}},4/{2\pi}}
+    \draw[blue!70!black] (\n,2pt)--(\n,-6pt) node[below]{\small$\lab$};
+\foreach \y in {0.5,1}
+    \draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+% Courbe f : paire, T=2π — f=1 sur [-π/2 ; π/2] et [3π/2 ; 2π], f=0 ailleurs
+\draw[very thick, red!70!black]
+    (-2,0)--(-1,0)--(-1,1)--(1,1)--(1,0)--(3,0)--(3,1)--(4,1);
+\draw[black!60,thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+\end{center}
+
+\vfill 
+
+
+\bpre{%
+\setstretch{0.85}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Tracer la courbe représentative de la fonction $g(x)=\dfrac{1}{2}+\dfrac{2}{\pi}\cos(x)-\dfrac{2}{3\pi}\cos(3x)$ \\[-2mm]
+\item Tracer la courbe représentative de la fonction $h(x)=g(x)+\dfrac{2}{5\pi}\cos(5x)$ \\[-2mm]
+\item  Tracer la courbe représentative de la fonction $k(x)=h(x)-\dfrac{2}{7\pi}\cos(7x)$\\[-2mm]
+\item Conjecturer une fonction dont la représentation graphique s'approcherait encore plus de celle de la fonction $f$.\\[-2mm]
+\dotfill
+\end{enumerate}
+
+
+\cor{ 
+  $$l(x)=\tfrac{1}{2}+\tfrac{2}{\pi}\cos x-\tfrac{2}{3\pi}\cos 3x+\tfrac{2}{5\pi}\cos 5x-\tfrac{2}{7\pi}\cos            
+7x+\tfrac{2}{9\pi}\cos 9x-\tfrac{2}{11\pi}\cos 11x$$
+
+}
+}
+\vfill
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mybox}
+    \textbf{1. Calculs des coefficients de Fourier}
+\end{mybox}
+
+\begin{mybox}
+    \textbf{1.1. Les séries de Fourier}
+\end{mybox}
+
+\bdef{
+\textcolor{blue}{Si $f$ est une fonction périodique de période $T$ et de pulsation $\omega=\dfrac{2\pi}{T}$, son \textbf{développement en série de Fourier} est :
+\[S(x) = a_0 + \sum_{n=1}^{+\infty}\bigl(a_n\cos(n\omega x) + b_n\sin(n\omega x)\bigr)\]}
+}
+
+Les nombres $a_0$, $a_n$ et $b_n$ \textbf{sont les coefficients de Fourier} de la fonction $f$.
+
+\vfill 
+
+
+\textbf{Exemple :} Dans le prérequis, $g(x)=\dfrac{1}{2}+\dfrac{2}{\pi}\cos(x)-\dfrac{2}{3\pi}\cos(3x)$ est le début du développement de $f$.
+
+\cor{
+$a_0=\dfrac{1}{2}$,\quad $a_1=\dfrac{2}{\pi}$,\quad $a_2=0$,\quad $a_3=\dfrac{-2}{3\pi}$,\quad $a_4=0$,\quad $a_5=\dfrac{2}{5\pi}$\\[2mm]
+.
+}
+
+\vfill 
+
+\rem{ Si $T$ (en seconde , $s$) est la période d'une fonction $f$ alors $\omega$ est appelé sa pulsation (en radians par seconde , $rad.s^{-1}$) , on note alors la fréquence d'un signal $f=\dfrac{\omega}{2\pi}$. Son unité étant le Hertz ($Hz$).
+
+}
+
+\vfill 
+
+\begin{mybox}
+    \textbf{1.2. Calculs des coefficients}
+\end{mybox}
+
+Nous admettrons les résultats suivants : \fbox{$a_0=\dfrac{1}{T} \displaystyle \int_\alpha^{\alpha+T} f(t)\mathrm{d}t$}\\[3mm]
+$a_0$ est en fait la \textbf{valeur moyenne} de la fonction $f$ sur une période.
+\vspace{3mm}
+
+\rem{Le réel $\alpha$ est choisi arbitrairement et le résultat de l'intégrale ne dépend pas de ce choix. On prendra le plus souvent $\alpha = 0$ ou $\alpha = \dfrac{-T}{2}.$
+
+}
+
+\vspace{0.3cm}
+
+\begin{multicols}{2}
+\begin{center}
+\fbox{$a_n=\dfrac{2}{T} \displaystyle \int_\alpha^{\alpha+T} f(t)\cos(n\omega t)\mathrm{d}t$} \\
+\fbox{$b_n=\dfrac{2}{T} \displaystyle \int_\alpha^{\alpha+T} f(t)\sin(n\omega t)\mathrm{d}t$} \\
+\end{center}\end{multicols}
+
+\vfill 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\rem{Si la fonction $f$ est de période $2\pi$ alors on a $\omega = 1$ et :\\[3 mm]
+$a_0=\dfrac{1}{2\pi} \displaystyle \int_\alpha^{\alpha+2\pi} f(t)\mathrm{d}t$,\hfill $a_n=\dfrac{1}{\pi} \displaystyle \int_\alpha^{\alpha+2\pi} f(t)\cos(n t)\mathrm{d}t$, \hfill $b_n=\dfrac{1}{\pi} \displaystyle \int_\alpha^{\alpha+2\pi} f(t)\sin(n t)\mathrm{d}t$.
+
+}
+
+
+\fcolorbox[gray]{0}{0.9}{\textbf{Activité 1. Calculer les coefficients de Fourier à la main.}}\\[2mm]
+
+On étudie la fonction $f$, périodique de période $T=2\pi$, définie sur $[0\,;\,2\pi[$ par :
+$f(x)=1$ si $x\in[0\,;\,\pi]$, $f(x)=0$ si $x\in\,]\pi\,;\,2\pi]$.
+
+On note $\omega = \dfrac{2\pi}{T} = 1$.
+
+\textbf{Calcul de $a_0$}
+
+\cor{
+$$a_0 = \frac{1}{T}\int_0^{T} f(x)\,\mathrm{d}x
+     = \frac{1}{2\pi}\int_0^{\pi} 1\,\mathrm{d}x
+     = \frac{1}{2\pi}\bigl[\,x\,\bigr]_0^{\pi}
+     = \frac{\pi}{2\pi} = \boxed{\frac{1}{2}}$$
+}
+
+\textbf{Calcul de $a_n$}
+
+\cor{
+	\vspace{8mm}
+$$a_n = \frac{2}{T}\int_0^{T} f(x)\cos(n\omega x)\,\mathrm{d}x
+      = \frac{1}{\pi}\int_0^{\pi}\cos(nx)\,\mathrm{d}x
+      = \frac{1}{\pi}\left[\frac{\sin(nx)}{n}\right]_0^{\pi}
+      = \frac{\sin(n\pi) - \sin(0)}{n\pi} = \boxed{0} \quad \forall\, n\geqslant 1$$ 
+
+En effet, $\sin(n\pi)=0$ pour tout entier $n$.
+
+\vspace{8mm}
+}
+
+\textbf{Calcul de $b_n$}
+
+\cor{
+	\vspace{8mm}
+	
+$$b_n = \frac{2}{T}\int_0^{T} f(x)\sin(n\omega x)\,\mathrm{d}x
+      = \frac{1}{\pi}\int_0^{\pi}\sin(nx)\,\mathrm{d}x
+      = \frac{1}{\pi}\left[\frac{-\cos(nx)}{n}\right]_0^{\pi}
+      = \frac{1-\cos(n\pi)}{n\pi}$$ \\[3mm]
+
+\begin{itemize}
+  \item Si $n$ est \textbf{pair} : $\cos(n\pi)=1$, donc $b_n = 0$.
+  \item Si $n$ est \textbf{impair} : $\cos(n\pi)=-1$, donc $b_n = \dfrac{2}{n\pi}$.
+\end{itemize}
+\vspace{8mm}
+}
+
+\textbf{Expression de $S(x)$}
+
+\cor{
+	\vspace{8mm}
+$$\boxed{S(x) = \frac{1}{2} + \frac{2}{\pi}\sum_{\substack{n=1\\n\text{ impair}}}^{+\infty}\frac{\sin(nx)}{n}
+= \frac{1}{2} + \frac{2}{\pi}\left(\sin x + \frac{\sin 3x}{3} + \frac{\sin 5x}{5} + \cdots\right)}$$
+\vspace{8mm}
+}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Exercice 1}}\\[2mm]
+
+On étudie $f$ périodique de période $T=2\pi$, avec $f=1$ sur $[0;\pi/2]$ et $f=0$ sur $]\pi/2;2\pi]$.
+
+On note $\omega=1$.
+
+\textbf{Calcul de $a_0$}
+
+\cor{
+$$a_0 = \frac{1}{2\pi}\int_0^{2\pi} f(x)\,\mathrm{d}x
+= \frac{1}{2\pi}\int_0^{\pi/2}1\,\mathrm{d}x
+= \frac{1}{2\pi}\cdot\frac{\pi}{2} = \boxed{\frac{1}{4}}$$
+}
+
+\textbf{Calcul de $a_n$}
+
+\cor{
+$$a_n = \frac{1}{\pi}\int_0^{\pi/2}\cos(nx)\,\mathrm{d}x
+= \frac{1}{\pi}\left[\frac{\sin(nx)}{n}\right]_0^{\pi/2}
+= \boxed{\frac{\sin\!\left(\dfrac{n\pi}{2}\right)}{n\pi}}$$
+
+Remarque : $a_n=0$ si $n$ est pair (car $\sin(n\pi/2)=0$), $a_n=\pm\dfrac{1}{n\pi}$ si $n$ est impair.
+}
+
+\cor{
+	\vspace{4mm}
+Valeurs de $n=1$ à $n=5$ :
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|>{\centering\arraybackslash}m{1.2cm}|*{5}{>{\centering\arraybackslash}m{2cm}|}}
+\hline
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ \\
+\hline
+$\sin\!\bigl(\tfrac{n\pi}{2}\bigr)$ & $1$ & $0$ & $-1$ & $0$ & $1$ \\
+\hline
+$a_n$ & $\dfrac{1}{\pi}$ & $0$ & $\dfrac{-1}{3\pi}$ & $0$ & $\dfrac{1}{5\pi}$ \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1.4}
+\end{center}
+\vspace{4mm}
+}
+
+\textbf{Calcul de $b_n$}
+
+\cor{
+$$b_n = \frac{1}{\pi}\int_0^{\pi/2}\sin(nx)\,\mathrm{d}x
+= \frac{1}{\pi}\left[\frac{-\cos(nx)}{n}\right]_0^{\pi/2}
+= \frac{1}{\pi}\cdot\frac{1-\cos\!\left(\dfrac{n\pi}{2}\right)}{n}
+= \boxed{\frac{1-\cos\!\left(\dfrac{n\pi}{2}\right)}{n\pi}}$$
+}
+
+\cor{
+	\vspace{8mm}
+Valeurs de $n=1$ à $n=5$ :
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|>{\centering\arraybackslash}m{3.2cm}|*{5}{>{\centering\arraybackslash}m{2cm}|}}
+\hline
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ \\
+\hline
+$1-\cos\!\bigl(\tfrac{n\pi}{2}\bigr)$ & $1$ & $2$ & $1$ & $0$ & $1$ \\
+\hline
+$b_n$ & $\dfrac{1}{\pi}$ & $\dfrac{1}{\pi}$ & $\dfrac{1}{3\pi}$ & $0$ & $\dfrac{1}{5\pi}$ \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1.4}
+\end{center}
+\vspace{8mm}
+}
+
+Écrire le développement en série de Fourier de la fonction f pour jusqu’à n = 4
+\cor{
+	\vspace{8mm}
+$$S_4(x) = \frac{1}{4} + \frac{1}{\pi}\cos x + \frac{1}{\pi}\sin x + \frac{1}{\pi}\sin 2x - \frac{1}{3\pi}\cos 3x + \frac{1}{3\pi}\sin 3x$$
+\vspace{8mm}
+}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Exercice 2}}\\[2mm]
+
+On étudie $f$ périodique de période $T=2\pi$, avec $f=1$ sur $[0;\pi]$ et $f=-1$ sur $]\pi;2\pi]$.
+
+\textbf{Calcul de $a_0$}
+
+\cor{
+	\vspace{4mm}
+$$a_0 = \frac{1}{2\pi}\int_0^{2\pi} f(x)\,\mathrm{d}x
+= \frac{1}{2\pi}\left[\int_0^{\pi} 1\,\mathrm{d}x + \int_{\pi}^{2\pi}(-1)\,\mathrm{d}x\right]
+= \frac{1}{2\pi}\bigl[\pi - \pi\bigr] = \boxed{0}$$
+\vspace{4mm}
+}
+
+\textbf{Calcul de $a_n$}
+
+\cor{
+\begin{align*}
+a_n &= \frac{1}{\pi}\int_0^{2\pi} f(x)\cos(nx)\,\mathrm{d}x \\
+&= \frac{1}{\pi}\left[\int_0^{\pi}1\cdot\cos(nx)\,\mathrm{d}x + \int_{\pi}^{2\pi}(-1)\cos(nx)\,\mathrm{d}x\right] \\
+&= \frac{1}{\pi}\left[\left[\frac{\sin(nx)}{n}\right]_0^{\pi} - \left[\frac{\sin(nx)}{n}\right]_{\pi}^{2\pi}\right] \\
+&= \frac{1}{\pi}\left[\frac{\sin(n\pi)-\sin(0)}{n} - \frac{\sin(2n\pi)-\sin(n\pi)}{n}\right] \\
+&= \frac{1}{\pi}\left[\frac{0-0}{n} - \frac{0-0}{n}\right] = \boxed{0}
+\end{align*}
+}
+
+\textbf{Calcul de $b_n$}
+
+\cor{
+\begin{align*}
+b_n &= \frac{1}{\pi}\int_0^{2\pi} f(x)\sin(nx)\,\mathrm{d}x \\
+&= \frac{1}{\pi}\left[\int_0^{\pi}1\cdot\sin(nx)\,\mathrm{d}x + \int_{\pi}^{2\pi}(-1)\sin(nx)\,\mathrm{d}x\right] \\
+&= \frac{1}{\pi}\left[\left[\frac{-\cos(nx)}{n}\right]_0^{\pi} - \left[\frac{-\cos(nx)}{n}\right]_{\pi}^{2\pi}\right] \\
+&= \frac{1}{\pi}\left[\frac{1-\cos(n\pi)}{n} - \frac{\cos(n\pi)-1}{n}\right]
+= \frac{2\bigl(1-\cos(n\pi)\bigr)}{n\pi}
+\end{align*}
+
+\begin{itemize}
+  \item Si $n$ est \textbf{pair} : $\cos(n\pi)=1$, donc $b_n=0$.
+  \item Si $n$ est \textbf{impair} : $\cos(n\pi)=-1$, donc $b_n=\dfrac{4}{n\pi}$.
+\end{itemize}
+}
+
+\vspace{3mm}
+
+\textbf{Expression de $S(x)$}
+
+\cor{
+$$\boxed{S(x) = \frac{4}{\pi}\sum_{\substack{n=1\\n\text{ impair}}}^{+\infty}\frac{\sin(nx)}{n}
+= \frac{4}{\pi}\left(\sin x + \frac{\sin 3x}{3} + \frac{\sin 5x}{5}+\cdots\right)}$$
+}
+
+\vspace{3mm}
+
+\textbf{Développement au rang 4}
+
+\cor{
+$$S_4(x) = \frac{4}{\pi}\sin x + \frac{4}{3\pi}\sin 3x$$
+}
+
+\vspace{5mm}
+
+\newpage 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Exercice 3}}\\[2mm]
+
+On étudie $f$ périodique de période $T=2$, avec $f=1$ sur $[0;1[$ et $f=0$ sur $[1;2[$.
+
+On note $\omega = \dfrac{2\pi}{T} = \pi$.
+
+\textbf{Calcul de $a_0$}
+
+\cor{
+	\vspace{3mm}
+$$a_0 = \frac{1}{T}\int_0^{T} f(x)\,\mathrm{d}x
+= \frac{1}{2}\left[\int_0^{1}1\,\mathrm{d}x + \int_1^{2}0\,\mathrm{d}x\right]
+= \frac{1}{2}\bigl[1 + 0\bigr] = \boxed{\frac{1}{2}}$$
+\vspace{3mm}
+}
+
+\vfill 
+
+
+\textbf{Calcul de $a_n$}
+
+\cor{
+	\vspace{3mm}
+\begin{align*}
+a_n &= \frac{2}{T}\int_0^{T} f(x)\cos(n\omega x)\,\mathrm{d}x \\
+&= \int_0^{1}1\cdot\cos(n\pi x)\,\mathrm{d}x + \int_1^{2}0\cdot\cos(n\pi x)\,\mathrm{d}x \\
+&= \left[\frac{\sin(n\pi x)}{n\pi}\right]_0^{1} \\
+&= \frac{\sin(n\pi) - \sin(0)}{n\pi} = \frac{0}{n\pi} = \boxed{0}
+\end{align*}
+\vspace{3mm}
+
+}
+
+\vfill 
+
+\textbf{Calcul de $b_n$}
+
+\cor{
+	\vspace{3mm}
+	
+\begin{align*}
+b_n &= \frac{2}{T}\int_0^{T} f(x)\sin(n\omega x)\,\mathrm{d}x \\
+&= \int_0^{1}1\cdot\sin(n\pi x)\,\mathrm{d}x + \int_1^{2}0\cdot\sin(n\pi x)\,\mathrm{d}x \\
+&= \left[\frac{-\cos(n\pi x)}{n\pi}\right]_0^{1} \\
+&= \frac{-\cos(n\pi)+\cos(0)}{n\pi} = \frac{1-\cos(n\pi)}{n\pi}
+\end{align*}
+
+\begin{itemize}
+  \item Si $n$ est \textbf{pair} : $\cos(n\pi)=1$, donc $b_n=0$.
+  \item Si $n$ est \textbf{impair} : $\cos(n\pi)=-1$, donc $b_n=\dfrac{2}{n\pi}$.
+\end{itemize}
+\vspace{3mm}
+
+}
+
+\vfill 
+
+
+\cor{\vspace{3mm}
+	
+$$\boxed{S(x) = \frac{1}{2} + \frac{2}{\pi}\left(\sin(\pi x)+\frac{\sin(3\pi x)}{3}+\frac{\sin(5\pi x)}{5}+\cdots\right)}$$
+\vspace{3mm}
+}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{mybox}
+    3. Calcul des coefficients de Fourier dans les cas particuliers
+\end{mybox}
+
+\begin{center}
+\begin{minipage}{14cm}
+\begin{bclogo}[couleur = white,logo=\bcetoile, arrondi = 0.1]{Bon à savoir}
+\cor{
+	\vspace{3mm}
+\begin{itemize}
+  \item Si $f$ est \textbf{impaire} : $\displaystyle\int_{-\alpha}^{\alpha} f(x)\,\mathrm{d}x = 0$
+  \item Si $f$ est \textbf{paire} : $\displaystyle\int_{-\alpha}^{\alpha} f(x)\,\mathrm{d}x = 2\int_0^{\alpha} f(x)\,\mathrm{d}x$
+\end{itemize}
+\vspace{3mm}
+}
+\end{bclogo}
+\end{minipage}
+\end{center}
+
+\vfill
+
+\begin{mybox}
+    3.1. Si la fonction $f$ est impaire
+\end{mybox}
+
+\vspace{3mm}
+
+\cor{
+\vspace{3mm}
+Comme $f$ est impaire, tous les coefficients cosinus sont nuls :
+$$a_0 = 0 \qquad \text{et} \qquad a_n = 0 \quad \forall\,n\geqslant 1$$
+La formule des $b_n$ se simplifie (on intègre sur une demi-période) :
+$$\boxed{b_n = \frac{4}{T}\int_0^{T/2} f(x)\sin(n\omega x)\,\mathrm{d}x}$$
+\vspace{3mm}
+}
+
+\vfill
+
+\begin{mybox}
+    3.2. Si la fonction $f$ est paire
+\end{mybox}
+
+\vspace{3mm}
+
+\cor{
+	\vspace{3mm}
+	
+Comme $f$ est paire, tous les coefficients sinus sont nuls :
+$$b_n = 0 \quad \forall\,n\geqslant 1$$
+Les formules des $a_0$ et $a_n$ se simplifient (on intègre sur une demi-période) :
+$$\boxed{a_0 = \frac{2}{T}\int_0^{T/2} f(x)\,\mathrm{d}x} \qquad \boxed{a_n = \frac{4}{T}\int_0^{T/2} f(x)\cos(n\omega x)\,\mathrm{d}x}$$
+\vspace{3mm}
+}
+
+\vfill
+
+\begin{center}
+\begin{minipage}{14cm}
+\begin{bclogo}[couleur = white,logo=\bcetoile, arrondi = 0.1]{Bon à savoir}
+\cor{
+Dans les deux cas, on dit qu'on \textbf{travaille sur une demi-période}.
+}
+\end{bclogo}
+\end{minipage}
+\end{center}
+
+\vfill 
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Activité A4 -- Cas particuliers (fonction paire)}}\\[2mm]
+
+On étudie $f$ \textbf{paire}, périodique de période $T=\pi$, avec $f(x)=x$ sur $[0;\pi/2]$.
+
+On note $\omega = \dfrac{2\pi}{T} = 2$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.4cm, y=2.2cm]
+\def\xmin{-4.4} \def\xmax{4.4} \def\ymin{-1.4} \def\ymax{1.4}
+\draw[xstep=0.25,ystep=0.1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[xstep=1,ystep=0.5,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+\foreach \n/\lab in {-4/{-2\pi},-3/{-\frac{3\pi}{2}},-2/{-\pi},-1/{-\frac{\pi}{2}},1/{\frac{\pi}{2}},2/{\pi},3/{\frac{3\pi}{2}},4/{2\pi}}
+    \draw[blue!70!black] (\n,2pt)--(\n,-6pt) node[below]{\small$\lab$};
+\foreach \y in {-1,-0.5,0.5,1}
+    \draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+\draw[very thick, red!70!black] (-4.4,0.4)--(-4,0)--(-3,1)--(-2,0)--(-1,1)--(0,0)--(1,1)--(2,0)--(3,1)--(4,0)--(4.4,0.4);
+\draw[black!60,thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+\end{center}
+
+\cor{
+Comme $f$ est \textbf{paire} : $b_n=0$ pour tout $n\geqslant 1$.
+}
+
+\textbf{Calcul de $a_0$}
+
+\cor{
+Pour une fonction paire de période $T=\pi$ :
+$$a_0 = \frac{2}{T}\int_0^{T/2} f(x)\,\mathrm{d}x
+= \frac{2}{\pi}\int_0^{\pi/2} x\,\mathrm{d}x
+= \frac{2}{\pi}\left[\frac{x^2}{2}\right]_0^{\pi/2}
+= \frac{2}{\pi}\cdot\frac{\pi^2}{8} = \boxed{\frac{\pi}{4}}$$
+}
+
+\textbf{Calcul de $a_n$}
+
+\cor{
+$$a_n = \frac{4}{T}\int_0^{T/2} f(x)\cos(n\omega x)\,\mathrm{d}x
+= \frac{4}{\pi}\int_0^{\pi/2} x\cos(2nx)\,\mathrm{d}x$$
+
+On intègre par parties avec $u=x$ et $v'=\cos(2nx)$ :
+$$\int_0^{\pi/2} x\cos(2nx)\,\mathrm{d}x
+= \left[\frac{x\sin(2nx)}{2n}\right]_0^{\pi/2} - \int_0^{\pi/2}\frac{\sin(2nx)}{2n}\,\mathrm{d}x$$
+$$= \frac{\pi}{2}\cdot\frac{\sin(n\pi)}{2n} - \frac{1}{2n}\left[\frac{-\cos(2nx)}{2n}\right]_0^{\pi/2}
+= 0 + \frac{1}{4n^2}\bigl(\cos(n\pi)-1\bigr)
+= \frac{(-1)^n-1}{4n^2}$$
+
+Donc :
+$$a_n = \frac{4}{\pi}\cdot\frac{(-1)^n-1}{4n^2} = \frac{(-1)^n-1}{\pi n^2}$$
+
+\begin{itemize}
+  \item Si $n$ est \textbf{pair} : $(-1)^n=1$, donc $a_n=0$.
+  \item Si $n$ est \textbf{impair} : $(-1)^n=-1$, donc $a_n=\dfrac{-2}{\pi n^2}$.
+\end{itemize}
+}
+
+\textbf{Expression de $S(x)$}
+
+\cor{
+$$\boxed{S(x) = \frac{\pi}{4} - \frac{2}{\pi}\sum_{\substack{n=1\\n\text{ impair}}}^{+\infty}\frac{\cos(2nx)}{n^2}
+= \frac{\pi}{4} - \frac{2}{\pi}\left(\cos(2x)+\frac{\cos(6x)}{9}+\frac{\cos(10x)}{25}+\cdots\right)}$$
+}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{QCM -- Faire le point}}\\[2mm]
+
+\cor{
+\textbf{Question 1.} Si pour tout $n>0$, $a_n=0$, la fonction $f$ est $\ldots$
+
+\textbf{Réponse : b) est impaire.}
+
+En effet, pour une fonction impaire, tous les coefficients cosinus sont nuls ($a_n=0$ pour tout $n\geqslant 0$). La nullité des $a_n$ pour $n>0$ est caractéristique de l'absence de termes en cosinus dans le développement, ce qui est le signe d'une fonction impaire (ou nulle).
+}
+
+\vfill 
+
+
+\cor{
+\textbf{Question 2.} $f$ paire, $T=2\pi$, $f=\pi$ sur $[0;\pi/2[$ et $f=0$ sur $[\pi/2;\pi[$.
+
+\textbf{Réponse : b) $a_n=\dfrac{2}{\pi}\displaystyle\int_0^{\pi/2}\pi\cos(nt)\,\mathrm{d}t$}
+
+Car pour une fonction paire de période $T=2\pi$ ($\omega=1$) :
+$$a_n = \frac{4}{T}\int_0^{T/2}f(x)\cos(nx)\,\mathrm{d}x = \frac{2}{\pi}\int_0^{\pi}f(x)\cos(nx)\,\mathrm{d}x$$
+Et comme $f=0$ sur $[\pi/2;\pi]$, on n'intègre que sur $[0;\pi/2]$, d'où la réponse b).
+
+L'option a) utilise $\frac{1}{\pi}$ (formule générale, non simplifiée pour les paires) et intègre sur $[0;\pi]$, ce qui doublerait le résultat.
+L'option c) intègre sur $[0;\pi]$ avec le facteur $\frac{2}{\pi}$, ce qui serait correct si $f\neq 0$ sur tout $[0;\pi]$.
+}
+
+\vfill 
+
+
+\cor{
+\textbf{Question 3.} $f$ périodique de période $\pi$ (non précisée paire ou impaire), $f=\pi$ sur $[0;\pi/2[$ et $f=0$ sur $[\pi/2;\pi[$.
+
+\textbf{Calcul effectif :} Avec $T=\pi$, $\omega=2$ :
+\begin{align*}
+a_0 &= \frac{1}{\pi}\int_0^{\pi}f(x)\,\mathrm{d}x = \frac{1}{\pi}\int_0^{\pi/2}\pi\,\mathrm{d}x = \frac{\pi}{2} \neq \pi \quad \Rightarrow\text{ a) faux}\\
+a_n &= \frac{2}{\pi}\int_0^{\pi/2}\pi\cos(2nx)\,\mathrm{d}x = 2\left[\frac{\sin(2nx)}{2n}\right]_0^{\pi/2} = \frac{\sin(n\pi)}{n} = 0 \quad \forall n\geqslant 1\\
+b_n &= \frac{2}{\pi}\int_0^{\pi/2}\pi\sin(2nx)\,\mathrm{d}x = \frac{1-\cos(n\pi)}{n} \neq 0 \text{ pour } n \text{ impair} \quad\Rightarrow\text{ b) faux}
+\end{align*}
+Aucune des trois propositions n'est parfaitement rédigée ; la réponse la plus proche est \textbf{c) (aucune règle simplificatrice ne s'applique directement)}, car $f$ n'est ni paire ni impaire et les simplifications de a) et b) sont fausses.
+}
+
+\vfill 
+
+
+\cor{
+\textbf{Question 4.} $f$ de période $2\pi$, $f(x)=x^2$ sur $[0;2\pi[$.
+
+\textbf{Réponse : c) $f$ est ni paire ni impaire.}
+
+En effet, $f(-1)=f(-1+2\pi)=f(2\pi-1)=(2\pi-1)^2\neq 1=f(1)$. Donc $f(-x)\neq f(x)$ en général, $f$ n'est pas paire. De même $f(-1)\neq -f(1)$, donc $f$ n'est pas impaire.
+}
+
+\vfill 
+
+
+\cor{
+\textbf{Question 5.} $T=4$, donc $\omega=\dfrac{2\pi}{T}=\dfrac{2\pi}{4}=\dfrac{\pi}{2}$.
+
+\textbf{Réponse : a) $\omega=\dfrac{\pi}{2}$}
+}
+
+\vfill 
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Exercice 4}}\\[2mm]
+
+On étudie $f$ \textbf{impaire}, périodique de période $T=\pi$, avec $f(x)=\dfrac{1}{2}$ sur $\left[0;\dfrac{\pi}{4}\right[$
+et $f(x)=0$ sur $\left]\dfrac{\pi}{4};\dfrac{\pi}{2}\right]$.
+
+On note $\omega = \dfrac{2\pi}{T} = 2$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.2cm, y=2.2cm]
+\def\xmin{-4.4} \def\xmax{6.4} \def\ymin{-1.4} \def\ymax{1.4}
+\draw[xstep=0.25,ystep=0.1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[xstep=1,ystep=0.5,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+\foreach \n/\lab in {-4/{-2\pi},-3/{-\frac{3\pi}{2}},-2/{-\pi},-1/{-\frac{\pi}{2}},1/{\frac{\pi}{2}},2/{\pi},3/{\frac{3\pi}{2}},4/{2\pi},5/{\frac{5\pi}{2}},6/{3\pi}}
+    \draw[blue!70!black] (\n,2pt)--(\n,-6pt) node[below]{\small$\lab$};
+\foreach \y in {-1,-0.5,0.5,1}
+    \draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+\begin{scope}
+\clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+% Saut -0.5→+0.5 en x = -4,-2,0,2,4,6  (période T=2 unités TikZ)
+\foreach \s in {-4,-2,0,2,4,6} {
+    \draw[very thick, red!70!black] ({\s-0.5},-0.5)--(\s,-0.5);   % f=-0.5
+    \draw[very thick, red!70!black] (\s,0.5)--({\s+0.5},0.5);     % f=+0.5
+    \draw[dashed, red!70!black] (\s,-0.5)--(\s,0.5);              % saut vertical
+    \draw[dashed, red!70!black] ({\s-0.5},-0.5)--({\s-0.5},0);   % chute 0→-0.5
+    \draw[dashed, red!70!black] ({\s+0.5},0)--({\s+0.5},0.5);    % chute 0.5→0
+}
+\foreach \s in {-4,-2,0,2,4} {
+    \draw[very thick, red!70!black] ({\s+0.5},0)--({\s+1.5},0);   % f=0
+}
+\end{scope}
+\draw[black!60,thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+\end{center}
+
+\vfill 
+
+
+\cor{
+Comme $f$ est \textbf{impaire} : $a_0 = 0$ et $a_n = 0$ pour tout $n\geqslant 1$.
+}
+
+\vfill 
+
+\textbf{Calcul de $b_n$}
+
+\cor{
+$$b_n = \frac{4}{T}\int_0^{T/2} f(x)\sin(n\omega x)\,\mathrm{d}x
+= \frac{4}{\pi}\int_0^{\pi/2} f(x)\sin(2nx)\,\mathrm{d}x
+= \frac{4}{\pi}\int_0^{\pi/4} \frac{1}{2}\sin(2nx)\,\mathrm{d}x$$
+
+$$= \frac{2}{\pi}\left[\frac{-\cos(2nx)}{2n}\right]_0^{\pi/4}
+= \frac{2}{\pi}\cdot\frac{1}{2n}\Bigl(1-\cos\!\Bigl(\frac{n\pi}{2}\Bigr)\Bigr)
+= \boxed{\frac{1}{n\pi}\left(1-\cos\!\left(\frac{n\pi}{2}\right)\right)}$$
+
+Calcul des premiers termes :
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$n$ & 1 & 2 & 3 & 4 & 5 \\
+\hline
+$\cos(n\pi/2)$ & $0$ & $-1$ & $0$ & $1$ & $0$ \\
+\hline
+$b_n$ & $\dfrac{1}{\pi}$ & $\dfrac{1}{\pi}$ & $\dfrac{1}{3\pi}$ & $0$ & $\dfrac{1}{5\pi}$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\vfill 
+
+\textbf{Expression de $S(x)$}
+
+\cor{
+$$S(x) = \frac{1}{\pi}\sin(2x)+\frac{1}{\pi}\sin(4x)+\frac{1}{3\pi}\sin(6x)+0\cdot\sin(8x)+\frac{1}{5\pi}\sin(10x)+\cdots$$
+
+$$= \frac{1}{\pi}\sum_{n=1}^{+\infty}\frac{1-\cos\!\left(\dfrac{n\pi}{2}\right)}{n}\sin(2nx)$$
+}
+
+\vfill 
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{4. La formule de Parseval et ses applications}}\\[3mm]
+
+\fcolorbox[gray]{0}{0.9}{\textbf{4.1. La valeur efficace d'un signal.}}\\[3mm]
+
+\begin{center}
+\fbox{Si $f$ est une fonction périodique de période $T$, sa valeur efficace est :
+$f_{\text{eff}}=\sqrt{\dfrac{1}{T}\displaystyle\int_\alpha^{\alpha+T}\bigl(f(x)\bigr)^2\,\mathrm{d}x}$}
+\end{center}
+
+\vspace{5mm}
+
+Cette formule est souvent utilisée en sciences physiques pour calculer la tension efficace, l'intensité efficace\ldots
+
+\vspace{5mm}
+
+\fcolorbox[gray]{0}{0.9}{\textbf{4.2. La valeur efficace d'une fonction développable en série de Fourier.}}\\[3mm]
+
+Considérons une fonction de période $T$ dont le développement en série de Fourier est :
+$$f(x)=a_0+\sum_{n=1}^{+\infty}\bigl(a_n\cos(n\omega x)+b_n\sin(n\omega x)\bigr)$$
+
+Nous admettrons \textbf{la formule de Parseval} :
+
+\begin{center}
+\fbox{$\dfrac{1}{T}\displaystyle\int_\alpha^{\alpha+T}\bigl(f(x)\bigr)^2\,\mathrm{d}x
+= a_0^2+\dfrac{1}{2}\displaystyle\sum_{n=1}^{+\infty}\bigl(a_n^2+b_n^2\bigr)$}
+\end{center}
+
+\vspace{5mm}
+
+Si on note $f_{\text{eff}}$ la valeur efficace de la fonction $f$, ce résultat peut aussi s'écrire :
+
+\begin{center}
+\fbox{$f_{\text{eff}}^2=a_0^2+\dfrac{1}{2}\displaystyle\sum_{n=1}^{+\infty}\bigl(a_n^2+b_n^2\bigr)$}
+\end{center}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Activité A5 -- Valeur efficace}}\\[2mm]
+
+On considère la fonction $f$ définie par :
+$\begin{cases}
+    f(x) & \textrm{est paire},\quad f(x)\textrm{ est de période }2\pi \\
+    f(x)=1 & \textrm{pour~~} x \in \left[0;\dfrac{\pi}{2}\right],\quad
+    f(x)=0 \textrm{ pour~~} x \in \left]\dfrac{\pi}{2};\pi\right]
+\end{cases}$
+
+\begin{center}
+\begin{tikzpicture}[x=1.0cm, y=1.8cm]
+\def\xmin{-4.4} \def\xmax{6.4} \def\ymin{-1.4} \def\ymax{1.4}
+\draw[xstep=0.25,ystep=0.1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[xstep=1,ystep=0.5,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{$x$};
+\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{$y$};
+\foreach \n/\lab in {-4/{-2\pi},-3/{-\frac{3\pi}{2}},-2/{-\pi},-1/{-\frac{\pi}{2}},1/{\frac{\pi}{2}},2/{\pi},3/{\frac{3\pi}{2}},4/{2\pi},5/{\frac{5\pi}{2}},6/{3\pi}}
+    \draw[blue!70!black] (\n,2pt)--(\n,-6pt) node[below]{\small$\lab$};
+\foreach \y in {-1,-0.5,0.5,1}
+    \draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+\begin{scope}
+\clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+\foreach \c in {-4, 0, 4} {
+    \draw[very thick, red!70!black] ({\c-1},1)--({\c+1},1);
+    \draw[dashed, red!70!black] ({\c-1},0)--({\c-1},1);
+    \draw[dashed, red!70!black] ({\c+1},0)--({\c+1},1);
+}
+\foreach \c in {-4, 0, 4} {
+    \draw[very thick, red!70!black] ({\c+1},0)--({\c+3},0);
+}
+\end{scope}
+\draw[black!60,thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+\end{center}
+
+Nous avons obtenu le début du développement en série de Fourier :
+$$g(x)=\frac{1}{2}+\frac{2}{\pi}\cos(x)-\frac{2}{3\pi}\cos(3x)$$
+Calculer les valeurs efficaces $f_{\text{eff}}$ et $g_{\text{eff}}$ et donner la valeur approchée de $\dfrac{g_{\text{eff}}}{f_{\text{eff}}}$.
+
+\textbf{Calcul de $f_{\text{eff}}$}
+
+\cor{
+$$f_{\text{eff}}^2 = \frac{1}{T}\int_0^{T}\bigl(f(x)\bigr)^2\,\mathrm{d}x
+= \frac{1}{\pi}\int_0^{\pi}\bigl(f(x)\bigr)^2\,\mathrm{d}x \quad (f\text{ paire})
+= \frac{1}{\pi}\int_0^{\pi/2}1\,\mathrm{d}x = \frac{1}{2}
+\quad\Rightarrow\quad \boxed{f_{\text{eff}} = \frac{\sqrt{2}}{2} \approx 0{,}707}$$
+}
+
+\textbf{Calcul de $g_{\text{eff}}$ par la formule de Parseval} \quad ($a_0=\tfrac{1}{2}$, $a_1=\tfrac{2}{\pi}$, $a_3=\tfrac{-2}{3\pi}$, autres nuls)
+
+\cor{
+\begin{align*}
+g_{\text{eff}}^2 &= a_0^2 + \frac{1}{2}(a_1^2+a_3^2)
+= \frac{1}{4} + \frac{1}{2}\left(\frac{4}{\pi^2}+\frac{4}{9\pi^2}\right)
+= \frac{1}{4} + \frac{2}{\pi^2}\cdot\frac{10}{9}
+\approx 0{,}250 + 0{,}225 = 0{,}475 \\
+&\Rightarrow\quad \boxed{g_{\text{eff}} \approx \sqrt{0{,}475} \approx 0{,}689}
+\end{align*}
+}
+
+\textbf{Rapport $\dfrac{g_{\text{eff}}}{f_{\text{eff}}}$}
+
+\cor{
+$$\frac{g_{\text{eff}}}{f_{\text{eff}}} \approx \frac{0{,}689}{0{,}707} \approx \boxed{0{,}97}$$
+La valeur efficace de $g$ (avec seulement 3 termes) représente environ $97\,\%$ de celle de $f$ : l'approximation est très bonne.
+}
+
+\vspace{3mm}
+\textbf{4.3 Applications}\\
+En physique cette formule permet de voir si l'utilisation des premiers harmoniques permet d'utiliser le début du développement en série de Fourier pour remplacer un signal \textbf{(voir A4)}.
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\large
+\begin{center}
+\textbf{FICHE ESSENTIEL}\\[0.5cm]
+\normalsize
+\end{center}
+\hrule
+\vspace{8mm}
+\begin{center}
+\fbox{
+\begin{minipage}{16.5cm}{
+\textbf{Les séries numériques}\\
+
+Les séries géométriques :\\
+La série $\displaystyle \sum\limits_{n=0}^{+\infty}q^n$ converge si et seulement si $q \in ]-1;1[$.\\
+
+Les séries de Riemann :\\
+La série $\displaystyle \sum\limits_{n=1}^{+\infty}\dfrac{1}{n^\alpha}$ converge si et seulement si $\alpha>1$.\\[2mm]
+
+\vspace{8mm}
+\textbf{Le développement en série de Fourier d'une fonction}\\
+Si $f$ est une fonction périodique de période $T$, on note \textbf{sa pulsation} $\omega = \dfrac{2\pi}{T}$\\
+Son développement en série de Fourier est $S(x)=a_0+\displaystyle \sum\limits_{n=1}^{+\infty}(a_n\cos(n\omega x) + b_n\sin(n\omega x))$ avec :
+\begin{center}
+$a_0=\dfrac{1}{T}\displaystyle \int\limits_{\alpha}^{\alpha+T}f(x)\,\mathrm{d}x$ \quad (valeur moyenne de $f$)\\[4pt]
+$a_n=\dfrac{2}{T}\displaystyle \int\limits_{\alpha}^{\alpha+T}f(x)\cos(n\omega x)\,\mathrm{d}x$ \qquad et \qquad $b_n=\dfrac{2}{T}\displaystyle \int\limits_{\alpha}^{\alpha+T}f(x)\sin(n\omega x)\,\mathrm{d}x$
+\end{center}
+
+\vspace{8mm}
+\textbf{Cas particuliers}\\
+
+Si $f$ est une fonction \textbf{impaire} : tous les coefficients $a_n$ (y compris $a_0$) sont nuls et
+\begin{center}
+\fbox{$b_n=\dfrac{4}{T}\displaystyle \int\limits_{0}^{T/2}f(x)\sin(n\omega x)\,\mathrm{d}x$}
+\end{center}
+
+Si $f$ est une fonction \textbf{paire} : tous les coefficients $b_n$ sont nuls et
+\begin{center}
+\fbox{$a_0=\dfrac{2}{T}\displaystyle \int\limits_{0}^{T/2}f(x)\,\mathrm{d}x$ \qquad et \qquad $a_n=\dfrac{4}{T}\displaystyle \int\limits_{0}^{T/2}f(x)\cos(n\omega x)\,\mathrm{d}x$}
+\end{center}
+
+\vspace{8mm}
+\textbf{La formule de Parseval}\\
+Si la fonction $f$ de période $T$ est développable en série de Fourier, sa valeur efficace est donnée par :
+\begin{center}
+\fbox{$f_{\text{eff}}^2=\dfrac{1}{T}\displaystyle \int\limits_{\alpha}^{\alpha+T}\bigl(f(x)\bigr)^2\,\mathrm{d}x=a_0^2+\dfrac{1}{2}\displaystyle \sum\limits_{n=1}^{+\infty}(a_n^2 + b_n^2)$}
+\end{center}
+
+\vspace{3mm}
+}
+\end{minipage}}
+\end{center}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Extrait - Brevet de technicien supérieur 10 mai 2021 - groupement A}}\\[2mm]
+\textbf{Exercice 1 \hfill 11 points}
+
+\medskip
+
+La communication par courants porteurs en ligne (ou CPL) permet de transmettre des informations en utilisant des conducteurs électriques en fonctionnement.
+
+Le principe des CPL consiste à superposer au réseau électrique un signal de haute fréquence et de basse énergie. Ce deuxième signal se propage sur l'installation électrique et peut être reçu et décodé à distance.
+
+\textbf{Partie A : Étude d'un signal}
+
+\medskip
+
+On s'intéresse à une tension périodique $U$. On note $T$ sa période.
+
+\medskip
+
+\begin{enumerate}
+\item On donne ci-dessous une représentation graphique de $U$, exprimée en volt (V), en fonction de $t$ \textbf{exprimé en microseconde} ($\mu s$). Rappel : $1\,\mu s = 10^{-6}~s$.
+
+\begin{center}
+\begin{tikzpicture}[x=0.45cm, y=0.35cm]
+\def\xmin{-11} \def\xmax{20} \def\ymin{-1.5} \def\ymax{14}
+\draw[xstep=1,ystep=1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[xstep=2,ystep=4,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{\small$t~(\mu s)$};
+\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{\small$U~(\text{V})$};
+\foreach \x in {-10,-8,-6,-4,-2,2,4,6,8,10,12,14,16,18}
+    \draw[blue!70!black] (\x,2pt)--(\x,-5pt) node[below]{\tiny$\x$};
+\foreach \y in {4,8,12}
+    \draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\y$};
+\draw[very thick,red!70!black] (-10,12)--(-2,12)--(-2,0)--(0,0);
+\draw[very thick,red!70!black] (0,12)--(8,12)--(8,0)--(10,0);
+\draw[very thick,red!70!black] (10,12)--(18,12)--(18,0)--(19,0);
+\draw[very thick,red!70!black] (-10,0)--(-10,12);
+\draw[very thick,red!70!black] (0,0)--(0,12);
+\draw[very thick,red!70!black] (10,0)--(10,12);
+\draw[black!60,thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+\end{center}
+
+    \begin{enumerate}
+        \item D'après la représentation graphique ci-dessus, quelle est la valeur de $T$ en microseconde ?\\
+        \cor{D'après le graphique, on lit $\mathbf{T=10\,\mu s}$.}
+
+        \item La fréquence d'un signal périodique, en Hz, suit la formule $f = \dfrac{1}{T}$ où $T$ est exprimé en seconde. Quelle est la fréquence de la tension périodique $U$ ?\\
+        \cor{$$f = \frac{1}{T} = \frac{1}{10\times 10^{-6}} = \boxed{10^5\,\text{Hz} = 100\,\text{kHz}}$$}
+    \end{enumerate}
+
+\item On modélise l'évolution de $U$ (en volt) en fonction de $t$ (en microseconde) à l'aide d'une fonction numérique $f$ définie sur $\mathbb{R}$. Ainsi : $U = f(t)$.
+
+On admet que la fonction $f$ est paire, périodique de période $T$, développable en série de Fourier et vérifie, pour tout réel $t$ :
+\[f(t) = a_0 + \displaystyle\sum_{n=1}^{+\infty}\left(a_n\cos(n\omega t) + b_n\sin(n\omega t)\right)\quad\text{avec}\quad \omega = \dfrac{2\pi}{T}.\]
+
+\newpage
+
+    \begin{enumerate}
+        \item Quelle est la valeur de $b_n$ pour tout entier $n\geqslant 1$ ? Justifier.\\
+        \cor{$f$ est paire, donc tous les coefficients $b_n$ sont nuls : $\boxed{b_n = 0}$ pour tout $n\geqslant 1$.}
+
+        \item $a_0 = \dfrac{1}{T}\displaystyle\int_0^{T} f(t)\:\mathrm{d}t$. Justifier que $a_0 = 9{,}6$.\\
+        \cor{$$a_0 = \frac{1}{10}\int_0^{8}12\,\mathrm{d}t + \frac{1}{10}\int_8^{10}0\,\mathrm{d}t = \frac{12\times 8}{10} = \boxed{9{,}6\,\text{V}}$$}
+    \end{enumerate}
+
+\item La valeur efficace de $U$, notée $U_{\text{eff}}$, vérifie : $U^2_{\text{eff}} = \dfrac{1}{T}\displaystyle\int_0^{T}[f(t)]^2\:\mathrm{d}t$. Montrer que : $U_{\text{eff}} = 10{,}7$~V.\\
+\cor{$$U_{\text{eff}}^2 = \frac{1}{10}\int_0^{8}144\,\mathrm{d}t = \frac{144\times 8}{10} = 115{,}2 \qquad\Rightarrow\qquad U_{\text{eff}} = \sqrt{115{,}2} \approx \boxed{10{,}7\,\text{V}}$$}
+
+\item Le signal correspondant à la tension $U$ est envoyé sur une ligne moyenne tension transportant une tension efficace de $M = 20\,000$~V.
+
+Le taux de distorsion harmonique par rapport au fondamental, noté $T_F$, est donné par la formule :
+\[T_F = \sqrt{\dfrac{U^2_{\text{eff}} - a_0^2}{M^2}}.\]
+On considère qu'un CPL n'a pas d'incidence sur le réseau si $T_F$ est inférieur à 0,1\,\%. Le CPL étudié dans la partie A a-t-il une incidence sur le réseau ?\\
+\cor{
+$$T_F = \sqrt{\frac{115{,}2 - (9{,}6)^2}{(20\,000)^2}} = \sqrt{\frac{23{,}04}{4\times10^8}} = \sqrt{5{,}76\times10^{-8}} = 2{,}4\times10^{-4} = 0{,}024\,\%$$
+Comme $T_F = 0{,}024\,\% < 0{,}1\,\%$, le CPL \textbf{n'a pas d'incidence} sur le réseau.
+}
+\end{enumerate}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Extrait - Brevet de technicien supérieur septembre 2020 - groupement A}}\\[2mm]
+
+Le moteur triphasé d'une voiture électrique est alimenté par un onduleur pour modifier sa vitesse.
+
+La tension simple à la sortie de cet onduleur dépend de $\omega t$ où $\omega$ est la pulsation (en rad/s) et $t$ le temps (en s). On l'exprime sous la forme $v(\omega t)$, où $v$ est une fonction paire, périodique de période $T = 2\pi$, et définie pour tout réel $x$ appartenant à l'intervalle $[0;\pi]$ par :
+\[\left\{\begin{array}{lcll}
+v(x) &=& 300  &\text{si}\quad 0 \leqslant x < \dfrac{\pi}{6} \\[6pt]
+v(x) &=& 150  &\text{si}\quad \dfrac{\pi}{6} \leqslant x \leqslant \dfrac{\pi}{2}\\[6pt]
+v(x) &=& -150 &\text{si}\quad \dfrac{\pi}{2} < x < \dfrac{5\pi}{6}\\[6pt]
+v(x) &=& -300 &\text{si}\quad \dfrac{5\pi}{6} \leqslant x \leqslant \pi
+\end{array}\right.\]
+
+\medskip
+
+\begin{enumerate}
+\item Compléter la représentation graphique de la fonction $v$ sur l'intervalle $\left[-\dfrac{3\pi}{2};\dfrac{3\pi}{2}\right]$.
+\begin{center}
+\begin{tikzpicture}[x=0.7cm, y=0.38cm]
+\def\xmin{-9.5} \def\xmax{9.5} \def\ymin{-7.5} \def\ymax{7.5}
+\draw[xstep=1,ystep=1,very thin,orange!25] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[xstep=3,ystep=2,thin,orange!55] (\xmin,\ymin) grid (\xmax,\ymax);
+\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{\small$x$};
+\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{\small$v$};
+\foreach \n/\lab in {-9/{-\frac{3\pi}{2}},-6/{-\pi},-3/{-\frac{\pi}{2}},3/{\frac{\pi}{2}},6/{\pi},9/{\frac{3\pi}{2}}}
+    \draw[blue!70!black] (\n,3pt)--(\n,-5pt) node[below]{\small$\lab$};
+\foreach \y/\lab in {-6/{-300},-3/{-150},3/{150},6/{300}}
+    \draw[blue!70!black] (2pt,\y)--(-5pt,\y) node[left]{\small$\lab$};
+% Courbe complète (prof) sur [-9.5, 9.5]
+% Parité + périodicité : paires de valeurs en TikZ (1 unité = π/6, 50V=1 unité)
+\draw[very thick,red!70!black]
+    (-9.5,3)--(-9,3)--(-9,-3)--(-7,-3)--(-7,-6)--(-5,-6)--(-5,-3)--(-3,-3)--(-3,3)--(-1,3)--(-1,6)--
+    (0,6)--(1,6)--(1,3)--(3,3)--(3,-3)--(5,-3)--(5,-6)--
+    (6,-6)--(7,-6)--(7,-3)--(9,-3)--(9,3)--(9.5,3);
+\draw[black!60,thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
+\end{tikzpicture}
+\end{center}
+\cor{La fonction $v$ est paire (symétrie par rapport à l'axe des ordonnées) et $2\pi$-périodique : on complète par réflexion puis par translation.}
+
+On admet que la fonction $v$ est développable en série de Fourier et que, pour tout réel $x$, on a :
+\[v(x) = a_0 + \displaystyle\sum_{n=1}^{+\infty}\left(a_n\cos(nx) + b_n\sin(nx)\right).\]
+
+\item Justifier que $b_n = 0$ pour tout entier $n\geqslant 1$.\\
+\cor{$v$ est paire, donc $b_n=0$ pour tout $n\geqslant 1$.}
+
+\item On rappelle que : $a_0 = \dfrac{2}{T}\displaystyle\int_0^{T/2} v(x)\:\mathrm{d}x$. Montrer que : $a_0 = 0$.\\
+\cor{
+$$a_0 = \frac{1}{\pi}\int_0^{\pi}v(x)\,\mathrm{d}x = \frac{1}{\pi}\!\left[300\cdot\frac{\pi}{6}+150\left(\frac{\pi}{2}-\frac{\pi}{6}\right)-150\left(\frac{5\pi}{6}-\frac{\pi}{2}\right)-300\left(\pi-\frac{5\pi}{6}\right)\right]$$
+$$= \frac{1}{\pi}\bigl[50\pi+50\pi-50\pi-50\pi\bigr] = \boxed{0}$$
+}
+
+\item On donne, pour tout entier $n\geqslant 1$ : $a_n = \dfrac{4}{T}\displaystyle\int_0^{T/2}v(x)\cos(nx)\:\mathrm{d}x$.
+    \begin{enumerate}
+        \item On pose : $I_n = \displaystyle\int_0^{\pi/6}300\cos(nx)\:\mathrm{d}x$ et $J_n = \displaystyle\int_{5\pi/6}^{\pi}\left[-300\cos(nx)\right]\:\mathrm{d}x$. Calculer $I_n$ et $J_n$ en fonction de $n$.\\
+        \cor{
+        $$I_n = 300\left[\frac{\sin(nx)}{n}\right]_0^{\pi/6} = \frac{300}{n}\sin\!\left(\frac{n\pi}{6}\right) \qquad
+        J_n = \frac{300}{n}\sin\!\left(\frac{5n\pi}{6}\right)$$
+        }
+
+        \item Écrire les intégrales qu'il reste à calculer pour obtenir l'expression de $a_n$ en fonction de $n$. \textbf{On ne demande pas de les calculer.}\\
+        \cor{
+        $$K_n = \int_{\pi/6}^{\pi/2}150\cos(nx)\,\mathrm{d}x \qquad\text{et}\qquad L_n = \int_{\pi/2}^{5\pi/6}(-150)\cos(nx)\,\mathrm{d}x$$
+        Puis : $a_n = \dfrac{2}{\pi}(I_n+K_n+L_n+J_n)$.
+        }
+    \end{enumerate}
+
+\item On admet que, pour tout entier $n\geqslant 1$ : $a_n = \dfrac{300}{n\pi}\!\left[\sin\!\left(\dfrac{n\pi}{6}\right)+2\sin\!\left(\dfrac{n\pi}{2}\right)+\sin\!\left(\dfrac{5n\pi}{6}\right)\right]$.
+
+Compléter le tableau ci-dessous :
+\begin{center}
+\begin{tabularx}{\linewidth}{|m{4.2cm}|*{8}{>{\centering\arraybackslash}X|}}
+\hline
+Valeurs de $n$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\ \hline
+Valeurs approchées de $a_n$ arrondies au dixième. & 0 & 286,5 & 0 & 0 & \cor{0} & \cor{57,3} & \cor{0} & \cor{$-40{,}9$}\\ \hline
+\end{tabularx}
+\end{center}
+\cor{\textit{$n=5$} : $\frac{300}{5\pi}[\frac{1}{2}+2+\frac{1}{2}]=\frac{180}{\pi}\approx 57{,}3$ \qquad \textit{$n=7$} : $\frac{300}{7\pi}[-\frac{1}{2}-2-\frac{1}{2}]=\frac{-900}{7\pi}\approx -40{,}9$}
+
+\item On évalue la pollution harmonique de deux façons : de manière qualitative, en observant la présence d'harmoniques sur le spectre des amplitudes, et de manière quantitative en calculant le taux de distorsion harmonique par rapport au fondamental.
+    \begin{enumerate}
+        \item Compléter sur le graphique ci-dessous le spectre des amplitudes $A_n$ associé à la fonction $v$ pour $n$ allant de $0$ à $7$.\\
+        On rappelle que pour tout entier $n\geqslant 1$ : $A_n = \sqrt{a_n^2+b_n^2}$.
+        \begin{center}
+        \begin{tikzpicture}[x=1.6cm, y=0.013cm]
+\def\xmin{-0.5} \def\xmax{7.8} \def\ymin{-20} \def\ymax{320}
+\draw[xstep=1,ystep=50,very thin,orange!25] (\xmin,0) grid (\xmax,\ymax);
+\draw[xstep=1,ystep=100,thin,orange!55] (\xmin,0) grid (\xmax,\ymax);
+\draw[->,>=stealth',thick,blue!70!black] (\xmin,0)--(\xmax,0) node[right]{\small$n$};
+\draw[->,>=stealth',thick,blue!70!black] (0,\ymin)--(0,\ymax) node[above]{\small$A_n$~(V)};
+\foreach \n in {0,1,2,3,4,5,6,7}
+    \draw[blue!70!black] (\n,3pt)--(\n,-8pt) node[below]{\small$\n$};
+\foreach \y in {50,100,150,200,250,300}
+    \draw[blue!70!black] (2pt,\y)--(-6pt,\y) node[left]{\small$\y$};
+% A_1 ≈ 286.5 (donné)
+\fill[red!60!white] (0.7,0) rectangle (1.3,286.5);
+\draw[red!70!black,thick] (0.7,0) rectangle (1.3,286.5);
+\node[above,red!70!black,font=\small] at (1,286.5) {$\approx287$};
+% A_5 ≈ 57.3 (complété)
+\fill[red!60!white] (4.7,0) rectangle (5.3,57.3);
+\draw[red!70!black,thick] (4.7,0) rectangle (5.3,57.3);
+\node[above,red!70!black,font=\small] at (5,57.3) {$\approx57$};
+% A_7 ≈ 40.9 (complété)
+\fill[red!60!white] (6.7,0) rectangle (7.3,40.9);
+\draw[red!70!black,thick] (6.7,0) rectangle (7.3,40.9);
+\node[above,red!70!black,font=\small] at (7,40.9) {$\approx41$};
+% A=0 pour n=0,2,3,4,6
+\foreach \n in {0,2,3,4,6}
+    \draw[blue!50!black,thick] (\n-0.3,0)--(\n+0.3,0);
+\draw[black!60,thick] (\xmin,\ymin) rectangle (\xmax,\ymax);
+        \end{tikzpicture}
+        \end{center}
+        \cor{$A_0=0$,\; $A_1\approx286{,}5$,\; $A_2=A_3=A_4=A_6=0$,\; $A_5\approx57{,}3$,\; $A_7\approx40{,}9$.}
+
+        \item On s'intéresse au taux de distorsion harmonique par rapport au fondamental.
+
+On obtient une valeur approchée significative de ce taux en calculant le nombre T donné par :
+\[\text{T} = \dfrac{\sqrt{a_2^2+a_3^2+a_4^2+a_5^2+a_6^2+a_7^2}}{a_1}.\]
+Sachant que ce taux doit être inférieur à 10\,\%, la commande de l'onduleur du moteur est-elle adaptée ?\\
+        \cor{
+        $$\text{T} = \frac{\sqrt{\left(\frac{180}{\pi}\right)^2+\left(\frac{900}{7\pi}\right)^2}}{\frac{900}{\pi}}
+        = \frac{1}{900}\sqrt{180^2+\left(\frac{900}{7}\right)^2}
+        \approx \frac{221{,}2}{900} \approx 0{,}246$$
+        $\text{T}\approx24{,}6\,\%>10\,\%$ : la commande de l'onduleur \textbf{n'est pas adaptée} (taux trop élevé).
+        }
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,186 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\setlength{\extrarowheight}{1mm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 2BTS}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête d'exercice pleine largeur
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+	{\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+	{\large TP Info -- Parité des fonctions \hspace{1cm} 2BTS \hspace{1cm} \textbf{Total : /20 points}}
+\end{center}
+
+\vspace{2mm}
+
+% ===================== EXERCICE 1 =====================
+\exotitle{Exercice 1 : Observation graphique}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	\multirow{2}{*}{1.1} & Tableau complété correctement : $\cos(x)$ paire, $\sin(x)$ impaire, $x^2$ paire, $x^3$ impaire & 1 \\
+	\cline{2-3}
+	& $e^x$ ni paire ni impaire \quad $\cos(x)+\sin(x)$ ni paire ni impaire \quad ($0{,}25$ pt par case correcte) & 0,5 \\
+	\hline
+	1.2a & Le graphe de $f(-x)$ se superpose exactement à $f(x)$ : symétrie par rapport à l'axe $Oy$ & 0,5 \\
+	\hline
+	1.2b & $f(-x)$ est le symétrique de $f(x)$ par rapport à l'origine $O$ & 0,5 \\
+	\hline
+	\multirow{2}{*}{1.2c} & Calcul : $f(-0) = -f(0)$ donc $f(0) = -f(0)$ donc $2f(0) = 0$ & 1 \\
+	\cline{2-3}
+	& \textbf{Conclusion encadrée :} $f(0) = 0$ & 0,5 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{/4} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 2 =====================
+\exotitle{Exercice 2 : Vérification numérique}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	\multirow{4}{*}{2.1} & $\cos(x)$ : $\max|f(x)-f(-x)| = \texttt{0.00e+00}$, $\max|f(x)+f(-x)| = \texttt{2.00e+00}$ $\Rightarrow$ \textbf{Paire} & 0,25 \\
+	\cline{2-3}
+	& $\sin(x)$ : $\max|f(x)-f(-x)| = \texttt{2.00e+00}$, $\max|f(x)+f(-x)| = \texttt{0.00e+00}$ $\Rightarrow$ \textbf{Impaire} & 0,25 \\
+	\cline{2-3}
+	& $x^2$ : $\max|f(x)-f(-x)| = \texttt{0.00e+00}$, $\max|f(x)+f(-x)| = \texttt{7.90e+01}$ $\Rightarrow$ \textbf{Paire} & 0,25 \\
+	\cline{2-3}
+	& $x^3$ : $\max|f(x)-f(-x)| = \texttt{4.96e+02}$, $\max|f(x)+f(-x)| = \texttt{0.00e+00}$ $\Rightarrow$ \textbf{Impaire} & 0,25 \\
+	\hline
+	2.2a & Pour une fonction paire, les courbes $f(x)$ et $f(-x)$ se superposent parfaitement & 0,5 \\
+	\hline
+	2.2b & Pour une fonction impaire, $f(-x)$ est le symétrique vertical de $f(x)$ (image miroir par rapport à $Ox$) & 0,5 \\
+	\hline
+	\multirow{2}{*}{2.3} & $x^2 \cdot \cos(x)$ : paire $\times$ paire $=$ paire \quad $\Rightarrow$ \textbf{Paire} (justification exigée) & 1 \\
+	\cline{2-3}
+	& $x \cdot \sin(x)$ : impaire $\times$ impaire $=$ paire \quad $\Rightarrow$ \textbf{Paire} (justification exigée) & 1 \\
+	\hline
+	\multirow{2}{*}{2.4} & $x^2\cos(x)$ : $\texttt{0.00e+00}$ / $\texttt{7.90e+01}$ $\Rightarrow$ Paire \quad $x\sin(x)$ : $\texttt{0.00e+00}$ / $\texttt{9.63e+00}$ $\Rightarrow$ Paire & 1 \\
+	\cline{2-3}
+	& Conclusion rédigée : les résultats confirment les prévisions & 1 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{/6} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 3 =====================
+\exotitle{Exercice 3 : Décomposition paire + impaire}{/5 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	\multirow{3}{*}{3.1a} & Application de la formule : $f_p(x) = \dfrac{(x^2+x)+(x^2-x)}{2}$ & 0,5 \\
+	\cline{2-3}
+	& \textbf{Résultat :} $f_p(x) = x^2$ & 0,5 \\
+	\cline{2-3}
+	& $f_i(x) = \dfrac{(x^2+x)-(x^2-x)}{2}$ \quad \textbf{Résultat :} $f_i(x) = x$ & 1 \\
+	\hline
+	3.1b & Oui, prévisible : $f = x^2 + x$ est somme d'une paire ($x^2$) et d'une impaire ($x$), la décomposition les sépare naturellement & 0,5 \\
+	\hline
+	\multirow{2}{*}{3.2} & $f_p(x) = \dfrac{e^x + e^{-x}}{2}$ \quad \textbf{Résultat :} $f_p(x) = \cosh(x)$ & 1,25 \\
+	\cline{2-3}
+	& $f_i(x) = \dfrac{e^x - e^{-x}}{2}$ \quad \textbf{Résultat :} $f_i(x) = \sinh(x)$ & 1,25 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{/5} \\
+	\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+\newpage 
+
+
+% ===================== EXERCICE 4 =====================
+\exotitle{Exercice 4 : Lien avec les séries de Fourier}{/5 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+	\hline
+	4.1a & Les $b_n$ sont nuls (ou numériquement négligeables). Cela confirme que pour une fonction paire, la série ne contient que des cosinus & 1 \\
+	\hline
+	4.1b & $a_0 = 0$ et $a_n = 0$ pour tout $n$ : la série du créneau ne contient que des sinus, cohérent avec sa nature impaire & 1 \\
+	\hline
+	4.1c & Tous les coefficients $a_n$ et $b_n$ sont non nuls $\Rightarrow$ $e^x$ périodisée n'est ni paire ni impaire & 1 \\
+	\hline
+	\multirow{3}{*}{4.2} & Écriture correcte de $a_n = \dfrac{2}{T}\displaystyle\int_{-T/2}^{T/2} f(x)\cos\!\left(\dfrac{2\pi n x}{T}\right)dx$ & 0,5 \\
+	\cline{2-3}
+	& Étude de parité de l'intégrande : $h(-x) = f(-x)\cdot\cos\!\left(\dfrac{-2\pi nx}{T}\right) = -f(x)\cdot\cos\!\left(\dfrac{2\pi nx}{T}\right) = -h(x)$ donc $h$ impaire & 1 \\
+	\cline{2-3}
+	& Conclusion : intégrale d'une fonction impaire sur $[-T/2\,;\,T/2]$ est nulle, donc $a_n = 0$ \hfill $\blacksquare$ & 0,5 \\
+	\hline
+	\rowcolor{totalrow}
+	\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 4}} & \textbf{/5} \\
+	\hline
+\end{tabularx}
+
+\vspace{5mm}
+
+% ===================== TOTAL =====================
+\begin{tabularx}{\linewidth}{|X|c|c|c|c|c|}
+	\hline
+	\rowcolor{exolight}
+	\textbf{Exercice} & \textbf{Ex. 1} & \textbf{Ex. 2} & \textbf{Ex. 3} & \textbf{Ex. 4} & \textbf{TOTAL} \\
+	\hline
+	\textbf{Barème} & /4 & /6 & /5 & /5 & \textbf{/20} \\
+	\hline
+	\textbf{Note} & & & & & \\[6pt]
+	\hline
+\end{tabularx}
+
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{setspace}
+\singlespacing
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{\textcolor{red}{\textbf{VERSION PROFESSEUR}} -- 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{tikz}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+\usepackage{tcolorbox}
+\usepackage{pifont}
+
+% Boîte de correction bleue
+\newcommand{\cor}[1]{%
+  \begin{tcolorbox}[
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt, right=4pt, top=3pt, bottom=3pt,
+    before skip=2mm, after skip=3mm
+  ]
+  \color{blue!80!black}#1
+  \end{tcolorbox}%
+}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\newcounter{numexos}
+\setcounter{numexos}{0}
+\newcommand{\bex}[2]{%
+\def\bextitle{#1}%
+\addtocounter{numexos}{1}%
+\begin{tcolorbox}[colback=white,colframe=black!30,arc=3pt,boxrule=0.6pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  \textbf{Exercice~\thenumexos\ifx\bextitle\empty\else~--~~#1\fi}\par
+  #2%
+\end{tcolorbox}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\parindent}{0pt}
+
+\newtcolorbox{titrebox}{colback=white,colframe=black,arc=3pt,boxrule=1.5pt}
+
+\begin{document}
+
+\begin{titrebox}
+\begin{center}
+\textbf{\LARGE Contrôle -- Probabilités conditionnelles \textcolor{red}{-- CORRIGÉ}}\\[2mm]
+\large Durée : 45 minutes \hfill Barème : \textbf{/10}
+\end{center}
+\end{titrebox}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+\bex{Tableau de probabilités \hfill \normalfont\textit{6 points}}{%
+\smallskip
+Une entreprise fabrique des écrans plats sur deux chaînes de production~:
+\begin{itemize}
+  \item $70\,\%$ des écrans sont produits par la chaîne $C_1$ et $30\,\%$ par la chaîne $C_2$.
+  \item Parmi les écrans de $C_1$, $2\,\%$ présentent un défaut d'affichage.
+  \item Parmi les écrans de $C_2$, $3{,}5\,\%$ présentent un défaut d'affichage.
+\end{itemize}
+On note $D$ l'événement \og l'écran présente un défaut d'affichage \fg. On prélève $\np{10000}$ écrans.
+}
+
+\textbf{1.} Compléter le tableau ci-dessous. \hfill \textit{(2 pts)}
+
+\cor{
+$70\,\%\times\np{10000}=\np{7000}$ écrans de $C_1$~;\quad $30\,\%\times\np{10000}=\np{3000}$ écrans de $C_2$.\\[3pt]
+$2\,\%\times\np{7000}=140$ défectueux de $C_1$~;\quad $3{,}5\,\%\times\np{3000}=105$ défectueux de $C_2$.
+
+\begin{center}
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{|L{4.5cm}|c|c|c|}
+\hline
+ & Chaîne $C_1$ & Chaîne $C_2$ & Total \\
+\hline
+Avec défaut $D$ & \textbf{140} & \textbf{105} & \textbf{245} \\
+\hline
+Sans défaut $\bar{D}$ & \textbf{\np{6860}} & \textbf{\np{2895}} & \textbf{\np{9755}} \\
+\hline
+Total & \textbf{\np{7000}} & \textbf{\np{3000}} & $\np{10000}$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\textbf{2.} En déduire $P(D)$. \hfill \textit{(1 pt)}
+
+\cor{$P(D)=\dfrac{245}{\np{10000}}=\mathbf{0{,}0245}$}
+
+\textbf{3.} Définir l'événement $C_1 \cap D$ et calculer $P(C_1 \cap D)$. \hfill \textit{(1 pt)}
+
+\cor{$C_1\cap D$~: \og l'écran provient de la chaîne $C_1$ \textbf{et} présente un défaut d'affichage \fg.\\[3pt]
+$P(C_1\cap D)=\dfrac{140}{\np{10000}}=\mathbf{0{,}014}$}
+
+\textbf{4.} Sachant qu'un écran est défectueux, calculer la probabilité qu'il provienne de la chaîne $C_1$. \hfill \textit{(2 pts)}
+
+\cor{$$P_D(C_1)=\frac{P(C_1\cap D)}{P(D)}=\frac{0{,}014}{0{,}0245}=\frac{140}{245}=\frac{4}{7}\approx\mathbf{0{,}571}$$
+\textbf{Interprétation~:} Parmi les écrans défectueux, environ $57{,}1\,\%$ proviennent de la chaîne $C_1$.}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+\bex{Indépendance de deux événements \hfill \normalfont\textit{4 points}}{%
+\smallskip
+On examine $\np{1000}$ pièces sorties d'une ligne de production pour deux types de défauts~: un défaut de \textbf{forme} ($F$) et un défaut de \textbf{couleur} ($C$).
+
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|L{5cm}|c|c|c|}
+\hline
+ & Défaut $F$ & Pas de défaut $F$ & Total \\
+\hline
+Défaut $C$ & 10 & 70 & 80 \\
+\hline
+Pas de défaut $C$ & 40 & 880 & 920 \\
+\hline
+Total & 50 & 950 & $\np{1000}$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\textbf{1.} Calculer $P(F)$ et $P(C)$. \hfill \textit{(1 pt)}
+
+\cor{$P(F)=\dfrac{50}{\np{1000}}=\mathbf{0{,}05}$\quad;\quad $P(C)=\dfrac{80}{\np{1000}}=\mathbf{0{,}08}$}
+
+\textbf{2.} Calculer $P(F \cap C)$. \hfill \textit{(1 pt)}
+
+\cor{$P(F\cap C)=\dfrac{10}{\np{1000}}=\mathbf{0{,}01}$}
+
+\textbf{3.} Calculer $P(F) \times P(C)$. Comparer avec $P(F \cap C)$ et conclure. \hfill \textit{(2 pts)}
+
+\cor{$P(F)\times P(C)=0{,}05\times0{,}08=\mathbf{0{,}004}$\\[4pt]
+On a $P(F\cap C)=0{,}01\neq0{,}004=P(F)\times P(C)$.\\[3pt]
+Donc $F$ et $C$ \textbf{ne sont pas indépendants}~: présenter un défaut de forme augmente la probabilité de présenter aussi un défaut de couleur.}
+
+\end{document}

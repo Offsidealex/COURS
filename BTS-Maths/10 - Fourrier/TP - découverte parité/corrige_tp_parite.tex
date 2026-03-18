@@ -1,0 +1,225 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\usepackage{array}
+\usepackage{booktabs}
+
+\geometry{margin=2.5cm}
+\setlength{\headheight}{14.5pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{CORRIGÉ -- TP Parité des fonctions}
+\cfoot{\thepage}
+
+% ---- Couleurs ----
+\definecolor{corrbg}{RGB}{255,255,220}
+\definecolor{corrframe}{RGB}{180,140,0}
+\definecolor{repbg}{RGB}{230,255,230}
+\definecolor{repframe}{RGB}{60,150,60}
+
+\newmdenv[backgroundcolor=corrbg, linecolor=corrframe, linewidth=1.5pt,
+    roundcorner=5pt, innertopmargin=8pt, innerbottommargin=8pt]{corrbox}
+
+\newmdenv[backgroundcolor=repbg, linecolor=repframe, linewidth=1.5pt,
+    roundcorner=5pt, innertopmargin=8pt, innerbottommargin=8pt]{repbox}
+
+% ---------------------------------------------------------------
+\begin{document}
+
+\thispagestyle{fancy}
+
+\begin{center}
+    {\LARGE \textbf{CORRIGÉ -- TP Info -- Parité des fonctions}}\\[6pt]
+    {\large\color{corrframe} Document réservé au professeur}
+\end{center}
+
+\hrule\medskip
+
+% ---------------------------------------------------------------
+\section*{Exercice 1 -- Observation graphique}
+
+\subsection*{Question 1.1}
+
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Fonction} & \textbf{Paire} & \textbf{Impaire} & \textbf{Ni l'une ni l'autre} \\
+    \hline
+    $f(x) = \cos(x)$           & \textbf{X} & & \\
+    \hline
+    $f(x) = \sin(x)$           & & \textbf{X} & \\
+    \hline
+    $f(x) = x^2$               & \textbf{X} & & \\
+    \hline
+    $f(x) = x^3$               & & \textbf{X} & \\
+    \hline
+    $f(x) = e^x$               & & & \textbf{X} \\
+    \hline
+    $f(x) = \cos(x) + \sin(x)$ & & & \textbf{X} \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsection*{Question 1.2}
+
+\begin{repbox}
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Fonction paire $\cos(x)$ :} La courbe $f(-x)$ se superpose exactement à $f(x)$ : le graphe est symétrique par rapport à l'axe des ordonnées (Oy).
+
+    \item \textbf{Fonction impaire $\sin(x)$ :} La courbe $f(-x)$ est le symétrique de $f(x)$ par rapport à l'origine O ; on observe $f(-x) = -f(x)$.
+
+    \item \textbf{$f(0)$ pour une fonction impaire :} D'après la définition, $f(-0) = -f(0)$, soit $f(0) = -f(0)$, donc $2f(0) = 0$, d'où $\boxed{f(0) = 0}$.
+\end{enumerate}
+\end{repbox}
+
+% ---------------------------------------------------------------
+\section*{Exercice 2 -- Vérification numérique}
+
+\subsection*{Question 2.1 -- Résultats du terminal}
+
+\renewcommand{\arraystretch}{2}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Fonction} & $\max|f(x)-f(-x)|$ & $\max|f(x)+f(-x)|$ & \textbf{Parité constatée} \\
+    \hline
+    $\cos(x)$ & \texttt{0.00e+00} & \texttt{2.00e+00} & Paire \\
+    \hline
+    $\sin(x)$ & \texttt{2.00e+00} & \texttt{0.00e+00} & Impaire \\
+    \hline
+    $x^2$ & \texttt{0.00e+00} & \texttt{7.90e+01} & Paire \\
+    \hline
+    $x^3$ & \texttt{4.96e+02} & \texttt{0.00e+00} & Impaire \\
+    \hline
+\end{tabular}
+\end{center}
+
+\begin{repbox}
+Lorsque $\max|f(x)-f(-x)| \approx 0$ (valeur numérique nulle ou inférieure au seuil $10^{-9}$), la fonction est \textbf{paire}. Lorsque $\max|f(x)+f(-x)| \approx 0$, elle est \textbf{impaire}.
+\end{repbox}
+
+\subsection*{Question 2.2}
+
+\begin{repbox}
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Fonction paire :} Les courbes de $f(x)$ et $f(-x)$ se superposent parfaitement : les deux tracés sont identiques.
+    \item \textbf{Fonction impaire :} La courbe $f(-x)$ est le symétrique de $f(x)$ par rapport à l'axe des abscisses (Ox) : l'une est l'image miroir verticale de l'autre.
+\end{enumerate}
+\end{repbox}
+
+\subsection*{Question 2.3 -- Prédiction de la parité}
+
+\begin{repbox}
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{|l|p{7cm}|c|}
+    \hline
+    \textbf{Fonction} & \textbf{Justification} & \textbf{Parité prévue} \\
+    \hline
+    $x^2 \cdot \cos(x)$ & $x^2$ est \textbf{paire} et $\cos(x)$ est \textbf{paire} ; paire $\times$ paire = paire & \textbf{Paire} \\[6pt]
+    \hline
+    $x \cdot \sin(x)$ & $x$ est \textbf{impaire} et $\sin(x)$ est \textbf{impaire} ; impaire $\times$ impaire = paire & \textbf{Paire} \\[6pt]
+    \hline
+\end{tabular}
+\end{center}
+\end{repbox}
+
+\subsection*{Question 2.4 -- Résultats et confirmation}
+
+\renewcommand{\arraystretch}{2}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Fonction} & $\max|f(x)-f(-x)|$ & $\max|f(x)+f(-x)|$ & \textbf{Parité constatée} \\
+    \hline
+    $x^2 \cdot \cos(x)$ & \texttt{0.00e+00} & \texttt{7.90e+01} & Paire \\
+    \hline
+    $x \cdot \sin(x)$ & \texttt{0.00e+00} & \texttt{9.63e+00} & Paire \\
+    \hline
+\end{tabular}
+\end{center}
+
+\begin{repbox}
+Les résultats confirment les prévisions : les deux fonctions sont bien \textbf{paires}, conformément aux règles de parité d'un produit.
+\end{repbox}
+
+% ---------------------------------------------------------------
+\section*{Exercice 3 -- Décomposition paire + impaire}
+
+\subsection*{Question 3.1 -- $f(x) = x^2 + x$}
+
+\begin{repbox}
+\textbf{a)} On applique les formules du théorème :
+\[
+    f_p(x) = \frac{f(x)+f(-x)}{2} = \frac{(x^2+x)+(x^2-x)}{2} = \frac{2x^2}{2} = \boxed{x^2}
+\]
+\[
+    f_i(x) = \frac{f(x)-f(-x)}{2} = \frac{(x^2+x)-(x^2-x)}{2} = \frac{2x}{2} = \boxed{x}
+\]
+
+\textbf{b)} Oui, c'était prévisible : $f(x) = x^2 + x$ est la somme d'une fonction paire ($x^2$) et d'une fonction impaire ($x$). La décomposition sépare naturellement ces deux termes.
+\end{repbox}
+
+\subsection*{Question 3.2 -- $f(x) = e^x$}
+
+\begin{repbox}
+On applique les formules :
+\[
+    f_p(x) = \frac{e^x + e^{-x}}{2} = \boxed{\cosh(x)}
+\]
+\[
+    f_i(x) = \frac{e^x - e^{-x}}{2} = \boxed{\sinh(x)}
+\]
+
+On retrouve les fonctions hyperboliques. On a bien $e^x = \cosh(x) + \sinh(x)$.
+\end{repbox}
+
+% ---------------------------------------------------------------
+\section*{Exercice 4 -- Lien avec les séries de Fourier}
+
+\subsection*{Question 4.1}
+
+\begin{repbox}
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Fonction triangle (paire) :} Oui, tous les coefficients $b_n$ sont nuls (ou numériquement négligeables). Cela confirme bien la propriété : pour une fonction paire, la série de Fourier ne contient que des cosinus ($b_n = 0$ pour tout $n$).
+
+    \item \textbf{Fonction créneau (impaire) :} $a_0 = 0$ et tous les $a_n = 0$. La série de Fourier du créneau ne contient que des termes en sinus, ce qui est cohérent avec sa nature impaire.
+
+    \item \textbf{$f(x) = e^x$ périodisée :} Tous les coefficients $a_n$ et $b_n$ sont non nuls. On en conclut que cette fonction périodisée n'est \textbf{ni paire ni impaire} : elle ne possède pas de symétrie par rapport à l'axe Oy ni par rapport à l'origine.
+\end{enumerate}
+\end{repbox}
+
+\subsection*{Question 4.2 -- Démonstration}
+
+\begin{repbox}
+Soit $f$ une fonction impaire et $T$-périodique. On veut montrer que $a_n = 0$.
+
+On écrit le coefficient $a_n$ sur une période symétrique $\left[-\dfrac{T}{2}, \dfrac{T}{2}\right]$ :
+\[
+    a_n = \frac{2}{T}\int_{-T/2}^{T/2} f(x)\cos\!\left(\frac{2\pi n x}{T}\right)dx
+\]
+
+Posons $h(x) = f(x)\cdot\cos\!\left(\dfrac{2\pi n x}{T}\right)$. Étudions la parité de $h$ :
+\[
+    h(-x) = f(-x)\cdot\cos\!\left(\frac{2\pi n (-x)}{T}\right) = \big(-f(x)\big)\cdot\cos\!\left(\frac{2\pi n x}{T}\right) = -h(x)
+\]
+car $f$ est \textbf{impaire} ($f(-x) = -f(x)$) et $\cos$ est \textbf{paire} ($\cos(-u) = \cos(u)$).
+
+Donc $h$ est une fonction \textbf{impaire}. Or l'intégrale d'une fonction impaire sur un intervalle symétrique est nulle :
+\[
+    a_n = \frac{2}{T}\int_{-T/2}^{T/2} h(x)\,dx = 0
+\]
+\hfill $\blacksquare$
+\end{repbox}
+
+\end{document}

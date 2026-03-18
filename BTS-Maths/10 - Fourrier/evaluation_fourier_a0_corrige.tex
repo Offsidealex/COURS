@@ -1,0 +1,282 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{Évaluation -- Séries de Fourier -- \textcolor{red}{\textbf{CORRIGÉ}}}
+\cfoot{\thepage}
+
+\tcbset{
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black, fonttitle=\bfseries, title=#1},
+  corrigebox/.style={colback=green!5!white, colframe=green!50!black, sharp corners, boxrule=0.5pt, left=4pt, right=4pt, top=4pt, bottom=4pt}
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Évaluation -- Séries de Fourier}} \\[0.2cm]
+  {\Large Calcul de $a_0$ : valeur moyenne d'un signal périodique} \\[0.1cm]
+  \textcolor{red}{\Large \textbf{--- CORRIGÉ ---}} \\[0.1cm]
+  \rule{0.6\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.3cm}
+
+%% ================================================================
+%% EXERCICE 1 — 6 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 1 \hfill \normalfont\textit{(6 points)}}]
+  On considère le signal périodique $f$ de période $T = 4$ défini sur $[0\,;\,4[$ par :
+  \[
+    f(t) = \begin{cases} 5 & \text{si } 0 \leq t < 2 \\ -3 & \text{si } 2 \leq t < 4 \end{cases}
+  \]
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$},
+      ylabel={$f(t)$},
+      xmin=-4.5, xmax=8.5,
+      ymin=-4.5, ymax=6.5,
+      xtick={-4,-2,0,2,4,6,8},
+      ytick={-3,-2,-1,0,1,2,3,4,5},
+      width=13cm, height=4.8cm,
+      grid=major,
+      grid style={dashed, gray!30},
+    ]
+    \addplot[blue, ultra thick, domain=-4:-2] {5};
+    \addplot[blue, ultra thick, domain=-2:0] {-3};
+    \addplot[blue, ultra thick, domain=0:2] {5};
+    \addplot[blue, ultra thick, domain=2:4] {-3};
+    \addplot[blue, ultra thick, domain=4:6] {5};
+    \addplot[blue, ultra thick, domain=6:8] {-3};
+    \addplot[blue, dashed, thin] coordinates {(-2,5)(-2,-3)};
+    \addplot[blue, dashed, thin] coordinates {(2,5)(2,-3)};
+    \addplot[blue, dashed, thin] coordinates {(6,5)(6,-3)};
+    % Droite a0
+    \addplot[red, dashed, thick, domain=-4.5:8.5] {1};
+    \node[red] at (axis cs:8,1.6) {$a_0=1$};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Donner la période $T$ et les bornes d'intégration. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[corrigebox]
+    $T = 4$. On intègre de $0$ à $T = 4$.
+  \end{tcolorbox}
+
+  \item Écrire l'intégrale de $a_0$ en la décomposant sur les deux intervalles. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[corrigebox]
+    \[
+      a_0 = \frac{1}{T}\int_0^T f(t)\,dt = \frac{1}{4}\left[\int_0^2 5\,dt + \int_2^4 (-3)\,dt\right]
+    \]
+  \end{tcolorbox}
+
+  \item Calculer $a_0$. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[corrigebox]
+    \begin{align*}
+      a_0 &= \frac{1}{4}\left[\Big[5t\Big]_0^2 + \Big[-3t\Big]_2^4\right] \\
+          &= \frac{1}{4}\left[(10 - 0) + (-12 -(-6))\right] \\
+          &= \frac{1}{4}\left[10 + (-6)\right] \\
+          &= \frac{1}{4}\times 4
+    \end{align*}
+    \[\boxed{a_0 = 1}\]
+  \end{tcolorbox}
+
+  \item Tracer la droite $y = a_0$ sur le graphique. Ce résultat est-il cohérent ? \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[corrigebox]
+    La droite $y = 1$ est tracée en rouge sur le graphique.
+
+    Le résultat est cohérent : le signal passe autant de temps à $+5$ qu'à $-3$. La valeur $a_0 = 1$ est bien la moyenne arithmétique $\dfrac{5+(-3)}{2} = 1$, et les aires au-dessus et en dessous de cette droite se compensent.
+  \end{tcolorbox}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+%% ================================================================
+%% EXERCICE 2 — 7 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 2 \hfill \normalfont\textit{(7 points)}}]
+  On considère le signal périodique $g$ de période $T = \pi$ défini sur $[0\,;\,\pi[$ par :
+  \[
+    g(t) = \begin{cases} \sin(t) & \text{si } 0 \leq t < \dfrac{\pi}{2} \\[6pt] 1 & \text{si } \dfrac{\pi}{2} \leq t < \pi \end{cases}
+  \]
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$},
+      ylabel={$g(t)$},
+      xmin=-3.5, xmax=7,
+      ymin=-0.3, ymax=1.5,
+      xtick={-3.14159,-1.5708,0,1.5708,3.14159,4.7124,6.28318},
+      xticklabels={$-\pi$,$-\frac{\pi}{2}$,$0$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$,$2\pi$},
+      ytick={0,0.5,0.82,1},
+      yticklabels={$0$,$0{,}5$,$a_0$,$1$},
+      width=13cm, height=5cm,
+      grid=major,
+      grid style={dashed, gray!30},
+      samples=100,
+    ]
+    \addplot[red, ultra thick, domain=-3.14159:-1.5708] {sin(deg(x+3.14159))};
+    \addplot[red, ultra thick, domain=-1.5708:0] {1};
+    \addplot[red, ultra thick, domain=0:1.5708] {sin(deg(x))};
+    \addplot[red, ultra thick, domain=1.5708:3.14159] {1};
+    \addplot[red, ultra thick, domain=3.14159:4.7124] {sin(deg(x-3.14159))};
+    \addplot[red, ultra thick, domain=4.7124:6.28318] {1};
+    \addplot[red, dashed, thin] coordinates {(0,1)(0,0)};
+    \addplot[red, dashed, thin] coordinates {(3.14159,1)(3.14159,0)};
+    \addplot[red, dashed, thin] coordinates {(6.28318,1)(6.28318,0)};
+    % Droite a0
+    \addplot[magenta, dashed, thick, domain=-3.5:7] {0.8183};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Écrire l'intégrale de $a_0$ en la décomposant sur les deux intervalles. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[corrigebox]
+    \[
+      a_0 = \frac{1}{T}\int_0^T g(t)\,dt = \frac{1}{\pi}\left[\int_0^{\pi/2} \sin(t)\,dt + \int_{\pi/2}^{\pi} 1\,dt\right]
+    \]
+  \end{tcolorbox}
+
+  \item Calculer $\displaystyle\int_0^{\pi/2} \sin(t)\,dt$. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[corrigebox]
+    \begin{align*}
+      \int_0^{\pi/2} \sin(t)\,dt &= \Big[-\cos(t)\Big]_0^{\pi/2} \\
+          &= -\cos\!\left(\frac{\pi}{2}\right) - \bigl(-\cos(0)\bigr) \\
+          &= -0 + 1
+    \end{align*}
+    \[\boxed{\int_0^{\pi/2} \sin(t)\,dt = 1}\]
+  \end{tcolorbox}
+
+  \item En déduire la valeur exacte de $a_0$. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[corrigebox]
+  	\begin{multicols}{2}
+  
+    On calcule la seconde intégrale :
+    \[
+      \int_{\pi/2}^{\pi} 1\,dt = \Big[t\Big]_{\pi/2}^{\pi} = \pi - \frac{\pi}{2} = \frac{\pi}{2}
+    \]
+    Donc :
+    \begin{align*}
+      a_0 &= \frac{1}{\pi}\left[1 + \frac{\pi}{2}\right] = \frac{1}{\pi} + \frac{1}{2}
+    \end{align*}
+    \[\boxed{a_0 = \frac{1}{\pi} + \frac{1}{2}}\]
+    	\end{multicols}
+  \end{tcolorbox}
+
+  \item Donner une valeur approchée de $a_0$ à $10^{-2}$ près. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[corrigebox]
+    \[
+      a_0 = \frac{1}{\pi} + \frac{1}{2} \approx 0{,}318 + 0{,}500
+    \]
+    \[\boxed{a_0 \approx 0{,}82}\]
+  \end{tcolorbox}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+%% ================================================================
+%% EXERCICE 3 — 7 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 3 \hfill \normalfont\textit{(7 points)}}]
+  Un capteur relève une tension périodique $u$ de période $T = 3$\,ms définie sur $[0\,;\,3[$ (en ms) par :
+  \[
+    u(t) = \begin{cases} 4t & \text{si } 0 \leq t < 1 \\ 4 & \text{si } 1 \leq t < 2 \\ 0 & \text{si } 2 \leq t < 3 \end{cases}
+  \]
+  La tension $u(t)$ est exprimée en volts.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Tracer le signal $u$ sur deux périodes dans le repère ci-dessous. \hfill \textit{(2 pts)}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=middle,
+        xlabel={$t$ (ms)},
+        ylabel={$u(t)$ (V)},
+        xmin=-0.5, xmax=6.5,
+        ymin=-0.5, ymax=5.5,
+        xtick={0,1,2,3,4,5,6},
+        ytick={0,1,2,3,4,5},
+        width=13cm, height=5.5cm,
+        grid=major,
+        grid style={dashed, gray!30},
+      ]
+      % Période [0, 3[
+      \addplot[blue, ultra thick, domain=0:1] {4*x};
+      \addplot[blue, ultra thick, domain=1:2] {4};
+      \addplot[blue, ultra thick, domain=2:3] {0};
+      % Période [3, 6[
+      \addplot[blue, ultra thick, domain=3:4] {4*(x-3)};
+      \addplot[blue, ultra thick, domain=4:5] {4};
+      \addplot[blue, ultra thick, domain=5:6] {0};
+      % Discontinuités
+      \addplot[blue, dashed, thin] coordinates {(2,4)(2,0)};
+      \addplot[blue, dashed, thin] coordinates {(5,4)(5,0)};
+      % Droite a0
+      \addplot[red, dashed, thick, domain=-0.5:6.5] {2};
+      \node[red] at (axis cs:6.2,2.4) {$a_0=2$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \textit{Barème : 1 pt pour la première période correcte, 0,5 pt pour la répétition, 0,5 pt pour les discontinuités.}
+
+  \item Décomposer l'intégrale de $a_0$ sur les trois intervalles. \hfill \textit{(1,5 pts)}
+  \begin{tcolorbox}[corrigebox]
+    \[
+      a_0 = \frac{1}{T}\int_0^T u(t)\,dt = \frac{1}{3}\left[\int_0^1 4t\,dt + \int_1^2 4\,dt + \int_2^3 0\,dt\right]
+    \]
+  \end{tcolorbox}
+
+  \item Calculer $a_0$. \hfill \textit{(2,5 pts)}
+  \begin{tcolorbox}[corrigebox]
+    On calcule chaque intégrale :
+    \begin{align*}
+      \int_0^1 4t\,dt &= \left[2t^2\right]_0^1 = 2 \\[6pt]
+      \int_1^2 4\,dt &= \Big[4t\Big]_1^2 = 8 - 4 = 4 \\[6pt]
+      \int_2^3 0\,dt &= 0
+    \end{align*}
+    Donc :
+    \[
+      a_0 = \frac{1}{3}\left[2 + 4 + 0\right] = \frac{6}{3}
+    \]
+    \[\boxed{a_0 = 2 \text{ V}}\]
+  \end{tcolorbox}
+
+  \item Quelle grandeur physique représente $a_0$ ? Donner sa valeur avec son unité. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[corrigebox]
+    $a_0$ représente la \textbf{composante continue} (ou valeur moyenne) de la tension $u(t)$.
+
+    C'est la tension que mesurerait un voltmètre en mode DC aux bornes de ce signal.
+
+    \[\boxed{a_0 = 2 \text{ V}}\]
+  \end{tcolorbox}
+\end{enumerate}
+
+\end{document}

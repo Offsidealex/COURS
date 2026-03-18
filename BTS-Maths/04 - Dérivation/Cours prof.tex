@@ -1,0 +1,1694 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\def\nbR{\ensuremath{\mathrm{I\! R}}}
+\usepackage{amsmath}
+\DeclareMathOperator{\e}{e}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+\usepackage{caption}
+\usepackage{ProfCollege}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Théorème}
+\newtheorem{corollary}{Corollaire}
+
+
+
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage{multicol}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{13.6pt}
+\addtolength{\topmargin}{-1.6pt}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{Chapitre 4 Cours - Page \thepage}
+\fancyfoot[R]{Année 2025 - 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{pstricks,pst-plot}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usetikzlibrary{arrows}
+\usepackage{pifont}
+
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\V}{\overrightarrow}
+\newcommand{\Rep}{(O;\V{u};\V{v})} 
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\newcommand{\cor}[1]{%
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+#1
+\end{tcolorbox}
+}
+
+
+
+\setlength{\columnseprule}{.25mm}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+
+\usepackage[tikz]{bclogo} 
+\usepackage{pgfplots,mathtools}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\faEye}{black}}
+
+
+\newcommand{\cadre}[1]
+{\begin{bclogo}[couleur = white,logo=,  arrondi = 0.3,barre=none]
+{%
+\rule{0mm}{#1mm}}\par
+\medskip
+\end{bclogo}}
+
+
+
+\begin{document}
+
+
+
+\newtcolorbox{mybox}{colback=blue!10!white,
+colframe=black!5!black}
+\begin{mybox}
+\begin{center}    
+\textbf{\Large CHAPITRE 4 - DÉRIVATION}\end{center}
+\end{mybox}
+\vfill
+  \begin{bclogo}[couleur = blue!10,logo=\bcinfo,  arrondi = 0.1]
+{~Objectifs~:}
+~~
+\begin{itemize}
+
+\item Calculer la fonction dérivée d'une fonction.
+\item Étudier le sens de variation d'une fonction.
+\item Exploiter le tableau de variation d'une fonction
+\item Mettre en œuvre un procédé pour déterminer la valeur approchée d'une racine d'une équation 
+    
+    
+\end{itemize}
+~~
+\end{bclogo}
+
+\vfill
+
+
+\begin{mybox}
+\begin{center}    
+\textbf{1. Les dérivées usuelles}\end{center}
+\end{mybox}
+\vfill
+
+
+
+
+\begin{center}
+\renewcommand{\arraystretch}{2.6}
+
+\begin{tabularx}{0.7\linewidth}{|c||>{\centering\arraybackslash}X|}
+\hline 
+Fonctions & Fonctions dérivées \\ 
+\hline 
+$a$ (constante) & \textcolor{red}{\textbf{0}} \\ 
+\hline 
+$x^n$ & \textcolor{red}{\textbf{$nx^{n-1}$}} \\ 
+\hline 
+$\e^x$ & \textcolor{red}{\textbf{$\e^x$}} \\ 
+\hline 
+$\ln(x)$ & \textcolor{red}{\textbf{$\dfrac{1}{x}$}} \\ 
+\hline 
+$a^x$ ($a>0$) & \textcolor{red}{\textbf{$a^x\ln(a)$}} \\ 
+\hline 
+$\sin(x)$ & \textcolor{red}{\textbf{$\cos(x)$}} \\ 
+\hline 
+$\cos(x)$ & \textcolor{red}{\textbf{$-\sin(x)$}} \\ 
+\hline 
+$\tan(x)$ & \textcolor{red}{\textbf{$\dfrac{1}{\cos^2 x}$}} \\ 
+\hline 
+$\arctan(x)$ & \textcolor{red}{\textbf{$\dfrac{1}{1+x^2}$}} \\ 
+\hline
+\end{tabularx}
+
+
+
+\end{center}
+
+\vfill
+~~
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fcolorbox{black}{orange!30!}{\textbf{{A1.Dérivation de $x^n$ et $a^x$}}}\\[5pt]
+Calculer les fonctions dérivées suivantes : \vfill
+
+\begin{center}
+\renewcommand{\arraystretch}{3.9}
+
+\begin{tabularx}{0.7\linewidth}{|c||>{\centering\arraybackslash}X|}
+\hline 
+Fonctions & Fonctions dérivées \\ 
+\hline 
+$\dfrac{1}{x}$ & \textcolor{red}{\textbf{$-\dfrac{1}{x^2}$}} \\ 
+\hline 
+$\dfrac{1}{x^2}$ & \textcolor{red}{\textbf{$-\dfrac{2}{x^3}$}} \\ 
+\hline 
+$\sqrt{x}$ & \textcolor{red}{\textbf{$\dfrac{1}{2\sqrt{x}}$}} \\ 
+\hline 
+$3^x$ & \textcolor{red}{\textbf{$3^x\ln 3$}} \\ 
+\hline 
+$x^{\frac{3}{2}}$ & \textcolor{red}{\textbf{$\dfrac{3}{2}x^{\frac{1}{2}}$}} \\ 
+\hline 
+$x^4$ & \textcolor{red}{\textbf{$4x^3$}} \\ 
+\hline 
+$4^x$ & \textcolor{red}{\textbf{$4^x\ln 4$}} \\ 
+\hline 
+$3x^2-2x+1$ & \textcolor{red}{\textbf{$6x-2$}} \\ 
+\hline 
+$\dfrac{x^2}{2}+x+1$ & \textcolor{red}{\textbf{$x+1$}} \\ 
+\hline 
+${x^3}+3x^2+x+1$ & \textcolor{red}{\textbf{$3x^2+6x+1$}} \\ 
+\hline 
+$x^2+3x$ & \textcolor{red}{\textbf{$2x+3$}} \\ 
+\hline 
+\end{tabularx}
+
+
+\end{center}
+
+\vfill
+~~
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{mybox}
+\begin{center}    
+\textbf{2. Les formules de dérivation}\end{center}
+\end{mybox}
+\vfill
+
+\fcolorbox{black}{blue!10!}{\textbf{2.1. Les formules vues en terminale (ou pas)}}\\
+\vfill
+Si les fonctions $u$ et $v$ sont deux fonctions dérivables sur le même intervalle $I$. \\[5pt]
+ On a les résultats suivants : 
+\vfill
+\begin{center}
+\renewcommand{\arraystretch}{3}
+
+\begin{tabularx}{0.5\linewidth}{|c||>{\centering\arraybackslash}X|}
+\hline 
+Fonction & Fonction dérivée \\ 
+\hline 
+$k \cdot u(x)$ & \textcolor{red}{\textbf{$k \cdot u'(x)$}} \\ 
+\hline 
+$u(x) + v(x)$ & \textcolor{red}{\textbf{$u'(x) + v'(x)$}} \\ 
+\hline 
+$u(x) \times v(x)$ & \textcolor{red}{\textbf{$u'(x)v(x) + u(x)v'(x)$}} \\ 
+\hline 
+$\dfrac{u(x)}{v(x)}$ & \textcolor{red}{\textbf{$\dfrac{u'(x)v(x) - u(x)v'(x)}{v(x)^2}$}} \\ 
+\hline 
+\end{tabularx}
+
+\end{center}
+\vspace{5mm}
+\fcolorbox{black}{green!10!}{\textbf{Exercice 1: Calculer les dérivées des fonctions suivantes }} \\
+\begin{multicols}{3}
+\begin{center}
+$f(x)=3x^4-2x^3+6x+34$
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Dérivons terme à terme : \\[3mm]
+
+dérivée de $(3x^4)=12x^3$ \\[3mm]
+dérivée de $(-2x^3)=-6x^2$ \\[3mm]
+dérivée de $(6x)=6$ \\[3mm]
+dérivée de $(34)=0$ \\[5mm]
+
+$f'(x)=12x^3-6x^2+6$
+
+ \vspace{10mm} 
+
+}
+
+\end{tcolorbox}
+\end{center}
+
+
+\columnbreak
+
+\begin{center}
+$g(x)=\dfrac{x-1}{x+2}$
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{ Avec 
+\[
+\begin{aligned}
+u(x)=x-1 & ~~~~v(x)=x+2. \\
+u'(x)=1 & ~~~~v'(x)=1
+\end{aligned}
+\]
+
+Donc
+
+\[
+\begin{aligned}
+g'(x) &= \dfrac{1\cdot(x+2)-(x-1)\cdot 1}{(x+2)^2} \\
+      &= \dfrac{x+2-(x-1)}{(x+2)^2}
+\end{aligned}
+\]
+
+
+\textbf{\textcolor{red}{$g'(x)=\dfrac{3}{(x+2)^2}$}} 
+}
+\end{tcolorbox}
+\end{center}
+
+\columnbreak
+
+\begin{center}
+$h(x)=(x^2+1)(x-3)$
+
+
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{ Avec 
+\[
+\begin{aligned}
+u(x) &= x^2+1 & ~~~~ v(x) &= x-3 \\
+u'(x) &= 2x & ~~~~ v'(x) &= 1
+\end{aligned}
+\]
+Donc
+\[
+\begin{aligned}
+h'(x) &= u'(x)v(x) + u(x)v'(x) \\
+      &= 2x(x-3) + (x^2+1)\cdot 1 \\
+      &= 2x^2 - 6x + x^2 + 1 \\
+      &= 3x^2 - 6x + 1
+\end{aligned}
+\]
+
+\vspace{2mm}
+
+\textbf{\textcolor{red}{$h'(x)=3x^2-6x+1$}} 
+
+\vspace{2mm}
+}
+\end{tcolorbox}
+
+\end{center}
+
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fcolorbox{black}{orange!30!}{\textbf{A2. Calculer les dérivées des fonctions suivantes :}} \\
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\[
+f_1(x) = x^4 - 3x^2 + 2x - 7
+\]
+
+\[
+\begin{aligned}
+\text{dérivée de } x^4 & = 4x^3 \\
+\text{dérivée de } -3x^2 & = -6x\\
+\text{dérivée de } 2x & = 2\\
+\text{dérivée de } -7 & = 0
+\end{aligned}
+\]
+
+\vspace{4mm}
+
+\begin{center}
+
+    \textbf{\textcolor{red}{$f_1'(x) = 4x^3 - 6x + 2$}}
+
+\end{center}
+
+\vspace{43mm}
+
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\[
+f_2(x) = 3x \ln(x)
+\]
+
+\[
+\begin{aligned}
+u(x) &= 3x, & v(x) &= \ln(x) \\
+u'(x) &= 3, & v'(x) &= \frac{1}{x}
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+    f_2'(x) & = u'(x)v(x) + u(x)v'(x)  \\
+            & = 3 \ln(x) + 3x \cdot \frac{1}{x} \\
+            &  = 3\ln(x) + 3
+\end{aligned}
+\]
+
+\begin{center}
+    
+
+
+\textbf{\textcolor{red}{$f_2'(x) = 3\ln(x) + 3$}}
+
+\end{center}
+
+\vspace{24mm}
+
+}
+\end{tcolorbox}
+\end{multicols}
+
+
+
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\[
+f_3(x) = (2x-1)(3-5x)
+\]
+
+\vspace{4mm}
+
+\[
+\begin{aligned}
+u(x) &= 2x-1, & v(x) &= 3-5x \\
+u'(x) &= 2, & v'(x) &= -5
+\end{aligned}
+\]
+
+\vspace{4mm}
+
+
+\[
+\begin{aligned}
+    f_3'(x) & = u'(x)v(x) + u(x)v'(x)  \\
+            & = 2(3-5x) + (2x-1)(-5) \\
+            & = 6-10x -10x+5 \\
+            & = -20x + 11
+\end{aligned}
+\]
+
+\vspace{4mm}
+
+
+\begin{center}
+\textbf{\textcolor{red}{$f_3'(x) = -20x + 11$}}
+\end{center}
+
+\vspace{24mm}
+
+
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\[
+f_4(x) = (5-x)\e^x
+\]
+
+\vspace{4mm}
+
+
+\[
+\begin{aligned}
+u(x) &= 5-x, & v(x) &= \e^x \\
+u'(x) &= -1, & v'(x) &= \e^x
+\end{aligned}
+\]
+
+\vspace{4mm}
+
+
+\[
+\begin{aligned}
+    f_4'(x) & = u'(x)v(x) + u(x)v'(x)  \\
+            & = -1 \cdot \e^x + (5-x)\e^x \\
+            & = -\e^x + (5-x)\e^x \\
+            & = (4-x)\e^x
+\end{aligned}
+\]
+
+\vspace{4mm}
+
+
+\begin{center}
+\textbf{\textcolor{red}{$f_4'(x) = (4-x)\e^x$}}
+\end{center}
+
+\vspace{24mm}
+
+
+}
+\end{tcolorbox}
+\end{multicols}
+
+\newpage
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+
+\vspace{4mm}
+
+
+\[
+f_5(x) = \dfrac{x-2}{2x+1}
+\]
+
+\vspace{4mm}
+
+\[
+\begin{aligned}
+u(x) &= x-2, & v(x) &= 2x+1 \\
+u'(x) &= 1, & v'(x) &= 2
+\end{aligned}
+\]
+\vspace{2mm}
+\[
+\begin{aligned}
+    f_5'(x) & = \dfrac{u'(x)v(x) - u(x)v'(x)}{[v(x)]^2}  \\[2mm]
+            & = \dfrac{1(2x+1) - (x-2)(2)}{(2x+1)^2} \\[2mm]
+            & = \dfrac{2x+1 - 2x+4}{(2x+1)^2} \\[2mm]
+            & = \dfrac{5}{(2x+1)^2}
+\end{aligned}
+\]
+\vspace{2mm}
+\begin{center}
+\textbf{\textcolor{red}{$f_5'(x) = \dfrac{5}{(2x+1)^2}$}}
+\end{center}
+
+\vspace{20mm}
+
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+
+\vspace{4mm}
+
+\[
+f_6(x) = \dfrac{\ln(x)}{2x}
+\]
+
+\vspace{4mm}
+
+\[
+\begin{aligned}
+u(x) &= \ln(x), & v(x) &= 2x \\
+u'(x) &= \dfrac{1}{x}, & v'(x) &= 2
+\end{aligned}
+\]
+\vspace{2mm}
+\[
+\begin{aligned}
+    f_6'(x) & = \dfrac{u'(x)v(x) - u(x)v'(x)}{[v(x)]^2}  \\[2mm]
+            & = \dfrac{\dfrac{1}{x}(2x) - \ln(x)(2)}{(2x)^2} \\[2mm]
+            & = \dfrac{2 - 2\ln(x)}{4x^2} \\[2mm]
+            & = \dfrac{1 - \ln(x)}{2x^2}
+\end{aligned}
+\]
+\vspace{2mm}
+\begin{center}
+\textbf{\textcolor{red}{$f_6'(x) = \dfrac{1 - \ln(x)}{2x^2}$}}
+\end{center}
+
+\vspace{13mm}
+
+}
+\end{tcolorbox}
+\end{multicols}
+
+\vfill 
+
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+
+\vspace{4mm}
+
+\[
+f_7(x) = \sin(x) \times \cos(x)
+\]
+
+\vspace{4mm}
+
+
+\[
+\begin{aligned}
+u(x) &= \sin(x), & v(x) &= \cos(x) \\
+u'(x) &= \cos(x), & v'(x) &= -\sin(x)
+\end{aligned}
+\]
+\vspace{4mm}
+\[
+\begin{aligned}
+    f_7'(x) & = u'(x)v(x) + u(x)v'(x)  \\[2mm]
+            & = \cos(x)\cos(x) + \sin(x)(-\sin(x)) \\[2mm]
+            & = \cos^2(x) - \sin^2(x)
+\end{aligned}
+\]
+\vspace{6mm}
+\begin{center}
+\textbf{\textcolor{red}{$f_7'(x) = \cos^2(x) - \sin^2(x)$}}
+\end{center}
+\vspace{13mm}
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+
+\vspace{4mm}
+
+\[
+f_8(x) = \cos^2(x)
+\]
+
+\vspace{4mm}
+
+
+\[
+\begin{aligned}
+u(x) &= \cos(x) \\
+u'(x) &= -\sin(x)
+\end{aligned}
+\]
+\vspace{4mm}
+\[
+\begin{aligned}
+    f_8'(x) & = 2u(x) \times u'(x)  \\[2mm]
+            & = 2\cos(x) \times (-\sin(x)) \\[2mm]
+            & = -2\sin(x)\cos(x)
+\end{aligned}
+\]
+\vspace{6mm}
+\begin{center}
+\textbf{\textcolor{red}{$f_8'(x) = -2\sin(x)\cos(x)$}}
+\end{center}
+\vspace{13mm}
+}
+\end{tcolorbox}
+\end{multicols}
+
+\vfill 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 2 }}\\[5 pt]
+Déterminer les dérivées des fonctions suivantes
+
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{ Fonction $f(x)=\e^x(\e^x+3)$}
+
+\begin{align*}
+u(x) & =\e^x  & ~~~~ u'(x) & =\e^x\\
+v(x) & =\e^x +3  & ~~~~ v'(x) &  =\e^x
+\end{align*}
+
+\begin{align*}
+f'(x) &= \e^x \times (\e^x+3) + \e^x \times \e^x \\
+f'(x) &= \e^x(2\e^x + 3)
+\end{align*}
+
+}
+\end{tcolorbox}
+
+\columnbreak
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Fonction $g(x)=(\e^x-1)^2=(\e^x-1) \times (\e^x-1)$}
+
+\begin{align*}
+u(x) & =\e^x - 1  & ~~~~ u'(x) & =\e^x \\
+v(x) & =\e^x - 1  & ~~~~ v'(x) &  =\e^x
+\end{align*}
+
+\begin{align*}
+g'(x) &= \e^x(\e^x-1) + (e^x -1)\e^x \\
+g'(x) &= 2\e^x(\e^x - 1)
+\end{align*}
+
+}
+\end{tcolorbox}
+
+\end{multicols}
+
+
+\noindent
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\vspace{1cm}
+Si les fonctions $g$ et $u$ sont des fonctions dérivables sur les intervalles considérés on   le résultats important suivant : 
+$$(g(u(x)))' = u'(x) \times g'(u(x))$$
+\vspace{1cm}
+}
+\end{tcolorbox}
+\noindent
+
+Ce résultat permet d'obtenir les dérivées des fonctions du tableau 1 en ayant remplacé $x$ par $u(x)$. \\[0.2 cm]
+On obtient ainsi les dérivées suivantes : \\
+
+\begin{center}
+{
+\renewcommand{\arraystretch}{2.7}
+\begin{tabularx}{1\linewidth}{|>{\centering\arraybackslash}c||>{\centering\arraybackslash}p{3.5cm}|||>{\centering\arraybackslash}X|}
+\hline
+Fonctions & Fonctions dérivées & Exemples \\
+\hline
+$\left(\e^u\right)$ & \textcolor{red}{$u'\e^u$} & \textcolor{red}{$\left(\e^{2x}\right)' = 2\e^{2x}$} \\
+\hline
+$u^n$ & \textcolor{red}{$nu'u^{n-1}$} & \textcolor{red}{$\left((3x+1)^5\right)' = 5 \times 3 \times (3x+1)^4 = 15(3x+1)^4$} \\
+\hline
+$\ln u$ & \textcolor{red}{$\dfrac{u'}{u}$} & \textcolor{red}{$\left(\ln(2x+3)\right)' = \dfrac{2}{2x+3}$} \\
+\hline
+$\sin u$ & \textcolor{red}{$u'\cos u$} & \textcolor{red}{$\left(\sin(3x)\right)' = 3\cos(3x)$} \\
+\hline
+$\cos u$ & \textcolor{red}{$-u'\sin u$} & \textcolor{red}{$\left(\cos(2x)\right)' = -2\sin(2x)$} \\
+\hline
+$\arctan u$ & \textcolor{red}{$\dfrac{u'}{1+u^2}$} & \textcolor{red}{$\left(\arctan(x^2)\right)' = \dfrac{2x}{1+x^4}$} \\
+\hline
+\end{tabularx}
+}
+\end{center}
+
+\newpage
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 3 }}\\[5 pt]
+Déterminer les dérivées des fonctions suivantes
+\begin{multicols}{2}
+$f(x)=\e^{3x}(2x+1) $
+\vfill
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{itemize}
+\item $u(x) = e^{3x}$ donc $u'(x) = 3e^{3x}$
+\item $v(x) = 2x+1$ donc $v'(x) = 2$
+\end{itemize}
+
+\begin{align*}
+f'(x) &= 3e^{3x}(2x+1) + e^{3x} \times 2 \\
+&= e^{3x}[6x + 3 + 2] \\
+&= e^{3x}(6x + 5)
+\end{align*}
+
+
+$$\boxed{f'(x) = e^{3x}(6x + 5)}$$
+
+\end{tcolorbox}
+
+$g(x)=(x^2-x+1)\e^{-x}$
+\vfill
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{align*}
+u(x)& = x^2-x+1 & ~~ &  u'(x) = 2x-1 \\
+v(x) & = e^{-x} &  ~~ &  v'(x) = -e^{-x}
+\end{align*}
+
+\begin{align*}
+g'(x) &= (2x-1)e^{-x} - (x^2-x+1)e^{-x} \\
+&= e^{-x}[2x - 1 - x^2 + x - 1] \\
+&= e^{-x}(-x^2 + 3x - 2)
+\end{align*}
+
+\end{tcolorbox}
+
+
+\end{multicols}
+
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 4 }}\\[5 pt]
+Déterminer les dérivées des fonctions suivantes
+\begin{multicols}{2}
+$f(x)=\dfrac{1}{4}x^2-\dfrac{1}{4}-\dfrac{1}{2}\ln(x)$
+\vfill
+\cor{\begin{align*}
+f'(x) &= \frac{1}{4} \times 2x - \frac{1}{2} \times \frac{1}{x} \\
+&= \frac{1}{2}x - \frac{1}{2x} \\
+&= \frac{x^2 - 1}{2x}
+\end{align*}
+}
+
+\columnbreak
+
+$g(x)= \ln\left(1+\e^x \right)$
+\cor{$[\ln(u)]' = \dfrac{u'}{u}$ avec $u(x) = 1+e^x$ donc $u'(x) = e^x$.
+
+\begin{align*}
+g'(x) &= \frac{e^x}{1+e^x}
+\end{align*}
+
+\vspace{0.5cm}
+}
+\end{multicols}
+
+
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 5 }}\\[5 pt]
+Déterminer les dérivées des fonctions suivantes
+\begin{multicols}{2}
+$f(x)=\dfrac{\e^x-\e^{-x}}{\e^x+\e^{-x}}$
+\vfill
+\cor{
+$\left(\dfrac{u}{v}\right)' = \dfrac{u'v - uv'}{v^2}$ avec :
+\begin{align*}
+u(x) = & e^x - e^{-x} & u'(x) = & e^x + e^{-x} \\
+v(x) = & e^x + e^{-x} & v'(x) = & e^x - e^{-x} \\
+f'(x) = & \frac{(e^x + e^{-x})^2 - (e^x - e^{-x})^2}{(e^x + e^{-x})^2}
+\end{align*}
+
+Développons :
+\begin{itemize}
+\item $(e^x + e^{-x})^2 = e^{2x} + 2 + e^{-2x}$
+\item $(e^x - e^{-x})^2 = e^{2x} - 2 + e^{-2x}$
+\end{itemize}
+
+$$f'(x) = \frac{4}{(e^x + e^{-x})^2}$$
+}
+
+$g(x)= \ln\left(\dfrac{1+x}{1-x}\right)$
+\cor{
+On utilise les propriétés du logarithme :
+$$g(x) = \ln(1+x) - \ln(1-x)$$
+
+Donc :
+\begin{align*}
+g'(x) &= \frac{1}{1+x} - \frac{-1}{1-x} \\
+&= \frac{1}{1+x} + \frac{1}{1-x} \\
+&= \frac{1-x + 1+x}{(1+x)(1-x)} \\
+&= \frac{2}{1-x^2}
+\end{align*}
+}
+
+\end{multicols}
+
+\newpage
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 6 }}\\[5 pt]
+Déterminer les dérivées des fonctions suivantes
+\begin{multicols}{2}
+$f(x)=x^2\ln(x)$
+\cor{
+$(uv)' = u'v + uv'$ avec :
+\begin{itemize}
+\item $u(x) = x^2$ donc $u'(x) = 2x$
+\item $v(x) = \ln(x)$ donc $v'(x) = \dfrac{1}{x}$
+\end{itemize}
+
+\begin{align*}
+f'(x) &= 2x\ln(x) + x^2 \cdot \frac{1}{x} \\
+&= 2x\ln(x) + x \\
+&= x(2\ln(x) + 1)
+\end{align*}
+
+}
+$g(x)= (x^2-1)\e^{2x}$
+\cor{
+$(uv)' = u'v + uv'$ avec :
+\begin{itemize}
+\item $u(x) = x^2-1$ donc $u'(x) = 2x$
+\item $v(x) = e^{2x}$ donc $v'(x) = 2e^{2x}$
+\end{itemize}
+
+\begin{align*}
+g'(x) &= 2xe^{2x} + 2(x^2-1)e^{2x} \\
+&= e^{2x}[2x + 2x^2 - 2] \\
+&= 2e^{2x}(x^2 + x - 1)
+\end{align*}
+}
+
+
+\end{multicols}
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 7 }}\\[5 pt]
+Déterminer les dérivées des fonctions suivantes
+\begin{multicols}{2}
+
+$f(x)=\e^{\frac{2x-1}{2-x}}$
+\cor{
+$[e^u]' = u'e^u$ avec $u(x) = \dfrac{2x-1}{2-x}$.
+
+Calculons $u'(x)$ :
+\begin{align*}
+u'(x) &= \frac{2(2-x) - (2x-1)(-1)}{(2-x)^2} \\
+&= \frac{4 - 2x + 2x - 1}{(2-x)^2} \\
+&= \frac{3}{(2-x)^2}
+\end{align*}
+
+Donc :
+$$f'(x) = \frac{3}{(2-x)^2} \cdot e^{\frac{2x-1}{2-x}}$$
+
+$$\boxed{f'(x) = \frac{3e^{\frac{2x-1}{2-x}}}{(2-x)^2}}$$
+}
+
+\columnbreak 
+
+
+$g(x)= \ln\left(\dfrac{e^x}{e^x+1}\right)$
+\cor{
+On utilise les propriétés du logarithme :
+$$g(x) = \ln(e^x) - \ln(e^x+1) = x - \ln(e^x+1)$$
+
+Donc :
+\begin{align*}
+g'(x) &= 1 - \frac{e^x}{e^x+1} \\
+&= \frac{e^x+1 - e^x}{e^x+1} \\
+&= \frac{1}{e^x+1}
+\end{align*}
+
+$$\boxed{g'(x) = \frac{1}{e^x+1}}$$
+}
+
+
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage           %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fcolorbox{black}{blue!10!}{\textbf {2.2 Dérivées successives  }}\\[5 pt]
+\cor{
+Soit $f$ une fonction dérivable sur un intervalle $I$.
+
+\begin{itemize}
+\item La \textbf{dérivée première} de $f$ est notée $f'$ ou $f^{(1)}$.
+
+\item La \textbf{dérivée seconde} de $f$ est la dérivée de $f'$, notée $f''$ ou $f^{(2)}$.
+
+\item La \textbf{dérivée troisième} de $f$ est la dérivée de $f''$, notée $f'''$ ou $f^{(3)}$.
+
+\item Plus généralement, la \textbf{dérivée $n$-ième} de $f$ est la dérivée de $f^{(n-1)}$, notée $f^{(n)}$ pour $n \in \mathbb{N}^*$.
+\end{itemize}
+
+\vfill 
+
+On dit que $f$ est de \textbf{classe $\mathcal{C}^n$} sur $I$ si $f$ admet des dérivées jusqu'à l'ordre $n$ et si $f^{(n)}$ est continue sur $I$.
+
+\vfill 
+
+\textbf{Notations alternatives :} ~~~~~~$f^{(n)}(x) = \frac{d^n f}{dx^n}(x) = D^n f(x)$
+}
+
+\vfill
+
+\cor{
+\begin{multicols}{2}
+
+    avec $f(x)=x^4$ 
+    
+\begin{align*}
+    f^{(1)}(x) & =4x^3 \\
+    f^{(2)}(x) & =12x^2 
+\end{align*}
+\begin{align*}
+    f^{(3)}(x) & =24x \\
+    f^{(4)}(x) & =24 \\
+    f^{(5)}(x) & =0 \\
+\end{align*}
+\end{multicols}
+
+
+}
+
+\fcolorbox{black}{orange!30!}{\textbf {A3. Déterminer $f^{(5)}$ avec $f(x)=\cos(3x)$}}\\[5 pt]
+\cor{
+\begin{align*}
+f(x) &= \cos(3x) & ~~\\
+f'(x) &= -3\sin(3x) &  ~~\\
+f''(x) &= -3^2\cos(3x) & = -9\cos(3x) \\
+f^{(3)}(x) &= 3^3\sin(3x) & = 27\sin(3x) \\
+f^{(4)}(x) &= 3^4\cos(3x) & = 81\cos(3x) \\
+f^{(5)}(x) &= -3^5\sin(3x) & = -243\sin(3x)
+\end{align*}
+}
+
+\vfill 
+
+\fcolorbox{black}{blue!10!}{\textbf {3. Les principales utilisations de la dérivée  }}\\[5 pt]
+
+\vfill 
+
+\fcolorbox{black}{blue!10!}{\textbf {3.1 Équation des tangentes et variations d'une fonction  }}\\[5 pt]
+
+\cor{
+En classe de Terminale vous avez vu l'équation de la tangente au point d'abscisse $a$ , à la courbe représentant la fonction $f$. 
+
+\vspace{0.5cm}
+\fbox{$y=f'(a)(x-a)+f(a)$}
+
+En développant cette expression on retrouve le résultat vu en première : la tangente à la courbe représentant la fonction $f$ au point d'abscisse $a$ a pour coefficient directeur $f'(a)$. 
+
+\vspace{0.5cm}
+
+}
+
+\vfill 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fcolorbox{black}{orange!30!}{\textbf {A4. Une équation de la tangente}}\\[5 pt]
+Soit $f$ une fonction définie sur $\mathbb{R}$ par $f(x)=(2x+1)\e^x$ et C sa courbe représentative. 
+Donner une équation de la tangente à C au point d'abscisse $x=0$.Vérifier votre résultat à l'aide de la calculatrice en traçant la courbe représentative de $f$ et la tangente trouvée. \\[5 pt]
+\cor{
+\begin{multicols}{2}
+  L'équation de la tangente à $\mathcal{C}$ au point d'abscisse $x_0$ est donnée par :$y = f(x_0) + f'(x_0)(x - x_0)$
+
+Avec, $x_0 = 0$, $y = f(0) + f'(0) \cdot x$
+
+ Calcul de $f(0)$
+\begin{align*}
+f(0) &= (2 \times 0 + 1)e^0 & = 1 \times 1  & = 1
+\end{align*}
+
+Calcul de $f'(x)$
+
+On utilise la formule du produit $(uv)' = u'v + uv'$ avec :
+\begin{itemize}
+\item $u(x) = 2x+1$ donc $u'(x) = 2$
+\item $v(x) = e^x$ donc $v'(x) = e^x$
+\end{itemize}
+
+\begin{align*}
+f'(x) &= 2 \cdot e^x + (2x+1) \cdot e^x \\
+&= e^x[2 + 2x + 1] \\
+&= e^x(2x + 3)
+\end{align*}
+
+\textbf{Étape 3 :} Calcul de $f'(0)$
+
+\begin{align*}
+f'(0) &= e^0(2 \times 0 + 3) \\
+&= 1 \times 3 \\
+&= 3
+\end{align*}
+
+\textbf{Étape 4 :} Équation de la tangente
+
+\begin{align*}
+y &= f(0) + f'(0) \cdot x \\
+y &= 1 + 3x
+\end{align*}
+
+\cor{
+L'équation de la tangente à $\mathcal{C}$ au point d'abscisse $x=0$ est :
+$$\boxed{y = 3x + 1}$$
+
+Le point de tangence est $A(0, 1)$ et le coefficient directeur de la tangente est $m = 3$.
+}
+  
+\end{multicols}
+}
+
+\vfill
+
+\fcolorbox{black}{blue!10!}{\textbf {3.2 Théorèmes relatifs au sens de variation d'une fonction }}\\[5 pt]
+\defbox{\fbox{
+\begin{minipage}{14cm}{
+
+Si sur un intervalle $I$ la dérivée $f'$ de la fonction $f$ est positive alors la fonction $f$ est croissante sur $I$.\\[5 pt]
+Si sur un intervalle $I$ la dérivée $f'$ de la fonction $f$ est négative alors la fonction $f$ est décroissante sur $I$.
+}
+
+\end{minipage}
+}}
+
+\vfill
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 8 - Faire le point avec un QCM}}\\[5 pt]
+Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(x)=\e^{2x}(x^2+x-1)$ et $C$ sa courbe représentative : \\
+\begin{multicols}{2}
+
+1. Dérivée 
+\begin{itemize}[label=$\square$]
+\item   a) $f'(x)=(x^2+3x)\e^{2x}$
+\item   \textcolor{red}{$\boxtimes$ b) $f'(x)=(2x^2+4x-1)\e^{2x}$}
+\item   c) $f'(x)=(2x+1)\e^{2x}$
+\end{itemize}
+\begin{center}
+\noindent\rule{5cm}{0.4pt}
+\end{center}
+
+\textbf{2. Une équation de la droite tangente à $C$ au point d'abscisse $a=0$ est :}
+\begin{itemize}[label=$\square$]
+\item   a) $y=3x+1$
+\item   b) $y=-1$
+\item   \textcolor{red}{$\boxtimes$ c) $y=-x-1$} 
+\end{itemize}
+
+
+\textbf{3. $f$ est strictement croissante sur :}
+\begin{itemize}[label=$\square$]
+\item   a) $\mathbb{R}$
+\item   \textcolor{red}{$\boxtimes$ b) $[1;+\infty[$}
+\item   c) $[0;1]$
+\end{itemize}
+
+\begin{center}
+\noindent\rule{5cm}{0.4pt}
+\end{center}
+
+\textbf{4. $f$ est strictement positive sur :}  
+\begin{itemize}[label=$\square$]
+\item   a) $\mathbb{R}$
+\item   \textcolor{red}{$\boxtimes$ b) $[1;+\infty[$}
+\item   c) $[0;1]$
+\end{itemize}
+
+\end{multicols}
+
+\vfill 
+\newpage 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\fcolorbox{black}{green!10!}{ \textbf {Exercice 9 - Avec plusieurs fonctions dérivées}}\\
+\normalsize
+Soit la fonction $f$ définie sur $\mathbf{R}$ par $f(x)=(3x-1)\e^{2x}$ : \\
+
+\textbf{1. Calculer $f'(x)$ et $f''(x).$}
+
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Calcul de $f'(x)$ :}
+\[
+f(x) = (3x-1)\e^{2x}
+\]
+\[
+\begin{aligned}
+u(x) &= 3x-1 & u'(x) &= 3 \\
+v(x) &= \e^{2x} & v'(x) &= 2\e^{2x}\\
+\end{aligned}
+\]
+\[
+\begin{aligned}
+    f'(x) & = u'(x)v(x) + u(x)v'(x)  \\
+            & = 3\e^{2x} + (3x-1) \cdot 2\e^{2x} \\
+            & = \e^{2x}[3 + 6x - 2] \\
+\end{aligned}
+\]
+\begin{center}
+\textbf{\textcolor{red}{$f'(x) = \e^{2x}(6x + 1)$}}
+\end{center}
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{Calcul de $f''(x)$ :}
+\[
+f'(x) = (6x+1)\e^{2x}
+\]
+\[
+\begin{aligned}
+u(x) &= 6x+1 & u'(x) &= 6 \\
+v(x) &= \e^{2x} & v'(x) &= 2\e^{2x}
+\end{aligned}
+\]
+\[
+\begin{aligned}
+    f''(x) & = u'(x)v(x) + u(x)v'(x)  \\
+            & = 6\e^{2x} + (6x+1) \cdot 2\e^{2x} \\
+            & = \e^{2x}[6 + 12x + 2] 
+\end{aligned}
+\]
+\begin{center}
+\textbf{\textcolor{red}{$f''(x) = \e^{2x}(12x + 8)$}}
+\end{center}
+}
+\end{tcolorbox}
+\end{multicols}
+
+\textbf{2. Montrer que pour tout réel $x$, $f''(x) - f'(x) - 2f(x) = 9\e^{2x}.$}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\[
+\begin{aligned}
+f''(x) - f'(x) - 2f(x) &= \e^{2x}(12x+8) - \e^{2x}(6x+1) - 2(3x-1)\e^{2x} \\
+&= \e^{2x}[(12x+8) - (6x+1) - 2(3x-1)] \\
+&= \e^{2x}[12x + 8 - 6x - 1 - 6x + 2] \\
+&= \e^{2x}[(12x - 6x - 6x) + (8 - 1 + 2)] \\
+&= \e^{2x}[0 + 9] \\
+&= 9\e^{2x}
+\end{aligned}
+\]
+
+\vspace{2mm}
+
+\begin{center}
+\textbf{\textcolor{red}{On a bien démontré que $f''(x) - f'(x) - 2f(x) = 9\e^{2x}$}}
+\end{center}
+}
+\end{tcolorbox}
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 10 - Équation de la tangente}}\\
+
+Écrire une équation de la tangente à la courbe représentative de la fonction $f$ au point d'abscisse $a$ donné : 
+
+\begin{multicols}{2}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{$f(x)= \ln x + 2x - 3$ en $a=1$}
+
+\vspace{3mm}
+
+\textbf{Calcul de $f(1)$ :}
+$
+f(1) = \ln(1) + 2(1) - 3 = -1
+$
+
+\vspace{2mm}
+
+\textbf{Calcul de $f'(x)$ :}
+$f'(x) = \dfrac{1}{x} + 2$
+
+
+\vspace{2mm}
+
+\textbf{Calcul de $f'(1)$ :}
+$
+f'(1) = \dfrac{1}{1} + 2 = 1 + 2 = 3
+$
+
+\vspace{2mm}
+
+\textbf{Équation de la tangente :}
+\[
+\begin{aligned}
+y &= f'(1)(x-1) + f(1) \\
+y &= 3(x-1) + (-1) \\
+y &= 3x - 3 - 1 \\
+\end{aligned}
+\]
+\begin{center}
+\textbf{\textcolor{red}{$y = 3x - 4$}}
+\end{center}
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\textbf{$f(x)=\e^x(3-2x)$ en $a=0$}
+
+\textbf{Calcul de $f(0)$ :}
+$f(0) = \e^0(3-0) = 1 \times 3 = 3$
+
+
+\vspace{2mm}
+
+\textbf{Calcul de $f'(x)$ :}
+\[
+\begin{aligned}
+f'(x) &= \e^x(3-2x) + \e^x(-2) \\
+&= \e^x(3-2x-2) \\
+&= \e^x(1-2x)
+\end{aligned}
+\]
+
+\vspace{2mm}
+
+\textbf{Calcul de $f'(0)$ :}
+$f'(0) = \e^0(1-0) = 1 \times 1 = 1$
+
+
+\vspace{2mm}
+
+\textbf{Équation de la tangente :}
+\[
+\begin{aligned}
+y &= f'(0)(x-0) + f(0) \\
+y &= 1 \times x + 3 \\
+\end{aligned}
+\]
+\begin{center}
+\textbf{\textcolor{red}{$y = x + 3$}}
+\end{center}
+}
+\end{tcolorbox}
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    
+ \fcolorbox{black}{blue!10!}{\textbf {3.3. Le théorème des valeurs intermédiaires.   }}
+
+ \vfill 
+
+ \cor{
+
+Soit $f$ une fonction continue sur un intervalle $[a,b]$ avec $a < b$.
+
+Si $f(a) \leq k \leq f(b)$ (ou $f(b) \leq k \leq f(a)$), alors il existe au moins un réel $c \in [a,b]$ tel que $f(c) = k$.
+}
+
+\vfill 
+
+ \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Soit $f$ une fonction continue sur un intervalle $[a,b]$.
+
+Si $f(a)$ et $f(b)$ sont de signes opposés, alors l'équation $f(x) = 0$ admet au moins une solution dans $]a,b[$.
+\end{tcolorbox}
+
+\vfill 
+
+\textbf {Exemple  }\\[0.1cm]
+
+Étudier le sens de variation de la fonction $f$ définie sur $\mathbf{R}$ par $f(x) = \e^{-x}(x+2)$ et en déduire sans 
+calcul que l'équation $f(x)=0$ n'admet qu'une solution dans $\mathbf{R}$.
+
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{multicols}{2}
+La fonction $f$ est définie sur $\mathbb{R}$ par :
+$$f(x) = e^{-x}(x+2)$$
+
+En utilisant la formule de dérivation d'un produit $(uv)' = u'v + uv'$ :
+
+\begin{align*}
+f'(x) &= \left(e^{-x}\right)'(x+2) + e^{-x}(x+2)' \\
+f'(x) &= -e^{-x}(x+2) + e^{-x} \times 1 \\
+f'(x) &= e^{-x}\left[-(x+2) + 1\right] \\
+f'(x) &= e^{-x}(-x-1) \\
+f'(x) &= -e^{-x}(x+1)
+\end{align*}
+
+\subsection*{3) Calcul des limites(calculatrice)}
+
+$$\lim_{x \to -\infty} f(x) =-\infty ~~\lim_{x \to +\infty} f(x) =  0^+$$
+
+\subsection*{4) Étude du signe de $f'(x)$}
+
+On a $f'(x) = -e^{-x}(x+1)$.
+
+Puisque $e^{-x} > 0$ pour tout $x \in \mathbb{R}$, on a :
+
+\begin{align*}
+f'(x) > 0 &\iff -e^{-x}(x+1) > 0 \\
+&\iff -(x+1) > 0 \\
+&\iff x+1 < 0 \\
+&\iff x < -1
+\end{align*}
+
+\subsection*{3) Valeur au maximum}
+
+$$f(-1) = e^{-(-1)}(-1+2) = e^1 \times 1 = e$$
+
+\subsection*{5) Tableau de variation}
+
+\begin{center}
+\begin{tabular}{|c|ccccc|}
+\hline
+$x$ & $-\infty$ & & $-1$ & & $+\infty$ \\
+\hline
+$f'(x)$ & & $+$ & $0$ & $-$ & \\
+\hline
+& & & $e$ & & \\
+$f(x)$ & $-\infty$ & $\nearrow$ & & $\searrow$ & $0^+$ \\
+& & & & & \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+La fonction $f$ est \textbf{strictement croissante} sur $]-\infty, -1]$ et \textbf{strictement décroissante} sur $[-1, +\infty[$ avec un maximum en $x = -1$ où $f(-1) = e > 0$.
+
+\subsection*{6) Conclusion sur l'équation $f(x) = 0$}
+
+\begin{itemize}
+\item Sur $]-\infty, -1]$ : la fonction $f$ part de $-\infty$ et atteint $e > 0$. Par continuité et stricte croissance, elle traverse l'axe des abscisses \textbf{exactement une fois}. Il existe donc une unique valeur $\alpha \in ]-\infty, -1[$ telle que $f(\alpha) = 0$.
+
+\item Sur $[-1, +\infty[$ : la fonction $f$ part de $e > 0$ et tend vers $0^+$ en restant strictement positive. Elle ne s'annule donc \textbf{jamais} sur cet intervalle.
+\end{itemize}
+
+
+\textbf{Conclusion :} L'équation $f(x) = 0$ admet une unique solution dans $\mathbb{R}$, située dans l'intervalle $]-\infty, -1[$.
+\end{multicols}
+\end{tcolorbox}
+
+\vfill 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 11 :} }\\ [5 pt]
+Soit la fonction $f$ définie sur $\mathbf{R}$ par $f(x)=\e^x(4-2x)$
+
+On nomme C la courbe représentative dans un repère orthonormé.
+
+\textbf{1. Déterminer les limites de $f$ en $-\infty$ et  $+\infty$.}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{multicols}{2}
+{
+
+\begin{center}
+
+\textbf{Limite en $-\infty$ :}
+
+
+\textbf{\textcolor{red}{$\displaystyle \lim_{x \to -\infty} f(x) = 0$}}
+
+\columnbreak
+
+\textbf{Limite en $+\infty$ :}
+
+
+\textbf{\textcolor{red}{$\displaystyle \lim_{x \to +\infty} f(x) = -\infty$}}
+
+\end{center}
+}
+\end{multicols}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{2. Calculer $f'(x)$ et étudier son signe sur $\mathbf{R}$}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\begin{multicols}{2}
+\textbf{Calcul de $f'(x)$ :}
+\[
+f(x) = \e^x(4-2x)
+\]
+\[
+\begin{aligned}
+u(x) &= \e^x, & v(x) &= 4-2x \\
+u'(x) &= \e^x, & v'(x) &= -2
+\end{aligned}
+\]
+\[
+\begin{aligned}
+    f'(x) & = u'(x)v(x) + u(x)v'(x)  \\
+            & = \e^x(4-2x) + \e^x(-2) \\
+            & = \e^x[4-2x-2] \\
+            & = \e^x(2-2x)
+\end{aligned}
+\]
+\begin{center}
+\textbf{\textcolor{red}{$f'(x) = \e^x(2-2x)$}}
+\end{center}
+\end{multicols}
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{multicols}{2}
+{
+\textbf{Étude du signe de $f'(x)$ :}
+
+$\e^x > 0$ pour tout $x \in \mathbf{R}$
+
+Le signe de $f'(x)$ dépend donc de $(2-2x)$ :
+\[
+2-2x = 0 \Longleftrightarrow x = 1
+\]
+
+\vspace{2mm}
+
+\begin{itemize}
+    \item Si $x < 1$ : $2-2x > 0$ donc \textbf{\textcolor{red}{$f'(x) > 0$}}
+    \item Si $x = 1$ : \textbf{\textcolor{red}{$f'(x) = 0$}}
+    \item Si $x > 1$ : $2-2x < 0$ donc \textbf{\textcolor{red}{$f'(x) < 0$}}
+\end{itemize}
+}
+\end{multicols}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{3. Donner le tableau de variation de $f$.}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\[
+f(1) = \e^1(4-2 \times 1) = \e(4-2) = 2\e
+\]
+
+\begin{center}
+\begin{tikzpicture}
+    \tkzTabInit[lgt=2,espcl=2.5]
+    {$x$ /1, $f'(x)$ /1, $f(x)$ /2}
+    {$-\infty$, $1$, $+\infty$}
+    \tkzTabLine{, +, z, -, }
+    \tkzTabVar{-/$0$, +/$2\e$, -/$-\infty$}
+\end{tikzpicture}
+\end{center}
+
+}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{4. Écrire une équation de la tangente à C au point d'abscisse $a=1$}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{multicols}{2}
+{
+L'équation de la tangente au point d'abscisse $a$ est : $y = f'(a)(x-a) + f(a)$
+
+\vspace{2mm}
+
+Pour $a = 1$ :
+\[
+\begin{aligned}
+f(1) &= \e^1(4-2) = 2\e \\
+f'(1) &= \e^1(2-2) = 0
+\end{aligned}
+\]
+
+\vspace{2mm}
+
+\[
+\begin{aligned}
+y &= f'(1)(x-1) + f(1) \\
+y &= 0(x-1) + 2\e \\
+y &= 2\e
+\end{aligned}
+\]
+
+\vspace{2mm}
+
+\begin{center}
+\textbf{\textcolor{red}{L'équation de la tangente est : $y = 2\e$}}
+\end{center}
+
+(Tangente horizontale)
+}
+\end{multicols}
+\end{tcolorbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fcolorbox{black}{green!10!}{\textbf {Exercice 12 :} }\\ [5 pt]
+Soit la fonction $f$ définie sur $\mathbf{R}$ par $f(x)=\e^{-x}(3-4x)$
+
+On nomme C la courbe représentative dans un repère orthonormé.
+
+\textbf{1. Déterminer les limites de $f$ en $-\infty$ et  $+\infty$.}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{multicols}{2}
+    
+
+{
+\begin{center}
+    
+
+\textbf{Limite en $-\infty$ :}
+
+ \textbf{\textcolor{red}{$\displaystyle \lim_{x \to -\infty} f(x) = +\infty$}}
+\columnbreak
+
+\textbf{Limite en $+\infty$ :}
+
+ \textbf{\textcolor{red}{$\displaystyle \lim_{x \to +\infty} f(x) = 0$}}
+\end{center}}
+\end{multicols}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{2. Calculer $f'(x)$ et étudier son signe sur $\mathbf{R}$}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+
+\begin{multicols}{2}
+    
+
+\textbf{Calcul de $f'(x)$ :}
+\[
+f(x) = \e^{-x}(3-4x)
+\]
+\[
+\begin{aligned}
+u(x) &= \e^{-x}, & v(x) &= 3-4x \\
+u'(x) &= -\e^{-x}, & v'(x) &= -4
+\end{aligned}
+\]
+\[
+\begin{aligned}
+    f'(x) & = u'(x)v(x) + u(x)v'(x)  \\
+            & = -\e^{-x}(3-4x) + \e^{-x}(-4) \\
+            & = \e^{-x}[-3+4x-4] \\
+            & = \e^{-x}(4x-7)
+\end{aligned}
+\]
+\begin{center}
+\textbf{\textcolor{red}{$f'(x) = \e^{-x}(4x-7)$}}
+\end{center}
+
+\end{multicols}
+
+}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+
+\begin{multicols}{2}
+    
+
+{
+\textbf{Étude du signe de $f'(x)$ :}
+
+$\e^{-x} > 0$ pour tout $x \in \mathbf{R}$
+
+Le signe de $f'(x)$ dépend donc de $(4x-7)$ :
+\[
+4x-7 = 0 \Longleftrightarrow x = \dfrac{7}{4}
+\]
+
+\vspace{2mm}
+
+\begin{itemize}
+    \item Si $x < \dfrac{7}{4}$ : $4x-7 < 0$ donc \textbf{\textcolor{red}{$f'(x) < 0$}}
+    \item Si $x = \dfrac{7}{4}$ : \textbf{\textcolor{red}{$f'(x) = 0$}}
+    \item Si $x > \dfrac{7}{4}$ : $4x-7 > 0$ donc \textbf{\textcolor{red}{$f'(x) > 0$}}
+\end{itemize}
+}
+\end{multicols}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{3. Donner le tableau de variation de $f$.}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\[
+f\left(\dfrac{7}{4}\right) = \e^{-\frac{7}{4}}\left(3-4 \times \dfrac{7}{4}\right) = \e^{-\frac{7}{4}}(3-7) = -4\e^{-\frac{7}{4}}
+\]
+
+
+
+\begin{center}
+\begin{tikzpicture}
+    \tkzTabInit[lgt=2,espcl=2.5]
+    {$x$ /1, $f'(x)$ /1, $f(x)$ /2}
+    {$-\infty$, $\dfrac{7}{4}$, $+\infty$}
+    \tkzTabLine{, -, z, +, }
+    \tkzTabVar{+/$+\infty$, -/$-4\e^{-\frac{7}{4}}$, +/$0$}
+\end{tikzpicture}
+\end{center}
+
+}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{4. Écrire une équation de la tangente à C au point d'abscisse $a=0$}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{multicols}{2}
+    
+
+{
+L'équation de la tangente au point d'abscisse $a$ est : $y = f'(a)(x-a) + f(a)$
+
+\vspace{2mm}
+
+Pour $a = 0$ :
+\[
+\begin{aligned}
+f(0) &= \e^{0}(3-0) = 1 \times 3 = 3 \\
+f'(0) &= \e^{0}(0-7) = 1 \times (-7) = -7
+\end{aligned}
+\]
+
+\vspace{2mm}
+
+\[
+\begin{aligned}
+y &= f'(0)(x-0) + f(0) \\
+y &= -7x + 3
+\end{aligned}
+\]
+
+\vspace{2mm}
+
+\begin{center}
+\textbf{\textcolor{red}{L'équation de la tangente est : $y = -7x + 3$}}
+\end{center}
+}
+\end{multicols}
+\end{tcolorbox}
+
+
+\end{document}

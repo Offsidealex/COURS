@@ -1,0 +1,199 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[landscape,left=1.5cm,right=1.5cm,top=1cm,bottom=1cm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 2BTS}
+\fancyfoot[L]{Alexis RUIZ}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[C]{}
+
+%------------------------------------------------------------
+% Couleurs (inspirées de la grille Fourier)
+%------------------------------------------------------------
+\definecolor{exoheader}{RGB}{31,73,125}     % bleu foncé (en-tête exercice)
+\definecolor{colheader}{RGB}{91,155,213}    % bleu moyen (en-tête colonnes)
+\definecolor{subtotalrow}{RGB}{252,228,214} % pêche/orange clair (sous-total)
+
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{4pt}
+\setlength{\columnsep}{1cm}
+\DeclareMathOperator{\e}{e}
+
+% ── Largeurs pour les tables en colonnes (\columnwidth ≈ 12.85 cm) ────────────
+%   sum(p) = 12.85 − 6×4pt − 4×0.4pt ≈ 11.95 cm
+%   Q=0.5  R=10.6  P=0.85  (sum=11.95)
+%   mcolW  = 11.95 + 4×4pt + 2×0.4pt ≈ 12.51 cm
+% ── Largeurs pour la table pleine largeur (\textwidth = 26.7 cm) ─────────────
+%   sum(p) = 26.7 − 6×4pt − 4×0.4pt ≈ 25.80 cm
+%   Q=0.8  R=23.75  P=1.25  (sum=25.80)
+%   mcolW  = 25.80 + 4×4pt + 2×0.4pt ≈ 26.39 cm
+
+\newlength{\mcolW}
+
+%------------------------------------------------------------
+% Macros communes
+%------------------------------------------------------------
+\newcommand{\exoheaderrow}[2]{%
+  \multicolumn{3}{|>{\columncolor{exoheader}}p{\mcolW}|}{%
+    \hspace{2mm}\textcolor{white}{\textbf{#1}}\hfill
+    \textcolor{white}{\textbf{#2}}\hspace{2mm}%
+  } \\
+}
+\newcommand{\colheaderrow}{%
+  \rowcolor{colheader}%
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+}
+\newcommand{\soustotalrow}[2]{%
+  \rowcolor{subtotalrow}%
+  \multicolumn{2}{|r|}{\textbf{Sous-total #1}} & \textbf{#2} \\
+}
+
+\begin{document}
+\setlength{\parindent}{0cm}
+
+% ── Titre pleine largeur ──────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[2mm]
+  Équations différentielles \hspace{2cm} 2BTS
+  \hspace{2cm} \textbf{Total : /20 points}
+\end{center}
+
+\smallskip
+
+% ════════════════════════════════════════════════════════════
+%  EXERCICE 1  (gauche)  +  EXERCICE 3  (droite)
+% ════════════════════════════════════════════════════════════
+\setlength{\mcolW}{12.51cm}
+
+\begin{multicols}{2}
+
+% ── Exercice 1 ── /7 pts ─────────────────────────────────────────────────────
+\noindent
+\begin{tabular}{|>{\centering\arraybackslash}p{0.5cm}|p{10.6cm}|>{\centering\arraybackslash}p{0.85cm}|}
+\hline
+\exoheaderrow{Exercice 1 : $y' + 2y = -5\e^{-2x}$}{/7 pts}
+\colheaderrow
+\hline
+\multirow{2}{*}{1}
+  & Équation caractéristique : $r + 2 = 0 \Rightarrow r = -2$ & 1 \\
+\cline{2-3}
+  & Solution générale de (E$_0$) : $y_0 = C\e^{-2x}$, $C \in \mathbb{R}$ & 1 \\
+\hline
+\multirow{4}{*}{2}
+  & Calcul de $g'(x) = -5\e^{-2x} + 10x\e^{-2x}$ & 1 \\
+\cline{2-3}
+  & Substitution : $g'(x) + 2g(x) = (-5+10x)\e^{-2x} + (-10x)\e^{-2x}$ & 1 \\
+\cline{2-3}
+  & Simplification : $= -5\e^{-2x}$ \quad \textbf{Résultat encadré} & 0,5 \\
+\cline{2-3}
+  & Conclusion : $g$ est une solution particulière de (E) & 0,5 \\
+\hline
+3 & Solution générale de (E) : $y = (C - 5x)\e^{-2x}$, $C \in \mathbb{R}$ & 1 \\
+\hline
+\multirow{2}{*}{4}
+  & Application de la condition : $f(0) = C\,\e^0 = C = 1$ & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $f(x) = (1 - 5x)\e^{-2x}$ & 0,5 \\
+\hline
+\soustotalrow{Exercice 1}{/7}
+\hline
+\end{tabular}
+
+\columnbreak  % ──────────── passage colonne droite ────────────
+
+% ── Exercice 3 ── /6 pts ─────────────────────────────────────────────────────
+\noindent
+\begin{tabular}{|>{\centering\arraybackslash}p{0.5cm}|p{10.6cm}|>{\centering\arraybackslash}p{0.85cm}|}
+\hline
+\exoheaderrow{Exercice 3 : $y' - y = (3x-1)\e^{x}$}{/6 pts}
+\colheaderrow
+\hline
+\multirow{2}{*}{1}
+  & Équation caractéristique : $r - 1 = 0 \Rightarrow r = 1$ & 0,5 \\
+\cline{2-3}
+  & Solution générale de (E$_0$) : $y_0 = C\e^{x}$, $C \in \mathbb{R}$ & 0,5 \\
+\hline
+\multirow{3}{*}{2}
+  & Calcul de $y_p'(x) = \bigl(Ax^2 + (2A+B)x + (B+C)\bigr)\e^x$ & 1 \\
+\cline{2-3}
+  & Substitution : $y_p' - y_p = (2Ax + B)\e^x$ & 0,5 \\
+\cline{2-3}
+  & Identification avec $(3x-1)\e^x$ : $A = \dfrac{3}{2}$, $B = -1$
+    \quad \textbf{Résultat :} $y_p(x) = \left(\dfrac{3}{2}x^2 - x\right)\e^x$ & 1 \\
+\hline
+3 & Solution générale de (E) : $y = \left(C + \dfrac{3}{2}x^2 - x\right)\e^{x}$,
+    $C \in \mathbb{R}$ & 1 \\
+\hline
+\multirow{2}{*}{4}
+  & Application de la condition : $f(0) = C\,\e^0 = C = -1$ & 0,5 \\
+\cline{2-3}
+  & \textbf{Résultat :} $f(x) = \left(\dfrac{3}{2}x^2 - x - 1\right)\e^{x}$ & 1 \\
+\hline
+\soustotalrow{Exercice 3}{/6}
+\hline
+\end{tabular}
+
+\end{multicols}
+
+\smallskip
+
+% ════════════════════════════════════════════════════════════
+%  EXERCICE 2  — pleine largeur
+% ════════════════════════════════════════════════════════════
+\setlength{\mcolW}{26.39cm}
+
+\noindent
+\begin{tabular}{|>{\centering\arraybackslash}p{0.8cm}|p{23.75cm}|>{\centering\arraybackslash}p{1.25cm}|}
+\hline
+\exoheaderrow{Exercice 2 : $y' - 2y = -x^2$}{/7 pts}
+\colheaderrow
+\hline
+\multirow{2}{*}{1}
+  & Équation caractéristique : $r - 2 = 0 \Rightarrow r = 2$ & 0,5 \\
+\cline{2-3}
+  & Solution générale de (E$_0$) : $y_0 = C\e^{2x}$, $C \in \mathbb{R}$ & 1 \\
+\hline
+\multirow{4}{*}{2}
+  & Calcul de $y_p'(x) = 2Ax + B$ & 1 \\
+\cline{2-3}
+  & Substitution dans (E) : $y_p' - 2y_p = (2Ax + B) - 2(Ax^2 + Bx + C)
+    = -2Ax^2 + (2A - 2B)x + (B - 2C) = -x^2$ & 0,5 \\
+\cline{2-3}
+  & Identification terme à terme :
+    $-2A = -1 \Rightarrow A = \dfrac{1}{2}$ \quad
+    $2A - 2B = 0 \Rightarrow B = \dfrac{1}{2}$ \quad
+    $B - 2C = 0 \Rightarrow C = \dfrac{1}{4}$ & 1 \\
+\cline{2-3}
+  & \textbf{Résultat :} $y_p(x) = \dfrac{1}{2}x^2 + \dfrac{1}{2}x + \dfrac{1}{4}$ & 0,5 \\
+\hline
+3 & Solution générale de (E) : $y = C\e^{2x} + \dfrac{1}{2}x^2 + \dfrac{1}{2}x + \dfrac{1}{4}$,
+    \quad $C \in \mathbb{R}$ & 1 \\
+\hline
+\multirow{2}{*}{4}
+  & Application de la condition initiale : $f(0) = C\cdot\e^{0} + \dfrac{1}{4} = 1
+    \Rightarrow C = \dfrac{3}{4}$ & 1 \\
+\cline{2-3}
+  & \textbf{Résultat :} $f(x) = \dfrac{3}{4}\e^{2x} + \dfrac{1}{2}x^2 + \dfrac{1}{2}x
+    + \dfrac{1}{4}$ & 0,5 \\
+\hline
+\soustotalrow{Exercice 2}{/7}
+\hline
+\end{tabular}
+
+\end{document}

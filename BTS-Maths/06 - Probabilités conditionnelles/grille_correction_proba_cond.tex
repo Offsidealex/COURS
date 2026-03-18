@@ -1,0 +1,190 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{setspace}
+\singlespacing
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{\textcolor{red}{\textbf{VERSION PROFESSEUR}} -- 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{tikz}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+\usepackage{tcolorbox}
+\usepackage{pifont}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\parindent}{0pt}
+
+\newtcolorbox{titrebox}{colback=white,colframe=black,arc=3pt,boxrule=1.5pt}
+\hfuzz=20pt
+
+% Boîte titre d'exercice (même style que le corrigé)
+\newcounter{numexos}
+\setcounter{numexos}{0}
+\newcommand{\bex}[2]{%
+\def\bextitle{#1}%
+\addtocounter{numexos}{1}%
+\begin{tcolorbox}[colback=white,colframe=black!30,arc=3pt,boxrule=0.6pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  \textbf{Exercice~\thenumexos\ifx\bextitle\empty\else~--~~#1\fi}\par
+  #2%
+\end{tcolorbox}}
+
+% Couleurs pour les lignes du tableau
+\definecolor{lignetitre}{RGB}{220,230,242}
+\definecolor{ligneimpaire}{RGB}{240,245,255}
+\definecolor{lignepaire}{RGB}{255,255,255}
+\definecolor{lignetotal}{RGB}{200,220,200}
+
+\begin{document}
+
+\begin{titrebox}
+\begin{center}
+\textbf{\LARGE Grille de correction \textcolor{red}{-- PROFESSEUR}}\\[1mm]
+\large Contrôle -- Probabilités conditionnelles\\[2mm]
+\large Durée : 45 minutes \hfill Barème : \textbf{/10}
+\end{center}
+\end{titrebox}
+
+\vspace{5mm}
+
+%------------------------------------------------------------------
+\bex{Tableau de probabilités \hfill \normalfont\textit{6 points}}{%
+\smallskip
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|C{0.8cm}|L{9cm}|C{3cm}|C{2cm}|}
+\hline
+\rowcolor{lignetitre}
+\textbf{Q.} & \textbf{Critères d'évaluation} & \textbf{Réponse attendue} & \textbf{Points} \\
+\hline
+\rowcolor{ligneimpaire}
+\multirow{4}{*}{\textbf{1}}
+  & Calcul correct de l'effectif de $C_1$ & $70\,\%\times\np{10000}=\np{7000}$ & 0,5 \\
+\cline{2-4}
+\rowcolor{lignepaire}
+  & Calcul correct de l'effectif de $C_2$ & $30\,\%\times\np{10000}=\np{3000}$ & 0,5 \\
+\cline{2-4}
+\rowcolor{ligneimpaire}
+  & Calcul des défectueux de chaque chaîne & $140$ et $105$ & 0,5 \\
+\cline{2-4}
+\rowcolor{lignepaire}
+  & Tableau entièrement correct (totaux cohérents) & Total $D = 245$, $\bar{D}$ correct & 0,5 \\
+\hline
+\rowcolor{ligneimpaire}
+\textbf{2} & Calcul de $P(D)$ & $P(D)=\dfrac{245}{\np{10000}}=0{,}0245$ & 1 \\
+\hline
+\rowcolor{lignepaire}
+\multirow{2}{*}{\textbf{3}}
+  & Définition correcte de $C_1\cap D$ en langage courant & \og{}écran de $C_1$ \textbf{et} défectueux\fg{} & 0,5 \\
+\cline{2-4}
+\rowcolor{ligneimpaire}
+  & Calcul de $P(C_1\cap D)$ & $P(C_1\cap D)=\dfrac{140}{\np{10000}}=0{,}014$ & 0,5 \\
+\hline
+\rowcolor{lignepaire}
+\multirow{3}{*}{\textbf{4}}
+  & Formule de probabilité conditionnelle écrite & $P_D(C_1)=\dfrac{P(C_1\cap D)}{P(D)}$ & 0,5 \\
+\cline{2-4}
+\rowcolor{ligneimpaire}
+  & Calcul numérique correct & $\dfrac{0{,}014}{0{,}0245}=\dfrac{4}{7}\approx 0{,}571$ & 0,5 \\
+\cline{2-4}
+\rowcolor{lignepaire}
+  & Interprétation dans le contexte & Environ $57{,}1\,\%$ des défectueux viennent de $C_1$ & 1 \\
+\hline
+\rowcolor{lignetotal}
+\multicolumn{3}{|l|}{\textbf{Sous-total Exercice 1}} & \textbf{6} \\
+\hline
+\end{tabular}
+
+\medskip
+{\sloppy\small\textit{Remarque~: accepter les fractions exactes ($4/7$, $140/245$\ldots) comme les valeurs décimales arrondies. Pénaliser l'absence d'interprétation en contexte (question~4).}\par}
+}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+\bex{Indépendance de deux événements \hfill \normalfont\textit{4 points}}{%
+\smallskip
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|C{0.8cm}|L{9cm}|C{3cm}|C{2cm}|}
+\hline
+\rowcolor{lignetitre}
+\textbf{Q.} & \textbf{Critères d'évaluation} & \textbf{Réponse attendue} & \textbf{Points} \\
+\hline
+\rowcolor{ligneimpaire}
+\multirow{2}{*}{\textbf{1}}
+  & Calcul de $P(F)$ & $P(F)=\dfrac{50}{\np{1000}}=0{,}05$ & 0,5 \\
+\cline{2-4}
+\rowcolor{lignepaire}
+  & Calcul de $P(C)$ & $P(C)=\dfrac{80}{\np{1000}}=0{,}08$ & 0,5 \\
+\hline
+\rowcolor{ligneimpaire}
+\textbf{2} & Calcul de $P(F\cap C)$ & $P(F\cap C)=\dfrac{10}{\np{1000}}=0{,}01$ & 1 \\
+\hline
+\rowcolor{lignepaire}
+\multirow{3}{*}{\textbf{3}}
+  & Calcul de $P(F)\times P(C)$ & $0{,}05\times 0{,}08=0{,}004$ & 0,5 \\
+\cline{2-4}
+\rowcolor{ligneimpaire}
+  & Comparaison explicite des deux valeurs & $0{,}01\neq 0{,}004$ & 0,5 \\
+\cline{2-4}
+\rowcolor{lignepaire}
+  & Conclusion~: $F$ et $C$ \textbf{ne sont pas indépendants} & Conclusion correcte & 0,5 \\
+\cline{2-4}
+\rowcolor{ligneimpaire}
+  & Interprétation dans le contexte industriel & Défaut de forme $\Rightarrow$ plus probable d'avoir défaut couleur & 0,5 \\
+\hline
+\rowcolor{lignetotal}
+\multicolumn{3}{|l|}{\textbf{Sous-total Exercice 2}} & \textbf{4} \\
+\hline
+\end{tabular}
+
+\medskip
+{\sloppy\small\textit{Remarque~: la conclusion sur l'indépendance doit être explicitement formulée. Une simple comparaison numérique sans conclure ne donne pas le demi-point de conclusion.}\par}
+}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+% Tableau récapitulatif
+\begin{tcolorbox}[colback=white,colframe=black,arc=3pt,boxrule=1pt,
+  left=4mm,right=4mm,top=2mm,bottom=2mm]
+\textbf{Récapitulatif des points}
+
+\medskip
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|L{8cm}|C{3cm}|C{3cm}|}
+\hline
+\rowcolor{lignetitre}
+\textbf{Exercice} & \textbf{Barème} & \textbf{Note élève} \\
+\hline
+Exercice 1 -- Tableau de probabilités & /6 & \phantom{00} \\
+\hline
+Exercice 2 -- Indépendance de deux événements & /4 & \phantom{00} \\
+\hline
+\rowcolor{lignetotal}
+\textbf{Total} & \textbf{/10} & \phantom{00} \\
+\hline
+\end{tabular}
+\end{tcolorbox}
+
+\end{document}

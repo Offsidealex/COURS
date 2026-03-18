@@ -1,0 +1,224 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\usepackage{tcolorbox}
+\usepackage{cancel}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe 2BTS}
+\fancyfoot[C]{Corrigé - Page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+\setlength{\parindent}{0cm}
+\renewcommand{\arraystretch}{1.8}
+\DeclareMathOperator{\e}{e}
+
+% Boîte pour encadrer les résultats
+\newcommand{\reponse}[1]{%
+  \begin{tcolorbox}[colback=blue!5!white, colframe=blue!50!black,
+    boxrule=0.5pt, left=4pt, right=4pt, top=2pt, bottom=2pt]
+  #1
+  \end{tcolorbox}%
+}
+
+\begin{document}
+
+\bigskip
+\begin{center}
+  \LARGE\textbf{Corrigé – Équations différentielles (2 h)}\\[0.3cm]
+\end{center}
+\normalsize
+\hrule
+\vspace{0.3cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Exercice 1}} \quad
+$y' + 2y = -5\e^{-2x}$
+
+\medskip
+
+\textbf{1. Résolution de (E$_0$) : $y' + 2y = 0$}
+
+L'équation caractéristique est $r + 2 = 0$, soit $r = -2$.
+
+\reponse{Les solutions de (E$_0$) sont : $y_0 = C\e^{-2x}$, \quad $C \in \mathbb{R}$}
+
+\bigskip
+
+\textbf{2. Vérification que $g(x) = -5x\e^{-2x}$ est solution particulière de (E)}
+
+On calcule $g'(x)$ par la formule de dérivation d'un produit :
+\[
+  g'(x) = -5\e^{-2x} + (-5x)\times(-2)\e^{-2x} = -5\e^{-2x} + 10x\e^{-2x}
+\]
+
+On substitue dans (E) :
+\[
+  g'(x) + 2g(x) = \bigl(-5\e^{-2x} + 10x\e^{-2x}\bigr) + 2\bigl(-5x\e^{-2x}\bigr)
+  = -5\e^{-2x} + \cancel{10x\e^{-2x}} - \cancel{10x\e^{-2x}}
+  = -5\e^{-2x}
+\]
+
+On obtient bien $-5\e^{-2x}$, donc $g$ est une solution particulière de (E). \hfill $\square$
+
+\bigskip
+
+\textbf{3. Ensemble des solutions de (E)}
+
+La solution générale de (E) est la somme de la solution générale de (E$_0$) et d'une solution particulière :
+
+\reponse{$y = y_0 + g = C\e^{-2x} - 5x\e^{-2x} = (C - 5x)\e^{-2x}$, \quad $C \in \mathbb{R}$}
+
+\bigskip
+
+\textbf{4. Solution particulière vérifiant $f(0) = 1$}
+
+On pose $f(x) = (C - 5x)\e^{-2x}$ et on applique la condition initiale :
+\[
+  f(0) = (C - 0)\cdot\e^{0} = C = 1
+\]
+
+\reponse{$f(x) = (1 - 5x)\e^{-2x}$}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Exercice 2}} \quad
+$y' - 2y = -x^{2}$
+
+\medskip
+
+\textbf{1. Résolution de (E$_0$) : $y' - 2y = 0$}
+
+L'équation caractéristique est $r - 2 = 0$, soit $r = 2$.
+
+\reponse{Les solutions de (E$_0$) sont : $y_0 = C\e^{2x}$, \quad $C \in \mathbb{R}$}
+
+\bigskip
+
+\textbf{2. Recherche d'une solution particulière $y_p(x) = Ax^2 + Bx + C$}
+
+On calcule $y_p'(x) = 2Ax + B$. On substitue dans (E) :
+\[
+  y_p' - 2y_p = (2Ax + B) - 2(Ax^2 + Bx + C)
+  = -2Ax^2 + (2A - 2B)x + (B - 2C)
+\]
+
+On identifie terme à terme avec $-x^2 + 0 \cdot x + 0$ :
+\[
+  \begin{cases}
+    -2A = -1 \\
+    2A - 2B = 0 \\
+    B - 2C = 0
+  \end{cases}
+  \implies
+  \begin{cases}
+    A = \dfrac{1}{2} \\[4pt]
+    B = A = \dfrac{1}{2} \\[4pt]
+    C = \dfrac{B}{2} = \dfrac{1}{4}
+  \end{cases}
+\]
+
+\reponse{$y_p(x) = \dfrac{1}{2}x^2 + \dfrac{1}{2}x + \dfrac{1}{4}$}
+
+\bigskip
+
+\textbf{3. Ensemble des solutions de (E)}
+
+\reponse{$y = C\e^{2x} + \dfrac{1}{2}x^2 + \dfrac{1}{2}x + \dfrac{1}{4}$, \quad $C \in \mathbb{R}$}
+
+\bigskip
+
+\textbf{4. Solution particulière vérifiant $f(0) = 1$}
+
+On applique la condition initiale :
+\[
+  f(0) = C\cdot\e^{0} + 0 + 0 + \frac{1}{4} = C + \frac{1}{4} = 1 \implies C = \frac{3}{4}
+\]
+
+\reponse{$f(x) = \dfrac{3}{4}\e^{2x} + \dfrac{1}{2}x^2 + \dfrac{1}{2}x + \dfrac{1}{4}$}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fcolorbox[gray]{0}{0.9}{\textbf{Exercice 3}} \quad
+$y' - y = (3x-1)\e^{x}$
+
+\medskip
+
+\textbf{1. Résolution de (E$_0$) : $y' - y = 0$}
+
+L'équation caractéristique est $r - 1 = 0$, soit $r = 1$.
+
+\reponse{Les solutions de (E$_0$) sont : $y_0 = C\e^{x}$, \quad $C \in \mathbb{R}$}
+
+\bigskip
+
+\textbf{2. Recherche d'une solution particulière $y_p(x) = (Ax^2 + Bx + C)\e^{x}$}
+
+On calcule $y_p'(x)$ par la formule de dérivation d'un produit :
+\begin{align*}
+  y_p'(x) &= (2Ax + B)\e^x + (Ax^2 + Bx + C)\e^x \\
+           &= \bigl(Ax^2 + (2A+B)x + (B+C)\bigr)\e^x
+\end{align*}
+
+On substitue dans (E) :
+\begin{align*}
+  y_p' - y_p &= \bigl(Ax^2 + (2A+B)x + (B+C)\bigr)\e^x - (Ax^2 + Bx + C)\e^x \\
+              &= \bigl(\cancel{Ax^2} + (2A+\cancel{B})x + (\cancel{B}+\cancel{C})\bigr)\e^x
+               - (\cancel{Ax^2} + \cancel{Bx} + \cancel{C})\e^x \\
+              &= (2Ax + B)\e^x
+\end{align*}
+
+On identifie terme à terme avec $(3x - 1)\e^x$ :
+\[
+  \begin{cases}
+    2A = 3 \\
+    B = -1
+  \end{cases}
+  \implies
+  \begin{cases}
+    A = \dfrac{3}{2} \\[4pt]
+    B = -1
+  \end{cases}
+  \quad (C \text{ est libre, on choisit } C = 0)
+\]
+
+\reponse{$y_p(x) = \left(\dfrac{3}{2}x^2 - x\right)\e^{x}$}
+
+\bigskip
+
+\textbf{3. Ensemble des solutions de (E)}
+
+\reponse{$y = \left(C + \dfrac{3}{2}x^2 - x\right)\e^{x}$, \quad $C \in \mathbb{R}$}
+
+\bigskip
+
+\textbf{4. Solution particulière vérifiant $f(0) = -1$}
+
+On applique la condition initiale :
+\[
+  f(0) = \left(C + 0 - 0\right)\e^{0} = C = -1
+\]
+
+\reponse{$f(x) = \left(\dfrac{3}{2}x^2 - x - 1\right)\e^{x}$}
+
+\end{document}

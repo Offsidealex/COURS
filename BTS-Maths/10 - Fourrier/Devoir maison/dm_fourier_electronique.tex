@@ -1,0 +1,241 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{Devoir Maison -- Séries de Fourier}
+\cfoot{\thepage}
+
+\tcbset{
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black, fonttitle=\bfseries, title=#1},
+  reponsebox/.style={colback=gray!5!white, colframe=gray!40!black, sharp corners, boxrule=0.5pt,
+                     left=4pt, right=4pt, top=4pt, bottom=4pt}
+}
+
+\newcommand{\dt}{\mathrm{d}t}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Devoir Maison -- Séries de Fourier}} \\[0.2cm]
+  {\Large Analyse harmonique de signaux électroniques} \\[0.2cm]
+  \rule{0.6\textwidth}{0.4pt} \\[0.2cm]
+  {\normalsize À rendre le : \dotfill \quad Calculatrice autorisée} \\[0.1cm]
+  {\normalsize Le barème est donné à titre indicatif.}
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Nom :} \dotfill \quad \textbf{Prénom :} \dotfill \quad \textbf{Classe :} \dotfill
+
+\vspace{0.3cm}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\textbf{Rappels :} Soit $f$ une fonction périodique de période $T$ et de pulsation $\omega = \dfrac{2\pi}{T}$.
+Son développement en série de Fourier est :
+\[
+  S(t) = a_0 + \sum_{n=1}^{+\infty}\!\bigl(a_n\cos(n\omega t)+b_n\sin(n\omega t)\bigr)
+\]
+avec \quad
+$\displaystyle a_0 = \frac{1}{T}\int_0^{T} f(t)\,\dt$,\qquad
+$\displaystyle a_n = \frac{2}{T}\int_0^{T} f(t)\cos(n\omega t)\,\dt$,\qquad
+$\displaystyle b_n = \frac{2}{T}\int_0^{T} f(t)\sin(n\omega t)\,\dt$.
+}}
+
+\vspace{0.4cm}
+
+%% ================================================================
+%% EXERCICE 1 — 10 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 1 \hfill \normalfont\textit{(10 points)}}]
+  \textit{Contexte :} Un générateur basse fréquence (GBF) délivre une \textbf{tension carrée symétrique}
+  $v(t)$, de période $T = 2\,\mathrm{ms}$ (fréquence $f_0 = 500\,\mathrm{Hz}$) et d'amplitude $5\,\mathrm{V}$.
+  On travaille en temps réduit ($t$ exprimé en ms). La tension est modélisée par :
+  \[
+    v(t) = \begin{cases} \phantom{-}5 & \text{si } 0 \leq t < 1 \\ -5 & \text{si } 1 \leq t < 2 \end{cases}
+  \]
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$ (ms)},
+      ylabel={$v(t)$ (V)},
+      xmin=-2.5, xmax=5.5,
+      ymin=-7.5, ymax=7.5,
+      xtick={-2,-1,0,1,2,3,4,5},
+      ytick={-5,0,5},
+      width=13cm, height=5.5cm,
+      grid=major,
+      grid style={dashed, gray!30},
+    ]
+    \addplot[blue, ultra thick, const plot, mark=none]
+      coordinates {(-2,5)(-1,-5)(0,5)(1,-5)(2,5)(3,-5)(4,5)(5.5,5)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Donner la valeur de la pulsation $\omega$. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=1.3cm]\end{tcolorbox}
+
+  \item Calculer $a_0$. Que représente $a_0$ pour un signal électrique ? \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+  
+  \newpage
+
+  \item Calculer $a_n$ pour tout entier $n \geq 1$. Que peut-on conclure sur la nature de ce signal ? \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=4cm]\end{tcolorbox}
+
+  \item Calculer $b_n$ pour tout entier $n \geq 1$.
+        En déduire les valeurs exactes de $b_1$, $b_2$ et $b_3$. \hfill \textit{(4 pts)}
+  \begin{tcolorbox}[reponsebox, height=6cm]\end{tcolorbox}
+
+  \item Écrire le développement en série de Fourier $S(t)$ jusqu'à $n = 3$. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+\end{enumerate}
+
+
+
+%% ================================================================
+%% EXERCICE 2 — 10 points
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 2 \hfill \normalfont\textit{(10 points)}}]
+  \textit{Contexte :} Dans un \textbf{hacheur série} (convertisseur DC/DC abaisseur), la tension
+  appliquée à un moteur à courant continu est un signal rectangulaire de type MLI (Modulation de
+  Largeur d'Impulsion). Ce signal $u(t)$ est défini (en V, $t$ en ms) par :
+  \[
+    u(t) = \begin{cases} 12 & \text{si } 0 \leq t < 3 \\ \phantom{1}0 & \text{si } 3 \leq t < 4 \end{cases}
+    \qquad \text{de période } T = 4\,\mathrm{ms}
+  \]
+  Le \textbf{rapport cyclique} vaut $\alpha = \dfrac{3}{4} = 75\,\%$ et la \textbf{tension de crête} est $E = 12\,\mathrm{V}$.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Tracer le signal $u$ sur $[-4\,;\,8]$ dans le repère ci-dessous. \hfill \textit{(1,5 pts)}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=middle,
+        xlabel={$t$ (ms)},
+        ylabel={$u(t)$ (V)},
+        xmin=-4.5, xmax=8.5,
+        ymin=-2, ymax=14.5,
+        xtick={-4,-3,-2,-1,0,1,2,3,4,5,6,7,8},
+        ytick={0,4,8,12},
+        width=14cm, height=5cm,
+        grid=major,
+        grid style={dashed, gray!30},
+      ]
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \item Donner la valeur de la pulsation $\omega$. \hfill \textit{(0,5 pt)}
+  \begin{tcolorbox}[reponsebox, height=1.2cm]\end{tcolorbox}
+
+  \item Calculer $a_0$. Vérifier que $a_0 = \alpha E$ et interpréter ce résultat en termes de tension électrique. \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=2.5cm]\end{tcolorbox}
+
+  \item Calculer $a_n$ pour tout entier $n \geq 1$.
+        En déduire les valeurs exactes de $a_1$, $a_2$ et $a_3$. \hfill \textit{(3 pts)}
+  \begin{tcolorbox}[reponsebox, height=6cm]\end{tcolorbox}
+
+  \item Calculer $b_n$ pour tout entier $n \geq 1$.
+        En déduire les valeurs exactes de $b_1$, $b_2$ et $b_3$. \hfill \textit{(3 pts)}
+  \begin{tcolorbox}[reponsebox, height=6cm]\end{tcolorbox}
+
+\end{enumerate}
+
+\vfill
+\begin{center}
+  \fbox{\textbf{Tourner la page $\longrightarrow$}}
+\end{center}
+
+\newpage
+
+%% ================================================================
+%% BONUS — Illustration graphique et interprétation
+%% ================================================================
+\begin{tcolorbox}[exobox={Bonus -- Illustration graphique et interprétation}]
+  On donne ci-dessous le tracé de la somme partielle $S_5(t)$, obtenue en conservant les cinq premiers
+  harmoniques non nuls de la série calculée à l'exercice 1 :
+  \[
+    S_5(t) = \frac{20}{\pi}\sin(\pi t) + \frac{20}{3\pi}\sin(3\pi t) + \frac{20}{5\pi}\sin(5\pi t)
+  \]
+  Le signal original $v(t)$ est tracé en pointillé rouge pour référence.
+\end{tcolorbox}
+
+\vspace{0.3cm}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$ (ms)},
+      ylabel={},
+      xmin=-2.3, xmax=5.3,
+      ymin=-7.8, ymax=7.8,
+      xtick={-2,-1,0,1,2,3,4,5},
+      ytick={-5,0,5},
+      width=13cm, height=5.5cm,
+      grid=major,
+      grid style={dashed, gray!30},
+      legend style={at={(1.02,1)}, anchor=north west},
+    ]
+    %% Signal carré original (pointillé rouge)
+    \addplot[red, dashed, thick, mark=none] coordinates {
+      (-2,5)(-1,5)(-1,-5)(0,-5)(0,5)(1,5)(1,-5)(2,-5)(2,5)(3,5)(3,-5)(4,-5)(4,5)(5.3,5)
+    };
+    %% Approximation S5 (bleu)
+    \addplot[blue, thick, domain=-2.3:5.3, samples=600]
+      { 20/pi * sin(deg(pi*x)) + 20/(3*pi) * sin(deg(3*pi*x)) + 20/(5*pi) * sin(deg(5*pi*x)) };
+    \legend{$v(t)$ (signal original), $S_5(t)$ (approximation)}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\vspace{0.2cm}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Commenter l'allure de la courbe $S_5(t)$ : vers quelle fonction $v$ semble-t-elle converger
+        au fur et à mesure que l'on ajoute des harmoniques ? Que se passe-t-il au voisinage des
+        discontinuités (phénomène observé) ?
+  \begin{tcolorbox}[reponsebox, height=3cm]\end{tcolorbox}
+
+  \item \textbf{Application au filtrage (signal MLI de l'exercice 2) :}
+
+  Un ingénieur branche le signal $u(t)$ de l'exercice 2 à l'entrée d'un filtre passe-bas
+  de fréquence de coupure $f_c = 20\,\mathrm{Hz}$.
+
+  \begin{enumerate}[label=\textbf{\alph*.}]
+    \item Quelle est la fréquence fondamentale $f_1$ du signal $u(t)$ ? \hfill \textit{(0,5 pt)}
+    \begin{tcolorbox}[reponsebox, height=1.2cm]\end{tcolorbox}
+
+    \item Justifier que toutes les composantes harmoniques ($f_1$, $2f_1$, $3f_1$, \ldots) sont
+          fortement atténuées par ce filtre. \hfill \textit{(1 pt)}
+    \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+
+    \item Quelle tension retrouve-t-on en sortie du filtre ? Quel est l'intérêt de ce résultat
+          dans le contexte du hacheur ? \hfill \textit{(0,5 pt)}
+    \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
