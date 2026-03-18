@@ -1,0 +1,30 @@
+name: Compiler les fichiers LaTeX
+
+on:
+  push:
+    paths:
+      - '**.tex'
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le repo
+        uses: actions/checkout@v4
+
+      - name: Installer LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            **/*.tex
+          glob_root_file: true
+          latexmk_use_xelatex: false
+          continue_on_error: true
+
+      - name: Pousser les PDF compilés
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add **/*.pdf
+          git diff --cached --quiet || git commit -m "PDF compilés automatiquement"
+          git push
