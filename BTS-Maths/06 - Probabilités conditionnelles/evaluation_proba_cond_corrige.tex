@@ -1,0 +1,317 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{setspace}
+\singlespacing
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{\textcolor{red}{\textbf{CORRIGÉ}} -- 1BTS}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{tikz}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+\definecolor{solcolor}{RGB}{180,0,0}
+\newcommand{\sol}[1]{\textcolor{solcolor}{#1}}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\newcounter{numexos}
+\setcounter{numexos}{0}
+\newcommand{\bex}[2]{%
+\def\bextitle{#1}%
+\addtocounter{numexos}{1}%
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,colframe=exoheader,
+  colbacktitle=exoheader,coltitle=white,
+  fonttitle=\bfseries,
+  title={Exercice~\thenumexos\ifx\bextitle\empty\else~--~~#1\fi},
+  boxrule=0.8pt,arc=3pt,
+  left=4mm,right=4mm,top=1mm,bottom=2mm]%
+  #2%
+\end{tcolorbox}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.6}
+\setlength{\parindent}{0pt}
+
+\newtcolorbox{titrebox}{colback=exolight,colframe=exoheader,arc=3pt,boxrule=1.5pt}
+
+\begin{document}
+
+\begin{titrebox}
+\begin{center}
+\textbf{\LARGE Corrigé -- Évaluation -- Probabilités conditionnelles}\\[2mm]
+\large Durée : 1 heure \hfill Barème : \textbf{/20}
+\end{center}
+\end{titrebox}
+
+\vspace{4mm}
+
+%------------------------------------------------------------------
+\bex{Vocabulaire \hfill \textit{4 points}}{%
+\smallskip
+\textbf{Partie A -- Vrai ou Faux.} \textit{(2 pts)}
+
+\renewcommand{\arraystretch}{2.0}
+\begin{tabular}{|L{11.5cm}|c|L{2cm}|}
+\hline
+\rowcolor{exolight}\textbf{Affirmation} & \textbf{V / F} & \textbf{Correction} \\
+\hline
+Pour tout événement $A$ : $P(\bar{A}) = 1 + P(A)$
+  & \sol{\textbf{F}} & \sol{$P(\bar{A}) = 1 - P(A)$} \\
+\hline
+Si $A$ et $B$ sont incompatibles alors $P(A \cup B) = P(A) + P(B)$
+  & \sol{\textbf{V}} & \\
+\hline
+La probabilité conditionnelle de $A$ sachant $B$ est
+$P_B(A) = \dfrac{P(A \cap B)}{P(B)}$
+  & \sol{\textbf{V}} & \\
+\hline
+Si $A$ et $B$ sont indépendants alors $P(A \cap B) = P(A) + P(B)$
+  & \sol{\textbf{F}} & \sol{$P(A\cap B) = P(A)\times P(B)$} \\
+\hline
+\end{tabular}
+}
+
+\vspace{2mm}
+
+\bex{}{%
+\smallskip
+\textbf{Partie B -- Associer.} \textit{(2 pts)}
+
+\vspace{3mm}
+\sol{\textbf{Associations correctes :}}
+
+\medskip
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{ll}
+$P(A \cup B)$ & \sol{$\longrightarrow$ Probabilité que $A$ ou $B$ se réalise} \\
+$P(A \cap B)$ & \sol{$\longrightarrow$ Probabilité que $A$ et $B$ se réalisent} \\
+$P_B(A)$      & \sol{$\longrightarrow$ Probabilité de $A$ sachant $B$} \\
+$P(A)$        & \sol{$\longrightarrow$ Probabilité que $A$ se réalise} \\
+\end{tabular}
+}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{Arbre à compléter \hfill \textit{4 points}}{%
+\smallskip
+Une urne contient \textbf{4 boules rouges} et \textbf{6 boules bleues} indiscernables au toucher.
+On tire successivement deux boules \textbf{sans remise}.
+
+On note $R$ l'événement \og obtenir une boule rouge \fg{} et $B$ l'événement \og obtenir une boule bleue \fg.
+}
+
+\textbf{1.} Compléter l'arbre de probabilités. \hfill\textit{(2 pts)}
+
+\vspace{3mm}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \fill (0,0) circle (3pt);
+  % Niveau 1
+  \node[circle,draw,inner sep=4pt] (R1) at (4,2.4) {$R$};
+  \node[circle,draw,inner sep=4pt] (B1) at (4,-2.4) {$B$};
+  % Niveau 2
+  \node[circle,draw,inner sep=4pt] (RR) at (8,3.6) {$R$};
+  \node[circle,draw,inner sep=4pt] (RB) at (8,1.2) {$B$};
+  \node[circle,draw,inner sep=4pt] (BR) at (8,-1.2) {$R$};
+  \node[circle,draw,inner sep=4pt] (BB) at (8,-3.6) {$B$};
+  % Branches
+  \draw (0,0) -- (R1.west);
+  \draw (0,0) -- (B1.west);
+  \draw (R1.east) -- (RR.west);
+  \draw (R1.east) -- (RB.west);
+  \draw (B1.east) -- (BR.west);
+  \draw (B1.east) -- (BB.west);
+  % Étiquettes niveau 1
+  \node at (1.3, 1.5) {$\dfrac{2}{5}$};
+  \node[solcolor] at (1.3,-1.2) {$\boldsymbol{\dfrac{3}{5}}$};
+  % Étiquettes niveau 2
+  \node[solcolor] at (6.1, 3.3)  {$\boldsymbol{\dfrac{1}{3}}$};
+  \node at (6.1, 1.3) {$\dfrac{2}{3}$};
+  \node at (6.1,-1.3) {$\dfrac{4}{9}$};
+  \node[solcolor] at (6.1,-3.3) {$\boldsymbol{\dfrac{5}{9}}$};
+  % Résultats à droite
+  \node[right,solcolor] at (8.4, 3.6) {$P(R,R) = \dfrac{2}{15}$};
+  \node[right,solcolor] at (8.4, 1.2) {$P(R,B) = \dfrac{4}{15}$};
+  \node[right,solcolor] at (8.4,-1.2) {$P(B,R) = \dfrac{4}{15}$};
+  \node[right,solcolor] at (8.4,-3.6) {$P(B,B) = \dfrac{1}{3}$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2.} Calculer la probabilité d'obtenir \textbf{deux boules rouges}. \hfill\textit{(1 pt)}
+
+\medskip
+\sol{$P(\text{deux rouges}) = P(R,R) = \dfrac{2}{5} \times \dfrac{1}{3} = \dfrac{2}{15}$}
+
+\vspace{5mm}
+
+\textbf{3.} Calculer la probabilité d'obtenir \textbf{au moins une boule rouge}. \hfill\textit{(1 pt)}
+
+\medskip
+\sol{On utilise la méthode du complémentaire (aucune rouge $= $ deux bleues) :}
+
+\sol{$P(\text{au moins un rouge}) = 1 - P(B,B) = 1 - \dfrac{1}{3} = \dfrac{2}{3}$}
+
+\smallskip
+\sol{\textit{(Ou directement : $\dfrac{2}{15} + \dfrac{4}{15} + \dfrac{4}{15} = \dfrac{10}{15} = \dfrac{2}{3}$)}}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{Construction et utilisation d'un arbre \hfill \textit{6 points}}{%
+\smallskip
+Une entreprise s'approvisionne auprès de deux fournisseurs $S_1$ et $S_2$.
+\begin{itemize}
+  \item $40\,\%$ des composants proviennent de $S_1$, les autres viennent de $S_2$.
+  \item Parmi les composants de $S_1$, $4\,\%$ sont défectueux.
+  \item Parmi les composants de $S_2$, $2\,\%$ sont défectueux.
+\end{itemize}
+On note $D$ l'événement \og le composant est défectueux \fg{}.
+On prélève un composant au hasard.
+}
+
+\textbf{1.} Construire un arbre pondéré représentant la situation. \hfill\textit{(2 pts)}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \fill (0,0) circle (3pt);
+  \node[circle,draw,inner sep=3pt,solcolor] (S1) at (3.5, 1.6) {$S_1$};
+  \node[circle,draw,inner sep=3pt,solcolor] (S2) at (3.5,-1.6) {$S_2$};
+  \node[circle,draw,inner sep=4pt,solcolor] (S1D)  at (8.5, 2.9) {$D$};
+  \node[circle,draw,inner sep=4pt,solcolor] (S1Db) at (8.5, 0.5) {$\bar{D}$};
+  \node[circle,draw,inner sep=4pt,solcolor] (S2D)  at (8.5,-0.5) {$D$};
+  \node[circle,draw,inner sep=4pt,solcolor] (S2Db) at (8.5,-2.9) {$\bar{D}$};
+  \draw[solcolor] (0,0) -- (S1.west);
+  \draw[solcolor] (0,0) -- (S2.west);
+  \draw[solcolor] (S1.east) -- (S1D.west);
+  \draw[solcolor] (S1.east) -- (S1Db.west);
+  \draw[solcolor] (S2.east) -- (S2D.west);
+  \draw[solcolor] (S2.east) -- (S2Db.west);
+  % Étiquettes niveau 1
+  \node[above,solcolor] at (1.75, 1.0)  {$0{,}4$};
+  \node[below,solcolor] at (1.75,-1.0)  {$0{,}6$};
+  % Étiquettes niveau 2
+  \node[above,solcolor] at (6.3, 2.5)  {$0{,}04$};
+  \node[below,solcolor] at (6.3, 1.0)  {$0{,}96$};
+  \node[above,solcolor] at (6.3,-0.9)  {$0{,}02$};
+  \node[below,solcolor] at (6.3,-2.4)  {$0{,}98$};
+  % Résultats
+  \node[right,solcolor] at (9.0, 2.9) {$P(S_1\cap D)=0{,}016$};
+  \node[right,solcolor] at (9.0, 0.5) {$P(S_1\cap\bar{D})=0{,}384$};
+  \node[right,solcolor] at (9.0,-0.5) {$P(S_2\cap D)=0{,}012$};
+  \node[right,solcolor] at (9.0,-2.9) {$P(S_2\cap\bar{D})=0{,}588$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2.} Calculer $P(S_1 \cap D)$ et $P(S_2 \cap D)$. \hfill\textit{(1 pt)}
+
+\medskip
+\sol{$P(S_1 \cap D) = P(S_1)\times P_{S_1}(D) = 0{,}4 \times 0{,}04 = 0{,}016$}
+
+\sol{$P(S_2 \cap D) = P(S_2)\times P_{S_2}(D) = 0{,}6 \times 0{,}02 = 0{,}012$}
+
+\vspace{4mm}
+
+\textbf{3.} En déduire la probabilité $P(D)$ qu'un composant prélevé soit défectueux. \hfill\textit{(1 pt)}
+
+\medskip
+\sol{D'après la formule des probabilités totales :}
+
+\sol{$P(D) = P(S_1 \cap D) + P(S_2 \cap D) = 0{,}016 + 0{,}012 = 0{,}028$}
+
+\vspace{4mm}
+
+\textbf{4.} Sachant que le composant est défectueux, calculer la probabilité qu'il provienne de $S_1$. \hfill\textit{(2 pts)}
+
+\medskip
+\sol{$P_D(S_1) = \dfrac{P(S_1 \cap D)}{P(D)} = \dfrac{0{,}016}{0{,}028} = \dfrac{4}{7} \approx 0{,}571$}
+
+\smallskip
+\sol{\textit{Interprétation :} Parmi les composants défectueux, environ $57{,}1\,\%$ proviennent du fournisseur $S_1$.}
+
+\newpage
+
+%------------------------------------------------------------------
+\bex{Tableau de probabilités \hfill \textit{6 points}}{%
+\smallskip
+Un hôpital analyse les séjours de $\np{2000}$ patients répartis entre deux services :
+\begin{itemize}
+  \item Le service $A$ accueille $60\,\%$ des patients, le service $B$ accueille les autres.
+  \item Dans le service $A$, $8\,\%$ des patients présentent une complication post-opératoire.
+  \item Dans le service $B$, $5\,\%$ des patients présentent une complication post-opératoire.
+\end{itemize}
+On note $C$ l'événement \og le patient présente une complication \fg.
+}
+
+\textbf{1.} Compléter le tableau ci-dessous. \hfill\textit{(2 pts)}
+
+\begin{center}
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|L{5cm}|c|c|c|}
+\hline
+\rowcolor{exolight} & Service $A$ & Service $B$ & Total \\
+\hline
+Avec complication $C$    & \sol{$96$}   & \sol{$40$}  & \sol{$136$} \\
+\hline
+Sans complication $\bar{C}$ & \sol{$1104$} & \sol{$760$} & \sol{$1864$} \\
+\hline
+Total & \sol{$1200$} & \sol{$800$} & $\np{2000}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\smallskip
+\sol{\textit{Service $A$ :} $60\,\%\times\np{2000}=\np{1200}$ patients $\Rightarrow$ avec $C$ : $8\,\%\times\np{1200}=96$}
+
+\sol{\textit{Service $B$ :} $40\,\%\times\np{2000}=800$ patients $\Rightarrow$ avec $C$ : $5\,\%\times 800=40$}
+
+\vspace{4mm}
+
+\textbf{2.} En déduire $P(C)$. \hfill\textit{(1 pt)}
+
+\medskip
+\sol{$P(C) = \dfrac{136}{\np{2000}} = 0{,}068$}
+
+\vspace{4mm}
+
+\textbf{3.} Définir par une phrase l'événement $A \cap C$ puis calculer $P(A \cap C)$. \hfill\textit{(1 pt)}
+
+\medskip
+\sol{L'événement $A \cap C$ est : \og le patient est dans le service $A$ \textbf{et} présente une complication \fg.}
+
+\sol{$P(A \cap C) = \dfrac{96}{\np{2000}} = 0{,}048$}
+
+\vspace{4mm}
+
+\textbf{4.} Sachant qu'un patient présente une complication, calculer la probabilité qu'il soit dans le service $A$.
+Interpréter le résultat. \hfill\textit{(2 pts)}
+
+\medskip
+\sol{$P_C(A) = \dfrac{P(A \cap C)}{P(C)} = \dfrac{0{,}048}{0{,}068} = \dfrac{96}{136} = \dfrac{12}{17} \approx 0{,}706$}
+
+\smallskip
+\sol{\textit{Interprétation :} Parmi les patients présentant une complication, environ $70{,}6\,\%$ sont dans le service $A$.}
+
+\end{document}

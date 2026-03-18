@@ -1,0 +1,205 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\setlength{\extrarowheight}{1mm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\usepackage[np]{numprint}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 1BTS}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête d'exercice pleine largeur
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Évaluation -- Probabilités conditionnelles \hspace{1cm} 1BTS \hspace{1cm} \textbf{Total : /20 points}}
+\end{center}
+
+\vspace{2mm}
+
+% ===================== EXERCICE 1 =====================
+\exotitle{Exercice 1 : Vocabulaire}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{4}{*}{\textbf{A}}
+    & $P(\bar{A}) = 1 + P(A)$ : \textbf{FAUX} \quad correction : $P(\bar{A}) = 1 - P(A)$ & 0,5 \\
+  \cline{2-3}
+    & Incompatibles $\Rightarrow P(A\cup B) = P(A)+P(B)$ : \textbf{VRAI} & 0,5 \\
+  \cline{2-3}
+    & $P_B(A) = \dfrac{P(A\cap B)}{P(B)}$ : \textbf{VRAI} & 0,5 \\
+  \cline{2-3}
+    & Indépendants $\Rightarrow P(A\cap B) = P(A)+P(B)$ : \textbf{FAUX} \quad correction : $P(A\cap B) = P(A)\times P(B)$ & 0,5 \\
+  \hline
+  \textbf{B} & 4 associations correctes à 0,5 pt chacune :
+    $P(A\cup B)\leftrightarrow$ \og $A$ ou $B$\fg{} ;
+    $P(A\cap B)\leftrightarrow$ \og $A$ et $B$\fg{} ;
+    $P_B(A)\leftrightarrow$ \og $A$ sachant $B$\fg{} ;
+    $P(A)\leftrightarrow$ \og $A$\fg & 2 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{/4} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 2 =====================
+\exotitle{Exercice 2 : Arbre à compléter}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{4}{*}{\textbf{1}}
+    & $P(B) = \dfrac{3}{5}$ correct & 0,5 \\
+  \cline{2-3}
+    & $P(R \mid R) = \dfrac{1}{3}$ correct \quad \textit{(3 rouges restantes sur 9)} & 0,5 \\
+  \cline{2-3}
+    & $P(B \mid B) = \dfrac{5}{9}$ correct \quad \textit{(5 bleues restantes sur 9)} & 0,5 \\
+  \cline{2-3}
+    & Les 4 probabilités terminales correctes : $\dfrac{2}{15}$, $\dfrac{4}{15}$, $\dfrac{4}{15}$, $\dfrac{1}{3}$ & 0,5 \\
+  \hline
+  \textbf{2} & $P(\text{deux rouges}) = P(R,R) = \dfrac{2}{5}\times\dfrac{1}{3} = \dfrac{2}{15}$ & 1 \\
+  \hline
+  \multirow{2}{*}{\textbf{3}}
+    & Méthode correcte : complémentaire $1-P(B,B)$ ou somme des cas favorables & 0,5 \\
+  \cline{2-3}
+    & Résultat : $P(\text{au moins un rouge}) = \dfrac{2}{3}$ & 0,5 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{/4} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 3 =====================
+\exotitle{Exercice 3 : Construction et utilisation d'un arbre}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{\textbf{1}}
+    & Structure correcte : deux niveaux $S_1$/$S_2$ puis $D$/$\bar{D}$ sur chaque branche & 1 \\
+  \cline{2-3}
+    & Probabilités correctement placées : $0{,}4$ / $0{,}6$ au 1\up{er} niveau ; $0{,}04$ / $0{,}96$ / $0{,}02$ / $0{,}98$ au 2\up{e} & 1 \\
+  \hline
+  \textbf{2} & $P(S_1\cap D) = 0{,}4\times 0{,}04 = 0{,}016$ \quad et \quad $P(S_2\cap D) = 0{,}6\times 0{,}02 = 0{,}012$ & 1 \\
+  \hline
+  \textbf{3} & $P(D) = P(S_1\cap D) + P(S_2\cap D) = 0{,}016 + 0{,}012 = 0{,}028$ & 1 \\
+  \hline
+  \multirow{3}{*}{\textbf{4}}
+    & Formule écrite : $P_D(S_1) = \dfrac{P(S_1\cap D)}{P(D)}$ & 0,5 \\
+  \cline{2-3}
+    & Calcul numérique correct : $\dfrac{0{,}016}{0{,}028} = \dfrac{4}{7} \approx 0{,}571$ & 1 \\
+  \cline{2-3}
+    & Interprétation : environ $57{,}1\,\%$ des composants défectueux proviennent de $S_1$ & 0,5 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{/6} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 4 =====================
+\exotitle{Exercice 4 : Tableau de probabilités}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{4}{*}{\textbf{1}}
+    & Effectifs totaux : service $A = \np{1200}$, service $B = 800$ & 0,5 \\
+  \cline{2-3}
+    & Avec complication : $C\cap A = 96$, $C\cap B = 40$ & 0,5 \\
+  \cline{2-3}
+    & Sans complication : $\bar{C}\cap A = \np{1104}$, $\bar{C}\cap B = 760$ & 0,5 \\
+  \cline{2-3}
+    & Totaux cohérents : total $C = 136$, total $\bar{C} = \np{1864}$, grand total $= \np{2000}$ & 0,5 \\
+  \hline
+  \textbf{2} & $P(C) = \dfrac{136}{\np{2000}} = 0{,}068$ & 1 \\
+  \hline
+  \multirow{2}{*}{\textbf{3}}
+    & Définition correcte : \og patient dans le service $A$ \textbf{et} avec complication \fg & 0,5 \\
+  \cline{2-3}
+    & $P(A\cap C) = \dfrac{96}{\np{2000}} = 0{,}048$ & 0,5 \\
+  \hline
+  \multirow{3}{*}{\textbf{4}}
+    & Formule explicitement écrite : $P_C(A) = \dfrac{P(A\cap C)}{P(C)}$ & 0,5 \\
+  \cline{2-3}
+    & Calcul correct : $\dfrac{0{,}048}{0{,}068} = \dfrac{12}{17} \approx 0{,}706$ & 1 \\
+  \cline{2-3}
+    & Interprétation dans le contexte hospitalier & 0,5 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 4}} & \textbf{/6} \\
+  \hline
+\end{tabularx}
+
+\vspace{5mm}
+
+% ===================== RÉCAPITULATIF =====================
+\begin{tabularx}{\linewidth}{|X|c|c|}
+  \hline
+  \rowcolor{exoheader}
+  \textcolor{white}{\textbf{Exercice}} & \textcolor{white}{\textbf{Barème}} & \textcolor{white}{\textbf{Note élève}} \\
+  \hline
+  Exercice 1 -- Vocabulaire & /4 & \phantom{000} \\
+  \hline
+  Exercice 2 -- Arbre à compléter & /4 & \phantom{000} \\
+  \hline
+  Exercice 3 -- Construction et utilisation d'un arbre & /6 & \phantom{000} \\
+  \hline
+  Exercice 4 -- Tableau de probabilités & /6 & \phantom{000} \\
+  \hline
+  \rowcolor{totalrow}
+  \textbf{Total} & \textbf{/20} & \phantom{000} \\
+  \hline
+\end{tabularx}
+
+\end{document}
