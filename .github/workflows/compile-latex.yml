@@ -20,6 +20,10 @@ jobs:
           glob_root_file: true
           latexmk_use_xelatex: false
           continue_on_error: true
+          extra_packages: >-
+            fouriernc
+            tcolorbox
+            pgf
 
       - name: Pousser les PDF compilés
         run: |
