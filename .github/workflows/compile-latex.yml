@@ -12,31 +12,13 @@ jobs:
       - name: Récupérer le repo
         uses: actions/checkout@v4
 
-      - name: Installer LaTeX
+      - name: Compiler les fichiers LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: |
-            **/*.tex
-          glob_root_file: true
-          latexmk_use_xelatex: false
+          root_file: "**/*.tex"
           continue_on_error: true
-          extra_packages: >-
-            fouriernc
-            tcolorbox
-            pgf
-            pgfplots
-            bclogo
-            awesomebox
-            chemmacros
-            tipfr
-            tkz-base
-            tkz-tab
-            pstricks
-            pst-labo
-            qrcode
-            numprint
-            mdframed
-            cancel
+          pre_compile: |
+            tlmgr install fouriernc tcolorbox pgf pgfplots bclogo awesomebox chemmacros tipfr tkz-base tkz-tab pstricks pst-labo qrcode numprint mdframed cancel
 
       - name: Pousser les PDF compilés
         run: |
