@@ -18,7 +18,8 @@ jobs:
         with:
           root_file: "**/*.tex"
           continue_on_error: true
-          extra_packages: "fouriernc tcolorbox pgf pgfplots bclogo awesomebox chemmacros tipfr tkz-base tkz-tab pstricks pst-labo qrcode numprint mdframed cancel"
+          pre_compile: |
+            tlmgr install fouriernc tcolorbox pgf pgfplots bclogo awesomebox chemmacros tipfr tkz-base tkz-tab pstricks pst-labo qrcode numprint mdframed cancel
 
       - name: Pousser les PDF compilés
         run: |
