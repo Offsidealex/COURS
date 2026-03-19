@@ -1,5 +1,4 @@
 name: Compiler les fichiers LaTeX
-
 on:
   push:
     paths:
@@ -15,11 +14,15 @@ jobs:
 
       - name: Compiler les fichiers LaTeX
         uses: xu-cheng/latex-action@v3
+        continue-on-error: true          # ← au niveau step, pas dans with
         with:
           root_file: "**/*.tex"
-          continue_on_error: true
+          glob: true                     # ← indispensable pour le pattern
           pre_compile: |
-            tlmgr install fouriernc tcolorbox pgf pgfplots bclogo awesomebox chemmacros tipfr tkz-base tkz-tab pstricks pst-labo qrcode numprint mdframed cancel
+            tlmgr update --self
+            tlmgr install fourier tcolorbox pgf pgfplots bclogo chemmacros \
+              tkz-base tkz-tab pstricks pst-labo qrcode numprint mdframed cancel \
+              environ trimspaces collectbox
 
       - name: Sauvegarder les logs d'erreur
         if: always()
@@ -42,6 +45,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add **/*.pdf
+          find . -name "*.pdf" -exec git add {} \;   # ← find au lieu de **
           git diff --cached --quiet || git commit -m "PDF compilés automatiquement"
           git push
