@@ -24,6 +24,19 @@ jobs:
             fouriernc
             tcolorbox
             pgf
+            pgfplots
+            bclogo
+            awesomebox
+            chemmacros
+            tipfr
+            tkz-base
+            tkz-tab
+            pstricks
+            pst-labo
+            qrcode
+            numprint
+            mdframed
+            cancel
 
       - name: Pousser les PDF compilés
         run: |
