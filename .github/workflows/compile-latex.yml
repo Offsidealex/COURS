@@ -21,6 +21,23 @@ jobs:
           pre_compile: |
             tlmgr install fouriernc tcolorbox pgf pgfplots bclogo awesomebox chemmacros tipfr tkz-base tkz-tab pstricks pst-labo qrcode numprint mdframed cancel
 
+      - name: Sauvegarder les logs d'erreur
+        if: always()
+        run: |
+          find . -name "*.log" | while read f; do
+            echo "=== $f ===" >> compilation-errors.log
+            grep -A 5 "^!" "$f" >> compilation-errors.log 2>/dev/null || true
+          done
+
+      - name: Uploader les logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-logs
+          path: |
+            compilation-errors.log
+            **/*.log
+
       - name: Pousser les PDF compilés
         run: |
           git config user.name "github-actions"
