@@ -1,0 +1,238 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 3\textsuperscript{ème}}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{14pt}
+\frenchbsetup{StandardLists=true}
+\renewcommand{\arraystretch}{1.8}
+
+% Boîte pour les documents documentaires
+\newtcolorbox{docdoc}[2]{
+  colback=blue!5!white,
+  colframe=blue!55!black,
+  title={\textbf{Document #1} \quad -- \quad \textit{#2}},
+  fonttitle=\bfseries\normalsize,
+  breakable,
+  before upper={\setlength{\parindent}{0pt}},
+}
+
+\begin{document}
+
+%------------------------------------------------------------
+% TITRE
+%------------------------------------------------------------
+\begin{center}
+  {\LARGE\textbf{Activité documentaire --- Introduction à l'électricité}}
+\end{center}
+
+\hrule
+\vspace{3mm}
+\noindent Nom : \dotfill \quad Prénom : \dotfill \quad Date : \dotfill
+\vspace{3mm}
+\hrule
+\vspace{5mm}
+
+\begin{center}
+  \textit{L'électricité est omniprésente dans notre vie quotidienne. À travers ces trois documents, tu vas découvrir d'où vient l'électricité, comment fonctionne un circuit électrique, et quels dangers il faut éviter.}
+\end{center}
+
+\vspace{5mm}
+
+%------------------------------------------------------------
+% DOCUMENT 1 : L'électricité dans notre quotidien
+%------------------------------------------------------------
+
+\begin{docdoc}{1}{L'électricité dans notre quotidien}
+
+L'électricité est une forme d'énergie indispensable à notre société moderne. En France, chaque habitant consomme en moyenne \textbf{7\,000 kWh} d'électricité par an. Elle est utilisée dans quasiment tous les domaines :
+
+\begin{itemize}
+  \item \textbf{L'éclairage} : ampoules LED, lampadaires, néons dans les bureaux.
+  \item \textbf{L'électroménager} : réfrigérateur, four, lave-linge, aspirateur.
+  \item \textbf{Les transports} : voitures électriques, tramways, trains (TGV).
+  \item \textbf{La communication} : téléphones, ordinateurs, internet, télévision.
+  \item \textbf{La médecine} : IRM, scanners, appareils de bloc opératoire.
+\end{itemize}
+
+En France, l'électricité est produite principalement par des \textbf{centrales nucléaires} (environ 70\,\%), mais aussi par des éoliennes, des panneaux solaires et des barrages hydrauliques. Elle est transportée sur le territoire par des lignes à \textbf{haute tension} (jusqu'à 400\,000\,V), puis transformée pour être distribuée dans les foyers à \textbf{230\,V}.
+
+\vspace{2mm}
+\footnotesize\textit{Source : RTE (Réseau de Transport d'Électricité) --- bilan électrique 2024.}
+\normalsize
+\end{docdoc}
+
+\vspace{4mm}
+
+%------------------------------------------------------------
+% DOCUMENT 2 : Les composants d'un circuit électrique
+%------------------------------------------------------------
+
+\begin{docdoc}{2}{Les composants d'un circuit électrique}
+
+Pour qu'un circuit électrique fonctionne, quatre types de composants sont nécessaires :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\linewidth}{|l|X|X|}
+\hline
+\textbf{Composant} & \textbf{Rôle} & \textbf{Exemples} \\
+\hline
+Générateur & Fournit l'énergie électrique & Pile, batterie, panneau solaire \\
+\hline
+Récepteur & Convertit l'énergie électrique en une autre forme & Lampe (lumière), moteur (mouvement) \\
+\hline
+Interrupteur & Ouvre ou ferme le circuit & Bouton ON/OFF, interrupteur mural \\
+\hline
+Fils conducteurs & Permettent la circulation du courant & Fils de cuivre, câbles \\
+\hline
+\end{tabularx}
+\end{center}
+
+\vspace{3mm}
+
+Un circuit électrique est dit \textbf{fermé} lorsque le courant peut circuler en continu. Si le circuit est \textbf{ouvert} (interrupteur ouvert, fil coupé), le courant ne circule plus et le récepteur ne fonctionne pas.
+
+\vspace{2mm}
+Le courant électrique est un \textbf{déplacement ordonné de charges électriques} dans un conducteur. Par convention, le courant circule du pôle \textbf{positif (+)} vers le pôle \textbf{négatif ($-$)} du générateur, à l'extérieur de celui-ci.
+
+\end{docdoc}
+
+\vspace{4mm}
+
+%------------------------------------------------------------
+% DOCUMENT 3 : Dangers de l'électricité et sécurité
+%------------------------------------------------------------
+
+\begin{docdoc}{3}{Les dangers de l'électricité et les règles de sécurité}
+
+L'électricité est indispensable mais peut être \textbf{dangereuse} si l'on ne respecte pas certaines règles.
+
+\textbf{Les dangers :}
+\begin{itemize}
+  \item L'\textbf{électrocution} : le passage du courant dans le corps peut être mortel. À partir de \textbf{25\,V en courant alternatif} (réseau domestique), la tension devient dangereuse pour l'être humain. Le réseau électrique domestique est à 230\,V : il est donc très dangereux.
+  \item L'\textbf{incendie} : un court-circuit ou une surcharge peut enflammer les fils et provoquer un incendie.
+  \item Les \textbf{brûlures} : un arc électrique (étincelle) peut provoquer des brûlures graves.
+\end{itemize}
+
+\textbf{Règles de sécurité à respecter :}
+\begin{itemize}
+  \item Ne jamais toucher une prise électrique avec les mains mouillées.
+  \item Ne jamais introduire d'objets métalliques dans une prise.
+  \item Toujours \textbf{couper le courant} (disjoncteur) avant d'intervenir sur une installation.
+  \item Utiliser des appareils aux normes (logos \textbf{NF} ou \textbf{CE}).
+  \item En cas d'accident, ne jamais toucher la victime directement : couper le courant d'abord, puis appeler le \textbf{15} (SAMU) ou le \textbf{18} (pompiers).
+\end{itemize}
+
+\footnotesize\textit{Source : INRS (Institut National de Recherche et Sécurité) --- guide sécurité électrique, 2024.}
+\normalsize
+
+\end{docdoc}
+
+\vspace{5mm}
+
+%------------------------------------------------------------
+% QUESTIONS
+%------------------------------------------------------------
+\hrule
+\vspace{3mm}
+{\Large\textbf{Questions}}
+\vspace{3mm}
+\hrule
+\vspace{5mm}
+
+\begin{enumerate}[label=\textbf{Q\arabic*.}, leftmargin=2cm, itemsep=6pt]
+
+  %--- Document 1 ---
+  \item \textit{(Document 1)} --- Cite \textbf{trois domaines} dans lesquels l'électricité est utilisée dans notre quotidien.
+
+  \cadreblanc{25}
+
+  \item \textit{(Document 1)} --- Quelle est la principale source de production d'électricité en France ? Quel pourcentage représente-t-elle ?
+
+  \cadreblanc{22}
+
+  \newpage
+  \item \textit{(Document 1)} --- À quelle tension l'électricité est-elle distribuée dans les foyers français ? Comment est-elle transportée avant d'arriver chez nous ?
+
+  \cadreblanc{22}
+
+  %--- Document 2 ---
+  \item \textit{(Document 2)} --- Quel est le rôle d'un générateur dans un circuit électrique ? Donne deux exemples de générateurs.
+
+  \cadreblanc{22}
+
+  \item \textit{(Document 2)} --- Complète le tableau suivant :
+
+  \begin{center}
+  \renewcommand{\arraystretch}{1}
+  \begin{tabularx}{\linewidth}{|l|X|X|}
+  \hline
+  \textbf{Composant} & \textbf{Rôle} & \textbf{Exemple} \\[10pt]
+  \hline
+  Récepteur & & \\[28pt]
+  \hline
+  Interrupteur & & \\[28pt]
+  \hline
+  Fils conducteurs & & \\[28pt]
+  \hline
+  \end{tabularx}
+  \end{center}
+
+  \item \textit{(Document 2)} --- Explique la différence entre un circuit \textbf{ouvert} et un circuit \textbf{fermé}. Que se passe-t-il pour la lampe dans chaque cas ?
+
+  \cadreblanc{28}
+
+  %--- Document 3 ---
+  \item \textit{(Document 3)} --- Cite \textbf{deux dangers} liés à l'électricité et explique brièvement chacun d'eux.
+
+  \cadreblanc{30}
+
+  \item \textit{(Document 3)} --- Cite \textbf{trois règles de sécurité} à respecter avec l'électricité.
+
+  \cadreblanc{28}
+
+  %--- Synthèse ---
+  \item \textit{(Documents 1 et 3)} --- Le réseau électrique domestique est à 230\,V. Pourquoi est-il \textbf{interdit} de toucher une prise électrique avec les mains mouillées ? Que risque-t-on ?
+
+  \cadreblanc{28}
+
+  \item \textit{(Documents 2 et 3)} --- Un élève réalise un circuit avec une pile de 4,5\,V et une lampe. Est-ce que ce montage présente un danger pour lui ? Justifie ta réponse en t'appuyant sur les documents.
+
+  \cadreblanc{28}
+
+\end{enumerate}
+
+\end{document}

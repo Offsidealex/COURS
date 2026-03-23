@@ -1,0 +1,221 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 3\textsuperscript{ème}}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{14pt}
+\renewcommand{\arraystretch}{1.8}
+\frenchbsetup{StandardLists=true}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{CORRIGÉ -- Activité documentaire -- Introduction à l'électricité}}
+
+  \vspace{3mm}
+
+  {\large\textbf{Barème total : /20 points}}
+\end{center}
+
+\hrule
+\vspace{3mm}
+\hrule
+\vspace{5mm}
+
+%------------------------------------------------------------
+% Document 1
+%------------------------------------------------------------
+\textbf{Document 1 --- L'électricité dans notre quotidien}
+
+\vspace{3mm}
+
+\textbf{Q1.} Cite trois domaines dans lesquels l'électricité est utilisée dans notre quotidien. \hfill \textit{(3 pts)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+Trois domaines parmi (1 pt par domaine cité) :
+\begin{itemize}
+  \item L'\textbf{éclairage} : ampoules LED, lampadaires.
+  \item L'\textbf{électroménager} : réfrigérateur, four, lave-linge.
+  \item Les \textbf{transports} : voitures électriques, tramways, TGV.
+  \item La \textbf{communication} : téléphones, ordinateurs, internet.
+  \item La \textbf{médecine} : IRM, scanners, appareils de bloc opératoire.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{Q2.} Quelle est la principale source de production d'électricité en France ? Quel pourcentage représente-t-elle ? \hfill \textit{(1 pt)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+La principale source est l'énergie \textbf{nucléaire} (centrales nucléaires), qui représente environ \textbf{70\,\%} de la production électrique française.
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{Q3.} À quelle tension l'électricité est-elle distribuée dans les foyers français ? Comment est-elle transportée avant d'arriver chez nous ? \hfill \textit{(2 pts)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\begin{itemize}
+  \item L'électricité est distribuée dans les foyers à \textbf{230\,V}. \textit{(1 pt)}
+  \item Avant d'arriver chez nous, elle est transportée par des \textbf{lignes à haute tension} (jusqu'à 400\,000\,V), puis transformée pour abaisser la tension. \textit{(1 pt)}
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{5mm}
+\hrule
+\vspace{3mm}
+
+%------------------------------------------------------------
+% Document 2
+%------------------------------------------------------------
+\textbf{Document 2 --- Les composants d'un circuit électrique}
+
+\vspace{3mm}
+
+\textbf{Q4.} Quel est le rôle d'un générateur dans un circuit électrique ? Donne deux exemples de générateurs. \hfill \textit{(2 pts)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+Le générateur \textbf{fournit l'énergie électrique} au circuit. \textit{(1 pt)}
+
+Exemples : \textbf{pile}, \textbf{batterie}, panneau solaire, dynamo. \textit{(0,5 pt par exemple, max 1 pt)}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{Q5.} Complète le tableau suivant. \hfill \textit{(3 pts)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\linewidth}{|l|X|X|}
+\hline
+\textbf{Composant} & \textbf{Rôle} & \textbf{Exemple} \\
+\hline
+Récepteur & Convertit l'énergie électrique en une autre forme & Lampe (lumière), moteur (mouvement) \\
+\hline
+Interrupteur & Ouvre ou ferme le circuit & Bouton ON/OFF, interrupteur mural \\
+\hline
+Fils conducteurs & Permettent la circulation du courant & Fils de cuivre, câbles \\
+\hline
+\end{tabularx}
+
+\vspace{2mm}
+\footnotesize\textit{1 pt par ligne correctement complétée.}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{Q6.} Explique la différence entre un circuit ouvert et un circuit fermé. Que se passe-t-il pour la lampe dans chaque cas ? \hfill \textit{(2 pts)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\begin{itemize}
+  \item \textbf{Circuit fermé} : le courant peut circuler en continu $\Rightarrow$ la lampe est \textbf{allumée}. \textit{(1 pt)}
+  \item \textbf{Circuit ouvert} : le courant ne circule plus (interrupteur ouvert, fil coupé) $\Rightarrow$ la lampe est \textbf{éteinte}. \textit{(1 pt)}
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{5mm}
+\hrule
+\vspace{3mm}
+
+%------------------------------------------------------------
+% Document 3
+%------------------------------------------------------------
+\textbf{Document 3 --- Les dangers de l'électricité et les règles de sécurité}
+
+\vspace{3mm}
+
+\textbf{Q7.} Cite deux dangers liés à l'électricité et explique brièvement chacun d'eux. \hfill \textit{(2 pts)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+Deux dangers parmi (1 pt par danger correctement expliqué) :
+\begin{itemize}
+  \item L'\textbf{électrocution} : le passage du courant dans le corps peut provoquer des blessures graves, voire la mort.
+  \item L'\textbf{incendie} : un court-circuit ou une surcharge peut enflammer les fils électriques.
+  \item Les \textbf{brûlures} : un arc électrique (étincelle) peut provoquer des brûlures graves.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{Q8.} Cite trois règles de sécurité à respecter avec l'électricité. \hfill \textit{(3 pts)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+Trois règles parmi (1 pt par règle) :
+\begin{itemize}
+  \item Ne jamais toucher une prise électrique avec les mains mouillées.
+  \item Ne jamais introduire d'objets métalliques dans une prise.
+  \item Toujours couper le courant avant d'intervenir sur une installation électrique.
+  \item Utiliser des appareils aux normes (logos NF ou CE).
+  \item En cas d'accident, ne pas toucher la victime directement : couper d'abord le courant, puis appeler le 15 ou le 18.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{5mm}
+\hrule
+\vspace{3mm}
+
+%------------------------------------------------------------
+% Synthèse
+%------------------------------------------------------------
+\textbf{Questions de synthèse}
+
+\vspace{3mm}
+
+\textbf{Q9.} Le réseau électrique domestique est à 230\,V. Pourquoi est-il interdit de toucher une prise électrique avec les mains mouillées ? Que risque-t-on ? \hfill \textit{(1 pt)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+L'eau est un \textbf{conducteur électrique}. Avec les mains mouillées, le courant peut traverser le corps. À 230\,V (bien supérieur au seuil de danger de 25\,V), on risque une \textbf{électrocution} pouvant être mortelle.
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{Q10.} Un élève réalise un circuit avec une pile de 4,5\,V et une lampe. Est-ce que ce montage présente un danger pour lui ? Justifie ta réponse en t'appuyant sur les documents. \hfill \textit{(1 pt)}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\textbf{Non}, ce montage ne présente pas de danger. La tension de la pile (4,5\,V) est très inférieure au seuil de danger en courant continu (60\,V) et au seuil en courant alternatif (25\,V). L'élève peut manipuler ce circuit sans risque.
+\end{tcolorbox}
+
+\vspace{8mm}
+
+\begin{center}
+  \LARGE{\textbf{Total : /20 points}}
+\end{center}
+
+\vspace{5mm}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Conseils de correction :}
+\begin{itemize}
+  \item Accepter toute formulation scientifiquement correcte, même si elle n'est pas mot pour mot.
+  \item Q1 : accepter tous les domaines cités dans le document.
+  \item Q5 : accepter les exemples équivalents (ex. « buzzer » pour récepteur).
+  \item Q10 : valoriser la démarche si l'élève compare la tension de la pile au seuil de danger.
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

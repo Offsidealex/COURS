@@ -1,0 +1,250 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 3\textsuperscript{ème}}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{14pt}
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usepackage[european]{circuitikz}
+\renewcommand{\arraystretch}{1.8}
+\frenchbsetup{StandardLists=true}
+
+% Boîte orange "Appeler le professeur"
+\newcommand{\appelprof}{%
+\begin{tcolorbox}[colback=orange!10!white, colframe=orange!80!black]
+\textbf{Appeler le professeur.}
+\end{tcolorbox}}
+
+\begin{document}
+
+%------------------------------------------------------------
+% TITRE
+%------------------------------------------------------------
+\begin{center}
+  {\LARGE\textbf{TP -- Schématisation et montages électriques}}
+\end{center}
+
+\hrule
+\vspace{3mm}
+\noindent Nom : \dotfill \quad Prénom : \dotfill
+\vspace{3mm}
+\hrule
+\vspace{5mm}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!60!black, title=\textbf{Objectifs}]
+\begin{itemize}
+  \item Connaître et utiliser les symboles normalisés des composants électriques.
+  \item Lire et réaliser un schéma électrique.
+  \item Distinguer un montage en \textbf{série} d'un montage en \textbf{dérivation}.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{5mm}
+
+%------------------------------------------------------------
+% PARTIE 1 : QUELQUES SYMBOLES
+%------------------------------------------------------------
+
+\textbf{\large 1. Quelques symboles normalisés}
+
+\vspace{3mm}
+
+Complète le tableau suivant en indiquant la signification et le rôle de chaque symbole :
+
+\vspace{3mm}
+
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{|>{\centering\arraybackslash}m{4.5cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{5.5cm}|}
+\hline
+\rowcolor{blue!15}
+\textbf{Symbole} & \textbf{Signification} & \textbf{Rôle} \\
+\hline
+% Fil conducteur
+\begin{circuitikz}[scale=0.9]
+  \draw (0,0) -- (2.5,0);
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+% Lampe
+\begin{circuitikz}[scale=0.9]
+  \draw (0,0) to[lamp] (2.5,0);
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+% Interrupteur ouvert
+\begin{circuitikz}[scale=0.9]
+  \draw (0,0) to[closing switch] (2.5,0);
+\end{circuitikz}
+\newline {\small (interrupteur ouvert)}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+% Pile
+\begin{circuitikz}[scale=0.9]
+  \draw (0,0) to[battery1] (2.5,0);
+  \node at (0.55,-0.35) {\small $-$};
+  \node at (1.95,-0.35) {\small $+$};
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+% Générateur (plusieurs piles)
+\begin{circuitikz}[scale=1.5]
+  \draw (0,0) -- (0.30,0);
+  \draw (0.65,0) circle (0.35);
+  \node at (0.65,0) {\small\textbf{G}};
+  \draw (1.0,0) -- (1.30,0);
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+% Résistance
+\begin{circuitikz}[scale=0.9]
+  \draw (0,0) to[R] (2.5,0);
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+% Moteur
+\begin{circuitikz}[scale=1.5]
+  \draw (0,0) -- (0.30,0);
+  \draw (0.65,0) circle (0.35);
+  \node at (0.65,0) {\small\textbf{M}};
+  \draw (1.0,0) -- (1.30,0);
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+\end{tabular}
+
+\vspace{5mm}
+
+\textbf{Appareils de mesure :}
+
+\vspace{3mm}
+
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{|>{\centering\arraybackslash}m{4.5cm}|>{\centering\arraybackslash}m{5cm}|>{\centering\arraybackslash}m{5.5cm}|}
+\hline
+\rowcolor{blue!15}
+\textbf{Symbole} & \textbf{Signification} & \textbf{Rôle (ce qu'il mesure)} \\
+\hline
+\begin{circuitikz}[scale=0.9]
+  \draw (0,0) to[ammeter] (2.5,0);
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+\begin{circuitikz}[scale=0.9]
+  \draw (0,0) to[voltmeter] (2.5,0);
+\end{circuitikz}
+& \rule[-1.1cm]{0pt}{1.2cm} & \\
+\hline
+\end{tabular}
+
+\newpage
+
+%------------------------------------------------------------
+% PARTIE 2 : SCHÉMATISATION
+%------------------------------------------------------------
+
+\textbf{\large 2. Schématiser des circuits électriques}
+
+\vspace{4mm}
+
+\noindent
+\begin{tabular}{|p{0.47\linewidth}|p{0.47\linewidth}|}
+\hline
+\textbf{Circuit A} \hfill \textit{(2 pts)} &
+\textbf{Circuit B} \hfill \textit{(2 pts)} \\[2mm]
+\small Schématiser un circuit en \textbf{série} comprenant : un générateur, deux lampes, un ampèremètre, et un voltmètre branché en dérivation sur l'une des deux lampes. &
+\small Schématiser un circuit en \textbf{dérivation} comprenant : un générateur, une lampe, un moteur, et un voltmètre branché en dérivation sur le moteur. \\[2mm]
+\hline
+\rule{0pt}{7.5cm} & \\
+\hline
+\end{tabular}
+
+\vspace{6mm}
+
+\noindent
+\begin{tabular}{|p{0.47\linewidth}|p{0.47\linewidth}|}
+\hline
+\textbf{Circuit C} \hfill \textit{(2 pts)} &
+\textbf{Circuit D} \hfill \textit{(2 pts)} \\[2mm]
+\small Schématiser un circuit en \textbf{série} comprenant : un générateur, deux lampes, et un interrupteur commandant les deux lampes. &
+\small Schématiser un circuit en \textbf{dérivation} comprenant : un générateur, deux lampes, et un interrupteur commandant les deux lampes. \\[2mm]
+\hline
+\rule{0pt}{7.5cm} & \\
+\hline
+\end{tabular}
+
+\newpage
+
+%------------------------------------------------------------
+% PARTIE 3 : RÉALISATION ET OBSERVATIONS
+%------------------------------------------------------------
+
+\textbf{\large 3. Réaliser les montages et observer}
+
+\vspace{4mm}
+
+\noindent
+\begin{tabular}{|p{0.47\linewidth}|p{0.47\linewidth}|}
+\hline
+\textbf{Réaliser le circuit C (série)} \hfill \textit{(2 pts)} &
+\textbf{Réaliser le circuit D (dérivation)} \hfill \textit{(2 pts)} \\
+\hline
+\end{tabular}
+
+\appelprof
+
+\vspace{5mm}
+
+\textbf{Questions d'observation :} \hfill \textit{(4 pts)}
+
+\vspace{4mm}
+
+\textbf{1.} Comment varie l'éclairement des deux ampoules dans le circuit en \textbf{série} (C) par rapport au circuit en \textbf{dérivation} (D) ?
+
+\cadreblanc{30}
+
+\textbf{2.} Que se passe-t-il si une ampoule est \textbf{défectueuse} (grillée) dans le montage en \textbf{série} ? Et dans le montage en \textbf{dérivation} ? Explique pourquoi.
+
+\cadreblanc{40}
+
+\appelprof
+
+\vspace{5mm}
+
+\begin{center}
+  \textbf{\large Total : /16 points}
+\end{center}
+
+\end{document}

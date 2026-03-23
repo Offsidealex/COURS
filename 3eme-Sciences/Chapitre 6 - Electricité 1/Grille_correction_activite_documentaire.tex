@@ -1,0 +1,170 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[landscape,left=1cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\usepackage{multicol}
+\setlength{\columnsep}{8mm}
+\setlength{\columnseprule}{0.4pt}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 3\textsuperscript{ème}}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête de partie
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Activité documentaire -- Introduction à l'électricité \hspace{1cm} 3\textsuperscript{ème} \hspace{1cm} \textbf{Total : /20 points}}
+\end{center}
+
+\vspace{2mm}
+
+\begin{multicols}{2}
+
+% ===================== DOCUMENT 1 =====================
+\exotitle{Document 1 --- L'électricité dans notre quotidien}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{3}{*}{1} & 1\textsuperscript{er} domaine (au choix : éclairage, électroménager, transports, communication, médecine) & 1 \\
+  \cline{2-3}
+  & 2\textsuperscript{e} domaine & 1 \\
+  \cline{2-3}
+  & 3\textsuperscript{e} domaine & 1 \\
+  \hline
+  2 & Centrales \textbf{nucléaires} -- environ \textbf{70\,\%} & 1 \\
+  \hline
+  \multirow{2}{*}{3} & Tension dans les foyers : \textbf{230\,V} & 1 \\
+  \cline{2-3}
+  & Transport par \textbf{lignes à haute tension} (400\,000\,V), puis transformée & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Document 1}} & \textbf{/6} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== DOCUMENT 2 =====================
+\exotitle{Document 2 --- Les composants d'un circuit}{/7 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{4} & Rôle : \textbf{fournit l'énergie électrique} au circuit & 1 \\
+  \cline{2-3}
+  & 2 exemples parmi : pile, batterie, panneau solaire, dynamo (0,5 pt chacun) & 1 \\
+  \hline
+  5 & \textit{(tableau)} Récepteur : convertit l'énergie, ex. lampe/moteur & 1 \\
+  \cline{2-3}
+  & Interrupteur : ouvre/ferme le circuit, ex. bouton ON/OFF & 1 \\
+  \cline{2-3}
+  & Fils conducteurs : circulation du courant, ex. fils de cuivre & 1 \\
+  \hline
+  \multirow{2}{*}{6} & Circuit \textbf{fermé} : courant circule $\Rightarrow$ lampe \textbf{allumée} & 1 \\
+  \cline{2-3}
+  & Circuit \textbf{ouvert} : courant ne circule plus $\Rightarrow$ lampe \textbf{éteinte} & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Document 2}} & \textbf{/7} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== DOCUMENT 3 =====================
+\exotitle{Document 3 --- Dangers et sécurité électrique}{/5 pts}
+
+\vspace{1mm}
+
+{\footnotesize\textit{Q7 : 1 pt par danger correctement nommé et expliqué. Q8 : 1 pt par règle.}}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{7} & 1\textsuperscript{er} danger + explication (électrocution, incendie ou brûlures) & 1 \\
+  \cline{2-3}
+  & 2\textsuperscript{e} danger + explication & 1 \\
+  \hline
+  \multirow{3}{*}{8} & 1\textsuperscript{re} règle (au choix parmi les 5 du document) & 1 \\
+  \cline{2-3}
+  & 2\textsuperscript{e} règle & 1 \\
+  \cline{2-3}
+  & 3\textsuperscript{e} règle & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Document 3}} & \textbf{/5} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== SYNTHÈSE =====================
+\exotitle{Questions de synthèse}{/2 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  9 & L'eau conduit le courant. À 230\,V (> 25\,V) $\Rightarrow$ risque d'\textbf{électrocution} mortelle & 1 \\
+  \hline
+  10 & 4,5\,V $<$ 25\,V (seuil de danger) $\Rightarrow$ \textbf{aucun danger} pour l'élève & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Synthèse}} & \textbf{/2} \\
+  \hline
+\end{tabularx}
+
+\vspace{6mm}
+
+\noindent\colorbox{exoheader}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \textcolor{white}{\textbf{\Large TOTAL \hfill /20 points}}%
+  }%
+}
+
+\end{multicols}
+
+\end{document}
