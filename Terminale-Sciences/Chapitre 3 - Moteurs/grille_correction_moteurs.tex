@@ -1,0 +1,195 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\NoAutoSpaceBeforeFDP
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe : T~Micro}
+\fancyfoot[C]{}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{0.4mm}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête d'exercice
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Les moteurs électriques \hspace{1cm} T~Micro \hspace{1cm} \textbf{Total~: /20 points}}
+\end{center}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 1 =====================
+\exotitle{Exercice 1 : QCM}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \ding{202} & \textbf{B} --- de l'énergie électrique en énergie mécanique & 0,5 \\
+  \hline
+  \ding{203} & \textbf{C} --- toujours inférieur à 1 & 0,5 \\
+  \hline
+  \ding{204} & \textbf{B} --- la fréquence de la tension d'alimentation & 0,5 \\
+  \hline
+  \ding{205} & \textbf{B} --- tours par minute (tr/min) ou rad/s & 0,5 \\
+  \hline
+  \ding{206} & \textbf{C} --- Volts (V) & 0,5 \\
+  \hline
+  \ding{207} & \textbf{B} --- la puissance utile, la tension et la vitesse de rotation & 0,5 \\
+  \hline
+  \ding{208} & \textbf{C} --- proportionnelle à la vitesse de rotation $n$ & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{/4} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 2 =====================
+\exotitle{Exercice 2 : Comment vérifier la compatibilité d'un moteur ?}{/7 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  1 & Moteur \textbf{asynchrone triphasé} (3$\sim$ / triangle) & 0,5 \\
+  \hline
+  \multirow{5}{*}{2} & Tension $U$ en Volt (V) & 0,3 \\
+  \cline{2-3}
+  & Intensité $I$ en Ampère (A) & 0,3 \\
+  \cline{2-3}
+  & Facteur de puissance $\cos\varphi$ (sans unité) & 0,3 \\
+  \cline{2-3}
+  & Puissance utile $P_{\rm utile}$ en Watt (W) ou kW & 0,3 \\
+  \cline{2-3}
+  & Vitesse de rotation $n$ en tr/min & 0,3 \\
+  \hline
+  3 & Type (asynchrone) + puissance suffisante + même vitesse & 0,5 \\
+  \hline
+  \multirow{2}{*}{4} & Formule : $P_a = \sqrt{3} \times U \times I \times \cos\varphi$ & 0,5 \\
+  \cline{2-3}
+  & Application numérique + résultat : $P_a \approx 5~780$~W & 1 \\
+  \hline
+  \multirow{2}{*}{5} & Formule : $\eta = P_{\rm utile} / P_a$ & 0,5 \\
+  \cline{2-3}
+  & Application numérique + résultat : $\eta \approx 72{,}7~\%$ & 1 \\
+  \hline
+  6 & Comparaison correcte + choix du \textbf{moteur 4} justifié & 1 \\
+  \hline
+  7 & Texte cohérent mentionnant type, puissance et vitesse & 0,5 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{/7} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 3 =====================
+\exotitle{Exercice 3 : Rendement d'un moteur asynchrone}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{3}{*}{1} & Calcul de $P_{\rm tr} = P_m + \text{pertes rotor} = 14~500 + 855 = 15~355$~W & 0,5 \\
+  \cline{2-3}
+  & Calcul de $P_e = P_{\rm tr} + \text{pertes stator} = 15~355 + 1~745$ & 0,5 \\
+  \cline{2-3}
+  & \textbf{Résultat encadré :} $P_e = 17~100$~W $= 17{,}1$~kW & 1 \\
+  \hline
+  \multirow{3}{*}{2} & Calcul de $P_u = \eta \times P_e = 0{,}81 \times 17~100 = 13~851$~W & 0,5 \\
+  \cline{2-3}
+  & Calcul de $P_{\rm mec} = P_m - P_u = 14~500 - 13~851$ & 0,5 \\
+  \cline{2-3}
+  & \textbf{Résultat encadré :} $P_{\rm mec} \approx 649$~W & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{/4} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== EXERCICE 4 =====================
+\exotitle{Exercice 4 : Fréquence de rotation et force électromotrice}{/5 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{1} & Formule : $E = U - r \cdot I$ & 0,5 \\
+  \cline{2-3}
+  & Application + résultat : $E = 100 - 0{,}9 \times 12{,}1 \approx \mathbf{89}$~\textbf{V} & 0,5 \\
+  \hline
+  \multirow{4}{*}{2} & $I_2 = (161 - 140) / 0{,}9 \approx 23{,}3$~A & 0,5 \\
+  \cline{2-3}
+  & $E_3 = 242 - 0{,}9 \times 34 \approx 211$~V \quad;\quad $E_4 = 324 - 0{,}9 \times 44{,}1 \approx 284$~V & 0,5 \\
+  \cline{2-3}
+  & $n$ déduits de $E \propto n$ : $n_2 \approx 800$, $n_3 \approx 1200$, $n_4 \approx 1600$~tr/min & 0,5 \\
+  \cline{2-3}
+  & $n_5 \approx 2000$~tr/min & 0,5 \\
+  \hline
+  \multirow{2}{*}{3} & 5 points correctement placés dans le repère & 1 \\
+  \cline{2-3}
+  & Droite passant par l'origine tracée & 0,5 \\
+  \hline
+  4 & Points alignés $\Rightarrow$ $E$ \textbf{proportionnelle} à $n$ : $E = k \cdot n$ & 0,5 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 4}} & \textbf{/5} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+\colorbox{exoheader}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \textcolor{white}{\textbf{\large TOTAL GÉNÉRAL \hfill /20 points}}%
+  }%
+}
+
+\end{document}
