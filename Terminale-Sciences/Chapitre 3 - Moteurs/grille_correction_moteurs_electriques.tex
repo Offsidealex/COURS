@@ -1,0 +1,162 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\NoAutoSpaceBeforeFDP
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe : T~Bac Pro}
+\fancyfoot[C]{}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{0.4mm}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête de partie
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Moteurs électriques \hspace{1cm} T~Bac Pro \hspace{1cm} \textbf{Total~: /20 points}}
+\end{center}
+
+\vspace{3mm}
+
+% ===================== PARTIE A =====================
+\exotitle{Partie A : Identification des moteurs}{/4 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{4}{*}{1} & M1 identifié : \textbf{moteur à courant continu (MCC)} & 0,5 \\
+  \cline{2-3}
+  & Justification : plaque indique \textbf{24\,V DC} (tension continue) & 0,5 \\
+  \cline{2-3}
+  & M2 identifié : \textbf{moteur asynchrone triphasé} & 0,5 \\
+  \cline{2-3}
+  & Justification : plaque indique \textbf{AC} et fréquence \textbf{f = 50\,Hz} & 0,5 \\
+  \hline
+  \multirow{3}{*}{2} & Calcul du nombre de paires de pôles : $p = \dfrac{60 \times 50}{3000} = 1$ & 0,5 \\
+  \cline{2-3}
+  & Formule et calcul : $g = \dfrac{3000 - 2840}{3000}$ & 0,5 \\
+  \cline{2-3}
+  & \textbf{Résultat encadré :} $g \approx 5{,}3~\%$ & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie A}} & \textbf{/4} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== PARTIE B =====================
+\exotitle{Partie B : Bilan de puissance et rendement}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{3} & Formule : $P_{\rm élec} = U \times I$ & 0,5 \\
+  \cline{2-3}
+  & Application + résultat encadré : $P_{\rm élec} = 24 \times 3{,}8 = \mathbf{91{,}2~W}$ & 0,5 \\
+  \hline
+  \multirow{4}{*}{4} & Formule : $\omega = \dfrac{2\pi\,n}{60}$ & 0,5 \\
+  \cline{2-3}
+  & Application + résultat : $\omega \approx 148{,}7~\text{rad/s}$ & 0,5 \\
+  \cline{2-3}
+  & Formule : $P_{\rm méc} = C \times \omega$ & 0,5 \\
+  \cline{2-3}
+  & Application + résultat encadré : $P_{\rm méc} = 0{,}55 \times 148{,}7 \approx \mathbf{81{,}8~W}$ & 0,5 \\
+  \hline
+  \multirow{4}{*}{5} & Calcul : $P_{\rm pertes} = P_{\rm élec} - P_{\rm méc} = 91{,}2 - 81{,}8 \approx \mathbf{9{,}4~W}$ & 0,75 \\
+  \cline{2-3}
+  & Calcul : $\eta = P_{\rm méc} / P_{\rm élec} \approx \mathbf{89{,}7~\%}$ & 0,75 \\
+  \cline{2-3}
+  & Estimation plaque : $\eta_{\rm plaque} = 90 / (24 \times 4{,}2) \approx 89{,}3~\%$ & 0,75 \\
+  \cline{2-3}
+  & Commentaire cohérent (valeurs proches, moteur légèrement sous charge nominale) & 0,75 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie B}} & \textbf{/6} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ===================== PARTIE C =====================
+\exotitle{Partie C : Influence des paramètres électriques sur la vitesse}{/10 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{3}{*}{6} & 6 points correctement placés dans le repère $n = f(U)$ & 1,5 \\
+  \cline{2-3}
+  & Droite de tendance tracée & 0,5 \\
+  \cline{2-3}
+  & Description : relation \textbf{linéaire / proportionnelle} entre $U$ et $n$ & 1 \\
+  \hline
+  7 & Conséquence correcte : faire varier $U$ permet de régler la vitesse de la perceuse (vitesse de coupe adaptable) & 1 \\
+  \hline
+  \multirow{3}{*}{8} & 5 points correctement placés dans le repère $n = f(f_{\rm réseau})$ & 1,5 \\
+  \cline{2-3}
+  & Droite de tendance tracée & 0,5 \\
+  \cline{2-3}
+  & Description : relation \textbf{linéaire / proportionnelle} entre $f$ et $n$ & 1 \\
+  \hline
+  \multirow{3}{*}{9} & Principe du variateur : convertit la fréquence réseau en fréquence réglable & 1 \\
+  \cline{2-3}
+  & Lien $n \propto f$ correctement évoqué & 1 \\
+  \cline{2-3}
+  & Exemple d'application industrielle cité (convoyeur, pompe, ventilateur…) & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie C}} & \textbf{/10} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+\colorbox{exoheader}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \textcolor{white}{\textbf{\large TOTAL GÉNÉRAL \hfill /20 points}}%
+  }%
+}
+
+\end{document}

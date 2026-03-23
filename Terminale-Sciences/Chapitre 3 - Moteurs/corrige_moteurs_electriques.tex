@@ -1,0 +1,231 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\NoAutoSpaceBeforeFDP
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{setspace}
+\singlespacing
+\usepackage{tcolorbox}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe : T~Bac Pro}
+\setcounter{page}{1}
+\fancyfoot[C]{Moteurs électriques --- Corrigé --- page~\thepage}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.8}
+
+\newcommand{\reponse}[1]{%
+  \begin{tcolorbox}[colback=green!5!white, colframe=green!50!black,
+                    left=2mm, right=2mm, top=1mm, bottom=1mm]
+  #1
+  \end{tcolorbox}}
+
+\newcounter{nquestion}
+\newcommand{\Q}[1]{%
+  \stepcounter{nquestion}%
+  \vspace{3mm}
+  \noindent\textbf{Question \thenquestion.} \textbf{#1}
+  \par\vspace{1mm}
+}
+
+\begin{document}
+
+\begin{center}
+  \LARGE{\textbf{Moteurs électriques --- Corrigé}}
+  \vspace{3mm}
+\end{center}
+
+\hrule
+\vspace{4mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent\textbf{Partie A --- Identification des moteurs} \hfill \textbf{/4 points}
+
+\vspace{3mm}
+
+\Q{Identifier la catégorie de chaque moteur.}
+
+\reponse{
+\textbf{Moteur M1 (Leroy-Somer LS80L) :} la plaque indique \textbf{24\,V DC} → alimentation en tension
+\emph{continue} → il s'agit d'un \textbf{moteur à courant continu (MCC)}.
+
+\medskip
+\textbf{Moteur M2 (Siemens 1LA7) :} la plaque indique \textbf{230/400\,V AC} et une fréquence
+\textbf{f = 50\,Hz} → alimentation en tension \emph{alternative} → il s'agit d'un \textbf{moteur asynchrone triphasé}.
+}
+
+\Q{Calculer le nombre de paires de pôles, le glissement $g$ du moteur M2.}
+
+\reponse{
+Vitesse de synchronisme $n_s = 3000$\,tr/min pour $f = 50$\,Hz :
+\[n_s = \frac{60\,f}{p} \implies p = \frac{60 \times 50}{3000} = \mathbf{1} \text{ paire de pôles}\]
+
+Glissement :
+\[g = \frac{n_s - n}{n_s} = \frac{3000 - 2840}{3000} = \frac{160}{3000}\]
+\[\boxed{g \approx 0{,}053 = 5{,}3~\%}\]
+}
+
+\vfill
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent\textbf{Partie B --- Bilan de puissance et rendement} \hfill \textbf{/6 points}
+
+\vspace{3mm}
+
+\Q{Calculer la puissance électrique absorbée $P_{\text{élec}}$ par le moteur M1.}
+
+\reponse{
+\[P_{\text{élec}} = U \times I = 24 \times 3{,}8\]
+\[\boxed{P_{\text{élec}} = 91{,}2~\text{W}}\]
+}
+
+\Q{Calculer la vitesse angulaire $\omega$ puis la puissance mécanique utile $P_{\text{méc}}$.}
+
+\reponse{
+\[\omega = \frac{2\pi\,n}{60} = \frac{2\pi \times 1420}{60} \approx 148{,}7~\text{rad/s}\]
+\[P_{\text{méc}} = C \times \omega = 0{,}55 \times 148{,}7\]
+\[\boxed{P_{\text{méc}} \approx 81{,}8~\text{W}}\]
+}
+
+\Q{Déduire les pertes $P_{\text{pertes}}$ et le rendement $\eta$.
+Comparer à la plaque signalétique et commenter.}
+
+\reponse{
+Pertes :
+\[P_{\text{pertes}} = P_{\text{élec}} - P_{\text{méc}} = 91{,}2 - 81{,}8 \implies \boxed{P_{\text{pertes}} \approx 9{,}4~\text{W}}\]
+
+Rendement :
+\[\eta = \frac{P_{\text{méc}}}{P_{\text{élec}}} = \frac{81{,}8}{91{,}2} \implies \boxed{\eta \approx 0{,}897 = 89{,}7~\%}\]
+
+\textbf{Comparaison avec la plaque :} la plaque indique $P = 90$\,W pour $I_{\rm nom} = 4{,}2$\,A, soit
+$P_{\rm élec,nom} = 24 \times 4{,}2 = 100{,}8$\,W, d'où $\eta_{\rm plaque} = 90 / 100{,}8 \approx 89{,}3~\%$.\\[2mm]
+\textbf{Commentaire :} les deux valeurs sont très proches ($\approx 89~\%$), ce qui est cohérent. Le moteur
+fonctionne légèrement en dessous du courant nominal (3,8\,A $<$ 4,2\,A) → résultat attendu.
+}
+
+\vfill
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent\textbf{Partie C --- Influence des paramètres électriques sur la vitesse} \hfill \textbf{/10 points}
+
+\vspace{3mm}
+
+\Q{Tracer le graphique $n = f(U)$ et décrire l'évolution.}
+
+\reponse{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6cm,
+  xlabel={Tension $U$ (V)},
+  ylabel={Vitesse $n$ (tr/min)},
+  xmin=0, xmax=26,
+  ymin=0, ymax=1600,
+  grid=both,
+  grid style={line width=0.3pt, draw=gray!30},
+  major grid style={line width=0.6pt, draw=gray!55},
+  xtick={0,2,...,26},
+  ytick={0,200,...,1600},
+  tick label style={font=\small},
+  label style={font=\small\bfseries},
+  axis line style={thick},
+]
+  % Points de mesure
+  \addplot[only marks, mark=*, mark size=2.5pt, color=blue!70!black]
+    coordinates {(4,220)(8,450)(12,680)(16,920)(20,1170)(24,1430)};
+  % Droite de tendance (régression linéaire : n ≈ 59.7U - 19)
+  \addplot[red!70!black, very thick, domain=0:25] {59.7*x - 19};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\textbf{Description :} la vitesse $n$ est \textbf{proportionnelle} à la tension $U$ (les points sont
+alignés sur une droite passant par l'origine). Lorsque $U$ double, $n$ double : c'est une relation
+\textbf{linéaire}.
+}
+
+\Q{Conséquence pratique pour le contrôle de la vitesse de la perceuse.}
+
+\reponse{
+En faisant varier la \textbf{tension d'alimentation} du moteur M1 (par exemple à l'aide d'un variateur
+de tension ou d'un hacheur), on contrôle directement la \textbf{vitesse de rotation} de la perceuse.
+Cela permet d'adapter la vitesse de coupe selon la dureté du matériau percé.
+}
+
+\Q{Tracer le graphique $n = f(f_{\text{réseau}})$ et décrire l'évolution.}
+
+\reponse{
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6cm,
+  xlabel={Fréquence du réseau $f$ (Hz)},
+  ylabel={Vitesse $n$ (tr/min)},
+  xmin=0, xmax=55,
+  ymin=0, ymax=3200,
+  grid=both,
+  grid style={line width=0.3pt, draw=gray!30},
+  major grid style={line width=0.6pt, draw=gray!55},
+  xtick={0,5,...,55},
+  ytick={0,400,...,3200},
+  tick label style={font=\small},
+  label style={font=\small\bfseries},
+  axis line style={thick},
+]
+  % Points de mesure
+  \addplot[only marks, mark=*, mark size=2.5pt, color=blue!70!black]
+    coordinates {(10,560)(20,1140)(30,1710)(40,2280)(50,2840)};
+  % Droite de tendance (n ≈ 56.8f)
+  \addplot[red!70!black, very thick, domain=0:52] {56.8*x};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\textbf{Description :} la vitesse $n$ est \textbf{proportionnelle} à la fréquence $f$ (droite passant
+par l'origine). C'est cohérent avec la relation $n_s = \dfrac{60\,f}{p}$ : doubler $f$ double $n_s$
+et donc $n$.
+}
+
+\Q{Expliquer le principe du variateur de fréquence et donner un exemple d'application.}
+
+\reponse{
+\textbf{Principe :} un variateur de fréquence convertit la tension du réseau (50\,Hz fixe) en une
+tension alternative de \textbf{fréquence réglable}. Puisque la vitesse du moteur asynchrone est
+proportionnelle à la fréquence d'alimentation ($n \propto f$), on règle ainsi la vitesse de rotation
+en agissant uniquement sur la fréquence.
+
+\medskip
+\textbf{Exemple d'application industrielle :} convoyeur de chaîne de production, pompe centrifuge,
+ventilateur industriel, compresseur à débit variable.
+}
+
+\vfill
+
+\begin{center}
+  \large{\textbf{--- Barème total : /20 points ---}}
+\end{center}
+
+\end{document}
