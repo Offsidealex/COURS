@@ -17,12 +17,10 @@
 \usepackage{setspace}
 \singlespacing
 
-\usepackage{pstricks}
-\usepackage{xkeyval}
-\usepackage{pst-labo}
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{tikz-osci}
+\AtBeginDocument{\shorthandoff{;}}
 
 \usepackage{amssymb}
 \usepackage{multicol}
@@ -191,18 +189,18 @@ $U_{eff} \approx \boxed{8~\text{V}}$
 \centering
 \osci[%
 scale=0.5,
-second channel=0, %1 pour activer la deuxième voie, 0 sinon.
-screen offset one=0, %Décalage vertical de la voie 1 sur l'écran
-screen offset two=0, %Décalage vertical de la voie 2 sur l'écran
-time div=5, %Durée par division (en ms)
-voltage div one=5, %Tension par division (en V) pour la voie 1
-voltage div two=2, %Tension par division (en V) pour la voie 2
-sample rate=200, %Taux d'échantillonnage
-xy mode=0, %1 pour l'activer, 0 sinon 
+second channel=0,
+screen offset one=0,
+screen offset two=0,
+time div=5,
+voltage div one=5,
+voltage div two=2,
+sample rate=200,
+xy mode=0,
 func one=12*sin(2*180/0.020*x),
-func two=3*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
-color one=D62626, %Couleur de la voie 1 (en hexadecimal)
-color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+func two=3*sin(2*180/0.020*x+180),
+color one=D62626,
+color two=1053AF,
 graph back color=FFFFFF,
 info back color=D6D6D6,
 info text color=000000,
@@ -451,8 +449,8 @@ Donc : $G = F + 1 = 3 + 1 = 4$ garçons
 
 \textbf{Vérification :}
 \begin{itemize}
-\item Le garçon voit 3 autres garçons et 3 filles ✓
-\item Une fille voit 4 garçons et 2 autres filles (4 = 2×2) ✓
+\item Le garçon voit 3 autres garçons et 3 filles \checkmark
+\item Une fille voit 4 garçons et 2 autres filles (4 = 2×2) \checkmark
 \end{itemize}
 
 \end{multicols}

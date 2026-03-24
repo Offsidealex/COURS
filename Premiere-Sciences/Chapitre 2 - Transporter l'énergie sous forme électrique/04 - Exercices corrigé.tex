@@ -17,12 +17,10 @@
 \usepackage{setspace}
 \singlespacing
 
-\usepackage{pstricks}
-\usepackage{xkeyval}
-\usepackage{pst-labo}
 \usepackage{colortbl}
 \usepackage{tikz}
 \usepackage{tikz-osci}
+\AtBeginDocument{\shorthandoff{;}}
 
 \usepackage{amssymb}
 \usepackage{multicol}
@@ -157,7 +155,6 @@ $$m = \dfrac{24}{220} = 0{,}109$$
 \ding{203} Combien y a-t-il de spires $\mathrm{N_2}$ au secondaire ? 
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
 On utilise la relation : $m = \dfrac{N_2}{N_1}$
 
 D'où : $N_2 = m \times N_1$
@@ -165,7 +162,6 @@ D'où : $N_2 = m \times N_1$
 $$N_2 = \dfrac{24}{220} \times 700 = \dfrac{24 \times 700}{220} = \dfrac{16\,800}{220} \approx 76{,}4$$
 
 \textbf{Il y a environ 76 spires au secondaire.}
-}
 \end{tcolorbox}
 
 \vfill 
@@ -180,7 +176,7 @@ Pour chaque situation, indiquez si le transformateur est élévateur ou abaisseu
 \ding{202} Un poste de transformation électrique 20 kV/400 V placé à l'entrée d'un lotissement. 
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
+{\color{blue}
 $U_1 = 20$ kV $= 20\,000$ V \quad ; \quad $U_2 = 400$ V
 
 $$m = \dfrac{U_2}{U_1} = \dfrac{400}{20\,000} = 0{,}02$$
@@ -196,7 +192,7 @@ Comme $m < 1$, on a $U_2 < U_1$ : \textbf{le transformateur est abaisseur de ten
 \ding{203} Un transformateur  reçoit une tension de 23 V et la transforme en tension de 15 kV. 
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
+{\color{blue}
 $U_1 = 23$ V \quad ; \quad $U_2 = 15$ kV $= 15\,000$ V
 
 $$m = \dfrac{U_2}{U_1} = \dfrac{15\,000}{23} \approx 652{,}2$$
@@ -212,7 +208,7 @@ Comme $m > 1$, on a $U_2 > U_1$ : \textbf{le transformateur est élévateur de t
 \ding{204} Un transformateur d'isolement 230 V / 230 V sécurise un local de travail 
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
+{\color{blue}
 $U_1 = 230$ V \quad ; \quad $U_2 = 230$ V
 
 $$m = \dfrac{U_2}{U_1} = \dfrac{230}{230} = 1$$
@@ -241,18 +237,18 @@ Un transformateur supposé parfait est utilisé pour alimenter les lampes d'un g
     
 \osci[%
 scale=1,
-second channel=0, %1 pour activer la deuxième voie, 0 sinon.
-screen offset one=0, %Décalage vertical de la voie 1 sur l'écran
-screen offset two=0, %Décalage vertical de la voie 2 sur l'écran
-time div=10, %Durée par division (en ms)
-voltage div one=2, %Tension par division (en V) pour la voie 1
-voltage div two=2, %Tension par division (en V) pour la voie 2
-sample rate=200, %Taux d'échantillonnage
-xy mode=0, %1 pour l'activer, 0 sinon 
+second channel=0,
+screen offset one=0,
+screen offset two=0,
+time div=10,
+voltage div one=2,
+voltage div two=2,
+sample rate=200,
+xy mode=0,
 func one=6.8*sin(2*180/0.050*x),
-func two=3*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
-color one=D62626, %Couleur de la voie 1 (en hexadecimal)
-color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+func two=3*sin(2*180/0.020*x+180),
+color one=D62626,
+color two=1053AF,
 graph back color=FFFFFF,
 info back color=D6D6D6,
 info text color=000000,
@@ -266,7 +262,7 @@ grid color=CCCCCC
     1.1. Déterminer, en volt, la valeur maximale $U_{max}$ de la tension au secondaire. 
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
+{\color{blue}
 Sur l'oscilloscope, la sensibilité verticale est de 2 V/div.
 
 La tension maximale correspond à l'amplitude du signal, soit environ 3,4 divisions.
@@ -280,7 +276,7 @@ $$U_{\max} = 3{,}4 \times 2 = 6{,}8~\text{V}$$
     1.2. En déduire, en volt, la valeur efficace $U_{eff}$ de cette tension (arrondir le résultat à l'unité). 
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
+{\color{blue}
 Pour une tension sinusoïdale, la relation entre la valeur efficace et la valeur maximale est :
 
 $$U_{\text{eff}} = \dfrac{U_{\max}}{\sqrt{2}}$$
@@ -295,7 +291,7 @@ En arrondissant à l'unité : \textbf{$U_{\text{eff}} \approx 5$ V}
     \item Calculer $m$ , le rapport de transformation 
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
+{\color{blue}
 $$m = \dfrac{U_2}{U_1} = \dfrac{5}{220} \approx 0{,}023$$
 
 \textbf{Le rapport de transformation est $m \approx 0{,}023$.}
@@ -305,7 +301,7 @@ $$m = \dfrac{U_2}{U_1} = \dfrac{5}{220} \approx 0{,}023$$
     \item Le transformateur est-il élévateur ou abaisseur de tension :
 
 \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
-\textcolor{blue}{
+{\color{blue}
 Comme $m < 1$, on a $U_2 < U_1$ (5 V $<$ 220 V).
 
 \textbf{Le transformateur est abaisseur de tension.}

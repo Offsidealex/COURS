@@ -19,12 +19,9 @@
 \usepackage{setspace}
 \singlespacing
 
-\usepackage{pstricks}
-\usepackage{xkeyval}
-\usepackage{pst-labo}
-
 \usepackage{tikz}
 \usepackage{tikz-osci}
+\AtBeginDocument{\shorthandoff{;}}
 
 
 \usepackage{multicol}
@@ -64,7 +61,8 @@
 
 \frenchbsetup{StandardLists=true}
 
-
+\newlist{fleche}{itemize}{1}
+\setlist[fleche]{label=\ding{220},font=\color{orange}}
 
 \begin{document}
 
@@ -139,18 +137,18 @@ Un transformateur supposé parfait est utilisé pour l'alimentation des lampes s
 \begin{minipage}{.35\textwidth}%
 \osci[%
 scale=0.5,
-second channel=0, %1 pour activer la deuxième voie, 0 sinon.
-screen offset one=0, %Décalage vertical de la voie 1 sur l’écran
-screen offset two=0, %Décalage vertical de la voie 2 sur l’écran
-time div=5, %Durée par division (en ms)
-voltage div one=5, %Tension par division (en V) pour la voie 1
-voltage div two=2, %Tension par division (en V) pour la voie 2
-sample rate=200, %Taux d’échantillonnage
-xy mode=0, %1 pour l’activer, 0 sinon 
+second channel=0,
+screen offset one=0,
+screen offset two=0,
+time div=5,
+voltage div one=5,
+voltage div two=2,
+sample rate=200,
+xy mode=0,
 func one=12*sin(2*180/0.020*x),
-func two=3*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
-color one=D62626, %Couleur de la voie 1 (en hexadecimal)
-color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+func two=3*sin(2*180/0.020*x+180),
+color one=D62626,
+color two=1053AF,
 graph back color=FFFFFF,
 info back color=D6D6D6,
 info text color=000000,
@@ -253,7 +251,7 @@ La photographie ci-contre est celle d'un transformateur du réseau EDF.
 \begin{minipage}{.45\textwidth}%
 On a réalisé en salle de cours une simulation du fonctionnement de ce transformateur, on obtient l'oscillogramme ci-contre. \\[3mm]
 
-3.1 Relever les valeurs des tensions maximales $U_{1 max}$ et $U_{2 max} $ avec $U_{1 max}$ > $U_{2 max}: 
+3.1 Relever les valeurs des tensions maximales $U_{1 max}$ et $U_{2 max} $ avec $U_{1 max}$ > $U_{2 max}$ :
 
 \begin{multicols}{2}
  \dotfill 
@@ -279,18 +277,18 @@ On a réalisé en salle de cours une simulation du fonctionnement de ce transfor
 
 \osci[%
 scale=0.6,
-second channel=1, %1 pour activer la deuxième voie, 0 sinon.
-screen offset one=0, %Décalage vertical de la voie 1 sur l’écran
-screen offset two=0, %Décalage vertical de la voie 2 sur l’écran
-time div=5, %Durée par division (en ms)
-voltage div one=200, %Tension par division (en V) pour la voie 1
-voltage div two=20, %Tension par division (en V) pour la voie 2
-sample rate=200, %Taux d’échantillonnage
-xy mode=0, %1 pour l’activer, 0 sinon 
+second channel=1,
+screen offset one=0,
+screen offset two=0,
+time div=5,
+voltage div one=200,
+voltage div two=20,
+sample rate=200,
+xy mode=0,
 func one=582*sin(2*180/0.020*x),
-func two=41*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
-color one=D62626, %Couleur de la voie 1 (en hexadecimal)
-color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+func two=41*sin(2*180/0.020*x+180),
+color one=D62626,
+color two=1053AF,
 graph back color=FFFFFF,
 info back color=D6D6D6,
 info text color=000000,

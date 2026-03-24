@@ -3,7 +3,7 @@
 \usepackage[french]{babel}
 \usepackage{tikz}
 \usepackage{circuitikz}
-\usetikzlibrary{shapes.geometric, positioning, decorations.pathmorphing}
+\usetikzlibrary{shapes.geometric, positioning, decorations.pathmorphing, patterns}
 
 \begin{document}
 
@@ -39,14 +39,14 @@
 \draw[thick, fill=green!40] (5.7,3.0) rectangle (6.2,3.1);
 
 % Texte sur le joulemètre
-\node[left, tiny] at (4.3,3.2) {mode};
-\node[left, tiny] at (4.3,3.0) {U};
-\node[right, tiny] at (6.9,3.2) {départ};
-\node[right, tiny] at (6.9,3.0) {arrêt};
-\node[tiny] at (5.0,2.6) {J};
-\node[tiny] at (5.35,2.6) {Wh};
-\node[tiny] at (5.6,2.6) {P};
-\node[tiny] at (5.9,2.6) {kJ};
+\node[left, font=\tiny] at (4.3,3.2) {mode};
+\node[left, font=\tiny] at (4.3,3.0) {U};
+\node[right, font=\tiny] at (6.9,3.2) {départ};
+\node[right, font=\tiny] at (6.9,3.0) {arrêt};
+\node[font=\tiny] at (5.0,2.6) {J};
+\node[font=\tiny] at (5.35,2.6) {Wh};
+\node[font=\tiny] at (5.6,2.6) {P};
+\node[font=\tiny] at (5.9,2.6) {kJ};
 
 % Bornes du joulemètre
 \draw[thick, fill=blue] (4,3.2) circle (0.08);

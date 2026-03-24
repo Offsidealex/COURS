@@ -9,17 +9,13 @@
 \usepackage{amsmath}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{multirow}
-\usepackage[dvipsnames]{xcolor}
 
 \usepackage[T1]{fontenc}
 \usepackage{fouriernc}
 \usepackage{graphicx}
-\usepackage{tikz-osci}
 
 \usepackage{setspace}
 \singlespacing
-
-\usepackage{pstricks}
 
 \usepackage[
   european resistor,
@@ -28,8 +24,10 @@
   european voltage,
   straightvoltages
   ]{circuitikz}
-\usepackage{xkeyval}
-\usepackage{pst-labo}
+\usepackage[dvipsnames]{xcolor}
+\usetikzlibrary{babel}
+\usepackage{tikz-osci}
+\AtBeginDocument{\shorthandoff{;}}
 
 
 \usepackage{multicol}
@@ -43,7 +41,7 @@
 \fancyfoot[R]{Année 2024-2025}
 \fancyfoot[L]{Alexis RUIZ}
 \usepackage{multirow,tabularx,booktabs}
-\usepackage[tikz]{bclogo} 
+\usepackage[tikz]{bclogo}
 
 \newcommand{\cadreblanc}[1]{%
 \medskip\framebox[\linewidth][c]{%
@@ -161,18 +159,18 @@ La tension et l'intensité dans un circuit électrique peuvent être modélisée
     \begin{minipage}{.30\textwidth}%
 \osci[%
 scale=0.48,
-second channel=1, %1 pour activer la deuxième voie, 0 sinon.
-screen offset one=0, %Décalage vertical de la voie 1 sur l’écran
-screen offset two=0, %Décalage vertical de la voie 2 sur l’écran
-time div=5, %Durée par division (en ms)
-voltage div one=5, %Tension par division (en V) pour la voie 1
-voltage div two=2, %Tension par division (en V) pour la voie 2
-sample rate=200, %Taux d’échantillonnage
-xy mode=0, %1 pour l’activer, 0 sinon 
+second channel=1,
+screen offset one=0,
+screen offset two=0,
+time div=5,
+voltage div one=5,
+voltage div two=2,
+sample rate=200,
+xy mode=0,
 func one=12*sin(2*180/0.020*x),
 func two=3*sin(2*180/0.020*x), 
-color one=000000, %Couleur de la voie 1 (en hexadecimal)
-color two=808080, %Couleur de la voie 2 (en hexadecimal)
+color one=000000,
+color two=808080,
 graph back color=FFFFFF,
 info back color=D6D6D6,
 info text color=000000,
@@ -206,18 +204,18 @@ grid color=CCCCCC
 
 \osci[%
 scale=0.68,
-second channel=1, %1 pour activer la deuxième voie, 0 sinon.
-screen offset one=0, %Décalage vertical de la voie 1 sur l’écran
-screen offset two=0, %Décalage vertical de la voie 2 sur l’écran
-time div=5, %Durée par division (en ms)
-voltage div one=5, %Tension par division (en V) pour la voie 1
-voltage div two=2, %Tension par division (en V) pour la voie 2
-sample rate=200, %Taux d’échantillonnage
-xy mode=0, %1 pour l’activer, 0 sinon 
+second channel=1,
+screen offset one=0,
+screen offset two=0,
+time div=5,
+voltage div one=5,
+voltage div two=2,
+sample rate=200,
+xy mode=0,
 func one=12*sin(2*180/0.020*x),
 func two=3*sin(2*180/0.020*x-90), 
-color one=000000, %Couleur de la voie 1 (en hexadecimal)
-color two=808080, %Couleur de la voie 2 (en hexadecimal)
+color one=000000,
+color two=808080,
 graph back color=FFFFFF,
 info back color=D6D6D6,
 info text color=000000,
