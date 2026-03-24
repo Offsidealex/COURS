@@ -1,0 +1,227 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb} %symbole degré
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{chemist} %chimie
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{16}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }m{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{termite}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\noindent
+
+\begin{center}
+\LARGE{Évaluation- Solutions aqueuses}\\[8mm]
+\end{center}
+\normalsize
+\hrule 
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\vspace {8 mm}
+
+
+\fbox{\textbf{Exercice 1 : Choisir la (ou les) bonne(s) réponse(s)}}
+
+
+    \begin{tabular}{p{2mm} p{5.5cm}|C{3cm}|C{3cm}|C{3cm}}
+    
+
+        \ding{202} & La quantité de matière s'exprime en  :& $\Box $ ~~mole (mol) & $\Box $ ~~gramme (g)   & $\Box $ ~~kilogramme (kg) \\
+         \hline
+      \ding{203} & La masse molaire du glucose M(\ch{C_6 H_12 O_6} ) =   & $\Box $ ~~ 180 g/mol  & $\Box $ ~~ 90 g/mol   & $\Box $ ~~ 360 g/mol  \\
+        \hline
+         \ding{204} & Avec la formule $n=\dfrac{m}{M}$, on obtient m avec  &$\Box $ ~~ $m=n \times M$  &$\Box $ ~~ $m=\dfrac{n}{M}$  & $\Box $ ~~$m=\dfrac{M}{n}$   \\
+         \hline
+         \ding{205} & Si on dilue 5 fois une solution aqueuse d'hydroxyde de sodium de concentration C = 1 mol/L on obtient une concentration  &$\Box $ ~~  C = 5 mol/L  &$\Box $ ~~  C = 0,1 mol/L & $\Box $ ~~ C = 0,2 mol/L \\
+
+         \hline
+         
+        \ding{206} & On dilue 5 fois une solution en versant  &$\Box $ ~~ 50 mL dans 100 mL  & $\Box $ ~~ 20 mL dans 200 mL  & $\Box $ ~~ 5 mL dans 25~mL \\
+
+ 
+        
+         \end{tabular}
+
+        
+\vspace{3mm}
+
+
+\fbox{\textbf{Exercice 2  }}
+
+A l'aide de la formule $n=\dfrac{m}{M}$, compléter le tableau suivant : 
+
+\begin{center}
+
+    \renewcommand{\arraystretch}{3}
+
+
+    \begin{tabular}{|C{0.4cm}C{3cm}|C{4cm}|C{4cm}|}
+         \hline
+      & $n$ & $m$ & $M$ \\
+         \hline 
+         \ding{202} &  25 mmol & & 40 g/mol \\
+         \hline
+         \ding{203} &  & 25 g  & 180 g/mol \\
+         \hline 
+         \ding{204} & 0,1 mol & 1,2 g  & \\
+         \hline
+         
+
+    \end{tabular}\end{center}
+
+     avec 1 mmol = 0,001 mol
+
+    \vfill 
+
+\newpage
+
+\fbox{\textbf{Exercice 3 }}
+
+\vspace{-1mm}
+
+\noindent%
+\begin{minipage}{.40\textwidth}%
+  Choisissez et nommez le matériel  dont vous avez besoin pour préparer une disolution. 
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.55\textwidth}%
+\includegraphics[scale=0.7]{Chapitre 4 - Solutions aqueuses/images/materiel.png}
+\end{minipage}%
+
+\cadreblanc{25}
+
+\vfill 
+
+
+\fbox{\textbf{Exercice 4}}
+\begin{center}
+    
+\textbf{Le lait est-il bien conservé ? }
+\end{center}
+\noindent%
+
+\begin{minipage}{.70\textwidth}%
+Léna, responsable qualité, est chargée d'effectuer le titrage de l'acide lactique (\ch{C3H6O3}) contenu dans du lait, afin d’en apprécier l'état de conservation. Elle prélève un volume \ch{V_a} =20 mL de lait qu'elle dilue en ajoutant 180 mL d’eau distillée et quelques gouttes de BBT (indicateur coloré). Elle dose cette solution par une solution d’hydroxyde de sodium de concentration \ch{C_b} = 0,05 mol/L. Après avoir versé un volume équivalent \ch{V_E} =11,3 mL d’hydroxyde de sodium, la solution se colore en bleu de façon persistante, le volume équivalent est donc atteint. .
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.25\textwidth}%
+\fbox{\includegraphics[width=\textwidth]{Chapitre 4 - Solutions aqueuses/lait.png}}
+\end{minipage}%
+
+\vspace{5mm}
+
+\textbf{\ding{202} Réaliser} \\
+
+En utilisant la relation $C_a \times V_a = C_b \times V_E$ , calculer, en mol/L, la concentration en acide lactique contenue dans le lait. \\
+
+\cadreblanc{15}
+
+
+
+
+
+
+
+
+
+
+
+\textbf{\ding{203} Valider} \\
+
+ Le lait ne doit pas contenir plus de 0,024 mol/L d'acide lactique. Le lait dosé par Léna a-t-il été convenablement conservé?
+
+\cadreblanc{15}
+
+
+
+\textbf{\ding{204} Communiquer} \\[3mm]
+
+La dilution du lait permet de mieux apprécier le virage de l’indicateur. Expliquez pourquoi elle ne modifie pas la valeur du volume équivalent \ch{V_E}.
+
+\cadreblanc{15}
+
+
+
+  \vfill 
+  
+
+\end{document}

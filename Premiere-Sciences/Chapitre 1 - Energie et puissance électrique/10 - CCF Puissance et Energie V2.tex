@@ -1,0 +1,781 @@
+\documentclass[11pt]{article}
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmargins{15mm}{10mm}{180mm}{252 mm}%
+             {16mm}{2mm}{0pt}{10mm}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lmodern} 
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{eurosym} % pour le symbole euro
+\usepackage{graphicx} 
+\usepackage{array} 
+\usepackage{tabularx}
+\usepackage{variations}
+\usepackage{amsmath} 
+\usepackage{caption}
+\usepackage{amssymb}
+\usepackage{awesomebox}
+\usepackage{epic} % pour le dessin avec l'environnment picture
+\usepackage{rotating}
+\usepackage[autolanguage]{numprint}
+\usepackage[tikz]{bclogo} 
+
+\usepackage{circuitikz} % circuit electriques
+
+
+\setlength{\unitlength}{1 mm}
+\usepackage{xy} % pour la réalisation de dessin, graphique, diagramme
+\xyoption{all}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+
+\def\labelenumii{\theenumi.~\theenumii.}
+\def\theenumii{\arabic{enumii}}
+
+
+\presetkeys{bclogo}{logo=\bcquestion,couleur=gray!10,barre=snake,arrondi = 0.1}{}
+
+\newcommand{\ctext}[1]
+{\begin{bclogo}[couleur = white,logo= , arrondi = 0.1,barre=none]
+{}
+\vspace{-8mm}
+~~
+
+~~
+\end{bclogo}}
+
+  
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\fbox{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}}{black}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Définition des sections et sous-sections
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\thesection}{{\arabic{section}.}}
+
+\addto\captionsfrench{\def\tablename{Document}}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{graphpap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Définition de nouveaux types de colonne
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{lastpage} 
+
+\newcommand{\appel}{\raisebox{-2ex}{\includegraphics[width=1cm]{images/appel.jpg}}\quad}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%              Evaluation par compétences                %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand\SA{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{S}}}}
+\newcommand\A{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{A}}}}
+\newcommand\R{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{R}}}}
+\newcommand\V{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{V}}}}
+\newcommand\C{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{C}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+% Définitions de l'année, la spécialité, du diplome ...  %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\specialite}{MICRO}
+\newcommand{\annee}{2025-26}
+\newcommand{\diplome}{Baccalauréat Professionnel}
+\newcommand{\etablissement}{LP Denis Diderot}
+\newcommand{\classe}{MICRO}
+\newcommand{\datedeval}{15 oct 25}
+\newcommand{\matiere}{Sciences Physiques et chimiques }
+
+\newcommand{\sequence}{1/2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+% Définitions des capacités, connaissances et attitudes. %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\theme}{
+Distinguer la puissance et l'énergie.}
+
+
+\newcommand{\capacites}{
+  \begin{minipage}[c]{12.5cm}
+    \begin{itemize}
+      \item \rule{0ex}{2.5ex}Mesurer la puissance électrique pendant une durée donnée par un appareil utilisé en régime continu. 
+      \item  Calculer la puissance électrique et l'énergie électrique reçues pendant une durée donnée par un appareil en régime continu.  
+      \item Établir expérimentalement la relation entre la puissance électrique reçue, la valeur de la tension et celle de l'intensité en régime continu. \rule[-1.5ex]{0ex}{3ex} 
+      \end{itemize}
+    \end{minipage}
+  }
+
+
+\newcommand{\connaissances}{
+  \begin{minipage}[c]{12.5cm}
+    \begin{itemize}
+    \item \rule{0ex}{2.5ex}Connaitre la relation entre l'Energie électrique , la Puissance et la durée ($E=P \times t)$ 
+    \item Connaître la relation entre la Puissance , la Tension et l'Intensité ($P=U \times I$)   
+    \item Savoir que le Joule (J) est l'unité d'énergie du système international et connaître d'autres unités dont le kilowattheure (kWh)\rule[-1.5ex]{0ex}{3ex}
+    \end{itemize}
+    \end{minipage}
+  }
+
+\newcommand{\attitudes}{
+  \begin{minipage}[c]{12.5cm}
+    \begin{itemize}
+    \item \rule{0ex}{2.5ex}Le sens de l'observation.
+    \item L'ouverture à la communication, au dialogue et au débat argumenté.
+    \item La rigueur et la précision
+    \item Le respect des règles élémentaires de sécurité. 
+    \item \rule[-1.5ex]{0ex}{3ex}Le gout de chercher et de raisonner.
+    \end{itemize}
+  \end{minipage}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%                   Début du document                    %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%                     Page de garde                      %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\pagestyle{fancy}
+\lfoot{Alexis Ruiz}
+\cfoot{\thepage/3}
+\rfoot{\datedeval}
+
+\thispagestyle{empty}
+\Large 
+\noindent\begin{tabularx}{1\linewidth}[c]{|c|c|c|C|C|}
+  \hline
+  \multirow{2}{*}{
+  \begin{minipage}[c]{3cm}
+    \includegraphics[width=30mm]{images/aca-besancon.png}
+  \end{minipage}}   &
+ \multicolumn{4}{c|}{
+ \begin{minipage}[c]{12cm}
+      \begin{center}
+         \rule[-1.5ex]{0ex}{5ex}BACCALAURÉAT PROFESSIONNEL\\
+         \rule[-2ex]{0ex}{4ex} \specialite 
+      \end{center}    \end{minipage}}\\
+  \cline{2-5}
+  & \multicolumn{3}{c|}{\rule[-2ex]{0ex}{5.5ex}Épreuve E1- Sciences Physiques et chimiques } & Coef. 1.5\\
+  \hline
+  \multirow{2}{*}{
+  \begin{minipage}[c]{3cm}
+    \begin{center}
+      Contrôle en \\ Cours de\\ Formation
+    \end{center}      
+    \end{minipage}}
+    &
+  \multirow{2}{*}{
+    \raisebox{-2ex}{\begin{minipage}[c]{6.3cm}
+      \begin{center}
+        Situation d'évaluation de\\ \matiere
+     \end{center}  
+    \end{minipage}}}
+    &
+  \multirow{2}{*}{
+    \begin{minipage}[c]{2.2cm}
+      \begin{center}
+        Année\\ scolaire\\ \annee
+  \end{center}  
+    \end{minipage}}
+    &
+    \rule[-1ex]{0ex}{4ex}Séquence &
+    Durée\\
+    \cline{4-5}
+    &&&
+    \rule[-1.5ex]{0ex}{5ex}\sequence
+    & 
+    45~min
+\\
+\hline
+\end{tabularx}
+
+\bigskip
+
+\noindent\fbox{
+  \begin{minipage}[c]{.97\linewidth}
+    \centerline{\rule[-.8ex]{0ex}{3.5ex}FICHE D'INFORMATION DU CANDIDAT}
+  \end{minipage}
+}
+
+\bigskip
+
+
+\normalsize
+
+\noindent\begin{tabularx}{1\linewidth}{|p{11cm}C|}
+  \hline
+  \rule{0ex}{3ex}Établissement~:~\textbf{{\etablissement}} & Classe~:~\textbf{\classe}\\
+ \rule[-1ex]{0ex}{4ex} NOM et Prénom du CANDIDAT : \ \dotfill & Date de l'évaluation~:~\textbf{\datedeval}\\
+ \hline
+\end{tabularx}
+\bigskip
+
+\noindent{\Large Thème~: \theme}\\
+
+\noindent{\Large Module(s) évalué(s)~: }
+
+\begin{center}
+  Capacités, connaissances et attitudes du référentiel évaluées\\
+  \begin{tabularx}{16cm}{|C|l|}
+    \hline
+    \textbf{Capacités} &
+    \capacites\\
+    \hline 
+    \textbf{Connaissances} &
+    \connaissances    \\
+    \hline
+    \textbf{Attitudes}  &
+    \attitudes\\
+    \hline
+  \end{tabularx}
+\end{center}
+
+\noindent\fbox{\begin{minipage}[c]{.97\linewidth}
+    \begin{description}
+  \item[$\vartriangleright$] La clarté des raisonnements et la qualité de la rédaction
+    interviendront dans l'appréciation des copies.
+  \item[$\vartriangleright$] L'emploi des calculatrices est autorisé, dans les conditions
+    prévues par la réglementation en vigueur.
+  \end{description}
+\end{minipage}}
+
+\bigskip
+
+
+L'évaluation est notée sur 10 : 7 points pour la mobilisation des
+connaissances et des compétences pour résoudre des problèmes et 3
+points pour l'activité d'expérimentation.
+
+\begin{center}
+  \begin{tabularx}{1\linewidth}{|L|c|}
+  \hline
+  \textbf{\rule{0ex}{3ex}Le candidat atteste avoir été informé de la date et des objectifs
+    de l'évaluation le \makebox[4cm]{\rule{0ex}{3ex}\dotfill}} & \textbf{\rule[-6ex]{0ex}{3ex}\underline{Émargement}}\\
+   \hline
+\end{tabularx}
+\end{center}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%                   fin page de garde                    %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+
+\lhead{\textbf{\matiere}}
+\rhead{Année scolaire \annee}
+\setcounter{page}{1}
+\large
+
+\noindent\begin{tabularx}{1\linewidth}[c]{|c|c|C|C|}
+  \hline
+  \multirow{2}{*}{\Large
+    \begin{minipage}[c]{4cm}
+      \begin{center}
+        Contrôle en Cours\\ de Formation
+    \end{center}      
+  \end{minipage}}
+    &
+    \multirow{2}{*}{
+      \begin{minipage}[c]{7.2cm}
+        \begin{center}
+          Situation de Sciences Physiques et chimiques
+        \end{center}  
+    \end{minipage}}
+  &
+  \rule[-1ex]{0ex}{4ex}Séquence &
+  Durée\\
+  \cline{3-4}
+  &&
+    \rule[-1.5ex]{0ex}{5ex}2/2
+    & 
+    45~min\\
+\hline
+\end{tabularx}
+\medskip
+
+
+\noindent\fbox{
+  \Large\begin{minipage}[c]{.97\linewidth}
+    \centerline{\rule[-.8ex]{0ex}{3.5ex}SUJET DESTINÉ AU CANDIDAT}
+  \end{minipage}
+}
+
+\medskip
+
+\noindent\begin{tabularx}{1\linewidth}{|p{10cm}L|}
+  \hline
+  \rule{0ex}{3ex}Établissement:~\textbf{{\etablissement}} & Classe~:~\textbf{\classe}\\
+ \rule[-1ex]{0ex}{4ex} NOM et Prénom : \ \dotfill & Date de l'évaluation : \textbf{\datedeval}\\
+ \hline
+\end{tabularx}
+
+\medskip
+
+
+\noindent\begin{tabularx}{1\linewidth}{|c|L|}
+  \hline
+\multirow{2}{1.3cm}{ \appel} & \textbf{\rule[-.8ex]{0ex}{3.5ex}L'examinateur intervient à la demande du
+candidat ou quand il le juge utile.}\\
+\cline{2-2} 
+&\textbf{\rule[-.8ex]{0ex}{3.5ex}Dans la suite du document, ce symbole  \raisebox{-1.2
+ex}{\includegraphics[scale=0.35]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}~ signifie <<Appeler
+  l'examinateur>>.}\\
+ \hline
+\end{tabularx}
+
+\bigskip
+
+\noindent
+\normalsize
+\setstretch{1.2}
+
+\parindent 0cm
+
+
+\noindent
+  \setlength{\arraycolsep}{2pt}
+  \begin{bclogo}[logo=\bcinfo]
+{Situation~: Dominique, propriétaire d'un camping car, se trouve sur son lieu de vacances. Il se rend compte en rentrant de la plage à \textbf{15h} qu'il a laissé deux lampes allumées à l'intérieur de son camping-car qu'il avait quitté à \textbf{7h}, la lampe de la chambre et la lampe de la salle de bain. }
+
+\end{bclogo}
+
+
+\begin{bclogo}{~Problématique :}
+    \begin{center}
+     {La batterie du véhicule possède les caractéristiques suivantes : \textbf{12V / 45 Ah.} \\La lampe de la salle de bain, $L_1$ a pour caractéristiques  \textbf{12 V / 9W }. \\  La lampe de la chambre, $L_2$ a pour caractéristiques \textbf{12 V / 5W }. \\ 
+     Dominique pourra-t-il redémarrer son camping-car pour quitter son lieu de vacances ? }
+    \end{center}
+\end{bclogo}
+
+ \begin{enumerate}
+\item \textbf{Compréhension et analyse de la situation / formulation d'une hypothèse.}\\
+
+\begin{enumerate}
+
+\item Expliquer la signification des indications 45 Ah et 12 V écrites sur la batterie :
+
+\begin{minipage}[c]{.91\linewidth}
+
+\vspace{8mm}
+
+    \dotfill\\
+
+    \dotfill \\ 
+    
+  \end{minipage}\SA \C
+\vspace{3mm}
+
+
+\item Relever sur l'étiquette des deux lampes la puissance $P_1$ de la lampe $L_1$ et la puissance $P_2$ de la lampe $L_2$
+
+
+\begin{minipage}[c]{.91\linewidth}
+
+\vspace{8mm}
+
+    \dotfill\\
+
+    \dotfill \\ 
+    
+  \end{minipage}\SA \C
+\vspace{3mm}
+
+\item Calculer P, en W, la puissance totale délivrée par la batterie à l'aide des puissances nominales des deux lampes du camping-car qui sont restées allumées.  \\[5mm]
+\begin{minipage}[c]{.91\linewidth}
+
+    \vspace{8mm}
+    
+    .\dotfill\\
+    
+  \end{minipage}\SA
+
+
+\vfill 
+
+
+\newpage
+
+
+
+\item Proposer une expérience permettant de mesurer P, en W,  la puissance totale avec les deux lampes allumées. Vous pouvez utiliser un schéma expliqué ou du texte : 
+
+
+\begin{minipage}[c]{.91\linewidth}
+
+    \cadreblanc{45}
+    
+  \end{minipage}\A\C
+\vspace{3mm}
+
+\end{enumerate}
+
+\vfill 
+
+
+\textbf{\item Expérimentation }
+\begin{enumerate}
+
+
+    \item Le circuit ci-dessous schématise la partie de l'éclairage du camping-car de Dominique que nous souhaitons étudier. Réaliser le circuit. \\[5mm]
+
+
+\begin{minipage}[c]{.91\linewidth}
+
+
+
+\begin{center}
+    
+
+
+\begin{circuitikz}[european, scale=1.4]
+
+\draw (3,0) to  [lamp, l=$L_2$]  (3,4);
+\draw (-3,0) to  [battery1, l]  (-3,4) -- (3,4); 
+\draw(0,0) to [lamp, l=$L_1$] (0,4);
+\draw (-3,0) -- (3,0);
+%\draw(4,0) to [lamp, l=$L_3$]  (4,4);
+%\draw(6,4) to [lamp, l=$L_4$]  (6,0)--(-2,0);
+
+
+
+\end{circuitikz}
+\end{center}
+  \end{minipage}\R\A\C
+
+  
+
+\defbox{\fbox{
+\begin{minipage}{13cm}{
+
+\textbf{Appel $\mathrm{n^\circ}$1 :} Appeler l'examinateur  pour qu'il vérifie le montage puis proposer un branchement du wattmètre afin de mesurer la puissance délivrée par le générateur. N\textbf{E PAS METTRE SOUS TENSION}}
+
+\end{minipage}
+}}
+
+\vfill 
+
+\item Mesurer P, en W, la puissance délivrée par la batterie  : \\[0.5cm]
+
+\begin{minipage}[c]{.91\linewidth}
+
+    .\dotfill\\
+    
+  \end{minipage}\R
+\vspace{3mm}
+
+\vfill 
+
+\item Cette valeur est-elle en accord avec le résultat calculé à la question 1.3  ? \\[0.5cm]
+
+\begin{minipage}[c]{.91\linewidth}
+
+    .\dotfill\\
+    
+  \end{minipage}\V
+\vfill 
+
+
+\defbox{\fbox{
+\begin{minipage}{13cm}{
+
+\textbf{Appel $\mathrm{n^\circ}$2 :} Appeler l'examinateur  pour qu'il vérifie vos résultats}
+
+\end{minipage}
+}}
+
+\end{enumerate}
+
+\vfill 
+
+
+
+
+\newpage 
+
+
+\textbf{\item Exploitation et conclusion }
+\begin{enumerate}
+
+
+\item {Les lampes sont restées allumées de 7h à 15h. Calculer $t$, en h, la durée de fonctionnement des lampes moteur arrêté : \\[5mm]
+\begin{minipage}[c]{.91\linewidth}
+
+\vspace{8mm}
+    .\dotfill\\
+    
+  \end{minipage}\SA
+
+    
+\vfill 
+
+\item Calculer E, en Wh, l'énergie consommée par les 2 lampes  avant que Dominique vienne les éteindre.  Vous utiliserez la valeur de la puissance mesurée à la question 2.2. (donnée : $E=P \times t$)\\[5mm]
+\begin{minipage}[c]{.91\linewidth}
+
+\vspace{8mm}
+    .\dotfill\\
+    
+  \end{minipage}\SA \R
+
+
+\vfill 
+
+\item Calculer I, en A, l'intensité délivrée par la batterie. (donnée : $P=U \times I$)   \\[5mm]
+\begin{minipage}[c]{.91\linewidth}
+
+\vspace{8mm}
+
+    .\dotfill\\
+    
+  \end{minipage}\SA \R
+
+
+\vfill 
+
+
+
+\item \'A l'aide la relation $I \times t{max} = 45 $, calculer , en h, le temps maximal de fonctionnement de la batterie avec les deux lampes allumées ? 
+
+\vspace{3mm}
+
+\begin{minipage}[c]{.91\linewidth}
+
+\cadreblanc{20}
+    
+  \end{minipage} \R \C
+
+  \vfill 
+
+  \item Le démarreur du camping-car nécessite au moins 25 Ah pour fonctionner correctement. \\ Dominique~pourra-t-il repartir ? \\ 
+
+  \vspace{3mm}
+
+\begin{minipage}[c]{.91\linewidth}
+
+\cadreblanc{20}
+    
+  \end{minipage}\V \C
+  
+
+
+
+\end{enumerate}
+
+\end{enumerate}
+
+\vfill 
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%%          Fiche d'évaluation              %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\small
+
+\thispagestyle{empty}
+\setstretch{1}
+
+\noindent\begin{tabularx}{1\linewidth}[c]{|L|l|l|}
+  \hline
+  \multicolumn{3}{|c|}{\large
+    \begin{minipage}[c]{.7\linewidth}
+      \begin{center}
+        \bfseries \rule{0ex}{3ex}GRILLE NATIONALE D'ÉVALUATION
+
+        EN MATHÉMATIQUES ET EN
+
+        SCIENCES PHYSIQUES ET CHIMIQUES\rule[-1ex]{0ex}{3ex}
+      \end{center}
+    \end{minipage}
+}\\
+  \hline
+  \rule[-1ex]{0ex}{4ex} Nom : & \rule{.3cm}{0cm}Diplôme
+  préparé : \diplome\rule{.3cm}{0cm} &  Séquence
+  d'évaluation\footnote{Chaque séquence propose la résolution de 
+    problèmes issus du domaine professionnel ou de la vie courante. En
+    mathématiques, elle comporte un ou deux exercices ; la résolution
+    de l'un d'eux nécessite la mise en \oe{}uvre de capacités
+    expérimentales.} \no\sequence \\
+ \hline\end{tabularx}\\[.3cm]
+
+
+\textbf{1.  Liste des capacités, connaissances et attitudes évaluées} 
+\begin{center}
+  \begin{tabularx}{1\linewidth}{|C|l|}
+    \hline
+    \textbf{Capacités} &
+    \capacites\\
+    \hline 
+    \textbf{Connaissances} &
+    \connaissances    \\
+    \hline
+    \textbf{Attitudes}  &
+    \attitudes 
+    \\
+    \hline
+  \end{tabularx}
+\end{center}
+
+
+\medskip
+
+\textbf{2. Évaluation}
+
+\begin{center}
+\begin{tabularx}{.98\linewidth}[c]{|c|C|c|p{0.42cm}|p{0.42cm}|p{0.4cm}|c|}
+  \hline
+  \textbf{Compétences\footnote{L'ordre de présentation ne correspond
+      pas à un ordre de mobilisation des compétences. La compétence
+      \og{} Être autonome, Faire preuve d'initiative \fg{} est prise en
+      compte au travers de l'ensemble des travaux réalisés. Les appels
+      sont des moments privilégiés pour en apprécier le degré
+      d'acquisition}} & 
+  \textbf{Capacités}&\textbf{Questions} &\multicolumn{4}{c|}{
+  \begin{minipage}[c]{2.8cm}
+    \begin{center}
+      \textbf{\rule{0ex}{2.2ex}Appréciation\\ du niveau\\
+        d'acquisition\rule[-1.2ex]{0ex}{2ex}} 
+    \end{center}    \end{minipage}\footnote{Le professeur peut utiliser toute forme d'annotation lui permettant d'évaluer l'élève (le candidat) par compétences.}}
+    \\
+    \hline
+    S'approprier&
+    Rechercher, extraire et organiser l'information.
+    &\begin{minipage}[c]{1.2cm}
+      \begin{center}
+        \rule{0ex}{2.2ex}
+        1.1 ; 1.2 ; 2.1 
+\rule[-1.2ex]{0ex}{2ex}
+      \end{center}\end{minipage}
+    &&& & \\
+    \hline    
+    Analyser& 
+    \begin{minipage}{1.0\linewidth}
+  \begin{itemize}
+  \item Émettre une conjecture, une hypothèse.
+  \item Proposer une méthode de résolution, un protocole expérimental.
+  \end{itemize}
+      \end{minipage}
+    &\begin{minipage}[c]{1.2cm}
+      \begin{center}
+        \rule{0ex}{2.2ex} 1.4 ; A2 
+        \rule[-1.2ex]{0ex}{2ex}
+      \end{center}
+    \end{minipage}
+    & & & & \\
+    \hline
+    Réaliser& 
+    \begin{minipage}{1.0\linewidth}
+      \begin{itemize}
+      \item \rule{0ex}{2.2ex}Choisir une méthode de résolution, un
+        protocole expérimental.
+      \item Exécuter une méthode de
+        résolution, expérimenter, simuler.\rule[-1.2ex]{0ex}{2ex}
+      \end{itemize}
+    \end{minipage}&
+    \begin{minipage}[c]{1.2cm}
+      \begin{center}
+    \rule{0ex}{2.2ex}
+1.3 ; 2.2 ; 3.1 ; 3.2; 3.3; 3.4\rule[-1.2ex]{0ex}{2ex}
+  \end{center}
+    \end{minipage}
+    
+    & & & & \\
+\hline
+Valider &\begin{minipage}{1.0\linewidth}
+  \begin{itemize}
+  \item \rule{0ex}{2.2ex}Contrôler la vraisemblance d'une conjecture, d'une hypothèse.
+  \item Critiquer un résultat, argumenter.\rule[-1.2ex]{0ex}{2ex}
+  \end{itemize}
+      \end{minipage}&
+    \begin{minipage}[c]{1.2cm}
+      \begin{center}
+    \rule{0ex}{2.2ex}
+2.3 ; 2.4 ; 3.5
+\rule[-1.2ex]{0ex}{2ex}
+      \end{center}
+    \end{minipage}
+    & & & & \\
+    \hline
+   Communiquer &\begin{minipage}{1.0\linewidth}
+   \begin{itemize}
+       \item \rule{0ex}{2.2ex}Rendre compte d'une démarche, d'un résultat,
+    à l'oral ou à l'écrit.\rule[-1.2ex]{0ex}{2ex}
+   \end{itemize}
+    \end{minipage}
+    &
+    \begin{minipage}[c]{1.2cm}
+      \begin{center}
+    
+1.1 ; A1 ; 1.2; 3.4; 3.5 
+      \end{center}
+      \end{minipage}
+      & & & &  \\
+      \hline
+      \multicolumn{3}{c|}{}& \multicolumn{4}{r|}{\rule[-1ex]{0ex}{4ex}\rule{3ex}{0ex}{\Large /~10}}\\    
+    \cline{4-7}
+  \end{tabularx}
+\end{center}
+
+\end{document}

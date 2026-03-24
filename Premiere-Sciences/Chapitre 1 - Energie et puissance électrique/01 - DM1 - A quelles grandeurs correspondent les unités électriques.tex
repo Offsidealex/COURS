@@ -1,0 +1,128 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1TRPM}
+\setcounter{page}{2}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\flushleft \textbf{NOM :\\
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{Activité 1 - \'A quelles grandeurs correspondent les unités électriques ? }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+   
+Une voiture électrique est équipée d'un moteur électrique alimentée par une batterie d'accumulateurs et avec les caractéristiques suivantes : 
+ \begin{itemize}
+     \item pas d'embrayage. Il suffit d'appuyer sur la pédale d'accélérateur pour que la batterie libère du courant continu. 
+     \item pas de boite de vitesses : l'axe du moteur entraîne directement celui des roues motrices. 
+     \item un ordinateur embarqué gère, contrôle et régule la puissance à développer. 
+     
+ \end{itemize}
+ 
+\code{\begin{minipage}{14cm}
+{
+\begin{itemize} 
+    \item Utiliser votre téléphone portable pour scanner le lien puis visualiser la vidéo. 
+
+\end{itemize}  
+
+}
+\end{minipage}}
+   \vfill
+   \ding{202} En vous aidant de la vidéo et du texte ci dessus ; donnez les avantages et les inconvénients du moteur électrique par rapport au moteur thermique. 
+\cadreblanc{25}
+
+\vfill 
+
+\noindent%
+\begin{minipage}{.4\textwidth}%
+\ding{203} Identifiez dans le document ci-contre, les unités électriques dans le Doc.2 et indiquez à quelles grandeurs elle correspondent. \\[3mm]
+\cadreblanc{45}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.55\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 1 - Energie et puissance électrique/images/A1 voiture.jpg}
+\end{minipage}%
+
+
+\vfill 
+
+
+
+
+\end{document}

@@ -1,0 +1,323 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{chemist} %chimie
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{2}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+\newcommand{\cadre}[1]
+{\begin{bclogo}[couleur = white,logo=\bcinfo , arrondi = 0.1]
+{
+~~
+{#1}
+~~
+\end{bclogo}}}
+
+
+
+\begin{document}
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{Activité - Dissolution et dilution   }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+
+
+
+
+\begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Objectifs }{
+\begin{itemize*}
+\item Réaliser une solution de concentration donnée par dilution ou par dissolution;
+\item Calculer une masse molaire moléculaire à partir du tableau périodique et de la formule de la molécule;
+\item Calculer la concentration d'un soluté.
+\end{itemize*}
+}
+\end{bclogo}
+
+\vfill 
+
+
+\fbox{\large{\ding{202} Dissolution et dilution : }}
+
+\vfill 
+
+\begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{A retenir }
+\vspace{0.1cm}
+
+\begin{itemize}
+\item Une \textbf{dissolution} consiste à préparer une solution à partir d'un soluté solide.
+
+\begin{center}
+\includegraphics[scale=0.78]{Chapitre 4 - Solutions aqueuses/images/Disolution.png}
+\vspace{0.1cm}
+\end{center}
+\end{itemize}
+\end{bclogo}
+
+
+\vfill 
+
+\newpage
+
+\begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{A retenir }
+\vspace{0.1cm}
+
+\begin{itemize}
+\item Une \textbf{dilution} consiste à préparer une solution à partir d'une autre solution (en diminuant sa concentration)
+
+\begin{center}
+\includegraphics[scale=0.65]{Chapitre 4 - Solutions aqueuses/images/Dilution2.png}
+\vspace{0.1cm}
+\end{center}
+\end{itemize}
+\end{bclogo}
+
+
+
+
+
+\textbf{Compléter} la liste du matériel nécessaire pour chaque manipulation.  \\
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~Dissolution~~~~~~~~~~~~~~~~~~~~~~~~~~~~ & ~~~~~~~~~~~~~~~~~~~~~~~~~~~~Dilution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+\hline
+&  \\
+\hline
+&  \\
+\hline
+& \\
+\hline
+& \\
+\hline
+& \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\fbox{\large{\ding{203} Dissolution et dilution : }}
+
+Suite à une consultation chez le médecin pour de nombreuses et répétitives crampes, un adulte obtient les résultats partiels d'une analyse de sang faite pour une personne dont on surveille la glycémie : 
+\begin{center}
+\fbox{\includegraphics[scale=0.7]{Chapitre 4 - Solutions aqueuses/images/gly.png}}
+\end{center}
+
+\newpage
+
+\begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{Problématique :  }
+Comment déterminer si la glycémie de cette personne est dans la normale ou non ?
+\end{bclogo}
+
+
+\begin{enumerate}
+\item  \textbf{Donner} la valeur et l'unité de la glycémie de la personne :
+
+\vspace{3mm}
+\dotfill 
+
+\item  \textbf{Donner} les valeurs de référence de glycémie ainsi que leur unité : 
+
+\vspace{3mm}
+\dotfill 
+
+\item  \textbf{Expliquer} pourquoi on ne peut pas répondre à la problématique à ce stade :
+
+\vspace{3mm}
+\dotfill 
+
+\vspace{3mm}
+\dotfill 
+
+\end{enumerate}
+
+\vspace{0.1cm}
+
+\begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Objectifs }{
+La glycémie contrôle le taux de glucose de formule chimique \chemform{C_6H_{12}O_6} dans le sang d'une personne. Les chimistes expriment la quantité de matière par "paquets" d'atomes ou de molécules que l'on appelle "moles" (le symbole de cette unité est \textbf{mol}) 
+}
+\end{bclogo}
+
+Pour trouver la masse d'une mole de molécule de glucose (un paquet) \textbf{on additionne la masse molaire de tous les atomes}. Cette masse molaire se trouve dans le tableau périodique :
+\begin{center}
+\fbox{\includegraphics[scale=0.4]{Chapitre 4 - Solutions aqueuses/images/massemol.png}}
+\end{center}
+
+On donne ci-dessous un extrait de classification périodique avec les composants du glucose :
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE H}};
+\node at (1,0.3) {1,0};
+\node at (1,1) {Hydrogène};
+\node at (0.3,2.6){{\Large 1}};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE C}};
+\node at (1,0.3) {12,0};
+\node at (1,1) {Carbone};
+\node at (0.3,2.6){{\Large 6}};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE O}};
+\node at (1,0.3) {16,0};
+\node at (1,1) {Oxygène};
+\node at (0.3,2.6){{\Large 8}};
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+\item \textbf{Calculer},  en g/mol, la masse molaire moléculaire du glucose (\chemform{C_6H_{12}O_6}) :
+
+\vspace{3mm}
+\dotfill 
+
+\item \textbf{En utilisant une formule présente dans votre cours}, répondre à la problématique (attention aux unités, il faudra transformer avant les \si{\milli\mol} en \si{mol})  : 
+
+\vspace{3mm}
+\cadreblanc{20}
+
+\end{enumerate}
+
+\vspace{1cm}
+
+\newpage
+
+
+\begin{center}
+ \LARGE{FICHE METHODE  }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+
+
+\begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{A retenir }
+\vspace{0.1cm}
+
+\begin{itemize}
+\item Une \textbf{dissolution} consiste à préparer une solution à partir d'un soluté solide.
+
+\begin{center}
+\includegraphics[scale=0.78]{Chapitre 4 - Solutions aqueuses/images/Disolution.png}
+\vspace{0.1cm}
+\end{center}
+\end{itemize}
+\end{bclogo}
+
+\vfill 
+
+\begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{A retenir }
+\vspace{0.1cm}
+
+\begin{itemize}
+\item Une \textbf{dilution} consiste à préparer une solution à partir d'une autre solution (en diminuant sa concentration)
+
+\begin{center}
+\includegraphics[scale=0.8]{Chapitre 4 - Solutions aqueuses/images/Dilution2.png}
+\vspace{0.1cm}
+\end{center}
+\end{itemize}
+\end{bclogo}
+
+
+\vfill 
+
+
+
+
+\end{document}

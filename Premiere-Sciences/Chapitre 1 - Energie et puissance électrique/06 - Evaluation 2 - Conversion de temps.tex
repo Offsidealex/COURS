@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+
+\setstretch{2.5}
+
+% Configuration de l'en-tête et du pied de page
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de première}
+\fancyfoot[C]{controle 2}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+\usepackage{arydshln}
+\setlength{\columnseprule}{1pt} 
+
+% Commande pour créer des cadres blancs
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\setlength{\parindent}{0pt} 
+
+\begin{document}
+
+% En-tête du document
+\begin{center}
+ \LARGE{Contrôle 2 - Conversions d'unités} \\[3mm]
+\end{center}
+\hrule
+\vspace{0.3cm}
+
+% Zone pour nom et prénom
+
+\textbf{Nom :} \\[1mm]
+
+\textbf{Prénom :} \\[1mm]
+
+\hrule 
+\vspace{1cm}
+
+% Instructions
+\begin{center}
+    Convertissez les valeurs suivantes dans l'unité demandée.
+\end{center}
+\vspace{5mm}
+
+% Section des conversions organisée en colonnes
+\begin{multicols}{2}
+
+% Conversions de temps
+\textbf{\large Conversions de temps :}
+\vspace{3mm}
+
+\fbox{\textbf{En seconde :}}
+
+\begin{itemize}[leftmargin=1em]
+    \item 5 min : \dotfill
+    
+    \item 2,5 h : \dotfill
+    
+\end{itemize}
+
+\vspace{3mm}
+
+\fbox{\textbf{En minute :}}
+
+\begin{itemize}[leftmargin=1em]
+
+    \item 180 s : \dotfill
+    
+    \item 1,2 h : \dotfill
+    
+\end{itemize}
+
+\vspace{3mm}
+
+\fbox{\textbf{En heure :}}
+
+\begin{itemize}[leftmargin=1em]
+
+    \item 7200 s : \dotfill
+    
+    \item 150 min : \dotfill
+    
+\end{itemize}
+
+\columnbreak
+
+% Conversions d'énergie
+\textbf{\large Conversions d'énergie :}
+
+\vspace{3mm}
+
+\fbox{\textbf{En wattheure :}}
+
+\begin{itemize}[leftmargin=1em]
+
+    \item 7200 J : \dotfill
+    
+    \item 1800 kJ : \dotfill
+    
+\end{itemize}
+
+\vspace{3mm}
+
+\fbox{\textbf{En joule :}}
+
+\begin{itemize}[leftmargin=1em]
+    \item 5 W.h : \dotfill
+    
+    \item 2,5 kW.h : \dotfill
+    
+\end{itemize}
+
+\end{multicols}
+
+
+\vfill 
+
+\end{document}

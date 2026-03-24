@@ -1,0 +1,203 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{colortbl}
+
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{11}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+%\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+
+\begin{center}
+ \LARGE{Exercices } \\[3mm]
+\end{center}
+
+
+
+\normalsize
+
+\hrule\
+\\[0,5cm]
+
+
+\fbox{\textbf{Exercice 1 }} QCM : Parmi les trois propositions, choisissez la bonne réponse. 
+
+\begin{center}
+
+
+
+    \begin{tabular}{|p{6cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+       \ding{202} Le mouvement d'un objet en chute libre est ...& $\Box $ ~~rectiligne uniforme& $\Box $ ~~Uniformément accéléré    & $\Box $ ~~uniformément décéléré \\
+         \hline
+      \ding{203} Quelle est la valeur de l'accélération de pesanteur ?  & $\Box $ ~~$9,8~m/s^2$ & $\Box $ ~~$-9,8~m/s^2$  & $\Box $ ~~ $9,8~m/s$ \\
+         \hline
+         \ding{204} Quelle est la formule de la vitesse d'un corps en chute libre ?  &$\Box $ ~~ $v=\dfrac{9,8}{t} \times t$  &$\Box $ ~~ $v=9,8 \times t$  & $\Box $ ~~$v=9,8 + t$  \\
+         \hline
+         \ding{205} La vitesse d'un solide en chute libre & $\Box $ ~~ augmente de $9,8~m/s $ & $\Box $ ~~diminue de $9,8~m/s$ & $\Box $ ~~ augmente de $9,8~m$ \\
+         \hline
+         \ding{206} Dans un mouvement rectiligne uniformément accéléré ... &$\Box $ ~~ la vitesse augmente et l'accélération est constante & $\Box $ ~~ la vitesse augmente et l'accélération augmente & $\Box $ ~~ la vitesse est constante et l'accélération est nulle \\
+         \hline
+         \ding{207}\'A un mouvement rectiligne uniformément varié correspond ... & $\Box $ ~~ $v=\dfrac{a}{t}+v_0$ & $\Box $ ~~  $v=a \times t + v_0$ & $\Box $ ~~  $a=v \times t + v_0$ \\
+         \hline
+         %\ding{208} Un mouvement rectiligne uniformément ralenti peut être représenté par ...  & $\Box $ ~~  & $\Box $ ~~  &  $\Box $\\
+         %\hline
+         \ding{208} Lors d'un mouvement d'accélération constante $a>0$, la vitesse en $m/s$ &$\Box$ ~~ augmente de $a$ par seconde & $\Box$ ~~ diminue de $a$ par seconde &$\Box$ ~~ $v=a$ \\
+         \hline
+         \ding{209} Le véhicule s'arrête plus rapidement si ...  &$\Box ~~ a=-9,8 m/s^2$ &$\Box ~~ a=-2 m/s^2 $  & $\Box ~~ a=-5 m/s^2$ \\ 
+         \hline 
+         \ding{210} Pour calculer l'accélération constante d'une automobile entre deux points, il faut  &$\Box ~~ $ le compteur de vitesse du véhicule et un chronomètre   &$\Box ~~ $ un radar de vitesse   &$\Box ~~ $ le compteur de vitesse du véhicule et un télémètre \\
+         \hline
+
+         
+        
+    \end{tabular}
+\end{center}
+\vfill
+\newpage
+
+\fbox{\textbf{Exercice 2 }} Convertir les vitesses dans l’unité demandée.\\\begin{center}
+    
+
+    \begin{tabular}{|p{3cm}|C{2cm}|C{2cm}|C{2cm}|}
+         \hline
+         Animal & Tortue & Girafe  & Guépard \\
+         \hline 
+         $v ~(m/s)$ &  0,128 &  &   \\
+         \hline
+         $v ~(km/h)$ &   & 60  &  110 \\
+         \hline 
+     
+    \end{tabular}\end{center}
+
+
+    
+
+
+\fbox{\textbf{Exercice 3 }} 
+\begin{center}
+    
+\textbf{Pourquoi le rafale est-il catapulté? }
+\end{center}
+
+Pour décoller du porte-avions Charles de Gaulle, l'avion Rafale doit atteindre la vitesse de \\ $v=250~km/h$ en $t=2~s$. \\
+Ses deux réacteurs exercent une poussée lui donnant une accélération maximale $a_1=7~m/s^2$ 
+
+
+\textbf{\ding{202} S'approprier} :
+
+Quelle est en $m/s$ et à $10^{-1}$ près, la vitesse de décollage $v$ du Rafale ? 
+
+\cadreblanc{15}
+
+\textbf{\ding{203} Réaliser} \\
+
+2.1. Calculer en $m/s$ puis en $km/h$, la vitesse $v_1$ atteinte en $2~s$ par l'avion sous l'action de ses réacteurs. 
+
+\cadreblanc{15}
+
+
+
+2.2. Calculer en $m/s$, arrondir à l'unité, l'accélération $a$ nécessaire au décollage.   \\
+
+\cadreblanc{15}
+
+
+
+\textbf{\ding{204} Valider} \\
+
+3.1. Justifier l'utilisation d'une catapulte pour accélérer le rafale au décollage. 
+
+\vspace{5mm}
+\dotfill 
+
+\vspace{5mm}
+
+3.2. Calculer en \% la part de l'accélération due à la catapulte . 
+
+\cadreblanc{10}
+
+\vspace{5mm}
+
+\textbf{\ding{205} Communiquer} \\
+
+Rédigez une réponse à la question en titre. 
+
+\cadreblanc{15}
+
+
+
+\vfill 
+
+
+
+\end{document}

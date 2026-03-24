@@ -1,0 +1,134 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{}\fancyfoot[C]{BARÈME}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+
+\usepackage{tcolorbox}
+\usepackage{pifont}
+
+\renewcommand{\arraystretch}{1.3}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\begin{document}
+
+\begin{center}
+\Large{\textbf{BARÈME D'ÉVALUATION - Transporter l'énergie électrique}}\\[2mm]
+\normalsize
+\textbf{Total : 20 points + Bonus énigme : +1 point (note max 21/20)}
+\end{center}
+
+\hrule 
+\vspace{2mm}
+
+\section*{\ding{202} Exercice 1 : QCM \hfill \textbf{5 points}}
+
+\textit{1 point par question - Pas de point si erreur ou absence de réponse}
+
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\textbf{Question} & \textbf{Contenu} & \textbf{Points} \\
+\hline
+\ding{202} & Unité de l'intensité efficace : Ampère & 1 pt \\
+\hline
+\ding{203} & Formule de la loi d'Ohm : $I=\dfrac{U}{R}$ & 1 pt \\
+\hline
+\ding{204} & Nature du transformateur si m<1 : abaisseur & 1 pt \\
+\hline
+\ding{205} & Formule de $P_j$ : $P_j=R \times I^2$ & 1 pt \\
+\hline
+\ding{206} & Formule de R : $R=\dfrac{U^2}{P_j}$ & 1 pt \\
+\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+\section*{\ding{203} Exercice 2 : Transformateur de portail \hfill \textbf{7 points}}
+
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\textbf{Q} & \textbf{Éléments de réponse} & \textbf{Pts} \\
+\hline
+\textbf{1} & Tension alternative (0,5) + Symbole correct (0,5) & \textbf{1} \\
+\hline
+\textbf{2.1} & Lecture : 2,5 div (0,5) + Calcul : $2,5 \times 10$ (0,5) + $U_{max} = 25$ V (0,5) & \textbf{1,5} \\
+\hline
+\textbf{2.2} & Formule : $U_{eff} = \dfrac{U_{max}}{\sqrt{2}}$ (0,5) + AN (0,5) + $U_{eff} \approx 18$ V (0,5) & \textbf{1,5} \\
+\hline
+\textbf{2.3} & Formule : $m = \dfrac{U_{2eff}}{U_{1eff}}$ (0,5) + AN (0,5) + $m \approx 0,08$ (0,5) & \textbf{1,5} \\
+\hline
+\textbf{2.4} & Abaisseur (0,75) + Justification : m < 1 ou U2 < U1 (0,75) & \textbf{1,5} \\
+\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+\section*{\ding{204} Exercice 3 : Transformateurs sur pylônes \hfill \textbf{8 points}}
+
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\textbf{Partie} & \textbf{Éléments de réponse} & \textbf{Pts} \\
+\hline
+\multicolumn{3}{|c|}{\textbf{Partie \ding{202} : S'approprier}} \\
+\hline
+& Tension dans les câbles : 20 000 V (ou 63 000 V) (0,5) + Tension sortie : 230 V (0,5) & \textbf{1} \\
+\hline
+\multicolumn{3}{|c|}{\textbf{Partie \ding{203} : Analyser - Raisonner}} \\
+\hline
+& Montage 2 (0,5) + Justification : générateur en tension alternative (0,5) & \textbf{1} \\
+\hline
+\multicolumn{3}{|c|}{\textbf{Partie \ding{204} : Réaliser}} \\
+\hline
+\textbf{3.1} & Lecture voie 1 : $U_{1max} = 580$ V (0,75) + voie 2 : $U_{2max} = 40$ V (0,75) & \textbf{1,5} \\
+\hline
+\textbf{3.2} & Formule $U_{eff} = \dfrac{U_{max}}{\sqrt{2}}$ (0,5) + $U_{1eff} = 411,5$ V (0,75) + $U_{2eff} = 29,0$ V (0,75) & \textbf{2} \\
+\hline
+\textbf{3.3} & Formule : $m = \dfrac{U_{2eff}}{U_{1eff}}$ (0,5) + AN (0,5) + $m \approx 0,070$ (0,5) & \textbf{1,5} \\
+\hline
+\ding{205} & Abaisseur (0,5) + Justification : m < 1 ou U2 < U1 (0,5) & \textbf{1} \\
+\hline
+\end{tabularx}
+
+\vspace{3mm}
+
+\section*{\ding{205} BONUS : Énigme \hfill \textbf{+1 point}}
+
+\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black]
+\textbf{Réponse : 7 enfants (4 garçons et 3 filles)} ~~~ \textbf{Barème :} Réponse juste avec démonstration : +1 pt • Réponse juste seule : +0,5 pt
+\end{tcolorbox}
+
+\vspace{2mm}
+
+\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=\textbf{Conseils de correction}]
+\textbf{Unités :} -0,25 pt par unité manquante/incorrecte • \textbf{Calculs :} Valoriser la démarche même si résultat faux • \textbf{Justifications :} Accepter si idée principale présente • \textbf{Arrondis :} Accepter résultats proches si méthode correcte
+\end{tcolorbox}
+
+\vspace{3mm}
+
+
+\end{document}

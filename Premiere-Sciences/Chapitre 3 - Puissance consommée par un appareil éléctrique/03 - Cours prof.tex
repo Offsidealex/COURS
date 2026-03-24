@@ -1,0 +1,203 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{colortbl}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{5}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+\newlist{fleche}{itemize}{1}
+\setlist[fleche]{label=\ding{220},font=\color{orange}}
+
+
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\ctext}[1]
+{\begin{bclogo}[couleur = white,logo= , arrondi = 0.1,barre=none]
+{}
+\vspace{-8mm}
+~~
+\textcolor{red}{#1}
+~~
+\end{bclogo}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+
+\begin{center}
+ \LARGE{COURS ET EXERCICES} \\[3mm]
+\end{center}
+
+
+\normalsize
+
+\hrule\
+\\[0,5cm]
+
+
+\fcolorbox{black}{white}{\textbf{\ding{202} Déphasage et facteur de puissance}}\\
+\vspace{-3mm}
+
+\begin{fleche}
+\item \textbf{Déphasage $\varphi$ et facteur de puissance}
+\begin{itemize}[label=\textbullet, font=\LARGE \color{black}]
+
+    \item 
+
+\noindent%
+\begin{minipage}{.57\textwidth}%
+\cadreblanc{46}
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\fbox{\includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/cours1.png}}
+\end{minipage}%
+
+\item 
+\noindent%
+\begin{minipage}{.57\textwidth}%
+\cadreblanc{25}
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\cadreblanc{25}
+\end{minipage}%    
+    \item 
+\noindent%
+\begin{minipage}{.57\textwidth}%
+\cadreblanc{46}
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\fbox{\includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/cours32.png}}
+\end{minipage}%
+
+\vfill 
+
+\item \textbf{Puissance électrique}
+
+\noindent%
+\noindent%
+\begin{minipage}{.57\textwidth}%
+\cadreblanc{46}
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\fbox{\includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/cours33.png}}
+\end{minipage}%
+\vfill 
+
+Remarque : \dotfill 
+\end{itemize}
+\newpage
+
+\item \textbf{Puissance active $P$}
+\begin{itemize}
+    \item 
+
+\noindent%
+\begin{minipage}{.9\textwidth}%
+\cadreblanc{50}
+\end{minipage}%
+
+\vfill 
+
+    \item 
+
+\noindent%
+\begin{minipage}{.57\textwidth}%
+\cadreblanc{35}
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\cadreblanc{35}
+\end{minipage}%    
+\vfill 
+    \item 
+\noindent%
+\begin{minipage}{.9\textwidth}%
+\cadreblanc{20}
+\end{minipage}%
+
+\includegraphics[scale=0.5]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/cours341.png}
+
+\vfill
+
+    \item 
+\noindent%
+\begin{minipage}{.9\textwidth}%
+\cadreblanc{20}
+\end{minipage}%
+
+\vfill 
+
+\end{itemize}
+
+\end{fleche}
+\end{document}

@@ -1,0 +1,222 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{TP1  - Comment mesurer la puissance moyenne consommée par un appareil électrique en régime alternatif ?   }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+\noindent%
+\begin{minipage}{.48\textwidth}%
+
+    
+ \begin{bclogo}[couleur=blue!30 ,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Matériel }
+
+\begin{itemize*}
+    \item 1 résistor de 33 $\mathrm{\Omega}$
+    \item 1 bobine avec L = 70 mH et r = 26,5 $\mathrm{\Omega}$
+    \item 1 wattmètre
+    \item 1 générateur 6V - 50 Hz
+    \item 1 plaque de test 
+    \item 5 fils de connexion
+\end{itemize*}
+\end{bclogo}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/image.png}
+\end{minipage}%
+
+
+
+\fcolorbox{black}{blue!30}{\textbf{Protocole}}
+\begin{itemize*}
+    \item Réaliser le montage schématisé ci-dessus.
+    \defbox{\fbox{
+\begin{minipage}{8cm}{
+
+Appeler M Ruiz pour qu'il vérifie le montage.}
+
+\end{minipage}
+}}
+
+    \item En utilisant les fonctionnalités du wattmètre, mesurez la puissance électrique consommée $P$, la tension $U$ et l'intensité du courant $I$. Écrire les valeurs dans le tableau ci-dessous. 
+
+    \item Dans le montage, ajoutez la bobine en série avec le résistor. 
+
+    \defbox{\fbox{
+\begin{minipage}{8cm}{
+
+Appeler M Ruiz pour qu'il vérifie le montage.}
+
+\end{minipage}
+}}
+
+    \item Mesurer à nouveau $P$ , $U$ et $I$.
+
+
+\fcolorbox{black}{blue!30}{\textbf{Mesures}}\\
+\ding{202} Complétez le tableau suivant : 
+
+\begin{center}
+    
+
+    \begin{tabular}{|C{2cm}|C{2cm}||C{2cm}|C{2cm}||C{2cm}|C{2cm}|}
+         \hline
+         Dipole & P (en W) &  U (en V)  & I (en A) & U $\times I$ & $\dfrac{P}{U \times I}$\\
+         \hline
+         Résistor &  &   &  &  &  \\
+         \hline
+         Bobine  &  &  &  &  & \\
+         \hline
+ 
+    \end{tabular}
+\end{center}
+
+
+
+
+\fcolorbox{black}{blue!30}{\textbf{Interprétation }} \\[5mm]
+\ding{203} Proposer pour le résistor une relation entre $P$ , $U$ et $I$. \\
+
+\cadreblanc{15}
+\vspace{3mm}
+
+\ding{204} Cette relation est-elle vérifiée pour une bobine ? 
+\vspace{3mm}
+\dotfill 
+
+
+
+
+
+\fcolorbox{black}{blue!30}{\textbf{Validation}}\\[5mm]
+Avec un compteur d'énergie portatif, on a mesuré la puissance électrique consommée $P$, dite "active", la tension efficace $U$ et $I$ l'intensité efficace pour un four composé de résistor (image 1) et pour un moteur contenant des bobine (image 2) \\[5mm]
+
+\ding{205} Observez les valeurs mesurées et choisissez l'écran qui correspond à chaque appareil. \\[3mm]
+
+\begin{center}
+    Justifier votre choix. 
+\end{center}
+
+\noindent%
+\begin{minipage}{.45\textwidth}%
+\begin{center}
+\includegraphics[scale=0.4]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/ecran 1.png}
+
+\cadreblanc{20}
+\end{center}
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+\begin{center}
+\includegraphics[scale=0.4]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/ecran 2.png}
+
+\cadreblanc{20}
+\end{center}
+\end{minipage}%
+
+
+
+
+
+
+
+
+
+\end{itemize*}
+
+
+\end{document}

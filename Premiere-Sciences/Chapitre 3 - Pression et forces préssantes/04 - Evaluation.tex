@@ -1,0 +1,253 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\usepackage{tikz}
+\usepackage{tikz-osci}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{9}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{eurosym}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\usepackage{chemist}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\usepackage{colortbl}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\noindent
+
+\begin{center}
+\LARGE{Évaluation- Pression et forces pressantes}\\[8mm]
+\end{center}
+\normalsize
+\hrule 
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\vspace {8 mm}
+
+
+\fbox{\textbf{Exercice 1 : Choisir la (ou les) bonne(s) réponse(s)}}
+
+
+    \begin{tabular}{p{2mm} p{5.5cm}|C{3cm}|C{3cm}|C{3cm}}
+    
+
+        \ding{202} & La pression peut s'exprimer en :& $\Box $ ~~Pascal (Pa) & $\Box $ ~~Atmosphère (atm)   & $\Box $ ~~Watt (W) \\
+         \hline
+      \ding{203} & On mesure la pression atmosphérique à l'aide   & $\Box $ ~~d'un manomètre & $\Box $ ~~d'un thermomètre  & $\Box $ ~~ d'un baromètre \\
+        \hline
+         \ding{204} & Avec la formule $P=\dfrac{F}{S}$, on obtient S avec  &$\Box $ ~~ $S=P \times F$  &$\Box $ ~~ $S=\dfrac{P}{F}$  & $\Box $ ~~$S=\dfrac{F}{P}$   \\
+         \hline
+         \ding{205} & Dans l'eau, la pression augmente de 1 bar tous les 10m de profondeur, à 120 m (record du monde)  elle est   &$\Box $ ~~ 120 bar &$\Box $ ~~ 12 bar & $\Box $ ~~13,013 bar \\
+
+         \hline
+         
+        \ding{206} & Quand on utilise la loi loi de Mariotte, à température constante,  si la pression, $p$, est multipliée par 5 alors &$\Box $ ~~ le volume V est inchangé &$\Box $ ~~ le volume V est multiplié par 5  & $\Box $ ~~ le volume V est divisé par 5  \\
+
+ 
+        
+         \end{tabular}
+\vspace{3mm}
+
+
+\fbox{\textbf{Exercice 2 - compléter le tableau suivant : }}
+
+\begin{center}
+
+    \renewcommand{\arraystretch}{3}
+
+
+    \begin{tabular}{|p{1cm}|C{4cm}|C{4cm}|C{4cm}|}
+         \hline
+      & $P$ & $F$ & $S$ \\
+         \hline 
+         \ding{202} &  1,013 bar  & & 1,5 $m^2$\\
+         \hline
+         \ding{203} &  & 55 N & 5,5 $cm^2$ \\
+         \hline 
+         \ding{204} & $3 \times 10^5$ Pa & 15 N & \\
+         \hline
+         
+
+    \end{tabular}\end{center}
+
+    \vfill 
+
+\newpage
+
+\fbox{\textbf{Exercice 3 }}
+
+\vspace{-1mm}
+
+\noindent%
+\begin{minipage}{.36\textwidth}%
+Un alpiniste emporte avec lui une bouteille de 2L, fermée hermétiquement au niveau de la mer. Il monte au sommet de l'Everest où la pression atmosphérique n'est plus que de 34 kPa. \\
+En supposant que les parois de la bouteille sont extensibles, calculer, en L, le volume de la bouteille au sommet de l'Everest. 
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.55\textwidth}%
+\cadreblanc{43}
+\end{minipage}%
+
+\vfill 
+
+
+\fbox{\textbf{Exercice 4}}
+\begin{center}
+    
+\textbf{Comment soulever une charge lourde ? }
+\end{center}
+\noindent%
+
+\begin{minipage}{.70\textwidth}%
+Dans l'industrie, un palonnier à ventouses permet la manipulation de charges lourdes à l'aide de ventouses. 
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.25\textwidth}%
+\fbox{\includegraphics[width=\textwidth]{images/exo4.png}}
+\end{minipage}%
+
+\textbf{\ding{202} S'approprier} \\
+
+Lorsqu'une ventouse est simplement posée sur le sol que pouvez vous dire de la pression de l'air au-dessus de la ventouse ? \\
+
+\cadreblanc{15}
+
+
+
+
+
+
+
+
+
+
+
+\textbf{\ding{203} Analyser - Raisonner} \\
+\begin{enumerate}
+
+\item Que se passe-t-il lorsque l'on appuie sur la ventouse ? 
+
+\cadreblanc{15}
+
+\item D'après la loi de Mariotte, comment varient le volume et la pression sous la ventouse lorsqu'on la comprime ? 
+
+\cadreblanc{25}
+
+\end{enumerate}
+
+\newpage
+
+\textbf{\ding{204} Réaliser} \\[3mm]
+
+\begin{enumerate}
+
+\noindent%
+\begin{minipage}{.56\textwidth}%
+
+  \item La force de préhension est donnée par : \Large{$$F=(p_{atm}-p_v)\times S$$}
+  
+  
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.35\textwidth}%
+ avec : $p_{atm}$~pression atmosphérique ;\\ $p_v$~pression sous la ventouse \\ $S$~surface de contact de la ventouse.
+\end{minipage}%
+\vspace{3mm}
+Calculer, en Newton (N), la valeur  $F$ de la force de préhension sachant que $S = 0,08~m^2$, $p_v=0,5\times10^5~Pa$ et $p_{atm}= 1 \times10^5~Pa$. Arrondir à l'unité. 
+
+\cadreblanc{25}
+
+\item Le palonnier étant équipé de quatre ventouses, calculer, en Newton (N), la valeur total $F_t$ de la force exercée sur l'objet à manipuler. 
+
+\cadreblanc{10}
+
+\item Cette valeur, $F_T$, équivaut à une masse à soulever avec la formule $m=\dfrac{F_T}{9,81}$ avec la force en Newton (N) et la masse en kilogramme (kg) 
+
+Calculer, en kg, la masse correspondante. 
+
+\cadreblanc{15}
+
+
+
+\end{enumerate}
+
+\ding{205} Valider 
+
+Le panneau de 1,2 tonne pourra-t-il être soumlevé en toute sécurité ? 
+
+\cadreblanc{15}
+
+\ding{206} Communiquer 
+
+Expliquer en quelques lignes le fonctionnement d'un palonnier à ventouses ? 
+
+\cadreblanc{25}
+
+  \vfill 
+  
+
+\end{document}

@@ -1,0 +1,220 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+
+\usepackage{pst-labo}
+\usepackage{chemist} %chimie
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{TP2 - Préparation d'une boisson isotonique.    }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+   Vous allez préparer 100 mL d'une solution dont la concentration en sucre de saccharose \ch{C_12H_22 O_11} est \ch{C_1=} 0,10 mol/L et celle en sel de cuisine (chlorure de sodium, NaCl) est \ch{C_2=}0,020 mol/L.
+\noindent%
+\begin{minipage}{.35\textwidth}%
+
+    
+ \begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Matériel }
+
+\begin{itemize*}
+    \item 1 balance
+    \item 2 coupelles
+    \item 1 fiole jaugée de 100 mL
+    \item 1 entonnoir
+\end{itemize*}
+\end{bclogo}
+
+    
+ \begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Produits }
+
+\begin{itemize*}
+    \item 50 g de sucre blanc
+    \item Sel de table
+    \item Pissette eau du robinet
+\end{itemize*}
+\end{bclogo}
+
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.60\textwidth}%
+\fbox{\includegraphics[width=\textwidth]{Chapitre 4 - Solutions aqueuses/images/TP2.png}}
+\end{minipage}%
+
+
+
+\fcolorbox{black}{blue!30}{\textbf{Calculs préparatoires}}
+\begin{itemize*}
+    \item Calculer, en g/mol, la masse molaire M du saccharose de formule  \ch{C_12H_220_11}.
+    
+    \cadreblanc{15}
+\vfill 
+
+    \item En utilisant la formule du cours liant la concentration \textbf{c} en mol/L , le nombre de mole \textbf{n} et le volume \textbf{V}, $c=\dfrac{n}{V}$ , calculer , en mol, \textbf{n}, la quantité de matière de saccharose nécessaire à la préparation de la solution. 
+
+    \cadreblanc{15}
+    
+    \vfill 
+    
+    \item Calculez la masse m, en g, de saccharose nécessaire à la préparation de cette solution, en utilisant la formule $n=\dfrac{m}{M}$. 
+    
+    \cadreblanc{15}
+
+    \vfill 
+    
+        \item Calculez la masse m, en g, de chlorure de sodium nécessaire à la préparation de cette solution. 
+    \cadreblanc{35}
+    
+    \defbox{\fbox{
+\begin{minipage}{8cm}{
+
+Appeler M Ruiz pour qu'il vérifie vos calcul.}
+\end{minipage}
+}}
+
+\vspace{3mm}
+\fcolorbox{black}{blue!30}{\textbf{Protocole}}
+
+\begin{itemize}[label=$\bullet$]
+    \item Dans une coupelle, pesez 3,42g de sucre de saccharose en poudre.
+
+    \vspace{3mm}
+
+    \item Dans l’autre coupelle,pesez 0,12g de chlorure de sodium. 
+
+    \vspace{3mm}
+
+    \item Introduisez le sucre de saccharose puis le chlorure de sodium dans la fiole jaugée à l’aide de l’entonnoir.
+
+    \vspace{3mm}
+
+    \item Remplissez-la aux trois-quarts avec l’eau de la pissette.
+
+    \vspace{3mm}
+    
+    \item Bouchez et agitez honrizontalement pour dissoudre. 
+
+    \vspace{3mm}
+    
+    \item Ajoutez de l’eau jusqu’au trait de jauge. Rebouchez et agitez.
+    
+    
+\end{itemize}
+
+
+
+  \defbox{\fbox{
+\begin{minipage}{8cm}{
+
+Appeler M Ruiz pour qu'il vérifie votre solution.}
+\end{minipage}
+}}
+
+
+
+\end{itemize*}
+
+\dotfill 
+
+\vfill 
+
+\begin{center}
+    
+
+
+\fbox{\includegraphics[scale=0.74]{Chapitre 4 - Solutions aqueuses/images/Dilution.png}}
+\end{center}
+
+\vfill 
+
+\end{document}

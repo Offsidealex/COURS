@@ -1,0 +1,391 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{TP2  - Mesure d'un déphasage  }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+\fcolorbox{black}{blue!30}{\textbf{Introduction}}
+\begin{multicols}{2}
+\includegraphics[scale=0.32]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/bobine-allumage-basse-tension-interieur-ciao-px.jpg}
+
+Dans l’industrie, un grand nombre de systèmes sont
+constitués de circuits inductifs. \\ On les retrouve dans les
+moteurs, les générateurs, et les transformateurs. Ils
+sont également utilisés dans des circuits où ils
+réalisent des fonctions plus compliquées.
+
+\columnbreak
+
+
+\includegraphics[scale=0.32]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2 -Condo.jpg}
+
+\vspace{7mm}
+
+La plupart des circuits électroniques comportent des
+condensateurs. Leurs rôles vont du stockage de
+l’énergie au filtrage.\\ Ils sont également utilisés dans
+des circuits électroniques où ils réalisent des fonctions
+plus compliquées (déphasage ; résonance ).
+
+
+
+\end{multicols}
+
+\vfill 
+\dotfill 
+\vfill
+
+\noindent%
+\begin{minipage}{.42\textwidth}%
+
+    
+ \begin{bclogo}[couleur=blue!30 ,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Matériel }
+
+\begin{itemize*}
+    \item 1 GBF
+    \item 1 bobine 100 mH (0,1 H). 
+    \item 2 multimètres
+    \item 1 plaque de test 
+    \item 1 résistor de 330 $\mathrm{\Omega}$
+    \item 1 condensateur 4,7 $\mathrm{\mu F}$
+\end{itemize*}
+\end{bclogo}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.52\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-montage.jpg}
+\end{minipage}%
+
+\vfill 
+
+\fcolorbox{black}{blue!30}{\textbf{1. Visualisation du déphasage entre u et i dans une bobine}}
+
+\vfill 
+
+\fcolorbox{black}{blue!30}{\textbf{Montage}}
+\begin{itemize*}
+    \item Réaliser le montage schématisé ci-dessus \textbf{(L = 0,1 H)}
+    \item Réglages préliminaires : 
+    \begin{itemize*}
+        \item Régler $\mathrm{U=6V}$ et $f\mathrm{=1 000 Hz}$
+        \item Régler l'oscilloscope afin de visualiser une période sur l'écran avec l'amplitude la plus grande. 
+    \end{itemize*}
+    \end{itemize*}
+    \defbox{\fbox{
+\begin{minipage}{10cm}{
+
+Appel $\mathrm{n^\circ 1}$ - Appeler M Ruiz pour qu'il vérifie le montage.}
+
+\end{minipage}
+}}
+
+\vfill  
+\newpage
+
+
+\fcolorbox{black}{blue!30}{\textbf{Visualisation}}\\
+ 
+
+\noindent%
+\begin{minipage}{.38\textwidth}%
+   
+ \begin{bclogo}[couleur=blue!30 ,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Relever l'oscillogramme }
+
+\begin{itemize*}
+    \item \textbf{Voie 1 : } On visualise la tension u aux bornes de la bobine. 
+    \vspace{3mm}
+    \item \textbf{Voie 2 : }On visualise la tension aux bornes de R (on a ainsi une image du
+courant i qui traverse la bobine).
+\end{itemize*}
+\end{bclogo}
+
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.55\linewidth}%
+\includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-Oscillo1.jpg }
+\end{minipage}%
+
+\vfill 
+
+\fcolorbox{black}{blue!30}{\textbf{Calcul du déphasage \Large{{$\mathrm{\varphi}$}} 
+\normalsize 
+entre u (voie 1) et i (voie 2) :}}\\[5mm]
+
+\begin{itemize*}
+    \item Relever le décalage $x$ (en s) entre les deux courbes puis déterminer \Large{$\mathrm{\varphi}$} à l'aide de la formule : \\[5mm]
+
+\begin{center}
+    \LARGE{$\mathrm{\varphi} = \dfrac{x \times 360 }{T}=$  }
+\end{center}
+\normalsize
+   \item Préciser quelle tension est en avance sur l’autre : \\[5mm]
+
+   \dotfill 
+   
+\end{itemize*}
+
+\vfill 
+
+\fcolorbox{black}{blue!30}{\textbf{2. Visualisation du déphasage entre u et i dans un condensateur}} \\[5mm]
+
+\begin{minipage}{.38\textwidth}%
+\fcolorbox{black}{blue!30}{\textbf{Montage}}
+\begin{itemize*}
+    \item Réaliser le montage schématisé ci-contre \textbf{(C = 4,7 $\mathrm{\mu F}$)}
+    \item Réglages préliminaires : 
+    \begin{itemize*}
+        \item Régler $\mathrm{U=6V}$ et $f\mathrm{=25Hz}$
+        \item Régler l'oscilloscope afin de visualiser une période sur l'écran avec l'amplitude la plus grande. 
+    \end{itemize*}
+    \end{itemize*}
+    \end{minipage}
+    \hfill  
+    \begin{minipage}{.48\textwidth}%
+        \includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-montage2.jpg}
+    \end{minipage}
+
+    \vfill 
+    \defbox{\fbox{
+\begin{minipage}{10cm}{
+
+Appel $\mathrm{n^\circ 2}$ - Appeler M Ruiz pour qu'il vérifie le montage.}
+
+\end{minipage}
+}}
+
+\vfill  
+\newpage
+
+
+\fcolorbox{black}{blue!30}{\textbf{Visualisation}}\\
+ 
+
+\noindent%
+\begin{minipage}{.38\textwidth}%
+   
+ \begin{bclogo}[couleur=blue!30 ,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Relever l'oscillogramme }
+
+\begin{itemize*}
+    \item \textbf{Voie 1 : } On visualise la tension u aux bornes du condensateur. 
+    \vspace{3mm}
+    \item \textbf{Voie 2 : }On visualise la tension aux bornes de R (on a ainsi une image du
+courant i qui traverse le condensateur).
+\end{itemize*}
+\end{bclogo}
+
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.55\linewidth}%
+\includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-Oscillo2.jpg }
+\end{minipage}%
+
+\vfill 
+
+\fcolorbox{black}{blue!30}{\textbf{Calcul du déphasage \Large{{$\mathrm{\varphi}$}} 
+\normalsize 
+entre u (voie 1) et i (voie 2) :}}\\[5mm]
+
+\begin{itemize*}
+    \item Relever le décalage $x$ (en s) entre les deux courbes puis déterminer \Large{$\mathrm{\varphi}$} \normalsize à l'aide de la formule : \\[5mm]
+
+\begin{center}
+    \LARGE{$\mathrm{\varphi} = \dfrac{x \times 360 }{T}=$  }
+\end{center}
+\normalsize
+   \item Préciser quelle tension est en avance sur l’autre : \\[8mm]
+
+   \dotfill 
+   
+\end{itemize*}
+
+
+\vfill
+
+\fcolorbox{black}{blue!30}{\textbf{3. Conclusion}} \\[5mm]
+
+
+
+
+
+
+\begin{center}
+    
+
+    \begin{tabular}{|C{2.2cm}|C{2cm}|C{8.3cm}|C{2cm}|C{2cm}|}
+         \hline
+          & Symbole & Représentation de Fresnel temporelle & Déphasage \\
+          \hline
+          Bobine parfaite & \includegraphics[scale=0.3]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-bobine1.jpg}  & \includegraphics[scale=0.3]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-bobine2.jpg}  & \LARGE{$\mathrm{\varphi} = .... $} \\
+          \hline
+          Condensateur parfait & \includegraphics[scale=0.3]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-condo1.jpg}   & \includegraphics[scale=0.3]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-condo2.jpg} & \LARGE{$\mathrm{\varphi} = .... $} \\
+          \hline
+          
+          
+        
+ 
+    \end{tabular}
+\end{center}
+
+\vfill 
+
+\newpage 
+
+
+
+
+
+\fcolorbox{black}{blue!30}{\textbf{4. Application - circuit RLC série (étude de la résonance}} \\[5mm]
+
+
+\begin{minipage}{.38\textwidth}%
+\fcolorbox{black}{blue!30}{\textbf{Montage}}
+\begin{itemize*}
+    \item Réaliser le montage schématisé ci-contre \textbf{(C = 4,7 $\mathrm{\mu F}$ ; L = 100 H) }
+    \item Réglages préliminaires : 
+    \begin{itemize*}
+        \item Régler $\mathrm{U=6V}$ et $f\mathrm{=1000 Hz}$
+        \item Régler l'oscilloscope afin de visualiser une période sur l'écran avec l'amplitude la plus grande. 
+    \end{itemize*}
+    \end{itemize*}
+    \end{minipage}
+    \hfill  
+    \begin{minipage}{.48\textwidth}%
+        \includegraphics[width=\textwidth]{Chapitre 3 - Puissance consommée par un appareil éléctrique/images/TP2-montage3.jpg}
+    \end{minipage}
+
+    \vfill 
+    \defbox{\fbox{
+\begin{minipage}{10cm}{
+
+Appel $\mathrm{n^\circ 3}$ - Appeler M Ruiz pour qu'il vérifie le montage.}
+
+\end{minipage}
+}}
+
+\vfill
+
+
+\fcolorbox{black}{blue!30}{\textbf{Mesures}} \\[5mm]
+On fait varier la fréquence $f$ et on relève le courant  I qui traverse le circuit. 
+\renewcommand{\arraystretch}{3.5}
+\begin{tabular}{|C{2.2cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|C{3cm}|C{1.5cm}|C{1.5cm}|C{1.5cm}|}
+\hline
+$f$~~(Hz) & 100 & 150 & 200 & $f_R = ~~~~~~$ & 250 & 500 & 1000 \\
+\hline
+U1 (V) & 6 & 6 & 6 & 6 & 6 & 6 & 6  \\
+\hline
+U2 (V)  & & & & $\mathrm{U_{2Max}= ~~~~}$ & & & \\
+\hline
+\end{tabular}
+
+
+\vfill 
+
+\begin{itemize*}
+    \item Que peut-on dire alors du déphasage entre u et i lorsque $f = f_R$? \\[5mm]
+    \dotfill  
+    \vspace{5mm}
+    \item Retrouver la fréquence de la résonance $f_R$ en appliquant la relation : \\[3mm]
+    
+    \Large{$$f_R=\dfrac{1}{2\pi \sqrt{L \times C}}= ~~~~~~~~~~$$}
+\end{itemize*}
+
+\vfill 
+
+\end{document}

@@ -1,0 +1,264 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{tikz-osci}
+\usepackage{chemist} %chimie
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{9}\fancyfoot[C]{ \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\usepackage{bclogo}
+%\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{3.5}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }p{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+\frenchbsetup{StandardLists=true}
+\newlist{fleche}{itemize}{1}
+\setlist[fleche]{label=\ding{220},font=\color{black}}
+
+
+\newcounter{numexos}%Création d'un compteur qui s'appelle numexos
+\setcounter{numexos}{0}%initialisation du compteur
+\newcommand{\exercice}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{numexos}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textcolor{black}{\normalsize Exercice\,\thenumexos\,}\,#1%Met en noir Exercice et la valeur du compteur appelée par \thenumeexos
+}
+\newcommand{\bex}[2]
+{
+{\exercice:~~{#1}}
+~~
+{#2}
+~~
+}
+
+\begin{document}
+
+\pagenumbering{gobble} %enlève le numero des pages
+
+
+\begin{center}
+ \LARGE{Exercices } \\[3mm]
+\end{center}
+
+
+
+\normalsize
+
+\hrule\
+\\[0,5cm]
+
+
+
+  \raggedright
+  
+\bex{}{Rappeler en quelques lignes les étapes d'une dissolution.
+
+\vspace{5mm}
+\dotfill 
+
+\vspace{5mm}
+\dotfill 
+
+\vspace{5mm}
+\dotfill 
+
+\vspace{5mm}
+\dotfill 
+\vspace{3mm}
+
+}
+%Peser avec précision le soluté, le placer dans une fiole jaugée, remplir aux deux tiers, mélanger et affiner le remplissage au trait de jauge avec l'œil en face du ménisque.
+
+
+\vspace{0.2cm}
+
+\bex{}{
+
+\vspace{3mm}
+
+Calculer les masses molaires moléculaires des composés suivants (on utilisera les données ci-après) : \\[2mm]
+
+\begin{minipage}{.35\textwidth}%
+\begin{itemize}
+\item Éthanol : \chemform{C_2H_6O}
+\item Eau : \chemform{H_2O}
+\item Dioxyde de carbone : \chemform{CO_2}
+\item Acide lactique : \chemform{C_3 H_6 O_3}
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}{.60\textwidth}%
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE H}};
+\node at (1,0.3) {1,0};
+\node at (1,1) {Hydrogène};
+\node at (0.3,2.6){{\Large 1}};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE C}};
+\node at (1,0.3) {12,0};
+\node at (1,1) {Carbone};
+\node at (0.3,2.6){{\Large 6}};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE O}};
+\node at (1,0.3) {16,0};
+\node at (1,1) {Oxygène};
+\node at (0.3,2.6){{\Large 8}};
+\end{tikzpicture}
+\end{center}
+\end{minipage}%
+
+
+
+
+
+
+% Soit les espèces :
+%\begin{itemize}
+%\item Éthanol : \chemform{C_2H_6O} > $M=2\times 12 + 6 \times 1 + 16 = \SI{46}{\gram\per\mol}$
+%\item Eau : \chemform{H_2O} > $M=2\times 1 16 = \SI{18}{\gram\per\mol}$
+%\item Dioxyde de carbone : \chemform{CO_2} > $M=12 + 2 \times 16 = \SI{44}{\gram\per\mol}$
+%\item Acide lactique : \chemform{C_3 H_6 O_3} > $M=3\times 12 + 6 \times 1 + 3\times 16 = \SI{90}{\gram\per\mol}$
+%\end{itemize}
+
+\vspace{5mm}
+\dotfill 
+
+\vspace{5mm}
+\dotfill 
+
+\vspace{5mm}
+\dotfill 
+
+\vspace{5mm}
+\dotfill 
+\vspace{3mm}
+
+}
+\vspace{0.2cm}
+
+
+\bex{}{ 
+
+\vspace{2mm}
+
+On prépare une solution d'eau sucrée contenant du saccharose de formule \chemform{C_{12}H_{22}O_{11}} en pesant une masse $m=\SI{3.42}{\gram}$.\\
+
+Le volume de la fiole utilisée est de $V=\SI{100}{\milli\liter}$
+
+\begin{enumerate}
+\item Calculer la masse molaire moléculaire du saccharose.
+
+\vspace{5mm}
+\dotfill 
+
+\item Calculer la quantité de matière en \si{\mol} présent de soluté.
+
+\vspace{5mm}
+\dotfill 
+
+
+\item Calculer la concentration de la solution préparée en \si{\mol\per\liter}.
+
+\vspace{5mm}
+\dotfill 
+
+\end{enumerate}
+
+%\begin{correction}
+%$M=\SI{342}{\gram\per\mol}$, %$n=\SI{0.01}{\mol}$ et $c=\SI{0.1}%{\mol\per\liter}$ (attention aux unités)
+%\end{correction}
+}
+\vspace{0.2cm}
+
+
+
+
+\vspace{0.2cm}
+
+
+
+
+
+\end{document}
+
+\bex{}{ Proposer un protocole expérimental permettant de préparer \SI{0.1}{\liter} d'une solution aqueuse de concentration en ions \ch{Fe^{3+}} 
+égale à $c=\SI{0.04}{\mol/\liter}$ à partir de cristaux de chlorure de fer III. \\
+
+\begin{minipage}{15cm}
+    \cadreblanc{70}
+\end{minipage}
+
+\vspace{5mm}
+}

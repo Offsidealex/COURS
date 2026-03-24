@@ -1,0 +1,255 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\usepackage{tikz}
+\usepackage{tikz-osci}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{9}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{eurosym}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\usepackage{chemist}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }p{#1}}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\usepackage{colortbl}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\noindent
+
+\begin{center}
+\LARGE{Évaluation- Puissance consommée par un appareil électrique}\\[8mm]
+\end{center}
+\normalsize
+\hrule 
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\vspace {8 mm}
+
+
+\fbox{\textbf{Exercice 1 : Choisir la (ou les) bonne(s) réponse(s)}}
+
+
+    \begin{tabular}{p{2mm} p{5.5cm}|C{3cm}|C{3cm}|C{3cm}}
+    
+
+        \ding{202} & Le facteur de puissance s'exprime en & $\Box $ ~~Watt  (W) & $\Box $ ~~en degrés    & $\Box $ ~~n'a pas d'unité  \\
+         \hline
+      \ding{203} & Dans un circuit contenant uniquement une résistance & $\Box $ ~~la tension et l'intensité sont en phase & $\Box $ la tension et l'intensité ont la même période & $\Box $ la tension et l'intensité sont déphasées. \\
+        \hline
+         \ding{204} & Dans un circuit contenant une résistance en série avec une bobine& $\Box $ ~~la tension et l'intensité sont en phase & $\Box $ la tension et l'intensité ont la même période & $\Box $ la tension et l'intensité sont déphasées. \\
+         \hline
+         \ding{205} & On calcule la puissance active avec la formule   &$\Box $ $P=U \times I$ &$\Box $ ~~ $P=U \times I \times \cos \varphi$  & $\Box $ $P=U \times I \times \cos (\Delta t)$\\
+
+         \hline
+         
+        \ding{206} & Le déphasage $\varphi$ peut s'exprimer en &$\Box $ ~~ radians &$\Box $ ~~ en degrés  & $\Box $ ~~ en seconde  \\
+
+ 
+        
+         \end{tabular}
+\vfill  
+
+\fbox{\textbf{Exercice 2 }} : En utilisant la formule $P=U \times I \times \cos \varphi$, complétez le tableau ci-dessous :
+
+\begin{center}
+
+    \renewcommand{\arraystretch}{3}
+
+
+    \begin{tabular}{|p{3cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+      $P (kW)$ &  $U(V)$ & $I (A)$ & $\cos \varphi$\\
+         \hline 
+         1,6 &  230  & 7,5& \\
+         \hline
+        & 230 & 9,7 & 0,94 \\
+         \hline 
+         3,5& 230 & 18,5 & \\
+         \hline
+         
+
+    \end{tabular}\end{center}
+
+    \vfill 
+
+    \newpage
+    
+
+\fbox{\textbf{Exercice 3 :  Comment relever le $\cos \varphi$ }}
+
+\vspace{3mm}
+
+\noindent%
+\begin{minipage}{.59\textwidth}%
+
+Une entreprise s'est engagée auprès de son fournisseur électrique à ce que le $\cos \varphi$ de son installation soit supérieur à 0,928. Un technicien mesure la tension et l'intensité et obtient l'oscillogramme ci contre : 
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.36\textwidth}%
+
+\osci[%
+scale=0.58,
+second channel=1, %1 pour activer la deuxième voie, 0 sinon.
+screen offset one=0, %Décalage vertical de la voie 1 sur l’écran
+screen offset two=0, %Décalage vertical de la voie 2 sur l’écran
+time div=2.5, %Durée par division (en ms)
+voltage div one=5, %Tension par division (en V) pour la voie 1
+voltage div two=2, %Tension par division (en V) pour la voie 2
+sample rate=200, %Taux d’échantillonnage
+xy mode=0, %1 pour l’activer, 0 sinon 
+func one=12*sin(2*180/0.020*x),
+func two=3*sin(2*180/0.020*x-45), 
+color one=000000, %Couleur de la voie 1 (en hexadecimal)
+color two=808080, %Couleur de la voie 2 (en hexadecimal)
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+
+\end{minipage}%
+
+\vfill 
+
+   \ding{202}~\textbf{S'approprier : }
+
+    \begin{enumerate}
+        \item Que signifie $\varphi$ ?  \\
+        \vspace{3mm}
+        \dotfill 
+
+        \item Quelle contrainte doit respecter l'entreprise vis-à-vis de son fournisseur d'électricité ? \\
+           \vspace{3mm}
+        \dotfill 
+    \end{enumerate} 
+    
+
+
+    \vfill 
+
+
+    \ding{203} Analyser-Raisonner 
+
+    \begin{multicols}{2} 
+      \item     Donnez la relation qui permet de calculer le déphasage $\varphi$ à partir de la mesure du décalage temporel $\Delta t$  entre $u$ et $i$ ; et de la période $T$ : 
+
+      \cadreblanc{10}
+
+    \end{multicols}
+
+
+
+    \ding{204} Réaliser
+    \begin{enumerate}
+        
+
+
+    \begin{multicols}{2} 
+      \item Déterminer, en s, le décalage temporel $\Delta t$  entre $u$ et $i$  :
+
+      \cadreblanc{10}
+
+    \end{multicols}
+
+        \begin{multicols}{2} 
+      \item Déterminer, en s, la période $T$ :
+
+      \cadreblanc{10}
+
+    \end{multicols}
+
+        \begin{multicols}{2} 
+      \item Calculer, en radians, le déphasage $\varphi$ :
+
+      \cadreblanc{10}
+
+    \end{multicols}
+
+        \begin{multicols}{2} 
+      \item Calculer le facteur de puissance $\cos \varphi$
+
+      \cadreblanc{10}
+
+    \end{multicols}
+        \end{enumerate}
+
+
+    \ding{205} Valider
+
+    \begin{enumerate}
+        \item L'entreprise respecte-t-elle ses engagements ?  \\
+
+    \vspace{3mm} \dotfill 
+
+    \item Après avoir modifié l'installation, le technicien mesure un déphasage $\varphi=0,342 ~rad$. Cette valeur convient-elle ? \\
+
+    \cadreblanc{15}
+
+    \end{enumerate}
+    
+
+
+\end{document}

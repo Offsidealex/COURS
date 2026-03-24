@@ -1,0 +1,206 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb} %symbole degré
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{chemist} %chimie
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{16}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }m{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{termite}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+
+\begin{center}
+ \LARGE{Exercices - partie 3 } \\[3mm]
+\end{center}
+
+
+
+\normalsize
+
+\hrule\
+\\[0,5cm]
+
+  \raggedright
+  
+\fbox{\textbf{Exercice 1 }} QCM : Parmi les trois propositions, choisissez la bonne réponse. 
+
+\begin{center}
+
+    \begin{tabular}{|p{6cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+       \ding{202} Quelle formule défini la quantité de matière $n$ ...& 
+       $\Box  ~~n=\dfrac{m}{M}$ & 
+       $\Box  ~~n=\dfrac{M}{n}$     & 
+        $\Box  ~~n=m \times M$  \\
+         \hline
+         
+      \ding{203} M(C) = 12 g/mol. Quelle est la masse de $n = 2 mol$ de carbone ?   & 
+      $\Box $ ~~$m = 12g$ & 
+      $\Box $ ~~$m = 24g$  & 
+      $\Box $ ~~ $m = 6g$  \\
+        
+         \hline
+         
+        \ding{204} La masse molaire moléculaire représente la masse &
+        $\Box $ ~~ d'une mole de molécules  &
+        $\Box $ ~~ d'une molécule  & 
+        $\Box $ ~~ d'une mole d'atomes  \\
+         
+         \hline
+         \ding{205} Comment se calcule la masse molaire de l'eau oxygénée \ch{H2O2}& 
+         $\Box $ ~~ M(H) + 2 $\times$ M(O) &
+         $\Box $ ~~ 2 $\times$ M(H) + 2 $\times$ M(O)  & 
+         $\Box $ ~~ M(H) + M(O) \\
+         
+         \hline
+         
+         \ding{206} Comment s'appelle un liquide dans lequel on dissout un solide &
+         $\Box $ ~~ un soluté &
+         $\Box $ ~~ un solvant & 
+         $\Box $ ~~ une solution \\
+         
+         \hline
+         
+         \ding{207} Il y a 0,5 mol d'ions \chemform{OH^-} dans 200 mL d'une solution. Quelle est la concentration en quantité de matière &
+         $\Box $ ~~ $c = 0,025$ mol/L  &
+         $\Box $ ~~ $c = 2,5$ mol/L  &
+         $\Box $ ~~  $c = 0,25$ mol/L  \\
+         \hline
+         %\ding{208} Un mouvement rectiligne uniformément ralenti peut être représenté par ...  & $\Box $ ~~  & $\Box $ ~~  &  $\Box $\\
+         %\hline
+         \ding{208} Pour préparer avec précision 100 mL d'une solution de quelle verrerie a-t-on besoin & 
+         $\Box$ ~~ \psset{unit=0.5cm}\pstTubeEssais[glassType=erlen] &
+         $\Box$ ~~ \psset{unit=0.5cm}\pstTubeEssais[glassType=becher]&
+         $\Box$ ~~ \psset{unit=0.5cm}\pstTubeEssais[glassType=fioleJauge] \\
+         
+         \hline
+         \ding{209} Réaliser le titrage d'une espèce chimique en solution ; c'est déterminer   &
+          $\Box$ ~~  sa concentration en quantité de matière $c$&
+          $\Box$ ~~ sa masse $m$ &
+          $\Box$ ~~ son volume $V$\\
+         
+         \hline 
+         
+         \ding{210} Lors d'un titrage colorimétrique, l'équivalence peut-être déterminée par  &   
+         $\Box$ ~~ un volume de solution titrante égale au volume de solution à titrer &
+         $\Box$ ~~ un changement de couleur de la solution à titrer dans le bécher&
+         $\Box$ ~~ un changement de couleur de la solution à titrante dans la burette \\
+         
+         \hline
+
+         
+        
+    \end{tabular}
+\end{center}
+\vfill
+\newpage
+
+
+\fbox{\textbf{Exercice 2 }} \\[3mm]
+
+Vous devez préparer 200 mL d’une solution d'acide chlorhydrique de concentration 0,01 mol/L en ions \ch{H3O+} à partir d’une solution de concentration 0,1 mol/L.
+
+\begin{enumerate}
+    \item Replacez, dans le bon ordre, les vignettes ci-dessous.
+    
+    \centering
+    \includegraphics[]{Chapitre 4 - Solutions aqueuses/images/ex2.png}
+
+    \raggedright
+    \item Quel volume faut-il prélever dans la solution mère ?
+    
+    \cadreblanc{20}
+\end{enumerate}
+
+
+    
+
+
+\fbox{\textbf{Exercice 3 }} 
+
+\begin{enumerate}
+    \item On réalise le titrage d'un volume \chemform{V_1 = 0,05~L} d'une solution d'acide chlorhydrique, de concentration \chemform{C_1} en ions \ch{H_3O^{+}} inconnue, par une solution d'hydroxyde de sodium de concentration \chemform{C_2=0,1~mol/L} en ions \chemform{HO^-}. \'A l'équivalence : \chemform{V_2=10,5~mL}. Calculez \chemform{C_1} en mol/L. 
+
+\cadreblanc{15}
+
+
+\item La concentration \chemform{C_1 = 0,009~mol/L} en ions \chemform{Cl^-} dans une eau minérale, déterminée par titrage, confirme-t-elle l'indication sur l'étiquette : "Chlorures : 322 mg/L"
+
+\cadreblanc{22}
+
+\end{enumerate}
+
+
+
+\end{document}

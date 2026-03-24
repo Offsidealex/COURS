@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+\newcommand{\esourcetowattmeter}[1]{
+    \draw (#1)node{W};
+    \draw (#1.north west) node[circle,draw,anchor=south est,inner sep=0,fill=white,minimum width=1.5mm]{\tiny +};
+    
+    \draw (#1.south) node[circle,draw,anchor=north,inner sep=0,fill=white,minimum width=2.5mm]{\tiny +};
+    \draw (#1.east) node[circle,draw,anchor=west,inner sep=0,fill=white,minimum width=2.5mm]{\tiny -};
+    \draw (#1.west) node[circle,draw,anchor=east,inner sep=0,fill=white,minimum width=2.5mm]{\tiny -};
+}
+
+\begin{circuitikz}
+\draw (0,0) to[R]++(2,0) coordinate(left) to [esource,n=wattmeter]++(2,0) to [L]++(2,0);
+
+\draw (left)to [short,*-]++(0,1)-|(wattmeter.north);
+\draw (wattmeter.south) to [R]++(0,-2);
+
+\esourcetowattmeter{wattmeter}
+\end{circuitikz}
+
+\end{document}

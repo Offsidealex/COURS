@@ -1,0 +1,283 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{18}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{TP4 - Effet Joule}
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+\vfill 
+
+
+
+\fcolorbox{black}{white}{\textbf{1. Expérience}}  \\
+
+ \begin{enumerate}[label*=1.\arabic*.]
+     \item \'A l'aide du multimètre, mesurer la valeur de la résistance $R_1$ du conducteur ohmique. 
+
+     \vspace{3mm}
+     \dotfill 
+
+     \item Réaliser le montage ci-dessous : 
+
+     
+\noindent%
+\begin{minipage}{.4\textwidth}%
+ \begin{bclogo}[couleur=white ,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Matériel }
+
+\begin{itemize*}
+    \item un générateur 6V CC
+    \item 1 joule mètre
+    \item 3 résistances, $R_1$ , $R_2$ et $R_3$
+    \item 5 fils de connexion
+\end{itemize*}
+\end{bclogo}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.5\textwidth}%
+\begin{center}
+    
+
+\includegraphics[width=\textwidth]{Chapitre 2 - Transporter l'énergie sous forme électrique/images/TP1.png }\end{center}
+\end{minipage}%
+
+\vfill 
+    
+\defbox{\fbox{
+\begin{minipage}{8cm}{
+
+Appeler M Ruiz pour qu'il vérifie le montage.}
+
+\end{minipage}
+}}
+\item Sélectionner le mode P (puissance) et noter la valeur de la puissance P en watt consommée par le conducteur ohmique : 
+
+\vspace{3mm}
+\dotfill 
+
+\item Sélectionner le mode U (Tension) et noter la valeur de la tension U en Volt aux bornes du conducteur ohmique : 
+
+\vspace{3mm}
+\dotfill 
+
+\item Sélectionner le mode I (Intensité) et noter la valeur de l'intensité I en Ampère qui traverse le conducteur ohmique : 
+
+\vspace{3mm}
+\dotfill 
+
+\item Résumer les résultats dans le tableau suivant : 
+
+\begin{center}
+    
+
+    \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+         $R(\Omega)$ & $P(W)$ &  $U(V)$ & I(A) \\
+
+         \hline
+           &  &  &  \\
+         \hline
+ 
+    \end{tabular}
+\end{center}
+
+
+
+
+ 
+\vfill
+
+\newpage 
+
+\item \textbf{Renouveler l'expérience avec la résistance $R_2$ et écrire les résultats dans le tableau suivant} 
+
+
+\begin{center}
+    
+
+    \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+         $R(\Omega)$ & $P(W)$ &  $U(V)$ & I(A) \\
+
+         \hline
+           &  &  &  \\
+         \hline
+ 
+    \end{tabular}
+\end{center}
+
+
+
+\item \textbf{Renouveler l'expérience avec la résistance $R_3$ et écrire les résultats dans le tableau suivant} 
+
+\begin{center}
+    
+
+    \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+         $R(\Omega)$ & $P(W)$ &  $U(V)$ & I(A) \\
+
+         \hline
+           &  &  &  \\
+         \hline
+ 
+    \end{tabular}
+\end{center}
+
+
+
+
+\end{enumerate}
+
+
+
+
+\fcolorbox{black}{white}{\textbf{2. Résultats}}  \\
+
+ \begin{enumerate}[label*=2.\arabic*.]
+ \item Recopier vos résultats dans le tableau ci-dessous 
+
+ \item Calculer et compléter les résultats pour $\dfrac{U^2}{R}$ , $R \times I^2$ et $U \times I$ 
+
+ 
+\begin{center}
+    
+
+    \begin{tabular}{|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}||C{1.8cm}||C{1.8cm}||C{1.8cm}|}
+         \hline
+         $R(\Omega)$ & $P(W)$ &  $U(V)$ & I(A) & $\dfrac{U^2}{R}$ & $R \times I^2$ & $U \times I$ \\
+
+         \hline
+           &  &  & & & &  \\
+         \hline
+          &  &  & & & &  \\
+         \hline
+          &  &  & & & &  \\
+         \hline
+ 
+    \end{tabular}
+\end{center}
+
+\item Comparer les valeurs numériques de $\dfrac{U^2}{R}$ , $R \times I^2$ et $U \times I$ 
+
+\vspace{3mm}
+\dotfill 
+
+
+\end{enumerate}
+
+
+\fcolorbox{black}{white}{\textbf{3. Interprétation}}  \\[3mm]
+
+Compléter les phrases suivantes : 
+\begin{spacing}{2}
+La puissance électrique $P$ exprimée en ........... (.....) d'un conducteur ohmique de résistance $R$ exprimée en .......... (.....) et soumis à une tension $U$ exprimée en ............ (.....) est égale à : 
+
+
+La puissance électrique $P$ exprimée en ........... (.....) d'un conducteur ohmique de résistance $R$ exprimée en .......... (.....) et  traversée par une intensité $I$ exprimée en ............... (...) est égale à : 
+
+La puissance électrique $P$ exprimée en ........ (...) d'un conducteur ohmique soumis à une tension $U$ exprimée en ........ (...) et  traversée par une intensité $I$ exprimée en ............... (...) est égale à : 
+
+
+
+
+
+
+
+  ...
+\end{spacing}
+
+\end{document}

@@ -1,0 +1,111 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{awesomebox}
+\usepackage{bclogo}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+
+\frenchbsetup{StandardLists=true}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 1 Bac Pro}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+\newcommand{\cadreblanc}[1]{%
+  \medskip\framebox[\linewidth][c]{%
+  \rule{0mm}{#1mm}}\par
+  \medskip}
+
+\newcounter{numexos}
+\setcounter{numexos}{0}
+
+\newcommand{\bex}[2]{%
+  \stepcounter{numexos}%
+  \begin{bclogo}[couleur=white, logo=, barre=none, arrondi=0.1]%
+    {\normalsize\textbf{Exercice~\thenumexos~: #1}}%
+  #2
+  \end{bclogo}%
+}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\begin{center}
+  \LARGE{Exercices}\\[3mm]
+\end{center}
+
+\hrule\
+\\[0.5cm]
+
+\bex{masse molaire}{
+  À l'aide de la classification périodique, calculer les masses molaires suivantes :
+  \begin{itemize}[label=\textbullet, font=\LARGE\color{black}]
+    \vspace{3mm}
+    \item M(\chemform{H_2O}) : \dotfill
+    \vspace{3mm}
+    \item M(\chemform{CO_2}) : \dotfill
+    \vspace{3mm}
+    \item M(\chemform{C_2H_6O}) : \dotfill
+    \vspace{3mm}
+    \item M(\ch{Na\pch[]}) : \dotfill
+    \vspace{3mm}
+    \item M(\ch{Cl\mch[]}) : \dotfill
+    \vspace{3mm}
+    \item M(\ch{OH\mch[]}) : \dotfill
+    \vspace{3mm}
+    \item M(\ch{H_3O\pch[]}) : \dotfill \\[3mm]
+  \end{itemize}
+}
+
+\vfill 
+
+\bex{préparation d'une solution}{
+  On souhaite préparer 0,1~L de solution aqueuse en ions \ch{Fe\pch[3]} de concentration égale à
+  0,04~mol/L à partir de cristaux de chlorure de fer~III de formule \ch{FeCl_3} :
+  \[
+    \ch{FeCl_3} \longrightarrow \ch{Fe^{3+}} + 3\,\ch{Cl^{-}}
+  \]
+
+  \vspace{5mm}
+
+  \begin{enumerate}
+    \item Calculer $n$, la quantité de matière en ions \ch{Fe\pch[3]} contenue dans la solution.
+
+    \vspace{3mm}
+    \dotfill
+
+    \item Retrouver la quantité de matière de chlorure de fer, $n$, en mol, nécessaire pour
+    réaliser la solution :
+
+    \vspace{3mm}
+    \dotfill
+
+    \item Calculer $M$(\ch{FeCl_3}), en g/mol, la masse molaire du chlorure de fer~III.
+
+    \vspace{3mm}
+    \dotfill
+
+    \item Calculer $m$, en g, la masse nécessaire pour réaliser la solution.
+
+    \vspace{3mm}
+    \dotfill \\[3mm]
+  \end{enumerate}
+}
+
+\vfill
+\end{document}

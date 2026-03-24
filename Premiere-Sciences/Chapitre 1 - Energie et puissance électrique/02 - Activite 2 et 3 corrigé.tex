@@ -1,0 +1,182 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{circuitikz}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro}
+\setcounter{page}{4}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\usepackage[tikz]{bclogo} 
+\newcommand{\ctext}[1]
+{\begin{bclogo}[couleur = white,logo= , arrondi = 0.1,barre=none]
+{}
+\noindent%
+
+\vspace{-15mm}
+~~
+
+\textcolor{red}{#1}
+~~
+\end{bclogo}}
+
+
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+
+\begin{center}
+ \LARGE{Activité 2 - Quelle est l'énergie électrique reçue ?  }
+\end{center}
+
+
+
+\normalsize
+
+\hrule\
+
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+\noindent%
+\begin{minipage}{.8\textwidth}%
+ 
+  Sur la fiche technique d'une perceuse-visseuse sans fil sont notées les information suivantes : 
+  \begin{itemize}
+      \item moteur électrique : $P=27 W$ et $I=1,5 A$
+      \item accumulateur : $U = 18 V$ et capacité : $I \times t_{max}=2 A.h$
+  \end{itemize}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.15\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 1 - Energie et puissance électrique/images/A2 - perceuse.jpg}
+\end{minipage}%
+
+
+  \ding{202} Calculer, en heure puis en seconde, la durée maximale $t_{max}$ de fonctionnement de la perceuse alimentée en courant continu par la batterie. \\
+  \ctext{$\mathrm{I \times t_{max} = 2 ~nous~donne ~t_{max}=\dfrac{2}{I}~avec~I = 1,5A,~on~obtient~~ t_{max}=1,33h~soit~t_{max}=1h20min}$} 
+
+  \ding{203} Calculer l'énergie électrique $E$, en Wh puis en J, reçue par le moteur en courant continu durant ce temps $t_{max}$. \\
+  \ctext{$\mathrm{E = P \times t ~~avec~~ P=27W ~~et ~~t=1,33h,~~on~~õbtient~~E=35,91Wh}$} 
+   
+
+  \awesomebox[black]{1pt}{\faCogs}{black}{On pourra utiliser les relations suivantes $1W.h = 1W \times 1h $ et $1J = 1W \times 1s$}
+
+
+  
+\hrule\
+
+
+\begin{center}
+ \LARGE{Activité 3 - Comment faut-il brancher l'ampèremètre et le voltmètre ?   }
+\end{center}
+
+\normalsize
+
+\hrule\
+
+
+\noindent%
+\begin{minipage}{.65\textwidth}%
+ \vspace{2mm}
+ \ding{202} Identifiez les grandeurs et unités électriques nominales de la lampe torche à diode électroluminescente correspondant aux conditions optimales de fonctionnement [Doc.1]
+
+\ctext{L'intensité~~I~~en~~Ampères~~avec~~ 
+I = 0,750mA = 0,75A\\ 
+~~La tension U en volts avec U=2,8V\\~~La puissance P en Watt avec P=2,1W}
+
+\ding{203} En vous servant des valeurs, rechercher une relation mathématique entre $I$,  $U$ et $P$.\\
+  \ctext{$\mathrm{P=U \times I ~nous~donne ~P=0,75 \times 2,8=2,1W~~}$  \\ 
+  On~~retrouve ~~la~~ valeur~~ de~~ l'énoncé}
+
+\ding{204} Dessiner le schéma électrique du montage du Doc.2 qui modélise la lampe. Ajouter un voltmètre en dérivation pour mesurer la tension aux bornes de la DEL et un ampèremètre en série pour mesurer le courant traversant la DEL. 
+
+\begin{center}
+\begin{circuitikz}[scale=0.5, transform shape, european]
+
+\draw (0,3) to [battery1, l] (0,0)--(2,0);
+
+\draw(2,0) to [battery1, l]   (2,3)--(4,3);
+
+\draw (4,3) to [battery1, l] (4,0);
+
+\draw(0,3)--(0,4) to [R, R=$R$]  (4,4);
+\draw(4,4) to [rmeter, t=A]  (8,4);
+
+\draw(8,4) to [D]  (8,0)--(4,0);
+
+\draw(8,4)--(10,4) to [rmeter, t=V]  (10,0)--(8,0);
+
+
+
+
+\end{circuitikz}
+\end{center}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 1 - Energie et puissance électrique/images/A3.jpg}
+\end{minipage}%
+
+\end{document}

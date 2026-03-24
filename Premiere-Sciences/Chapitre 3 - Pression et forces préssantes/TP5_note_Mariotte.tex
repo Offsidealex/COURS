@@ -1,0 +1,385 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,headheight=14pt]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+\usepackage{caption}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage{multicol}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Première Sciences}
+\setcounter{page}{1}\fancyfoot[C]{TP Noté -- Loi de Boyle-Mariotte -- Page \thepage}
+\fancyfoot[R]{Année 2024 - 2025}
+\fancyfoot[L]{Alexis RUIZ}
+
+\usepackage{pstricks,pst-plot}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usetikzlibrary{arrows,calc}
+\usepackage{pifont}
+
+\usepackage[tikz]{bclogo}
+
+% Commande pour les lignes de réponse
+\newcommand{\lignesreponse}[1][3]{%
+\vspace{-2mm}
+    \foreach \n in {1,...,#1}{%
+        \noindent\makebox[\linewidth]{\dotfill}\\[0.5cm]
+    }
+}
+
+% Boîte barème (points)
+\newcommand{\bareme}[1]{%
+    \hfill\colorbox{gray!20}{\small\textbf{/ #1 pt\ifnum#1>1 s\fi}}%
+}
+
+% Boîtes colorées
+\newtcolorbox{contextebox}{
+    colback=blue!5,
+    colframe=blue!50!black,
+    title=Contexte,
+    fonttitle=\bfseries,
+    arc=3mm,
+    boxrule=1pt
+}
+
+\newtcolorbox{documentbox}[1]{
+    colback=green!5,
+    colframe=green!50!black,
+    title=Document #1,
+    fonttitle=\bfseries,
+    arc=3mm,
+    boxrule=1pt
+}
+
+\newtcolorbox{rappelbox}{
+    colback=yellow!10,
+    colframe=orange!75!black,
+    title=Rappel,
+    fonttitle=\bfseries,
+    arc=3mm,
+    boxrule=1pt
+}
+
+\newtcolorbox{baremeBox}{
+    colback=gray!10,
+    colframe=gray!60!black,
+    title=Barème,
+    fonttitle=\bfseries,
+    arc=3mm,
+    boxrule=1pt
+}
+
+\newtcolorbox{attentionbox}{
+    colback=orange!5,
+    colframe=orange!75!black,
+    title=Attention,
+    fonttitle=\bfseries,
+    arc=3mm,
+    boxrule=1pt
+}
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+% EN-TÊTE ÉLÈVE
+%-------------------------------------------------------------------------------
+\begin{center}
+ \LARGE{\textbf{TP Noté -- Loi de Boyle-Mariotte}}
+
+ \large{Pression et comportement des gaz}
+\end{center}
+
+\vspace{3mm}
+\hrule
+\vspace{4mm}
+
+\begin{minipage}{0.55\linewidth}
+    \textbf{Nom :} \dotfill \\[6pt]
+    \textbf{Prénom :} \dotfill \\[6pt]
+    \textbf{Classe :} \dotfill \hspace{1cm} \textbf{Date :} \dotfill
+\end{minipage}
+\hfill
+\begin{minipage}{0.38\linewidth}
+    \begin{baremeBox}
+    \begin{center}
+    \begin{tabular}{lr}
+        Partie 1 & \quad /4 pts \\
+        Partie 2 & \quad /6 pts \\
+        Partie 3 & \quad /6 pts \\
+        Partie 4 & \quad /4 pts \\
+        \hline
+        \textbf{Total} & \textbf{\quad /20 pts} \\
+    \end{tabular}
+    \end{center}
+    \end{baremeBox}
+\end{minipage}
+
+\vspace{5mm}
+\hrule
+\vspace{5mm}
+
+%-------------------------------------------------------------------------------
+% CONTEXTE
+%-------------------------------------------------------------------------------
+
+\begin{contextebox}
+Un technicien d'un service médical souhaite étudier le comportement de l'air comprimé dans une seringue. Pour cela, il a réalisé une expérience en connectant une seringue graduée à un capteur de pression MPX5700AP relié à un microcontrôleur Arduino. Il a enregistré des couples de valeurs (pression, volume) en faisant varier la position du piston, à \textbf{température constante}.
+
+\vspace{2mm}
+\textbf{Problématique :} Comment varie la pression d'un gaz lorsque son volume change à température constante ?
+\end{contextebox}
+
+\vspace{3mm}
+
+%-------------------------------------------------------------------------------
+% DOCUMENTS
+%-------------------------------------------------------------------------------
+
+\begin{documentbox}{1 -- Données expérimentales recueillies}
+Le technicien a relevé les valeurs suivantes lors de son expérience :
+
+\vspace{3mm}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Volume V (mL)} & 20 & 25 & 30 & 35 & 40 & 50 & 60 \\
+\hline
+\textbf{Pression P (kPa)} & 201,5 & 162,1 & 133,8 & 115,9 & 101,2 & 80,5 & 67,6 \\
+\hline
+\textbf{$\dfrac{1}{V}$ (mL$^{-1}$)} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\[6pt]
+\hline
+\textbf{P $\times$ V (kPa·mL)} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} & \hspace{1cm} \\[6pt]
+\hline
+\end{tabular}
+\end{center}
+\end{documentbox}
+
+\vspace{3mm}
+
+\begin{documentbox}{2 -- Graphique obtenu par le programme Python}
+Le programme Python a tracé le graphique de la pression $P$ en fonction de $\dfrac{1}{V}$. La droite de régression linéaire obtenue a pour équation :
+
+$$P = 4045 \times \dfrac{1}{V} - 0{,}9 \quad \text{(avec P en kPa et V en mL)}$$
+
+Le coefficient de corrélation vaut : $R^2 = 0{,}9998$
+
+\vspace{3mm}
+
+% Graphique tikz représentant P = f(1/V)
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xscale=90, yscale=0.040]
+    % Axes
+    \draw[->] (0,0) -- (0.057,0) node[right] {$\dfrac{1}{V}$ (mL$^{-1}$)};
+    \draw[->] (0,0) -- (0,215) node[above] {$P$ (kPa)};
+    % Graduation axe X
+    \foreach \x/\xl in {0.010/0.010, 0.020/0.020, 0.030/0.030, 0.040/0.040, 0.050/0.050}{
+        \draw (\x, 2pt/0.040) -- (\x, -2pt/0.040) node[below, font=\small] {\xl};
+    }
+    % Graduation axe Y
+    \foreach \y in {50, 100, 150, 200}{
+        \draw (0.001, \y) -- (-0.001, \y) node[left, font=\small] {\y};
+    }
+    % Droite de régression : P = 4045/V - 0.9
+    \draw[blue, thick] (0.0165, 4045*0.0165-0.9) -- (0.052, 4045*0.052-0.9);
+    % Points expérimentaux
+    \foreach \v/\p in {20/201.5, 25/162.1, 30/133.8, 35/115.9, 40/101.2, 50/80.5, 60/67.6}{
+        \pgfmathsetmacro{\xinv}{1/\v}
+        \fill[red] (\xinv, \p) circle (1pt);
+    }
+    % Légende
+    \draw[blue, thick] (0.035, 170) -- (0.042, 170) node[right, font=\small] {Régression linéaire};
+    \fill[red] (0.0375, 158) circle (1pt) node[right, font=\small] {Points mesurés};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\end{documentbox}
+
+\vspace{3mm}
+
+\begin{rappelbox}
+\textbf{Loi de Boyle-Mariotte :} À température constante et pour une quantité de matière donnée, le produit de la pression $P$ par le volume $V$ d'un gaz est constant :
+$$\boxed{P \times V = \text{constante}} \quad \Longleftrightarrow \quad P_1 \times V_1 = P_2 \times V_2$$
+
+\textbf{Unités de pression courantes :}
+\begin{itemize}[leftmargin=*]
+    \item $1\,\text{bar} = 10^5\,\text{Pa} = 100\,\text{kPa}$
+    \item $1\,\text{hPa} = 100\,\text{Pa}$
+    \item Pression atmosphérique : $P_{atm} \approx 1013\,\text{hPa} \approx 101{,}3\,\text{kPa}$
+\end{itemize}
+\end{rappelbox}
+
+\newpage
+
+%-------------------------------------------------------------------------------
+% PARTIE 1 -- CONNAISSANCES
+%-------------------------------------------------------------------------------
+
+\section*{Partie 1 -- Connaissances sur la pression \bareme{4}}
+
+\begin{enumerate}
+
+    \item \textbf{Donner} l'unité internationale (SI) de la pression et son symbole. \bareme{1}
+
+    \lignesreponse[1]
+
+    \item \textbf{Convertir} la pression atmosphérique $P_{atm} = 1013\,\text{hPa}$ en kPa et en Pa. \bareme{1}
+
+    \vspace{2mm}
+    Calcul : \dotfill
+
+    \vspace{3mm}
+    $P_{atm} = $ \dotfill kPa $= $ \dotfill Pa
+
+    \vspace{3mm}
+
+    \item \textbf{Énoncer} la loi de Boyle-Mariotte avec vos propres mots (sans formule). \bareme{1}
+
+    \lignesreponse[2]
+
+    \item \textbf{Selon} la loi de Boyle-Mariotte, si on réduit le volume d'un gaz de moitié (à température constante), que devient sa pression ? Justifier. \bareme{1}
+
+    \lignesreponse[2]
+
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+% PARTIE 2 -- EXPLOITATION DU TABLEAU
+%-------------------------------------------------------------------------------
+
+\section*{Partie 2 -- Exploitation du tableau de données \bareme{6}}
+
+\begin{enumerate}
+
+    \item \textbf{Calculer} et \textbf{compléter} les valeurs de $\dfrac{1}{V}$ dans le tableau du Document 1. Arrondir à $10^{-3}$ près. \bareme{2}
+
+    \vspace{2mm}
+    \textit{(Inscrire les valeurs directement dans le tableau.)}
+
+    \vspace{3mm}
+
+    \item \textbf{Calculer} et \textbf{compléter} les valeurs de $P \times V$ dans le tableau du Document 1. Arrondir à l'unité. \bareme{2}
+
+    \vspace{2mm}
+    Montrer un exemple de calcul ci-dessous :
+
+    \vspace{5mm}
+    Calcul pour $V = 20\,\text{mL}$ : \dotfill
+
+    \vspace{5mm}
+
+    \item Les valeurs de $P \times V$ sont-elles constantes ? \textbf{Calculer} la valeur moyenne de $P \times V$ et \textbf{conclure}. \bareme{2}
+
+    \vspace{5mm}
+    Calcul de la moyenne : \dotfill
+
+    \vspace{5mm}
+    Moyenne de $P \times V = $ \dotfill kPa·mL
+
+    \vspace{3mm}
+
+    \lignesreponse[2]
+
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+% PARTIE 3 -- ANALYSE GRAPHIQUE
+%-------------------------------------------------------------------------------
+
+\section*{Partie 3 -- Analyse du graphique \bareme{6}}
+
+\begin{enumerate}
+
+    \item \textbf{Décrire} l'allure de la courbe $P = f\!\left(\dfrac{1}{V}\right)$ visible sur le graphique du Document 2. \bareme{1}
+
+    \lignesreponse[1]
+
+    \item \textbf{Relever} les paramètres de la droite de régression donnée dans le Document 2 : \bareme{1}
+
+    \vspace{2mm}
+    Coefficient directeur : $a = $ \dotfill
+
+    \vspace{3mm}
+    Ordonnée à l'origine : $b = $ \dotfill
+
+    \vspace{3mm}
+    Coefficient de corrélation : $R^2 = $ \dotfill
+
+    \vspace{3mm}
+
+    \item Le coefficient de corrélation $R^2 = 0{,}9998$. Qu'indique cette valeur sur la qualité de la régression linéaire ? \bareme{1}
+
+    \lignesreponse[1]
+
+    \item La valeur de $b$ est très proche de zéro. \textbf{Quelle relation} cela implique-t-il entre $P$ et $\dfrac{1}{V}$ ? \bareme{1}
+
+    \lignesreponse[1]
+
+    \item \textbf{En déduire} la relation entre $P$ et $V$ (en utilisant $a$ comme constante). \bareme{1}
+
+    \vspace{5mm}
+
+    On peut écrire : $P = $ \dotfill, soit $P \times V = $ \dotfill
+
+    \vspace{5mm}
+
+    \item \textbf{Comparer} la valeur du coefficient directeur $a$ avec la moyenne de $P \times V$ calculée en Partie 2. Que remarque-t-on ? \bareme{1}
+
+    \lignesreponse[2]
+
+\end{enumerate}
+
+%-------------------------------------------------------------------------------
+% PARTIE 4 -- CONCLUSION
+%-------------------------------------------------------------------------------
+
+\section*{Partie 4 -- Conclusion \bareme{4}}
+
+\begin{enumerate}
+
+    \item Les résultats obtenus sont-ils en accord avec la loi de Boyle-Mariotte ? \textbf{Justifier} en vous appuyant sur les valeurs numériques des parties précédentes. \bareme{2}
+
+    \lignesreponse[3]
+
+    \item \textbf{Citer} une source d'incertitude expérimentale pouvant expliquer que les produits $P \times V$ ne soient pas parfaitement constants. \bareme{1}
+
+    \lignesreponse[2]
+
+    \item \textbf{Proposer} une application concrète de la loi de Boyle-Mariotte dans la vie quotidienne ou dans un domaine technique. \bareme{1}
+
+    \lignesreponse[2]
+
+\end{enumerate}
+
+\vspace{5mm}
+\hrule
+\vspace{3mm}
+\begin{center}
+\textit{--- Fin du TP noté ---}
+\end{center}
+
+\end{document}

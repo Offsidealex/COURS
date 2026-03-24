@@ -1,0 +1,174 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{15}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{eurosym}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\usepackage{chemist}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\usepackage{colortbl}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+
+
+\frenchbsetup{StandardLists=true}
+\begin{document}
+
+
+
+\begin{center}
+\LARGE{Évaluation- Puissance et énergie}\\[5mm]
+\end{center}
+\normalsize
+\hrule 
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\vspace {8 mm}
+
+
+\textbf{Exercice 1 : Choisir la (ou les) bonne(s) réponse(s)}
+
+
+    \begin{tabular}{p{6cm}|C{3cm}|C{3cm}|C{3cm}}
+         
+       \ding{202} ~~Si le temps $t$ est en secondes et la puissance $P$ est en watt , l'énergie sera exprimée en :& $\Box $ ~~joule & $\Box $ ~~wattseconde   & $\Box $ ~~wattheure \\
+         \hline
+      \ding{203} ~~D'après la formule $E=P \times t$, la relation qui permet de calculer $P$ est : & $\Box $ ~~$P=\dfrac{t}{E}$ & $\Box $ ~~$P=\dfrac{E}{t}$   & $\Box $ ~~ $P=E \times t$ \\
+        \hline
+         \ding{204}~~Avec quelle relation peut-on calculer l'énergie électrique ?  &$\Box $ ~~ $E= P \times t$  &$\Box $ ~~ $P=E \times t$  & $\Box $ ~~$t=E \times P$  \\
+        
+         \end{tabular}
+
+\textbf{Exercice 2 : Calculer une énergie}
+
+Une console de jeu a une puissance de 14W en veille. 
+\begin{enumerate}
+    \item Si vous la laissez console en veille de 23 heures à 7 heures du matin, calculer en Wh, l'énergie consommée. 
+    
+    \cadreblanc{15}
+    \item Convertir le résultat en kwh : \dotfill 
+    \item Sachant que le kwh vaut en moyenne 0,22 \euro, déterminer le coût de cette consommation. 
+    
+    \vspace{4mm}
+    \dotfill 
+    
+\end{enumerate}
+
+
+
+\textbf{Exercice 3 : Voiture électrique}
+
+Le circuit d'éclairage d'une voiture électrique est alimenté en 12 V par une batterie. \\
+Il se compose de : 
+\begin{itemize}
+    \item 2 lampes portant chacune les indications 45 W / 12 V
+    \item 4 lampes portant chacune les indications 21 W / 12 V
+    \item 10 lampes portant chacune les indications 5 W / 12 V
+\end{itemize}
+
+\begin{enumerate}
+    \item Expliquer la signification des indications 45 W et 12 V écrites sur chacune des deux premières lampes : \\
+
+    \cadreblanc{15}
+
+    \newpage
+
+    \item Toutes les lampes fonctionnent en même temps, calculer , en W, la puissance totale. Écrire le détail du calcul. 
+
+    \cadreblanc{15}
+
+    \item Si la puissance totale est de 224 W, calculer, en A, l'intensité I, arrondir à 0,1. 
+
+    \cadreblanc{10}
+    \end{enumerate}
+
+    \textbf{Exercice 4 : Coût des appareils domestiques} \\ 
+    Complétez le tableau suivant , on arrondira à l'unité si nécessaire. 
+     
+    \begin{tabular}{|C{4cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
+       \hline  
+       Appareil& Puissance en Watt P(W) & temps en heure  t(h) par jour & Énergie E(Wh) par jour & E(kWh) par an (365 jours) & Coût annuel (en \euro ~~avec ~~0,22~euro /kWh)\\
+         \hline
+         Chargeur de Smartphone & 5,5 & 1 &   & 2 & \\
+         \hline 
+          Lampe à basse consommation & 10  & 3 &   & 11 & \\
+         \hline 
+          Ordinateur de bureau &   & 5 & 572  &    & 46\\
+         \hline 
+         Télévision LCD &  &  3 & & 110 &    \\
+         \hline 
+         Four électrique  & 2000 &    & 1000 &   &    \\
+         \hline 
+         \end{tabular}
+
+         \vspace{1cm}
+         \dotfill 
+
+         \textbf{Enigme Bonus +1}
+
+         \dotfill 
+         
+\includegraphics[scale=0.35]{Chapitre 1 - Energie et puissance électrique/images/enigme eval.jpg}
+
+
+
+
+
+    
+
+
+\end{document}

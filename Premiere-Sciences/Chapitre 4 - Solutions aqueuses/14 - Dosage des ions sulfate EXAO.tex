@@ -1,0 +1,409 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{gensymb} %symbole degré
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{chemist} %chimie
+\usepackage[version=4]{mhchem}%chimie
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+\renewcommand{\arraystretch}{1.3}
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+\newcommand{\docbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.1]{Chapitre 4 - Solutions aqueuses/images/livre.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{termite}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%              Evaluation par compétences                %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand\SA{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{S}}}}
+\newcommand\A{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{A}}}}
+\newcommand\R{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{R}}}}
+\newcommand\V{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{V}}}}
+\newcommand\C{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{C}}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{TP4 - L'eau pour le nourrisson}
+\end{center}
+
+\vspace{2  mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent%
+\begin{center}
+    
+
+\begin{minipage}{.95\textwidth}
+Une eau peut être consommée en toute sécurité si ses caractéristiques microbiennes, chimiques et physiques répondent à certaines normes. \\[2mm]
+Pour les nourrissons, la source d'eau est quasi-exclusivement l'eau contenue dans le lait qu'on lui prépare. \\
+
+\end{minipage}%
+\end{center}
+
+\vfill 
+
+\newtcolorbox{mybox}{colback=white!10!white,
+colframe=black!5!black}
+\begin{mybox}
+\begin{center}    
+\textbf{\large L'eau de Vittel utilisée pour préparer le biberon du nourrisson présente-t-elle des risques pour sa santé ? }\end{center}
+\end{mybox}
+
+\vfill 
+
+  \docbox{\fbox{
+\begin{minipage}{14cm}{Pour répondre aux questions, vous pourrez vous aider des documents présents dans le dossier documentaire.
+  }
+\end{minipage}
+}}
+
+\vfill 
+
+
+\begin{enumerate}
+    \item Nommer les critères chimiques de potabilité d'une eau. \SA  \\[5mm]
+
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+
+    
+
+    
+
+    \item Indiquer les risques sur la santé d'un nourrisson d'un apport trop important en ions sulfate. \SA \\[5mm]
+
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+
+    \item Relever la concentration massique maximale, en milligramme par litre,  en ions sulfate préconisée pour la réalisation d'un biberon. \SA  \\[5mm]
+
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+
+
+
+
+
+\vfill 
+
+\newpage
+
+\item Afin de connaître la concentration massique en ions sulfates  de l'eau de Vittel, on dose, par conductimétrie, un échantillon de cette eau. \\
+Le dispositif expérimental est représenté ci-dessous. Compléter la description du protocole expérimental en précisant les différentes étapes . \\
+Vous vous aiderez de la proposition de protocole en page 4.   \A
+\vspace{5mm}
+
+
+
+
+
+   
+\noindent%
+\begin{minipage}{.5\textwidth}%
+\fbox{\includegraphics[scale=0.4]{Chapitre 4 - Solutions aqueuses/images/14 - schéma legendé.png}}
+\end{minipage}%
+\hfill
+\begin{minipage}{.43\textwidth}%
+\begin{center}
+\fbox{Description du protocole}\\[5mm]
+
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+    
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+    
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+    
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+
+    
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+    
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+
+    
+\end{center}\end{minipage}%
+
+
+
+\vfill 
+
+  \defbox{\fbox{
+\begin{minipage}{13cm}{\textbf{Appel n\degree 1} : Appeler M. Ruiz afin de lui présenter oralement le protocole }
+  
+  \end{minipage}}}  \C
+
+  \vfill 
+
+  \item Réaliser les trois premières étapes du protocole à l'aide de la fiche technique "ExAO dosage".   \R
+
+  \vfill 
+  \defbox{\fbox{
+\begin{minipage}{13cm}{\textbf{Appel n\degree 2} : Appeler M. Ruiz afin de réaliser devant lui les premières mesures de l'étape 4 }  \end{minipage}}}      \R
+
+\vfill
+
+\item Déterminer \chemform{V_{EQ}} à l'équivalence à l'aide de la fiche technique "ExAO volume équivalent". 
+\begin{center}
+    \fbox{\begin{minipage}{7cm}
+    \vspace{3mm}
+    \begin{center}
+           \LARGE{\chemform{V_{EQ}} = ................ mL}
+    \end{center}
+    \end{minipage}
+    }
+\end{center}
+
+\vfill 
+
+
+\newpage
+
+
+\item En utilisant la formule \large{$C_m\left(\ce{{SO_4^{2}-}}\right)=\dfrac{C_2 \times V_{EQ}}{V_1} \times M\left(\ce{SO_4^{2}-}\right)$}
+
+\normalsize
+, calculer la valeur de la concentration massique en ions sulfate de l'échantillon d'eau du robinet sachant que : 
+
+
+\begin{itemize}
+    
+
+    \item $C_2$ : concentration molaire de la solution de chlorure de baryum
+    \item $V_1$ : volume de l'échantillon d'eau. 
+    \item $M(\ce{SO_4^{2}-})$ : Masse molaire des ions sulfate, vous utiliserez le tableau périodique pour la calculer. 
+\end{itemize}
+    \cadreblanc{30}  \R \SA
+
+    \item Répondre à la problématique, justifier votre réponse :   
+
+        
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]
+    
+    \dotfill \\[3mm]
+
+    \dotfill \\[3mm]  \V \C
+
+\vfill 
+
+
+\begin{center}
+    
+
+\begin{mybox}
+\begin{center}    
+\textbf{\Large {Dossier documentaire}}\end{center}
+\end{mybox}
+\end{center}
+
+\normalsize
+\textbf{Document 1 : Critères de potabilité de l'eau. } \\
+Pour pouvoir être considérée comme potable en toute sécurité, une eau du robinet doit vérifier plusieurs critères de potabilité. Certains de ces critères sont indiqués ci-dessous : 
+\begin{center}
+    
+
+\begin{tabular}{|C{8cm}|C{4cm}|}
+\hline
+Critères de potabilité & Valeur limite \\
+\hline
+Concentration massique en ions sulfate & < 250 mg/L \\
+\hline
+Concentration massique en ions chlorure & < 200 mg/L \\
+\hline
+Concentration massique en ions potassium & < 12 mg/L \\
+\hline
+pH  & 6,5 < pH < 9 \\
+\hline
+TH soit la dureté de l'eau & > 15 degrés français \\
+\hline
+
+
+
+\end{tabular}
+\end{center}
+
+\vfill 
+
+
+\textbf{Document 2 : } \\
+
+Les reins des nourrissons sont immatures jusqu'à l'âge d'un an, une surcharge en minéraux peut avoir des conséquences néfastes. Par exemple, un apport trop important d'ions sulfate, de formule \ce{SO_4^{2}-}, est nuisible pour les nourrissons car il peut provoquer des diarrhées et réduire l'absorption du calcium. 
+
+Pour la réalisation des biberons des nourrissons, il est recommandé d'utiliser une eau dont la concentration massique en ions sulfate est inférieure à 140 mg/L. 
+
+\vfill 
+
+\newpage
+
+\begin{center}
+    
+
+\begin{mybox}
+\begin{center}    
+\textbf{\Large {Proposition de protocole}}\end{center}
+\end{mybox}
+
+\fbox{
+\begin{minipage}{15cm}
+\begin{center}
+    \includegraphics[scale=0.5]{Chapitre 4 - Solutions aqueuses/images/14 - schéma legendé.png}
+\end{center}
+    
+\end{minipage}
+}
+
+\end{center}
+\vfill 
+\begin{center}
+    
+
+\fbox{
+
+\begin{minipage}{15cm}
+ \vspace{1mm}
+    \textbf{Étape 1 : }
+    \begin{itemize}
+        \item Remplir la burette avec la solution de chlorure de Baryum.  
+        \item  Ajuster le zéro. 
+        \end{itemize}
+
+    \textbf{Étape 2 : }
+\begin{itemize}
+    \item Introduire dans le bécher "DOSAGE" 100mL de la solution étiqueté A, on mesurera à l'aide de l'éprouvette graduée. 
+
+    \item Introduire un barreau aimanté dans le bécher et le placer sur l'agitateur magnétique, sous la burette graduée. 
+    
+    \end{itemize}
+
+   \textbf{ Étape 3  : }
+    \begin{itemize}
+        \item Positionner le capteur conductimétrique dans le bécher et paramétrer l'acquisition. 
+    \end{itemize}
+
+    \textbf{Etape 4 : }
+    \begin{itemize}
+        \item Lancer l'acquisition 
+        \item Verser la solution de chlorure de Baryum 2mL par 2 mL. 
+    \end{itemize}
+
+    \vspace{2mm}
+
+    
+\end{minipage}
+}
+\end{center}
+
+\vfill 
+\end{enumerate}
+
+\end{document}

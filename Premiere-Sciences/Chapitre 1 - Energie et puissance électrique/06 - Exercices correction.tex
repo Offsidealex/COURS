@@ -1,0 +1,273 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{circuitikz}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{9}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{xcolor}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+
+\usepackage[tikz]{bclogo} 
+\newcommand{\ctext}[1]
+{\begin{bclogo}[couleur = white,logo= , arrondi = 0.1,barre=none]
+{}
+\noindent
+
+\vspace{-13mm}
+~~
+\textcolor{red}{#1}
+~~
+\end{bclogo}}
+
+
+
+
+\begin{document}
+
+
+\begin{center}
+ \LARGE{Exercices } \\[3mm]
+\end{center}
+
+
+
+\normalsize
+
+\hrule\
+\\[0,5cm]
+
+
+\fbox{\textbf{Exercice 1 }} QCM : Parmi les trois propositions, choisissez la bonne réponse. 
+
+\vspace{2cm}
+\begin{center}
+
+
+
+    \begin{tabular}{|p{6cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+       \ding{202} Quelle est l'unité de l'énergie électrique& $\checkmark $ ~~le joule & $\Box $ ~~le kilowattheure    & $\Box $ ~~la seconde \\
+         \hline
+      \ding{203} Avec quel appareil mesure-t-on l'énergie électrique ?  & $\Box $ ~~un wattmètre & $\Box $ ~~un chronomètre  & $\checkmark $ ~~ un joulemètre  \\
+         \hline
+         \ding{204} Avec quelle relation peut-on calculer l'énergie électrique ?  & $\checkmark $ ~~ $E= P \times t$  &$\Box $ ~~ $P=E \times t$  & $\Box $ ~~$t=E \times P$  \\
+         \hline
+         \ding{205} L'énergie électrique est proportionnelle ... & $\Box $ ~~ à la puissance de l'appareil & $\checkmark $ ~~ à la durée de fonctionnement de l'appareil & $\Box $ ~~ aux joules \\
+         \hline
+         \ding{206} Plus un appareil fonctionne longtemps ... &$\Box $ ~~ moins il consomme d'énergie & $\checkmark $ ~~ plus il consomme d'énergie & $\Box $ ~~ plus il consomme de puissance \\
+         \hline
+         \ding{207} 1 Wh = ... & $\Box $ ~~ 60 J & $\Box $ ~~  3600 s & $\checkmark $ ~~  3600 J \\
+         \hline
+         \ding{208} Par quelle relation peut-on calculer la puissance électrique ? & $\Box $ ~~ $P=\dfrac{U}{I}$ & $\checkmark $ ~~ $P=U \times I$ &  $\Box $ ~~ $P=\dfrac{I}{U}$ \\
+         \hline
+         \ding{209} Quelle est l'unité de la puissance électrique ? &$\Box ~~ $ le volt &$\Box ~~ $ l' ampère &$\checkmark $ ~~  le watt \\
+         \hline
+         \ding{210} Quel appareil permet de mesurer la puissance électrique &$\Box ~~ $ l'ampèremètre &$\Box ~~ $ le voltmètre &$\checkmark  ~~ $ le wattmètre \\
+         \hline 
+         %\ding{211} Le montage qui permet de calculer la puissance $P$ reçue par un récepteur en régime continu avec la formule $P=UI$ est &$\Box ~~ $   &$\Box ~~ $   &$\Box ~~ $  \\
+
+         
+        
+    \end{tabular}
+\end{center}
+\vfill
+\newpage
+\fbox{\textbf{Exercice 2}} Convertissez les valeurs suivantes dans l'unité demandée. \\
+
+\begin{itemize}
+    \item en seconde : 10 min : \textcolor{red}{600 s} \hfill  0,75 h  : \textcolor{red}{2700 s} \hspace{4.3cm} \\
+\item en heure : ~~~~360 s : \textcolor{red}{0,1 h }  \hfill ~~~ 40 min  :  \textcolor{red}{0,67 h} \hspace{4.3cm} \\
+\item en wattheure : 10 800 J : \textcolor{red}{3 Wh} \hspace{4.2cm}  3 600 kJ : \textcolor{red}{1 000 Wh } \hspace{4.3cm} \\
+\item en joule : 20 W.h : \textcolor{red}{72 000 J} \hspace{4.5cm} 300 kW.h : \textcolor{red}{1 080 000 000 J} 
+\end{itemize}
+
+\vfill 
+
+\fbox{\textbf{Exercice 3 }} Un téléviseur consomme 200 W. On donne deux relevés du compteur d'énergie de l'habitation sur une période où seulement le téléviseur a été en marche. \\
+
+\hfill Début : \fcolorbox{white}{black}{\Large  \textcolor{white}{071430 kW.h}} \hfill Fin  : \fcolorbox{white}{black}{\Large  \textcolor{white}{071431 kW.h}} \hspace{3cm} \\
+\begin{multicols}{2}
+    
+\begin{enumerate}
+    \item Calculer l'énergie $E$ en kW.h reçue par le téléviseur.\\[-3mm]
+    \ctext{E = 1 kW = 1 000 W}
+    \item Calculer le temps $t$ en h correspondant. \\
+    \ctext{$t=\dfrac{E}{P}$ ~~ $t=\dfrac{1000}{200}$d'où t = 5h}
+\end{enumerate}
+\end{multicols}
+
+\vfill 
+
+\fbox{\textbf{Exercice 4 }} Calculez les valeurs manquantes dans le tableau ci-dessous \\\begin{center}
+    
+
+    \begin{tabular}{|p{3cm}|C{2cm}|C{2cm}|C{2cm}|}
+         \hline
+         Appareil & Lampe & Ordinateur & Perceuse \\
+         \hline 
+         E (J) & \textcolor{red}{30 000}  & $6\times10^6$ & 2 700 \\
+         \hline
+         P (W) & 20 & 150 & \textcolor{red}{30} \\
+         \hline 
+         t (s) & 1500 & \textcolor{red}{30 000} & 90 \\
+         \hline
+         
+
+    \end{tabular}\end{center}
+
+    \vfill 
+    
+\fbox{\textbf{Exercice 5 }} Calculez les valeurs manquantes dans le tableau ci-dessous \\\begin{center}
+    
+
+    \begin{tabular}{|p{2cm}|C{2cm}|C{2cm}|C{2cm}|}
+         \hline
+         Lampe & Tension U(en V) & Intensité I (en A)  & Puissance P (en W) \\
+         \hline 
+         L1 &  3 & 0,2  & \textcolor{red}{0,6} \\
+         \hline
+         L2 & \textcolor{red}{6} & 0,6 & 3,6 \\
+         \hline 
+         L3 & 12 & \textcolor{red}{0,9} & 10,8 \\
+         \hline
+         
+
+    \end{tabular}\end{center}
+\newpage
+
+\fbox{\textbf{Exercice 6 }} 
+\begin{center}
+    
+\textbf{Combien de temps peuvent rester allumés les feux de croisement, moteur arrêté ? }
+\end{center}
+
+Les feux de croisement d'un véhicule sont allumés alors que le moteur est à l'arrêt.  
+
+On donne les caractéristiques nominales des lampes et de la batteries : 
+\begin{itemize}
+    \item feux de position arrière : 5W / 12V 
+    \item feux de croisement avant : 55W / 12 V
+    \item batterie : accumulateurs au plomb de capacité $\mathrm{I \times t_{max} = 45 ~A.h}$
+\end{itemize}
+
+\textbf{\ding{202} S'approprier} \\
+
+1.1. Combien de lampes fonctionnent lorsque les feux de croisement sont allumés : \textcolor{red}{4 lampes}\\
+
+
+
+ 
+
+
+\begin{minipage}{.5\textwidth}%
+
+1.2. Dessiner le schéma électrique des feux de croisement alimentés par la batterie 
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+
+\begin{center}
+    
+
+
+\begin{circuitikz}[scale=0.8,transform shape, european]
+
+\draw (2,0) to  [lamp, l=$L_2$]  (2,4);
+\draw (-2,0) to  [battery1, l]  (-2,4) -- (6,4); 
+\draw(0,0) to [lamp, l=$L_1$] (0,4);
+\draw(4,0) to [lamp, l=$L_3$]  (4,4);
+\draw(6,4) to [lamp, l=$L_4$]  (6,0)--(-2,0);
+
+
+
+\end{circuitikz}
+\end{center}
+\end{minipage}%
+
+\textbf{\ding{203} Analyser - Raisonner} \\
+\ctext{ Une démarche possible est de calculer la puissance totale des 4 lampes restées allumées.\\ La tension étant U=12V, on va pouvoir déterminer l'intensité I avec la relation P=UI.\\ Puis avec la relation $\mathrm{I \times t_{max} = 45 ~A.h}$ on va pouvoir calculer $t_{max}$} 
+
+
+\textbf{\ding{204} Réaliser} \\
+3.1. Calculer la puissance $P$ reçue par les lampes des feux de croisement allumés. \\
+
+\ctext{$\mathrm{P=2 \times 5 + 2 \times 55 =  120W}$ ~~~~La puissance totale des 4 lampes est égale à 120W}
+
+3.2. Déduisez en  l'intensité $I$ en A du courant que doit fournir la batterie lorsque le moteur est à l'arrêt. \\
+
+\ctext{$\mathrm{P = U \times I~~ ;~~ I=\dfrac{P}{U}=\dfrac{120}{12}=10A}$~~L'intensité I est égale à 10A}
+
+3.3. Déduisez en, en heure, la durée maximale de fonctionnement $t_{max}$ des feux de croisement. \\
+
+\ctext{$\mathrm{I \times t_{max} = 45 ~A.h~~t_{max}=\dfrac{45}{I}}~~t_{max}=4,5h$~~La batterie pourra fournir du courant pendant 4h30min.}
+
+
+\end{document}

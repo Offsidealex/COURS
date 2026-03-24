@@ -1,0 +1,122 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\usepackage[version=4]{mhchem}
+\usepackage{tikz}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 1 Bac Pro}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\setlength{\extrarowheight}{1mm}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% Macro en-tête
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{CORRIGÉ -- BARÈME}}\\[2mm]
+  {\large Évaluation : Masses molaires \hspace{1cm} 1 Bac Pro \hspace{1cm} \textbf{Total : /5 points}}
+\end{center}
+
+\vspace{4mm}
+
+% ===== CORRIGÉ =====
+\exotitle{Corrigé détaillé}{~}
+
+\vspace{2mm}
+
+\begin{tabularx}{\linewidth}{|c|X|}
+\hline
+\rowcolor{exolight}
+\textbf{Q} & \textbf{Correction} \\
+\hline
+1 &
+$M(\ce{C2H6O}) = 2 \times M(\text{C}) + 6 \times M(\text{H}) + 1 \times M(\text{O})$\\
+& $= 2 \times 12{,}0 + 6 \times 1{,}0 + 1 \times 16{,}0 = 24{,}0 + 6{,}0 + 16{,}0$\\
+& \hspace{2cm}\textbf{$M(\ce{C2H6O}) = \mathbf{46{,}0}$ g/mol} \\
+\hline
+2 &
+$M(\ce{C2H4O2}) = 2 \times M(\text{C}) + 4 \times M(\text{H}) + 2 \times M(\text{O})$\\
+& $= 2 \times 12{,}0 + 4 \times 1{,}0 + 2 \times 16{,}0 = 24{,}0 + 4{,}0 + 32{,}0$\\
+& \hspace{2cm}\textbf{$M(\ce{C2H4O2}) = \mathbf{60{,}0}$ g/mol} \\
+\hline
+3 &
+$M(\ce{C8H10N4O2}) = 8 \times M(\text{C}) + 10 \times M(\text{H}) + 4 \times M(\text{N}) + 2 \times M(\text{O})$\\
+& $= 8 \times 12{,}0 + 10 \times 1{,}0 + 4 \times 14{,}0 + 2 \times 16{,}0 = 96{,}0 + 10{,}0 + 56{,}0 + 32{,}0$\\
+& \hspace{2cm}\textbf{$M(\ce{C8H10N4O2}) = \mathbf{194{,}0}$ g/mol} \\
+\hline
+4 &
+$M(\ce{C8H9NO2}) = 8 \times M(\text{C}) + 9 \times M(\text{H}) + 1 \times M(\text{N}) + 2 \times M(\text{O})$\\
+& $= 8 \times 12{,}0 + 9 \times 1{,}0 + 1 \times 14{,}0 + 2 \times 16{,}0 = 96{,}0 + 9{,}0 + 14{,}0 + 32{,}0$\\
+& \hspace{2cm}\textbf{$M(\ce{C8H9NO2}) = \mathbf{151{,}0}$ g/mol} \\
+\hline
+5 &
+$M(\ce{C12H22O11}) = 12 \times M(\text{C}) + 22 \times M(\text{H}) + 11 \times M(\text{O})$\\
+& $= 12 \times 12{,}0 + 22 \times 1{,}0 + 11 \times 16{,}0 = 144{,}0 + 22{,}0 + 176{,}0$\\
+& \hspace{2cm}\textbf{$M(\ce{C12H22O11}) = \mathbf{342{,}0}$ g/mol} \\
+\hline
+\end{tabularx}
+
+\vspace{6mm}
+
+% ===== BARÈME =====
+\exotitle{Grille de correction -- Barème}{/5 pts}
+
+\vspace{2mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+\hline
+\rowcolor{exolight}
+\textbf{Q} & \textbf{Critère} & \textbf{Pts} \\
+\hline
+1 & Résultat numérique correct : $M = 46{,}0$ & 0,8 \\
+\hline
+2 & Résultat numérique correct : $M = 60{,}0$ & 0,8 \\
+\hline
+3 & Résultat numérique correct : $M = 194{,}0$ & 0,8 \\
+\hline
+4 & Résultat numérique correct : $M = 151{,}0$ & 0,8 \\
+\hline
+5 & Résultat numérique correct : $M = 342{,}0$ & 0,8 \\
+\hline
+\rowcolor{totalrow}
+\multicolumn{2}{|r|}{\textit{Sous-total calculs (5 questions $\times$ 0,8 pt)}} & \textbf{/4} \\
+\hline
+-- & Unité \textbf{g/mol} présente sur toutes les réponses & 1 \\
+\hline
+\rowcolor{exolight}
+\multicolumn{2}{|r|}{\textbf{TOTAL}} & \textbf{/5} \\
+\hline
+\end{tabularx}
+
+\vspace{4mm}
+\noindent\textit{\small Remarque : le point « unités » est global — il est accordé si g/mol apparaît sur l'ensemble des réponses (0,5 pt si présent sur au moins 3 réponses). Une erreur de calcul isolée ne fait pas perdre le point unité.}
+
+\end{document}

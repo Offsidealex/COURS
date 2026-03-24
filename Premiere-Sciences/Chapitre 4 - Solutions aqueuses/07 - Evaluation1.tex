@@ -1,0 +1,223 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{tikz-osci}
+\usepackage{chemist} %chimie
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{3}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\usepackage{bclogo}
+%\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{3.5}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }p{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+\frenchbsetup{StandardLists=true}
+\newlist{fleche}{itemize}{1}
+\setlist[fleche]{label=\ding{220},font=\color{black}}
+
+
+\newcounter{numexos}%Création d'un compteur qui s'appelle numexos
+\setcounter{numexos}{0}%initialisation du compteur
+\newcommand{\exercice}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{numexos}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textcolor{black}{\normalsize Exercice\,\thenumexos\,}\,#1%Met en noir Exercice et la valeur du compteur appelée par \thenumeexos
+}
+\newcommand{\bex}[2]
+{\begin{bclogo}[couleur = white,logo= , barre=none,  arrondi = 0.1]
+{~\exercice:~~{#1}}
+~~
+{#2}
+~~
+\end{bclogo}}
+
+\begin{document}
+
+
+\begin{center}
+\LARGE{Évaluation - Solutions aqueuse 1 }\\[8mm]
+\end{center}
+\normalsize
+\hrule 
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\vspace {8 mm}
+
+%Peser avec précision le soluté, le placer dans une fiole jaugée, remplir aux deux tiers, mélanger et affiner le remplissage au trait de jauge avec l'œil en face du ménisque.
+
+
+\vspace{0.2cm}
+
+\fbox{\textbf{Exercice 1}} \\[3mm]
+
+Calculer les masses molaires des composés suivants (on utilisera les données ci-après) :
+
+\begin{itemize}
+\item Butanol : \chemform{C_4H_9OH}
+\item Eau oxygénée : \chemform{H_2O_2}
+\item Monoxyde de carbone : \chemform{CO}
+\item Acide salicylique : \chemform{C_7 H_6 O_3}
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE H}};
+\node at (1,0.3) {1,0};
+\node at (1,1) {Hydrogène};
+\node at (0.3,2.6){{\Large 1}};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE C}};
+\node at (1,0.3) {12,0};
+\node at (1,1) {Carbone};
+\node at (0.3,2.6){{\Large 6}};
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\draw (0,0)--(0,3)--(2,3)--(2,0)--cycle;
+\node at (1,1.75) {{\LARGE O}};
+\node at (1,0.3) {16,0};
+\node at (1,1) {Oxygène};
+\node at (0.3,2.6){{\Large 8}};
+\end{tikzpicture}
+\end{center}
+
+\dotfill 
+
+\vspace{8mm}
+\dotfill 
+
+\vspace{8mm}
+\dotfill 
+
+\vspace{8mm}
+\dotfill 
+\vspace{8mm}
+
+\fbox{\textbf{Exercice 2}} \\[3mm]
+
+On prépare une solution d'eau sucrée contenant du glucose de formule \ch{C_{6}H_{12}O_{6}} en pesant une masse $m=\SI{18}{\gram}$. de soluté\\
+Le volume de la fiole utilisée est de $V=\SI{100}{\milli\liter}$
+
+\begin{enumerate}
+\item Calculer la masse molaire moléculaire du glucose.
+
+\vspace{5mm}
+\dotfill 
+
+\item Calculer la quantité de matière en \si{\mol} présent de soluté.
+
+\vspace{5mm}
+\dotfill 
+
+
+\item Calculer la concentration de la solution préparée en \si{\mol\per\liter}.
+
+\vspace{5mm}
+\dotfill 
+
+\end{enumerate}
+
+%\begin{correction}
+%$M=\SI{342}{\gram\per\mol}$, %$n=\SI{0.01}{\mol}$ et $c=\SI{0.1}%{\mol\per\liter}$ (attention aux unités)
+%\end{correction}
+}
+\vspace{0.2cm}
+
+\fbox{\textbf{Exercice 4}} \\[3mm] 
+
+Un produit cosmétique contient de l'acide lactique de formule \ch{C_3H_6O_3}de concentration $c=\SI{8e-4}{\mol\per\liter}$.\\
+
+\begin{enumerate}
+\item Calculer la masse molaire de l'acide lactique.
+
+
+\vspace{5mm}
+\dotfill 
+
+\item Calculer la concentration massique d'acide lactique. (Aide : $C_m= c \times M$) 
+
+
+\vspace{5mm}
+\dotfill 
+
+\end{enumerate}
+
+}
+
+
+
+\end{document}

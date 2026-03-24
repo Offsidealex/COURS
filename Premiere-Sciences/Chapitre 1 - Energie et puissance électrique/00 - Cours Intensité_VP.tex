@@ -1,0 +1,225 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\setlength{\parindent}{0pt}
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{2}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[table]{xcolor}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\usepackage[tikz]{bclogo} 
+\newcommand{\ctext}[1]
+{\begin{bclogo}[couleur = white,logo= , arrondi = 0.1,barre=none,couleurTexte=red]
+{}
+\vspace{-8mm}
+~~
+{#1}
+~~
+\end{bclogo}}
+
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+
+\hrule\
+
+
+\begin{center}
+ \LARGE{Activité 1 - Revoir l'intensité  électrique}
+\end{center}
+
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+
+
+Une analogie intéressante pour comprendre de façon simple les notions d'intensité et de tension peut être faite avec l'écoulement d'une rivière. Celle-ci s'écoule d'amont vers l'aval.  Le dénivelé, différence d'altitude entre le point haut et le point bas de la rivière, peut être assimilé à la tension, le débit à l'intensité du courant et la taille à la section d'un câble électrique.
+
+
+\vspace{5mm}
+
+\begin{enumerate}
+    \item Mesure de l'intensité
+
+\ctext{
+
+
+L'intensité du courant électrique se mesure en \textbf{Ampère } qui est symbolisé par la lettre \textbf{A}. 
+
+Exemple : I = 1,5 A \\
+
+On utilisera pour les courant faibles , le \textbf{milliampère }symbolisé par \textbf{mA} avec la conversion :
+
+\textbf{ 1~A = 1 000~mA} 
+
+}
+Exercice 1 : Convertir (avec 1A = 1000 mA)  ~~ 
+
+
+
+
+\begin{multicols}{4}
+\begin{center}
+    
+
+$1848$ mA = \textcolor{red}{$1,848$} A 
+\vspace{5mm}
+
+$77$ mA = \textcolor{red}{$0,077$} A 
+\vspace{5mm}
+
+
+$1,085A$ = \textcolor{red}{$1085$} mA
+\vspace{5mm}
+
+
+$0,021$A = \textcolor{red}{$21$} mA
+\vspace{5mm}
+    \end{center}
+\end{multicols}
+
+\ctext{
+
+    \textbf{L'ampèremètre }permet de mesurer le courant électrique. Il se place \textbf{en série} dans le circuit. \\ 
+    
+    Son symbole est \raisebox{-2ex}{
+    \includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/symbole-amperemetre-300x158.png} }  . 
+    La valeur doit être positive, on relie la borne \textbf{A} à la borne \textbf{+} 
+    
+    du générateur et la borne~{\textbf{COM}} à la borne \textbf{-} du générateur.
+}
+
+
+\item Lois de l'intensité : \\[-2mm]
+    \vspace{-2mm}
+    \begin{itemize}
+        \item Dans un circuit en série, l'intensité est la même en tout point du circuit. 
+        \item L'intensité qui sort du générateur est identique à celle qui y retourne, conformément à la loi
+ des nœuds de Kirchhoff.
+        \item Dans un circuit en dérivations, l’intensité dans la branche principale est égale à la somme des intensités dans les branches dérivées. \\
+        \begin{center}
+            \fbox{\textcolor{red}{ $\mathrm{I = I_1 + I_2}$}}
+        \end{center}
+        
+    \end{itemize}
+    \vspace{5mm}
+    
+    Exercice 2 :
+    Dans le circuit ci dessous \\
+    \vspace{-5mm}
+\noindent%
+\begin{minipage}{.65\textwidth}%
+ On donne $\mathrm{I_2 }$ = 0,7 A et $\mathrm{I_3 }$ = 0,3 A.
+ 
+En appliquant la loi des nœuds calculer les
+intensités manquantes. 
+
+\renewcommand{\arraystretch}
+{3}
+\begin{tabular}{|c||p{1.cm}|p{1.cm}|p{1.cm}|p{1.cm}|p{1.cm}|p{1.cm}|} \hline
+Intensité  &  $I_1$& $I_2$ &$I_3$  & $I_4$ & $I_5$ & $I_6$  \\ \hline
+\rowcolor{red!20} Valeur (A)& 0,7& 0,7&0,3 &0,4 &0,4 & 0,7\\ \hline \end{tabular}
+
+
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.35\textwidth}%
+\begin{center}
+    
+
+\includegraphics[scale=0.35]{Chapitre 1 - Energie et puissance électrique/images/ex2.png}\end{center}
+\end{minipage}%
+
+
+
+
+          
+
+ 
+
+
+
+    
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}

@@ -1,0 +1,324 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{tikz-osci}
+
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{6}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{tcolorbox}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+%\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{3.5}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+\frenchbsetup{StandardLists=true}
+\newlist{fleche}{itemize}{1}
+\setlist[fleche]{label=\ding{220},font=\color{orange}}
+
+
+
+\begin{document}
+
+
+\begin{center}
+ \LARGE{Exercices -- CORRIGÉ} \\[3mm]
+\end{center}
+
+
+
+\normalsize
+
+\hrule\
+\\[0,5cm]
+
+
+\fbox{\textbf{Exercice 1 }} QCM : Parmi les trois propositions, choisissez la bonne réponse. 
+
+\begin{center}
+
+
+
+    \begin{tabular}{|p{6cm}|C{3cm}|C{3cm}|C{3cm}|}
+         \hline
+       \ding{202} La puissance électrique $P_j$ s'exprime en ...& $\boxtimes $ ~~watt& $\Box $ ~~kilowatt    & $\Box $ ~~Joule \\
+         \hline
+      \ding{203}La puissance électrique $P_j$ dissipée par effet Joule se calcule avec ...  & $\Box $ ~~$P_j=R \times I$ & $\boxtimes $ ~~$P_j=R \times I^2$  & $\Box $ ~~ $P_j=R^2 \times I$ \\
+         \hline
+         \ding{204} Elle se calcule aussi avec ...  &$\Box $ ~~ $P_j=\dfrac{U}{R^2}$ & $\Box $ ~~ $P_j=\dfrac{U}{R}$  & $\boxtimes $ ~~$P_j=\dfrac{U^2}{R}$  \\
+         \hline
+         \ding{205} Le rapport de transformation $m$ est donné par & $\boxtimes $ ~~ $m=\dfrac{N_2}{N_1} $ & $\Box $ ~~ $m=\dfrac{N_1}{N_2} $ & $\Box $ ~~ $m=N_1 \times N_2 $ \\
+         \hline
+         \ding{206} Le rapport de transformation $m$ s'exprime ... &$\Box $ ~~ en Volt & $\boxtimes $ ~~ sans unité & $\Box $ ~~ en Joule \\
+         \hline
+         \ding{207} Si~~$m=1$ alors ... & $\Box $ ~~ $U_2>U_1$ & $\Box $ ~~  $U_1>U_2$ & $\boxtimes $ ~~  $U_1=U_2$ \\
+         \hline
+         %\ding{208} Un mouvement rectiligne uniformément ralenti peut être représenté par ...  & $\Box $ ~~  & $\Box $ ~~  &  $\Box $\\
+         %\hline
+         \ding{208} Si $m<1$ alors le transformateur est ... &$\boxtimes$ ~~ abaisseur de tension & $\Box$ ~~ élévateur de tension &$\Box$ ~~ égaliseur de tension\\
+         \hline
+         \ding{209} Dans un transformateur parfait, on a ...  &$\boxtimes ~~ \dfrac{U_1}{U_2}=\dfrac{I_2}{I_1}$ &$\Box ~~ \dfrac{U_2}{U_1}=\dfrac{I_2}{I_1}$  & $\Box ~~ \dfrac{U_2}{I_1}=\dfrac{I_2}{U_1}$ \\ 
+         \hline 
+         \ding{210} Le symbole électrique du transformateur est   &$\Box ~~ $ \includegraphics[scale=0.55]{Chapitre 2 - Transporter l'énergie sous forme électrique/images/QCM1.png}   &$\Box ~~ $ \includegraphics[scale=0.75]{Chapitre 2 - Transporter l'énergie sous forme électrique/images/QCM2.png}     &$\boxtimes ~~ $ \includegraphics[scale=0.65]{Chapitre 2 - Transporter l'énergie sous forme électrique/images/QCM3.png}   \\
+         \hline
+
+         
+        
+    \end{tabular}
+\end{center}
+\vfill
+\newpage
+
+\fbox{\textbf{Exercice 2 }} Un transformateur considéré comme parfait a les caractéristiques suivantes : \\\begin{center}
+220 V / 24 V - 50 Hz $\mathrm{N_1=700~spires}$.
+\end{center}
+
+\vfill 
+
+\ding{202} Calculer le rapport de transformation $m$ 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Le rapport de transformation est donné par : 
+$$m = \dfrac{U_2}{U_1} = \dfrac{N_2}{N_1}$$
+
+$$m = \dfrac{24}{220} = 0{,}109$$
+
+\textbf{Le rapport de transformation est $m = 0{,}109$ (sans unité).}
+}
+\end{tcolorbox}
+
+\vfill 
+
+\ding{203} Combien y a-t-il de spires $\mathrm{N_2}$ au secondaire ? 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+On utilise la relation : $m = \dfrac{N_2}{N_1}$
+
+D'où : $N_2 = m \times N_1$
+
+$$N_2 = \dfrac{24}{220} \times 700 = \dfrac{24 \times 700}{220} = \dfrac{16\,800}{220} \approx 76{,}4$$
+
+\textbf{Il y a environ 76 spires au secondaire.}
+}
+\end{tcolorbox}
+
+\vfill 
+
+\fbox{\textbf{Exercice 3 }} 
+\begin{center}
+Pour chaque situation, indiquez si le transformateur est élévateur ou abaisseur de tension, et calculer son rapport de transformation. 
+\end{center}
+
+\vfill 
+
+\ding{202} Un poste de transformation électrique 20 kV/400 V placé à l'entrée d'un lotissement. 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+$U_1 = 20$ kV $= 20\,000$ V \quad ; \quad $U_2 = 400$ V
+
+$$m = \dfrac{U_2}{U_1} = \dfrac{400}{20\,000} = 0{,}02$$
+
+Comme $m < 1$, on a $U_2 < U_1$ : \textbf{le transformateur est abaisseur de tension.}
+
+\textbf{Rapport de transformation : $m = 0{,}02$}
+}
+\end{tcolorbox}
+
+\vfill 
+
+\ding{203} Un transformateur  reçoit une tension de 23 V et la transforme en tension de 15 kV. 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+$U_1 = 23$ V \quad ; \quad $U_2 = 15$ kV $= 15\,000$ V
+
+$$m = \dfrac{U_2}{U_1} = \dfrac{15\,000}{23} \approx 652{,}2$$
+
+Comme $m > 1$, on a $U_2 > U_1$ : \textbf{le transformateur est élévateur de tension.}
+
+\textbf{Rapport de transformation : $m \approx 652$}
+}
+\end{tcolorbox}
+
+\vfill 
+
+\ding{204} Un transformateur d'isolement 230 V / 230 V sécurise un local de travail 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+$U_1 = 230$ V \quad ; \quad $U_2 = 230$ V
+
+$$m = \dfrac{U_2}{U_1} = \dfrac{230}{230} = 1$$
+
+Comme $m = 1$, on a $U_2 = U_1$ : \textbf{le transformateur n'est ni élévateur ni abaisseur de tension (transformateur d'isolement).}
+
+\textbf{Rapport de transformation : $m = 1$}
+}
+\end{tcolorbox}
+
+\vfill 
+
+
+\newpage 
+
+\fbox{\textbf{Exercice 4 }} \\[2mm]
+
+Un transformateur supposé parfait est utilisé pour alimenter les lampes d'un garage.  La tension efficace au primaire est de 220 V. 
+
+\begin{enumerate}
+
+
+\item Afin de déterminer la nature du transformateur , on visualise à l'aide de l'oscilloscope la tension aux bornes du circuit secondaire. 
+
+\begin{center}
+    
+\osci[%
+scale=1,
+second channel=0, %1 pour activer la deuxième voie, 0 sinon.
+screen offset one=0, %Décalage vertical de la voie 1 sur l'écran
+screen offset two=0, %Décalage vertical de la voie 2 sur l'écran
+time div=10, %Durée par division (en ms)
+voltage div one=2, %Tension par division (en V) pour la voie 1
+voltage div two=2, %Tension par division (en V) pour la voie 2
+sample rate=200, %Taux d'échantillonnage
+xy mode=0, %1 pour l'activer, 0 sinon 
+func one=6.8*sin(2*180/0.050*x),
+func two=3*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
+color one=D62626, %Couleur de la voie 1 (en hexadecimal)
+color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+\end{center}
+
+
+    1.1. Déterminer, en volt, la valeur maximale $U_{max}$ de la tension au secondaire. 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+Sur l'oscilloscope, la sensibilité verticale est de 2 V/div.
+
+La tension maximale correspond à l'amplitude du signal, soit environ 3,4 divisions.
+
+$$U_{\max} = 3{,}4 \times 2 = 6{,}8~\text{V}$$
+
+\textbf{La valeur maximale de la tension au secondaire est $U_{\max} = 6{,}8$ V.}
+}
+\end{tcolorbox}
+
+    1.2. En déduire, en volt, la valeur efficace $U_{eff}$ de cette tension (arrondir le résultat à l'unité). 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+Pour une tension sinusoïdale, la relation entre la valeur efficace et la valeur maximale est :
+
+$$U_{\text{eff}} = \dfrac{U_{\max}}{\sqrt{2}}$$
+
+\textbf{Application numérique :}
+$$U_{\text{eff}} = \dfrac{6{,}8}{\sqrt{2}} = \dfrac{6{,}8}{1{,}414} \approx 4{,}8~\text{V}$$
+
+En arrondissant à l'unité : \textbf{$U_{\text{eff}} \approx 5$ V}
+}
+\end{tcolorbox}
+
+    \item Calculer $m$ , le rapport de transformation 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+$$m = \dfrac{U_2}{U_1} = \dfrac{5}{220} \approx 0{,}023$$
+
+\textbf{Le rapport de transformation est $m \approx 0{,}023$.}
+}
+\end{tcolorbox}
+
+    \item Le transformateur est-il élévateur ou abaisseur de tension :
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textcolor{blue}{
+Comme $m < 1$, on a $U_2 < U_1$ (5 V $<$ 220 V).
+
+\textbf{Le transformateur est abaisseur de tension.}
+}
+\end{tcolorbox}
+    
+
+
+\end{enumerate}
+
+\newpage 
+
+
+
+
+\end{document}

@@ -1,0 +1,465 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usepackage{tikz-osci}
+
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{9}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{tcolorbox}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+%\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{3}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+\frenchbsetup{StandardLists=true}
+\newlist{fleche}{itemize}{1}
+\setlist[fleche]{label=\ding{220},font=\color{orange}}
+
+
+\begin{document}
+
+\noindent
+
+\begin{center}
+\LARGE{Évaluation- Transporter l'énergie électrique}
+\Large{\textcolor{red}{CORRIGÉ}}\\[3mm]
+\end{center}
+\normalsize
+\hrule 
+
+
+\vspace {8 mm}
+
+
+\fbox{\textbf{Exercice 1 : Choisir la (ou les) bonne(s) réponse(s)}}
+
+
+    \begin{tabular}{p{2mm} p{5.5cm}|C{3cm}|C{3cm}|C{3cm}}
+    
+
+        \ding{202} & La tension efficace s'exprime en :& $\Box $ ~~seconde & \textcolor{red}{$\boxtimes $ ~~Volt}  & $\Box $ ~~Ampère \\
+         \hline
+      \ding{203} & Avec la loi d'ohm, on peut calculer R avec la formule  & $\Box $ ~~$R=\dfrac{I}{U}$ & \textcolor{red}{$\boxtimes $ ~~$R=\dfrac{U}{I}$}   & $\Box $ ~~ $R = U \times I$ \\
+        \hline
+         \ding{204} & Si m>1 alors le transformateur  & \textcolor{red}{$\boxtimes $ ~~ est élévateur}  &$\Box $ ~~ est isolant  & $\Box $ ~~est abaisseur  \\
+         \hline
+         \ding{205} &On peut calculer I avec la formule  &$\Box $ ~~ $I=\dfrac{P_j}{R}$  &$\Box $ ~~ $I=\dfrac{P_j}{R^2}$  & \textcolor{red}{$\boxtimes $ ~~$I=\sqrt{\dfrac{P_j}{R}}$}  \\
+
+         \hline
+         
+        \ding{206} & On peut calculer U avec la formule &$\Box $ ~~ $U=R^2 \times P_j$  &$\Box $ ~~ $U= P_j \times R$  & \textcolor{red}{$\boxtimes $ ~~ $U=\sqrt{P_j \times R}$}  \\
+
+ 
+        
+         \end{tabular}
+\vspace{3mm}
+
+\fbox{\textbf{Exercice 2}}
+
+Un transformateur supposé parfait est utilisé pour l'alimentation des lampes situées autour d'une piscine. 
+
+\begin{enumerate}
+    \item Parmi les deux modes d'alimentation : tension continue et tension alternative, indiquer celle qui correspond au fonctionnement normal d'un transformateur et reproduire le symbole du transformateur. 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Un transformateur fonctionne en \textbf{régime alternatif}. \raisebox{-2mm}{
+~~~~~~~~~~ 
+\begin{tikzpicture}[scale=0.3]
+% Cercle primaire (gauche)
+\draw[thick] (0,0) circle (1);
+% Cercle secondaire (droite)
+\draw[thick] (1.2,0) circle (01);
+% Connexions primaire
+\draw[thick] (-0.88,0.5) -- (-1.8,0.5);
+\draw[thick] (-0.88,-0.5) -- (-1.8,-0.5);
+% Connexions secondaire
+% Connexions primaire
+\draw[thick] (2.08,0.5) -- (3.08,0.5);
+\draw[thick] (2.08,-0.5) -- (3.08,-0.5);
+% Points gras aux extrémités
+\fill (-0.88,0.5) circle (3pt);
+\fill (-0.88,-0.5) circle (3pt);
+
+\fill (2.08,0.5) circle (3pt);
+\fill (2.08,-0.5) circle (3pt);
+
+\end{tikzpicture}
+~~~~  \hfill ~~
+}
+
+\end{tcolorbox}
+
+
+\item Afin de déterminer la nature du transformateur (élévateur ou abaisseur de tension) , on visualise à l'aide de l'oscilloscope, la tension aux bornes du circuit secondaire. 
+
+\noindent%
+\begin{minipage}{.55\textwidth}%
+
+    2.1. Déterminer, en volt, la valeur maximale $U_{max}$ de la tension au secondaire. 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Amplitude mesurée : 2,4 divisions
+\vspace{2mm}
+
+$U_{max} = 2,4 \times 5 = \boxed{12~\text{V}}$
+\end{tcolorbox}
+
+    2.2. En déduire, en volt, la valeur efficace $U_{eff}$ de cette tension (arrondir le résultat à l'unité). 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Formule :}
+
+$U_{eff} = \dfrac{U_{max}}{\sqrt{2}}$
+
+\vspace{2mm}
+
+\textbf{Application numérique :}
+
+$U_{eff} = \dfrac{12}{1,414} = 8,49...~\text{V}$
+
+\vspace{2mm}
+
+$U_{eff} \approx \boxed{8~\text{V}}$
+\end{tcolorbox}
+\end{minipage}%
+\hfill
+\begin{minipage}{.35\textwidth}%
+\centering
+\osci[%
+scale=0.5,
+second channel=0, %1 pour activer la deuxième voie, 0 sinon.
+screen offset one=0, %Décalage vertical de la voie 1 sur l'écran
+screen offset two=0, %Décalage vertical de la voie 2 sur l'écran
+time div=5, %Durée par division (en ms)
+voltage div one=5, %Tension par division (en V) pour la voie 1
+voltage div two=2, %Tension par division (en V) pour la voie 2
+sample rate=200, %Taux d'échantillonnage
+xy mode=0, %1 pour l'activer, 0 sinon 
+func one=12*sin(2*180/0.020*x),
+func two=3*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
+color one=D62626, %Couleur de la voie 1 (en hexadecimal)
+color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+\end{minipage}%
+
+\end{enumerate}
+
+\newpage 
+
+2.3. Calculer le rapport de transformation $m$ sachant que la tension efficace au primaire est de 230 V (arrondir le résultat au centième). 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\begin{multicols}{2}
+
+\textbf{Formule :}\\[2mm]
+
+$m = \dfrac{U_{2eff}}{U_{1eff}}$
+
+\columnbreak
+
+\textbf{Application numérique :}
+
+$m = \dfrac{8}{230} = 0,0348...$
+
+\vspace{3mm}
+
+$m \approx \boxed{0,03}$
+\end{multicols}
+\end{tcolorbox}
+
+2.4. Le transformateur est-il abaisseur ou élévateur de tension ?
+\vspace{5mm}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Le transformateur est \textbf{abaisseur} de tension car $m < 1$.
+
+\vspace{2mm}
+
+En effet, la tension au secondaire (8 V) est plus faible que la tension au primaire (230 V).
+\end{tcolorbox}
+
+
+
+
+
+
+\fbox{\textbf{Exercice 3}}
+\begin{center}
+    
+\textbf{\'A quoi servent les transformateurs sur les pylônes électriques ? }
+\end{center}
+
+
+\textbf{\ding{202} S'approprier} :
+
+\begin{fleche}
+    \item Quelle est la valeur de la tension électrique dans les câbles ? 
+
+    \vspace{2mm}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+La tension dans les câbles haute tension est de \textbf{20 000 V} (ou 63 000 V selon les lignes).
+\end{tcolorbox}
+
+        \item Quelle est celle délivrée à la sortie du pylône ? 
+
+    \vspace{2mm}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+La tension délivrée à la sortie pour alimenter les habitations est de \textbf{230 V}.
+\end{tcolorbox}
+    
+\end{fleche}
+
+
+
+
+
+\textbf{\ding{203} Analyser - Raisonner} \\
+
+Parmi les montages ci-dessous, quel est celui qui permet d'étudier le transformateur à vide ? 
+ 
+ Justifier votre réponse. 
+
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Il s'agit du montage 2, le générateur est en tension alternative. 
+\end{tcolorbox}
+
+
+ 
+
+
+
+
+
+\textbf{\ding{204} Réaliser}
+
+
+On a réalisé en salle de cours une simulation du fonctionnement de ce transformateur, on obtient l'oscillogramme suivant.
+
+
+3.1 Relever les valeurs des tensions maximales $U_{1 max}$ et $U_{2 max} $ avec $U_{1 max}$ > $U_{2 max}$: 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Lecture oscilloscope :}
+
+\vspace{2mm}
+
+\textbf{Voie 1 (rouge) :} Amplitude mesurée = 2,91 divisions
+
+$U_{1max} = 2,91 \times 200 = \boxed{582~\text{V}}$
+
+\vspace{2mm}
+
+\textbf{Voie 2 (bleue) :} Amplitude mesurée = 2,05 divisions
+
+$U_{2max} = 2,05 \times 20 = \boxed{41~\text{V}}$
+\end{tcolorbox}
+
+ \newpage 
+ 
+3.2 Calculer les valeurs des tension efficaces $U_{1 eff}$ et $U_{2 eff} $, arrondir à 0,1 : 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Formule :} $U_{eff} = \dfrac{U_{max}}{\sqrt{2}}$
+
+\vspace{2mm}
+
+\textbf{Voie 1 :} $U_{1eff} = \dfrac{582}{\sqrt{2}} = \dfrac{582}{1,414} = 411,6~\text{V}$
+
+$U_{1eff} = \boxed{411,6~\text{V}}$
+
+\vspace{2mm}
+
+\textbf{Voie 2 :} $U_{2eff} = \dfrac{41}{\sqrt{2}} = \dfrac{41}{1,414} = 29,0~\text{V}$
+
+$U_{2eff} = \boxed{29,0~\text{V}}$
+\end{tcolorbox}
+
+
+
+\begin{minipage}{.50\textwidth}%
+3.3 Calculer le rapport de transformation $m$ : \\(arrondir à 0,001) 
+\end{minipage}%
+\hfill
+\begin{minipage}{.40\textwidth}%
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+\textbf{Formule :}
+
+$m = \dfrac{U_{2eff}}{U_{1eff}}$
+
+\vspace{2mm}
+
+\textbf{Application numérique :}
+
+$m = \dfrac{29,0}{411,6} = 0,0705...$
+
+\vspace{2mm}
+
+$m \approx \boxed{0,070}$
+\end{tcolorbox}
+\end{minipage}%
+
+
+
+
+
+\ding{205} Le transformateur est-il élévateur ou abaisseur de tension ? 
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+Le transformateur est \textbf{abaisseur} de tension car $m < 1$.
+
+\vspace{2mm}
+
+En effet, la tension au secondaire (29,0 V) est beaucoup plus faible que la tension au primaire (411,6 V). Le transformateur réduit la tension d'un facteur d'environ 14.
+\end{tcolorbox}
+
+\vfill 
+
+\hrule 
+\begin{center}
+   \Large{Énigme : Bonus +1} \\[5mm]
+\end{center}
+
+
+
+\hrule
+
+  Je suis un garçon. La dernière fois, au parc, lorsque je regardais autour de moi, je voyais autant de filles que de garçons. Mais si une fille regardait autour d'elle, elle aurait vu deux fois plus de garçons que de filles. \\[3mm]
+  Combien de personnes étaient au parc?
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+
+\begin{multicols}{2}
+    
+
+
+Soit $G$ le nombre de garçons et $F$ le nombre de filles.
+
+\vspace{2mm}
+
+\textbf{Condition 1 :} Le garçon voit autant de filles que de garçons
+
+Pour le garçon qui parle, il voit $(G-1)$ autres garçons (lui exclu) et $F$ filles.
+
+Donc : $G - 1 = F$ \quad (1)
+
+\vspace{2mm}
+
+\textbf{Condition 2 :} Une fille voit deux fois plus de garçons que de filles
+
+Pour une fille, elle voit $G$ garçons et $(F-1)$ autres filles (elle exclue).
+
+Donc : $G = 2(F-1)$ \quad (2)
+
+\vspace{2mm}
+
+\textbf{Résolution :}
+
+De (1) : $G = F + 1$
+
+En substituant dans (2) : 
+
+$F + 1 = 2(F - 1)$
+
+$F + 1 = 2F - 2$
+
+$1 + 2 = 2F - F$
+
+$F = 3$ filles
+
+\vspace{2mm}
+
+Donc : $G = F + 1 = 3 + 1 = 4$ garçons
+
+\vspace{2mm}
+
+\textbf{Réponse :} Il y avait $\boxed{7~\text{personnes}}$ au parc (4 garçons et 3 filles).
+
+\vspace{2mm}
+
+\textbf{Vérification :}
+\begin{itemize}
+\item Le garçon voit 3 autres garçons et 3 filles ✓
+\item Une fille voit 4 garçons et 2 autres filles (4 = 2×2) ✓
+\end{itemize}
+
+\end{multicols}
+
+\end{tcolorbox}
+
+  \vfill 
+  
+
+\end{document}

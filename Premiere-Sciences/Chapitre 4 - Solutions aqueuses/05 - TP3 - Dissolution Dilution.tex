@@ -1,0 +1,215 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{chemist} %chimie
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2.5}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{TP - Préparation d'une solution d'hydroxyde sodium    }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+   Vous allez préparer 100 mL d'une solution de soude dont la concentration en ions hydroxyde  \ch{OH^-} est \ch{C= 0,2 mol/L} . 
+   
+\noindent%
+\begin{minipage}{.45\textwidth}%
+
+    
+ \begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Matériel }
+
+\begin{itemize*}
+    \item 1 balance
+    \item 3 béchers
+    \item 2 fioles jaugées de 100 mL
+    \item 1 entonnoir
+    \item 1 pipette avec son dispositif d'aspiration
+\end{itemize*}
+\end{bclogo}
+
+
+
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+    
+ \begin{bclogo}[couleur=white,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Produits }
+
+\begin{itemize*}
+    \item Pastilles de soude (formule NaOH)
+    \item Eau distillée
+
+\end{itemize*}
+\end{bclogo}
+%\fbox{\includegraphics[width=\textwidth]{Chapitre 4 - Solutions aqueuses/images/TP2.png}}
+\end{minipage}%
+
+
+
+\fcolorbox{black}{blue!30}{\textbf{Calculs préparatoires}}
+\begin{itemize*}
+    \item Calculez la masse m, en g, de soude nécessaire. 
+    \cadreblanc{35}
+
+        \item  Les balances du laboratoire sont précises à 0,1 g près, peut-on les utiliser ? justifier votre réponse. 
+    \cadreblanc{35}
+    
+    \defbox{\fbox{
+\begin{minipage}{8cm}{
+
+Appeler M Ruiz pour qu'il vérifie vos calcul.}
+\end{minipage}
+}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent%
+
+\begin{minipage}{.90\textwidth}%
+\fcolorbox{black}{blue!30}{\textbf{Protocole dissolution}}
+
+\begin{itemize}[label=$\bullet$]
+    \item Dans une coupelle, pesez 4,0g de soude (Hydroxyde de sodium) 
+\begin{center}
+    \includegraphics[scale=0.6]{Chapitre 4 - Solutions aqueuses/images/dilution.png}
+\end{center}
+
+
+    \item Calculer, en mol/L, la concentration molaire \ch{C_0} de cette solution. 
+
+    \cadreblanc{15}    
+\end{itemize}
+\end{minipage}
+
+\vfill 
+
+  \defbox{\fbox{
+\begin{minipage}{12cm}{
+
+Appeler M Ruiz pour qu'il vérifie votre solution et votre calcul}
+\end{minipage}
+}}
+
+\vfill 
+
+\fcolorbox{black}{blue!30}{\textbf{Protocole dilution}} \\[3mm]
+
+\item Pour réaliser une dilution on utilisera le protocole ci-dessous : 
+\begin{center}
+    \includegraphics[scale=0.7]{Chapitre 4 - Solutions aqueuses/images/dilution2.png}
+\end{center}
+
+
+\item Réaliser la dilution , on prélèvera 20 mL de solution mère en deux fois.
+
+\item Calculer, en mol/l, la concentration \ch{C} en soude de cette solution diluée. 
+
+\cadreblanc{15}
+
+\vfill 
+
+ \defbox{\fbox{
+\begin{minipage}{12cm}{
+
+Appeler M Ruiz pour qu'il vérifie votre solution et votre calcul \\[3mm]
+\centering
+\Large{pH = ..................}
+\end{minipage}
+}}}
+
+\vfill 
+
+
+\end{itemize*}
+
+
+\end{document}

@@ -1,0 +1,333 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{3}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage[tikz]{bclogo} 
+\usepackage{circuitikz}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{Chapitre 1 - Energie et puissance électrique/images/appel exam.png}}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\begin{center}
+ \LARGE{TP1 - Comment évolue la pression en fonction du volume ? }
+\end{center}
+
+\vspace{3 mm}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+   \begin{center}
+   \textbf{Le soin et la rédaction interviendront dans la notation.}
+   \end{center} 
+
+\vspace{4mm}
+
+
+
+\fcolorbox{black}{white}{\textbf{1. Expérience}}  \\
+\vspace{-15mm}
+ \begin{enumerate}[label*=1.\arabic*.]
+\item 
+\noindent%
+\begin{minipage}{.4\textwidth}%
+ \begin{bclogo}[couleur=white ,  arrondi =0.1 , logo = \bcinfo, epBarre =2]{ Matériel }
+
+\begin{itemize*}
+    \item 1 seringue de 100 mL graduée tous les 10 mL.
+    \item 1 tuyaux souple de 3mL
+    \item 1 capteur de pression
+    \item 1 ordinateur avec Atelier Scientifique Jeulin
+    \item 1 interface Primo
+\end{itemize*}
+\end{bclogo}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.5\textwidth}%
+
+\begin{center}
+\includegraphics[width=\textwidth]{Chapitre 3 - Pression et forces préssantes/images/Picto_primo.png}
+ 
+\end{center}
+\end{minipage}%
+
+
+
+Il suffit de raccorder l'extrémité de la seringue au tuyau souple du capteur de pression.
+
+
+On veut mesurer la pression en fonction du volume occupé par le gaz dans la seringue. \\ Pour cela, on fera une série de 5 mesures de 103 à 53 mL, et la pression correspondante sera enregistrée par le logiciel. On doit tenir compte du volume du tuyau souple.
+
+\vfill 
+    
+\defbox{\fbox{
+\begin{minipage}{8cm}{
+
+Appeler M Ruiz pour qu'il vérifie le montage.}
+
+\end{minipage}
+}}
+
+\vfill
+
+\item Paramétrage de l'acquisition : 
+\noindent%
+\begin{minipage}{.85\textwidth}%
+
+\includegraphics{Chapitre 3 - Pression et forces préssantes/images/image1.png} 
+
+\end{minipage}%
+
+\newpage 
+
+\item Clique sur l'icône \raisebox{-1.2
+ex} {\includegraphics[scale=0.5]{Chapitre 3 - Pression et forces préssantes/images/icone.png}} pour afficher la fenêtre de paramétrage de l'acquisition. \\ On veut visualiser $p = f(V)$.\\[3mm]
+
+\noindent%
+\begin{minipage}{.45\textwidth}%
+
+\'A l'aide de la souris faire glisser l'adaptateur pression sur l'axe des ordonnés. \\[2mm]
+
+\includegraphics[scale=0.85]{Chapitre 3 - Pression et forces préssantes/images/image2.png} 
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+
+\'A l'aide de la souris faire glisser le clavier sur l'axe des abscisses. \\[2mm]
+\includegraphics[scale=0.85]{Chapitre 3 - Pression et forces préssantes/images/image3.png} 
+
+\end{minipage}%
+
+\vfill 
+
+
+\noindent%
+\begin{minipage}{.45\textwidth}%
+
+\textbf{Capteur de pression :}  \\[2mm]
+
+\includegraphics[scale=0.95]{Chapitre 3 - Pression et forces préssantes/images/image4.png} 
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+
+\textbf{Clavier : } \\[2mm]
+
+Cliquer sur l'onglet d'option Grandeur et compléter : \\[2mm]
+
+\includegraphics[scale=0.95]{Chapitre 3 - Pression et forces préssantes/images/image5.png} 
+
+\end{minipage}%
+
+
+\vfill 
+
+
+\defbox{\fbox{
+\begin{minipage}{9cm}{
+
+Appeler M Ruiz pour qu'il vérifie le paramétrage.}
+
+\end{minipage}
+}}
+
+\vfill 
+
+\item Acquisition : 
+
+\begin{itemize}
+    \item 
+
+
+\noindent%
+\begin{minipage}{.85\textwidth}%
+
+\includegraphics{Chapitre 3 - Pression et forces préssantes/images/image6.png} 
+
+\end{minipage}%
+
+\item Régler le volume de la seringue  sur 100 mL, renseigner la boite de dialogue  et cliquer sur le bouton.  \raisebox{-2
+ex} {\includegraphics[]{Chapitre 3 - Pression et forces préssantes/images/icone2.jpg}}
+
+
+
+
+
+
+\newpage
+
+\item Pousser le piston de la seringue de 10 mL , renseigner le nouveau volume de la seringue puis cliquer sur OK Suivant.  
+
+\item Faire de même jusqu'à 53 mL.
+
+\item Cliquer sur \raisebox{-2
+ex}{\includegraphics[]{Chapitre 3 - Pression et forces préssantes/images/icone3.jpg} }pour arrêter l'acquisition. 
+
+\item Enregistrer le fichier (Enregistrer sous).
+
+\item La courbe peut être agrandie en cliquant sur l’icône Échelle automatique \raisebox{-1.5
+ex}{\includegraphics[]{Chapitre 3 - Pression et forces préssantes/images/icone4.jpg} }.
+
+\end{itemize}
+\end{enumerate}
+
+
+
+
+\fcolorbox{black}{white}{\textbf{2. Modélisation}}  \\
+
+\begin{itemize}
+    \item Dans l'onglet Tableau créer une nouvelle grandeur p$\times$V unité SI
+
+    \item Calculer le produit p$\times$V pour les 5 valeurs. 
+
+    \item Commenter les résultats du produit p$\times$V. \\[8mm]
+
+    \dotfill
+
+    \vspace{5mm}
+    On veut modéliser $p=f(V)$ : \\[3mm]
+    
+  \item Clique sur l'icône   \raisebox{-1.5
+ex}{\includegraphics[]{Chapitre 3 - Pression et forces préssantes/images/icone5.jpg} },       et demander la modélisation pour la courbe obtenue. 
+
+
+  \item Cliquer sur l'onglet modélisation automatique et saisir pm = constante/V dans le champ de texte correspondant.
+  
+  \item Cliquer ensuite sur Modéliser et relever la valeur de la constante. \\[8mm]
+  
+  \dotfill 
+
+\vfill 
+
+
+\defbox{\fbox{
+\begin{minipage}{9cm}{
+
+Appeler M Ruiz pour qu'il vérifie vos résultats.}
+
+\end{minipage}
+}}
+
+\vfill 
+    
+\end{itemize}
+
+\vfill 
+
+\fcolorbox{black}{white}{\textbf{3. Exploitation}}  \\[3mm]
+
+\begin{itemize}
+    \item 
+
+
+  Quel type de courbe obtient-on ? \\[3mm]
+
+ \dotfill 
+ 
+  Comment évoluent les grandeurs pression et volume au cours de cette expérience ? \\[3mm]
+
+ \dotfill 
+
+ \vspace{3mm}
+
+ \dotfill 
+
+ 
+ 
+\item Parmi ces affirmations, cocher celles qui sont justes : \\[3mm]
+
+ \begin{itemize}[label=$\square$]
+ 
+
+  \item A température constante, quand la pression d'un gaz augmente, son volume augmente. 
+  
+  \item A température constante, le volume d'un gaz et sa pression sont des grandeurs       proportionnelles. 
+  
+   \item A température constante, le volume d’un gaz est inversement proportionnel à la pression        qu’il reçoit. 
+   
+   \item A température constante, la pression d'un gaz évolue en fonction du carré de son volume. 
+
+   \end{itemize}
+ \end{itemize}
+\end{document}

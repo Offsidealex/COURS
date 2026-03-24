@@ -1,0 +1,342 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{parskip}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\usepackage{tikz}
+\usepackage{tikz-osci}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{9}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{eurosym}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\usepackage{chemist}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2.5}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\usepackage{colortbl}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+\noindent
+
+\begin{center}
+\LARGE{Évaluation- Transporter l'énergie électrique}\\[8mm]
+\end{center}
+\normalsize
+\hrule 
+
+
+\flushleft \textbf{NOM : \hfill Classe : \hspace{3cm} ~~\\[2mm]
+Prénom:\\[0,4cm]
+}
+\hrule\
+\\[0,2cm]
+
+\vspace {8 mm}
+
+
+\fbox{\textbf{Exercice 1 : Choisir la (ou les) bonne(s) réponse(s)}}
+
+
+    \begin{tabular}{p{2mm} p{5.5cm}|C{3cm}|C{3cm}|C{3cm}}
+    
+
+        \ding{202} & La tension efficace s'exprime en :& $\Box $ ~~seconde & $\Box $ ~~Volt  & $\Box $ ~~Ampère \\
+         \hline
+      \ding{203} & Avec la loi d'ohm, on peut calculer R avec la formule  & $\Box $ ~~$R=\dfrac{I}{U}$ & $\Box $ ~~$R=\dfrac{U}{I}$   & $\Box $ ~~ $R = U \times I$ \\
+        \hline
+         \ding{204} & Si m>1 alors le transformateur  &$\Box $ ~~ est élévateur  &$\Box $ ~~ est isolant  & $\Box $ ~~est abaisseur  \\
+         \hline
+         \ding{205} &On peut calculer I avec la formule  &$\Box $ ~~ $I=\dfrac{P_j}{R}$  &$\Box $ ~~ $I=\dfrac{P_j}{R^2}$  & $\Box $ ~~$I=\sqrt{\dfrac{P_j}{R}}$  \\
+
+         \hline
+         
+        \ding{206} & On peut calculer U avec la formule &$\Box $ ~~ $U=R^2 \times P_j$  &$\Box $ ~~ $U= P_j \times R$  & $\Box $ ~~ $U=\sqrt{Pj \times R}$  \\
+
+ 
+        
+         \end{tabular}
+\vspace{3mm}
+
+\fbox{\textbf{Exercice 2}}
+
+Un transformateur supposé parfait est utilisé pour l'alimentation des lampes situées autour d'une piscine. 
+
+\begin{enumerate}
+    \item Parmi les deux modes d'alimentation : tension continue et tension alternative, indiquer celle qui correspond au fonctionnement normal d'un transformateur etreproduire le symbole du transformateur. 
+
+    \vspace{2mm}
+
+    \cadreblanc{10}
+
+
+\item Afin de déterminer la nature du transformateur (élévateur ou abaisseur de tension) , on visualise à l'aide de l'oscilloscope, la tension aux bornes du circuit secondaire. 
+
+
+\noindent%
+\begin{minipage}{.55\textwidth}%
+
+    2.1. Déterminer, en volt, la valeur maximale $U_{max}$ de la tension au secondaire. 
+
+    \cadreblanc{10}
+
+    2.2. En déduire, en volt, la valeur efficace $U_{eff}$ de cette tension (arrondir le résultat à l'unité). 
+
+    \cadreblanc{15}
+\end{minipage}%
+\hfill
+\begin{minipage}{.35\textwidth}%
+\osci[%
+scale=0.5,
+second channel=0, %1 pour activer la deuxième voie, 0 sinon.
+screen offset one=0, %Décalage vertical de la voie 1 sur l’écran
+screen offset two=0, %Décalage vertical de la voie 2 sur l’écran
+time div=5, %Durée par division (en ms)
+voltage div one=5, %Tension par division (en V) pour la voie 1
+voltage div two=2, %Tension par division (en V) pour la voie 2
+sample rate=200, %Taux d’échantillonnage
+xy mode=0, %1 pour l’activer, 0 sinon 
+func one=12*sin(2*180/0.020*x),
+func two=3*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
+color one=D62626, %Couleur de la voie 1 (en hexadecimal)
+color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+\end{minipage}%
+
+\end{enumerate}
+
+\newpage 
+
+2.3. Calculer le rapport de transformation $m$ sachant que la tension efficace au primaire est de 230 V (arrondir le résultat au centième). 
+
+\cadreblanc{15}
+
+2.4. Le transformateur est-il abaisseur ou élévateur de tension ?
+\vspace{5mm}
+
+\dotfill 
+
+
+
+
+
+
+\fbox{\textbf{Exercice 3}}
+\begin{center}
+    
+\textbf{\'A quoi servent les transformateurs sur les pylônes électriques ? }
+\end{center}
+\noindent%
+
+\begin{minipage}{.70\textwidth}%
+
+
+La photographie ci-contre est celle d'un transformateur du réseau EDF.
+
+\textbf{\ding{202} S'approprier} :
+
+\begin{fleche}
+    \item Quelle est la valeur de la tension électrique dans les câbles ? 
+
+    \vspace{5mm}
+
+    \dotfill
+
+        \item Quelle est celle délivrée à la sortie du pylône ? 
+
+    \vspace{5mm}
+
+    \dotfill
+    
+\end{fleche}
+
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.25\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 2 - Transporter l'énergie sous forme électrique/images/EX3.png}
+\end{minipage}%
+
+
+
+
+
+
+
+
+
+
+
+
+
+\textbf{\ding{203} Analyser - Raisonner} \\
+
+\begin{minipage}{.30\textwidth}%
+ Parmi les montages ci-dessous, quel est celui qui permet d'étudier le transformateur à vide ? 
+ 
+ Justifier votre réponse. 
+\end{minipage}%
+\hfill
+\begin{minipage}{.60\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 2 - Transporter l'énergie sous forme électrique/Ex4.png}
+\end{minipage}%
+
+\vspace{8mm}
+
+\dotfill 
+
+
+ 
+
+
+
+
+
+\textbf{\ding{204} Réaliser} \\[3mm]
+
+\begin{minipage}{.45\textwidth}%
+On a réalisé en salle de cours une simulation du fonctionnement de ce transformateur, on obtient l'oscillogramme ci-contre. \\[3mm]
+
+3.1 Relever les valeurs des tensions maximales $U_{1 max}$ et $U_{2 max} $ avec $U_{1 max}$ > $U_{2 max}: 
+
+\begin{multicols}{2}
+ \dotfill 
+
+ \dotfill 
+
+ \end{multicols}
+
+ 
+3.2 Calculer les valeurs des tension efficaces $U_{1 eff}$ et $U_{2 eff} $, arrondir à 0,1 : 
+
+\begin{multicols}{2}
+ \dotfill 
+
+ \dotfill 
+
+ \end{multicols}
+
+ 
+\end{minipage}%
+\hfill
+\begin{minipage}{.40\textwidth}%
+
+\osci[%
+scale=0.6,
+second channel=1, %1 pour activer la deuxième voie, 0 sinon.
+screen offset one=0, %Décalage vertical de la voie 1 sur l’écran
+screen offset two=0, %Décalage vertical de la voie 2 sur l’écran
+time div=5, %Durée par division (en ms)
+voltage div one=200, %Tension par division (en V) pour la voie 1
+voltage div two=20, %Tension par division (en V) pour la voie 2
+sample rate=200, %Taux d’échantillonnage
+xy mode=0, %1 pour l’activer, 0 sinon 
+func one=582*sin(2*180/0.020*x),
+func two=41*sin(2*180/0.020*x+180), %+ 0.2*sin(2*180/0.040*x),
+color one=D62626, %Couleur de la voie 1 (en hexadecimal)
+color two=1053AF, %Couleur de la voie 2 (en hexadecimal)
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+\end{minipage}%
+
+\vspace{8mm}
+
+\newpage 
+
+\begin{minipage}{.50\textwidth}%
+3.3 Calculer le rapport de transformation $m$ : \\(arrondir à 0,001) 
+\end{minipage}%
+\hfill
+\begin{minipage}{.40\textwidth}%
+\cadreblanc{15}
+\end{minipage}%
+
+
+
+
+
+\ding{205} Le transformateur est-il élévateur ou abaisseur de tension ? 
+
+\cadreblanc{15}
+
+\vfill 
+
+\hrule 
+\begin{center}
+   \Large{Énigme : Bonus +1} \\[5mm]
+\end{center}
+
+
+
+\hrule
+
+  Je suis un garçon. La dernière fois, au parc, lorsque je regardais autour de moi, je voyais autant de filles que de garçons. Mais si une fille regardait autour d'elle, elle aurait vu deux fois plus de garçons que de filles. \\[3mm]
+  Combien de personnes étaient au parc?
+
+  \cadreblanc{35}
+
+  \vfill 
+  
+
+\end{document}

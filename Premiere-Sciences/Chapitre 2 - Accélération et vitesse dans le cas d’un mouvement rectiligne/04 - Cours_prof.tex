@@ -1,0 +1,229 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{colortbl}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 1 Bac Pro }
+\setcounter{page}{9}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2024-2025}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+\renewcommand{\arraystretch}{2}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+
+  \newenvironment{itemize*}%  % listes compactes
+    {\begin{itemize}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\parskip}{0pt}}%
+    {\end{itemize}}
+
+
+\frenchbsetup{StandardLists=true}
+\newlist{fleche}{itemize}{1}
+\setlist[fleche]{label=\ding{220},font=\color{orange}}
+
+
+\usepackage[tikz]{bclogo} 
+\newcommand{\ctext}[1]
+{\begin{bclogo}[couleur = white,logo= , arrondi = 0.1,barre=none]
+{}
+\vspace{-8mm}
+~~
+\textcolor{red}{#1}
+~~
+\end{bclogo}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+
+\begin{center}
+ \LARGE{COURS } \\[3mm]
+\end{center}
+
+
+
+\normalsize
+
+\hrule\
+\\[0,5cm]
+
+
+\fcolorbox{black}{white}{\textbf{\ding{202} Chute libre - voir TP2}}\\
+\vspace{-3mm}
+\begin{itemize*}
+\item La chute libre est le mouvement dans le \textbf{vide} d'un solide soumis \textbf{uniquement à l'attraction terrestre. }
+\vfill 
+
+
+\ctext{
+Remarque : lorsque les forces de résistance de l'air et de la poussée d'Archimède sont négligeables, on admet qu'un solide en tombant dans l'atmosphère est en chute libre. 
+}
+\vfill 
+\begin{minipage}{.54\textwidth}%
+ \item
+
+ \ctext{ Un solide en chute libre, lâché sans vitesse initiale, est en \textbf{mouvement rectiligne} et son accélération est \textbf{constante}. \\
+        \item - son déplacement est en ligne droite et \textbf{vertical}. \\
+       \item - dans le cas de la chute libre, l'accélération $a$ (en $\mathrm{m/s^2}$ est égale à $g$ l'accélération de la pesanteur 
+} 
+
+ \item \ctext{La vitesse instantanée $v$ du solide augment proportionnellement au temps : \\
+ $$v=g \times t = 9,8 \times t$$}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.40\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 2 - Accélération et vitesse dans le cas d’un mouvement rectiligne/images/2 - Cours1.png}
+
+\end{minipage}%
+
+\vfill 
+
+\item 
+\noindent%
+\begin{minipage}{.54\textwidth}%
+ \ctext{La chute libre est un mouvement uniformément accéléré : à chaque seconde de chute libre, la vitesse du solide augmente de 9,8 m/s. L'accélération est donc de 9,8 m/s par seconde donc 9,8 $m/s^2$
+ \vspace{1cm}
+ Remarque : La vitesse en chute libre est indépendante de la masse du solide. 
+ \vspace{1cm} }
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.40\textwidth}%
+\includegraphics[width=\textwidth]{Chapitre 2 - Accélération et vitesse dans le cas d’un mouvement rectiligne/images/2 - Cours2.png}
+\end{minipage}%
+\end{itemize*}
+\vfill
+
+\newpage 
+
+\fcolorbox{black}{white}{\textbf{\ding{203} Mouvement rectiligne d'accélération constante}}\\
+\vspace{-3mm}
+\begin{itemize*}
+
+\item Mouvement rectiligne uniformément varié [MRUV]
+
+\noindent%
+\begin{minipage}{.35\textwidth}%
+ \ctext{Lorsqu'un solide est en mouvement rectiligne uniformément varié : \\
+ \begin{itemize}
+     \item son déplacement se fait en ligne droite
+     \item son accélération $a$ en $m/s^2$ est constante
+     \item si a>0 alors la vitesse augmente. 
+     \item si a<0 alors la vitesse diminue
+     \item la vitesse initiale $v_0$ est la vitesse de départ à l'instant $t=0 s$
+     \vspace{1cm}
+     \item La relation entre vitesse et accélération est : \\
+     \Large{$$v=a \times t + v_0$$}
+ \end{itemize}}
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.55\textwidth}%
+\fbox{\includegraphics[width=\textwidth]{Chapitre 2 - Accélération et vitesse dans le cas d’un mouvement rectiligne/images/2 - Cours3.png}} \\[5mm]
+
+\fbox{\includegraphics[width=\textwidth]{Chapitre 2 - Accélération et vitesse dans le cas d’un mouvement rectiligne/images/2 - Cours4.png}}
+\end{minipage}%
+
+\vfill 
+
+\item Mouvement rectiligne uniforme[MRU] (Voir TP1) \\ 
+\begin{fleche}
+\item L'accélération est nulle : $a=0 m/s^2$
+\item La vitesse est constante : $v=v_O=constante$
+\end{fleche}
+
+\item Ordre de grandeur de vitesses et accélérations : \\
+
+
+
+    \begin{tabular}{|c||c|c|c|c|}
+         \hline
+         \rowcolor{orange} Véhicule &  \multicolumn{2}{|c|}{Vitesse} & Accélération & Décélération\\
+         \hline 
+        Train & ~~~~~~$150~ km/h$~~~~~~~~ & ~~~~~~~~ $42~ m/s$ ~~~~~~~~ & ~~~~~~~~ $2 ~m/s^2$ ~~~~~~~~ & ~~~~~~~~ $-5~~m/s^2$~~~~~~~~ \\
+        \hline
+         Ascenseur& $11~ km/h$ & $3~ m/s$ & $2 ~m/s^2$ & $-2~~m/s^2$\\
+         \hline
+         Automobile & $130~ km/h$ & $36~ m/s$ & $3 ~m/s^2$ & $-8~~m/s^2$\\
+         \hline
+         Avion de ligne & $800~ km/h$ & $222~ m/s$ & $4 ~m/s^2$ & $-3~~m/s^2$\\
+         \hline
+         Moto & $130~ km/h$ & $36~ m/s$ & $7 ~m/s^2$ & $-6~~m/s^2$\\
+         \hline 
+    \end{tabular}
+
+
+
+
+
+\vfill 
+\end{itemize*}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

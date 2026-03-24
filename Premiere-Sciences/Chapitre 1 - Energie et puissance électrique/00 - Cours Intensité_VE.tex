@@ -1,0 +1,192 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Première Bac Pro}
+\setcounter{page}{2}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+\setlength{\parindent}{0pt}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\code}{\awesomebox[black]{2pt}{
+\includegraphics[scale=0.15]{Chapitre 1 - Energie et puissance électrique/images/frame.png}
+}{black}}
+
+\newcommand{\moteur}{\awesomebox[black]{2pt}{
+\includegraphics[scale=1]{images/moteur.jpg} 
+}{black}}
+
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\frenchbsetup{StandardLists=true}
+
+
+
+\begin{document}
+
+
+\hrule\
+
+
+\begin{center}
+ \LARGE{Activité 1 - Revoir l'intensité électrique}
+\end{center}
+
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+
+
+Une analogie intéressante pour comprendre de façon simple les notions d'intensité et de tension peut être faite avec l'écoulement d'une rivière. Celle-ci s'écoule d'amont vers l'aval.  Le dénivelé, différence d'altitude entre le point haut et le point bas de la rivière, peut être assimilé à la tension, le débit à l'intensité du courant et la taille à la section d'un câble électrique.
+
+
+\newtcolorbox{mybox}{colback=white,
+colframe=black!5!black}
+
+\vfill 
+
+\begin{enumerate}
+    \item Mesure de l'intensité :
+
+\cadreblanc{30}
+
+
+
+Exercice 1 : Convertir (avec 1A = 1000 mA)  ~~ 
+
+
+\vspace{1mm}
+
+\begin{multicols}{4}
+$1848$ mA = \dotfill A 
+\vspace{5mm}
+
+$77$ mA = \dotfill A 
+\vspace{5mm}
+
+
+$1,085$ A = \dotfill mA
+\vspace{5mm}
+
+
+$0,021$ A = \dotfill mA
+\vspace{5mm}
+    
+\end{multicols}
+
+\cadreblanc{25}
+    \vfill
+
+\item Lois de l'intensité : \\[-2mm]
+    \vspace{-2mm}
+    \begin{itemize}
+        \item Dans un circuit en série, l'intensité est la même en tout point du circuit. 
+        \item L'intensité qui sort du générateur est identique à celle qui y retourne, conformément à la loi de Kirchhoff.
+        \item Dans un circuit en dérivations, l'intensité dans la branche principale est égale à la somme des intensités dans les branches dérivées. Il s'agit de la loi des noeuds. 
+    \end{itemize}
+    \vspace{-3mm}
+    
+    \begin{center}
+    
+        \begin{minipage}{7cm}
+        \cadreblanc{10}
+        \end{minipage}
+        
+    \end{center}
+
+    
+    Exercice 2 :
+    Dans le circuit ci dessous \\
+    \vspace{-5mm}
+\noindent%
+\begin{minipage}{.65\textwidth}%
+ On donne $\mathrm{I_2 }$ = 0,7 A et $\mathrm{I_3 }$ = 0,3 A.
+ 
+En appliquant la loi des noeuds, calculer les
+intensités manquantes. 
+
+\renewcommand{\arraystretch}
+{3}
+\begin{tabular}{|c||p{1.cm}|p{1.cm}|p{1.cm}|p{1.cm}|p{1.cm}|p{1.cm}|} \hline
+Intensité  &  $I_1$& $I_2$ &$I_3$  & $I_4$ & $I_5$ & $I_6$ \\ \hline
+Valeur (A)& & & & & &\\ \hline \end{tabular}
+
+
+
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+ \begin{center}
+     
+
+\includegraphics[scale=0.4]{Chapitre 1 - Energie et puissance électrique/images/ex2.png} \end{center}
+\end{minipage}%
+
+\vfill 
+
+
+
+
+          
+
+ 
+
+
+
+    
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}
