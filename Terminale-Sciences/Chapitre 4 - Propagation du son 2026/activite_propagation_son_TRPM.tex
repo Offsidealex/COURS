@@ -1,0 +1,384 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\pgfplotsset{compat=1.18}
+
+\geometry{top=2.2cm, bottom=2cm, left=2cm, right=2cm, headheight=15pt}
+
+%------------------------------------------------------------
+% Couleurs (calquées sur le modèle moteurs_electriques.pdf)
+%------------------------------------------------------------
+\definecolor{bluedark}{RGB}{50, 100, 160}
+\definecolor{bluelight}{RGB}{210, 228, 248}
+\definecolor{bluemid}{RGB}{170, 200, 235}
+\definecolor{grisfond}{RGB}{245, 245, 245}
+
+%------------------------------------------------------------
+% En-tête / pied de page
+%------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Physique-Chimie -- Terminale}
+\rhead{\small Propagation du son}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+%------------------------------------------------------------
+% Boîtes tcolorbox
+%------------------------------------------------------------
+% Boîte de section (en-tête de partie)
+\tcbset{
+  stylepartie/.style={
+    colback=bluedark,
+    colframe=bluedark,
+    coltext=white,
+    fonttitle=\bfseries,
+    boxrule=0pt,
+    arc=3pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=10pt, after skip=6pt,
+  },
+  styledoc/.style={
+    colback=bluelight,
+    colframe=bluemid,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt,
+    before skip=6pt, after skip=4pt,
+    fonttitle=\bfseries\small,
+    attach boxed title to top left={yshift=-2mm, xshift=4mm},
+    boxed title style={colback=bluemid, colframe=bluemid, arc=2pt},
+  },
+  styleinfo/.style={
+    colback=grisfond,
+    colframe=bluemid,
+    boxrule=0.8pt,
+    arc=3pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt,
+    before skip=6pt, after skip=6pt,
+  },
+}
+
+%------------------------------------------------------------
+% Commandes utiles
+%------------------------------------------------------------
+% Cadre pour les calculs (coins arrondis, style cohérent)
+\newcommand{\cadrecalcul}[1][4cm]{%
+  \vspace{5mm}%
+  \begin{tcolorbox}[
+    colback=white,
+    colframe=bluemid,
+    boxrule=0.8pt,
+    arc=4pt,
+    left=4pt, right=4pt,
+    top=0pt, bottom=0pt,
+    height=#1,
+    after skip=2mm,
+  ]
+  \end{tcolorbox}%
+}
+
+% Lignes de réponse pointillées
+\newcommand{\reponse}[1]{%
+  \vspace{5mm}%
+  \foreach \i in {1,...,#1}{%
+    \par\noindent\makebox[\linewidth]{\dotfill}\vspace{2mm}%
+  }%
+}
+
+% Question numérotée style ▶
+\newcounter{numquestion}
+\newcommand{\question}[1]{%
+  \stepcounter{numquestion}%
+  \vspace{6pt}%
+  \noindent{\color{bluedark}$\blacktriangleright$~\textbf{Question~\thenumquestion.}}~#1%
+  \vspace{2pt}%
+}
+
+%------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------
+
+%============================================================
+% TITRE
+%============================================================
+\begin{tcolorbox}[
+  colback=white, colframe=bluedark, boxrule=1.5pt, arc=4pt,
+  before skip=0pt, after skip=8pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+]
+  \begin{center}
+    {\color{bluedark}\Large\bfseries Propagation du son}\\[4pt]
+    {\large Activité documentaire}\\[6pt]
+    \hrule height 0.4pt \vspace{6pt}
+    \textbf{Durée :} 45 min \hfill \textbf{Niveau :} Terminale 
+  \end{center}
+\end{tcolorbox}
+
+\vspace{2pt}
+\noindent\rule{\linewidth}{0.5pt}
+\vspace{4pt}
+
+\noindent\textbf{Nom :} \dotfill \hspace{1cm} \textbf{Prénom :} \dotfill \hspace{1cm} \textbf{Classe :} \dotfill
+
+\vspace{2pt}
+\noindent\rule{\linewidth}{0.5pt}
+\vspace{6pt}
+
+%------------------------------------------------------------
+% Compétences
+%------------------------------------------------------------
+\begin{tcolorbox}[styleinfo]
+  \textbf{\color{bluedark}Compétences travaillées (référentiel BO)}
+  \begin{itemize}[noitemsep, leftmargin=1.2em]
+    \item Extraire des informations de documents et les exploiter.
+    \item Utiliser la relation $v = d / \Delta t$ pour résoudre des problèmes.
+    \item Relier les propriétés du son à des applications industrielles (contrôle non destructif).
+  \end{itemize}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+% Contexte
+%------------------------------------------------------------
+\begin{tcolorbox}[styleinfo]
+  \textbf{\color{bluedark}Contexte}\\[4pt]
+  Dans un atelier de production mécanique, les techniciens TRPM utilisent régulièrement
+  des appareils de \textbf{contrôle non destructif (CND)} pour vérifier l'intégrité des pièces
+  sans les endommager. L'une des techniques les plus employées est le \textbf{contrôle par
+  ultrasons}, qui repose sur les propriétés de propagation du son dans les matériaux.
+  Dans cette activité, vous allez comprendre comment fonctionne cette technique à partir
+  de l'étude de la propagation du son.
+\end{tcolorbox}
+
+\vspace{4pt}
+
+%============================================================
+% PARTIE A
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie A -- Nature et propriétés du son \hfill {\normalfont\small (15 min)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+% Document 1
+%------------------------------------------------------------
+\begin{tcolorbox}[styledoc, title={Document 1 -- La propagation du son}]
+  Le son est une \textbf{onde mécanique} : il correspond à la propagation d'une perturbation
+  de pression dans un milieu matériel (solide, liquide ou gaz). \textbf{Le son ne se propage
+  pas dans le vide.}
+
+  \medskip
+
+  Le son se propage sous forme d'une \textbf{onde longitudinale} : les molécules du milieu
+  vibrent dans la même direction que la direction de propagation, créant alternativement
+  des zones de \textbf{compression} et de \textbf{dépression}.
+
+  \medskip
+
+  La vitesse de propagation du son s'appelle la \textbf{célérité}, notée $v$ (en m/s). Elle
+  dépend du milieu traversé : elle est plus faible dans les gaz, plus élevée dans les
+  liquides, et encore plus élevée dans les solides. Elle augmente aussi avec la
+  \textbf{température} : à 0°C, $v \approx 331$~m/s dans l'air ; à 20°C, $v \approx 340$~m/s.
+
+  \medskip
+
+  \textbf{Relation fondamentale :} si un son parcourt une distance $d$ (en m) pendant
+  une durée $\Delta t$ (en s) à la célérité $v$ (en m/s) :
+  \[
+    \boxed{v = \frac{d}{\Delta t}}
+  \]
+  \vspace{5mm}
+\end{tcolorbox}
+
+\newpage
+
+
+\question{Le son peut-il se propager dans le vide ? Justifier en citant le document~1.}
+\reponse{2}
+
+\question{Comparer la célérité du son dans les gaz, les liquides et les solides. Dans quel milieu le son se propage-t-il le plus vite ?}
+\reponse{2}
+
+\question{La célérité du son dans l'air à 20°C est $v = 340$~m/s. Convertir cette valeur en km/h. \textit{(Rappel : $1$~m/s $= 3{,}6$~km/h)}}
+\reponse{2}
+
+\vspace{4pt}
+
+%============================================================
+% PARTIE B
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie B -- Célérité du son dans les matériaux et application industrielle \hfill {\normalfont\small (15 min)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+% Document 2
+%------------------------------------------------------------
+\begin{tcolorbox}[styledoc, title={Document 2 -- Célérité du son dans différents milieux et contrôle non destructif}]
+
+  \textbf{Tableau des célérités du son :}
+
+  \vspace{6pt}
+  \begin{center}
+  \footnotesize
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{|l|c|c|c|c|c|c|c|}
+    \hline
+    \rowcolor{bluemid}
+    \textbf{Milieu}          & \textbf{Air (20°C)} & \textbf{Eau (20°C)} & \textbf{Aluminium} & \textbf{Acier} & \textbf{Cuivre} & \textbf{Fonte} & \textbf{Caoutchouc} \\
+    \hline
+    \textbf{État}            & Gaz & Liquide & Solide & Solide & Solide & Solide & Solide \\
+    \hline
+    \textbf{Célérité (m/s)}  & 340 & 1\,480  & 6\,300 & 5\,900 & 4\,700 & 3\,500 & 150 \\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  \vspace{8pt}
+
+  \textbf{Le contrôle non destructif (CND) par ultrasons :}
+
+  \medskip
+
+  Un \textbf{capteur piézoélectrique} émet une courte impulsion ultrasonore dans la pièce
+  à contrôler. L'onde se propage dans le matériau et se réfléchit sur les interfaces
+  (fond de la pièce, fissure, inclusion\ldots). Le capteur reçoit les \textbf{échos} et mesure
+  le temps de parcours $\Delta t$.
+
+  En connaissant la célérité $v$ du son dans le matériau, on calcule la \textbf{distance
+  parcourue}. Comme l'onde fait un trajet aller-retour :
+  \[
+    d = \frac{v \times \Delta t}{2}
+  \]
+
+  \begin{center}
+  \begin{tikzpicture}[scale=0.88]
+    \fill[gray!25] (0,0) rectangle (9,2);
+    \draw[thick] (0,0) rectangle (9,2);
+    % Défaut
+    \fill[white] (6,0.7) ellipse (0.45 and 0.28);
+    \draw[thick] (6,0.7) ellipse (0.45 and 0.28);
+    \node[below] at (6,0.42) {\small défaut};
+    % Capteur
+    \fill[bluedark!80] (2.2,2) rectangle (3,2.6);
+    \draw[thick] (2.2,2) rectangle (3,2.6);
+    \node[above] at (2.6,2.62) {\small capteur};
+    % Flèche fond (aller)
+    \draw[->, thick, blue!80!black] (2.5,2) -- (2.5,0.05);
+    \node[right, blue!80!black] at (2.55,1) {\small émission};
+    % Flèche fond (retour)
+    \draw[->, thick, red!70!black, dashed] (2.7,0.05) -- (2.7,2);
+    \node[left, red!70!black] at (2.65,1.3) {\small écho fond};
+    % Flèche défaut (aller)
+    \draw[->, thick, blue!50!black] (2.85,2) -- (5.58,0.9);
+    % Flèche défaut (retour)
+    \draw[->, thick, red!50!black, dashed] (6.42,0.9) -- (2.95,2);
+    \node[above right, red!50!black] at (5.5,1.5) {\small écho défaut};
+    % Légende épaisseur
+    \draw[<->, thick] (8.5,0) -- (8.5,2);
+    \node[right] at (8.55,1) {\small $e$};
+  \end{tikzpicture}
+  \end{center}
+\end{tcolorbox}
+
+\newpage
+
+\question{Relever dans le tableau la célérité du son dans l'acier et dans l'aluminium. Laquelle est la plus élevée ?}
+\reponse{2}
+
+\question{Pourquoi parle-t-on de contrôle \textit{non destructif} ? Quel est l'intérêt pour un technicien TRPM ?}
+\reponse{3}
+
+\question{Dans la formule $d = \dfrac{v \times \Delta t}{2}$, expliquer pourquoi on divise par 2.}
+\reponse{2}
+
+\vspace{4pt}
+
+%============================================================
+% PARTIE C
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie C -- Application : contrôle d'une pièce en acier \hfill {\normalfont\small (15 min)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+% Document 3
+%------------------------------------------------------------
+\begin{tcolorbox}[styledoc, title={Document 3 -- Oscillogramme d'un contrôle ultrasonore}]
+
+  Un technicien TRPM effectue le contrôle d'une pièce en \textbf{acier} d'épaisseur
+  nominale $e = 60$~mm. L'appareil enregistre les échos reçus en fonction du temps.
+
+  \vspace{6pt}
+  \begin{center}
+  \begin{tikzpicture}[scale=0.7]
+    \begin{axis}[
+      width=13.5cm, height=5cm,
+      xlabel={Temps $\Delta t$ ($\mu$s)},
+      ylabel={Amplitude (u.a.)},
+      xmin=0, xmax=25,
+      ymin=-0.1, ymax=1.5,
+      xtick={0,2,4,6,8,10,12,14,16,18,20,22,24},
+      ytick={0,0.5,1},
+      grid=major,
+      grid style={dashed, gray!40},
+      axis lines=left,
+      tick label style={font=\small},
+      label style={font=\small},
+    ]
+      % Impulsion initiale
+      \addplot[blue!80!black, very thick] coordinates {(0,0)(0,1.3)(0.5,1.3)(0.5,0)};
+      \node[above, blue!80!black, font=\small] at (axis cs:0.25,1.32) {émission};
+      % Écho du défaut (écho A)
+      \addplot[red!70!black, thick] coordinates {(8.1,0)(8.1,0.72)(8.6,0.72)(8.6,0)};
+      \node[above, red!70!black, font=\small] at (axis cs:8.35,0.74) {écho A};
+      % Écho du fond (écho B)
+      \addplot[orange!80!black, thick] coordinates {(20.3,0)(20.3,0.95)(20.8,0.95)(20.8,0)};
+      \node[above, orange!80!black, font=\small] at (axis cs:20.55,0.97) {écho B};
+    \end{axis}
+  \end{tikzpicture}
+  \end{center}
+
+  \vspace{4pt}
+  \textbf{Données lues sur l'oscillogramme :}
+  \begin{itemize}[noitemsep]
+    \item \textbf{Écho B} (fond de la pièce) : $\Delta t_B = 20{,}3~\mu\text{s}$
+    \item \textbf{Écho A} (anomalie interne) : $\Delta t_A = 8{,}1~\mu\text{s}$
+  \end{itemize}
+
+  \vspace{4pt}
+  \textit{Rappel : $1~\mu\text{s} = 10^{-6}$~s \hspace{1.5cm} Célérité du son dans l'acier : $v = 5\,900$~m/s}
+
+\end{tcolorbox}
+
+\question{En utilisant l'écho B et la formule $d = \dfrac{v \times \Delta t_B}{2}$, calculer l'épaisseur de la pièce mesurée. Comparer au résultat attendu ($e = 60$~mm).}
+
+\cadrecalcul[2.3cm]
+
+\question{En utilisant l'écho A, calculer la profondeur à laquelle se trouve l'anomalie interne dans la pièce.}
+
+\cadrecalcul[2.3cm]
+
+\question{\textbf{Synthèse :} Le technicien décide de rejeter cette pièce. Justifier cette décision à partir des résultats obtenus aux questions précédentes.}
+\reponse{3}
+
+\vspace{8pt}
+\begin{center}
+  \color{bluedark}\rule{0.5\linewidth}{0.6pt}
+\end{center}
+
+\end{document}
