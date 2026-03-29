@@ -1,0 +1,231 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\usepackage[table]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+
+\setlength{\extrarowheight}{1mm}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Terminale Bac Pro -- TRPM}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+\definecolor{grandtotal}{RGB}{50,100,160}
+
+% Macro en-tête de partie pleine largeur
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Propagation du son -- Activité documentaire \hspace{1cm} Terminale Bac Pro TRPM \hspace{1cm} \textbf{Total : /20 points}}
+\end{center}
+
+\vspace{3mm}
+
+% ===================== PARTIE A =====================
+\exotitle{Partie A -- Nature et propriétés du son}{/5 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Éléments de réponse attendus} & \textbf{Pts} \\
+  \hline
+  1
+  & Le son ne se propage pas dans le vide (onde mécanique, milieu matériel nécessaire). Citation du document.
+  & 1 \\
+  \hline
+  \multirow{2}{*}{2}
+  & Gaz : faible ($\approx$~340~m/s) / Liquides : moyenne ($\approx$~1~480~m/s) / Solides : élevée (jusqu'à 6~300~m/s)
+  & 1 \\
+  \cline{2-3}
+  & Conclusion : le son se propage le plus vite dans les \textbf{solides}
+  & 1 \\
+  \hline
+  \multirow{2}{*}{3}
+  & Formule de conversion correcte : $v = 340 \times 3{,}6$
+  & 0{,}5 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $v = 1\,224$~km/h (avec unité)
+  & 1{,}5 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie A}} & \textbf{/5} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== PARTIE B =====================
+\exotitle{Partie B -- Célérité dans les matériaux et CND}{/6 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Éléments de réponse attendus} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{4}
+  & Relevé correct : Acier 5~900~m/s / Aluminium 6~300~m/s
+  & 1 \\
+  \cline{2-3}
+  & Comparaison : célérité plus élevée dans l'aluminium
+  & 1 \\
+  \hline
+  \multirow{2}{*}{5}
+  & Définition : on ne détruit/n'endommage pas la pièce lors du contrôle
+  & 1 \\
+  \cline{2-3}
+  & Intérêt TRPM : contrôle de 100\% de la production, pièces réutilisables si conformes
+  & 1 \\
+  \hline
+  6
+  & Trajet aller-retour expliqué : $\Delta t$ = durée pour 2 fois la distance, donc on divise par 2
+  & 2 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie B}} & \textbf{/6} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== PARTIE C =====================
+\exotitle{Partie C -- Application : contrôle d'une pièce en acier}{/9 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Éléments de réponse attendus} & \textbf{Pts} \\
+  \hline
+  \multirow{4}{*}{7}
+  & Conversion correcte : $\Delta t_B = 20{,}3 \times 10^{-6}$~s
+  & 0{,}5 \\
+  \cline{2-3}
+  & Application de la formule : $d = \dfrac{v \times \Delta t_B}{2}$
+  & 1 \\
+  \cline{2-3}
+  & Calcul numérique correct : $d = \dfrac{5\,900 \times 20{,}3 \times 10^{-6}}{2}$
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $d \approx 59{,}9$~mm -- Comparaison avec 60~mm (cohérent, écart $<$ 0,2\%)
+  & 1{,}5 \\
+  \hline
+  \multirow{3}{*}{8}
+  & Conversion correcte : $\Delta t_A = 8{,}1 \times 10^{-6}$~s
+  & 0{,}5 \\
+  \cline{2-3}
+  & Application de la formule avec $\Delta t_A$
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $d \approx 23{,}9$~mm (avec unité)
+  & 1{,}5 \\
+  \hline
+  \multirow{2}{*}{9}
+  & Identification de l'anomalie interne à 23,9~mm (défaut détecté)
+  & 1 \\
+  \cline{2-3}
+  & Justification du rejet : risque de rupture / non-conformité au cahier des charges
+  & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie C}} & \textbf{/9} \\
+  \hline
+\end{tabularx}
+
+\vspace{6mm}
+
+% ===================== TOTAL =====================
+\noindent\colorbox{grandtotal}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \textcolor{white}{\textbf{\Large \hfill TOTAL \hfill /20 points \hfill}}%
+  }%
+}
+
+\vspace{6mm}
+
+% ===================== TABLEAU ÉLÈVES =====================
+\noindent\textbf{Récapitulatif de la classe :}
+
+\vspace{2mm}
+
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}p{4.5cm}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Nom Prénom} & \textbf{Observations} & \textbf{Part. A /5} & \textbf{Part. B /6} & \textbf{Part. C /9} & \textbf{Total /20} \\
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  & & & & & \\[6mm]
+  \hline
+  \rowcolor{totalrow}
+  \textbf{Moyenne} & & & & & \\
+  \hline
+\end{tabularx}
+
+\end{document}

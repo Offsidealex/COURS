@@ -1,0 +1,236 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\pgfplotsset{compat=1.18}
+
+\geometry{top=2.2cm, bottom=2cm, left=2cm, right=2cm, headheight=15pt}
+
+%------------------------------------------------------------
+% Couleurs
+%------------------------------------------------------------
+\definecolor{bluedark}{RGB}{50, 100, 160}
+\definecolor{bluelight}{RGB}{210, 228, 248}
+\definecolor{bluemid}{RGB}{170, 200, 235}
+\definecolor{grisfond}{RGB}{245, 245, 245}
+\definecolor{vertcorr}{RGB}{34, 120, 60}
+\definecolor{vertlight}{RGB}{220, 245, 225}
+\definecolor{vertmid}{RGB}{150, 210, 170}
+
+%------------------------------------------------------------
+% En-tête / pied de page
+%------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Physique-Chimie -- Terminale Bac Pro -- TRPM}
+\rhead{\small \textbf{CORRIGÉ} -- Propagation du son}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+%------------------------------------------------------------
+% Boîtes tcolorbox
+%------------------------------------------------------------
+\tcbset{
+  stylepartie/.style={
+    colback=bluedark, colframe=bluedark, coltext=white,
+    boxrule=0pt, arc=3pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=10pt, after skip=6pt,
+  },
+  stylecorr/.style={
+    colback=vertlight, colframe=vertmid,
+    boxrule=0.8pt, arc=4pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    before skip=4pt, after skip=6pt,
+  },
+  styleinfo/.style={
+    colback=grisfond, colframe=bluemid,
+    boxrule=0.8pt, arc=3pt,
+    left=8pt, right=8pt, top=5pt, bottom=5pt,
+    before skip=6pt, after skip=6pt,
+  },
+}
+
+%------------------------------------------------------------
+% Commandes
+%------------------------------------------------------------
+\newcounter{numquestion}
+\newcommand{\question}[1]{%
+  \stepcounter{numquestion}%
+  \vspace{8pt}%
+  \noindent{\color{bluedark}$\blacktriangleright$~\textbf{Question~\thenumquestion.}}~#1%
+  \vspace{2pt}%
+}
+
+\newcommand{\repcorr}[1]{%
+  \begin{tcolorbox}[stylecorr]
+    {\color{vertcorr} #1}
+  \end{tcolorbox}%
+}
+
+%------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------
+
+%============================================================
+% TITRE
+%============================================================
+\begin{tcolorbox}[
+  colback=white, colframe=bluedark, boxrule=1.5pt, arc=4pt,
+  before skip=0pt, after skip=8pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+]
+  \begin{center}
+    {\color{bluedark}\Large\bfseries Propagation du son}\\[4pt]
+    {\large Activité documentaire -- \textbf{\color{vertcorr}CORRIGÉ}}\\[6pt]
+    \hrule height 0.4pt \vspace{6pt}
+    \textbf{Durée :} 45 min \hfill \textbf{Classe :} Terminale Bac Pro TRPM \hfill \textbf{Total : 20 points}
+  \end{center}
+\end{tcolorbox}
+
+\vspace{6pt}
+
+%============================================================
+% PARTIE A
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie A -- Nature et propriétés du son \hfill {\normalfont\small (15 min)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+\question{Le son peut-il se propager dans le vide ? Justifier en citant le document~1.}
+
+\repcorr{
+  \textbf{Non}, le son ne peut pas se propager dans le vide. Le document~1 précise :
+  \textit{« Le son ne se propage pas dans le vide. »} C'est une onde \textbf{mécanique}
+  qui nécessite un milieu matériel (solide, liquide ou gaz) pour se propager.
+}
+
+%------------------------------------------------------------
+\question{Comparer la célérité du son dans les gaz, les liquides et les solides. Dans quel milieu le son se propage-t-il le plus vite ?}
+
+\repcorr{
+  D'après le document~1 :
+  \begin{itemize}[noitemsep]
+    \item Dans les \textbf{gaz} : célérité faible $\approx 340$~m/s (air à 20°C).
+    \item Dans les \textbf{liquides} : célérité plus élevée $\approx 1\,480$~m/s (eau).
+    \item Dans les \textbf{solides} : célérité encore plus élevée, jusqu'à $6\,300$~m/s (aluminium).
+  \end{itemize}
+  $\Rightarrow$ Le son se propage le plus vite dans les \textbf{solides}.
+}
+
+%------------------------------------------------------------
+\question{La célérité du son dans l'air à 20°C est $v = 340$~m/s. Convertir cette valeur en km/h.}
+
+\repcorr{
+  \[
+    v = 340~\text{m/s} \times 3{,}6 = \boxed{1\,224~\text{km/h}}
+  \]
+}
+
+\vspace{4pt}
+
+%============================================================
+% PARTIE B
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie B -- Célérité du son dans les matériaux et application industrielle \hfill {\normalfont\small (15 min)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+\question{Relever dans le tableau la célérité du son dans l'acier et dans l'aluminium. Laquelle est la plus élevée ?}
+
+\repcorr{
+  D'après le tableau du document~2 :
+  \begin{itemize}[noitemsep]
+    \item Acier : $v = 5\,900$~m/s
+    \item Aluminium : $v = 6\,300$~m/s
+  \end{itemize}
+  $\Rightarrow$ La célérité est plus élevée dans l'\textbf{aluminium} ($6\,300 > 5\,900$~m/s).
+}
+
+%------------------------------------------------------------
+\question{Pourquoi parle-t-on de contrôle \textit{non destructif} ? Quel est l'intérêt pour un technicien TRPM ?}
+
+\repcorr{
+  Le contrôle est dit \textbf{non destructif} car on vérifie l'intégrité de la pièce
+  \textbf{sans l'endommager} ni la détruire : les ondes ultrasonores traversent la pièce
+  sans l'abîmer.\\[4pt]
+  \textbf{Intérêt pour le technicien TRPM :} on peut contrôler la totalité de la
+  production, et les pièces conformes peuvent être directement utilisées. Cela évite
+  le gaspillage et garantit la sécurité des pièces en service.
+}
+
+%------------------------------------------------------------
+\question{Dans la formule $d = \dfrac{v \times \Delta t}{2}$, expliquer pourquoi on divise par 2.}
+
+\repcorr{
+  L'onde ultrasonore effectue un trajet \textbf{aller-retour} : elle part du capteur,
+  atteint l'interface (fond ou défaut), puis revient au capteur. La durée $\Delta t$
+  correspond donc à deux fois la distance réelle. On divise par 2 pour obtenir la
+  distance \textbf{simple} (capteur → interface).
+}
+
+\vspace{4pt}
+
+%============================================================
+% PARTIE C
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie C -- Application : contrôle d'une pièce en acier \hfill {\normalfont\small (15 min)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+\question{En utilisant l'écho B et la formule $d = \dfrac{v \times \Delta t_B}{2}$, calculer l'épaisseur de la pièce mesurée. Comparer au résultat attendu ($e = 60$~mm).}
+
+\repcorr{
+  \textbf{Données :} $v = 5\,900$~m/s \quad $\Delta t_B = 20{,}3~\mu\text{s} = 20{,}3 \times 10^{-6}$~s
+  \[
+    d = \frac{v \times \Delta t_B}{2} = \frac{5\,900 \times 20{,}3 \times 10^{-6}}{2}
+      = \frac{0{,}11977}{2} \approx \boxed{0{,}0599~\text{m} = 59{,}9~\text{mm}}
+  \]
+  \textbf{Comparaison :} $59{,}9$~mm $\approx 60$~mm $\Rightarrow$ le résultat est cohérent avec
+  l'épaisseur nominale (écart $< 0{,}2$~\%).
+}
+
+%------------------------------------------------------------
+\question{En utilisant l'écho A, calculer la profondeur à laquelle se trouve l'anomalie interne dans la pièce.}
+
+\repcorr{
+  \textbf{Données :} $v = 5\,900$~m/s \quad $\Delta t_A = 8{,}1~\mu\text{s} = 8{,}1 \times 10^{-6}$~s
+  \[
+    d = \frac{v \times \Delta t_A}{2} = \frac{5\,900 \times 8{,}1 \times 10^{-6}}{2}
+      = \frac{0{,}04779}{2} \approx \boxed{0{,}0239~\text{m} = 23{,}9~\text{mm}}
+  \]
+  L'anomalie se situe à environ \textbf{23,9~mm} de la surface de la pièce.
+}
+
+%------------------------------------------------------------
+\question{\textbf{Synthèse :} Le technicien décide de rejeter cette pièce. Justifier cette décision à partir des résultats obtenus aux questions précédentes.}
+
+\repcorr{
+  L'écho A révèle la présence d'une \textbf{anomalie interne} (fissure, inclusion ou
+  porosité) à 23,9~mm de profondeur dans la pièce. Une telle anomalie peut
+  \textbf{fragiliser la pièce} et provoquer une rupture prématurée en service,
+  ce qui représente un risque de sécurité inacceptable.\\[4pt]
+  $\Rightarrow$ Le technicien a raison de \textbf{rejeter la pièce} : elle n'est pas conforme
+  au cahier des charges (absence de défaut interne).
+}
+
+\vspace{10pt}
+\begin{center}
+  \color{bluedark}\rule{0.5\linewidth}{0.6pt}
+\end{center}
+
+\end{document}
