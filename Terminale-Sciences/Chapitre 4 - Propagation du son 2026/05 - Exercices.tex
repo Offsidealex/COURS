@@ -1,0 +1,324 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de TSN1}
+\setcounter{page}{3}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Vendredi 17 mai 2024}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\frenchbsetup{StandardLists=true}
+\begin{document}
+
+
+
+\begin{center}
+\LARGE{EXERCICES}
+\end{center}
+
+
+
+
+\hrule
+
+\vspace{1cm}
+
+\textbf{Exercice 1 - QCM }
+Conversions d'unités de longueurs multiples et sous-multiples :
+
+\begin {multicols}{3}
+
+\begin{enumerate}
+\item Combien de millimètres y a-t-il dans un mètre ?
+\begin{enumerate}
+\item[a.] 10
+\item[b.] 100
+\item[c.] 1000
+\item[d.] 10000
+\end{enumerate}
+\item Combien de micromètres y a-t-il dans un mètre ?
+\begin{enumerate}
+\item[a.] 10
+\item[b.] $10^2$
+\item[c.] $10^4$
+\item[d.] 1 000 000
+\end{enumerate}
+\item Combien de kilomètres y a-t-il dans un millimètre ?
+\begin{enumerate}
+\item[a.] $10^{-6}$
+\item[b.] $10^{-5}$
+\item[c.] $10^{-4}$
+\item[d.] $10^{-3}$
+\end{enumerate}
+
+\columnbreak
+
+\item Combien de nanomètres y a-t-il dans un millimètre ?
+\begin{enumerate}
+\item[a.] $10^3$
+\item[b.] $10^6$
+\item[c.] $10^9$
+\item[d.] $10^{12}$
+\end{enumerate}
+\item Combien de centimètres y a-t-il dans un kilomètre ?
+\begin{enumerate}
+\item[a.] 100
+\item[b.] 1000
+\item[c.] 10000
+\item[d.] 100000
+\end{enumerate}
+\item Combien de picomètres y a-t-il dans un centimètre ?
+\begin{enumerate}
+\item[a.] $10^{10}$
+\item[b.] $10^{12}$
+\item[c.] $10^{14}$
+\item[d.] $10^{16}$
+\end{enumerate}
+\item Combien de décimètres y a-t-il dans un kilomètre ?
+\begin{enumerate}
+\item[a.] 100
+\item[b.] 1000
+\item[c.] 10000
+\item[d.] 100000
+\end{enumerate}
+
+\columnbreak
+
+
+\item Combien de femtomètres y a-t-il dans un mètre ?
+\begin{enumerate}
+\item[a.] $10^{12}$
+\item[b.] $10^{13}$
+\item[c.] $10^{14}$
+\item[d.] $10^{15}$
+\end{enumerate}
+\item Combien de décamètres y a-t-il dans un hectomètre ?
+\begin{enumerate}
+\item[a.] 1
+\item[b.] 10
+\item[c.] 100
+\item[d.] 1000
+\end{enumerate}
+\item Combien de attomètres y a-t-il dans un millimètre ?
+\begin{enumerate}
+\item[a.] $10^{12}$
+\item[b.] $10^{15}$
+\item[c.] $10^{18}$
+\item[d.] $10^{21}$
+\end{enumerate}
+\end{enumerate}
+
+\end{multicols}
+
+
+\dotfill \textbf{Notes  } \dotfill
+
+\begin{multicols}{2}
+
+1 millimètre (mm) = $10^{-3}$ mètres (m)
+
+1 micromètre ($\mu$m) = $10^{-6}$ mètres (m)
+
+1 nanomètre (nm) = $10^{-9}$ mètres (m)
+
+1 picomètre (pm) = $10^{-12}$ mètres (m)
+
+1 femtomètre (fm) = $10^{-15}$ mètres (m)
+
+1 attomètre (am) = $10^{-18}$ mètres (m)
+
+1 kilomètre (km) = 1000 mètres (m)
+
+1 centimètre (cm) = 0.01 mètres (m)
+
+1 décimètre (dm) = 0.1 mètres (m)
+
+1 décamètre (dam) = 10 mètres (m)
+
+1 hectomètre (hm) = 100 mètres (m)
+
+\end{multicols}
+
+\newpage
+
+\newpage
+
+\textbf{Exercice 2 - QCM}\\
+Cocher la ou les bonnes réponses\\
+\begin{multicols}{2}
+ La célérité du son dans l'air à $20^{\circ} C$ est : 
+\begin{itemize}[label=$\square$]
+	\item 343 km/s
+	\item 343 m/s
+	\item 343 m/h
+\end{itemize}
+
+
+\ding{203} La célérité de la lumière est de 300 000 km/s, donc la lumière est : 
+\begin{itemize}[label=$\square$]
+	\item plus lente que le son
+	\item de même rapidité que le son
+	\item plus rapide que le son
+\end{itemize}
+
+
+\ding{204} Le son est la lumière peuvent se déplacer dans le vide : 
+\begin{itemize}[label=$\square$]
+	\item vrai
+	\item faux
+	\item vrai pour la lumière seulement
+\end{itemize}
+
+
+\ding{205} La La relation faisant le lien entre la période $T$, la longueur d'onde $\lambda$ et la vitesse du son $v$ est : 
+\begin{itemize}[label=$\square$]
+	\item $\lambda = v \times T$
+	\item $v = \lambda \times T$
+	\item $T = \lambda \times v$
+\end{itemize}
+
+\columnbreak
+
+\ding{206} La longueur d'onde s'exprime en  : 
+\begin{itemize}[label=$\square$]
+	\item secondes (s)
+	\item mètres (m)
+	\item hertz (Hz)
+\end{itemize}
+
+\ding{207} L'oreille possède une membrane qui vibre lorsqu'elle reçoit un son. Cette membrane s'appelle : 
+\begin{itemize}[label=$\square$]
+	\item le pavillon
+	\item le tympan
+	\item le conduit auditif
+\end{itemize}
+
+\ding{208} L'exposition de l'oreille à un son dont le niveau sonore est supérieur à 120 dB est : 
+\begin{itemize}[label=$\square$]
+	\item sans danger
+	\item dangereuse
+	\item responsable de la destruction irréversible de l'audition
+\end{itemize}
+
+\ding{209} Le son est plus rapide : 
+\begin{itemize}[label=$\square$]
+	\item dans l'eau
+	\item dans l'air
+	\item dans un métal
+\end{itemize}
+
+\ding{210}  Si je double la distance entre mon oreille et la source sonore, le niveau sonore est :
+\begin{itemize}[label=$\square$]
+	\item diviser par deux
+	\item abaissé de 6 dB
+	\item augmente de 4 dB
+\end{itemize}
+
+\end{multicols}
+
+\newpage
+
+\textbf{Exercice 3 - Mesure de la vitesse du son}
+\begin{multicols}{2}
+En cours de sciences physiques Eliott utilise un haut parleur et deux microphones placées côte à côte. Il obtient deux signaux en phase sur l'oscilloscope. Puis il déplace l'un des micros d'une distance $\lambda$ afin d'obtenir à nouveau les deux signaux en phase. 
+\begin{center}
+    
+\def\scl{0.5}%scaling factor of the picture
+\begin{tikzpicture}[
+  scale=\scl,
+  controlpanels/.style={yellow!30!,rounded corners,draw=black,thick},
+  screen/.style={white,draw=black,thick},
+  trace1/.style={Blue , ultra thick},
+  trace2/.style={Red , ultra thick},
+  %smallbutton/.style={white,draw=black, thick},
+  axes/.style={thick}]
+
+  % Screen, centered around the origin then shifted for easy plotting
+  \begin{scope}[xshift=7cm,yshift=8cm,samples=150]
+    \fill[black!30!,rounded corners,draw=black,thick](-5.3,-4.3)
+      rectangle (5.3,4.3);
+    \fill[screen] (-5.0,-4.0) rectangle (5.0,4.0);
+    
+    \draw[trace1] plot(\x,{3*sin((1.57*\x) r});
+    \draw[trace2] plot(\x,{2*sin((1.57*\x+2) r});
+    
+    \draw[thin] (-5.0,-4.0) grid (5.0,4.0);
+    \draw[axes] (-5,0)--(5,0); % Time axis
+    \draw[axes] (0,-4)--(0,4);
+    \foreach \i in {-4.8,-4.6,...,4.8} \draw (\i,-0.1)--(\i,0.1);
+    \foreach \i in {-3.8,-3.6,...,3.8} \draw (-0.1,\i)--(0.1,\i);
+  \end{scope}
+
+  
+\end{tikzpicture}
+\end{center} 
+\end{multicols}
+\ding{202} Sur l'oscilloscope, le balayage est de $5 \mu s $/ division , déterminer la période $T$ en $s$.\\
+\cadreblanc{25}
+
+\ding{203} Il faisait environ $20 ^\circ C $ dans la salle. \`A partir de la relation $\lambda = c_{son} \times T$, calculer la longueur d'onde $\lambda$  du son utilisé.\\
+\cadreblanc{25} 
+
+
+\textbf{Exercice 4 - Seuil de douleur}\\
+L'oreille humaine est capable de détecter des sons faibles, mais aussi de détériorer si l'intensité acoustique devient trop forte. Le seul de douleur apparait pour une valeur d'intensité égale à 1W/$m^2$.\\[3pt]
+En utilisant la relation $L=10 log \left(\dfrac{I}{I_0}\right)$ et $I_0=10^{-12}W/m^2$.\\
+
+\ding{202} Calculer le niveau sonore $L_1$ lié au seuil de douleur en dB.\\
+\cadreblanc{12}
+\ding{203} Calculer le niveau sonore $L_2$ lié à une intensité de $I=3,16 \times 10^{-4} W/m^2$. Arrondir à l'unité. \\
+\cadreblanc{12}
+\ding{204} A quel niveau correspond cette valeur ?\\
+\cadreblanc{15}
+
+
+\end{document}
