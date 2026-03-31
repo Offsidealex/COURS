@@ -1,0 +1,221 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\usepackage[table]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+
+\setlength{\extrarowheight}{1mm}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Première Bac Pro Microtechniques}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{50, 100, 160}
+\definecolor{exolight}{RGB}{210, 228, 248}
+\definecolor{totalrow}{RGB}{255,230,200}
+\definecolor{grandtotal}{RGB}{50,100,160}
+
+% Macro en-tête de partie
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Dissolution et Dilution -- Activité documentaire \hspace{1cm}
+  Première Bac Pro Microtechniques \hspace{1cm} \textbf{Total : /20 points}}
+\end{center}
+
+\vspace{3mm}
+
+% ===================== PARTIE A =====================
+\exotitle{Partie A -- La dissolution}{/5 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Éléments de réponse attendus} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{1}
+  & Soluté identifié : chlorure de sodium / NaCl
+  & 0{,}5 \\
+  \cline{2-3}
+  & Solvant identifié : eau distillée
+  & 0{,}5 \\
+  \hline
+  \multirow{2}{*}{2}
+  & Formule correcte : $M = M(\text{Na}) + M(\text{Cl})$
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $M(\text{NaCl}) = 58{,}5$~g/mol (avec unité)
+  & 1 \\
+  \hline
+  \multirow{2}{*}{3}
+  & Conversion du volume : $V = 500~\text{mL} = 0{,}500~\text{L}$
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $C_m = 9$~g/L (avec unité)
+  & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie A}} & \textbf{/5} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== PARTIE B =====================
+\exotitle{Partie B -- La dilution}{/8 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Éléments de réponse attendus} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{4}
+  & Définition correcte de la dilution (ajouter du solvant à une solution mère)
+  & 0{,}5 \\
+  \cline{2-3}
+  & Ce qui est conservé : quantité de soluté / $C_1 V_1 = C_2 V_2$
+  & 0{,}5 \\
+  \hline
+  \multirow{2}{*}{5}
+  & Formule utilisée : $f = C_1 / C_2$
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $f = 8$ (sans unité)
+  & 1 \\
+  \hline
+  \multirow{3}{*}{6}
+  & Formule correcte et $V_1$ isolé : $V_1 = C_2 V_2 / C_1$
+  & 1 \\
+  \cline{2-3}
+  & Calcul numérique correct
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $V_1 = 250$~mL (avec unité, conversion L→mL acceptée)
+  & 1 \\
+  \hline
+  \multirow{2}{*}{7}
+  & Pipette graduée pour prélever $V_1$ (justification : précision)
+  & 0{,}5 \\
+  \cline{2-3}
+  & Fiole jaugée de 2,0~L pour préparer la solution fille (justification : volume exact)
+  & 0{,}5 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie B}} & \textbf{/8} \\
+  \hline
+\end{tabularx}
+
+\vspace{4mm}
+
+% ===================== PARTIE C =====================
+\exotitle{Partie C -- Concentration molaire et bilan de synthèse}{/7 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Éléments de réponse attendus} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{8}
+  & Formule correcte : $C = C_m / M$
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $C = 0{,}5$~mol/L (avec unité)
+  & 1 \\
+  \hline
+  \multirow{2}{*}{9}
+  & Formule correcte : $n = C \times V$
+  & 1 \\
+  \cline{2-3}
+  & \textbf{Résultat :} $n = 2{,}5$~mol (avec unité)
+  & 1 \\
+  \hline
+  10
+  & Comparaison $C = 0{,}5 > 0{,}25$~mol/L et conclusion : bain encore utilisable
+  & 1 \\
+  \hline
+  \multirow{2}{*}{11}
+  & Différence dissolution/dilution correctement expliquée (point de départ solide vs solution)
+  & 1 \\
+  \cline{2-3}
+  & Un exemple de chaque opération tiré des documents
+  & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Partie C}} & \textbf{/7} \\
+  \hline
+\end{tabularx}
+
+\vspace{6mm}
+
+% ===================== TOTAL =====================
+\noindent\colorbox{grandtotal}{%
+  \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+    \textcolor{white}{\textbf{\Large \hfill TOTAL \hfill /20 points \hfill}}%
+  }%
+}
+
+\vspace{6mm}
+
+% ===================== TABLEAU ÉLÈVES =====================
+\noindent\textbf{Récapitulatif de la classe :}
+
+\vspace{2mm}
+
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}p{4.5cm}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Nom Prénom} & \textbf{Observations} & \textbf{Part. A /5} & \textbf{Part. B /8} & \textbf{Part. C /7} & \textbf{Total /20} \\
+  \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  & & & & & \\[5mm] \hline
+  \rowcolor{totalrow}
+  \textbf{Moyenne} & & & & & \\
+  \hline
+\end{tabularx}
+
+\end{document}

@@ -1,0 +1,238 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+
+\geometry{top=2.2cm, bottom=2cm, left=2cm, right=2cm, headheight=15pt}
+
+%------------------------------------------------------------
+% Couleurs
+%------------------------------------------------------------
+\definecolor{bluedark}{RGB}{50, 100, 160}
+\definecolor{bluemid}{RGB}{170, 200, 235}
+\definecolor{grisfond}{RGB}{245, 245, 245}
+\definecolor{vertcorr}{RGB}{34, 120, 60}
+\definecolor{vertlight}{RGB}{220, 245, 225}
+\definecolor{vertmid}{RGB}{150, 210, 170}
+
+%------------------------------------------------------------
+% En-tête / pied de page
+%------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Physique-Chimie -- Première Bac Pro Microtechniques}
+\rhead{\small \textbf{CORRIGÉ} -- Les solutions aqueuses}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+%------------------------------------------------------------
+% Boîtes tcolorbox
+%------------------------------------------------------------
+\tcbset{
+  stylepartie/.style={
+    colback=bluedark, colframe=bluedark, coltext=white,
+    boxrule=0pt, arc=3pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=10pt, after skip=6pt,
+  },
+  stylecorr/.style={
+    colback=vertlight, colframe=vertmid,
+    boxrule=0.8pt, arc=4pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    before skip=4pt, after skip=6pt,
+  },
+}
+
+%------------------------------------------------------------
+% Commandes
+%------------------------------------------------------------
+\newcounter{numquestion}
+\newcommand{\question}[1]{%
+  \stepcounter{numquestion}%
+  \vspace{8pt}%
+  \noindent{\color{bluedark}$\blacktriangleright$~\textbf{Question~\thenumquestion.}}~#1%
+  \vspace{2pt}%
+}
+
+\newcommand{\repcorr}[1]{%
+  \begin{tcolorbox}[stylecorr]
+    {\color{vertcorr} #1}
+  \end{tcolorbox}%
+}
+
+%------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------
+
+%============================================================
+% TITRE
+%============================================================
+\begin{tcolorbox}[
+  colback=white, colframe=bluedark, boxrule=1.5pt, arc=4pt,
+  before skip=0pt, after skip=8pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt,
+]
+  \begin{center}
+    {\color{bluedark}\Large\bfseries Dissolution et Dilution}\\[4pt]
+    {\large Activité documentaire -- \textbf{\color{vertcorr}CORRIGÉ}}\\[6pt]
+    \hrule height 0.4pt \vspace{6pt}
+    \textbf{Durée :} 1\,h\,00 \hfill \textbf{Niveau :} Première Bac Pro \hfill \textbf{Total : 20 points}
+  \end{center}
+\end{tcolorbox}
+
+\vspace{6pt}
+
+%============================================================
+% PARTIE A
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie A -- La dissolution \hfill {\normalfont\small (20 min -- 5 pts)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+\question{Identifier dans le texte le \textbf{soluté} et le \textbf{solvant} de la solution préparée.}
+
+\repcorr{
+  \textbf{Soluté :} chlorure de sodium (NaCl) — c'est le solide dissous.\\[3pt]
+  \textbf{Solvant :} eau distillée — c'est le liquide dans lequel on dissout.
+}
+
+%------------------------------------------------------------
+\question{Calculer la masse molaire $M(\text{NaCl})$ du chlorure de sodium (en g/mol).}
+
+\repcorr{
+  On additionne les masses molaires atomiques de chaque atome :
+  \[
+    M(\text{NaCl}) = M(\text{Na}) + M(\text{Cl}) = 23 + 35{,}5 = \boxed{58{,}5~\text{g/mol}}
+  \]
+}
+
+%------------------------------------------------------------
+\question{Calculer la concentration massique $C_m$ (en g/L) de la solution.}
+
+\repcorr{
+  \textbf{Conversion du volume :} $V = 500~\text{mL} = 0{,}500~\text{L}$
+  \[
+    C_m = \dfrac{m}{V} = \dfrac{4{,}5~\text{g}}{0{,}500~\text{L}} = \boxed{9~\text{g/L}}
+  \]
+}
+
+\vspace{4pt}
+
+%============================================================
+% PARTIE B
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie B -- La dilution \hfill {\normalfont\small (20 min -- 8 pts)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+\question{Expliquer, en une phrase, ce qu'est une \textbf{dilution} et ce qui est conservé lors de cette opération.}
+
+\repcorr{
+  La dilution consiste à préparer une solution moins concentrée (\textbf{solution fille}) à
+  partir d'une solution plus concentrée (\textbf{solution mère}) en ajoutant du solvant (eau
+  distillée). La \textbf{quantité de soluté} (et donc la masse de soluté) est conservée.
+}
+
+%------------------------------------------------------------
+\question{Calculer le \textbf{facteur de dilution} $f$ entre la solution mère et la solution fille.}
+
+\repcorr{
+  \[
+    f = \dfrac{C_1}{C_2} = \dfrac{80~\text{g/L}}{10~\text{g/L}} = \boxed{8}
+  \]
+  La solution mère est 8 fois plus concentrée que la solution fille.
+}
+
+%------------------------------------------------------------
+\question{En utilisant la relation $C_1 V_1 = C_2 V_2$, calculer le volume $V_1$ (en mL) de solution mère à prélever.}
+
+\repcorr{
+  On isole $V_1$ :
+  \[
+    V_1 = \dfrac{C_2 \times V_2}{C_1} = \dfrac{10 \times 2{,}0}{80} = 0{,}25~\text{L} = \boxed{250~\text{mL}}
+  \]
+  \textbf{Vérification :} $C_1 V_1 = 80 \times 0{,}25 = 20$ \quad ; \quad $C_2 V_2 = 10 \times 2{,}0 = 20$ {\color{vertcorr}$\surd$}
+}
+
+%------------------------------------------------------------
+\question{En vous aidant du document~3, nommer le matériel que le technicien doit utiliser pour prélever $V_1$ avec précision, puis pour préparer la solution fille. Justifier.}
+
+\repcorr{
+  \begin{itemize}[noitemsep]
+    \item Pour prélever $V_1 = 250$~mL avec précision : \textbf{pipette graduée} — elle permet de
+    prélever un volume quelconque avec une bonne précision.
+    \item Pour préparer la solution fille de volume exact $V_2 = 2{,}0$~L : \textbf{fiole jaugée de
+    2,0~L} — elle garantit un volume exact grâce au trait de jauge gravé.
+  \end{itemize}
+}
+
+\vspace{4pt}
+
+%============================================================
+% PARTIE C
+%============================================================
+\begin{tcolorbox}[stylepartie]
+  Partie C -- Concentration molaire et bilan de synthèse \hfill {\normalfont\small (20 min -- 7 pts)}
+\end{tcolorbox}
+
+%------------------------------------------------------------
+\question{Calculer la \textbf{concentration molaire} $C$ (en mol/L) de la solution d'acide citrique du bain.}
+
+\repcorr{
+  \[
+    C = \dfrac{C_m}{M} = \dfrac{96~\text{g/L}}{192~\text{g/mol}} = \boxed{0{,}5~\text{mol/L}}
+  \]
+}
+
+%------------------------------------------------------------
+\question{Calculer la \textbf{quantité de matière} $n$ d'acide citrique contenue dans le bain de 5,0~L.}
+
+\repcorr{
+  \[
+    n = C \times V = 0{,}5~\text{mol/L} \times 5{,}0~\text{L} = \boxed{2{,}5~\text{mol}}
+  \]
+}
+
+%------------------------------------------------------------
+\question{\textbf{Décision :} Le bain doit être renouvelé si $C < 0{,}25$~mol/L. Conclure si le bain est encore utilisable.}
+
+\repcorr{
+  $C = 0{,}5~\text{mol/L} > 0{,}25~\text{mol/L}$ (seuil de remplacement).\\[3pt]
+  $\Rightarrow$ Le bain est \textbf{encore utilisable}, il n'a pas besoin d'être renouvelé.
+}
+
+%------------------------------------------------------------
+\question{\textbf{Synthèse :} Expliquer la \textbf{différence fondamentale} entre une dissolution et une dilution. Donner un exemple de chaque opération tiré de l'activité.}
+
+\repcorr{
+  \begin{itemize}[noitemsep]
+    \item \textbf{Dissolution :} on part d'un \textbf{soluté solide} que l'on introduit dans un
+    solvant pour obtenir une solution. \textit{Exemple dans l'activité :} préparation de la solution
+    saline en dissolvant 4,5~g de NaCl dans de l'eau (Doc~1).
+    \item \textbf{Dilution :} on part d'une \textbf{solution déjà préparée} (solution mère) à
+    laquelle on ajoute du solvant pour diminuer la concentration. \textit{Exemple dans l'activité :}
+    dilution du dégraissant industriel ($C_1 = 80$~g/L) pour obtenir $C_2 = 10$~g/L (Doc~2).
+  \end{itemize}
+  Dans les deux cas on ajoute de l'eau, mais le point de départ est différent : \textbf{solide} pour
+  la dissolution, \textbf{solution concentrée} pour la dilution.
+}
+
+\vspace{10pt}
+\begin{center}
+  \color{bluedark}\rule{0.5\linewidth}{0.6pt}
+\end{center}
+
+\end{document}
