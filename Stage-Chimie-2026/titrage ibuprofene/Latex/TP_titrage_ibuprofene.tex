@@ -1,0 +1,215 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{array,tabularx,booktabs,multirow}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{chemformula}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{fontawesome5}
+
+\definecolor{exoheader}{HTML}{1E5AA0}
+\definecolor{exolight}{HTML}{DCE8FF}
+\definecolor{warnorange}{RGB}{220,100,0}
+\definecolor{problemebg}{HTML}{FFFDE7}
+
+\renewcommand{\arraystretch}{1.8}
+\setlength{\extrarowheight}{1mm}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Académie de Besançon}
+\fancyhead[C]{\textbf{TP --- Titrage de l'ibuprofène}}
+\fancyhead[R]{Terminale / BTS Chimie}
+\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{2025 -- 2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+\newcommand{\sectitle}[1]{%
+  \vspace{6pt}
+  \noindent\colorbox{exoheader}{\parbox{\dimexpr\linewidth-2\fboxsep}%
+    {\color{white}\bfseries\large\strut\quad #1}}
+  \vspace{4pt}
+}
+\newcommand{\subsectitle}[1]{%
+  \vspace{4pt}
+  \noindent\colorbox{exolight}{\parbox{\dimexpr\linewidth-2\fboxsep}%
+    {\color{exoheader}\bfseries\strut\quad #1}}
+  \vspace{2pt}
+}
+\newcounter{question}
+\newcommand{\question}{%
+  \stepcounter{question}%
+  \noindent\textcolor{exoheader}{\textbf{Question \thequestion.}}\quad
+}
+
+\begin{document}
+
+\noindent\textbf{NOM :}\hfill\textbf{Prénom :}\hfill\textbf{Classe :}\hfill\phantom{x}\\[0.2cm]
+\hrule\vspace{0.2cm}
+
+\begin{center}
+  {\large\bfseries\textcolor{exoheader}{Travaux Pratiques de Chimie}}\\[4pt]
+  {\LARGE\bfseries Titrage acido-basique de l'ibuprofène}\\[2pt]
+  {\small Académie de Besançon --- Belfort}
+\end{center}
+\hrule\vspace{6pt}
+
+\begin{tcolorbox}[enhanced, colback=problemebg, colframe=exoheader, boxrule=1.5pt,
+  title={\faFlask\quad Problématique},
+  fonttitle=\bfseries\color{white},
+  attach boxed title to top left={yshift=-2mm, xshift=4mm},
+  boxed title style={colback=exoheader, colframe=exoheader}]
+\textit{Un comprimé d'ibuprofène porte l'indication \og Ibuprofène 400~mg \fg{}.
+\textbf{L'indication de l'étiquette est-elle correcte ?}
+On se propose de le vérifier par titrage acido-basique avec indicateur coloré et pH-métrie.}
+\end{tcolorbox}
+
+\vspace{6pt}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\sectitle{Partie I --- Étude préliminaire}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{mdframed}[backgroundcolor=exolight, linecolor=exoheader, linewidth=1.2pt]
+L'\textbf{ibuprofène} (\ch{C13H18O2}, $M = 206$~g/mol) est un anti-inflammatoire non stéroïdien
+comportant un groupe acide carboxylique \ch{-COOH}.
+Il est peu soluble dans l'eau mais très soluble dans l'éthanol.
+\end{mdframed}
+
+\vspace{4pt}
+\question Donner la formule brute et la masse molaire de l'ibuprofène.
+Identifier son groupe fonctionnel acide. \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\question Justifier l'usage de l'éthanol lors de la dissolution du comprimé. \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\question Écrire l'équation de la réaction de titrage entre l'ibuprofène (\ch{AH})
+et les ions hydroxyde (\ch{HO-}). Quelles caractéristiques doit avoir cette réaction ? \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+% ══════════════════════════════════════════════════════════════════════════════
+\sectitle{Partie II --- Protocole expérimental}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\subsectitle{1. Préparation de la solution d'ibuprofène}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Réduire en poudre le comprimé dans un mortier.
+  \item Dissoudre dans 20~mL d'éthanol (les excipients sont insolubles dans l'éthanol).
+  \item Filtrer le mélange.
+  \item Introduire le filtrat dans un bécher et diluer dans de l'eau distillée.
+\end{enumerate}
+
+\vspace{4pt}
+\subsectitle{2. Préparation de la burette}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Remplir la burette avec la solution de \ch{NaOH} ($C_b = 0{,}20$~mol/L) et ajuster à 0.
+\end{enumerate}
+
+\noindent\textcolor{exoheader}{\faCheckSquare\quad \textbf{Appel n°1} : Faire vérifier le zéro par le professeur.}
+
+\vspace{4pt}
+\subsectitle{3. Titrage}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Prélever $V_1 = 10{,}0$~mL de solution d'ibuprofène à la pipette jaugée ; verser dans un erlenmeyer.
+  \item Ajouter 10~mL d'eau distillée, quelques gouttes de BBT (indicateur coloré) et le barreau aimanté.
+  \item Placer la sonde pH-métrique dans l'erlenmeyer.
+  \item Effectuer le titrage en ajoutant la soude par petites fractions ;
+        noter le volume $V_E$ correspondant au changement de couleur (jaune → bleu-vert) et au saut de pH.
+\end{enumerate}
+
+\vspace{4pt}
+\begin{center}
+\begin{tabularx}{0.8\linewidth}{|>{\centering\arraybackslash\columncolor{exolight}}X
+                                |>{\centering\arraybackslash}X
+                                |>{\centering\arraybackslash\columncolor{exolight}}X
+                                |>{\centering\arraybackslash}X|}
+\hline
+\rowcolor{exoheader}
+\color{white}$V$ (mL) & \color{white}pH &
+\color{white}$V$ (mL) & \color{white}pH \\
+\hline
+0,0 & & 13,0 & \\
+\hline
+2,0 & & 13,5 & \\
+\hline
+4,0 & & 14,0 & \\
+\hline
+6,0 & & 14,5 & \\
+\hline
+8,0 & & 15,0 & \\
+\hline
+10,0 & & 15,5 & \\
+\hline
+11,0 & & 16,0 & \\
+\hline
+12,0 & & 17,0 & \\
+\hline
+12,5 & & 18,0 & \\
+\hline
+\end{tabularx}
+\end{center}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\newpage
+\sectitle{Partie III --- Exploitation des résultats}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\question Tracer la courbe pH~$= f(V)$ et sa courbe dérivée sur papier millimétré.
+Déterminer le volume équivalent $V_E$ par la méthode de votre choix.
+
+\[
+  V_E = \dotfill \text{ mL}
+\]
+
+\question Calculer la quantité de matière d'ions \ch{HO-} versée à l'équivalence,
+puis la quantité de matière d'ibuprofène $n_E$.
+
+\vspace{1.5cm}
+
+\question Déduire la masse $m$ d'ibuprofène dans le comprimé et la comparer à 400~mg.
+
+\vspace{1.5cm}
+
+\[
+  m = \dotfill \text{ mg}
+\]
+
+\question Calculer l'écart relatif. Conclure sur la conformité de l'étiquette. \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+% ══════════════════════════════════════════════════════════════════════════════
+\sectitle{Annexe --- Données}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{mdframed}[backgroundcolor=exolight, linecolor=exoheader, linewidth=1.2pt]
+\begin{itemize}
+  \item Ibuprofène : \ch{C13H18O2}, $M = 206$~g/mol, $pK_a = 4{,}9$
+  \item \ch{NaOH} : $C_b = 0{,}20$~mol/L (solution titrante dans la burette)
+  \item Volume de la prise d'essai : $V_1 = 10{,}0$~mL
+  \item Indicateur coloré : BBT (jaune pH < 6 / bleu pH > 7,6)
+  \item Phénolphtaléïne : incolore pH < 8,2 / rose pH > 10
+\end{itemize}
+\end{mdframed}
+
+\end{document}

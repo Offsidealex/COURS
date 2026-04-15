@@ -1,0 +1,200 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{array,tabularx,booktabs,multirow}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{chemformula}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{fontawesome5}
+
+\definecolor{exoheader}{HTML}{1E5AA0}
+\definecolor{exolight}{HTML}{DCE8FF}
+\definecolor{warnorange}{RGB}{220,100,0}
+\definecolor{problemebg}{HTML}{FFFDE7}
+
+\renewcommand{\arraystretch}{1.8}
+\setlength{\extrarowheight}{1mm}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Académie de Besançon}
+\fancyhead[C]{\textbf{TP --- Extraction et CCM de la vanilline}}
+\fancyhead[R]{Terminale / BTS Chimie}
+\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{2025 -- 2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+\newcommand{\sectitle}[1]{%
+  \vspace{6pt}
+  \noindent\colorbox{exoheader}{\parbox{\dimexpr\linewidth-2\fboxsep}%
+    {\color{white}\bfseries\large\strut\quad #1}}
+  \vspace{4pt}
+}
+\newcommand{\subsectitle}[1]{%
+  \vspace{4pt}
+  \noindent\colorbox{exolight}{\parbox{\dimexpr\linewidth-2\fboxsep}%
+    {\color{exoheader}\bfseries\strut\quad #1}}
+  \vspace{2pt}
+}
+\newcounter{question}
+\newcommand{\question}{%
+  \stepcounter{question}%
+  \noindent\textcolor{exoheader}{\textbf{Question \thequestion.}}\quad
+}
+
+\begin{document}
+
+\noindent\textbf{NOM :}\hfill\textbf{Prénom :}\hfill\textbf{Classe :}\hfill\phantom{x}\\[0.2cm]
+\hrule\vspace{0.2cm}
+
+\begin{center}
+  {\large\bfseries\textcolor{exoheader}{Travaux Pratiques de Chimie Organique}}\\[4pt]
+  {\LARGE\bfseries Extraction et identification de la vanilline (CCM)}\\[2pt]
+  {\small Académie de Besançon --- Belfort}
+\end{center}
+\hrule\vspace{6pt}
+
+\begin{tcolorbox}[enhanced, colback=problemebg, colframe=exoheader, boxrule=1.5pt,
+  title={\faFlask\quad Problématique},
+  fonttitle=\bfseries\color{white},
+  attach boxed title to top left={yshift=-2mm, xshift=4mm},
+  boxed title style={colback=exoheader, colframe=exoheader}]
+\textit{De nombreux produits alimentaires sont parfumés à la vanille.
+Certains contiennent de la \textbf{vraie vanilline} (extraite de gousses), d'autres de la
+\textbf{vanilline de synthèse}. \textbf{Comment identifier et distinguer ces produits ?}}
+\end{tcolorbox}
+
+\vspace{6pt}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\sectitle{Partie I --- Extraction de l'arôme par solvant}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{mdframed}[backgroundcolor=exolight, linecolor=exoheader, linewidth=1.2pt]
+L'extraction par solvant consiste à transférer un soluté d'une phase aqueuse vers
+une phase organique non miscible (ici l'éthanoate d'éthyle).
+\end{mdframed}
+
+\vspace{4pt}
+\question Pourquoi utilise-t-on l'éthanoate d'éthyle comme solvant d'extraction ?
+Quelle propriété doit-il avoir vis-à-vis de l'eau ? \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\vspace{4pt}
+\subsectitle{A --- Extraction du sucre vanillé (solution 1)}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Peser environ 5~g de sucre vanillé dans un erlenmeyer.
+  \item Dissoudre dans 30~mL d'eau distillée (agiter).
+  \item Ajouter 10~mL d'éthanoate d'éthyle et une spatulée de \ch{NaCl}.
+  \item Verser dans l'ampoule à décanter ; agiter en dégazant régulièrement.
+  \item Laisser décanter, éliminer la phase inférieure (aqueuse) dans un bécher.
+  \item Recueillir la phase supérieure (organique) dans un flacon étiqueté \og Solution 1 \fg{}.
+\end{enumerate}
+
+\vspace{4pt}
+\subsectitle{B --- Extraction du sucre vanilliné (solution 2)}
+
+Même protocole avec 5~g de sucre vanilliné. Recueillir dans un flacon étiqueté \og Solution 2 \fg{}.
+
+\vspace{4pt}
+\subsectitle{C --- Extraction d'une gousse de vanille (solution 3)}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Peser environ 1~g de gousse de vanille, la découper en petits morceaux.
+  \item Introduire dans un erlenmeyer avec 10~mL d'éthanoate d'éthyle.
+  \item Agiter 20~minutes à l'agitateur magnétique, puis filtrer.
+  \item Recueillir le filtrat dans un flacon étiqueté \og Solution 3 \fg{}.
+\end{enumerate}
+
+\vspace{4pt}
+\question Dans quelle phase se trouve la vanilline après extraction ? Justifier. \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+% ══════════════════════════════════════════════════════════════════════════════
+\newpage
+\sectitle{Partie II --- Identification par chromatographie (CCM)}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{mdframed}[backgroundcolor=exolight, linecolor=exoheader, linewidth=1.2pt]
+La \textbf{chromatographie sur couche mince (CCM)} permet de séparer et d'identifier
+des espèces chimiques en comparant leur rapport frontal $R_f$ avec celui d'un témoin.
+\[
+  R_f = \frac{\text{distance parcourue par le soluté}}{\text{distance parcourue par l'éluant}}
+\]
+\end{mdframed}
+
+\vspace{4pt}
+\subsectitle{1. Préparation de la cuve}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Mesurer 10~mL d'éluant (cyclohexane + éthanoate d'éthyle) et le verser dans la cuve.
+  \item Fermer la cuve et laisser saturer l'atmosphère quelques minutes.
+\end{enumerate}
+
+\vspace{4pt}
+\subsectitle{2. Dépôt des solutions}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Sur une plaque CCM ($5 \times 10$~cm, gel de silice), tracer au crayon une ligne de dépôt à 1~cm du bas.
+  \item Repérer 4 points (1 cm d'écart minimum) : sol. 1, sol. 2, sol. 3, vanilline (témoin, sol. 4).
+  \item Déposer à chaque point 2 à 3 gouttes avec un capillaire ; sécher entre chaque dépôt.
+\end{enumerate}
+
+\vspace{4pt}
+\subsectitle{3. Élution et révélation}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Placer délicatement la plaque dans la cuve (dépôts au-dessus du solvant).
+  \item Laisser migrer jusqu'à 1~cm du bord supérieur, retirer et marquer le front du solvant.
+  \item Révéler sous lampe UV (254~nm) et entourer les taches au crayon.
+\end{enumerate}
+
+\vspace{4pt}
+\question Reproduire ci-dessous le schéma de la plaque obtenue et indiquer les taches observées.
+
+\vspace{0.5cm}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[thick] (0,0) rectangle (8,6);
+\draw[dashed] (0,0.6) -- (8,0.6) node[right]{\small ligne de dépôt};
+\draw[dashed] (0,5.4) -- (8,5.4) node[right]{\small front du solvant};
+\foreach \x/\lab in {1/sol.1, 2.5/sol.2, 4/sol.3, 5.5/témoin}{
+  \node[below] at (\x,0.6) {\small\lab};
+}
+\end{tikzpicture}
+\end{center}
+
+\vspace{4pt}
+\question Calculer le $R_f$ de la vanilline (témoin) et comparer avec les autres solutions.
+
+\vspace{1.5cm}
+
+\question Lequel ou lesquels des produits testés contient de la vanilline ? Justifier. \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\vspace{4pt}
+\question Le sucre vanilliné contient-il la même espèce que le sucre vanillé ?
+Quelles conclusions pouvez-vous en tirer ? \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\end{document}

@@ -1,0 +1,225 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{array,tabularx,booktabs,multirow}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{chemformula}
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{fontawesome5}
+
+\definecolor{exoheader}{HTML}{1E5AA0}
+\definecolor{exolight}{HTML}{DCE8FF}
+\definecolor{warnorange}{RGB}{220,100,0}
+\definecolor{problemebg}{HTML}{FFFDE7}
+
+\renewcommand{\arraystretch}{1.8}
+\setlength{\extrarowheight}{1mm}
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Académie de Besançon}
+\fancyhead[C]{\textbf{TP --- Dosage de l'ibuprofène}}
+\fancyhead[R]{Terminale / BTS Chimie}
+\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{2025 -- 2026}
+\fancyfoot[L]{Alexis RUIZ}
+
+\newcommand{\sectitle}[1]{%
+  \vspace{6pt}
+  \noindent\colorbox{exoheader}{\parbox{\dimexpr\linewidth-2\fboxsep}%
+    {\color{white}\bfseries\large\strut\quad #1}}
+  \vspace{4pt}
+}
+\newcommand{\subsectitle}[1]{%
+  \vspace{4pt}
+  \noindent\colorbox{exolight}{\parbox{\dimexpr\linewidth-2\fboxsep}%
+    {\color{exoheader}\bfseries\strut\quad #1}}
+  \vspace{2pt}
+}
+\newcounter{question}
+\newcommand{\question}{%
+  \stepcounter{question}%
+  \noindent\textcolor{exoheader}{\textbf{Question \thequestion.}}\quad
+}
+
+\begin{document}
+
+\noindent\textbf{NOM :}\hfill\textbf{Prénom :}\hfill\textbf{Classe :}\hfill\phantom{x}\\[0.2cm]
+\hrule\vspace{0.2cm}
+
+\begin{center}
+  {\large\bfseries\textcolor{exoheader}{Travaux Pratiques de Chimie}}\\[4pt]
+  {\LARGE\bfseries Dosage de l'ibuprofène par pH-métrie (ExAO)}\\[2pt]
+  {\small Académie de Besançon --- Belfort}
+\end{center}
+\hrule\vspace{6pt}
+
+\begin{tcolorbox}[enhanced, colback=problemebg, colframe=exoheader, boxrule=1.5pt,
+  title={\faFlask\quad Problématique},
+  fonttitle=\bfseries\color{white},
+  attach boxed title to top left={yshift=-2mm, xshift=4mm},
+  boxed title style={colback=exoheader, colframe=exoheader}]
+\textit{L'étiquette d'un comprimé d'ibuprofène indique 400 mg de principe actif.
+\textbf{L'indication est-elle correcte ?}
+On se propose de le vérifier par un dosage pH-métrique assisté par ordinateur (ExAO).}
+\end{tcolorbox}
+
+\vspace{6pt}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\sectitle{Partie I --- Objectifs et principe}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\begin{mdframed}[backgroundcolor=exolight, linecolor=exoheader, linewidth=1.2pt]
+L'\textbf{ibuprofène} (\ch{C13H18O2}, $M = 206{,}3$~g/mol) est un acide faible
+(anti-inflammatoire non stéroïdien). On le dose avec une solution de soude
+\ch{NaOH} de concentration $C_b = 0{,}10$~mol/L.
+\end{mdframed}
+
+\vspace{4pt}
+\question Quelle est la fonction chimique de l'ibuprofène ? Justifier. \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\vspace{4pt}
+\question Écrire l'équation de la réaction de titrage entre l'ibuprofène (\ch{AH}) et les ions hydroxyde. \dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+% ══════════════════════════════════════════════════════════════════════════════
+\sectitle{Partie II --- Protocole expérimental}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\subsectitle{1. Préparation de la burette}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Placer le bécher étiqueté \og récupération \fg{} sous la burette.
+  \item Vider la burette, puis la rincer avec la solution de soude.
+  \item Remplir la burette avec la soude ($C_b = 0{,}10$~mol/L) et ajuster au zéro.
+\end{enumerate}
+
+\vspace{4pt}
+\subsectitle{2. Dissolution du comprimé}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Peser précisément 1 comprimé d'ibuprofène. Noter la masse $m_{\text{comprimé}}$.
+  \item Broyer finement le comprimé dans un mortier.
+  \item Transvaser la poudre dans un bécher de 250~mL, ajouter 20~mL d'éthanol à 95\%.
+  \item Agiter jusqu'à dissolution partielle, puis ajouter 80~mL d'eau distillée.
+  \item Filtrer si nécessaire pour éliminer les excipients insolubles.
+  \item Transvaser quantitativement dans une fiole jaugée de 100~mL ; compléter à la jauge.
+        La solution obtenue est notée $S$ (concentration $C_a$ inconnue).
+\end{enumerate}
+
+\vspace{4pt}
+\subsectitle{3. Prise d'essai et dosage ExAO}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Prélever $V_0 = 10{,}0$~mL de solution $S$ à la pipette jaugée et le verser dans un bécher.
+  \item Ajouter 20~mL d'eau distillée et le barreau aimanté.
+  \item Connecter la sonde pH-métrique à l'interface ExAO.
+  \item Paramétrer le système : axe x = volume de soude versé (mL), axe y = pH.
+  \item Effectuer le titrage en ajoutant 0,5~mL de soude par 0,5~mL (resserrer autour du saut de pH).
+  \item Mettre fin à l'acquisition après la dernière mesure.
+\end{enumerate}
+
+\begin{mdframed}[backgroundcolor=orange!15, linecolor=warnorange, linewidth=2pt]
+\textbf{\textcolor{warnorange}{\faExclamationTriangle\quad ATTENTION}} ---
+L'éthanol est inflammable. Éviter toute flamme lors de la dissolution.
+\end{mdframed}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\newpage
+\sectitle{Partie III --- Exploitation des résultats}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\subsectitle{1. Lecture graphique}
+
+\question Déterminer le volume équivalent $V_E$ (méthode des tangentes ou dérivée).
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tabularx}{0.7\linewidth}{|>{\centering\arraybackslash\columncolor{exolight}}X
+                                |>{\centering\arraybackslash}X|}
+\hline
+\rowcolor{exoheader}
+\color{white}\textbf{Grandeur} & \color{white}\textbf{Valeur} \\
+\hline
+Volume équivalent $V_E$ (mL) & \dotfill \\
+\hline
+pH à l'équivalence & \dotfill \\
+\hline
+\end{tabularx}
+\end{center}
+
+\vspace{4pt}
+\subsectitle{2. Calcul de la concentration en ibuprofène}
+
+\question En utilisant la relation à l'équivalence $C_b \times V_E = C_a \times V_0$,
+calculer $C_a$ (en mol/L).
+
+\vspace{2cm}
+
+\noindent$C_a = $ \dotfill~mol/L
+
+\vspace{4pt}
+\subsectitle{3. Masse d'ibuprofène par comprimé}
+
+\question Calculer la masse d'ibuprofène titrée dans les 10~mL prélevés, puis
+en déduire la masse $m$ dans le comprimé entier.
+
+\[
+  m = C_a \times V_{\text{fiole}} \times M(\text{ibuprofène})
+\]
+
+\vspace{2cm}
+
+\noindent$m = $ \dotfill~mg
+
+\vspace{4pt}
+\question Comparer avec la valeur théorique (400~mg). Calculer l'écart relatif.
+Un écart $< 5\%$ est acceptable.
+
+\vspace{0.3cm}\noindent\dotfill
+
+\vspace{0.3cm}\noindent\dotfill
+
+\vspace{4pt}
+\subsectitle{4. Fin de manipulation}
+
+\begin{enumerate}[leftmargin=1.5cm, label=\textcolor{exoheader}{\textbf{\arabic*.}}]
+  \item Retirer la sonde pH-métrique, la rincer à l'eau distillée et la ranger dans sa solution de stockage.
+  \item Vider la burette, la rincer à l'eau distillée et la remplir avec de l'eau distillée.
+  \item Vider les béchers dans le récipient \og déchets \fg{}.
+\end{enumerate}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\newpage
+\sectitle{Annexe --- Données}
+% ══════════════════════════════════════════════════════════════════════════════
+
+\vspace{4pt}
+\begin{mdframed}[backgroundcolor=exolight, linecolor=exoheader, linewidth=1.2pt]
+\begin{itemize}
+  \item Ibuprofène : $M = 206{,}3$~g/mol ; formule brute \ch{C13H18O2} ; acide faible ($pK_a = 4{,}9$)
+  \item Solution de soude : $C_b = 0{,}10$~mol/L
+  \item Volume de la prise d'essai : $V_0 = 10{,}0$~mL
+  \item Volume de la fiole jaugée : $V_{\text{fiole}} = 100$~mL
+  \item Masse molaire de NaOH : 40~g/mol
+\end{itemize}
+\end{mdframed}
+
+\end{document}

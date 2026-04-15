@@ -1,0 +1,51 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage{pst-node}
+\usepackage{graphicx}
+
+\begin{document}
+
+% ═══════════════════════════════════════════════════════
+% SCHEMA 1 : Chauffage à reflux
+% ═══════════════════════════════════════════════════════
+\newpage
+\begin{center}
+\textbf{Montage de chauffage à reflux}\\[10pt]
+\psset{unit=0.9}
+\pstBallon[refrigerantBoulles=true,
+           niveauLiquide1=40,
+           pince=true]
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\textit{Légende :} ballon bicol, réfrigérant à boules, chauffe-ballon.
+
+% ═══════════════════════════════════════════════════════
+% SCHEMA 2 : Ampoule à décanter
+% ═══════════════════════════════════════════════════════
+\newpage
+\begin{center}
+\textbf{Ampoule à décanter}\\[10pt]
+\psset{unit=0.6}
+\begin{pspicture}(-3,-2)(3,17)
+\pstSeparateFunnel[bouchon=true,
+                   niveauLiquide1=10,
+                   niveauLiquide2=12]
+\end{pspicture}
+\end{center}
+
+\vspace{1cm}
+
+\noindent
+\textit{Légende :} ampoule à décanter avec robinet et bouchon,
+deux phases liquides (phase aqueuse et phase organique).
+
+\end{document}
