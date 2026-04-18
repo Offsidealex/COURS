@@ -479,6 +479,31 @@
     border-radius: 999px;
     font-weight: 600;
   }
+  /* Bouton retour agenda */
+  .back-btn {
+    position: absolute;
+    bottom: 36px;
+    right: 96px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--card);
+    border: 1.5px solid var(--line-strong);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-mute);
+    transition: background .2s, color .2s, box-shadow .2s;
+    z-index: 10;
+  }
+  .back-btn:hover {
+    background: var(--primary-soft);
+    color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  }
+  .back-btn svg { width: 20px; height: 20px; }
+
   /* Carte "à venir" plus discrète */
   .agenda-card.todo {
     background: repeating-linear-gradient(
@@ -1321,10 +1346,24 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const deck = document.querySelector('deck-stage');
+
+    // Clics tuiles agenda → TP
     document.querySelectorAll('.agenda-card[data-slide]').forEach(card => {
-      card.addEventListener('click', () => {
-        deck.goTo(parseInt(card.dataset.slide));
-      });
+      card.addEventListener('click', () => deck.goTo(parseInt(card.dataset.slide)));
+    });
+
+    // Bouton retour agenda sur chaque slide TP
+    const backIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+      <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+    </svg>`;
+    document.querySelectorAll('section.slide:not(.cover):not(.agenda)').forEach(slide => {
+      const btn = document.createElement('button');
+      btn.className = 'back-btn';
+      btn.title = 'Retour au programme';
+      btn.innerHTML = backIcon;
+      btn.addEventListener('click', () => deck.goTo(1));
+      slide.appendChild(btn);
     });
   });
 </script>
