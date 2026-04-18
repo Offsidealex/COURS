@@ -1323,10 +1323,7 @@
     const deck = document.querySelector('deck-stage');
     document.querySelectorAll('.agenda-card[data-slide]').forEach(card => {
       card.addEventListener('click', () => {
-        const idx = parseInt(card.dataset.slide);
-        deck._slides[deck._index].style.display = 'none';
-        deck._index = idx;
-        deck._slides[deck._index].style.display = '';
+        deck.goTo(parseInt(card.dataset.slide));
       });
     });
   });
