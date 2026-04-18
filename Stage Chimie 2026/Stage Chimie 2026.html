@@ -100,7 +100,7 @@
     letter-spacing: -.02em;
     margin: 0 0 20px 0;
   }
-  .cover h1 .accent { color: #bae6fd; }
+  .cover h1 .accent { color: #16a34a; }
   .cover .subtitle {
     font-size: 34px;
     font-weight: 400;
@@ -428,8 +428,13 @@
     justify-content: space-between;
     position: relative;
     overflow: hidden;
-    transition: transform .2s ease;
+    transition: transform .2s ease, box-shadow .2s ease;
     min-height: 0;
+    cursor: pointer;
+  }
+  .agenda-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.1);
   }
   .agenda-card::before {
     content: "";
@@ -545,7 +550,7 @@
     <p class="lead">Dix manipulations couvrant la chimie organique du Bac Pro — des bioplastiques aux savons, des arômes aux biocarburants, de la combustion aux dosages pharmaceutiques et physiologiques.</p>
 
     <div class="agenda-grid">
-      <div class="agenda-card" style="--card-color: var(--tp-amidon);">
+      <div class="agenda-card" data-slide="2" style="--card-color: var(--tp-amidon);">
         <div>
           <div class="acn">TP 1</div>
           <h4><span class="e">🌽</span>Film d'amidon</h4>
@@ -553,7 +558,7 @@
         </div>
         <div class="themes"><span>Bioplastique</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-slime);">
+      <div class="agenda-card" data-slide="3" style="--card-color: var(--tp-slime);">
         <div>
           <div class="acn">TP 2</div>
           <h4><span class="e">🧪</span>Slime</h4>
@@ -561,7 +566,7 @@
         </div>
         <div class="themes"><span>Réticulation</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-ester);">
+      <div class="agenda-card" data-slide="4" style="--card-color: var(--tp-ester);">
         <div>
           <div class="acn">TP 3</div>
           <h4><span class="e">⚗️</span>Estérification</h4>
@@ -569,7 +574,7 @@
         </div>
         <div class="themes"><span>Ester</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-sapo);">
+      <div class="agenda-card" data-slide="5" style="--card-color: var(--tp-sapo);">
         <div>
           <div class="acn">TP 4</div>
           <h4><span class="e">🧼</span>Saponification à chaud</h4>
@@ -577,7 +582,7 @@
         </div>
         <div class="themes"><span>Savon</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-sapofroid);">
+      <div class="agenda-card" data-slide="6" style="--card-color: var(--tp-sapofroid);">
         <div>
           <div class="acn">TP 5</div>
           <h4><span class="e">❄️</span>Saponification à froid</h4>
@@ -585,7 +590,7 @@
         </div>
         <div class="themes"><span>SAF</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-biocar);">
+      <div class="agenda-card" data-slide="7" style="--card-color: var(--tp-biocar);">
         <div>
           <div class="acn">TP 6</div>
           <h4><span class="e">🌿</span>Biocarburant</h4>
@@ -593,7 +598,7 @@
         </div>
         <div class="themes"><span>EMAG</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-combu);">
+      <div class="agenda-card" data-slide="8" style="--card-color: var(--tp-combu);">
         <div>
           <div class="acn">TP 7</div>
           <h4><span class="e">🔥</span>Combustion</h4>
@@ -601,7 +606,7 @@
         </div>
         <div class="themes"><span>Combustion</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-chromato);">
+      <div class="agenda-card" data-slide="9" style="--card-color: var(--tp-chromato);">
         <div>
           <div class="acn">TP 8</div>
           <h4><span class="e">🌈</span>Chromatographie</h4>
@@ -609,7 +614,7 @@
         </div>
         <div class="themes"><span>CCM</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-ibu);">
+      <div class="agenda-card" data-slide="10" style="--card-color: var(--tp-ibu);">
         <div>
           <div class="acn">TP 9</div>
           <h4><span class="e">💊</span>Ibuprofène</h4>
@@ -617,7 +622,7 @@
         </div>
         <div class="themes"><span>Titrage</span></div>
       </div>
-      <div class="agenda-card" style="--card-color: var(--tp-condu);">
+      <div class="agenda-card" data-slide="11" style="--card-color: var(--tp-condu);">
         <div>
           <div class="acn">TP 10</div>
           <h4><span class="e">💧</span>Sérum physiologique</h4>
@@ -1105,7 +1110,7 @@
     <div class="tp-head">
       <div>
         <div class="tp-num">
-          <span class="n">9</span>
+          <span class="n">8</span>
           <span class="kicker">Séparation / identification</span>
         </div>
         <h2><span class="emoji">🌈</span>Chromatographie — identification de la vanilline</h2>
@@ -1174,7 +1179,7 @@
     <div class="tp-head">
       <div>
         <div class="tp-num">
-          <span class="n">10</span>
+          <span class="n">9</span>
           <span class="kicker">Dosage acide-base</span>
         </div>
         <h2><span class="emoji">💊</span>Dosage de l'ibuprofène (ExAO)</h2>
@@ -1248,7 +1253,7 @@
     <div class="tp-head">
       <div>
         <div class="tp-num">
-          <span class="n">8</span>
+          <span class="n">10</span>
           <span class="kicker">Titrage conductimétrique</span>
         </div>
         <h2><span class="emoji">💧</span>Titrage d'un sérum physiologique</h2>
@@ -1312,6 +1317,20 @@
   </section>
 
 </deck-stage>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const deck = document.querySelector('deck-stage');
+    document.querySelectorAll('.agenda-card[data-slide]').forEach(card => {
+      card.addEventListener('click', () => {
+        const idx = parseInt(card.dataset.slide);
+        deck._slides[deck._index].style.display = 'none';
+        deck._index = idx;
+        deck._slides[deck._index].style.display = '';
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
