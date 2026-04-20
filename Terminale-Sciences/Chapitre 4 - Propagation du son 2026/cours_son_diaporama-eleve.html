@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Son – Cours Terminale</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;600;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05080f;
+    --panel: #0b1120;
+    --cyan: #00e5ff;
+    --green: #39ff8e;
+    --amber: #ffb830;
+    --red: #ff4d6a;
+    --text: #ccd6f6;
+    --muted: #6a7fa8;
+    --border: rgba(0,229,255,0.18);
+    --glow: 0 0 18px rgba(0,229,255,0.35);
+  }
+  body.light {
+    --bg: #f0f4ff;
+    --panel: #ffffff;
+    --cyan: #006fcc;
+    --green: #00904a;
+    --amber: #b07000;
+    --red: #cc1a3a;
+    --text: #1e2a45;
+    --muted: #7080a8;
+    --border: rgba(0,80,200,0.18);
+    --glow: 0 0 12px rgba(0,111,204,0.2);
+  }
+  body.light #s0 {
+    background: radial-gradient(ellipse at 50% 40%, #d8e8ff 0%, #f0f4ff 70%);
+  }
+  body.light #s0 h1 {
+    background: linear-gradient(135deg, #1a2a55 30%, #006fcc 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  body.light .step-sub   { background:rgba(0,0,0,.03); border-color:rgba(0,0,0,.08); }
+  body.light .step-section { border-bottom-color:rgba(0,80,200,.12); }
+  body.light #progress   { box-shadow:none; }
+  body.light .dot.active { box-shadow:none; }
+  body.light .c-cyan  .step-bullet { box-shadow:none; }
+  body.light .c-green .step-bullet { box-shadow:none; }
+  body.light .c-amber .step-bullet { box-shadow:none; }
+  body.light .c-red   .step-bullet { box-shadow:none; }
+  body, html { transition: background .35s; }
+  .slide, .step-item, .step-sub, .step-section, #badge, #fsBtn, #themeBtn, .nav-btn {
+    transition: background .35s, color .35s, border-color .35s, opacity .4s, transform .4s;
+  }
+  #themeBtn {
+    position:fixed; top:64px; left:24px; z-index:10;
+    background:rgba(0,229,255,.07); border:1px solid var(--border);
+    color:var(--cyan); width:36px; height:36px; border-radius:4px;
+    font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  #themeBtn:hover { background:rgba(0,229,255,.18); box-shadow:var(--glow); }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width:100%; height:100%; background:var(--bg); font-family:'Barlow',sans-serif; color:var(--text); overflow:hidden; }
+
+  #waveCanvas {
+    position:fixed; bottom:0; left:0; width:100%; height:120px;
+    opacity:.18; pointer-events:none; z-index:0;
+  }
+
+  /* ── SLIDES ── */
+  #slides { position:relative; width:100%; height:100vh; z-index:1; }
+
+  .slide {
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    padding:48px 70px;
+    opacity:0; pointer-events:none;
+    transition: opacity .4s;
+  }
+  .slide.active { opacity:1; pointer-events:all; }
+
+  /* ── SLIDE 0 PRÉSENTATION ── */
+  #s0 {
+    background: radial-gradient(ellipse at 50% 40%, #0a1a35 0%, var(--bg) 70%);
+    text-align:center; gap:18px;
+  }
+  #s0 .tag {
+    font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--cyan);
+    border:1px solid var(--border); padding:5px 16px; border-radius:2px;
+    animation: fadeUp .6s .1s both;
+  }
+  #s0 h1 {
+    font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size: clamp(4rem,10vw,8rem); line-height:.95; letter-spacing:-.01em;
+    background:linear-gradient(135deg,#fff 30%,var(--cyan) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    animation:fadeUp .7s .2s both;
+  }
+  #s0 .subtitle {
+    font-family:'Space Mono',monospace; font-size:.9rem; color:var(--muted);
+    letter-spacing:.08em; animation:fadeUp .7s .35s both;
+  }
+  #s0 .wave-svg { animation:fadeUp .7s .45s both; }
+  #s0 .meta { font-size:.78rem; color:var(--muted); font-family:'Space Mono',monospace; animation:fadeUp .7s .55s both; }
+  #s0 .chapters {
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+    margin-top:8px; animation:fadeUp .7s .65s both;
+  }
+  #s0 .chapters span {
+    background:rgba(0,229,255,.07); border:1px solid var(--border);
+    border-radius:3px; padding:5px 14px;
+    font-size:.72rem; font-family:'Space Mono',monospace; color:var(--cyan); letter-spacing:.05em;
+  }
+
+  /* ── SLIDE CONTENU ── */
+  .slide-inner { width:100%; max-width:880px; display:flex; flex-direction:column; gap:0; }
+
+  .slide-header {
+    display:flex; align-items:center; gap:16px;
+    border-bottom:1px solid var(--border); padding-bottom:14px; margin-bottom:28px;
+  }
+  .slide-num { font-family:'Space Mono',monospace; font-size:.7rem; color:var(--cyan); letter-spacing:.15em; opacity:.7; }
+  .slide-title {
+    font-family:'Barlow Condensed',sans-serif; font-weight:800;
+    font-size:clamp(1.7rem,3.5vw,2.6rem); line-height:1; color:var(--text);
+  }
+  .slide-title span { color:var(--cyan); }
+
+  /* ── STEP ITEMS ── */
+  .step-item {
+    display:flex; align-items:flex-start; gap:16px;
+    padding:14px 20px; margin-bottom:14px;
+    background:var(--panel); border:1px solid var(--border);
+    border-radius:6px; position:relative; overflow:hidden;
+    opacity:0; transform:translateY(14px);
+    transition: opacity .45s cubic-bezier(.2,0,.1,1), transform .45s cubic-bezier(.2,0,.1,1);
+  }
+  .step-item.visible { opacity:1; transform:translateY(0); }
+
+  .step-item::before {
+    content:''; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px 0 0 3px;
+  }
+  .step-item.c-cyan::before   { background:var(--cyan);  box-shadow:0 0 8px var(--cyan); }
+  .step-item.c-green::before  { background:var(--green); box-shadow:0 0 8px var(--green); }
+  .step-item.c-amber::before  { background:var(--amber); box-shadow:0 0 8px var(--amber); }
+  .step-item.c-red::before    { background:var(--red);   box-shadow:0 0 8px var(--red); }
+
+  .step-bullet {
+    flex-shrink:0; width:10px; height:10px;
+    border-radius:50%; margin-top:7px;
+  }
+  .c-cyan  .step-bullet { background:var(--cyan);  box-shadow:0 0 6px var(--cyan); }
+  .c-green .step-bullet { background:var(--green); box-shadow:0 0 6px var(--green); }
+  .c-amber .step-bullet { background:var(--amber); box-shadow:0 0 6px var(--amber); }
+  .c-red   .step-bullet { background:var(--red);   box-shadow:0 0 6px var(--red); }
+
+  /* Fraction CSS */
+  .frac {
+    display:inline-flex; flex-direction:column; align-items:center;
+    vertical-align:middle; font-family:'Space Mono',monospace;
+    line-height:1.1; margin:0 2px;
+  }
+  .frac .num { border-bottom:1.5px solid currentColor; padding:0 4px; font-size:.82rem; }
+  .frac .den { padding:0 4px; font-size:.82rem; }
+
+  /* Lambda en serif italique */
+  .lam { font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:1.08em; }
+
+  /* Two-col layout slide 2 */
+  .two-col-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+  .col-left {
+    display:flex; flex-direction:column; padding:0 20px 0 6px;
+    border-right: 1.5px solid transparent;
+    transition: border-color .7s ease;
+  }
+  .col-left.sep-visible {
+    border-right-color: var(--cyan);
+    opacity: 1;
+  }
+  body.light .col-left.sep-visible { border-right-color: var(--cyan); }
+  .col-right { display:flex; flex-direction:column; padding:0 6px 0 20px; }
+
+  .step-body { flex:1; }
+  .step-body p { font-size:.93rem; line-height:1.65; color:var(--text); font-weight:300; }
+  .step-body strong { color:var(--text); font-weight:600; }
+  .step-body sub, .step-body sup { font-size:.75em; }
+
+  /* Section label */
+  .step-section {
+    padding:6px 0 6px 0; margin-bottom:8px;
+    opacity:0; transform:translateY(10px);
+    transition:opacity .4s, transform .4s;
+    border-bottom:1px solid rgba(0,229,255,.1);
+  }
+  .step-section.visible { opacity:1; transform:translateY(0); }
+  .step-section-label {
+    font-family:'Barlow Condensed',sans-serif; font-weight:700;
+    font-size:1.15rem; letter-spacing:.04em;
+  }
+  .step-section-label.c-cyan  { color:var(--cyan); }
+  .step-section-label.c-green { color:var(--green); }
+
+  /* Sous-items */
+  .step-sub {
+    display:flex; align-items:flex-start; gap:12px;
+    padding:10px 18px 10px 32px; margin-bottom:8px;
+    border-radius:4px;
+    background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06);
+    opacity:0; transform:translateX(12px);
+    transition:opacity .4s, transform .4s;
+  }
+  .step-sub.visible { opacity:1; transform:translateX(0); }
+  .step-sub p { font-size:.88rem; line-height:1.6; color:var(--text); font-weight:300; }
+  .step-sub strong { color:var(--text); font-weight:600; }
+
+  .formula {
+    display:inline-block;
+    font-family:'Space Mono',monospace;
+    background:rgba(0,229,255,.08); border:1px solid rgba(0,229,255,.3);
+    border-radius:4px; padding:3px 10px; color:var(--cyan); font-size:.88rem;
+    box-shadow:var(--glow); margin:2px 3px;
+  }
+  .formula.g { background:rgba(57,255,142,.08); border-color:rgba(57,255,142,.3); color:var(--green); box-shadow:0 0 14px rgba(57,255,142,.25); }
+  .formula.a { background:rgba(255,184,48,.08); border-color:rgba(255,184,48,.3); color:var(--amber); box-shadow:0 0 14px rgba(255,184,48,.25); }
+  .formula.r { background:rgba(255,77,106,.1); border-color:rgba(255,77,106,.4); color:var(--red); }
+
+  /* ── NAV ── */
+  #nav {
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
+    z-index:10; display:flex; align-items:center; gap:16px;
+  }
+  .nav-btn {
+    background:rgba(0,229,255,.07); border:1px solid var(--border);
+    color:var(--cyan); width:42px; height:42px; border-radius:4px;
+    font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .2s, box-shadow .2s;
+  }
+  .nav-btn:hover { background:rgba(0,229,255,.15); box-shadow:var(--glow); }
+  .nav-btn:disabled { opacity:.2; cursor:not-allowed; }
+  #dots { display:flex; gap:8px; align-items:center; }
+  .dot {
+    width:7px; height:7px; border-radius:50%; background:var(--muted);
+    transition:background .3s, transform .3s; cursor:pointer;
+  }
+  .dot.active { background:var(--cyan); transform:scale(1.4); box-shadow:0 0 8px var(--cyan); }
+
+  /* Progress bar */
+  #progress {
+    position:fixed; top:0; left:0; height:2px;
+    background:var(--cyan); box-shadow:0 0 8px var(--cyan);
+    z-index:20; transition:width .4s;
+  }
+
+  /* Badges */
+  #fsBtn {
+    position:fixed; top:20px; left:24px; z-index:10;
+    background:rgba(0,229,255,.07); border:1px solid var(--border);
+    color:var(--cyan); width:36px; height:36px; border-radius:4px;
+    font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .2s, box-shadow .2s;
+  }
+  #fsBtn:hover { background:rgba(0,229,255,.18); box-shadow:var(--glow); }
+
+  #badge {
+    position:fixed; top:20px; right:24px; font-family:'Space Mono',monospace;
+    font-size:.62rem; color:var(--muted); letter-spacing:.08em; z-index:10;
+    text-align:right; line-height:1.6;
+  }
+  #badge strong { color:var(--cyan); display:block; font-size:.68rem; }
+
+  #stepCounter {
+    position:fixed; bottom:30px; right:24px;
+    font-family:'Space Mono',monospace; font-size:.62rem;
+    color:var(--muted); z-index:10; letter-spacing:.06em;
+  }
+
+  /* ── ANIMATIONS TITRE ── */
+  .slide-anim { margin-left:auto; flex-shrink:0; }
+
+  /* SLIDE 1 : ondes circulaires rayonnantes */
+  @keyframes ripple {
+    0%   { r: 4;  opacity: .9; stroke-width: 2.5; }
+    100% { r: 58; opacity: 0;  stroke-width: .4;  }
+  }
+  @keyframes source-pulse {
+    0%,100% { r: 4.5; opacity:1; }
+    50%     { r: 6.5; opacity:.7; }
+  }
+  @keyframes receiver-glow {
+    0%,100% { opacity:.5; }
+    50%     { opacity:1; }
+  }
+  .ripple-ring { fill:none; stroke:var(--cyan); stroke-width:2.5; r:4; opacity:0; }
+  .r1 { animation: ripple 2.4s  .0s ease-out infinite; }
+  .r2 { animation: ripple 2.4s  .6s ease-out infinite; }
+  .r3 { animation: ripple 2.4s 1.2s ease-out infinite; }
+  .r4 { animation: ripple 2.4s 1.8s ease-out infinite; }
+  .src-dot  { animation: source-pulse   1.2s ease-in-out infinite; }
+  .rcv-dot  { animation: receiver-glow  2.4s .8s ease-in-out infinite; }
+
+  /* SLIDE 2 : sinusoïde oscilloscope */
+  @keyframes wave-draw {
+    0%   { stroke-dashoffset: 300; }
+    60%  { stroke-dashoffset: 0; }
+    80%  { stroke-dashoffset: 0; opacity:1; }
+    100% { stroke-dashoffset: 0; opacity:.3; }
+  }
+  @keyframes wave-cursor {
+    0%,100% { transform: translateX(0); opacity:1; }
+    50%     { transform: translateX(52px); opacity:.8; }
+  }
+  .sine-path { fill:none; stroke:var(--cyan); stroke-width:2;
+               stroke-dasharray:300; animation: wave-draw 2.4s ease-in-out infinite; }
+  .osc-cursor { animation: wave-cursor 2.4s ease-in-out infinite; }
+
+  /* SLIDE 3 : barres VU-mètre */
+  @keyframes bar1 { 0%,100%{height:10px;y:30px} 50%{height:28px;y:12px} }
+  @keyframes bar2 { 0%,100%{height:18px;y:22px} 40%{height:34px;y:6px}  }
+  @keyframes bar3 { 0%,100%{height:24px;y:16px} 60%{height:16px;y:24px} }
+  @keyframes bar4 { 0%,100%{height:12px;y:28px} 30%{height:30px;y:10px} }
+  @keyframes bar5 { 0%,100%{height:20px;y:20px} 70%{height:10px;y:30px} }
+  .vb1 { animation: bar1 1.1s .00s ease-in-out infinite; }
+  .vb2 { animation: bar2 1.3s .15s ease-in-out infinite; }
+  .vb3 { animation: bar3 0.9s .30s ease-in-out infinite; }
+  .vb4 { animation: bar4 1.2s .10s ease-in-out infinite; }
+  .vb5 { animation: bar5 1.0s .25s ease-in-out infinite; }
+
+  /* SLIDE 4 : spectre fréquence + seuil danger */
+  @keyframes sweep {
+    0%   { transform: translateX(0); opacity:1; }
+    80%  { transform: translateX(54px); opacity:1; }
+    100% { transform: translateX(54px); opacity:0; }
+  }
+  @keyframes danger-pulse {
+    0%,100% { opacity:.3; } 50% { opacity:1; }
+  }
+  .freq-sweep { animation: sweep 3s ease-in-out infinite; }
+  .danger-line { animation: danger-pulse 1.2s ease-in-out infinite; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<canvas id="waveCanvas"></canvas>
+<button id="fsBtn" title="Plein écran (F)">⛶</button>
+<button id="themeBtn" title="Mode clair / sombre (L)">☀</button>
+<div id="badge"><strong>Terminale</strong>Lycée Denis Diderot</div>
+<div id="stepCounter"></div>
+
+<div id="slides">
+
+  <!-- ══ SLIDE 0 — PRÉSENTATION ══ -->
+  <div class="slide active" id="s0">
+    <div class="tag">Physique · Ondes</div>
+    <h1>LE SON</h1>
+    <svg class="wave-svg" width="260" height="40" viewBox="0 0 260 40">
+      <path d="M0 20 Q16 5 32 20 Q48 35 64 20 Q80 5 96 20 Q112 35 128 20 Q144 5 160 20 Q176 35 192 20 Q208 5 224 20 Q240 35 256 20"
+            stroke="#00e5ff" stroke-width="2" fill="none" opacity=".8"/>
+    </svg>
+    <div class="subtitle">Propagation · Caractéristiques · Intensité · Audition</div>
+    <div class="chapters">
+      <span>① Propagation du son</span>
+      <span>② Caractéristiques</span>
+      <span>③ Intensité acoustique</span>
+      <span>④ Oreille humaine</span>
+    </div>
+    <div class="meta">A. Ruiz &nbsp;·&nbsp; Lycée Denis Diderot, Belfort</div>
+  </div>
+
+  <!-- ══ SLIDE 1 — PROPAGATION ══ -->
+  <div class="slide" id="s1">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <span class="slide-num">01 / 04</span>
+        <h2 class="slide-title">Propagation <span>d'un son</span></h2>
+        <svg class="slide-anim" width="180" height="96" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="srcGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="var(--cyan)" stop-opacity=".6"/>
+              <stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="rcvGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="var(--green)" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="var(--green)" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- halo source -->
+          <circle cx="22" cy="24" r="10" fill="url(#srcGlow)"/>
+          <!-- 4 anneaux qui irradient -->
+          <circle class="ripple-ring r1" cx="22" cy="24"/>
+          <circle class="ripple-ring r2" cx="22" cy="24"/>
+          <circle class="ripple-ring r3" cx="22" cy="24"/>
+          <circle class="ripple-ring r4" cx="22" cy="24"/>
+          <!-- source -->
+          <circle class="src-dot" cx="22" cy="24" r="4.5" fill="var(--cyan)"/>
+          <!-- label émetteur -->
+          <text x="15" y="43" font-family="Space Mono,monospace" font-size="5" fill="var(--cyan)" opacity=".7">source</text>
+          <!-- récepteur -->
+          <circle cx="76" cy="24" r="8" fill="url(#rcvGlow)"/>
+          <circle class="rcv-dot" cx="76" cy="24" r="4" fill="var(--green)"/>
+          <text x="68" y="43" font-family="Space Mono,monospace" font-size="5" fill="var(--green)" opacity=".7">récept.</text>
+          <!-- ligne de trajet en pointillés -->
+          <line x1="28" y1="24" x2="70" y2="24" stroke="var(--muted)" stroke-width=".7" stroke-dasharray="3,3" opacity=".4"/>
+        </svg>
+      </div>
+
+      <div class="step-item c-cyan" data-slide="1" data-step="1">
+        <div class="step-bullet"></div>
+        <div class="step-body">
+          <p>Le son est une <strong>onde</strong> qui a pour origine un <strong>émetteur</strong>. Il se propage à travers un <strong>milieu matériel</strong> (gaz, liquide ou solide) avant d'atteindre un <strong>récepteur</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step-item c-green" data-slide="1" data-step="2">
+        <div class="step-bullet"></div>
+        <div class="step-body">
+          <p>Sa vitesse de déplacement <strong>C<sub>son</sub></strong>, appelée aussi <strong>célérité</strong>, dépend du milieu. Elle est plus élevée dans les liquides ou les métaux que dans l'air :</p>
+          <p style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <span class="formula">343 m/s</span><span style="font-size:.8rem;color:var(--muted)">air à 20 °C</span>
+            <span class="formula g">1 500 m/s</span><span style="font-size:.8rem;color:var(--muted)">eau</span>
+            <span class="formula a">5 000 m/s</span><span style="font-size:.8rem;color:var(--muted)">acier</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 2 — CARACTÉRISTIQUES ══ -->
+  <div class="slide" id="s2">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <span class="slide-num">02 / 04</span>
+        <h2 class="slide-title">Caractéristiques <span>d'une onde sonore</span></h2>
+        <svg class="slide-anim" width="180" height="96" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- fond oscilloscope -->
+          <rect x="1" y="1" width="88" height="46" rx="4" fill="rgba(0,0,0,.25)" stroke="var(--border)" stroke-width="1"/>
+          <!-- axe -->
+          <line x1="8" y1="24" x2="82" y2="24" stroke="var(--border)" stroke-width=".8"/>
+          <!-- sinusoïde animée -->
+          <path class="sine-path" d="M8 24 Q16 6 24 24 Q32 42 40 24 Q48 6 56 24 Q64 42 72 24 Q80 6 82 20"/>
+          <!-- curseur vertical -->
+          <g class="osc-cursor">
+            <line x1="8" y1="4" x2="8" y2="44" stroke="var(--amber)" stroke-width="1" opacity=".7"/>
+          </g>
+          <!-- label T -->
+          <text x="10" y="45" font-family="Space Mono,monospace" font-size="7" fill="var(--amber)" opacity=".8">T</text>
+        </svg>
+      </div>
+
+      <div class="two-col-grid">
+
+        <!-- COLONNE GAUCHE : Période -->
+        <div class="col-left">
+          <div class="step-section" data-slide="2" data-step="1">
+            <div class="step-section-label c-cyan">Période T</div>
+          </div>
+          <div class="step-sub" data-slide="2" data-step="2">
+            <div class="step-body">
+              <p>Déterminée <strong>expérimentalement</strong> : avec un <strong>oscilloscope</strong> ou par <strong>ExAO</strong>.</p>
+            </div>
+          </div>
+          <div class="step-sub" data-slide="2" data-step="3">
+            <div class="step-body">
+              <p>Par le <strong>calcul</strong> : connaissant la fréquence <strong>f</strong> (en Hz) :</p>
+              <p style="text-align:center; margin-top:10px;">
+                <span class="formula" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;">
+                  T&nbsp;=&nbsp;<span class="frac"><span class="num">1</span><span class="den">f</span></span>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLONNE DROITE : Longueur d'onde -->
+        <div class="col-right">
+          <div class="step-section" data-slide="2" data-step="4">
+            <div class="step-section-label c-green">Longueur d'onde <span class="lam" style="font-size:.85em;">λ</span></div>
+          </div>
+          <div class="step-sub" data-slide="2" data-step="5">
+            <div class="step-body">
+              <p>Déterminée <strong>expérimentalement</strong> : en déplaçant un microphone jusqu'à retrouver le même état vibratoire — signaux <strong>en phase</strong>.</p>
+            </div>
+          </div>
+          <div class="step-sub" data-slide="2" data-step="6">
+            <div class="step-body">
+              <p>Par le <strong>calcul</strong> : connaissant <strong>C<sub>son</sub></strong> (en m/s) et <strong>T</strong> (en s) :</p>
+              <p style="text-align:center; margin-top:10px;">
+                <span class="formula g" style="padding:6px 14px;"><span class="lam">λ</span> = C<sub>son</sub> × T</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 3 — INTENSITÉ ══ -->
+  <div class="slide" id="s3">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <span class="slide-num">03 / 04</span>
+        <h2 class="slide-title">Pression &amp; <span>intensité acoustique</span></h2>
+        <svg class="slide-anim" width="180" height="96" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- fond -->
+          <rect x="1" y="1" width="88" height="46" rx="4" fill="rgba(0,0,0,.25)" stroke="var(--border)" stroke-width="1"/>
+          <!-- label dB -->
+          <text x="5" y="44" font-family="Space Mono,monospace" font-size="6" fill="var(--muted)">dB</text>
+          <!-- 5 barres VU -->
+          <rect class="vb1" x="22" y="30" width="9" height="10" rx="2" fill="var(--green)"/>
+          <rect class="vb2" x="34" y="22" width="9" height="18" rx="2" fill="var(--green)"/>
+          <rect class="vb3" x="46" y="16" width="9" height="24" rx="2" fill="var(--cyan)"/>
+          <rect class="vb4" x="58" y="28" width="9" height="12" rx="2" fill="var(--amber)"/>
+          <rect class="vb5" x="70" y="20" width="9" height="20" rx="2" fill="var(--red)"/>
+          <!-- ligne sol -->
+          <line x1="18" y1="40" x2="84" y2="40" stroke="var(--border)" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <div class="step-item c-cyan" data-slide="3" data-step="1">
+        <div class="step-bullet"></div>
+        <div class="step-body">
+          <p>Une onde sonore <strong>transporte de l'énergie</strong>. Elle est caractérisée par l'<strong>intensité acoustique I</strong> (en W/m²) qui représente la puissance moyenne transportée par l'onde par unité de surface.</p>
+        </div>
+      </div>
+
+      <div class="step-item c-green" data-slide="3" data-step="2">
+        <div class="step-bullet"></div>
+        <div class="step-body">
+          <p>On mesure le <strong>niveau d'intensité acoustique L</strong> en décibels (dB) avec un <strong>sonomètre</strong>. Il est lié à l'intensité par :</p>
+          <p style="text-align:center; margin-top:12px;">
+            <span class="formula g" style="font-size:1rem; padding:6px 20px;">L = 10 · log( I / I₀ )</span>
+          </p>
+          <p style="margin-top:10px; font-size:.82rem; color:var(--muted);">où <strong>I₀</strong> = 10<sup>−12</sup> W/m² &nbsp;(seuil d'audibilité)</p>
+        </div>
+      </div>
+
+      <div class="step-item c-red" data-slide="3" data-step="3">
+        <div class="step-bullet"></div>
+        <div class="step-body">
+          <p>Une onde <strong>s'atténue</strong> en se propageant : le niveau d'intensité diminue avec la distance. Il diminue de <span class="formula r">−6 dB</span> lorsque la distance <strong>double</strong>.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 4 — OREILLE ══ -->
+  <div class="slide" id="s4">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <span class="slide-num">04 / 04</span>
+        <h2 class="slide-title">Caractéristique de <span>l'oreille humaine</span></h2>
+        <svg class="slide-anim" width="180" height="96" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- fond -->
+          <rect x="1" y="1" width="88" height="46" rx="4" fill="rgba(0,0,0,.25)" stroke="var(--border)" stroke-width="1"/>
+          <!-- zone audible -->
+          <rect x="14" y="8" width="54" height="28" rx="2" fill="rgba(0,229,255,.07)" stroke="var(--cyan)" stroke-width=".8" opacity=".7"/>
+          <!-- zones inaudibles -->
+          <rect x="5" y="8" width="9" height="28" rx="2" fill="rgba(255,77,106,.08)"/>
+          <rect x="68" y="8" width="16" height="28" rx="2" fill="rgba(57,255,142,.07)"/>
+          <!-- labels -->
+          <text x="6" y="42" font-family="Space Mono,monospace" font-size="5.5" fill="var(--red)" opacity=".8">infra</text>
+          <text x="24" y="42" font-family="Space Mono,monospace" font-size="5.5" fill="var(--cyan)" opacity=".8">20Hz–20kHz</text>
+          <text x="69" y="42" font-family="Space Mono,monospace" font-size="5.5" fill="var(--green)" opacity=".8">ultra</text>
+          <!-- ligne 85dB danger -->
+          <line class="danger-line" x1="14" y1="20" x2="68" y2="20" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="69" y="23" font-family="Space Mono,monospace" font-size="6" fill="var(--red)" opacity=".9">85</text>
+          <!-- balayage fréquence -->
+          <g class="freq-sweep">
+            <line x1="14" y1="8" x2="14" y2="36" stroke="var(--amber)" stroke-width="1.5" opacity=".9"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="step-item c-cyan" data-slide="4" data-step="1">
+        <div class="step-bullet"></div>
+        <div class="step-body">
+          <p>L'oreille humaine possède une membrane (le <strong>tympan</strong>) qui permet de détecter les sons dont la fréquence se situe entre <span class="formula">20 Hz</span> et <span class="formula">20 000 Hz</span>.</p>
+        </div>
+      </div>
+
+      <div class="step-item c-red" data-slide="4" data-step="2">
+        <div class="step-bullet"></div>
+        <div class="step-body">
+          <p>Une échelle de niveau d'intensité acoustique permet d'évaluer la <strong>dangerosité</strong> d'un son. Au-delà de <span class="formula r">85 dB</span>, le niveau sonore est <strong>dangereux</strong> : il peut avoir un effet <strong>néfaste et irréversible</strong> sur l'audition.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /slides -->
+
+<nav id="nav">
+  <button class="nav-btn" id="prevBtn" onclick="go(-1)" disabled>&#8592;</button>
+  <div id="dots"></div>
+  <button class="nav-btn" id="nextBtn" onclick="go(1)">&#8594;</button>
+</nav>
+
+<script>
+// ── WAVE ──
+const canvas=document.getElementById('waveCanvas'),ctx=canvas.getContext('2d');
+let t=0;
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=120;}
+resizeCanvas(); window.addEventListener('resize',resizeCanvas);
+function drawWave(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const w=canvas.width,h=canvas.height;
+  [[28,'#00e5ff',1.5,6,1],[18,'#39ff8e',1,10,1.4]].forEach(([amp,col,lw,freq,sp])=>{
+    ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=lw;
+    for(let x=0;x<=w;x++){
+      const y=h/2+amp*Math.sin((x/w)*Math.PI*freq+t*sp);
+      x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }ctx.stroke();
+  });
+  t+=.022; requestAnimationFrame(drawWave);
+}
+drawWave();
+
+// ── ENGINE ──
+const SLIDES=5;
+let curSlide=0;
+
+// Collect step elements indexed by [slide][step]
+const steps=Array.from({length:SLIDES},()=>[]);
+document.querySelectorAll('[data-slide]').forEach(el=>{
+  const s=+el.dataset.slide, st=+el.dataset.step;
+  steps[s][st]=el;
+});
+// steps[s] = sparse array; compact to sequential
+for(let s=0;s<SLIDES;s++) steps[s]=steps[s].filter(Boolean);
+
+const curShown=new Array(SLIDES).fill(-1);
+
+const slideEls=document.querySelectorAll('.slide');
+const dotsEl=document.getElementById('dots');
+const prevBtn=document.getElementById('prevBtn');
+const nextBtn=document.getElementById('nextBtn');
+const progressEl=document.getElementById('progress');
+const counterEl=document.getElementById('stepCounter');
+
+// Dots
+for(let i=0;i<SLIDES;i++){
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.onclick=()=>jumpTo(i);
+  dotsEl.appendChild(d);
+}
+
+function totalSteps(s){return steps[s].length;}
+
+function updateUI(){
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===curSlide));
+  prevBtn.disabled = curSlide===0 && curShown[0]===-1;
+  nextBtn.disabled = curSlide===SLIDES-1 && curShown[curSlide]===totalSteps(curSlide)-1;
+  // progress bar
+  let done=0, total=0;
+  for(let i=0;i<SLIDES;i++){
+    const ts=Math.max(1,totalSteps(i));
+    total+=ts;
+    if(i<curSlide) done+=ts;
+    else if(i===curSlide) done+=Math.max(0,curShown[i]+1);
+  }
+  progressEl.style.width=(done/total*100)+'%';
+  // step counter
+  const ts=totalSteps(curSlide);
+  counterEl.textContent = (ts>0 && curSlide>0) ? (curShown[curSlide]+1)+' / '+ts : '';
+}
+
+function showSlide(idx){
+  slideEls.forEach((el,i)=>el.classList.toggle('active',i===idx));
+  const cl = document.querySelector('.col-left');
+  if(cl) cl.classList.toggle('sep-visible', idx===2);
+  curSlide=idx; updateUI();
+}
+
+function revealNext(s){
+  const next=curShown[s]+1;
+  if(next>=totalSteps(s)) return false;
+  steps[s][next].classList.add('visible');
+  curShown[s]=next; updateUI(); return true;
+}
+
+function hideLast(s){
+  const last=curShown[s];
+  if(last<0) return false;
+  steps[s][last].classList.remove('visible');
+  curShown[s]=last-1; updateUI(); return true;
+}
+
+function go(dir){
+  if(dir===1){
+    if(curSlide===0){ showSlide(1); return; }
+    if(!revealNext(curSlide)){
+      if(curSlide<SLIDES-1) showSlide(curSlide+1);
+    }
+  } else {
+    if(curSlide===0) return;
+    if(curShown[curSlide]>=0){ hideLast(curSlide); }
+    else { showSlide(curSlide-1); }
+  }
+}
+
+function jumpTo(idx){
+  for(let s=idx+1;s<SLIDES;s++){
+    steps[s].forEach(el=>el.classList.remove('visible'));
+    curShown[s]=-1;
+  }
+  showSlide(idx);
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')    go(-1);
+  if(e.key==='f'||e.key==='F') toggleFS();
+});
+
+updateUI();
+
+// ── THEME ──
+const themeBtn=document.getElementById('themeBtn');
+let isLight=false;
+function toggleTheme(){
+  isLight=!isLight;
+  document.body.classList.toggle('light',isLight);
+  themeBtn.textContent = isLight ? '🌙' : '☀';
+  themeBtn.title = isLight ? 'Mode sombre (L)' : 'Mode clair (L)';
+  // redraw wave avec bonne opacité
+  canvas.style.opacity = isLight ? '.07' : '.18';
+}
+themeBtn.addEventListener('click',toggleTheme);
+document.addEventListener('keydown',e=>{
+  if(e.key==='l'||e.key==='L') toggleTheme();
+});
+
+// ── FULLSCREEN ──
+const fsBtn=document.getElementById('fsBtn');
+function toggleFS(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().catch(()=>{});
+    fsBtn.textContent='⊡'; fsBtn.title='Quitter (F)';
+  } else {
+    document.exitFullscreen();
+    fsBtn.textContent='⛶'; fsBtn.title='Plein écran (F)';
+  }
+}
+fsBtn.addEventListener('click',toggleFS);
+document.addEventListener('fullscreenchange',()=>{
+  if(!document.fullscreenElement){fsBtn.textContent='⛶';fsBtn.title='Plein écran (F)';}
+});
+document.body.addEventListener('click',function autoFS(){
+  if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+  document.body.removeEventListener('click',autoFS);
+},{once:true});
+</script>
+</body>
+</html>
