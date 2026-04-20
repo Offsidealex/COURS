@@ -1,0 +1,307 @@
+% ============================================================
+%  FICHE DE RÉVISION — SÉRIES DE FOURIER — 2e BTS
+%  Style : activite_fourier_a0 / Lycée Denis Diderot
+% ============================================================
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{fouriernc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{lastpage}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{Séries de Fourier -- Fiche de révision}
+\cfoot{\thepage}
+
+\tcbset{
+  formulebox/.style={colback=blue!5!white, colframe=blue!50!black,
+    fonttitle=\bfseries, title=#1, breakable},
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black,
+    fonttitle=\bfseries, title=#1, breakable},
+  reponsebox/.style={colback=gray!5!white, colframe=gray!40!black,
+    sharp corners, boxrule=0.5pt, left=4pt, right=4pt, top=4pt, bottom=4pt},
+  remarquebox/.style={colback=gray!5!white, colframe=gray!40!black,
+    sharp corners, fonttitle=\bfseries, title=#1, breakable}
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\w}{\omega_0}
+
+% ==============================================================
+\begin{document}
+% ==============================================================
+
+\begin{center}
+  {\LARGE \textbf{Fiche de révision -- Séries de Fourier}} \\[0.2cm]
+  {\large Lycée Denis Diderot -- 2\textsuperscript{e} année BTS CIEL} \\[0.2cm]
+  \rule{0.65\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.3cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[formulebox={1 — Fonctions périodiques : rappels}]
+Une fonction $f:\R\to\R$ est \textbf{périodique de période} $T>0$ si pour tout $x\in\R$ : $f(x+T)=f(x)$.\\[3pt]
+\textbf{Pulsation fondamentale :} $\omega_0 = \dfrac{2\pi}{T}$ \hfill
+\textbf{Fréquence fondamentale :} $f_0 = \dfrac{1}{T}$
+\end{tcolorbox}
+
+\begin{tcolorbox}[remarquebox={Condition de Dirichlet (admis)}]
+Une fonction $f$ de période $T$ admet un développement en série de Fourier si, sur une période, elle est \textbf{continue par morceaux} et à \textbf{variation bornée}. Toutes les fonctions rencontrées en BTS vérifient ces conditions.
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[formulebox={2 — Développement en série de Fourier}]
+Soit $f$ une fonction $T$-périodique vérifiant les conditions de Dirichlet. Son \textbf{développement en série de Fourier} est :
+\[
+  \boxed{f(x) = a_0 + \sum_{n=1}^{+\infty}\Big[a_n\cos(n\w x) + b_n\sin(n\w x)\Big]}
+  \qquad \omega_0 = \frac{2\pi}{T}
+\]
+Les \textbf{coefficients de Fourier} sont :
+\[
+  a_0 = \frac{1}{T}\int_0^T f(x)\,dx
+  \qquad
+  a_n = \frac{2}{T}\int_0^T f(x)\cos(n\w x)\,dx
+  \qquad
+  b_n = \frac{2}{T}\int_0^T f(x)\sin(n\w x)\,dx
+\]
+\textit{L'intégrale peut être calculée sur n'importe quel intervalle de longueur $T$.}
+\end{tcolorbox}
+
+\begin{tcolorbox}[remarquebox={Interprétation de $a_0$}]
+$a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(x)\,dx$ est la \textbf{valeur moyenne} de $f$ sur une période.
+En électronique : c'est la \textbf{composante continue} du signal.
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[formulebox={3 — Parité et simplifications}]
+\begin{center}
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{>{\bfseries}m{2.8cm} m{4cm} m{4.2cm} m{3.2cm}}
+\toprule
+ & \textbf{Paire} $f(-x)=f(x)$ & \textbf{Impaire} $f(-x)=-f(x)$ & \textbf{Cas général} \\
+\midrule
+Coeff. $b_n$ & $b_n=0$ pour tout $n$ & À calculer & À calculer \\
+Coeff. $a_n$ & À calculer & $a_n=0$ pour tout $n$ & À calculer \\
+Série & $a_0+\sum a_n\cos(n\w x)$ & $\sum b_n\sin(n\w x)$ & Formule complète \\
+Intégration & Sur $[0,T/2]$ puis $\times 2$ & Sur $[0,T/2]$ puis $\times 2$ & Sur $[0,T]$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{tcolorbox}
+
+\begin{tcolorbox}[remarquebox={Méthode — Reconnaître la parité}]
+Tracer (ou imaginer) le signal sur $[-T/2,\,T/2]$ centré en 0. \quad
+\textbf{Paire} : symétrie par rapport à l'axe Oy. \quad
+\textbf{Impaire} : symétrie centrale par rapport à l'origine.
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[formulebox={4 — Théorème de Parseval — Valeur efficace}]
+Si $f$ est $T$-périodique de valeur efficace $F_{\mathrm{eff}}$ :
+\[
+  \boxed{F_{\mathrm{eff}}^2 = \frac{1}{T}\int_0^T [f(x)]^2\,dx
+  = a_0^2 + \frac{1}{2}\sum_{n=1}^{+\infty}\left(a_n^2+b_n^2\right)}
+\]
+\textit{La puissance totale est la somme des puissances de chaque harmonique.}
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[formulebox={5 — Spectre en amplitude}]
+Le \textbf{spectre en amplitude} représente l'amplitude $C_n = \sqrt{a_n^2+b_n^2}$ de chaque harmonique en fonction de la fréquence $f_n = n f_0$ (ou de $n\omega_0$). C'est un \textbf{spectre de raies} (discret).
+\quad $C_0 = |a_0|$ (composante continue).
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[exobox={6 — Démarche type pour le contrôle}]
+\begin{enumerate}[leftmargin=*,label=\textbf{\arabic*.},nosep]
+  \item \textbf{Identifier $T$} et calculer $\omega_0 = 2\pi/T$.
+  \item \textbf{Tester la parité} : paire $\Rightarrow$ $b_n=0$ ; impaire $\Rightarrow$ $a_n=0$.
+  \item \textbf{Calculer $a_0$} : $a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(x)\,dx$ (c'est la valeur moyenne).
+  \item \textbf{Calculer $a_n$ et/ou $b_n$}.
+  \item \textbf{Écrire le développement} jusqu'à l'harmonique demandé.
+  \item \textbf{Tracer le spectre} : raies aux fréquences $nf_0$, hauteur $C_n=\sqrt{a_n^2+b_n^2}$.
+  \item \textbf{Parseval} si demandé : $F_\mathrm{eff}^2 = a_0^2 + \frac{1}{2}\sum(a_n^2+b_n^2)$.
+\end{enumerate}
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[formulebox={7 — Formulaire — Intégrales utiles}]
+\[
+  \int \cos(n\w x)\,dx = \frac{\sin(n\w x)}{n\w} + C
+  \qquad\qquad
+  \int \sin(n\w x)\,dx = -\frac{\cos(n\w x)}{n\w} + C
+\]
+\end{tcolorbox}
+
+% ==============================================================
+\newpage
+% ==============================================================
+
+\begin{center}
+  {\LARGE \textbf{Exercices de révision}} \\[0.2cm]
+  \rule{0.5\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.4cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[exobox={Exercice 1 — Calcul des coefficients (cas général)}]
+On considère la fonction $f$ périodique de période $T = 2$, définie sur $[0\,;\,2[$ par :
+\[
+  f(t) = \begin{cases} 3 & \text{si } 0 \leq t < 1 \\ -1 & \text{si } 1 \leq t < 2 \end{cases}
+\]
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Calculer la pulsation $\omega_0$ de ce signal.
+  \begin{tcolorbox}[reponsebox, height=1cm]\end{tcolorbox}
+
+  \item Étudier la parité de $f$. Que peut-on en conclure sur les coefficients ?
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+
+  \item Calculer $a_0$. Donner une interprétation physique.
+  \begin{tcolorbox}[reponsebox, height=1cm]\end{tcolorbox}
+
+  \item Calculer $a_n$ pour tout entier $n \geq 1$.
+  \begin{tcolorbox}[reponsebox, height=3.5cm]\end{tcolorbox}
+
+  \item Calculer $b_n$ pour tout entier $n \geq 1$.
+  \begin{tcolorbox}[reponsebox, height=4.5cm]\end{tcolorbox}
+
+  \item Écrire le développement en série de Fourier $S(t)$ jusqu'à $n = 3$.
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+\end{enumerate}
+
+\newpage
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[exobox={Exercice 2 — Parité et Parseval}]
+On considère la fonction $f$ \textbf{paire}, périodique de période $T = 2\pi$, définie sur $[0\,;\,\pi]$ par :
+\[
+  f(t) = \begin{cases} 5 & \text{si } 0 \leq t \leq \dfrac{\pi}{2} \\[4pt] 0 & \text{si } \dfrac{\pi}{2} < t \leq \pi \end{cases}
+  \quad \text{(en volts)}
+\]
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Justifier que $b_n = 0$ pour tout entier $n \geq 1$.
+  \begin{tcolorbox}[reponsebox, height=1cm]\end{tcolorbox}
+
+  \item Calculer $a_0$. Interpréter (valeur moyenne, interprétation physique).
+  \begin{tcolorbox}[reponsebox, height=2.5cm]\end{tcolorbox}
+
+  \item En utilisant $a_n = \dfrac{4}{T}\displaystyle\int_0^{T/2} f(t)\cos(n\omega_0 t)\,\mathrm{d}t$,
+        calculer $a_n$ en fonction de $n$, puis déduire $a_1$, $a_2$, $a_3$.
+  \begin{tcolorbox}[reponsebox, height=3.5cm]\end{tcolorbox}
+
+  \item Écrire le développement en série de Fourier de $f$ jusqu'à $n = 3$.
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+
+  \item \textbf{Parseval.} La valeur efficace de $f$ vérifie :
+        $\displaystyle F_{\mathrm{eff}}^2 = \frac{1}{T}\int_0^T [f(t)]^2\,\mathrm{d}t$.
+  \begin{enumerate}[label=\textbf{\alph*)}]
+    \item Calculer $F_{\mathrm{eff}}$ directement par intégration.
+    \begin{tcolorbox}[reponsebox, height=2.5cm]\end{tcolorbox}
+
+    \item Vérifier à l'aide de la formule de Parseval tronquée à $n = 3$ et calculer l'écart relatif avec la valeur exacte.
+    \begin{tcolorbox}[reponsebox, height=2.5cm]\end{tcolorbox}
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[exobox={Exercice 3 — Vrai ou Faux ?}]
+Cocher la bonne case.
+\end{tcolorbox}
+
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|p{11.5cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1.5cm}|}
+\hline
+\textbf{Affirmation} & \textbf{Vrai} & \textbf{Faux} \\
+\hline
+Si $f$ est \textbf{impaire}, alors $a_0 = 0$ et $a_n = 0$ pour tout $n \geq 1$. & $\square$ & $\square$ \\
+\hline
+$a_0$ représente la valeur moyenne de $f$ sur une période. & $\square$ & $\square$ \\
+\hline
+Une fonction de période $T = 0{,}02$\,s a pour fréquence $f_0 = 50$\,Hz. & $\square$ & $\square$ \\
+\hline
+Le spectre en amplitude d'un signal périodique est un spectre \textbf{continu}. & $\square$ & $\square$ \\
+\hline
+Si $f$ vérifie $f(x+T/2) = -f(x)$ pour tout $x$, alors tous les harmoniques de rang \textbf{pair} sont nuls. & $\square$ & $\square$ \\
+\hline
+\end{tabular}
+
+\vspace{0.3cm}
+
+% ---------------------------------------------------------------
+\begin{tcolorbox}[exobox={Exercice 4 — Spectre et Parseval}]
+On admet que le développement en série de Fourier d'un signal créneau \textbf{impair} d'amplitude $E$ et de période $T$ est :
+\[
+  f(t) = \frac{4E}{\pi}\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty} \frac{1}{n}\sin(n\omega_0 t)
+  \qquad\text{avec}\quad \omega_0 = \frac{2\pi}{T}
+\]
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Identifier les harmoniques présents et expliquer pourquoi les rangs pairs sont absents.
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+
+  \item On prend $E = 1$ et $T = 1$\,s. Calculer $C_1$, $C_3$ et $C_5$, puis tracer le spectre ($n = 0$ à $7$).
+  \begin{tcolorbox}[reponsebox]
+  \vspace{0.5cm}
+  \begin{center}
+  \begin{tikzpicture}[x=1.5cm,y=3.5cm]
+    \draw[->] (-0.3,0) -- (8,0) node[right]{\small$n$};
+    \draw[->] (0,-0.05) -- (0,1.55) node[above]{\small$C_n$};
+    \foreach \n in {0,1,...,7} \draw (\n,2pt)--(\n,-2pt) node[below]{\small$\n$};
+    \foreach \y in {0.5,1.0} \draw (2pt,\y)--(-2pt,\y) node[left]{\small$\y$};
+    \draw[gray!30,xstep=1,ystep=0.5] (0,0) grid (7.5,1.4);
+  \end{tikzpicture}
+  \end{center}
+  \end{tcolorbox}
+
+  \item \textbf{Parseval.} En appliquant la formule de Parseval à $f$ avec $E=1$, montrer que :
+        $\displaystyle\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty}\frac{1}{n^2} = \frac{\pi^2}{8}$
+        \quad\textit{(Rappel : $F_{\mathrm{eff}}^2 = \dfrac{1}{T}\displaystyle\int_0^T [f(t)]^2\,\mathrm{d}t$)}
+  \begin{tcolorbox}[reponsebox, height=5cm]\end{tcolorbox}
+\end{enumerate}
+
+\vfill
+\begin{center}
+\small\color{gray}\textit{Lycée Denis Diderot, Bavilliers — Alexis RUIZ}
+\end{center}
+
+\end{document}

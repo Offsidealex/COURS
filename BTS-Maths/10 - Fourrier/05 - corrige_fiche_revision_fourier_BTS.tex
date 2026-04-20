@@ -1,0 +1,296 @@
+% ============================================================
+%  CORRIGÉ — FICHE DE RÉVISION — SÉRIES DE FOURIER — 2e BTS
+%  Style : activite_fourier_a0 / Lycée Denis Diderot
+% ============================================================
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{fouriernc}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{lastpage}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS -- Mathématiques}
+\rhead{Séries de Fourier -- \textcolor{red!70!black}{\textbf{CORRIGÉ}}}
+\cfoot{\thepage}
+
+\tcbset{
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black,
+    fonttitle=\bfseries, title=#1, breakable},
+  corrigebox/.style={colback=green!5!white, colframe=green!50!black,
+    sharp corners, boxrule=0.5pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
+    breakable}
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\w}{\omega_0}
+
+% ==============================================================
+\begin{document}
+% ==============================================================
+
+\begin{center}
+  {\LARGE \textbf{Corrigé -- Séries de Fourier}} \\[0.2cm]
+  {\large \textcolor{red!70!black}{\textbf{--- CORRIGÉ ---}}} \\[0.2cm]
+  \rule{0.65\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.4cm}
+
+% ==============================================================
+\begin{tcolorbox}[exobox={Exercice 1 — Calcul des coefficients (cas général)}]
+Fonction $f$ périodique de période $T = 2$ : $f(t) = 3$ sur $[0,1[$ et $f(t) = -1$ sur $[1,2[$.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+\item \textbf{Pulsation fondamentale}
+\begin{tcolorbox}[corrigebox]
+$\omega_0 = \dfrac{2\pi}{T} = \dfrac{2\pi}{2} = \pi\ \text{rad/s}$
+\end{tcolorbox}
+
+\item \textbf{Parité de $f$}
+\begin{tcolorbox}[corrigebox]
+Sur $[-1\,;\,1]$, pour $t\in\,]0,1[$: $f(-t) = f(-t+2) = f(2-t) = -1$ (car $2-t\in\,]1,2[$).\\
+Or $f(t) = 3 \neq -1$, donc $f(-t)\neq f(t)$ et $f(-t) \neq -f(t)$.\\
+La fonction $f$ est \textbf{ni paire ni impaire} : on doit calculer $a_0$, $a_n$ et $b_n$.
+\end{tcolorbox}
+
+\item \textbf{Calcul de $a_0$}
+\begin{tcolorbox}[corrigebox]
+\[
+a_0 = \frac{1}{T}\int_0^T f(t)\,\mathrm{d}t
+= \frac{1}{2}\left[\int_0^1 3\,\mathrm{d}t + \int_1^2 (-1)\,\mathrm{d}t\right]
+= \frac{1}{2}\bigl[3\cdot 1 + (-1)\cdot 1\bigr] = \frac{1}{2}\times 2 = \boxed{1}
+\]
+$a_0 = 1$ est la \textbf{valeur moyenne} (composante continue) du signal.
+\end{tcolorbox}
+
+\item \textbf{Calcul de $a_n$}
+\begin{tcolorbox}[corrigebox]
+\begin{align*}
+a_n &= \frac{2}{2}\left[\int_0^1 3\cos(n\pi t)\,\mathrm{d}t + \int_1^2 (-1)\cos(n\pi t)\,\mathrm{d}t\right] \\
+&= 3\left[\frac{\sin(n\pi t)}{n\pi}\right]_0^1 - \left[\frac{\sin(n\pi t)}{n\pi}\right]_1^2
+= \frac{3\underbrace{\sin(n\pi)}_{=0}}{n\pi} - \frac{\underbrace{\sin(2n\pi)}_{=0}-\underbrace{\sin(n\pi)}_{=0}}{n\pi} = 0
+\end{align*}
+$\boxed{a_n = 0}$ pour tout $n \geq 1$ (les bornes annulent tous les sinus).
+\end{tcolorbox}
+
+\item \textbf{Calcul de $b_n$}
+\begin{tcolorbox}[corrigebox]
+\begin{align*}
+b_n &= \frac{2}{2}\left[\int_0^1 3\sin(n\pi t)\,\mathrm{d}t + \int_1^2 (-1)\sin(n\pi t)\,\mathrm{d}t\right] \\
+&= 3\left[-\frac{\cos(n\pi t)}{n\pi}\right]_0^1 - \left[-\frac{\cos(n\pi t)}{n\pi}\right]_1^2 \\
+&= \frac{3\bigl(1-\cos(n\pi)\bigr)}{n\pi} - \frac{\cos(n\pi)-\cos(2n\pi)}{n\pi} \\
+&= \frac{3-3(-1)^n - (-1)^n + 1}{n\pi} = \boxed{\frac{4\bigl(1-(-1)^n\bigr)}{n\pi}}
+\end{align*}
+\begin{itemize}[nosep]
+  \item $n$ \textbf{pair} : $b_n = 0$
+  \item $n$ \textbf{impair} : $b_n = \dfrac{8}{n\pi}$
+\end{itemize}
+$b_1 = \dfrac{8}{\pi} \approx 2{,}55$ \qquad $b_2 = 0$ \qquad $b_3 = \dfrac{8}{3\pi} \approx 0{,}85$
+\end{tcolorbox}
+
+\item \textbf{Développement jusqu'à $n = 3$}
+\begin{tcolorbox}[corrigebox]
+\[
+  S(t) = 1 + \frac{8}{\pi}\sin(\pi t) + \frac{8}{3\pi}\sin(3\pi t) + \cdots
+\]
+Seuls les harmoniques impairs sont présents ($a_n=0$ et $b_n=0$ pour $n$ pair).
+\end{tcolorbox}
+
+\end{enumerate}
+
+\newpage
+
+% ==============================================================
+\begin{tcolorbox}[exobox={Exercice 2 — Parité et Parseval}]
+Fonction $f$ \textbf{paire}, $T = 2\pi$, $\omega_0 = 1$ : $f(t) = 5$\,V sur $[0,\pi/2]$ et $f(t) = 0$ sur $]\pi/2,\pi]$.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+\item \textbf{Justification $b_n = 0$}
+\begin{tcolorbox}[corrigebox]
+$f$ est paire, $\sin(n\omega_0 t)$ est impaire. Le produit $f(t)\sin(n\omega_0 t)$ est donc \textbf{impair}.
+Son intégrale sur une période symétrique $[-\pi,\pi]$ est nulle. Donc $b_n = 0$ pour tout $n \geq 1$.
+\end{tcolorbox}
+
+\item \textbf{Calcul de $a_0$}
+\begin{tcolorbox}[corrigebox]
+Pour $f$ paire : $a_0 = \dfrac{2}{T}\displaystyle\int_0^{T/2}f(t)\,\mathrm{d}t = \frac{2}{2\pi}\int_0^{\pi}f(t)\,\mathrm{d}t$
+\[
+a_0 = \frac{1}{\pi}\left[\int_0^{\pi/2} 5\,\mathrm{d}t + \int_{\pi/2}^{\pi} 0\,\mathrm{d}t\right]
+= \frac{1}{\pi}\cdot\frac{5\pi}{2} = \boxed{\frac{5}{2} = 2{,}5\ \text{V}}
+\]
+$a_0 = 2{,}5$ V est la \textbf{valeur moyenne} du signal (composante continue).
+\end{tcolorbox}
+
+\item \textbf{Calcul de $a_n$}
+\begin{tcolorbox}[corrigebox]
+Avec $\omega_0 = 1$ (car $T = 2\pi$) :
+\[
+a_n = \frac{4}{2\pi}\int_0^{\pi}f(t)\cos(nt)\,\mathrm{d}t
+= \frac{2}{\pi}\int_0^{\pi/2} 5\cos(nt)\,\mathrm{d}t
+= \frac{10}{\pi}\left[\frac{\sin(nt)}{n}\right]_0^{\pi/2}
+= \boxed{\frac{10}{n\pi}\sin\!\left(\frac{n\pi}{2}\right)}
+\]
+\[
+a_1 = \frac{10}{\pi}\sin\!\left(\frac{\pi}{2}\right) = \frac{10}{\pi} \approx 3{,}18
+\qquad
+a_2 = \frac{10}{2\pi}\sin(\pi) = 0
+\qquad
+a_3 = \frac{10}{3\pi}\sin\!\left(\frac{3\pi}{2}\right) = -\frac{10}{3\pi} \approx -1{,}06
+\]
+\end{tcolorbox}
+
+\item \textbf{Développement jusqu'à $n = 3$}
+\begin{tcolorbox}[corrigebox]
+\[
+S(t) = \frac{5}{2} + \frac{10}{\pi}\cos(t) - \frac{10}{3\pi}\cos(3t) + \cdots
+\]
+\end{tcolorbox}
+
+\item \textbf{Parseval}
+
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item \textbf{$F_{\mathrm{eff}}$ par intégration directe}
+\begin{tcolorbox}[corrigebox]
+Sur $[0, 2\pi]$ : $f = 5$ sur $[0,\pi/2]$ et $[3\pi/2,2\pi]$ (par parité et periodicité), nulle ailleurs.
+\[
+F_{\mathrm{eff}}^2 = \frac{1}{2\pi}\left[25\cdot\frac{\pi}{2} + 0\cdot\pi + 25\cdot\frac{\pi}{2}\right]
+= \frac{25\pi}{2\pi} = \frac{25}{2}
+\qquad\Longrightarrow\qquad
+\boxed{F_{\mathrm{eff}} = \frac{5}{\sqrt{2}} \approx 3{,}54\ \text{V}}
+\]
+\end{tcolorbox}
+
+\item \textbf{Vérification par Parseval (tronqué à $n = 3$)}
+\begin{tcolorbox}[corrigebox]
+\[
+F_{\mathrm{eff}}^2 \approx a_0^2 + \frac{1}{2}\left(a_1^2 + a_2^2 + a_3^2\right)
+= \left(\frac{5}{2}\right)^{\!2} + \frac{1}{2}\left[\left(\frac{10}{\pi}\right)^{\!2} + 0 + \left(\frac{10}{3\pi}\right)^{\!2}\right]
+\approx 6{,}25 + 5{,}63 \approx 11{,}88
+\]
+Valeur exacte : $12{,}5$. \quad Écart relatif : $\dfrac{12{,}5 - 11{,}88}{12{,}5} \approx 5\,\%$
+\end{tcolorbox}
+\end{enumerate}
+
+\end{enumerate}
+
+\newpage
+
+% ==============================================================
+\begin{tcolorbox}[exobox={Exercice 3 — Vrai ou Faux ?}]
+\end{tcolorbox}
+
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|p{11.5cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1.5cm}|}
+\hline
+\textbf{Affirmation} & \textbf{Vrai} & \textbf{Faux} \\
+\hline
+Si $f$ est \textbf{impaire}, alors $a_0 = 0$ et $a_n = 0$ pour tout $n \geq 1$. & \textcolor{green!60!black}{\textbf{X}} & \\
+\hline
+$a_0$ représente la valeur moyenne de $f$ sur une période. & \textcolor{green!60!black}{\textbf{X}} & \\
+\hline
+Une fonction de période $T = 0{,}02$\,s a pour fréquence $f_0 = 50$\,Hz. & \textcolor{green!60!black}{\textbf{X}} & \\
+\hline
+Le spectre en amplitude d'un signal périodique est un spectre \textbf{continu}. & & \textcolor{red!70!black}{\textbf{X}} \\
+\hline
+Si $f$ vérifie $f(x+T/2) = -f(x)$ pour tout $x$, alors tous les harmoniques de rang \textbf{pair} sont nuls. & \textcolor{green!60!black}{\textbf{X}} & \\
+\hline
+\end{tabular}
+
+\vspace{0.3cm}
+
+% ==============================================================
+\begin{tcolorbox}[exobox={Exercice 4 — Spectre et Parseval}]
+Signal créneau impair, amplitude $E$, période $T$ :
+$f(t) = \dfrac{4E}{\pi}\displaystyle\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty}\dfrac{1}{n}\sin(n\omega_0 t)$
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+\item \textbf{Harmoniques présents}
+\begin{tcolorbox}[corrigebox]
+Seuls les harmoniques de rang \textbf{impair} ($n = 1, 3, 5, 7, \ldots$) sont présents ($b_n \neq 0$).\\
+Le créneau vérifie $f(t+T/2) = -f(t)$ (symétrie demi-onde), ce qui annule tous les coefficients de rang pair.
+\end{tcolorbox}
+
+\item \textbf{Amplitudes et spectre} ($E=1$, $T=1$ s, $\omega_0 = 2\pi$ rad/s)
+\begin{tcolorbox}[corrigebox]
+$a_n = 0$ ; $b_n = \dfrac{4}{n\pi}$ pour $n$ impair, donc $C_n = \sqrt{a_n^2+b_n^2} = \dfrac{4}{n\pi}$.\\[4pt]
+$C_1 = \dfrac{4}{\pi} \approx 1{,}27$ \qquad $C_3 = \dfrac{4}{3\pi} \approx 0{,}42$ \qquad $C_5 = \dfrac{4}{5\pi} \approx 0{,}25$ \qquad $C_7 \approx 0{,}18$\\[4pt]
+$C_0 = C_2 = C_4 = C_6 = 0$ \quad (rang pair ou nul).
+\end{tcolorbox}
+
+\begin{center}
+\begin{tikzpicture}[x=1.5cm,y=3cm]
+  \draw[->] (-0.3,0) -- (8,0) node[right]{\small$n$};
+  \draw[->] (0,-0.05) -- (0,1.55) node[above]{\small$C_n$};
+  \foreach \n in {0,1,...,7} \draw (\n,2pt)--(\n,-2pt) node[below]{\small$\n$};
+  \foreach \y/\lab in {0.42/{0{,}42},0.85/{0{,}85},1.27/{1{,}27}}
+    \draw (2pt,\y)--(-2pt,\y) node[left]{\tiny$\lab$};
+  \draw[gray!25,xstep=1,ystep=0.42] (0,0) grid (7.5,1.4);
+  \fill[orange!40] (0.7,0) rectangle (1.3,1.273);
+  \fill[orange!40] (2.7,0) rectangle (3.3,0.424);
+  \fill[orange!40] (4.7,0) rectangle (5.3,0.255);
+  \fill[orange!40] (6.7,0) rectangle (7.3,0.182);
+  \draw[orange!80!black,thick] (0.7,0) rectangle (1.3,1.273);
+  \draw[orange!80!black,thick] (2.7,0) rectangle (3.3,0.424);
+  \draw[orange!80!black,thick] (4.7,0) rectangle (5.3,0.255);
+  \draw[orange!80!black,thick] (6.7,0) rectangle (7.3,0.182);
+  \node[above,font=\tiny,orange!80!black] at (1,1.273) {$1{,}27$};
+  \node[above,font=\tiny,orange!80!black] at (3,0.424) {$0{,}42$};
+  \node[above,font=\tiny,orange!80!black] at (5,0.255) {$0{,}25$};
+  \node[above,font=\tiny,orange!80!black] at (7,0.182) {$0{,}18$};
+  \foreach \n in {0,2,4,6}
+    \draw[blue!50!black,thick] (\n-0.3,0)--(\n+0.3,0);
+\end{tikzpicture}
+\end{center}
+
+\item \textbf{Démonstration de $\displaystyle\sum_{\substack{n\geq 1\\n\,\text{impair}}}\dfrac{1}{n^2} = \dfrac{\pi^2}{8}$}
+\begin{tcolorbox}[corrigebox]
+\textbf{Calcul direct de $F_{\mathrm{eff}}$} (avec $E=1$, $T=1$\,s ; $f = \pm 1$ p.p.) :
+\[
+F_{\mathrm{eff}}^2 = \frac{1}{1}\int_0^1 1^2\,\mathrm{d}t = 1
+\]
+\textbf{Parseval} ($a_n=0$ et $b_n = \dfrac{4}{n\pi}$ pour $n$ impair, nul sinon) :
+\[
+F_{\mathrm{eff}}^2 = a_0^2 + \frac{1}{2}\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty}b_n^2
+= 0 + \frac{1}{2}\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty}\frac{16}{n^2\pi^2}
+= \frac{8}{\pi^2}\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty}\frac{1}{n^2}
+\]
+En égalisant les deux expressions :
+\[
+\frac{8}{\pi^2}\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty}\frac{1}{n^2} = 1
+\qquad\Longrightarrow\qquad
+\boxed{\sum_{\substack{n=1\\n\,\text{impair}}}^{+\infty}\frac{1}{n^2} = \frac{\pi^2}{8}}
+\]
+\end{tcolorbox}
+
+\end{enumerate}
+
+\vfill
+\begin{center}
+\small\color{gray}\textit{Lycée Denis Diderot, Bavilliers — Alexis RUIZ}
+\end{center}
+
+\end{document}
