@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séries de Fourier – BTS CIEL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:      #070b12;
+    --panel:   #0d1520;
+    --border:  rgba(0,229,255,.15);
+    --cyan:    #00e5ff;
+    --green:   #00ff9d;
+    --amber:   #ffb300;
+    --rose:    #ff4f7b;
+    --violet:  #b388ff;
+    --muted:   #4a6080;
+    --text:    #ccd9e8;
+    --heading: #ffffff;
+    --glow:    0 0 18px rgba(0,229,255,.35);
+  }
+  body.light {
+    --bg:      #f0f4ff;
+    --panel:   #ffffff;
+    --border:  rgba(0,80,200,.18);
+    --cyan:    #006fcc;
+    --green:   #00904a;
+    --amber:   #b07000;
+    --rose:    #cc1a3a;
+    --violet:  #6d28d9;
+    --muted:   #7080a8;
+    --text:    #1e2a45;
+    --heading: #0d1a35;
+    --glow:    0 0 12px rgba(0,111,204,.2);
+  }
+  body.light #s0 { background: radial-gradient(ellipse at 50% 40%, #d8e8ff 0%, #f0f4ff 70%); }
+  body.light #s0 h1 {
+    background: linear-gradient(135deg, #1a2a55 30%, #006fcc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  body.light .ft td { border-bottom-color: rgba(0,0,0,.06); }
+  body.light .dot.active { box-shadow: none; }
+  body.light #nav { background: rgba(240,244,255,.85); }
+  html, body { transition: background .35s; }
+  .slide, .card, .step-item, .formula-box, #badge, #themeBtn, .nav-btn {
+    transition: background .35s, color .35s, border-color .35s;
+  }
+
+  /* BOUTON THÈME */
+  #themeBtn {
+    position: fixed; top: 20px; left: 24px; z-index: 10;
+    background: rgba(0,229,255,.07); border: 1px solid var(--border);
+    color: var(--cyan); width: 36px; height: 36px; border-radius: 6px;
+     cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s, box-shadow .2s;
+  }
+  #themeBtn:hover { background: rgba(0,229,255,.18); box-shadow: var(--glow); }
+
+  /* BOUTON PLEIN ÉCRAN */
+  #fsBtn {
+    position: fixed; top: 64px; left: 24px; z-index: 10;
+    background: rgba(0,229,255,.07); border: 1px solid var(--border);
+    color: var(--cyan); width: 36px; height: 36px; border-radius: 6px;
+     cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s, box-shadow .2s;
+  }
+  #fsBtn:hover { background: rgba(0,229,255,.18); box-shadow: var(--glow); }
+
+  html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: 'STIX Two Text', serif; }
+  #waveCanvas { position: fixed; inset: 0; z-index: 0; opacity: .42; }
+  #badge {
+    position: fixed; top: 18px; right: 22px;
+    font-family: 'Space Mono', monospace; font-size: .6rem;
+    color: var(--muted); letter-spacing: .08em; z-index: 10;
+    text-align: right; line-height: 1.7;
+  }
+  #badge strong { color: var(--cyan); display: block; font-size: .66rem; }
+  #slides { position: relative; z-index: 2; height: 100vh; overflow: hidden; }
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 44px 64px;
+    opacity: 0; transform: translateY(30px);
+    pointer-events: none; transition: opacity .45s ease, transform .45s ease;
+  }
+  .slide.active { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+  /* TITRE */
+  #s0 { align-items: center; text-align: center; }
+  #s0 .tag {
+    font-family: 'Space Mono', monospace; font-size: .7rem;
+    color: var(--cyan); letter-spacing: .18em; text-transform: uppercase;
+    border: 1px solid var(--border); border-radius: 100px;
+    padding: 5px 18px; margin-bottom: 28px; display: inline-block;
+  }
+  #s0 h1 {
+    font-family: 'Space Mono', monospace; font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700; color: var(--heading); line-height: 1.05; letter-spacing: -.02em; margin-bottom: 6px;
+  }
+  #s0 h1 span { color: var(--cyan); }
+  .wave-svg { margin: 20px 0; }
+  #s0 .subtitle { font-size: 1.05rem; color: var(--muted); font-weight: 300; letter-spacing: .04em; margin-bottom: 36px; }
+  .chapters { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 40px; }
+  .chapters span {
+    font-family: 'Space Mono', monospace; font-size: .72rem;
+    background: rgba(0,229,255,.07); border: 1px solid var(--border);
+    border-radius: 6px; padding: 7px 16px; color: var(--text);
+  }
+  .meta { font-family: 'Space Mono', monospace; font-size: .65rem; color: var(--muted); letter-spacing: .1em; }
+
+  /* SLIDE INNER */
+  .slide-inner { display: flex; flex-direction: column; gap: 14px; max-width: 1080px; width: 100%; }
+  .slide-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 4px; }
+  .slide-num { font-family: 'Space Mono', monospace; font-size: .7rem; color: var(--muted); }
+  .slide-title { font-family: 'Space Mono', monospace; font-size: clamp(1.4rem, 2.8vw, 2rem); font-weight: 700; color: var(--heading); letter-spacing: -.01em; }
+  .slide-title span { color: var(--cyan); }
+
+  /* CARDS */
+  .card { background: var(--panel); border-radius: 10px; border-left: 3px solid; padding: 14px 18px; }
+  .card.cyan   { border-color: var(--cyan);   }
+  .card.green  { border-color: var(--green);  }
+  .card.amber  { border-color: var(--amber);  }
+  .card.rose   { border-color: var(--rose);   }
+  .card.violet { border-color: var(--violet); }
+  .card-label { font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  .card-label .var { text-transform: none; font-style: italic; }
+  .card.cyan   .card-label { color: var(--cyan);   }
+  .card.green  .card-label { color: var(--green);  }
+  .card.amber  .card-label { color: var(--amber);  }
+  .card.rose   .card-label { color: var(--rose);   }
+  .card.violet .card-label { color: var(--violet); }
+  .card p, .card li { font-size: .9rem; line-height: 1.65; color: var(--text); }
+  .card strong { color: var(--heading); }
+
+  /* GRILLES */
+  .two-col   { display: grid; grid-template-columns: 1fr 1fr;     gap: 13px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  /* FORMULA BOX */
+  .formula-box {
+    background: rgba(0,229,255,.04); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 18px; text-align: center;
+    font-size: 1.3rem;
+  }
+  .formula-box.green  { border-color: rgba(0,255,157,.25);  background: rgba(0,255,157,.04); }
+  .formula-box.amber  { border-color: rgba(255,179,0,.25);  background: rgba(255,179,0,.04); }
+  .formula-box.rose   { border-color: rgba(255,79,123,.25); background: rgba(255,79,123,.04); }
+  .formula-box.violet { border-color: rgba(179,136,255,.25);background: rgba(179,136,255,.04); }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 7px; }
+  .step-item {
+    display: flex; align-items: flex-start; gap: 13px;
+    background: var(--panel); border-radius: 8px; padding: 10px 15px;
+    border-left: 2px solid;
+  }
+  .step-item.c-cyan   { border-color: var(--cyan); }
+  .step-item.c-green  { border-color: var(--green); }
+  .step-item.c-amber  { border-color: var(--amber); }
+  .step-item.c-rose   { border-color: var(--rose); }
+  .step-item.c-violet { border-color: var(--violet); }
+  .step-bullet {
+    font-family: 'Space Mono', monospace; font-size: .7rem; font-weight: 700;
+    min-width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+  .c-cyan   .step-bullet { background: rgba(0,229,255,.15);  color: var(--cyan); }
+  .c-green  .step-bullet { background: rgba(0,255,157,.15);  color: var(--green); }
+  .c-amber  .step-bullet { background: rgba(255,179,0,.15);  color: var(--amber); }
+  .c-rose   .step-bullet { background: rgba(255,79,123,.15); color: var(--rose); }
+  .c-violet .step-bullet { background: rgba(179,136,255,.15);color: var(--violet); }
+  .step-body p { font-size: .87rem; line-height: 1.6; color: var(--text); }
+  .step-body p strong { color: var(--heading); }
+
+  /* TABLE */
+  .ft { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .ft th {
+    font-family: 'Space Mono', monospace; font-size: .63rem; letter-spacing: .09em;
+    text-transform: uppercase; border-bottom: 1px solid var(--border);
+    padding: 8px 10px; text-align: center;
+  }
+  .ft td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,.04); text-align: center; vertical-align: middle; line-height: 1.5; }
+  .ft tr:last-child td { border-bottom: none; }
+  .th-cyan   { color: var(--cyan)   !important; }
+  .th-green  { color: var(--green)  !important; }
+  .th-amber  { color: var(--amber)  !important; }
+  .td-cyan   { color: var(--cyan);   font-weight: 600; }
+  .td-green  { color: var(--green);  font-weight: 600; }
+  .td-amber  { color: var(--amber);  font-weight: 600; }
+
+  /* LISTE */
+  ul.clean { list-style: none; padding: 0; }
+  ul.clean li { padding: 3px 0;  color: var(--text); }
+  ul.clean li::before { content: "▸ "; color: var(--cyan); }
+
+  /* NAV */
+  #nav {
+    position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+    z-index: 10; display: flex; align-items: center; gap: 16px;
+    background: rgba(7,11,18,.75); backdrop-filter: blur(14px);
+    border: 1px solid var(--border); border-radius: 100px; padding: 8px 20px;
+  }
+  .nav-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--text); font-size: 1.1rem; padding: 4px 8px;
+    border-radius: 6px; transition: background .2s;
+    font-family: 'Space Mono', monospace;
+  }
+  .nav-btn:hover { background: rgba(0,229,255,.1); }
+  .nav-btn:disabled { opacity: .2; cursor: not-allowed; }
+  #dots { display: flex; gap: 7px; align-items: center; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); cursor: pointer; transition: background .3s, transform .3s; }
+  .dot.active { background: var(--cyan); transform: scale(1.5); box-shadow: 0 0 7px var(--cyan); }
+
+  @media (max-width: 700px) {
+    .slide { padding: 28px 20px; }
+    .two-col, .three-col { grid-template-columns: 1fr; }
+    #s0 h1 { font-size: 2.6rem; }
+  }
+
+  /* Fix MathJax — empêche text-transform:uppercase des .card-label de capitaliser les formules */
+  mjx-container, mjx-container * { text-transform: none !important; }
+
+  /* Signe intégrale +50% dans les formula-box */
+  .formula-box mjx-mo.mjx-lop {
+    transform: scale(1.5);
+    display: inline-block;
+    transform-origin: center 60%;
+  }
+  #s7 mjx-container[display="true"] { overflow-x: auto; max-width: 100%; }
+  [data-step] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .45s cubic-bezier(.2,0,.1,1), transform .45s cubic-bezier(.2,0,.1,1);
+  }
+  [data-step].visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<canvas id="waveCanvas"></canvas>
+
+<button id="themeBtn" title="Mode clair (L)">☀</button>
+<button id="fsBtn" title="Plein écran (F)">⛶</button>
+
+<div id="badge">
+  <strong>BTS CIEL – 2e année</strong>
+  Lycée Denis Diderot, Bavilliers
+</div>
+
+<div id="slides">
+
+<!-- ══ SLIDE 0 — TITRE ══ -->
+<div class="slide active" id="s0">
+  <div class="tag">Mathématiques · Analyse du signal</div>
+  <h1>SÉRIES DE<br><span>FOURIER</span></h1>
+  <svg class="wave-svg" viewBox="0 0 320 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="320">
+    <path d="M0 18 Q20 2 40 18 Q60 34 80 18 Q100 2 120 18 Q140 34 160 18 Q180 2 200 18 Q220 34 240 18 Q260 2 280 18 Q300 34 320 18" stroke="#00e5ff" stroke-width="2" fill="none" opacity=".9"/>
+    <path d="M0 18 Q10 10 20 18 Q30 26 40 18 Q50 10 60 18 Q70 26 80 18 Q90 10 100 18 Q110 26 120 18 Q130 10 140 18 Q150 26 160 18 Q170 10 180 18 Q190 26 200 18 Q210 10 220 18 Q230 26 240 18 Q250 10 260 18 Q270 26 280 18 Q290 10 300 18 Q310 26 320 18" stroke="#00ff9d" stroke-width="1" fill="none" opacity=".5"/>
+  </svg>
+  <div class="subtitle">Fiche de révision – 2e année BTS CIEL</div>
+  <div class="chapters">
+    <span>① Fonctions périodiques</span>
+    <span>② Développement en série</span>
+    <span>③ Parité</span>
+    <span>④ Parseval &amp; valeur efficace</span>
+    <span>⑤ Spectre en amplitude</span>
+    <span>⑥ Démarche type</span>
+    <span>⑦ Formulaire</span>
+  </div>
+  <div class="meta">A. Ruiz &nbsp;·&nbsp; Lycée Denis Diderot, Bavilliers</div>
+</div>
+
+<!-- ══ SLIDE 1 — FONCTIONS PÉRIODIQUES ══ -->
+<div class="slide" id="s1">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-num">01 / 07</span>
+      <h2 class="slide-title">Fonctions périodiques : <span>rappels</span></h2>
+    </div>
+
+    <div class="card cyan" data-slide="1" data-step="1">
+      <div class="card-label">Définition</div>
+      <p>Une fonction \(f : \mathbb{R} \to \mathbb{R}\) est <strong>périodique de période \(T > 0\)</strong> si pour tout \(x \in \mathbb{R}\) :</p>
+      <div class="formula-box" style="margin-top:10px;">
+        \(f(x + T) = f(x)\)
+      </div>
+    </div>
+
+    <div class="two-col" data-slide="1" data-step="2">
+      <div class="card green">
+        <div class="card-label">Pulsation fondamentale</div>
+        <div class="formula-box green" style="margin-top:8px;">
+          \(\omega_0 = \dfrac{2\pi}{T}\)
+        </div>
+      </div>
+      <div class="card amber">
+        <div class="card-label">Fréquence fondamentale</div>
+        <div class="formula-box amber" style="margin-top:8px;">
+          \(f_0 = \dfrac{1}{T}\)
+        </div>
+      </div>
+    </div>
+
+    <div class="card violet" data-slide="1" data-step="3">
+      <div class="card-label">Condition de Dirichlet (admis)</div>
+      <p>Une fonction \(f\) de période \(T\) admet un développement en série de Fourier si, sur une période, elle est <strong>continue par morceaux</strong> et à <strong>variation bornée</strong>. Toutes les fonctions rencontrées en BTS vérifient ces conditions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 2 — DÉVELOPPEMENT ══ -->
+<div class="slide" id="s2">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-num">02 / 07</span>
+      <h2 class="slide-title">Développement en <span>série de Fourier</span></h2>
+    </div>
+
+    <div class="card cyan" data-slide="2" data-step="1">
+      <div class="card-label">Formule générale</div>
+      <p style="margin: 8px 0 10px;">Soit \(f\) une fonction \(T\)-périodique vérifiant les conditions de Dirichlet. Son développement en série de Fourier est :</p>
+      <div class="formula-box">
+        \(f(x) = a_0 + \displaystyle\sum_{n=1}^{+\infty} \bigl[ a_n \cos(n\omega_0 x) + b_n \sin(n\omega_0 x) \bigr] \qquad \omega_0 = \dfrac{2\pi}{T}\)
+      </div>
+    </div>
+
+    <div data-slide="2" data-step="2" style="display:flex;flex-direction:column;gap:14px;">
+      <p style="color:var(--muted);margin: 0;">Les coefficients de Fourier sont :</p>
+      <div class="three-col">
+        <div class="card green">
+          <div class="card-label">Valeur moyenne <span class="var">a</span>&#8320;</div>
+          <div class="formula-box green" style="margin-top:6px;">
+            \(a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(x)\,dx\)
+          </div>
+        </div>
+        <div class="card amber">
+          <div class="card-label">Coefficients <span class="var">a</span>&#8345;</div>
+          <div class="formula-box amber" style="margin-top:6px;">
+            \(a_n = \dfrac{2}{T}\displaystyle\int_0^T f(x)\cos(n\omega_0 x)\,dx\)
+          </div>
+        </div>
+        <div class="card rose">
+          <div class="card-label">Coefficients <span class="var">b</span>&#8345;</div>
+          <div class="formula-box rose" style="margin-top:6px;">
+            \(b_n = \dfrac{2}{T}\displaystyle\int_0^T f(x)\sin(n\omega_0 x)\,dx\)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card violet" data-slide="2" data-step="3">
+      <div class="card-label">Remarque</div>
+      <p>L'intégrale peut être calculée sur <strong>n'importe quel intervalle de longueur \(T\)</strong>.</p>
+    </div>
+
+    <div class="card amber" data-slide="2" data-step="4">
+      <div class="card-label">Interprétation de <span class="var">a</span>&#8320;</div>
+      <p>\(a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(x)\,dx\) est la <strong>valeur moyenne</strong> de \(f\) sur une période. En électronique : c'est la <strong>composante continue</strong> du signal.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 3 — PARITÉ ══ -->
+<div class="slide" id="s3">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-num">03 / 07</span>
+      <h2 class="slide-title">Parité &amp; <span>simplifications</span></h2>
+    </div>
+
+    <div class="card cyan" style="padding:12px 16px;" data-slide="3" data-step="1">
+      <div class="card-label">Tableau récapitulatif</div>
+      <table class="ft" style="margin-top:10px;">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="th-cyan">Paire<br><small style="color:var(--muted);font-size:.7em;">f(−x) = f(x)</small></th>
+            <th class="th-green">Impaire<br><small style="color:var(--muted);font-size:.7em;">f(−x) = −f(x)</small></th>
+            <th class="th-amber">Cas général</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--muted);font-family:'Space Mono',monospace;font-size:.75rem;">Coeff. \(b_n\)</td>
+            <td class="td-cyan">\(b_n = 0\) pour tout \(n\)</td>
+            <td style="color:var(--text);">À calculer</td>
+            <td class="td-amber">À calculer</td>
+          </tr>
+          <tr>
+            <td style="color:var(--muted);font-family:'Space Mono',monospace;font-size:.75rem;">Coeff. \(a_n\)</td>
+            <td style="color:var(--text);">À calculer</td>
+            <td class="td-green">\(a_n = 0\) pour tout \(n\)</td>
+            <td class="td-amber">À calculer</td>
+          </tr>
+          <tr>
+            <td style="color:var(--muted);font-family:'Space Mono',monospace;font-size:.75rem;">Série</td>
+            <td class="td-cyan">\(a_0 + \sum a_n \cos(n\omega_0 x)\)</td>
+            <td class="td-green">\(\sum b_n \sin(n\omega_0 x)\)</td>
+            <td class="td-amber">Formule complète</td>
+          </tr>
+          <tr>
+            <td style="color:var(--muted);font-family:'Space Mono',monospace;font-size:.75rem;">Intégration</td>
+            <td class="td-cyan">Sur \([0;T/2]\) puis ×2</td>
+            <td class="td-green">Sur \([0;T/2]\) puis ×2</td>
+            <td class="td-amber">Sur \([0;T]\)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card green" data-slide="3" data-step="2">
+      <div class="card-label">Méthode — Reconnaître la parité</div>
+      <p>Tracer (ou imaginer) le signal sur \([-T/2\;;\;T/2]\) centré en 0.<br>
+      <strong>Paire</strong> : symétrie par rapport à l'axe \(Oy\).<br>
+      <strong>Impaire</strong> : symétrie centrale par rapport à l'origine.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 4 — PARSEVAL ══ -->
+<div class="slide" id="s4">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-num">04 / 07</span>
+      <h2 class="slide-title">Théorème de Parseval — <span>Valeur efficace</span></h2>
+    </div>
+
+    <div class="card cyan" data-slide="4" data-step="1">
+      <div class="card-label">Théorème de Parseval</div>
+      <p style="margin-bottom:10px;">Si \(f\) est \(T\)-périodique de valeur efficace \(F_{\text{eff}}\) :</p>
+      <div class="formula-box">
+        \(F_{\text{eff}}^2 = \dfrac{1}{T}\displaystyle\int_0^T [f(x)]^2\,dx = a_0^2 + \dfrac{1}{2}\sum_{n=1}^{+\infty}\bigl(a_n^2 + b_n^2\bigr)\)
+      </div>
+    </div>
+
+    <div class="card green" data-slide="4" data-step="2">
+      <div class="card-label">Interprétation physique</div>
+      <p>La <strong>puissance totale</strong> est la somme des puissances de chaque harmonique.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 5 — SPECTRE ══ -->
+<div class="slide" id="s5">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-num">05 / 07</span>
+      <h2 class="slide-title">Spectre <span>en amplitude</span></h2>
+    </div>
+
+    <div class="card cyan" data-slide="5" data-step="1">
+      <div class="card-label">Définition</div>
+      <p>Le spectre en amplitude représente l'<strong>amplitude</strong>
+      \(C_n = \sqrt{a_n^2 + b_n^2}\)
+      de chaque harmonique en fonction de la fréquence \(f_n = n\,f_0\) (ou de \(n\omega_0\)). C'est un <strong>spectre de raies</strong> (discret).</p>
+    </div>
+
+    <div class="card green" data-slide="5" data-step="2">
+      <div class="card-label">Composante continue</div>
+      <p>\(C_0 = |a_0|\) &nbsp;→&nbsp; raie à la fréquence \(f = 0\).</p>
+    </div>
+
+    <div class="card amber" data-slide="5" data-step="3">
+      <div class="card-label">Illustration — Créneau impair d'amplitude \(E\), période \(T\)</div>
+      <p style="margin-bottom:10px;">Seuls les rangs <strong>impairs</strong> sont présents : \(\quad C_n = \dfrac{4E}{n\pi}\) pour \(n = 1, 3, 5, \ldots\)</p>
+      <!-- spectre SVG inline -->
+      <svg viewBox="0 0 420 110" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width:480px;display:block;margin:0 auto;">
+        <line x1="40" y1="90" x2="410" y2="90" stroke="#4a6080" stroke-width="1"/>
+        <line x1="40" y1="10" x2="40"  y2="90" stroke="#4a6080" stroke-width="1"/>
+        <!-- axe f labels -->
+        <text x="40"  y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">0</text>
+        <text x="90"  y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">f₀</text>
+        <text x="140" y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">2f₀</text>
+        <text x="190" y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">3f₀</text>
+        <text x="240" y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">4f₀</text>
+        <text x="290" y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">5f₀</text>
+        <text x="340" y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">6f₀</text>
+        <text x="390" y="103" fill="#4a6080" font-size="9" text-anchor="middle" font-family="'Space Mono',monospace">7f₀</text>
+        <!-- C1 = 4E/π ≈ 1.27E → hauteur 72px -->
+        <line x1="90"  y1="18" x2="90"  y2="90" stroke="#00e5ff" stroke-width="5" stroke-linecap="round"/>
+        <text x="90"  y="13" fill="#00e5ff" font-size="8" text-anchor="middle" font-family="'Space Mono',monospace">C₁</text>
+        <!-- n=2 absent -->
+        <text x="140" y="84" fill="#4a6080" font-size="11" text-anchor="middle">×</text>
+        <!-- C3 = 4E/3π → 72/3=24px -->
+        <line x1="190" y1="66" x2="190" y2="90" stroke="#00e5ff" stroke-width="5" stroke-linecap="round"/>
+        <text x="190" y="61" fill="#00e5ff" font-size="8" text-anchor="middle" font-family="'Space Mono',monospace">C₃</text>
+        <!-- n=4 absent -->
+        <text x="240" y="84" fill="#4a6080" font-size="11" text-anchor="middle">×</text>
+        <!-- C5 = 4E/5π → 72/5≈14px -->
+        <line x1="290" y1="76" x2="290" y2="90" stroke="#00e5ff" stroke-width="5" stroke-linecap="round"/>
+        <text x="290" y="71" fill="#00e5ff" font-size="8" text-anchor="middle" font-family="'Space Mono',monospace">C₅</text>
+        <!-- n=6 absent -->
+        <text x="340" y="84" fill="#4a6080" font-size="11" text-anchor="middle">×</text>
+        <!-- C7 = 4E/7π → ≈10px -->
+        <line x1="390" y1="80" x2="390" y2="90" stroke="#00ff9d" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+        <text x="390" y="75" fill="#00ff9d" font-size="8" text-anchor="middle" font-family="'Space Mono',monospace">C₇</text>
+        <!-- axe label -->
+        <text x="418" y="93" fill="#4a6080" font-size="9" font-family="'Space Mono',monospace">f</text>
+        <text x="28"  y="13" fill="#00e5ff" font-size="9" font-family="'Space Mono',monospace">Cₙ</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 6 — DÉMARCHE ══ -->
+<div class="slide" id="s6">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-num">06 / 07</span>
+      <h2 class="slide-title">Démarche type <span>pour le contrôle</span></h2>
+    </div>
+
+    <div class="steps">
+      <div class="step-item c-cyan" data-slide="6" data-step="1">
+        <div class="step-bullet">1</div>
+        <div class="step-body"><p>Identifier \(T\) et calculer \(\omega_0 = 2\pi/T\).</p></div>
+      </div>
+      <div class="step-item c-green" data-slide="6" data-step="2">
+        <div class="step-bullet">2</div>
+        <div class="step-body"><p>Tester la <strong>parité</strong> : paire ⇒ \(b_n = 0\) ; impaire ⇒ \(a_n = 0\).</p></div>
+      </div>
+      <div class="step-item c-amber" data-slide="6" data-step="3">
+        <div class="step-bullet">3</div>
+        <div class="step-body"><p>Calculer \(a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(x)\,dx\) (c'est la <strong>valeur moyenne</strong>).</p></div>
+      </div>
+      <div class="step-item c-rose" data-slide="6" data-step="4">
+        <div class="step-bullet">4</div>
+        <div class="step-body"><p>Calculer \(a_n\) et/ou \(b_n\).</p></div>
+      </div>
+      <div class="step-item c-violet" data-slide="6" data-step="5">
+        <div class="step-bullet">5</div>
+        <div class="step-body"><p>Écrire le développement jusqu'à <strong>l'harmonique demandé</strong>.</p></div>
+      </div>
+      <div class="step-item c-cyan" data-slide="6" data-step="6">
+        <div class="step-bullet">6</div>
+        <div class="step-body"><p>Tracer le <strong>spectre</strong> : raies aux fréquences \(nf_0\), hauteur \(C_n = \sqrt{a_n^2 + b_n^2}\).</p></div>
+      </div>
+      <div class="step-item c-green" data-slide="6" data-step="7">
+        <div class="step-bullet">7</div>
+        <div class="step-body"><p><strong>Parseval</strong> si demandé : \(F_{\text{eff}}^2 = a_0^2 + \dfrac{1}{2}\displaystyle\sum (a_n^2 + b_n^2)\).</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SLIDE 7 — FORMULAIRE ══ -->
+<div class="slide" id="s7">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <span class="slide-num">07 / 07</span>
+      <h2 class="slide-title">Formulaire — <span>intégrales utiles</span></h2>
+    </div>
+
+    <div class="two-col" data-slide="7" data-step="1">
+      <div class="card cyan">
+        <div class="card-label">Intégrale du cosinus</div>
+        <div class="formula-box" style="margin-top:10px; ">
+          \(\displaystyle\int \cos(n\omega_0 x)\,dx = \dfrac{\sin(n\omega_0 x)}{n\omega_0} + C\)
+        </div>
+      </div>
+      <div class="card green">
+        <div class="card-label">Intégrale du sinus</div>
+        <div class="formula-box green" style="margin-top:10px; ">
+          \(\displaystyle\int \sin(n\omega_0 x)\,dx = -\dfrac{\cos(n\omega_0 x)}{n\omega_0} + C\)
+        </div>
+      </div>
+    </div>
+
+    <div class="card violet" data-slide="7" data-step="2">
+      <div class="card-label">Valeurs remarquables</div>
+      <div class="two-col" style="margin-top:8px; gap:10px;">
+        <div class="formula-box violet" style="">
+          \(\sin(n\pi) = 0 \quad \forall\, n \in \mathbb{Z}\)
+        </div>
+        <div class="formula-box violet" style="">
+          \(\cos(n\pi) = (-1)^n \quad \forall\, n \in \mathbb{Z}\)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- #slides -->
+
+<!-- NAV -->
+<div id="nav">
+  <button class="nav-btn" id="prev">&#8592;</button>
+  <div id="dots"></div>
+  <button class="nav-btn" id="next">&#8594;</button>
+</div>
+
+<script>
+// WAVE CANVAS
+const canvas = document.getElementById('waveCanvas');
+const ctx = canvas.getContext('2d');
+function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+resize(); window.addEventListener('resize', resize);
+let t = 0;
+function drawWaves() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const waves = [
+    { A: 28, f: 0.008, phase: 0,   color: '#00e5ff', lw: 2.5, y: canvas.height * .55 },
+    { A: 18, f: 0.014, phase: 1.2, color: '#00ff9d', lw: 1.8, y: canvas.height * .65 },
+    { A: 12, f: 0.022, phase: 2.4, color: '#b388ff', lw: 1.4, y: canvas.height * .45 },
+  ];
+  waves.forEach(w => {
+    ctx.beginPath();
+    ctx.strokeStyle = w.color; ctx.lineWidth = w.lw; ctx.globalAlpha = .8;
+    for (let x = 0; x <= canvas.width; x += 2) {
+      const y = w.y + w.A * Math.sin(w.f * x + t + w.phase);
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  });
+  ctx.globalAlpha = 1; t += 0.012;
+  requestAnimationFrame(drawWaves);
+}
+drawWaves();
+
+// SLIDES NAV — moteur pas-à-pas
+const NSLIDES = 8;
+const slides = document.querySelectorAll('.slide');
+const dotsEl = document.getElementById('dots');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+let current = 0;
+
+// Collecter les éléments [data-step] par slide
+const steps = Array.from({length: NSLIDES}, () => []);
+document.querySelectorAll('[data-step]').forEach(el => {
+  const s = +el.dataset.slide, st = +el.dataset.step;
+  steps[s][st] = el;
+});
+for (let s = 0; s < NSLIDES; s++) steps[s] = steps[s].filter(Boolean);
+
+const curShown = new Array(NSLIDES).fill(-1);
+
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', () => jumpTo(i));
+  dotsEl.appendChild(d);
+});
+
+function updateUI() {
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  prevBtn.disabled = current === 0 && curShown[0] === -1;
+  nextBtn.disabled = current === NSLIDES - 1 && curShown[current] === steps[current].length - 1;
+}
+
+function showSlide(idx) {
+  slides[current].classList.remove('active');
+  current = idx;
+  slides[current].classList.add('active');
+  if (window.MathJax) MathJax.typesetPromise([slides[current]]);
+  updateUI();
+}
+
+function revealNext(s) {
+  const next = curShown[s] + 1;
+  if (next >= steps[s].length) return false;
+  steps[s][next].classList.add('visible');
+  curShown[s] = next;
+  updateUI();
+  return true;
+}
+
+function hideLast(s) {
+  const last = curShown[s];
+  if (last < 0) return false;
+  steps[s][last].classList.remove('visible');
+  curShown[s] = last - 1;
+  updateUI();
+  return true;
+}
+
+function go(dir) {
+  if (dir === 1) {
+    if (current === 0) { showSlide(1); return; }
+    if (!revealNext(current)) {
+      if (current < NSLIDES - 1) showSlide(current + 1);
+    }
+  } else {
+    if (current === 0) return;
+    if (curShown[current] >= 0) { hideLast(current); }
+    else { showSlide(current - 1); }
+  }
+}
+
+function jumpTo(idx) {
+  for (let s = idx + 1; s < NSLIDES; s++) {
+    steps[s].forEach(el => el.classList.remove('visible'));
+    curShown[s] = -1;
+  }
+  showSlide(idx);
+}
+
+prevBtn.addEventListener('click', () => go(-1));
+nextBtn.addEventListener('click', () => go(1));
+showSlide(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(-1);
+});
+
+// THÈME SOMBRE / CLAIR
+const themeBtn = document.getElementById('themeBtn');
+let isLight = false;
+function toggleTheme() {
+  isLight = !isLight;
+  document.body.classList.toggle('light', isLight);
+  themeBtn.textContent = isLight ? '🌙' : '☀';
+  themeBtn.title = isLight ? 'Mode sombre (L)' : 'Mode clair (L)';
+  canvas.style.opacity = isLight ? '.28' : '.42';
+}
+themeBtn.addEventListener('click', toggleTheme);
+document.addEventListener('keydown', e => { if (e.key === 'l' || e.key === 'L') toggleTheme(); });
+
+// PLEIN ÉCRAN
+const fsBtn = document.getElementById('fsBtn');
+function toggleFS() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+    fsBtn.textContent = '⊡'; fsBtn.title = 'Quitter (F)';
+  } else {
+    document.exitFullscreen();
+    fsBtn.textContent = '⛶'; fsBtn.title = 'Plein écran (F)';
+  }
+}
+fsBtn.addEventListener('click', toggleFS);
+document.addEventListener('keydown', e => { if (e.key === 'f' || e.key === 'F') toggleFS(); });
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement) { fsBtn.textContent = '⛶'; fsBtn.title = 'Plein écran (F)'; }
+});
+</script>
+</body>
+</html>
