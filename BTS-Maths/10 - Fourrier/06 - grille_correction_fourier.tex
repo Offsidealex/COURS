@@ -1,0 +1,221 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\setlength{\extrarowheight}{1mm}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de 2BTS CIEL}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+
+% Couleurs
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+\definecolor{qcmheader}{RGB}{50,110,60}
+\definecolor{qcmlight}{RGB}{220,245,220}
+
+% Macro en-tête d'exercice pleine largeur
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\newcommand{\qcmtitle}[2]{%
+  \noindent\colorbox{qcmheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[8mm]
+  {\large Séries de Fourier -- Analyse harmonique \hspace{1cm} 2BTS CIEL \hspace{1cm} \textbf{Total : /25 points}}
+\end{center}
+
+\vspace{2mm}
+
+\hrule
+
+\vspace{8mm}
+
+%% ===================== EXERCICE 1 — QCM =====================
+\qcmtitle{Exercice 1 : QCM}{/5 pts}
+
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|c|}
+  \hline
+  \rowcolor{qcmlight}
+  \textbf{Q} & \textbf{Réponse correcte} & \textbf{Justification rapide} & \textbf{Pts} \\
+  \hline
+  Q1 & \textbf{B :} $\omega = 400\pi\,\mathrm{rad/s}$
+     & $\omega = 2\pi/T = 2\pi/(5\times10^{-3}) = 400\pi$
+     & 1 \\
+  \hline
+  Q2 & \textbf{B :} $a_0 = 0$ et $a_n = 0$
+     & Fonction impaire $\Rightarrow$ valeur moyenne nulle, pas de cosinus
+     & 1 \\
+  \hline
+  Q3 & \textbf{C :} Sa valeur moyenne
+     & $a_0 = \dfrac{1}{T}\int_0^T f(t)\,dt$ = valeur moyenne sur une période
+     & 1 \\
+  \hline
+  Q4 & \textbf{C :} $a_0 = 0$
+     & $a_0 = \frac{1}{2}(3\times1 + (-3)\times1) = 0$ \quad (signal impaire)
+     & 1 \\
+  \hline
+  Q5 & \textbf{A :} Aux fréquences $n\cdot f_0$
+     & Spectre discret aux multiples entiers de $f_0$
+     & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{3}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{/5} \\
+  \hline
+\end{tabularx}
+
+\vfill 
+
+%% ===================== EXERCICE 2 — Créneau =====================
+\exotitle{Exercice 2 : Signal créneau $u(t)$, $T = 4\,\mathrm{ms}$}{/10 pts}
+
+\vspace{1mm}
+
+\renewcommand{\arraystretch}{2}
+
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  \multirow{2}{*}{1}
+    & Formule correcte : $f_0 = \dfrac{1}{T} = \dfrac{1}{4\times10^{-3}} = 250\,\mathrm{Hz}$
+    & 1 \\
+  \cline{2-3}
+    & $\omega = \dfrac{2\pi}{T} = \dfrac{2\pi}{4\times10^{-3}} = 500\pi \approx 1570{,}8\,\mathrm{rad/s}$
+    & 1 \\
+  \hline
+  \multirow{2}{*}{2}
+    & Calcul correct : $a_0 = \dfrac{1}{4}\left(\displaystyle\int_0^{1}6\,dt + \int_1^{4}0\,dt\right) = \dfrac{6}{4} = 1{,}5\,\mathrm{V}$
+    & 1 \\
+  \cline{2-3}
+    & \textbf{Interprétation :} $a_0 = 1{,}5\,\mathrm{V}$ est la \textbf{valeur moyenne} (composante continue DC) du signal
+    & 1 \\
+  \hline
+  \multirow{3}{*}{3}
+    & Mise en place de l'intégrale : $a_n = \dfrac{2}{4}\displaystyle\int_0^{1} 6\cos(n\omega t)\,dt$
+    & 0{,}5 \\
+  \cline{2-3}
+    & Calcul de la primitive : $3\left[\dfrac{\sin(n\omega t)}{n\omega}\right]_0^1 = \dfrac{3}{n\omega}\sin(n\omega)$
+    & 1 \\
+  \cline{2-3}
+    & \textbf{Résultat encadré :} $a_n = \dfrac{6}{n\pi}\sin\!\left(\dfrac{n\pi}{2}\right)$ \quad (avec $\omega = \pi/2$ en ms)
+    & 0{,}5 \\
+  \hline
+  \multirow{4}{*}{4}
+    & Mise en place : $b_n = \dfrac{2}{4}\displaystyle\int_0^{1} 6\sin(n\omega t)\,dt = \dfrac{3}{n\omega}\bigl(1-\cos(n\omega)\bigr)$
+    & 1 \\
+  \cline{2-3}
+    & \textbf{Résultat encadré :} $b_n = \dfrac{6}{n\pi}\!\left(1 - \cos\dfrac{n\pi}{2}\right)$
+    & 0{,}5 \\
+  \cline{2-3}
+    & Valeurs : $b_1 = \dfrac{6}{\pi} \approx 1{,}91\,\mathrm{V}$ \quad $b_2 = \dfrac{6}{\pi} \approx 1{,}91\,\mathrm{V}$ \quad $b_3 = \dfrac{2}{\pi} \approx 0{,}64\,\mathrm{V}$
+    & 1{,}5 \\
+  \hline
+  5
+    & $S(t) \approx 1{,}5 + \dfrac{6}{\pi}\cos(\omega t) + \dfrac{6}{\pi}\sin(\omega t) - \dfrac{2}{\pi}\cos(3\omega t) + \dfrac{2}{\pi}\sin(3\omega t)$
+    & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{/10} \\
+  \hline
+\end{tabularx}
+
+\vfill 
+
+\newpage 
+
+%% ===================== EXERCICE 3 — Parseval =====================
+\exotitle{Exercice 3 : Théorème de Parseval et spectre, $T = 1\,\mathrm{ms}$}{/10 pts}
+
+\vspace{5mm}
+
+\renewcommand{\arraystretch}{2.7}
+\begin{tabularx}{\linewidth}{|c|X|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} \\
+  \hline
+  1
+    & $a_0 = 3$ \quad $a_1 = 8$ \quad $a_2 = 4$ \quad $a_3 = \dfrac{8}{3} \approx 2{,}67$ \quad $a_4 = 2$ \quad (lecture directe)
+    & 1 \\
+  \hline
+  \multirow{2}{*}{2}
+    & $f_0 = \dfrac{1}{T} = \dfrac{1}{10^{-3}} = 1000\,\mathrm{Hz} = 1\,\mathrm{kHz}$
+    & 0{,}5 \\
+  \cline{2-3}
+    & $f_1 = 1\,\mathrm{kHz}$ \quad $f_2 = 2\,\mathrm{kHz}$ \quad $f_3 = 3\,\mathrm{kHz}$ \quad $f_4 = 4\,\mathrm{kHz}$
+    & 0{,}5 \\
+  \hline
+  \multirow{2}{*}{3}
+    & Raies tracées aux bonnes fréquences avec hauteurs correctes :
+      $|a_0|=3$,\; $|a_1|=8$,\; $|a_2|=4$,\; $|a_3|=8/3$,\; $|a_4|=2$
+    & 2 \\
+  \cline{2-3}
+    & Valeurs numériques portées au-dessus de chaque raie (0,25 pt par raie harmonique)
+    & 1 \\
+  \hline
+  \multirow{5}{*}{4}
+    & $P_0 = a_0^2 = 9\,\mathrm{W}$
+    & 0{,}5 \\
+  \cline{2-3}
+    & $P_1 = \dfrac{8^2}{2} = 32\,\mathrm{W}$
+    & 0{,}5 \\
+  \cline{2-3}
+    & $P_2 = \dfrac{4^2}{2} = 8\,\mathrm{W}$
+    & 0{,}25 \\
+  \cline{2-3}
+    & $P_3 = \dfrac{(8/3)^2}{2} = \dfrac{32}{9} \approx 3{,}56\,\mathrm{W}$
+    & 0{,}25 \\
+  \cline{2-3}
+    & $P_4 = \dfrac{2^2}{2} = 2\,\mathrm{W}$
+    & 0{,}5 \\
+  \hline
+  5
+    & $P = 9 + 32 + 8 + \dfrac{32}{9} + 2 = \dfrac{491}{9} \approx 54{,}56\,\mathrm{W}$
+    & 1 \\
+  \hline
+  \multirow{2}{*}{6}
+    & $\mathrm{TDH} = \dfrac{\sqrt{8^2 + (32/9)^2 + 2^2}}{32}\times100 = \dfrac{\sqrt{80{,}64}}{32}\times100 \approx 28{,}1\,\%$
+    & 1 \\
+  \cline{2-3}
+    & \textbf{Commentaire :} TDH entre $10\,\%$ et $30\,\%$ $\Rightarrow$ distorsion \textbf{modérée à élevée} ; signal sensiblement distordu
+    & 1 \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{2}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{/10} \\
+  \hline
+\end{tabularx}
+
+\vfill 
+
+
+\end{document}
