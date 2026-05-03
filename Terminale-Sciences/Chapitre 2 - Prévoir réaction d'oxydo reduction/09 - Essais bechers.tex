@@ -1,0 +1,80 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de TTU}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+
+\frenchbsetup{StandardLists=true}
+
+\begin{document}
+
+
+\begin{center}
+\definecolor{Beige}{rgb}{0.96,0.96,0.86}2
+\definecolor{GrisClair}{rgb}{0.8,0.8,0.8}3
+\definecolor{GrisTresClair}{rgb}{0.9,0.9,0.9}4
+\definecolor{OrangeTresPale}{cmyk}{0,0.1,0.3,0}5
+\definecolor{OrangePale}{cmyk}{0,0.2,0.4,0}6
+\definecolor{BleuClair} {cmyk}{0.2,0,0,0}7
+\definecolor{LightBlue}{rgb}{.68,.85,.9}8
+\definecolor{Copper}{cmyk}{0,0.9,0.9,0.2}9
+\definecolor{Marron}{cmyk}{0,0.3,0.5,.3}
+
+\psset{unit=3cm}
+
+\newpsstyle{aspectLiquide2}   {linestyle=none,fillstyle=solid,fillcolor=GrisClair}
+
+\newpsstyle{aspectLiquide3}   {linestyle=none,fillstyle=solid,fillcolor=OrangeTresPale}
+
+\pstTubeEssais[glassType=becher,niveauLiquide3=50, solide={\pstGrenailleZinc[80]}]
+
+\pstTubeEssais[glassType=becher,niveauLiquide2=50, solide={\pstTournureCuivre[50]}]
+
+\end{center}
+
+
+
+
+
+\end{document}

@@ -1,0 +1,102 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de TSN1}
+\setcounter{page}{6}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\frenchbsetup{StandardLists=true}
+\begin{document}
+
+
+
+\begin{center}
+\LARGE{COURS}
+\end{center}
+
+
+
+
+\hrule
+
+\vspace{1cm}
+
+
+\fbox{\textbf{Propagation d'un son}}\\
+
+\cadreblanc{25}
+\cadreblanc{25}
+\vspace{2mm}
+
+\fbox{\textbf{Caractéristiques d'une onde sonore}}
+\begin{multicols}{2}
+\textbf{Période}\\
+\cadreblanc{35}
+\textbf{Longueur d'onde}\\
+\cadreblanc{34}
+\end{multicols}
+
+\fbox{\textbf{Pression acoustique et intensité acoustique}}
+\begin{itemize}
+\item Une onde sonore transporte de l'énergie, elle est caractérisée par l'intensité acoustique $I$ en W/$m^2$ qui représente la puissance moyenne transportée par l'onde par unité de surface. 
+\item On mesure le niveau d'intensité acoustique $L$ en décibels (dB) avec un sonomètre, il est lié à l'intensité par la relation : \fbox{$L = 10 log \left(\dfrac{I}{I_0}\right)$} où $I_0$ est le seuil d'audibilité avec $I_0=10^{-12} W/m^2$.
+\item \cadreblanc{14}
+
+\end{itemize}
+
+\fbox{\textbf{Caractéristique de l'oreille humaine}}\\
+
+\cadreblanc{15}
+\cadreblanc{12}
+\end{document}

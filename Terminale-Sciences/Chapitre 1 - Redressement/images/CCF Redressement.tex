@@ -1,0 +1,729 @@
+\documentclass[11pt]{article}
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmargins{15mm}{10mm}{180mm}{252 mm}%
+             {16mm}{2mm}{0pt}{10mm}
+\usepackage[french]{babel}
+
+\usepackage{lmodern} 
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{eurosym} % pour le symbole euro
+\usepackage{graphicx} 
+\usepackage{array} 
+\usepackage{tabularx}
+\usepackage{variations}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+\usepackage{epic} % pour le dessin avec l'environnment picture
+\usepackage{rotating}
+\usepackage[autolanguage]{numprint}
+\usepackage[tikz]{bclogo} 
+
+\usepackage{pstricks,pst-plot}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usepackage{tkz-base}
+\usepackage{pgfplots,mathtools}
+\pgfplotsset{compat=1.12}
+
+\setlength{\unitlength}{1 mm}
+\usepackage{xy} % pour la réalisation de dessin, graphique, diagramme
+\xyoption{all}
+
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+
+\def\labelenumii{\theenumi.~\theenumii.}
+\def\theenumii{\arabic{enumii}}
+
+
+\presetkeys{bclogo}{logo=\bcquestion,couleur=gray!10,barre=snake,arrondi = 0.1}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Définition des sections et sous-sections
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\thesection}{{\arabic{section}.}}
+
+\addto\captionsfrench{\def\tablename{Document}}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+\usepackage{graphpap}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Définition de nouveaux types de colonne
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{lastpage} 
+
+\newcommand{\appel}{\raisebox{-2ex}{\includegraphics[width=1cm]{appel.jpg}}\quad}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%              Évaluation par compétences                %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand\Si{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{Si}}}}
+\newcommand\Ch{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{Ch}}}}
+\newcommand\Mo{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{Mo}}}}
+\newcommand\Ra{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{Ra}}}}
+\newcommand\Ca{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{Ca}}}}
+\newcommand\Co{\marginpar{\scalebox{.8}{\framebox[1.6ex]{\rule{0ex}{1.6ex}\raisebox{.75ex}{\rule{1.6ex}{.5pt}}}\hspace{-.3pt}\framebox[3.2ex]{Co}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+% Définitions de l'année, la spécialité, du diplome ...  %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\specialite}{Systhèmes Numériques }
+\newcommand{\annee}{2021-22}
+\newcommand{\diplome}{Brevet de Technicien Supérieur}
+\newcommand{\etablissement}{LP Denis Diderot}
+\newcommand{\classe}{2BTS}
+\newcommand{\datedeval}{16 mai 2022}
+\newcommand{\matiere}{Mathématiques}
+
+\newcommand{\sequence}{2/2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+% Définitions des capacités, connaissances et attitudes. %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\newcommand{\contenus}{
+  \begin{minipage}[c]{12.5cm}
+    \begin{itemize}
+      \item \rule{0ex}{2.5ex} Coefficients de Fourier d'une fonction T-périodique.
+      \item Forme en $\cos(n\omega t)$ et $\sin(n\omega t)$.
+      \item Formule de Parceval.  
+      \item Représenter une situation liée aux probabilités.
+      \item Calculer une probabilité conditionnelle.
+      \item Utiliser la loi binomiale\rule[-1.5ex]{0ex}{3ex} 
+      \end{itemize}
+    \end{minipage}
+  }
+
+
+\newcommand{\capacites}{
+  \begin{minipage}[c]{12.5cm}
+    \begin{itemize}
+    \item \rule{0ex}{2.5ex}Reconnaître et justifier qu'une situation relève de la loi binomiale.
+    \item Calculer une probabilité à l'aide d'un logiciel ou de la calculatrice.
+    \item Calculer les coefficients de Fourier dans des cas simples.
+    \item Savoir calculer la valeur approchée d'une valeur efficace d'une
+fonction en utilisant son développement en série de Fourier  
+\rule[-1.5ex]{0ex}{3ex}
+    \end{itemize}
+    \end{minipage}
+  }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%                   Début du document                    %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%                     Page de garde                      %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\pagestyle{fancy}
+\lfoot{Alexis Ruiz}
+\cfoot{\thepage/4}
+\rfoot{\datedeval}
+
+\thispagestyle{empty}
+\Large 
+\noindent\begin{tabularx}{1\linewidth}[c]{|c|c|c|C|C|}
+  \hline
+  \multirow{2}{*}{
+  \begin{minipage}[c]{3cm}
+    \includegraphics[width=30mm]{aca-besancon.png}
+  \end{minipage}}   &
+ \multicolumn{4}{c|}{
+ \begin{minipage}[c]{12cm}
+      \begin{center}
+         \rule[-1.5ex]{0ex}{5ex}BREVET DE TECHNICIEN SUPÉRIEUR\\
+         \rule[-2ex]{0ex}{4ex} \specialite 
+      \end{center}    \end{minipage}}\\
+  \cline{2-5}
+  & \multicolumn{3}{c|}{\rule[-2ex]{0ex}{5.5ex}Épreuve U3 - Mathématiques} & Coef. 3\\
+  \hline
+  \multirow{2}{*}{
+  \begin{minipage}[c]{3cm}
+    \begin{center}
+      Contrôle en \\ Cours de\\ Formation
+    \end{center}      
+    \end{minipage}}
+    &
+  \multirow{2}{*}{
+    \raisebox{-2ex}{\begin{minipage}[c]{6.3cm}
+      \begin{center}
+        Situation d'évaluation de\\ \matiere
+     \end{center}  
+    \end{minipage}}}
+    &
+  \multirow{2}{*}{
+    \begin{minipage}[c]{2.2cm}
+      \begin{center}
+        Année\\ scolaire\\ \annee
+  \end{center}  
+    \end{minipage}}
+    &
+    \rule[-1ex]{0ex}{4ex}Séquence &
+    Durée\\
+    \cline{4-5}
+    &&&
+    \rule[-1.5ex]{0ex}{5ex}\sequence
+    & 
+    55~min
+\\
+\hline
+\end{tabularx}
+
+\bigskip
+
+\noindent\fbox{
+  \begin{minipage}[c]{.97\linewidth}
+    \centerline{\rule[-.8ex]{0ex}{3.5ex}FICHE D'INFORMATION DU CANDIDAT}
+  \end{minipage}
+}
+
+\bigskip
+
+
+\normalsize
+
+\noindent\begin{tabularx}{1\linewidth}{|p{11cm}C|}
+  \hline
+  \rule{0ex}{3ex}Établissement~:~\textbf{{\etablissement}} & Classe~:~\textbf{\classe}\\
+ \rule[-1ex]{0ex}{4ex} NOM et Prénom du CANDIDAT : \ \dotfill & Date de l'évaluation~:~\textbf{\datedeval}\\
+ \hline
+\end{tabularx}
+\bigskip
+
+
+
+
+\begin{center}
+  Contenus et capacités du référentiel évaluées.\\
+  \begin{tabularx}{16cm}{|C|l|}
+    \hline
+    \textbf{Contenus} &
+    \contenus\\
+    \hline 
+    \textbf{Capacités} &
+    \capacites  \\
+
+    \hline
+  \end{tabularx}
+\end{center}
+
+\noindent\fbox{\begin{minipage}[c]{.97\linewidth}
+    \begin{description}
+  \item[$\vartriangleright$] La clarté des raisonnements et la qualité de la rédaction
+    interviendront dans l'appréciation des copies.
+  \item[$\vartriangleright$] L'emploi des calculatrices est autorisé, dans les conditions
+    prévues par la réglementation en vigueur.
+  \end{description}
+\end{minipage}}
+
+\bigskip
+
+
+L'évaluation est notée sur 10 : Sur les 10 points, 3 points sont consacrés à l'évaluation de l'utilisation des outils numériques dans le cadre de
+différentes compétences.
+
+\begin{center}
+  \begin{tabularx}{1\linewidth}{|L|c|}
+  \hline
+  \textbf{\rule{0ex}{3ex}Le candidat atteste avoir été informé de la date et des objectifs
+    de l'évaluation le \makebox[4cm]{\rule{0ex}{3ex}\dotfill}} & \textbf{\rule[-6ex]{0ex}{3ex}\underline{Émargement}}\\
+   \hline
+\end{tabularx}
+\end{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                        %
+%                   fin page de garde                    %
+%                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+
+\lhead{\textbf{\matiere}}
+\rhead{Année scolaire \annee}
+\setcounter{page}{1}
+\large
+
+\noindent\begin{tabularx}{1\linewidth}[c]{|c|c|C|C|}
+  \hline
+  \multirow{2}{*}{\Large
+    \begin{minipage}[c]{4cm}
+      \begin{center}
+        Contrôle en Cours\\ de Formation
+    \end{center}      
+  \end{minipage}}
+    &
+    \multirow{2}{*}{
+      \begin{minipage}[c]{7.2cm}
+        \begin{center}
+          MATHÉMATIQUES
+        \end{center}  
+    \end{minipage}}
+  &
+  \rule[-1ex]{0ex}{4ex}Séquence &
+  Durée\\
+  \cline{3-4}
+  &&
+    \rule[-1.5ex]{0ex}{5ex}2/2
+    & 
+    55~min\\
+\hline
+\end{tabularx}
+\medskip
+
+
+\noindent\fbox{
+  \Large\begin{minipage}[c]{.97\linewidth}
+    \centerline{\rule[-.8ex]{0ex}{3.5ex}SUJET DESTINÉ AU CANDIDAT}
+  \end{minipage}
+}
+
+\medskip
+
+\noindent\begin{tabularx}{1\linewidth}{|p{10cm}L|}
+  \hline
+  \rule{0ex}{3ex}Établissement:~\textbf{{\etablissement}} & Classe~:~\textbf{\classe}\\
+ \rule[-1ex]{0ex}{4ex} NOM et Prénom : \ \dotfill & Date de l'évaluation : \textbf{\datedeval}\\
+ \hline
+\end{tabularx}
+
+\medskip
+
+
+\noindent\begin{tabularx}{1\linewidth}{|c|L|}
+  \hline
+\multirow{2}{1.3cm}{\ \appel} & \textbf{\rule[-.8ex]{0ex}{3.5ex}L'examinateur intervient à la demande du
+candidat ou quand il le juge utile.}\\
+\cline{2-2} 
+&\textbf{\rule[-.8ex]{0ex}{3.5ex}Dans la suite du document, ce symbole signifie <<Appeler
+  l'examinateur>>.}\\
+ \hline
+\end{tabularx}
+
+\bigskip
+
+\noindent
+\normalsize
+\setstretch{1.2}
+
+\parindent 0cm
+
+\textbf{\textsc{Exercice 1}}
+
+Cette étude porte sur l’utilisation principale des véhicules du parc automobile français.
+Les réponses seront arrondies à 0,000 1 
+
+\textbf{Partie A} 
+
+Les véhicules de la région parisienne représentent 16\%  du parc automobile français en 2021.\\
+22\% des véhicules de la région parisienne sont utilisés principalement pour le trajet entre le domicile et le travail,  pour les loisirs.\\
+En province, 49\%  des véhicules sont utilisés principalement pour le trajet entre le domicile et le travail,31\% pour les loisirs.\\
+On choisit un véhicule au hasard dans le parc automobile français.
+
+On note :
+
+ $R$ l’événement : “le véhicule provient de la région parisienne”,\\
+  $\overline R$l’événement : “le véhicule provient de la province”,\\
+ $T$ l’événement : “le véhicule est utilisé principalement pour le trajet entre le domicile et le travail”,\\
+$L$ l’événement : “le véhicule est utilisé principalement pour les loisirs”,\\
+$F$ l’événement : “le véhicule est utilisé principalement pour d’autres fonctions que le travail ou les loisirs”.\\
+
+On rappelle que, si $A$  et $B$ sont deux événements, $p(A)$ désigne la probabilité de l’événement $A$ et $p_B(A)$ désigne la probabilité de l’événement $A$ sachant que l’événement $B$ est réalisé.
+
+
+
+\begin{enumerate} 
+\item Représenter la situation par un arbre de probabilité.\\
+\cadreblanc{55} \Mo
+\vfill
+\newpage
+
+\item Montrer que la probabilité qu'un véhicule soit utilisé principalement pour le trajet entre le domicile et le travail est égale à $0,4468$.\\[25 pt]
+\begin{minipage}[c]{.91\linewidth}
+    .\dotfill\\
+  \end{minipage}\Ca
+\end {enumerate}
+
+
+\textbf{Partie B}
+
+
+On sélectionne un échantillon aléatoire de $10$ véhicules du parc automobile français. 
+
+On note $X$ la variable aléatoire qui compte, dans cet échantillon, le nombre de véhicules utilisés principalement pour le trajet entre le domicile et le travail.
+
+\begin{enumerate} 
+\item Préciser les paramètres de cette loi binomiale.\\[25 pt]
+\begin{minipage}[c]{.91\linewidth}
+    .\dotfill\\
+  \end{minipage}\Ra
+
+
+\item Déterminer la probabilité qu’exactement deux véhicules soient utilisés principalement pour le trajet entre le domicile et le travail.\\[25 pt]
+\begin{minipage}[c]{.91\linewidth}
+    .\dotfill\\
+  \end{minipage}\Ca
+
+
+\item Déterminer la probabilité qu’au moins un véhicule soit utilisé principalement pour le trajet entre le domicile et le travail.\\[25 pt]
+\begin{minipage}[c]{.91\linewidth}
+    .\dotfill\\
+  \end{minipage}\Ca
+
+
+\end{enumerate}
+
+
+\textbf{\textsc{Exercice 2}}
+
+
+
+\begin{enumerate}
+
+\item   On considère le signal, modélisé par la fonction réelle $e$, de période $2\pi$, définie par :
+
+\[\left\{\begin{array}{l c l c l}
+e(t)& =&\sin t& \text{si}& t \in ~[0~;~\pi]\\
+e(t)& =&0&\text{si}& t \in  ~]\pi~;~ 2\pi[.\\
+\end{array}\right.\]
+
+\vfill
+
+
+	\begin{enumerate}
+		\item  Dans le repère orthogonal, tracer la représentation graphique de la fonction $e$ pour $t$ variant dans l'intervalle $[-2 \pi~;~ 2\pi]$.
+		\begin{center}
+		\begin{tikzpicture}
+  \begin{axis}
+    [% 290 of manual,
+	  xmax=2.25*pi, xmin = -2.25*pi, ymin = -1.4, ymax = 1.4,     
+      xtick={-7.0686,-6.2831,...,7.0686},
+      xticklabels={% ref:http://tex.stackexchange.com/a/34958/ by Peter Grill
+        ,
+        {\tiny$-2\pi$},
+        {\tiny$-\frac{7\pi}{4}$},
+        {\tiny$-\frac{3\pi}{2}$},
+        {\tiny$-\frac{5\pi}{4}$},
+        {\tiny $-\pi$},
+        {\tiny$-\frac{3\pi}{4}$},
+        {\tiny$-\frac{\pi}{2}$},
+        {\tiny$-\frac{\pi}{4}$},
+        {\tiny $0$},
+        {\tiny$\frac{\pi}{4}$},
+        {\tiny$\frac{\pi}{2}$},
+        {\tiny$\frac{3\pi}{4}$},
+        {\tiny $\pi$},
+        {\tiny$\frac{5\pi}{4}$},
+        {\tiny$\frac{3\pi}{2}$},
+        {\tiny$\frac{7\pi}{4}$},
+        {\tiny$2\pi$},
+      },
+      ytick={-1,0,1},
+      yticklabels={{\tiny -1},{\tiny 0}, {\tiny 1},},
+      grid=major,
+      x=10mm,
+      y=20mm,
+      axis x line=center,% 218
+      axis y line=center,
+      xlabel={$t$},
+      ylabel={$e(t)$},
+    ]
+    \end{axis}
+\end{tikzpicture}
+\end{center} \Co
+
+\vfill
+\newpage
+\item  Calculer à l'aide de la calculatrice, les valeurs de $I_1$ et $I_2$ , exprimer le résultat à l'aide d'une fraction si cela est nécessaire:
+
+\[I_1=\int_{0}^{\pi} \sin t \cdot \cos t\:\text{d}t = 0~~~~~~~~~~~~~~\text{et}~~~~~~~~~~~~I_2=\int_{0}^{\pi} \sin t \cdot \cos (2t)\:\text{d}t = - \dfrac{2}{3}.\]\\
+
+\begin{minipage}[c]{.91\linewidth}
+    .\dotfill  ~~~~~~~~~~~~~~~~~~~~~~ \dotfill\\
+  \end{minipage}\Ca
+
+
+\noindent\begin{tabularx}{1\linewidth}{|c|L|}
+  \hline
+\multirow{2}{1.3cm}{\ \appel} & \textbf{\rule[-.8ex]{0ex}{3.5ex}Appel n°1.}\\
+
+&{\rule[-.8ex]{0ex}{3.5ex}Faire vérifier vos résultats par l'examinateur}\\
+ \hline
+\end{tabularx}
+\end{enumerate}
+
+		\item  Calculer les coefficients de Fourier suivants de la fonction $e(t)$. : \\
+		
+	2.1. Calculer $a_{0}$\\   \\
+		\cadreblanc{20} \Ca
+
+		2.2. Calculer $a_{1}$\\ \\
+		\cadreblanc{40} \Ca
+
+	2.3. Calculer $a_{2}$\\  \\  
+		\cadreblanc{40} \Ca
+
+	
+	\noindent\begin{tabularx}{1\linewidth}{|c|L|}
+  \hline
+\multirow{2}{1.3cm}{\ \appel} & \textbf{\rule[-.8ex]{0ex}{3.5ex}Appel n°2.}\\
+
+&{\rule[-.8ex]{0ex}{3.5ex}Faire vérifier vos résultats par l'examinateur}\\
+ \hline
+\end{tabularx}
+\vfill
+	\newpage
+		
+	\item 	On admettra dans la suite de l'exercice que les coefficients $b_{1}$ et $b_{2}$ valent : $b_{1} = \dfrac{1}{2}$ et $b_{2} = 0.$
+
+
+	\begin{enumerate}
+		\item  Calculer le carré $E^2$ de la valeur efficace du signal $e$.
+		
+		On utilisera la formule $\sin^2t=\dfrac{1-\cos(2t)}{2}$\\[5pt]
+		\cadreblanc{50}
+
+		
+		 \item On sait par ailleurs que la formule de Bessel-Parseval donne :
+
+\[E^2	= a_{0}^2 + \sum_{n = 1}^{+ \infty} \dfrac{a_{n}^2 + b_{n}^2}{2}.\]
+Dans le cas présent, on décide de ne garder que les harmoniques de rang 1 et 2.
+
+Soit $P$ le nombre défini par : $P=a_{0}^2 +  \dfrac{1}{2}\left(a_{1}^2 + b_{1}^2 + a_{2}^2  +b_{2}^2\right)$.
+
+Calculer $P$, puis donner une approximation décimale à $10^{-3}$ près du rapport $\dfrac{P}{E^2}$.
+
+
+\emph{La comparaison de $E^2$ et $P$ justifie que, dans la pratique, on néglige les harmoniques de rang supérieur ou égal à 3.}
+ 	\end{enumerate}
+\end{enumerate}
+	\cadreblanc{50}
+\vfill   
+
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%%          Fiche d'évaluation              %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\small
+
+\thispagestyle{empty}
+\setstretch{1}
+
+\noindent\begin{tabularx}{1\linewidth}[c]{|L|l|l|}
+  \hline
+  \multicolumn{3}{|c|}{\large
+    \begin{minipage}[c]{.7\linewidth}
+      \begin{center}
+        \bfseries \rule{0ex}{3ex}GRILLE NATIONALE D'ÉVALUATION
+
+        EN MATHÉMATIQUES \\
+        BTS SN - Option EC\rule[-1ex]{0ex}{3ex}
+      \end{center}
+    \end{minipage}
+}\\
+  \hline
+  \rule[-1ex]{0ex}{4ex} Nom : & \rule{.3cm}{0cm}Diplôme
+  préparé : \diplome\rule{.3cm}{0cm} &  Séquence
+  d'évaluation~\no\sequence \\
+ \hline\end{tabularx}\\[.3cm]
+
+
+\textbf{1.  Liste des capacités, connaissances et attitudes évaluées} 
+\begin{center}
+  \begin{tabularx}{1\linewidth}{|C|l|}
+    \hline
+    \textbf{Contenus} &
+    \contenus\\
+    \hline 
+    \textbf{Capacités} &
+    \capacites   \\
+    \hline
+  \end{tabularx}
+\end{center}
+
+
+\medskip
+
+\textbf{2. Évaluation}
+\begin{center}
+\begin{tabularx}{.98\linewidth}[c]{|c|C|c|p{0.42cm}|p{0.42cm}|p{0.4cm}|c|}
+  \hline
+  \textbf{Compétences} & 
+  \textbf{Capacités}&\textbf{Questions} &\multicolumn{4}{c|}{
+  \begin{minipage}[c]{2.8cm}
+    \begin{center}
+      \textbf{\rule{0ex}{2.2ex}Appréciation\\ du niveau\\
+        d'acquisition\rule[-1.2ex]{0ex}{2ex}} 
+    \end{center}    \end{minipage}\footnote{Le professeur peut utiliser toute forme d'annotation lui permettant d'évaluer l'élève (le candidat) par compétences.}}
+    \\
+    \hline
+    S'Informer&
+    Rechercher, extraire et organiser l'information.
+    &\begin{minipage}[c]{1.2cm}
+      \begin{center}
+        \rule{0ex}{2.2ex}
+        1.1 ; 2.1 ; 2.3 ; 3.3
+\rule[-1.2ex]{0ex}{2ex}
+      \end{center}\end{minipage}
+    &&& & \\
+    \hline  
+        Chercher& 
+    \begin{minipage}{1.0\linewidth}
+  \begin{itemize}
+  \item  \rule{0ex}{2.2ex} Proposer une méthode de résolution.
+  \item Expérimenter, tester, conjecturer. \rule[-2ex]{0ex}{2ex}
+  \end{itemize}
+      \end{minipage}
+    &\begin{minipage}[c]{1.2cm}
+      \begin{center}
+        \rule{0ex}{2.2ex}1.1 ; 1.2 ; A2\rule[-1.2ex]{0ex}{2ex}
+      \end{center}
+    \end{minipage}
+    & & & & \\
+    \hline
+    Modéliser& 
+    \begin{minipage}{1.0\linewidth}
+  \begin{itemize}
+  \item \rule{0ex}{2.2ex} Représenter une situation ou des objets du monde réel.
+  \item Traduire un problème en langage mathématique. \rule[-2ex]{0ex}{2ex}
+  \end{itemize}
+      \end{minipage}
+    &\begin{minipage}[c]{1.2cm}
+      \begin{center}
+        \rule{0ex}{2.2ex}1.1 ; 1.2 ; A2\rule[-1.2ex]{0ex}{2ex}
+      \end{center}
+    \end{minipage}
+    & & & & \\
+    \hline
+   \begin{minipage}[c]{1.7 cm}
+\begin{center} 
+Raisonner, \\
+argumenter
+\end{center}
+      \end{minipage} & 
+    \begin{minipage}{1.0\linewidth}
+      \begin{itemize}
+      \item \rule{0ex}{2.2ex}Choisir une méthode de résolution, un
+        protocole expérimental.
+      \item Exécuter une méthode de
+        résolution, expérimenter, simuler.\rule[-1.2ex]{0ex}{2ex}
+      \end{itemize}
+    \end{minipage}&
+    \begin{minipage}[c]{1.2cm}
+      \begin{center}
+    \rule{0ex}{2.2ex}
+2.1 ; 2.3 ; 2.4 ; 3.1 ; 3.3\rule[-1.2ex]{0ex}{2ex}
+  \end{center}
+    \end{minipage}
+    
+    & & & & \\
+\hline
+\begin{minipage}[c]{1.7 cm}
+\begin{center} 
+~~\\
+Calculer, illustrer, mettre en oeuvre une stratégie \\
+~~\\
+\end{center}
+      \end{minipage}
+ &\begin{minipage}{1.0\linewidth}
+  \begin{itemize}
+  \item Calculer.
+  \item Illustrer à la main ou à l'aide d'outils numériques.
+  \item Programmer .
+  \end{itemize}
+      \end{minipage}&
+    \begin{minipage}[c]{1.2cm}
+      \begin{center}
+    \rule{0ex}{2.2ex}
+2.2 ; 3.2
+\rule[-1.2ex]{0ex}{2ex}
+      \end{center}
+    \end{minipage}
+    & & & & \\
+    \hline
+   Communiquer
+    & \begin{minipage}{1.0\linewidth}
+  \begin{itemize}
+  \item \rule{0ex}{2.2ex}Rendre compte d'une démarche, d'un résultat à l'oral ou à l'écrit.
+  \item Présenter un tableau, une figure, une représentation graphique . \rule[-1.2ex]{0ex}{2ex}
+  \end{itemize}
+      \end{minipage}
+    &
+    \begin{minipage}[c]{1.2cm}
+      \begin{center}
+    \rule{0ex}{2.2ex}
+1.2 ; A1 ; 3.2\rule[-1.2ex]{0ex}{2ex}
+      \end{center}
+      \end{minipage}
+      & & & &  \\
+      \hline
+      \multicolumn{3}{c|}{}& \multicolumn{4}{r|}{\rule[-1ex]{0ex}{4ex}\rule{3ex}{0ex}{\Large /~10}}\\    
+    \cline{4-7}
+  \end{tabularx}
+\end{center}
+
+
+
+
+\end{document}

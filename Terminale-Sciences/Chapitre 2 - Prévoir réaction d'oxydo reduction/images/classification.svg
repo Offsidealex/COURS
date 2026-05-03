@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="classification.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker10144"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend">
+      <path
+         transform="scale(1.1) rotate(180) translate(1,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#550000;fill-opacity:1"
+         id="path10142" />
+    </marker>
+    <marker
+       inkscape:stockid="Tail"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Tail"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <g
+         id="g5119"
+         transform="scale(-1.2)"
+         style="stroke:#000000;stroke-opacity:1;fill:#550000;fill-opacity:1">
+        <path
+           id="path5107"
+           d="M -3.8048674,-3.9585227 L 0.54352094,0"
+           style="fill:#550000;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path5109"
+           d="M -1.2866832,-3.9585227 L 3.0617053,0"
+           style="fill:#550000;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path5111"
+           d="M 1.3053582,-3.9585227 L 5.6537466,0"
+           style="fill:#550000;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path5113"
+           d="M -3.8048674,4.1775838 L 0.54352094,0.21974226"
+           style="fill:#550000;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path5115"
+           d="M -1.2866832,4.1775838 L 3.0617053,0.21974226"
+           style="fill:#550000;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+        <path
+           id="path5117"
+           d="M 1.3053582,4.1775838 L 5.6537466,0.21974226"
+           style="fill:#550000;fill-rule:evenodd;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-opacity:1;fill-opacity:1" />
+      </g>
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9946"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mstart">
+      <path
+         transform="scale(0.6) translate(0,0)"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#550000;fill-opacity:1"
+         id="path9944" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mstart"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path5095"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000100;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker5399"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path5397"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#550000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path5092"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000100;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path5098"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mstart-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5095-6"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5092-3"
+         style="fill:#550000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mstart-0-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5095-6-9"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(0.6)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.83972969"
+     inkscape:cx="355.5656"
+     inkscape:cy="602.42922"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="971"
+     inkscape:window-x="-9"
+     inkscape:window-y="18"
+     inkscape:window-maximized="1"
+     showguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid6029" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#000100;fill-opacity:1;stroke:#000000;stroke-width:2.84274173;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart);marker-mid:url(#Arrow2Lend)"
+       d="M 96.572917,32.440421 96.788328,236.14583"
+       id="path5069"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635414,64.695834 H 104.51042"
+       id="path5961"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635417,78.189585 H 104.51043"
+       id="path5961-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.26847744px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.21722993"
+       x="74.046288"
+       y="70.624756"
+       id="text7791"
+       transform="matrix(0.97563726,-0.05918315,0,1.0249711,0,0)"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan7795"
+         x="74.046288"
+         y="70.624756"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;stroke-width:0.21722993">Au<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8558">3+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.3499999px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.12022826"
+       x="85.472519"
+       y="60.370949"
+       id="text7791-3"
+       transform="scale(0.9854374,1.0147778)"><tspan
+         sodipodi:role="line"
+         id="tspan7815"
+         x="85.472519"
+         y="66.244698"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:6.3499999px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;stroke-width:0.12022826" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.1646"
+       y="68.680298"
+       id="text7791-0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan7795-6"
+         x="107.1646"
+         y="68.680298">Au</tspan></text>
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635394,91.947917 H 104.51042"
+       id="path5961-5-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="73.266136"
+       y="81.893913"
+       id="text7791-02"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8193"
+         x="73.266136"
+         y="81.893913"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b"
+           id="tspan8544">Pt</tspan><tspan
+           style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+           id="tspan8556">2+</tspan></tspan></text>
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635384,105.17708 H 104.51042"
+       id="path5961-5-0-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635417,117.87708 H 104.51045"
+       id="path5961-5-0-7-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635417,131.10625 H 104.51045"
+       id="path5961-5-0-7-7-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635417,144.07084 H 104.51046"
+       id="path5961-5-0-7-7-6-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635417,157.3 H 104.51046"
+       id="path5961-5-0-7-7-6-7-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635417,169.73542 H 104.51046"
+       id="path5961-5-0-7-7-6-7-7-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.635417,182.7 H 104.51047"
+       id="path5961-5-0-7-7-6-7-7-2-4"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 88.63538,195.13542 h 15.87504"
+       id="path5961-5-0-7-7-6-7-7-2-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="106.96161"
+       y="81.940605"
+       id="text7791-02-6"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan7910-0"
+         x="106.96161"
+         y="81.940605">Pt</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="75.280052"
+       y="95.611145"
+       id="text7791-02-5"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8224"
+         x="75.280052"
+         y="95.611145">Ag<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8226">+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="106.85886"
+       y="95.657837"
+       id="text7791-02-6-2"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan7910-0-4"
+         x="106.85886"
+         y="95.657837">Ag</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="71.746109"
+       y="113.46416"
+       id="text7791-37"
+       transform="skewY(-3.3046622)"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8299"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b"
+         x="71.746109"
+         y="113.46416">Cu<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8554">2+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.33157"
+       y="109.22577"
+       id="text7791-0-0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan7795-6-3"
+         x="107.33157"
+         y="109.22577">Cu</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="79.253944"
+       y="120.85189"
+       id="text7791-02-8"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8321"
+         x="79.253944"
+         y="120.85189">H<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8323">+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.12858"
+       y="120.3694"
+       id="text7791-02-6-5"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan7910-0-0"
+         x="107.12858"
+         y="120.3694">H<tspan
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;baseline-shift:sub;text-anchor:start;fill:#280b0b"
+   id="tspan8311">2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="75.976189"
+       y="132.98166"
+       id="text7791-02-5-8"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         y="132.98166"
+         x="75.976189"
+         sodipodi:role="line"
+         id="tspan8224-3">Pb<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8560">+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.555"
+       y="133.02835"
+       id="text7791-02-6-2-8"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8328"
+         x="107.555"
+         y="133.02835">Pb</tspan></text>
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.370794,208.36459 H 104.24585"
+       id="path5961-5-0-7-7-6-7-7-2-4-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#280b0b;stroke:#000000;stroke-width:1.44200003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 88.370754,220.80001 H 104.2458"
+       id="path5961-5-0-7-7-6-7-7-2-6-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="72.668297"
+       y="151.18584"
+       id="text7791-1"
+       transform="skewY(-3.3046622)"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8476"
+         x="72.668297"
+         y="151.18584">Sn<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8478">2+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="108.25375"
+       y="146.36507"
+       id="text7791-0-6"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8480"
+         x="108.25375"
+         y="146.36507">Sn</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="73.826126"
+       y="160.10785"
+       id="text7791-02-9"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8482"
+         x="73.826126"
+         y="160.10785">Ni<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8484">2+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.52158"
+       y="160.15454"
+       id="text7791-02-6-6"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8486"
+         x="107.52158"
+         y="160.15454"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b">Ni</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="73.723373"
+       y="173.29593"
+       id="text7791-02-5-85"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8488"
+         x="73.723373"
+         y="173.29593">Fe<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8490">2+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.41883"
+       y="173.34261"
+       id="text7791-02-6-2-1"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8494"
+         x="107.41883"
+         y="173.34261"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b">Fe</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="72.835266"
+       y="189.6243"
+       id="text7791-37-3"
+       transform="skewY(-3.3046621)"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8496"
+         x="72.835266"
+         y="189.6243">Cr<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8498">3+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.89156"
+       y="184.7939"
+       id="text7791-0-0-6"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan7795-6-3-9"
+         x="107.89156"
+         y="184.7939">Cr</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="72.934761"
+       y="197.47835"
+       id="text7791-02-8-5"
+       inkscape:transform-center-x="5.3944175"
+       inkscape:transform-center-y="-0.25687702"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8500"
+         x="72.934761"
+         y="197.47835">Zn<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8502">2+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="108.74691"
+       y="198.05421"
+       id="text7791-02-6-5-0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan7910-0-0-2"
+         x="108.74691"
+         y="198.05421">Zn</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="73.890343"
+       y="210.66643"
+       id="text7791-02-5-8-1"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8506"
+         x="73.890343"
+         y="210.66643">Al<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8508">3+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="108.115"
+       y="210.71312"
+       id="text7791-02-6-2-8-3"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan8328-3"
+         x="108.115"
+         y="210.71312">Al</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="70.484154"
+       y="222.80127"
+       id="text7791-02-5-8-1-6"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan8540"
+         x="70.484154"
+         y="222.80127">Mg<tspan
+   style="font-size:64.99999762%;baseline-shift:super;fill:#280b0b"
+   id="tspan8542">2+</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.28888893px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#280b0b;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.35464"
+       y="223.37712"
+       id="text7791-02-6-2-8-3-0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         style="fill:#280b0b;stroke-width:0.26458332"
+         sodipodi:role="line"
+         id="tspan8328-3-9"
+         x="107.35464"
+         y="223.37712">Mg</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot8546"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:37.33333206px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion8548"><rect
+           id="rect8550"
+           width="250"
+           height="660"
+           x="250"
+           y="222.51968" /></flowRegion><flowPara
+         id="flowPara8552"></flowPara></flowRoot>    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.55813694;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart-0)"
+       d="m 28.558873,34.256599 0.34886,101.860461"
+       id="path5069-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.051;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect9895"
+       width="50.416996"
+       height="38.485424"
+       x="5.4075379"
+       y="63.772465"
+       rx="7.8599224"
+       ry="0.26711473" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.8777771px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="28.648233"
+       y="73.405205"
+       id="text9887"><tspan
+         sodipodi:role="line"
+         id="tspan9885"
+         x="28.648233"
+         y="73.405205"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">Pouvoir</tspan><tspan
+         sodipodi:role="line"
+         x="28.648233"
+         y="85.752426"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9889">oxydant</tspan><tspan
+         sodipodi:role="line"
+         x="30.172344"
+         y="98.099648"
+         style="stroke-width:0.26458332"
+         id="tspan9891"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.87777805px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+   id="tspan9893">croissant</tspan> </tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.59164858;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Mstart-0-8)"
+       d="m 163.3658,230.89482 0.34799,-104.80904"
+       id="path5069-3-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.06476796;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect9895-6"
+       width="50.290791"
+       height="39.599464"
+       x="138.38194"
+       y="-202.41505"
+       rx="7.8402472"
+       ry="0.27484694"
+       transform="scale(1,-1)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.78817177px;line-height:1.25;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:justify;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26218262"
+       x="161.12628"
+       y="173.47343"
+       id="text9887-4"
+       transform="scale(1.0066304,0.99341328)"><tspan
+         sodipodi:role="line"
+         id="tspan11479"
+         x="161.12628"
+         y="173.47343"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.78817177px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">Pouvoir</tspan><tspan
+         sodipodi:role="line"
+         id="tspan11481"
+         x="161.12628"
+         y="185.70865"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.78817177px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">reducteur</tspan><tspan
+         sodipodi:role="line"
+         id="tspan11483"
+         x="162.63657"
+         y="197.94386"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:9.78817177px;font-family:'Frank Ruehl CLM';-inkscape-font-specification:'Frank Ruehl CLM, Medium';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
+   id="tspan11485">croissant</tspan> </tspan></text>
+  </g>
+</svg>

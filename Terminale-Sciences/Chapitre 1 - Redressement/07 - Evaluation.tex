@@ -1,0 +1,321 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\setlength{\parindent}{0pt}
+\usepackage{multicol}
+\setlength{\columnseprule}{1pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Terminale}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ - CORRIGÉ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{adjustbox}
+\usepackage{tikz}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\usepackage{array}
+
+% Commandes optimisées pour les oscilloscopes du QCM
+\newcommand{\oscibase}[1]{%
+\begin{tikzpicture}[scale=0.18]
+\draw[step=1 cm,gray!60,thin] (-5,-4) grid (5,4);
+\draw[thick,-] (0,-4) -- (0,4);
+\draw[thick,-] (-5,0) -- (5,0);
+#1
+\draw[black,very thick,rounded corners=5pt] (-5.1,-4.1) rectangle (5.1,4.1);
+\end{tikzpicture}%
+}
+
+\newcommand{\oscidoublealternance}{%
+\draw[black!70!black,thick,domain=-5:5,samples=50,smooth] 
+    plot (\x,{abs(2.5*sin(\x*72))});%
+}
+
+\newcommand{\oscimonoalternance}{%
+\draw[black!70!black,thick,domain=-5:5,samples=50,smooth] 
+    plot (\x,{max(0, 2.5*sin(\x*72))});%
+}
+
+\newcommand{\oscicondensateur}{%
+\draw[black!70!black,thick,domain=-5:5,samples=80,smooth] 
+    plot (\x,{2.3 + 0.2*sin(\x*144)});%
+}
+
+\begin{document}
+\center \LARGE{Évaluation - Comment redresser une tension alternative ?  }\\[0,3cm]
+\normalsize
+\hrule
+
+\vspace{2mm}
+
+\flushleft \textbf{NOM :\\[0.2cm]
+Prénom:}
+
+\vspace{2mm}
+
+\hrule
+
+\vspace{5mm}
+
+Exercice 1 :
+Les oscillogrammes ci-dessous ont été obtenus avec le même balayage (5 ms/div) et la même sensibilité (2 V/div).
+
+\def\ech{0.23}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+oscillogramme 1 & oscillogramme 2 & oscillogramme 3 & oscillogramme 4 & oscillogramme 5 \\
+
+
+ \begin{tikzpicture}[scale=\ech]
+\draw[step=1 cm,gray!60,thin] (-5,-4) grid (5,4);
+\draw[thick,-] (0,-4) -- (0,4) ;
+\draw[thick,-] (-5,0) -- (5,0) ;
+\foreach \x in {-5,-4,...,5} {
+    \draw (\x,0.1) -- (\x,-0.1);
+}
+\foreach \y in {-4,-3,...,4} {
+    \draw (0.1,\y) -- (-0.1,\y);
+}
+\draw[thick,-] (-5,2) -- (5,2) ;
+\draw[black,very thick,rounded corners=5pt] (-5.1,-4.1) rectangle (5.1,4.1);
+\node[gray,font=\footnotesize] at (-4,-5) {2V/div};
+\node[gray,font=\footnotesize] at (4,-5) {5ms/div};
+\end{tikzpicture}
+
+ &
+
+\begin{tikzpicture}[scale=\ech]
+\pgfmathsetmacro{\ampl}{3}
+\draw[step=1 cm,gray!60,thin] (-5,-4) grid (5,4);
+\draw[thick,-] (0,-4) -- (0,4) ;
+\draw[thick,-] (-5,0) -- (5,0) ;
+\foreach \x in {-5,-4,...,5} {
+    \draw (\x,0.1) -- (\x,-0.1);
+}
+\foreach \y in {-4,-3,...,4} {
+    \draw (0.1,\y) -- (-0.1,\y);
+}
+\draw[black!70!black,thick] 
+    (-5,-\ampl) -- (-1,\ampl)
+    (-1,-\ampl) -- (3,\ampl)
+    (3,-\ampl) -- (5,-\ampl+2*\ampl*0.5);
+\draw[black,very thick,rounded corners=5pt] (-5.1,-4.1) rectangle (5.1,4.1);
+\node[gray,font=\footnotesize] at (-4,-5) {2V/div};
+\node[gray,font=\footnotesize] at (4,-5) {5ms/div};
+\end{tikzpicture}
+
+
+ &
+
+ 
+ \begin{tikzpicture}[scale=\ech]
+\draw[step=1 cm,gray!60,thin] (-5,-4) grid (5,4);
+\draw[thick,-] (0,-4) -- (0,4) ;
+\draw[thick,-] (-5,0) -- (5,0) ;
+\foreach \x in {-5,-4,...,5} {
+    \draw (\x,0.1) -- (\x,-0.1);
+}
+\foreach \y in {-4,-3,...,4} {
+    \draw (0.1,\y) -- (-0.1,\y);
+}
+\draw[black!70!black,thick,domain=-5:5,samples=50,smooth] 
+    plot (\x,{2.5*sin(\x*72)});
+\draw[black,very thick,rounded corners=5pt] (-5.1,-4.1) rectangle (5.1,4.1);
+\node[gray,font=\footnotesize] at (-4,-5) {2V/div};
+\node[gray,font=\footnotesize] at (4,-5) {5ms/div};
+\end{tikzpicture}
+
+& 
+
+\begin{tikzpicture}[scale=\ech]
+\draw[step=1 cm,gray!60,thin] (-5,-4) grid (5,4);
+\draw[thick,-] (0,-4) -- (0,4) ;
+\draw[thick,-] (-5,0) -- (5,0) ;
+\foreach \x in {-5,-4,...,5} {
+    \draw (\x,0.1) -- (\x,-0.1);
+}
+\foreach \y in {-4,-3,...,4} {
+    \draw (0.1,\y) -- (-0.1,\y);
+}
+\draw[black!70!black,thick] 
+    (-5,-3) -- (-2.5,3)
+    -- (0,-3)
+    -- (2.5,3)
+    -- (5,-3);
+\draw[black,very thick,rounded corners=5pt] (-5.1,-4.1) rectangle (5.1,4.1);
+\node[gray,font=\footnotesize] at (-4,-5) {2V/div};
+\node[gray,font=\footnotesize] at (4,-5) {5ms/div};
+\end{tikzpicture} 
+
+&
+
+\begin{tikzpicture}[scale=\ech]
+\draw[step=1 cm,gray!60,thin] (-5,-4) grid (5,4);
+\draw[thick,-] (0,-4) -- (0,4) ;
+\draw[thick,-] (-5,0) -- (5,0) ;
+\foreach \x in {-5,-4,...,5} {
+    \draw (\x,0.1) -- (\x,-0.1);
+}
+\foreach \y in {-4,-3,...,4} {
+    \draw (0.1,\y) -- (-0.1,\y);
+}
+\draw[black!70!black,thick] 
+    (-5,2) -- (-3.75,2)
+    -- (-3.75,-2) -- (-2.5,-2)
+    -- (-2.5,2) -- (-1.25,2)
+    -- (-1.25,-2) -- (0,-2)
+    -- (0,2) -- (1.25,2)
+    -- (1.25,-2) -- (2.5,-2)
+    -- (2.5,2) -- (3.75,2)
+    -- (3.75,-2) -- (5,-2);
+\draw[black,very thick,rounded corners=5pt] (-5.1,-4.1) rectangle (5.1,4.1);
+\node[gray,font=\footnotesize] at (-4,-5) {2V/div};
+\node[gray,font=\footnotesize] at (4,-5) {5ms/div};
+\end{tikzpicture} \\
+\hline
+\end{tabular}
+
+\vspace{0.3cm}
+
+\end{center}
+
+
+
+\begin{enumerate}
+    \item Quelles sont les tensions qui ont la même période ? 
+    
+    \vspace{3mm}
+
+    \dotfill 
+    \item Déterminer alors cette période, T, en secondes, et sa fréquence correspondante, f, en Hertz.
+    \begin{multicols}{2}
+    \cadreblanc{10}
+    \cadreblanc{10}
+    \end{multicols}
+
+\item	Quels sont les oscillogrammes qui ont la même tension maximale ?\\ Calculer, en Volt, la valeur de $\mathrm{U_{max}}$.
+
+    \begin{multicols}{2}
+    \cadreblanc{10}
+    \cadreblanc{10}
+    \end{multicols}
+
+   \item 	Pour l'oscillogramme numéro 3, calculer, en V, la tension efficace $\mathrm{U_{eff}}$.
+
+   \cadreblanc{10}
+
+\begin{multicols}{2}
+    \item Si pour l'oscillogramme numéro 3 on avait réglé la sensibilité à 1 V/div, quel aurait été son aspect ?
+\begin{center}
+\begin{tikzpicture}[scale=0.45]
+\draw[step=1 cm,gray!60,thin] (-5,-4) grid (5,4);
+\draw[thick,-] (0,-4) -- (0,4) ;
+\draw[thick,-] (-5,0) -- (5,0) ;
+\foreach \x in {-5,-4,...,5} {
+    \draw (\x,0.1) -- (\x,-0.1);
+}
+\foreach \y in {-4,-3,...,4} {
+    \draw (0.1,\y) -- (-0.1,\y);
+}
+
+\draw[black,very thick,rounded corners=5pt] (-5.1,-4.1) rectangle (5.1,4.1);
+\node[gray,font=\footnotesize] at (-4,-5) {1V/div};
+\node[gray,font=\footnotesize] at (4,-5) {5ms/div};
+\end{tikzpicture}
+\end{center}
+
+\columnbreak
+
+\item Si pour l'oscillogramme n°3 on avait réglé le balayage à 10 ms/div (en remettant la sensibilité à 2 V/div), quel aurait été son aspect ?
+
+\begin{center}
+\framebox[6cm][c]{\rule{0mm}{40mm}}
+\end{center}
+
+
+    
+\end{multicols}
+    
+\end{enumerate}
+\vfill 
+
+\newpage
+
+Exercice 2 : QCM (cocher la ou les bonnes réponses) 
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}m{0.24\textwidth}|>{\centering\arraybackslash}m{0.22\textwidth}|>{\centering\arraybackslash}m{0.22\textwidth}|>{\centering\arraybackslash}m{0.22\textwidth}|}
+\hline
+\textbf{Le redressement à l'aide d'un pont de diodes permet:} & $\square$ de fournir une tension continue à partir d'une tension alternative. & $\square$ d'obtenir un interrupteur dans le circuit. & $\square$ de fournir une tension alternative à partir d'une tension continue. \\
+\hline
+\textbf{En observant la diode, le courant circule de:} & $\square$ la droite vers la gauche. & $\square$ la gauche vers la droite. & $\square$ dans les deux sens. \\
+\hline
+\textbf{Une diode est un composant:} & $\square$ polarisé & $\square$ linéaire & $\square$ possédant trois bornes \\
+\hline
+\textbf{Le chargeur délivre} & $\square$ du courant continu & $\square$ du courant alternatif & $\square$ de l'énergie chimique \\
+\hline
+\textbf{Il est possible de recharger:} & $\square$ uniquement des accumulateurs & $\square$ les accumulateurs et les piles & $\square$ uniquement les piles \\
+\hline
+\textbf{Un accumulateur délivre un courant:} & $\square$ alternatif & $\square$ continu & $\square$ redressé \\
+\hline
+\textbf{Une diode} & $\square$ autorise le passage du courant dans les deux sens & $\square$ autorise le passage du courant dans un seul sens & $\square$ n'autorise pas le passage du courant \\
+\hline
+\textbf{Une tension redressée est une tension} & $\square$ qui garde la même valeur & $\square$ qui garde le même signe & $\square$ toujours positive \\
+\hline
+\textbf{Lorsque l'on réalise le montage correspondant au schéma ci-dessus et que l'on ferme l'interrupteur:} & $\square$ Le courant ne circule pas dans le circuit & $\square$ La lampe ne s'allume pas dans le circuit & $\square$ La lampe s'allume dans le circuit \\
+\hline
+\textbf{Une tension redressée par un pont de diode correspond:} & 
+\adjustbox{valign=m}{\begin{tabular}{c}
+\oscibase{\oscidoublealternance}\\[0.3cm]
+$\square$
+\end{tabular}} & 
+\adjustbox{valign=m}{\begin{tabular}{c}
+\oscibase{\oscimonoalternance}\\[0.3cm]
+$\square$
+\end{tabular}} & 
+\adjustbox{valign=m}{\begin{tabular}{c}
+\oscibase{\oscicondensateur}\\[0.3cm]
+$\square$
+\end{tabular}} \\
+\hline
+\textbf{La tension obtenue après un chargeur est:} & 
+\adjustbox{valign=m}{\begin{tabular}{c}
+\oscibase{\oscidoublealternance}\\[0.3cm]
+$\square$
+\end{tabular}} & 
+\adjustbox{valign=m}{\begin{tabular}{c}
+\oscibase{\oscimonoalternance}\\[0.3cm]
+$\square$
+\end{tabular}} & 
+\adjustbox{valign=m}{\begin{tabular}{c}
+\oscibase{\oscicondensateur}\\[0.3cm]
+$\square$
+\end{tabular}} \\
+\hline
+\end{tabularx}
+\end{center}
+
+
+\end{document}

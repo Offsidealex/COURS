@@ -1,0 +1,146 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\def\nbR{\ensuremath{\mathrm{I\! R}}}
+\usepackage{amsmath}
+\DeclareMathOperator{\e}{e}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{parskip}
+\usepackage{caption}
+
+
+
+
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage{multicol}
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe 3PM}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{ \today}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{pstricks,pst-plot}
+\usepackage{tikz}
+\usepackage{tkz-tab}
+\usetikzlibrary{arrows}
+\usepackage{pifont}
+
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\V}{\overrightarrow}
+\newcommand{\Rep}{(O;\V{u};\V{v})} 
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\setlength{\columnseprule}{.25mm}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{colortbl}
+\usepackage{wrapfig}
+
+\usepackage{qrcode}
+\usepackage[tikz]{bclogo} 
+\usepackage{ProfCollege}
+\usepackage{pgfplots,mathtools}
+\usepackage{bclogo}
+
+\newcommand{\cadre}[1]
+{\begin{bclogo}[couleur = white,logo=,  arrondi = 0.3,barre=none]
+{%
+\rule{0mm}{#1mm}}\par
+\medskip
+\end{bclogo}}
+
+
+
+\begin{document}
+\begin{center} 
+\LARGE{C'est pas sorcier : l'aventure de l'électricité}  
+\vspace{2mm}
+\end{center}
+\hrule
+\normalsize
+\vspace{2mm}
+\begin{figure}[h]
+
+{\begin{minipage}{0.59\textwidth}
+NOM : \\
+
+Prénom : 
+
+\vspace{5mm}
+\end{minipage}
+}
+{\begin{minipage}{0.4\textwidth}
+\begin{center}
+\qrcode[height=1in]{https://www.youtube.com/watch?v=efQW-ZmpyZs}
+\end{center}
+\end{minipage}}
+
+\end{figure}
+
+
+\vspace{2mm}
+\hrule
+
+\vspace{5mm}
+Répondre aux questions ci-dessous en utilisant la vidéo en lien avec le QR Code : 
+\begin{enumerate}
+\item Qu’utilisait-on pour s’éclairer avant l’invention de l’électricité 
+\cadre{15}
+\item  Qu’a découvert Thalès de Milet ? 
+\cadre{10}
+\item Qu’est-ce-qu’un atome 
+\cadre{15}
+\item Qui appartient à la « famille plus » ? 
+\cadre{15}
+\item Que faut-il pour faire passer le courant ?
+\cadre{15}
+\item Qu’a inventé Benjamin Franklin ?
+\cadre{15}
+\item Qui a inventé la pile ?
+\cadre{10} 
+\newpage
+\item De quoi une pile est-elle constituée ?
+\cadre{15}
+\item Quel est l’avantage des piles ? 
+\cadre{15}
+\item Quelles sont les deux catégories de courant ?
+\cadre{15}
+\item Que donnent des électrons qui bougent ? 
+\cadre{15}
+\item Comment s’appelle la roue avec des aimants qui fabrique de l’électricité ?
+\cadre{15}
+\item Quelles sont les différentes usines dans lesquelles on peut fabriquer de l’électricité ?
+\cadre{15}
+\item Qui a inventé l’ampoule ? 
+\cadre{10}
+\item Pourquoi y-a-t-il du verre autour d’une ampoule ?
+\cadre{15}
+\item Notre corps peut-il être « conducteur » de courant ?
+\cadre{15}
+
+\end{enumerate}
+
+
+\end{document}

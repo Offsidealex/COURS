@@ -1,0 +1,176 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage[tikz]{bclogo} 
+\usepackage{multicol}
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Terminale Bac Pro}
+\setcounter{page}{13}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\setlength{\columnseprule}{.25mm}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\appel}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\frenchbsetup{StandardLists=true}
+\begin{document}
+
+
+
+\center \LARGE{TP4 - Mesurer la vitesse d'une onde sonore grâce à sa longueur d'onde}
+\\[0,3cm]
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+\begin{center}
+    \large{CORRECTION}
+\end{center}
+\hrule\
+\\[0,2cm]
+
+\flushleft
+
+    1.3 Représenter les deux signaux :\\[5 pt]
+\begin{center}
+    
+\def\scl{0.6}%scaling factor of the picture
+\begin{tikzpicture}[
+  scale=\scl,
+  controlpanels/.style={yellow!30!,rounded corners,draw=black,thick},
+  screen/.style={white,draw=black,thick},
+  trace/.style={white!60!yellow!20!, ultra thick},
+  smallbutton/.style={white,draw=black, thick},
+  axes/.style={thick}]
+
+  % Screen, centered around the origin then shifted for easy plotting
+  \begin{scope}[xshift=7cm,yshift=8cm,samples=150]
+    \fill[black!30!,rounded corners,draw=black,thick](-5.3,-4.3)
+      rectangle (5.3,4.3);
+    \fill[screen] (-5.0,-4.0) rectangle (5.0,4.0);
+ 
+    \draw[thin] (-5.0,-4.0) grid (5.0,4.0);
+    \draw[axes] (-5,0)--(5,0); % Time axis
+    \draw[axes] (0,-4)--(0,4);
+    \foreach \i in {-4.8,-4.6,...,4.8} \draw (\i,-0.1)--(\i,0.1);
+    \foreach \i in {-3.8,-3.6,...,3.8} \draw (-0.1,\i)--(0.1,\i);
+    \draw[line width=2pt,color=red](-3,-3)--(-3,3);
+    \draw[line width=2pt,color=red](-0.5,-3)--(-0.5,3);
+    \draw[line width=2pt,color=red](2,-3)--(2,3);
+    \draw[line width=2pt,color=red](4.5,-3)--(4.5,3);
+    \draw[line width=2pt,color=red](-5,3)--(-3,3);
+    \draw[line width=2pt,color=red](-0.5,3)--(2,3);
+    \draw[line width=2pt,color=red](4.5,3)--(5,3);
+    \draw[line width=2pt,color=red](-3,-3)--(-0.5,-3);
+    \draw[line width=2pt,color=red](2,-3)--(4.5,-3);
+    \draw[line width=2pt,color=orange!80] plot(\x,{2.5*sin((1.25*\x) r});
+  \end{scope}
+
+  
+\end{tikzpicture}
+\end{center}
+
+1.4 Que peut-on dire de la période du signal émis et de la période du signal reçu ?\\[2pt]
+
+\begin{center}
+    \textcolor{red}{Les deux périodes sont identiques, on peut surperposer ces deux signaux.} 
+\end{center} 
+
+
+1.5 Calculer, en seconde (s), la période des signaux \\[2pt]
+\begin{center}
+    \textcolor{red}{$T = 5 \times 5 \mu s = 25 \mu s ~~~~soit~~ T = 0,000025 s~~ ou ~~T = 2,5 \times 10^{-5} s$} 
+\end{center} 
+
+1.6 Calculer, en Hertz (Hz), la fréquence.\\[2pt]
+\begin{center}
+    \textcolor{red}{$f=\dfrac{1}{T} ~~~~~~ f=\dfrac{1}{2,5 \times 10^{-5}} = 40~000 Hz$} 
+\end{center} 
+
+
+
+1.7 Pourquoi le son n'est pas audible ?\\[2pt]
+\begin{center}
+    \textcolor{red}{La fréquence est supérieure à 20 000 Hz, ce son est dans le domaine des ultrasons non audibles pour l'oreille humaine} 
+\end{center} 
+
+
+\ding{204} \textbf{Conclusions et exploitation} : \\[2pt]
+3.1. A l'aide des résultats précédents et des formules ci-dessous ; déterminer, en m/s, la valeur de la vitesse du son dans l'air :\\[2pt]
+\begin{bclogo}[logo=\bcinfo,arrondi=.1,couleur=gray!10,barre=snake,ombre = true, epOmbre = 0.15, couleurOmbre = black!30]{~Formulaire}
+   \begin{multicols}{2}
+        \begin{center}
+        \LARGE{$\lambda= v \times T$}
+        
+        \vspace{2 mm}
+        
+    \textcolor{red}{\LARGE{$v = \dfrac{\lambda}{T} $}} 
+         \vspace{5mm}
+
+        
+        
+        \end{center}
+   
+        
+ 
+      \textbf{avec } 
+      \begin{itemize}
+      \item[$\bullet$] $\lambda$ la longueur d'onde en $m$.
+      
+      \item[$\bullet$] $v$ la vitesse de l'onde sonore en $m/s$ 
+      
+      \item[$\bullet$] $T$ la période en $s$
+      \end{itemize}
+      \vspace{5mm}
+    \end{multicols}
+\end{bclogo}
+
+
+
+\end{document}

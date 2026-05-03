@@ -1,0 +1,324 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS CIEL -- Mathématiques}
+\rhead{\textcolor{red!70!black}{\textbf{CORRIGÉ}} -- Séries de Fourier}
+\cfoot{\thepage}
+
+\tcbset{
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black, fonttitle=\bfseries, title=#1},
+  qcmbox/.style={colback=blue!4!white, colframe=blue!50!black, fonttitle=\bfseries, title=#1},
+  corrbox/.style={colback=green!6!white, colframe=green!50!black, fonttitle=\bfseries\color{green!30!black}, title=#1},
+  reponsebox/.style={colback=green!6!white, colframe=green!45!black, sharp corners, boxrule=0.8pt, left=6pt, right=6pt, top=5pt, bottom=5pt}
+}
+
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\reponse}[1]{\begin{tcolorbox}[reponsebox]#1\end{tcolorbox}}
+% Coche QCM corrigé
+\newcommand{\coche}{\tikz[baseline=-0.5ex]{\fill[green!60!black] (0,0) rectangle (0.38,0.38); \draw[white, very thick] (0.05,0.18) -- (0.16,0.30) -- (0.33,0.08);}\;}
+\newcommand{\case}{\tikz[baseline=-0.5ex]{\draw[gray!60!black] (0,0) rectangle (0.38,0.38);}\;}
+\newcommand{\choixC}[1]{\hspace{0.3cm}\coche #1\hspace{0.6cm}}  % bonne réponse
+\newcommand{\choixF}[1]{\hspace{0.3cm}\case #1\hspace{0.6cm}}   % mauvaise réponse
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{\textcolor{red!70!black}{CORRIGÉ} -- Séries de Fourier}} \\[0.2cm]
+  {\Large Analyse harmonique de signaux périodiques} \\[0.2cm]
+  \rule{0.6\textwidth}{0.4pt} \\[0.2cm]
+  {\normalsize Durée : 1 heure \quad -- \quad Calculatrice autorisée \quad -- \quad Barème sur 25 points}
+\end{center}
+
+\vspace{0.4cm}
+
+%%=================================================================
+%% EXERCICE 1 — QCM
+%%=================================================================
+\begin{tcolorbox}[qcmbox={Exercice 1 \,--\, QCM \hfill \normalfont\textit{(5 points)}}]
+  La bonne réponse est indiquée par la case \textbf{cochée en vert}.
+\end{tcolorbox}
+
+\vspace{0.3cm}
+
+\begin{enumerate}[label=\textbf{Q\arabic*.}, leftmargin=*, itemsep=0.6cm]
+
+  \item La pulsation fondamentale d'un signal périodique de période $T = 5\,\mathrm{ms}$ vaut :
+  \\[0.25cm]
+  \choixC{$\omega = 400\pi\,\mathrm{rad/s}$}
+  \choixF{$\omega = 200\pi\,\mathrm{rad/s}$}
+  \choixF{$\omega = 200\,\mathrm{rad/s}$}
+  \choixF{$\omega = 2000\pi\,\mathrm{rad/s}$}
+
+  \reponse{$\omega = \dfrac{2\pi}{T} = \dfrac{2\pi}{5\times10^{-3}} = \dfrac{2000\pi}{5} = \mathbf{400\pi \approx 1256{,}6\,\mathrm{rad/s}}$}
+
+  \item Pour une fonction \textbf{impaire} $f$ de période $T$, on a nécessairement :
+  \\[0.25cm]
+  \choixF{$a_0 \neq 0$ et $b_n = 0$}
+  \choixC{$a_0 = 0$ et $a_n = 0$}
+  \choixF{$b_n = 0$ et $a_0 = 0$}
+  \choixF{$a_n \neq 0$ et $b_n \neq 0$}
+
+  \reponse{Une fonction impaire vérifie $f(-t) = -f(t)$, donc sa valeur moyenne est nulle ($a_0 = 0$) et tous les cosinus sont nuls ($a_n = 0$). Seuls les coefficients $b_n$ (sinus) peuvent être non nuls.}
+
+  \item Le coefficient $a_0$ représente :
+  \\[0.25cm]
+  \choixF{Son amplitude maximale}
+  \choixF{Sa fréquence fondamentale}
+  \choixC{Sa valeur moyenne}
+  \choixF{Son harmonique de rang 1}
+
+  \reponse{$a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(t)\,\dt$ est exactement la valeur moyenne du signal sur une période.}
+
+  \item $f(t) = 3$ sur $[0\,;\,1[$ et $f(t) = -3$ sur $[1\,;\,2[$, période $T = 2$. Valeur de $a_0$ ?
+  \\[0.25cm]
+  \choixF{$a_0 = 3$}
+  \choixF{$a_0 = 1{,}5$}
+  \choixC{$a_0 = 0$}
+  \choixF{$a_0 = 6$}
+
+  \reponse{$a_0 = \dfrac{1}{2}\left(\displaystyle\int_0^1 3\,\dt + \int_1^2(-3)\,\dt\right) = \dfrac{1}{2}\bigl(3\times1 + (-3)\times1\bigr) = \dfrac{1}{2}(3-3) = \mathbf{0}$\\[2pt]
+  (La fonction est impaire, ce qui confirme $a_0 = 0$.)}
+
+  \item Le spectre en fréquences d'un signal périodique est constitué de raies situées :
+  \\[0.25cm]
+  \choixC{Aux fréquences $n\cdot f_0$}
+  \choixF{Aux fréquences $f_0 / n$}
+  \choixF{À toutes les fréquences}
+  \choixF{À la fréquence $f_0$ uniquement}
+
+  \reponse{Un signal périodique ne contient que des composantes aux fréquences multiples entiers de la fréquence fondamentale : $0,\, f_0,\, 2f_0,\, 3f_0,\ldots$ Le spectre est donc \textbf{discret}.}
+
+\end{enumerate}
+
+\newpage
+
+%%=================================================================
+%% EXERCICE 2 — Signal créneau
+%%=================================================================
+\begin{tcolorbox}[exobox={Exercice 2 \hfill \normalfont\textit{(10 points)}}]
+Signal $u$ de période $T = 4\,\mathrm{ms}$ : $u(t) = 6$ sur $[0\,;\,1[\,\mathrm{ms}$, $u(t) = 0$ sur $[1\,;\,4[\,\mathrm{ms}$.\\
+On travaille avec $t$ en millisecondes.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=0.4cm]
+
+  \item \textbf{Fréquence et pulsation.} \hfill\textit{(2 pts)}
+
+  \reponse{
+  \[
+    f_0 = \frac{1}{T} = \frac{1}{4\times10^{-3}} = \mathbf{250\,\mathrm{Hz}}
+  \]
+  \[
+    \omega = \frac{2\pi}{T} = \frac{2\pi}{4\times10^{-3}} = \mathbf{500\pi \approx 1570{,}8\,\mathrm{rad/s}}
+  \]
+  }
+
+  \item \textbf{Calcul de $a_0$.} \hfill\textit{(2 pts)}
+
+  \reponse{
+  \[
+    a_0 = \frac{1}{T}\int_0^{T} u(t)\,\dt = \frac{1}{4}\left(\int_0^{1}6\,\dt + \int_1^{4}0\,\dt\right) = \frac{1}{4}\times 6\times 1 = \mathbf{1{,}5\,\mathrm{V}}
+  \]
+  \textbf{Interprétation :} $a_0 = 1{,}5\,\mathrm{V}$ est la \textbf{valeur moyenne} du signal $u$ sur une période. C'est la composante continue (DC) du signal.
+  }
+
+  \item \textbf{Calcul de $a_n$.} \hfill\textit{(2 pts)}
+
+  \reponse{
+  \[
+    a_n = \frac{2}{T}\int_0^{T} u(t)\cos(n\omega t)\,\dt
+    = \frac{2}{4}\int_0^{1} 6\cos(n\omega t)\,\dt
+    = 3\left[\frac{\sin(n\omega t)}{n\omega}\right]_0^1
+    = \frac{3}{n\omega}\sin(n\omega)
+  \]
+  Or $\omega = \dfrac{2\pi}{4} = \dfrac{\pi}{2}$ (avec $t$ en ms), donc $n\omega = \dfrac{n\pi}{2}$ :
+  \[
+    \boxed{a_n = \frac{6}{n\pi}\sin\!\left(\frac{n\pi}{2}\right)}
+  \]
+  }
+
+  \item \textbf{Calcul de $b_n$.} \hfill\textit{(3 pts)}
+
+  \reponse{
+  \[
+    b_n = \frac{2}{T}\int_0^{T} u(t)\sin(n\omega t)\,\dt
+    = \frac{2}{4}\int_0^{1} 6\sin(n\omega t)\,\dt
+    = 3\left[-\frac{\cos(n\omega t)}{n\omega}\right]_0^1
+    = \frac{3}{n\omega}\bigl(1 - \cos(n\omega)\bigr)
+  \]
+  \[
+    \boxed{b_n = \frac{6}{n\pi}\left(1 - \cos\!\left(\frac{n\pi}{2}\right)\right)}
+  \]
+  \textbf{Valeurs numériques :}
+  \begin{align*}
+    b_1 &= \frac{6}{\pi}\left(1 - \cos\frac{\pi}{2}\right) = \frac{6}{\pi}(1-0) = \frac{6}{\pi} \approx \mathbf{1{,}91\,\mathrm{V}}\\[4pt]
+    b_2 &= \frac{6}{2\pi}\left(1 - \cos\pi\right) = \frac{6}{2\pi}(1-(-1)) = \frac{12}{2\pi} = \frac{6}{\pi} \approx \mathbf{1{,}91\,\mathrm{V}}\\[4pt]
+    b_3 &= \frac{6}{3\pi}\left(1 - \cos\frac{3\pi}{2}\right) = \frac{2}{\pi}(1-0) = \frac{2}{\pi} \approx \mathbf{0{,}64\,\mathrm{V}}
+  \end{align*}
+  }
+
+  \item \textbf{Développement en série de Fourier jusqu'à $n=3$.} \hfill\textit{(1 pt)}
+
+  \reponse{
+  En notant $a_1 = \dfrac{6}{\pi}\sin\!\dfrac{\pi}{2} = \dfrac{6}{\pi}$,\; $a_2 = \dfrac{6}{2\pi}\sin\pi = 0$,\; $a_3 = \dfrac{6}{3\pi}\sin\!\dfrac{3\pi}{2} = -\dfrac{2}{\pi}$ :
+  \[
+    S(t) \approx 1{,}5 + \frac{6}{\pi}\cos(\omega t) + \frac{6}{\pi}\sin(\omega t)
+    - \frac{2}{\pi}\cos(3\omega t) + \frac{6}{3\pi}\sin(3\omega t)
+  \]
+  avec $\omega = 500\pi\,\mathrm{rad/s}$ (ou $\omega = \pi/2$ en travaillant avec $t$ en ms).
+  }
+
+\end{enumerate}
+
+\newpage
+
+%%=================================================================
+%% EXERCICE 3 — Parseval et spectre
+%%=================================================================
+\begin{tcolorbox}[exobox={Exercice 3 \hfill \normalfont\textit{(10 points)}}]
+Signal donné : $s(t) = 3 + 8\cos(\omega t) + 4\cos(2\omega t) + \dfrac{8}{3}\cos(3\omega t) + 2\cos(4\omega t)$, \; $T = 1\,\mathrm{ms}$.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=0.4cm]
+
+  \item \textbf{Identification des coefficients.} \hfill\textit{(1 pt)}
+
+  \reponse{
+  Par lecture directe :
+  \[
+    a_0 = 3, \quad a_1 = 8, \quad a_2 = 4, \quad a_3 = \frac{8}{3} \approx 2{,}67, \quad a_4 = 2
+  \]
+  }
+
+  \item \textbf{Fréquences.} \hfill\textit{(1 pt)}
+
+  \reponse{
+  $f_0 = \dfrac{1}{T} = \dfrac{1}{10^{-3}} = \mathbf{1000\,\mathrm{Hz} = 1\,\mathrm{kHz}}$
+
+  \medskip
+  \begin{tabular}{lllll}
+    Fondamentale ($n=1$) : & $f_1 = 1000\,\mathrm{Hz}$ &
+    Harmonique 2 : & $f_2 = 2000\,\mathrm{Hz}$ \\[3pt]
+    Harmonique 3 : & $f_3 = 3000\,\mathrm{Hz}$ &
+    Harmonique 4 : & $f_4 = 4000\,\mathrm{Hz}$
+  \end{tabular}
+  }
+
+  \item \textbf{Spectre unilatéral en amplitude (corrigé).} \hfill\textit{(3 pts)}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=left,
+        xlabel={Fréquence (Hz)},
+        ylabel={Amplitude},
+        xmin=0, xmax=5500,
+        ymin=0, ymax=10,
+        xtick={0,1000,2000,3000,4000,5000},
+        xticklabels={$0$,$f_0$,$2f_0$,$3f_0$,$4f_0$,$5f_0$},
+        ytick={0,1,2,3,4,5,6,7,8,9,10},
+        width=13cm, height=6.5cm,
+        grid=major,
+        grid style={dashed, gray!20},
+        ymajorgrids=true,
+        tick align=outside,
+      ]
+      % DC : a0 = 3
+      \addplot[red!70!black, ultra thick, -{Stealth[scale=1.2]}]
+        coordinates {(0,0)(0,3)};
+      \node[above, font=\small\bfseries, red!70!black] at (axis cs:0,3) {$3$};
+      % a1 = 8
+      \addplot[blue!80!black, ultra thick, -{Stealth[scale=1.2]}]
+        coordinates {(1000,0)(1000,8)};
+      \node[above, font=\small\bfseries, blue!80!black] at (axis cs:1000,8) {$8$};
+      % a2 = 4
+      \addplot[blue!80!black, ultra thick, -{Stealth[scale=1.2]}]
+        coordinates {(2000,0)(2000,4)};
+      \node[above, font=\small\bfseries, blue!80!black] at (axis cs:2000,4) {$4$};
+      % a3 = 8/3 ≈ 2.67
+      \addplot[blue!80!black, ultra thick, -{Stealth[scale=1.2]}]
+        coordinates {(3000,0)(3000,2.667)};
+      \node[above, font=\small\bfseries, blue!80!black] at (axis cs:3000,2.667) {$\frac{8}{3}$};
+      % a4 = 2
+      \addplot[blue!80!black, ultra thick, -{Stealth[scale=1.2]}]
+        coordinates {(4000,0)(4000,2)};
+      \node[above, font=\small\bfseries, blue!80!black] at (axis cs:4000,2) {$2$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \reponse{
+  \textbf{Barème :} 0,5 pt par raie correctement tracée (hauteur + valeur annotée) pour les 4 harmoniques bleues, + 0,5 pt pour la raie DC déjà fournie reconnue. \textit{La raie DC (rouge) était donnée.}
+  }
+
+  \item \textbf{Puissances par composante.} \hfill\textit{(2 pts)}
+
+  \reponse{
+  \[
+    P_0 = a_0^2 = 3^2 = \mathbf{9\,\mathrm{W}}
+  \]
+  \[
+    P_1 = \frac{a_1^2}{2} = \frac{8^2}{2} = \frac{64}{2} = \mathbf{32\,\mathrm{W}}
+  \]
+  \[
+    P_2 = \frac{a_2^2}{2} = \frac{4^2}{2} = \frac{16}{2} = \mathbf{8\,\mathrm{W}}
+  \]
+  \[
+    P_3 = \frac{a_3^2}{2} = \frac{(8/3)^2}{2} = \frac{64/9}{2} = \frac{64}{18} = \frac{32}{9} \approx \mathbf{3{,}56\,\mathrm{W}}
+  \]
+  \[
+    P_4 = \frac{a_4^2}{2} = \frac{2^2}{2} = \frac{4}{2} = \mathbf{2\,\mathrm{W}}
+  \]
+  }
+
+  \item \textbf{Puissance totale par Parseval.} \hfill\textit{(1 pt)}
+
+  \reponse{
+  \[
+    P = P_0 + P_1 + P_2 + P_3 + P_4
+    = 9 + 32 + 8 + \frac{32}{9} + 2
+    = 51 + \frac{32}{9}
+    = \frac{459 + 32}{9}
+    = \frac{491}{9}
+    \approx \mathbf{54{,}56\,\mathrm{W}}
+  \]
+  }
+
+  \item \textbf{Taux de distorsion harmonique (TDH).} \hfill\textit{(2 pts)}
+
+  \reponse{
+  \[
+    \mathrm{TDH}
+    = \frac{\sqrt{P_2^2 + P_3^2 + P_4^2}}{P_1} \times 100
+    = \frac{\sqrt{8^2 + (32/9)^2 + 2^2}}{32} \times 100
+  \]
+  \[
+    = \frac{\sqrt{64 + 12{,}64 + 4}}{32} \times 100
+    = \frac{\sqrt{80{,}64}}{32} \times 100
+    = \frac{8{,}98}{32} \times 100
+    \approx \mathbf{28{,}1\,\%}
+  \]
+
+  \textbf{Commentaire :} Un TDH de $28{,}1\,\%$ est \textbf{élevé} (seuil acceptable en électronique : $< 5\,\%$ pour l'audio, $< 10\,\%$ pour la puissance). Le signal est donc \textbf{très distordu} : les harmoniques 2, 3 et 4 représentent une part significative de la puissance totale.
+  }
+
+\end{enumerate}
+
+\end{document}

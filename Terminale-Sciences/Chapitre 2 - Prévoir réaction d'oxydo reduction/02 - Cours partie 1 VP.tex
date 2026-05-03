@@ -1,0 +1,159 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[version=4]{mhchem}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Terminale}
+\setcounter{page}{3}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\usepackage{tcolorbox}
+
+\newcommand{\cor}[1]{%
+  \begin{tcolorbox}[
+    colback=red!10,
+    colframe=red,
+    arc=3mm,
+    boxrule=1pt,
+    left=5pt,
+    right=5pt,
+    top=15pt,
+    bottom=5pt
+  ]
+  #1
+  \end{tcolorbox}
+}
+
+\frenchbsetup{StandardLists=true}
+\usepackage{titlesec}
+\renewcommand{\thesection}{\ding{\numexpr201+\value{section}\relax}}
+
+\titleformat{\section}
+  {\normalfont\large\bfseries}
+  {\thesection}
+  {0.2em}
+  {}
+  
+\begin{document}
+
+
+\center \LARGE{COURS - Prévoir une réaction d'oxydo-réduction}
+\\[0,3cm]
+
+\normalsize
+
+\hrule\
+\\[1cm]
+
+\flushleft
+\section{Corrosion des métaux : une réaction d'oxydoréduction}
+
+Lors du TP nous avons vu : \\[0.8cm]
+
+\textcolor{red}{Il y a transfert d'électrons entre le métal fer et les ions \ce{Cu^{2+}}, selon les demi-équations électroniques :}  \\[0.8cm]
+
+\cor{
+\vspace{-8mm}
+\Large
+\begin{align*}
+\ce{Fe &-> Fe^{2+} + 2 e^-} \quad &\text{(oxydation)} \\[3mm]
+\ce{Cu^{2+} + 2 e^- &-> Cu} \quad &\text{(réduction)}
+\end{align*}
+}
+
+\vspace{5mm}
+
+\normalsize
+\begin{itemize}
+\item Ces 2 phénomènes sont simultanés et spontanés. Ils se traduisent par l'équation-bilan : \\[0.5cm]
+
+\Large{\textcolor{red}{
+\begin{equation*}
+\ce{Fe + Cu^{2+} -> Fe^{2+} + Cu} \quad \text{(oxydo-réduction)}
+\end{equation*}
+}
+}\end{itemize}
+
+
+\section{Définitions}
+
+\cor{
+
+\begin{itemize}[leftmargin=1cm]
+\item L'oxydation est une perte d'électrons
+
+\vspace{8mm}
+
+\item La réduction est un gain d'électrons
+
+\vspace{8mm}
+
+\item L'oxydant est l'espèce chimique (atome, ion ou molécule) qui gagne des électrons
+
+\vspace{8mm}
+
+\item Le réducteur est l'espèce chimique qui donne des électrons
+
+\vspace{8mm}
+
+\item L'ensemble des formes oxydées et réduites constitue un couple oxydo-réducteur \ce{M^{n+}/M} appelé couple rédox.
+
+\vspace{8mm}
+
+\item Par convention, l'oxydant figure en premier dans l'écriture du couple rédox 
+
+\vspace{8mm}
+
+(exemple : \ce{Cu^{2+}/Cu} ; \ce{Ag^+/Ag} ; \ce{Fe^{2+}/Fe})
+\end{itemize}
+
+
+
+}
+
+\end{document}

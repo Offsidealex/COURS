@@ -1,0 +1,275 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+\geometry{margin=1.8cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS CIEL -- Mathématiques}
+\rhead{Grille de correction -- Séries de Fourier}
+\cfoot{\thepage}
+
+%% Couleurs
+\definecolor{entete}{RGB}{0,70,140}
+\definecolor{enteteclair}{RGB}{215,230,250}
+\definecolor{vertok}{RGB}{0,110,60}
+\definecolor{vertclair}{RGB}{220,245,230}
+\definecolor{orangeex}{RGB}{180,70,10}
+\definecolor{orangeclair}{RGB}{255,235,210}
+\definecolor{grislight}{RGB}{245,245,248}
+\definecolor{grismid}{RGB}{200,200,210}
+
+%% case à cocher
+\newcommand{\ccase}{\tikz[baseline=-0.5ex]{%
+  \draw[grismid, line width=0.8pt] (0,0) rectangle (0.38,0.38);}}
+
+\newcommand{\pointsmax}[1]{%
+  \textcolor{entete}{\textbf{/ #1}}}
+
+\begin{document}
+
+%% ===== EN-TÊTE =====
+\begin{center}
+  {\LARGE\textbf{Grille de correction}}\\[0.25cm]
+  {\large Séries de Fourier -- BTS CIEL Mathématiques}\\[0.15cm]
+  \rule{0.55\textwidth}{0.4pt}
+\end{center}
+
+\vspace{0.3cm}
+
+%% Bandeau élève
+\noindent
+\begin{tcolorbox}[colback=grislight, colframe=grismid,
+                  sharp corners, boxrule=0.5pt,
+                  left=6pt, right=6pt, top=4pt, bottom=4pt]
+\noindent\textbf{Nom :} \dotfill \quad
+\textbf{Prénom :} \dotfill \quad
+\textbf{Classe :} \dotfill \quad
+\textbf{Date :} \dotfill
+\end{tcolorbox}
+
+\vspace{0.4cm}
+
+%% ===== TABLEAU RÉCAPITULATIF =====
+\begin{center}
+\begin{tabular}{|>{\columncolor{enteteclair}\centering\arraybackslash}p{3.8cm}
+                |>{\centering\arraybackslash}p{2cm}
+                |>{\centering\arraybackslash}p{2.2cm}
+                |>{\centering\arraybackslash}p{2cm}|}
+\hline
+\rowcolor{entete}
+\textcolor{white}{\textbf{Exercice}} &
+\textcolor{white}{\textbf{Barème}} &
+\textcolor{white}{\textbf{Note obtenue}} &
+\textcolor{white}{\textbf{Observation}} \\
+\hline
+Exercice 1 -- QCM         & 5 pts   & \hspace{1.5cm}/5  & \\[6pt]
+\hline
+Exercice 2 -- Créneau     & 10 pts  & \hspace{1.5cm}/10 & \\[6pt]
+\hline
+Exercice 3 -- Parseval    & 10 pts  & \hspace{1.5cm}/10 & \\[6pt]
+\hline
+\rowcolor{enteteclair}
+\textbf{TOTAL /25}         & \textbf{25 pts} &
+  \hspace{1.5cm}\textbf{/25} & \\[6pt]
+\hline
+\rowcolor{vertclair}
+\textbf{NOTE /20}          & & 
+  \hspace{0.3cm}\Large$\dfrac{\text{total}\times 4}{5}$\normalsize
+  \hspace{0.3cm}\textbf{=\hspace{0.8cm}/20} & \\[10pt]
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+%% ===== EXERCICE 1 — QCM =====
+\begin{tcolorbox}[colback=enteteclair, colframe=entete,
+                  fonttitle=\bfseries\color{white},
+                  title={Exercice 1 \;--\; QCM \hfill /5 pts},
+                  coltitle=white]
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|>{\bfseries}c|X|c|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|}
+\hline
+\rowcolor{enteteclair}
+\textbf{Q} & \textbf{Réponse attendue} & \textbf{Rép.} & \textbf{Barème} & \textbf{Obtenu} \\
+\hline
+Q1 & \textbf{B} \; $\omega = 400\pi\,\mathrm{rad/s}$
+   & \ccase & 1 pt & \\
+\hline
+Q2 & \textbf{B} \; $a_0 = 0$ et $a_n = 0$
+   & \ccase & 1 pt & \\
+\hline
+Q3 & \textbf{C} \; Sa valeur moyenne
+   & \ccase & 1 pt & \\
+\hline
+Q4 & \textbf{C} \; $a_0 = 0$
+   & \ccase & 1 pt & \\
+\hline
+Q5 & \textbf{A} \; Aux fréquences $n \cdot f_0$
+   & \ccase & 1 pt & \\
+\hline
+\multicolumn{3}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{5 pts} & \hspace{0.5cm}/5 \\
+\hline
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+%% ===== EXERCICE 2 — Créneau =====
+\begin{tcolorbox}[colback=orangeclair, colframe=orangeex,
+                  fonttitle=\bfseries\color{white},
+                  title={Exercice 2 \;--\; Signal créneau asymétrique \hfill /10 pts},
+                  coltitle=white]
+
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\textwidth}{|>{\bfseries}c|X|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|}
+\hline
+\rowcolor{orangeclair}
+\textbf{Q} & \textbf{Critères de correction} & \textbf{Barème} & \textbf{Obtenu} \\
+\hline
+1 &
+  \textbullet\ $f_0 = 250\,\mathrm{Hz}$ \newline
+  \textbullet\ $\omega = 500\pi \approx 1570{,}8\,\mathrm{rad/s}$
+  & 2 pts \newline (1+1) & \\
+\hline
+2 &
+  \textbullet\ Calcul correct : $a_0 = \dfrac{1}{4}\displaystyle\int_0^1 6\,\mathrm{d}t = 1{,}5\,\mathrm{V}$ \newline
+  \textbullet\ Interprétation : composante continue / valeur moyenne du signal
+  & 2 pts \newline (1+1) & \\
+\hline
+3 &
+  \textbullet\ Formule correcte $a_n = \dfrac{2}{T}\displaystyle\int_0^1 6\cos(n\omega t)\,\mathrm{d}t$ \newline
+  \textbullet\ Résultat final : $a_n = \dfrac{6}{n\pi}\sin\!\left(\dfrac{n\pi}{2}\right)$
+  & 2 pts \newline (1+1) & \\
+\hline
+4 &
+  \textbullet\ Formule et calcul corrects pour $b_n = \dfrac{6}{n\pi}\!\left[1-\cos\!\left(\dfrac{n\pi}{2}\right)\right]$ \newline
+  \textbullet\ $b_1 = \dfrac{6}{\pi} \approx 1{,}91$ \quad (0,5 pt) \newline
+  \textbullet\ $b_2 = \dfrac{6}{\pi} \approx 1{,}91$ \quad (0,5 pt) \newline
+  \textbullet\ $b_3 = \dfrac{2}{\pi} \approx 0{,}64$ \quad (0,5 pt)
+  & 3 pts \newline (1,5+1,5) & \\
+\hline
+5 &
+  \textbullet\ Expression correcte de $S(t)$ avec $a_0$, $a_1$, $b_1$, $b_2$, $a_3$, $b_3$ \newline
+  \textit{(accepter expressions avec $\pi$ ou valeurs numériques arrondies)}
+  & 1 pt & \\
+\hline
+\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{10 pts} & \hspace{0.5cm}/10 \\
+\hline
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+%% ===== EXERCICE 3 — Parseval =====
+\begin{tcolorbox}[colback=vertclair, colframe=vertok,
+                  fonttitle=\bfseries\color{white},
+                  title={Exercice 3 \;--\; Parseval et spectre \hfill /10 pts},
+                  coltitle=white]
+
+\renewcommand{\arraystretch}{1.6}
+\begin{tabularx}{\textwidth}{|>{\bfseries}c|X|>{\centering\arraybackslash}p{1.8cm}|>{\centering\arraybackslash}p{1.8cm}|}
+\hline
+\rowcolor{vertclair}
+\textbf{Q} & \textbf{Critères de correction} & \textbf{Barème} & \textbf{Obtenu} \\
+\hline
+1 &
+  Identification correcte : $a_0=3$, $a_1=8$, $a_2=4$, $a_3=\frac{8}{3}$, $a_4=2$
+  & 1 pt & \\
+\hline
+2 &
+  \textbullet\ $f_0 = 1\,\mathrm{kHz}$ \newline
+  \textbullet\ $f_1=1\,\mathrm{kHz}$, $f_2=2\,\mathrm{kHz}$, $f_3=3\,\mathrm{kHz}$, $f_4=4\,\mathrm{kHz}$
+  & 1 pt & \\
+\hline
+3 &
+  \textbullet\ Raie DC ($f=0$) à hauteur $3$ \newline
+  \textbullet\ Raie fondamentale ($f_0$) à hauteur $8$ \newline
+  \textbullet\ Raies harmoniques $2f_0$, $3f_0$, $4f_0$ aux hauteurs $4$, $\frac{8}{3}$, $2$ \newline
+  \textit{(1 pt par raie correctement tracée et annotée)}
+  & 3 pts & \\
+\hline
+4 &
+  \textbullet\ $P_0 = 9\,\mathrm{W}$ \newline
+  \textbullet\ $P_1 = 32\,\mathrm{W}$, $P_2 = 8\,\mathrm{W}$, $P_3 = \frac{32}{9} \approx 3{,}56\,\mathrm{W}$, $P_4 = 2\,\mathrm{W}$ \newline
+  \textit{(0,5 pt par valeur correcte)}
+  & 2 pts & \\
+\hline
+5 &
+  $P = 9 + 32 + 8 + \frac{32}{9} + 2 = \frac{491}{9} \approx 54{,}6\,\mathrm{W}$
+  & 1 pt & \\
+\hline
+6 &
+  \textbullet\ Calcul numérique correct : $\mathrm{TDH} \approx 28{,}1\,\%$ \newline
+  \textbullet\ Commentaire : distorsion \textbf{modérée} ($10\,\% \leq \mathrm{TDH} \leq 30\,\%$) + justification
+  & 2 pts \newline (1+1) & \\
+\hline
+\multicolumn{2}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{10 pts} & \hspace{0.5cm}/10 \\
+\hline
+\end{tabularx}
+\end{tcolorbox}
+
+\vspace{0.6cm}
+
+%% ===== BILAN FINAL =====
+\begin{tcolorbox}[colback=grislight, colframe=entete,
+                  sharp corners, boxrule=1.2pt]
+\begin{center}
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|>{\centering\arraybackslash}p{3cm}
+                |>{\centering\arraybackslash}p{2cm}
+                |>{\centering\arraybackslash}p{2cm}
+                |>{\centering\arraybackslash}p{2cm}
+                |>{\centering\arraybackslash}p{2cm}
+                |>{\centering\arraybackslash}p{2.5cm}|}
+\hline
+\rowcolor{entete}
+\textcolor{white}{\textbf{Exercice 1}} &
+\textcolor{white}{\textbf{Exercice 2}} &
+\textcolor{white}{\textbf{Exercice 3}} &
+\textcolor{white}{\textbf{Total /25}} &
+\textcolor{white}{\textbf{Note /20}} &
+\textcolor{white}{\textbf{Appréciation}} \\
+\hline
+\Large\textbf{\hspace{1cm}/5} &
+\Large\textbf{\hspace{1cm}/10} &
+\Large\textbf{\hspace{1cm}/10} &
+\Large\textbf{\hspace{1cm}/25} &
+\Large\textbf{\hspace{1cm}/20} &
+\\
+\hline
+\end{tabular}
+\end{center}
+\end{tcolorbox}
+
+\vspace{0.4cm}
+
+%% Observations générales
+\begin{tcolorbox}[colback=white, colframe=grismid,
+                  sharp corners, boxrule=0.5pt,
+                  title={\textbf{Observations}}, fonttitle=\bfseries]
+\vspace{2.5cm}
+\end{tcolorbox}
+
+\vspace{0.3cm}
+\noindent\textit{\small Conversion note : Note/20 $=$ Total $\times \dfrac{4}{5}$
+\hspace{1cm}
+Signatures : \dotfill}
+
+\end{document}

@@ -1,0 +1,265 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS CIEL -- Mathématiques}
+\rhead{Évaluation -- Séries de Fourier}
+\cfoot{\thepage}
+
+\tcbset{
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black, fonttitle=\bfseries, title=#1},
+  reponsebox/.style={colback=gray!5!white, colframe=gray!40!black, sharp corners, boxrule=0.5pt, left=4pt, right=4pt, top=4pt, bottom=4pt},
+  qcmbox/.style={colback=blue!4!white, colframe=blue!50!black, fonttitle=\bfseries, title=#1}
+}
+
+% Commande case à cocher QCM
+\newcommand{\choix}[1]{\hspace{0.3cm}\tikz[baseline=-0.5ex]{\draw[gray!60!black] (0,0) rectangle (0.38,0.38);}\; #1\hspace{0.6cm}}
+\newcommand{\ligneqcm}[4]{\choix{#1} \choix{#2} \choix{#3} \choix{#4}}
+
+\newcommand{\dt}{\mathrm{d}t}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Évaluation -- Séries de Fourier}} \\[0.2cm]
+  {\Large Analyse harmonique de signaux périodiques} \\[0.2cm]
+  \rule{0.6\textwidth}{0.4pt} \\[0.2cm]
+  {\normalsize Durée : 1 heure \quad -- \quad Calculatrice autorisée} \\[0.1cm]
+  {\normalsize Le barème est donné à titre indicatif.}
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent\textbf{Nom :} \dotfill \quad \textbf{Prénom :} \dotfill \quad \textbf{Classe :} \dotfill
+
+\vspace{0.3cm}
+
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\textbf{Rappels :} Soit $f$ une fonction périodique de période $T$, de fréquence $f_0 = \dfrac{1}{T}$ et de pulsation $\omega = \dfrac{2\pi}{T}$. Son développement en série de Fourier est :
+\[
+  S(t) = a_0 + \sum_{n=1}^{+\infty}\!\bigl(a_n\cos(n\omega t)+b_n\sin(n\omega t)\bigr)
+\]
+avec \quad
+$\displaystyle a_0 = \frac{1}{T}\int_0^{T} f(t)\,\dt$,\quad
+$\displaystyle a_n = \frac{2}{T}\int_0^{T} f(t)\cos(n\omega t)\,\dt$,\quad
+$\displaystyle b_n = \frac{2}{T}\int_0^{T} f(t)\sin(n\omega t)\,\dt$.
+
+\smallskip
+\noindent\textbf{Propriétés de symétrie :}
+\begin{itemize}[leftmargin=1.5em, topsep=2pt]
+  \item Si $f$ est \textbf{paire} : $b_n = 0$ pour tout $n \geq 1$.
+  \item Si $f$ est \textbf{impaire} : $a_0 = 0$ et $a_n = 0$ pour tout $n \geq 1$.
+\end{itemize}
+}}
+
+\vspace{0.5cm}
+
+%% ================================================================
+%% EXERCICE 1 — QCM  (5 points)
+%% ================================================================
+\begin{tcolorbox}[qcmbox={Exercice 1 \, -- \, QCM \hfill \normalfont\textit{(5 points)}}]
+  Pour chaque question, \textbf{une seule} réponse est correcte. Cochez la case correspondante.
+  \textit{Aucune justification n'est demandée.}
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+\begin{enumerate}[label=\textbf{Q\arabic*.}, leftmargin=*, itemsep=0.5cm]
+
+  \item La pulsation fondamentale d'un signal périodique de période $T = 5\,\mathrm{ms}$ vaut :
+  \hfill \textit{(1 pt)}\\[0.25cm]
+  \ligneqcm{$\omega = 200\pi\,\mathrm{rad/s}$}{$\omega = 400\pi\,\mathrm{rad/s}$}{$\omega = 200\,\mathrm{rad/s}$}{$\omega = 2000\pi\,\mathrm{rad/s}$}
+
+  \item Pour une fonction \textbf{impaire} $f$ de période $T$, on a nécessairement :
+  \hfill \textit{(1 pt)}\\[0.25cm]
+  \ligneqcm{$a_0 \neq 0$ et $b_n = 0$}{$a_0 = 0$ et $a_n = 0$}{$b_n = 0$ et $a_0 = 0$}{$a_n \neq 0$ et $b_n \neq 0$}
+
+  \item Le coefficient $a_0$ du développement en série de Fourier d'un signal représente :
+  \hfill \textit{(1 pt)}\\[0.25cm]
+  \ligneqcm{Son amplitude maximale}{Sa fréquence fondamentale}{Sa valeur moyenne}{Son harmonique de rang 1}
+
+  \item On considère la fonction $f$ de période $T = 2$ définie par $f(t) = 3$ sur $[0\,;\,1[$ et $f(t) = -3$ sur $[1\,;\,2[$. Quelle est la valeur de $a_0$ ?
+  \hfill \textit{(1 pt)}\\[0.25cm]
+  \ligneqcm{$a_0 = 3$}{$a_0 = 1{,}5$}{$a_0 = 0$}{$a_0 = 6$}
+
+  \item Le spectre en fréquences d'un signal périodique est constitué de raies situées :
+  \hfill \textit{(1 pt)}\\[0.25cm]
+  \ligneqcm{Aux fréquences $n\cdot f_0$}{Aux fréquences $f_0 / n$}{À toutes les fréquences}{À la fréquence $f_0$ uniquement}
+
+\end{enumerate}
+
+\vspace{0.5cm}
+
+%% ================================================================
+%% EXERCICE 2 — Signal créneaux asymétrique  (10 points)
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 2 \hfill \normalfont\textit{(10 points)}}]
+On considère le signal électrique $u$ périodique de période $T = 4\,\mathrm{ms}$, défini sur
+$[0\,;\,T[$ par :
+\[
+  u(t) = \begin{cases} 6 & \text{si } 0 \leq t < 1\,\mathrm{ms} \\ 0 & \text{si } 1\,\mathrm{ms} \leq t < 4\,\mathrm{ms} \end{cases}
+\]
+On pose $t$ en millisecondes dans toute la suite de l'exercice.
+\end{tcolorbox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines=middle,
+      xlabel={$t$ (ms)},
+      ylabel={$u(t)$ (V)},
+      xmin=-4.5, xmax=12.5,
+      ymin=-1, ymax=8,
+      xtick={-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12},
+      ytick={0,2,4,6},
+      width=14cm, height=4.8cm,
+      grid=major,
+      grid style={dashed, gray!30},
+    ]
+    % période [-4 ; 0[
+    \addplot[blue, ultra thick, domain=-4:-3] {6};
+    \addplot[blue, ultra thick, domain=-3:0]  {0};
+    % période [0 ; 4[
+    \addplot[blue, ultra thick, domain=0:1]   {6};
+    \addplot[blue, ultra thick, domain=1:4]   {0};
+    % période [4 ; 8[
+    \addplot[blue, ultra thick, domain=4:5]   {6};
+    \addplot[blue, ultra thick, domain=5:8]   {0};
+    % période [8 ; 12[
+    \addplot[blue, ultra thick, domain=8:9]   {6};
+    \addplot[blue, ultra thick, domain=9:12]  {0};
+    % discontinuités
+    \addplot[blue, dashed, thin] coordinates {(-3,6)(-3,0)};
+    \addplot[blue, dashed, thin] coordinates {(1,6)(1,0)};
+    \addplot[blue, dashed, thin] coordinates {(5,6)(5,0)};
+    \addplot[blue, dashed, thin] coordinates {(9,6)(9,0)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item Donner la fréquence $f_0$ (en Hz) et la pulsation $\omega$ (en rad/s) de ce signal.
+        \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=2.2cm]\end{tcolorbox}
+
+  \item Calculer $a_0$. Interpréter physiquement ce résultat.
+        \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=3cm]\end{tcolorbox}
+
+  \item Calculer $a_n$ pour tout entier $n \geq 1$.
+        \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=3.5cm]\end{tcolorbox}
+
+  \item Calculer $b_n$ pour tout entier $n \geq 1$.
+        En déduire les valeurs numériques de $b_1$, $b_2$ et $b_3$
+        (valeurs arrondies au centième). \hfill \textit{(3 pts)}
+  \begin{tcolorbox}[reponsebox, height=5.5cm]\end{tcolorbox}
+
+  \item Écrire le développement en série de Fourier $S(t)$ de $u$ en ne conservant que les
+        harmoniques jusqu'à $n = 3$. \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+\end{enumerate}
+
+\newpage
+
+%% ================================================================
+%% EXERCICE 3 — Parseval et spectre  (10 points)
+%% ================================================================
+\begin{tcolorbox}[exobox={Exercice 3 \hfill \normalfont\textit{(10 points)}}]
+On considère un signal électrique $s$ périodique de période $T = 1\,\mathrm{ms}$,
+dont le développement en série de Fourier est \textbf{donné} :
+\[
+  s(t) = 3 + 8\cos(\omega t) + 4\cos(2\omega t) + \frac{8}{3}\cos(3\omega t) + 2\cos(4\omega t)
+\]
+où $\omega = \dfrac{2\pi}{T}$.
+
+\smallskip
+On rappelle le \textbf{théorème de Parseval} pour un signal de la forme
+$S(t) = a_0 + \displaystyle\sum_{n=1}^{N}a_n\cos(n\omega t)$ :
+\[
+  P = \frac{1}{T}\int_0^T s^2(t)\,\dt = a_0^2 + \frac{1}{2}\sum_{n=1}^{N} a_n^2
+\]
+$P$ est la \textbf{puissance moyenne} du signal (en $\mathrm{W}$ si $s$ est en volts sur une résistance de $1\,\Omega$).
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+
+  \item Identifier les coefficients $a_0$, $a_1$, $a_2$, $a_3$ et $a_4$ du développement.
+        \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=1.8cm]\end{tcolorbox}
+
+  \item Donner la fréquence fondamentale $f_0$ (en Hz) et les fréquences des harmoniques
+        de rang 1 à 4.
+        \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+
+  \item \textbf{Spectre unilatéral en amplitude.}
+        Compléter le spectre ci-dessous en traçant les raies verticales
+        à la bonne hauteur pour chaque composante fréquentielle (fondamentale + harmoniques).
+        Porter les valeurs numériques au-dessus de chaque raie.
+        \hfill \textit{(3 pts)}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=left,
+        xlabel={Fréquence (Hz)},
+        ylabel={Amplitude},
+        xmin=0, xmax=5500,
+        ymin=0, ymax=10,
+        xtick={0,1000,2000,3000,4000,5000},
+        xticklabels={$0$,$f_0$,$2f_0$,$3f_0$,$4f_0$,$5f_0$},
+        ytick={0,1,2,3,4,5,6,7,8,9,10},
+        width=13cm, height=6cm,
+        grid=major,
+        grid style={dashed, gray!20},
+        ymajorgrids=true,
+        tick align=outside,
+      ]
+      % Raie DC (a0 = 3) — tracée pour guider
+      \addplot[red!70!black, ultra thick, -{Stealth[scale=1.2]}]
+        coordinates {(0,0)(0,3)};
+      \node[above, font=\small\bfseries, red!70!black] at (axis cs:0,3) {$3$};
+      % Raies à compléter (pointillés guides)
+      \foreach \x in {1000,2000,3000,4000}{
+        \addplot[gray!40, dashed, thin] coordinates {(\x,0)(\x,9.5)};
+      }
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \item Calculer la puissance de chaque composante :
+        $P_0 = a_0^2$, \; $P_n = \dfrac{a_n^2}{2}$ pour $n = 1, 2, 3, 4$.
+        \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=3.5cm]\end{tcolorbox}
+
+  \item Appliquer le théorème de Parseval pour calculer la \textbf{puissance totale} $P$ du signal.
+        \hfill \textit{(1 pt)}
+  \begin{tcolorbox}[reponsebox, height=2cm]\end{tcolorbox}
+
+  \item Calculer le \textbf{taux de distorsion harmonique} (TDH) du signal, défini par :
+        \[
+          \mathrm{TDH} = \frac{\sqrt{P_2^2 + P_3^2 + P_4^2}}{P_1} \times 100\,\%
+        \]
+        Commenter la valeur obtenue (signal peu ou très distordu ?).
+        \hfill \textit{(2 pts)}
+  \begin{tcolorbox}[reponsebox, height=3.5cm]\end{tcolorbox}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,202 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BTS CIEL -- Mathématiques}
+\rhead{\textbf{CORRIGÉ} -- Séries de Fourier}
+\cfoot{\thepage}
+
+\definecolor{vertcorr}{RGB}{0,110,60}
+\definecolor{vertclair}{RGB}{220,245,230}
+\definecolor{bleucorr}{RGB}{0,70,140}
+\definecolor{bleuclair}{RGB}{215,230,250}
+\definecolor{orangecorr}{RGB}{180,70,10}
+\definecolor{orangeclair}{RGB}{255,235,210}
+
+\tcbset{
+  exobox/.style={colback=orange!5!white, colframe=orange!60!black,
+                 fonttitle=\bfseries, title=#1},
+  corrbox/.style={colback=vertclair, colframe=vertcorr,
+                  fonttitle=\bfseries\color{vertcorr},
+                  title=#1},
+  formulebox/.style={colback=bleuclair, colframe=bleucorr,
+                     sharp corners, boxrule=0.8pt,
+                     left=5pt, right=5pt, top=4pt, bottom=4pt},
+  qcmbox/.style={colback=blue!4!white, colframe=blue!50!black,
+                 fonttitle=\bfseries, title=#1}
+}
+
+\newcommand{\dt}{\mathrm{d}t}
+\newcommand{\reponse}[1]{%
+  \begin{tcolorbox}[corrbox={}]
+    #1
+  \end{tcolorbox}%
+}
+\newcommand{\pts}[1]{\hfill\textcolor{gray}{\small\textit{(#1 pts)}}}
+
+\newcommand{\coche}{\tikz[baseline=-0.5ex]{%
+  \draw[vertcorr, line width=1.2pt] (0,0) rectangle (0.38,0.38);
+  \draw[vertcorr, line width=1.4pt] (0.05,0.18) -- (0.16,0.05) -- (0.35,0.33);}}
+\newcommand{\nocoche}{\tikz[baseline=-0.5ex]{%
+  \draw[gray!50] (0,0) rectangle (0.38,0.38);}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{CORRIGÉ -- Évaluation Séries de Fourier}} \\[0.2cm]
+  {\Large Analyse harmonique de signaux périodiques} \\[0.2cm]
+  \rule{0.6\textwidth}{0.4pt} \\[0.15cm]
+  \textcolor{vertcorr}{\textbf{Document réservé au professeur}}
+\end{center}
+
+\vspace{0.4cm}
+
+% ================================================================
+%  EXERCICE 1 — QCM
+% ================================================================
+\begin{tcolorbox}[qcmbox={Exercice 1 \, -- \, QCM \hfill \normalfont\textit{(5 points)}}]
+  Réponses correctes encochées.
+\end{tcolorbox}
+
+\vspace{0.2cm}
+
+\begin{enumerate}[label=\textbf{Q\arabic*.}, leftmargin=*, itemsep=0.4cm]
+
+  \item $T = 5\,\mathrm{ms} = 5\times10^{-3}\,\mathrm{s}$\pts{1}
+
+  \reponse{
+    $\omega = \dfrac{2\pi}{T} = \dfrac{2\pi}{5\times10^{-3}} = 400\pi\,\mathrm{rad/s}$
+    \hspace{0.5cm} \textbf{Réponse B.} \coche~$\omega = 400\pi\,\mathrm{rad/s}$
+  }
+
+  \item Propriétés d'une fonction \textbf{impaire}.\pts{1}
+
+  \reponse{
+    Si $f$ est impaire : $a_0 = 0$ et $a_n = 0$ pour tout $n \geq 1$, seuls les $b_n$ subsistent.
+    \hspace{0.5cm} \textbf{Réponse B.} \coche~$a_0 = 0$ et $a_n = 0$
+  }
+
+  \item Signification de $a_0$.\pts{1}
+
+  \reponse{
+    $a_0 = \dfrac{1}{T}\displaystyle\int_0^T f(t)\,\dt$ est par définition la \textbf{valeur moyenne} du signal.
+    \hspace{0.5cm} \textbf{Réponse C.} \coche~Sa valeur moyenne
+  }
+
+  \item $f(t) = 3$ sur $[0\,;\,1[$ et $f(t) = -3$ sur $[1\,;\,2[$, $T = 2$.\pts{1}
+
+  \reponse{
+    $a_0 = \dfrac{1}{2}\left[\displaystyle\int_0^1 3\,\dt + \int_1^2 (-3)\,\dt\right]
+         = \dfrac{1}{2}\bigl[3\times 1 + (-3)\times 1\bigr] = \dfrac{1}{2}\times 0 = \mathbf{0}$
+
+    \vspace{0.1cm}
+    \textbf{Réponse C.} \coche~$a_0 = 0$ (signal de valeur moyenne nulle, symétrique autour de $0$)
+  }
+
+  \item Spectre en fréquences d'un signal périodique.\pts{1}
+
+  \reponse{
+    La série de Fourier est composée de termes de fréquences $f_n = n\cdot f_0$ ($n = 0,1,2,\ldots$),
+    le spectre est donc constitué de \textbf{raies discrètes} aux fréquences multiples de $f_0$.
+    \hspace{0.3cm} \textbf{Réponse A.} \coche~Aux fréquences $n\cdot f_0$
+  }
+
+\end{enumerate}
+
+\vspace{0.5cm}
+
+% ================================================================
+%  EXERCICE 2 — Signal créneau asymétrique
+% ================================================================
+\begin{tcolorbox}[exobox={Exercice 2 \hfill \normalfont\textit{(10 points)}}]
+  Signal $u$, $T = 4\,\mathrm{ms}$, $u(t)=6\,\mathrm{V}$ sur $[0\,;\,1\,\mathrm{ms}[$,
+  $u(t)=0$ sur $[1\,;\,4\,\mathrm{ms}[$.
+  On travaille en millisecondes ($t$ en ms), donc $\omega = \dfrac{2\pi}{4} = \dfrac{\pi}{2}\,\mathrm{rad/ms}$.
+\end{tcolorbox}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=0.4cm]
+
+  \item Fréquence et pulsation.\pts{2}
+
+  \reponse{
+    \[
+      f_0 = \frac{1}{T} = \frac{1}{4\times10^{-3}} = \mathbf{250\,\mathrm{Hz}} ~~~~
+      \omega = 2\pi f_0 = 2\pi \times 250 = \mathbf{500\pi \approx 1570{,}8\,\mathrm{rad/s}}
+    \]
+  }
+
+  \item Calcul de $a_0$ et interprétation physique.\pts{2}
+
+  \reponse{
+    \[
+      a_0 = \frac{1}{T}\int_0^{T} u(t)\,\dt
+           = \frac{1}{4}\left[\int_0^{1} 6\,\dt + \int_1^{4} 0\,\dt\right]
+           = \frac{1}{4}\times\bigl[6\times 1\bigr]
+           = \frac{6}{4} = \mathbf{1{,}5\,\mathrm{V}}
+    \]
+    \textbf{Interprétation physique :} $a_0 = 1{,}5\,\mathrm{V}$ est la \textbf{composante continue}
+    (valeur moyenne) du signal. En électronique, c'est la tension DC que mesurerait un voltmètre en mode DC.
+    On vérifie par intuition : le signal vaut $6\,\mathrm{V}$ pendant $1/4$ de la période,
+    soit $6 \times \frac{1}{4} = 1{,}5\,\mathrm{V}$.
+  }
+
+  \item Calcul de $a_n$ pour $n \geq 1$.\pts{2}
+
+  \reponse{
+    Avec $\omega = \dfrac{\pi}{2}\,\mathrm{rad/ms}$ (et $t$ en ms) :
+    \begin{align*}
+      a_n &= \frac{2}{T}\int_0^{T} u(t)\cos(n\omega t)\,\dt
+           = \frac{2}{4}\int_0^{1} 6\cos\!\left(\frac{n\pi t}{2}\right)\dt \\[4pt]
+          &= 3\left[\frac{\sin\!\left(\dfrac{n\pi t}{2}\right)}{\dfrac{n\pi}{2}}\right]_0^{1}
+           = 3 \cdot \frac{2}{n\pi}\cdot\sin\!\left(\frac{n\pi}{2}\right) 
+          =\boxed{\frac{6}{n\pi}\sin\!\left(\frac{n\pi}{2}\right)}
+    \end{align*}
+    Valeurs remarquables :
+    $a_1 = \dfrac{6}{\pi}\approx 1{,}91$,\quad
+    $a_2 = 0$,\quad
+    $a_3 = -\dfrac{2}{\pi}\approx -0{,}64$,\quad
+    $a_4 = 0$, etc.
+  }
+
+  \item Calcul de $b_n$ ; valeurs de $b_1$, $b_2$, $b_3$.\pts{3}
+
+  \reponse{
+    \begin{align*}
+      b_n &= \frac{2}{T}\int_0^{T} u(t)\sin(n\omega t)\,\dt
+           = \frac{1}{2}\int_0^{1} 6\sin\!\left(\frac{n\pi t}{2}\right)\dt \\[4pt]
+          &= 3\left[\frac{-\cos\!\left(\dfrac{n\pi t}{2}\right)}{\dfrac{n\pi}{2}}\right]_0^{1}
+           = 3\cdot\frac{2}{n\pi}\left[-\cos\!\left(\frac{n\pi}{2}\right)+\cos(0)\right] \\[6pt]
+          &= \boxed{\frac{6}{n\pi}\left[1-\cos\!\left(\frac{n\pi}{2}\right)\right]}
+    \end{align*}
+
+    \medskip
+    \begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+      \item $b_1 = \dfrac{6}{\pi}\left[1-\cos\!\left(\dfrac{\pi}{2}\right)\right]
+                = \dfrac{6}{\pi}\left[1-0\right] = \dfrac{6}{\pi} \approx \mathbf{1{,}91}$
+
+      \item $b_2 = \dfrac{6}{2\pi}\left[1-\cos(\pi)\right]
+                = \dfrac{3}{\pi}\left[1-(-1)\right] = \dfrac{6}{\pi} \approx \mathbf{1{,}91}$
+
+      \item $b_3 = \dfrac{6}{3\pi}\left[1-\cos\!\left(\dfrac{3\pi}{2}\right)\right]
+                = \dfrac{2}{\pi}\left[1-0\right] = \dfrac{2}{\pi} \approx \mathbf{0{,}64}$
+    \end{itemize}
+  }
+
+\end{enumerate}
+
+\end{document}

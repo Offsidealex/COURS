@@ -1,0 +1,209 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de TSN1}
+\setcounter{page}{10}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\setlength{\columnseprule}{.25mm}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\appel}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\frenchbsetup{StandardLists=true}
+\begin{document}
+
+
+
+\center \LARGE{TP1 - Mesurer la longueur d'onde d'une onde sonore}
+\\[0,3cm]
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+\flushleft \textbf{NOM :\\
+Prénom:\\[0,2cm]
+}
+\hrule\
+\\[0,2cm]
+
+
+\ding{202} \text{Expérience :} \\
+\begin{center}
+    \includegraphics[scale=0.5]{images/montageUS.png} 
+\end{center}
+
+\begin{enumerate}
+    \item Réaliser le montage (ne pas toucher aux réglages), on placera le récepteur à 10 cm devant et dans l'axe de l'émetteur.
+    \item Mettre le générateur en marche puis régler l'oscilloscope pour obtenir au moins deux périodes des signaux observés. 
+    \appel{\fbox{
+\begin{minipage}{13.3cm}{
+\begin{center}
+ Appeler le professeur pour pour qu'il vérifie votre montage  et vos réglages.
+ \end{center} }
+
+\end{minipage}
+}}
+
+    \item Représenter les deux signaux :\\[5 pt]
+\begin{center}
+    
+\def\scl{0.8}%scaling factor of the picture
+\begin{tikzpicture}[
+  scale=\scl,
+  controlpanels/.style={yellow!30!,rounded corners,draw=black,thick},
+  screen/.style={white,draw=black,thick},
+  trace/.style={white!60!yellow!20!, ultra thick},
+  smallbutton/.style={white,draw=black, thick},
+  axes/.style={thick}]
+
+  % Screen, centered around the origin then shifted for easy plotting
+  \begin{scope}[xshift=7cm,yshift=8cm,samples=150]
+    \fill[black!30!,rounded corners,draw=black,thick](-5.3,-4.3)
+      rectangle (5.3,4.3);
+    \fill[screen] (-5.0,-4.0) rectangle (5.0,4.0);
+    \draw[thin] (-5.0,-4.0) grid (5.0,4.0);
+    \draw[axes] (-5,0)--(5,0); % Time axis
+    \draw[axes] (0,-4)--(0,4);
+    \foreach \i in {-4.8,-4.6,...,4.8} \draw (\i,-0.1)--(\i,0.1);
+    \foreach \i in {-3.8,-3.6,...,3.8} \draw (-0.1,\i)--(0.1,\i);
+  \end{scope}
+
+  
+\end{tikzpicture}
+\end{center} 
+\item Que peut-on dire de la période du signal émis et de la période du signal reçu ?\\[2pt]
+\cadreblanc{8}
+
+\item Calculer, en seconde (s), la période des signaux \\[2pt]
+\cadreblanc{8}
+
+\item Calculer, en Hertz (Hz), la fréquence.\\[2pt]
+\cadreblanc{8}
+
+\item Pourquoi le son n'est pas audible ?\\[2pt]
+\cadreblanc{8}
+
+
+
+\item Déplacer le récepteur pour que les deux signaux soient en phase, on superposera les deux courbes, 
+
+\appel{\fbox{
+\begin{minipage}{13.3cm}{
+\begin{center}
+ Appeler le professeur pour pour qu'il vérifie votre réglage et vous explique comment réaliser la mesure suivante. 
+ \end{center} }
+
+\end{minipage}
+}}
+
+Noter la distance $d_1$ entre l'émetteur et le récepteur.~~~
+\begin{center}
+    \fbox{$$d_1=~~~~~~~~~~~~~~ cm$$}
+\end{center}
+
+\vspace{3mm}
+\item Cette mesure est peu précise, nous allons donc répéter l'opération 10 fois puis obtenir une nouvelle distance $d$ qui sera plus précise. Noter, en cm, la valeur moyenne de $d$
+\begin{center}
+    \fbox{$$d =~~~~~~~~~~~~~~ cm$$}
+\end{center}
+
+\end{enumerate}
+
+\vfill 
+
+\ding{203} \textbf{Résultats} : \\
+\begin{center}
+    
+\fbox{
+\begin{minipage}{12cm}{
+\begin{center}
+    
+\textbf{Cette distance s'appelle la longueur d'onde de l'onde sonore.\\
+Elle se note $\lambda$ (lambda). \\
+Elle se mesure en mètre.\\[10pt]
+\LARGE{$\lambda = ~~~~~~~~~~ m$}
+}
+\end{center}}
+\end{minipage}
+}
+\end{center}
+
+\vfill 
+
+\ding{204} \textbf{Calcul de la vitesse de l'onde sonore} : \\[2pt]
+A l'aide des résultats précédents déterminer, en m/s, la valeur de la vitesse du son dans l'air :\\[2pt]
+\cadreblanc{29}
+
+\vfill 
+
+\ding{205} \textbf{Applications} : \\[2pt]
+Lors d'un orage le bruit du tonnerre accompagne les éclairs produits par la foudre.\\
+Pourquoi entendons-nous le tonnerre après avoir vu l'éclair ? \\[10pt]
+\dotfill
+
+\vspace{10pt}
+
+\dotfill
+
+\vfill 
+
+Comment déterminer la distance approximative à laquelle est tombée la foudre ? \\[10pt] 
+\dotfill
+
+\vspace{10pt}
+
+\dotfill
+
+\vfill
+\end{document}

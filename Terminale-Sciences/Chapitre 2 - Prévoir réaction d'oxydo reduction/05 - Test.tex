@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % Ã  inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Terminale}
+\setcounter{page}{8}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\defbox}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+
+
+\frenchbsetup{StandardLists=true}
+
+
+\begin{document}
+\center \LARGE{Test - Oxydo réduction\
+\\[0,3cm]
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+\flushleft \textbf{NOM :\\
+Prénom:\\[0,2cm]
+}
+\hrule\
+\\[0,2cm]
+
+
+
+
+
+
+\ding {202} Indiquer pour chacune des affirmations si elle est vrai ou elle est fausse en cochant la case correspondante. \\[0.3cm]
+
+ 
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabularx}{15cm}{|p{11cm}|X|X|}
+    \hline
+    Affirmation & Vraie & Fausse\\
+    \hline
+     Une réaction d'oxydo-réduction est un échange de protons & &\\
+    \hline
+     Une oxydation est une perte d'électrons & &\\
+    \hline
+    Une réduction est un gain d'électrons & &\\
+    \hline
+    Un oxydant perds des électrons & &\\
+    \hline
+    Le métal cuivre est un réducteur &  &\\
+    \hline
+\end{tabularx}
+\end{center}
+
+\vfill
+\ding {203} Les ions \ch{Cu \pch[2]} réagissent avec le métal zinc \ch{Zn} pour donner un dépôt  de cuivre métallique \\ et des ions \ch{Zn \pch[2]}\\[0.5 cm]
+\textbf{Cocher la case correspondante à toute équation exacte :} \\[0.5cm]
+\begin{center}
+\begin{tabularx}{12cm}{p{8cm}X X}
+ 
+   
+      L' ion \ch{Cu \pch[2]} est l'oxydant le plus fort  & \acocher ~~Oui & \acocher ~~Non\\
+ 
+     L' ion \ch{Zn \pch[2]} est l'oxydant le plus fort & \acocher ~~Oui & \acocher ~~Non\\
+ 
+  
+    le métal cuivre est le réducteur le plus fort & \acocher ~~Oui & \acocher ~~Non\\
+  
+
+    Le métal zinc est le réducteur le plus fort  & \acocher ~~Oui & \acocher ~~Non\\
+
+\end{tabularx}
+\end{center}
+
+\vfill 
+
+\ding {204}  Les ions \ch{Cu \pch[2]} réagissent avec le métal fer \ch{Fe} pour donner un dépôt\\ de cuivre métallique et des ions \ch{Fe \pch[2]}\\[0.5 cm]
+\textbf{Cocher la case correspondante à toute équation exacte : } \\[0.5cm]
+
+ \begin {multicols}{2}
+ 	\acocher ~~\ch{Cu \pch[2] + 2 e \mch[] -> Cu} \\[2mm]
+ 	\acocher ~~\ch{Fe \pch[2] + 2 e \mch[] -> Fe} \\[2mm]
+ 	\acocher ~~\ch{Cu \pch[2] + Fe -> Cu + Fe \pch[2]} \\[2mm]
+ 	\acocher ~~\ch{Cu -> Cu \pch[2] + 2 e \mch[] } \\[2mm]
+  	\acocher ~~\ch{Fe -> Fe\pch[2] + 2 e \mch[] } \\[2mm]
+  	\acocher ~~\ch{Cu  + Fe \pch[2]-> Cu \pch[2] + Fe } \\[2mm]
+
+ \end {multicols}
+
+
+\vfill 
+
+\end{document}
+ 

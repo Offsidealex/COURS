@@ -1,0 +1,248 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\setlength{\parindent}{0pt}
+\usepackage{multicol}
+\setlength{\columnseprule}{1pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Terminale}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\usepackage{array}
+
+\begin{document}
+\center \LARGE{ACTIVITÉ DOCUMENTAIRE}\\[0,2cm]
+\Large{Le pont de diodes : du courant alternatif au courant continu}\\[0,3cm]
+\normalsize
+\hrule\\[0,2cm]
+\flushleft \textbf{NOM :\\[0.2cm]
+Prénom:\\[0,2cm]}
+\hrule\\[0,2cm]
+
+\section{Introduction}
+
+Le pont de diodes, également appelé pont de Graetz, est un composant électronique essentiel permettant de transformer un courant alternatif en courant continu. Cette activité documentaire vous permettra de comprendre son principe de fonctionnement et ses applications pratiques.
+
+\section{Documents}
+
+\subsection{Document 1 : La diode, un composant unidirectionnel}
+
+Une diode est un composant électronique qui ne laisse passer le courant électrique que dans un seul sens, appelé sens passant. Dans l'autre sens, appelé sens bloquant, la diode s'oppose au passage du courant.
+
+\vspace{0.3cm}
+\textbf{Caractéristiques principales :}
+\begin{itemize}
+\item Une diode possède deux bornes : l'anode (A) et la cathode (K)
+\item Le courant peut circuler de l'anode vers la cathode (sens passant)
+\item En sens passant, la tension aux bornes de la diode est faible (environ 0,6 V à 0,7 V pour une diode au silicium)
+\item En sens bloquant, aucun courant ne circule (diode = interrupteur ouvert)
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Symbole de la diode :}
+
+Le triangle indique le sens passant (de l'anode vers la cathode). La barre perpendiculaire représente la cathode.
+
+\subsection{Document 2 : Le courant alternatif et le courant continu}
+
+\textbf{Le courant alternatif (CA) :}
+
+Le courant alternatif est un courant électrique dont la tension varie périodiquement au cours du temps, en changeant régulièrement de sens. En France, le réseau électrique fournit un courant alternatif sinusoïdal de fréquence 50 Hz et de tension efficace 230 V.
+
+\vspace{0.3cm}
+\textbf{Avantages du CA :} Facilité de transport sur de longues distances, possibilité de modifier facilement la tension avec des transformateurs.
+
+\vspace{0.3cm}
+\textbf{Le courant continu (CC) :}
+
+Le courant continu est un courant électrique dont la tension garde une valeur constante au cours du temps et ne change pas de sens. Les piles et batteries fournissent du courant continu.
+
+\vspace{0.3cm}
+\textbf{Nécessité de conversion :} De nombreux appareils électroniques (téléphones, ordinateurs, chargeurs) fonctionnent en courant continu alors que le réseau domestique fournit du courant alternatif. Il est donc nécessaire de convertir le CA en CC.
+
+\subsection{Document 3 : Structure et principe du pont de diodes}
+
+Le pont de diodes, ou pont de Graetz, est constitué de quatre diodes disposées de manière à redresser les deux alternances d'un courant alternatif.
+
+\vspace{0.3cm}
+\textbf{Configuration :}
+\begin{itemize}
+\item Quatre diodes notées D1, D2, D3 et D4
+\item Deux bornes d'entrée reliées à la source de tension alternative
+\item Deux bornes de sortie où l'on récupère la tension redressée
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Principe de fonctionnement :}
+
+\textit{Alternance positive :} Lorsque la tension d'entrée est positive, les diodes D1 et D3 sont passantes (conductrices) tandis que D2 et D4 sont bloquées. Le courant circule à travers D1, traverse la charge, puis ressort par D3.
+
+\vspace{0.2cm}
+\textit{Alternance négative :} Lorsque la tension d'entrée devient négative, les diodes D2 et D4 deviennent passantes tandis que D1 et D3 sont bloquées. Le courant circule alors à travers D2, traverse la charge dans le même sens que précédemment, puis ressort par D4.
+
+\vspace{0.3cm}
+\textbf{Résultat :} Quelle que soit la polarité de la tension d'entrée, le courant traverse toujours la charge dans le même sens. On obtient ainsi un courant unidirectionnel, c'est-à-dire redressé double alternance.
+
+\subsection{Document 4 : Applications et perfectionnements du pont de diodes}
+
+\textbf{Applications courantes :}
+\begin{itemize}
+\item \textbf{Alimentations électroniques :} Tous les chargeurs de téléphones, d'ordinateurs portables et d'appareils électroniques contiennent un pont de diodes pour convertir le 230 V alternatif en tension continue.
+\item \textbf{Alternateurs automobiles :} Les alternateurs produisent du courant alternatif qui doit être converti en continu pour recharger la batterie 12 V du véhicule.
+\item \textbf{Énergies renouvelables :} Certaines éoliennes produisent du courant alternatif qui nécessite un redressement avant stockage ou injection sur le réseau.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Limitations et améliorations :}
+
+Le signal obtenu en sortie d'un pont de diodes n'est pas parfaitement continu : il présente des ondulations (appelées ondulation résiduelle ou ripple). Pour obtenir une tension vraiment stable, on ajoute :
+
+\begin{itemize}
+\item Un \textbf{condensateur de filtrage} : placé en parallèle à la sortie, il « lisse » la tension en stockant de l'énergie lors des pics et en la restituant lors des creux.
+\item Un \textbf{régulateur de tension} : circuit électronique qui maintient la tension de sortie parfaitement constante quelle que soit la charge.
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Caractéristiques techniques :}
+
+Les ponts de diodes sont caractérisés par :
+\begin{itemize}
+\item La tension inverse maximale supportée (PIV : Peak Inverse Voltage)
+\item Le courant maximal admissible
+\item La chute de tension en conduction (environ 1,4 V pour un pont au silicium)
+\end{itemize}
+
+\newpage
+
+\section{Questions}
+
+\textbf{Question 1 :} D'après le document 1, dans quel sens le courant peut-il circuler à travers une diode ? Quelle est la tension aux bornes d'une diode en fonctionnement normal ?
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{2cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 2 :} À l'aide du document 2, expliquer la différence fondamentale entre le courant alternatif et le courant continu. Donner deux exemples d'appareils utilisant chaque type de courant.
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{3cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 3 :} D'après le document 2, pourquoi est-il nécessaire de convertir le courant alternatif en courant continu pour de nombreux appareils électroniques ?
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{2cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 4 :} Combien de diodes composent un pont de diodes selon le document 3 ? Comment sont-elles disposées ?
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{2cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 5 :} En vous aidant du document 3, expliquer ce qui se passe lors de l'alternance positive du courant alternatif d'entrée. Quelles diodes sont passantes et quelles diodes sont bloquées ?
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{3cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\newpage 
+
+\textbf{Question 6 :} D'après le document 3, que se passe-t-il lors de l'alternance négative ? Le sens du courant dans la charge change-t-il par rapport à l'alternance positive ?
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{3cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 7 :} À partir du document 3, expliquer pourquoi on parle de « redressement double alternance ».
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{2cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 8 :} Le document 4 mentionne trois applications du pont de diodes. Citer ces trois applications et expliquer brièvement l'intérêt du pont de diodes dans chacune d'elles.
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{4cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 9 :} Selon le document 4, le signal de sortie d'un pont de diodes n'est pas parfaitement continu. Quels sont les deux composants que l'on peut ajouter pour améliorer la qualité du signal de sortie ? Expliquer brièvement le rôle de chacun.
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{2cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+\vspace{0.5cm}
+
+\textbf{Question 10 :} D'après l'ensemble des documents, expliquer en quelques lignes le rôle global d'un pont de diodes et son importance dans les systèmes électroniques modernes.
+
+\vspace{0.3cm}
+\noindent
+\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{
+\vspace{3cm}
+\hspace{1cm}
+\vspace{0.1cm}
+}}
+
+\end{document}

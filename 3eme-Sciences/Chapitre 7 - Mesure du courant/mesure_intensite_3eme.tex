@@ -1,0 +1,342 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de 3PM}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025-2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+% \chemsetup{modules=all} % obsolète en v6, les modules sont chargés automatiquement
+\setlength{\columnseprule}{.25mm}
+\setlength{\parindent}{0pt}
+
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\renewcommand{\arraystretch}{2}
+
+\frenchbsetup{StandardLists=true}
+
+\begin{document}
+
+\begin{center}
+ \LARGE{Chapitre -- Mesure de l'intensité électrique}
+\end{center}
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+L'intensité électrique est une grandeur fondamentale en électricité. On la retrouve sur toutes les fiches techniques d'appareils électriques : ampoules, chargeurs, moteurs... Elle permet de caractériser le flux de charges qui circule dans un circuit. Sa mesure correcte est indispensable pour comprendre et dimensionner tout montage électrique.
+
+\vspace{3mm}
+
+\textbf{1. L'intensité électrique} \\
+
+\textbf{1.1. Définition}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+L'\textbf{intensité électrique} est une grandeur physique qui caractérise le \textbf{débit de charges électriques} (d'électrons) circulant dans un circuit.
+
+\begin{itemize}
+    \item L'intensité se note \textbf{I}.
+    \item Elle se mesure en \textbf{ampère}, de symbole \textbf{A}.
+    \item Plus l'intensité est grande, plus les charges circulent rapidement dans le conducteur.
+\end{itemize}
+}
+\end{tcolorbox}
+
+\textbf{Remarque : } L'ampère porte le nom du physicien français \textbf{André-Marie Ampère} (1775--1836), l'un des fondateurs de l'électromagnétisme. \\
+
+\textbf{1.2. Les multiples et sous-multiples}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Unité} & \textbf{Symbole} & \textbf{Valeur en ampère} \\
+\hline
+Ampère       & A    & $1\,\text{A}$ \\
+\hline
+Milliampère  & mA   & $1\,\text{mA} = 10^{-3}\,\text{A} = 0{,}001\,\text{A}$ \\
+\hline
+Microampère  & $\mu$A & $1\,\mu\text{A} = 10^{-6}\,\text{A}$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{2. L'ampèremètre} \\
+
+\textbf{2.1. Rôle et symbole}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+L'\textbf{ampèremètre} est l'instrument de mesure utilisé pour mesurer l'intensité électrique dans un circuit. Son symbole dans un schéma électrique est un \textbf{cercle contenant la lettre A}.
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+  \draw[thick] (0,0) -- (0.7,0);
+  \draw[thick] (0.7,0) circle (0.35);
+  \node at (0.7,0) {\textbf{A}};
+  \draw[thick] (1.05,0) -- (1.75,0);
+  \node at (0.875,-0.7) {\small Symbole de l'ampèremètre};
+\end{tikzpicture}
+\end{center}
+}
+\end{tcolorbox}
+
+\textbf{2.2. Les bornes de l'ampèremètre}
+
+Un ampèremètre possède généralement \textbf{trois bornes} :
+
+\begin{itemize}
+    \item La borne \textbf{COM} (ou \textbf{--}) : borne commune, toujours utilisée, côté négatif du circuit.
+    \item La borne \textbf{A} : pour mesurer des intensités jusqu'à \textbf{10 A}.
+    \item La borne \textbf{mA} : pour mesurer des intensités inférieures à \textbf{200 mA}, avec plus de précision.
+\end{itemize}
+
+\warningbox{Ne jamais brancher l'ampèremètre directement aux bornes d'un générateur sans résistance. Cela provoquerait un \textbf{court-circuit} pouvant détruire l'appareil ou endommager le générateur.}
+
+\vspace{3mm}
+
+\textbf{3. Branchement de l'ampèremètre} \\
+
+\textbf{3.1. Règle de branchement}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+L'ampèremètre se branche \textbf{en série} dans le circuit, c'est-à-dire qu'il est \textbf{intercalé} dans le circuit : le courant électrique doit le traverser. Il ne faut jamais le brancher en parallèle.
+}
+\end{tcolorbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+  % Fils
+  \draw[thick] (0,0) -- (0,2.5) -- (3,2.5) -- (3,0) -- (0,0);
+  % Générateur (rectangle)
+  \draw[thick] (-0.2,0.8) rectangle (0.2,1.7);
+  \node[left] at (-0.25,1.25) {\small Générateur};
+  % Lampe (croix dans cercle)
+  \draw[thick] (3,1.25) circle (0.3);
+  \draw[thick] (2.79,1.04) -- (3.21,1.46);
+  \draw[thick] (2.79,1.46) -- (3.21,1.04);
+  \node[right] at (3.35,1.25) {\small Lampe};
+  % Ampèremètre (cercle A)
+  \draw[thick] (1.25,0) circle (0.25);
+  \node at (1.25,0) {\small\textbf{A}};
+  \node[below] at (1.25,-0.35) {\small Ampèremètre};
+  % Flèche courant
+  \draw[->, thick, red] (0.5,2.7) -- (1.5,2.7);
+  \node[above, red] at (1,2.7) {\small $I$};
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\small\textit{Schéma : ampèremètre branché en série avec un générateur et une lampe}
+\end{center}
+
+\vspace{3mm}
+
+\textbf{3.2. Méthode de branchement}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+\begin{enumerate}
+    \item \textbf{Ouvrir} le circuit à l'endroit où l'on souhaite mesurer l'intensité.
+    \item Choisir d'abord le \textbf{plus grand calibre} (borne A) pour protéger l'appareil.
+    \item Brancher la borne \textbf{COM} du côté \textbf{négatif} du générateur (potentiel bas).
+    \item Brancher la borne \textbf{A} du côté \textbf{positif} du générateur (potentiel haut).
+    \item Si la valeur lue est trop faible, basculer sur le calibre \textbf{mA} pour plus de précision.
+\end{enumerate}
+}
+\end{tcolorbox}
+
+\vspace{3mm}
+
+\textbf{4. Lecture de la mesure} \\
+
+\textbf{4.1. Choisir le bon calibre}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Le \textbf{calibre} est la valeur maximale que peut afficher l'ampèremètre sur une gamme donnée. Il faut toujours choisir le \textbf{calibre immédiatement supérieur} à la valeur attendue.
+}
+\end{tcolorbox}
+
+\textbf{Attention : } Commencer toujours par le plus grand calibre, puis réduire si nécessaire. Si l'écran affiche une erreur ou dépasse la plage, le calibre est trop petit. \\
+
+\vspace{3mm}
+
+\textbf{5. Intensité dans un circuit} \\
+
+\textbf{5.1. Circuit en série}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Dans un circuit \textbf{en série}, l'intensité est \textbf{identique} en tout point du circuit :
+$$I_1 = I_2 = I_3 = \ldots$$
+L'ampèremètre peut donc être placé n'importe où dans la boucle.
+}
+\end{tcolorbox}
+
+\textbf{5.2. Circuit en dérivation (loi des nœuds)}
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+{
+Dans un circuit \textbf{en dérivation}, l'intensité dans la branche principale est égale à la \textbf{somme} des intensités dans chaque branche dérivée. C'est la \textbf{loi des nœuds} :
+$$I = I_1 + I_2$$
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Branche principale gauche (générateur)
+  \draw[thick] (0,0) -- (0,2.5);
+  \draw[thick] (-0.2,0.9) rectangle (0.2,1.6);
+  % Nœuds
+  \draw[thick] (0,2.5) -- (5,2.5);
+  \draw[thick] (0,0)   -- (5,0);
+  % Branche 1 (haut)
+  \draw[thick] (1,2.5) -- (1,3.3) -- (4,3.3) -- (4,2.5);
+  \draw[thick] (2.1,3.3) circle (0.25);
+  \draw[thick] (1.89,3.09) -- (2.31,3.51);
+  \draw[thick] (1.89,3.51) -- (2.31,3.09);
+  \node[above] at (2.5,3.55) {\small Branche 1 -- $I_1$};
+  % Branche 2 (bas)
+  \draw[thick] (1,2.5) -- (1,1.7) -- (4,1.7) -- (4,2.5);
+  \draw[thick] (2.1,1.7) circle (0.25);
+  \draw[thick] (1.89,1.49) -- (2.31,1.91);
+  \draw[thick] (1.89,1.91) -- (2.31,1.49);
+  \node[below] at (2.5,1.45) {\small Branche 2 -- $I_2$};
+  % Ampèremètre principal
+  \draw[thick] (4.5,0) circle (0.25);
+  \node at (4.5,0) {\small\textbf{A}};
+  \node[below] at (4.5,-0.35) {\small $I$};
+  % Points de nœud
+  \filldraw (1,2.5) circle (2pt);
+  \filldraw (4,2.5) circle (2pt);
+\end{tikzpicture}
+\end{center}
+}
+\end{tcolorbox}
+
+\notebox{L'ampèremètre ne perturbe pas le circuit car sa \textbf{résistance interne est très faible} (idéalement nulle). Il se comporte comme un simple fil électrique dans le circuit.}
+
+\vspace{3mm}
+
+\textbf{6. Exemples de valeurs d'intensité courantes}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c||l|c|}
+\hline
+\textbf{Appareil / Situation} & \textbf{Intensité} & \textbf{Appareil / Situation} & \textbf{Intensité} \\
+\hline
+LED & $\approx 20\,\text{mA}$ & Ampoule à incandescence (60 W) & $\approx 270\,\text{mA}$ \\
+\hline
+Smartphone en charge & $\approx 1\,\text{A}$ & Fer à repasser & $\approx 5\,\text{A}$ \\
+\hline
+Moteur d'aspirateur & $\approx 3\,\text{A}$ & Seuil de danger pour le corps humain & $\approx 10\,\text{mA}$ \\
+\hline
+Fusible habituel & $\approx 16\,\text{A}$ & Foudre & $\approx 30\,000\,\text{A}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{3mm}
+
+\textbf{7. Sécurité} \\
+
+Un courant électrique traversant le corps humain est dangereux dès \textbf{10 mA}. Au-delà de \textbf{25 mA}, il peut provoquer une électrisation grave (tétanisation musculaire), et au-delà de \textbf{100 mA}, il peut être mortel. \\
+
+\textbf{Remarque : } Ce n'est pas la tension (en volts) qui tue directement, mais bien l'\textbf{intensité} (en ampères) qui traverse le corps. La tension est cependant responsable de faire circuler ce courant. \\
+
+\vspace{3mm}
+
+\textbf{8. Exercices d'application} \\
+
+\textbf{Exercice 1 -- Conversions}
+
+Effectuer les conversions suivantes :
+\begin{enumerate}
+    \item $I = 0{,}350\,\text{A}$ \quad $= \ldots\ldots\,\text{mA}$
+    \item $I = 45\,\text{mA}$ \quad $= \ldots\ldots\,\text{A}$
+    \item $I = 1{,}2\,\text{A}$ \quad $= \ldots\ldots\,\text{mA}$
+    \item $I = 8\,\text{mA}$ \quad $= \ldots\ldots\,\mu\text{A}$
+\end{enumerate}
+
+\cadreblanc{25}
+
+\textbf{Exercice 2 -- Choix du calibre}
+
+Un ampèremètre dispose des calibres suivants : $10\,\text{A}$, $1\,\text{A}$, $200\,\text{mA}$, $20\,\text{mA}$. Quel calibre choisir pour mesurer les intensités suivantes ? Justifier.
+\begin{enumerate}
+    \item $I = 3{,}5\,\text{A}$
+    \item $I = 75\,\text{mA}$
+    \item $I = 0{,}008\,\text{A}$
+\end{enumerate}
+
+\cadreblanc{25}
+
+\textbf{Exercice 3 -- Circuit en série}
+
+Dans un circuit en série composé d'un générateur, d'une lampe $L_1$ et d'une lampe $L_2$, un ampèremètre placé après $L_1$ indique $I_1 = 240\,\text{mA}$.
+\begin{enumerate}
+    \item Quelle est l'intensité $I_2$ traversant la lampe $L_2$ ?
+    \item Quelle est l'intensité débitée par le générateur ?
+    \item Justifier ces réponses à l'aide de la propriété du circuit série.
+\end{enumerate}
+
+\cadreblanc{25}
+
+\textbf{Exercice 4 -- Loi des nœuds}
+
+Dans un circuit en dérivation, le circuit principal est parcouru par une intensité $I = 600\,\text{mA}$. La branche 1 est parcourue par un courant $I_1 = 250\,\text{mA}$.
+\begin{enumerate}
+    \item Calculer l'intensité $I_2$ dans la branche 2.
+    \item Si on ajoute une troisième branche parcourue par $I_3 = 100\,\text{mA}$, quelle serait la nouvelle intensité totale ?
+\end{enumerate}
+
+\cadreblanc{25}
+
+\end{document}

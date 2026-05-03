@@ -1,0 +1,93 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\DeclareMathOperator{\e}{e}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{multicol}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Terminale}
+\fancyfoot[C]{1}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\setlength{\columnseprule}{.25mm}
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\usepackage[tikz]{bclogo} 
+\usepackage{pgfplots,mathtools}
+
+\newcounter{numchap}%Création d'un compteur qui s'appelle numexos
+\setcounter{numchap}{0}%initialisation du compteur
+\newcommand{\chap}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{numchap}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textcolor{black}{Chapitre\,\thenumchap\,}\,#1%Met en noir Exercice et la valeur du compteur appelée par \thenumeexos
+}
+
+
+\newcommand{\chapitre}[1]
+{
+
+
+\hrule
+\vspace{5mm}
+\large{ \chap~:~~#1 }
+\vspace{5mm}
+\hrule
+
+\vfill 
+
+}
+
+
+
+\begin{document}
+\center \LARGE{ \textbf{PROGRESSION | TTRPM | SCIENCES | 2025 2026}}
+\\[0,5cm]
+
+\normalsize
+
+\hrule\
+
+\vspace{1cm}
+
+\begin{center}
+
+
+\chapitre{Redressement du courant alternatif}
+\chapitre{Prévoir une réaction d'oxydoréduction et protéger les métaux contre la corrosion}
+\chapitre{Caractériser la propagation d'un signal sonore}
+\chapitre{Évaluer la puissance consommée par un appareil électrique}
+\chapitre{Les moteurs électriques }
+\chapitre{Pression dans un fluide}
+\chapitre{Transmettre l'information}
+
+
+
+\end{center}
+
+\end{document}

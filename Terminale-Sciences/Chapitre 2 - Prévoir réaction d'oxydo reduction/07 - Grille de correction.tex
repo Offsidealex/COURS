@@ -1,0 +1,182 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage[landscape,left=1.2cm,right=1.2cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{multirow,tabularx,booktabs,array}
+\setlength{\extrarowheight}{0.4mm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{amsmath}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\usepackage{chemist}
+\chemsetup{modules=all}
+\usepackage{fancyhdr}
+\usepackage{colortbl}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot}
+\fancyhead[R]{Classe de Terminale}
+\fancyfoot[C]{}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.25}
+
+% ---- Couleurs (modèle Fourier) ----
+\definecolor{exoheader}{RGB}{30,90,160}
+\definecolor{exolight}{RGB}{220,235,255}
+\definecolor{totalrow}{RGB}{255,230,200}
+
+% ---- Macro en-tête d'exercice ----
+\newcommand{\exotitle}[2]{%
+  \noindent\colorbox{exoheader}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \textcolor{white}{\textbf{\large #1 \hfill #2}}%
+    }%
+  }%
+}
+
+\begin{document}
+
+% ---- Titre pleine largeur ----
+\begin{center}
+  {\LARGE\textbf{GRILLE DE CORRECTION}}\\[1mm]
+  {\large Évaluation -- Prévoir une réaction d'oxydo-réduction
+  \hspace{1cm} Terminale \hspace{1cm} \textbf{Total : /20 points}}
+\end{center}
+
+\vspace{3mm}
+
+% ================================================================
+%  DEUX COLONNES
+% ================================================================
+\noindent
+\begin{minipage}[t]{0.495\textwidth}
+
+% ---- EXERCICE 1 ----
+\exotitle{Exercice 1 : Cases à cocher}{/6 pts}
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} & \textbf{Score} \\
+  \hline
+  \multirow{5}{*}{\ding{202}}
+    & Oxydoréd. = échange de protons $\Rightarrow$ \textbf{FAUSSE} & 0,5 & \\
+    \cline{2-4}
+    & Oxydation = perte d'électrons $\Rightarrow$ \textbf{VRAIE} & 0,5 & \\
+    \cline{2-4}
+    & Réduction = gain d'électrons $\Rightarrow$ \textbf{VRAIE} & 0,5 & \\
+    \cline{2-4}
+    & Oxydant perd des électrons $\Rightarrow$ \textbf{FAUSSE} & 0,5 & \\
+    \cline{2-4}
+    & Métal cuivre est un réducteur $\Rightarrow$ \textbf{VRAIE} & 0,5 & \\
+  \hline
+  \multirow{4}{*}{\ding{203}}
+    & \ch{Cu\pch[2]} est l'oxydant le plus fort : \textbf{Oui} & 0,5 & \\
+    \cline{2-4}
+    & \ch{Zn\pch[2]} est l'oxydant le plus fort : \textbf{Non} & 0,5 & \\
+    \cline{2-4}
+    & Métal \ch{Cu} est le réducteur le plus fort : \textbf{Non} & 0,5 & \\
+    \cline{2-4}
+    & Métal \ch{Zn} est le réducteur le plus fort : \textbf{Oui} & 0,5 & \\
+  \hline
+  \multirow{3}{*}{\ding{204}}
+    & \ding{52}~\ch{Cu\pch[2] + 2 e\mch[] -> Cu} \quad (1 bonne case cochée) & 0,5 & \\
+    \cline{2-4}
+    & \ding{52}~\ch{Fe -> Fe\pch[2] + 2 e\mch[]} \quad (1 bonne case cochée) & 0,5 & \\
+    \cline{2-4}
+    & \ding{52}~\ch{Cu\pch[2] + Fe -> Cu + Fe\pch[2]} \quad (1 bonne case cochée) & 0,5 & \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{3}{|r|}{\textbf{Sous-total Exercice 1}} & \textbf{/6} \\
+  \hline
+\end{tabularx}
+
+\vspace{3mm}
+
+% ---- EXERCICE 2 ----
+\exotitle{Exercice 2 : QCM}{/4 pts}
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Q} & \textbf{Réponse attendue} & \textbf{Pts} & \textbf{Score} \\
+  \hline
+  \ding{202} & Oxydant : \textbf{gagne des électrons} (prop. C) & 0,5 & \\
+  \hline
+  \ding{203} & Pas de dépôt : \textbf{Ag dans \ch{Cu\pch[2]}} (image B) & 1,0 & \\
+  \hline
+  \ding{204} & Réduction : \textbf{un gain d'électrons} (prop. B) & 0,5 & \\
+  \hline
+  \ding{205} & \ch{Ag\pch[]} $\to$ \ch{Ag} : \textbf{il se réduit} (prop. C) & 0,5 & \\
+  \hline
+  \ding{206} & Réduction \ch{Cu\pch[2]} : \textbf{gagnent deux \ch{e\mch[]}} (prop. A) & 0,5 & \\
+  \hline
+  \ding{207} & \ch{Cr\pch[3]} plus oxydant : \textbf{\ch{Al + Cr\pch[3] -> Cr + Al\pch[3]}} (prop. C) & 0,5 & \\
+  \hline
+  \ding{208} & Équilibrage : \textbf{$\times$2 la 1\textsuperscript{re}, $\times$3 la 2\textsuperscript{e}, puis additionner} (prop. C) & 0,5 & \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{3}{|r|}{\textbf{Sous-total Exercice 2}} & \textbf{/4} \\
+  \hline
+\end{tabularx}
+
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.495\textwidth}
+
+% ---- EXERCICE 3 ----
+\exotitle{Exercice 3 : Béchers}{/10 pts}
+\vspace{1mm}
+
+\begin{tabularx}{\linewidth}{|c|X|c|c|}
+  \hline
+  \rowcolor{exolight}
+  \textbf{Exp.} & \textbf{Réponse attendue} & \textbf{Pts} & \textbf{Score} \\
+  \hline
+  \multirow{2}{*}{\ding{202}}
+    & La réaction \textbf{n'a pas lieu} (Non) & 0,5 & \\
+    \cline{2-4}
+    & Justification : \ch{Cu\pch[2]/Cu} moins oxydant que \ch{Ag\pch[]/Ag} & 0,5 & \\
+  \hline
+  \multirow{4}{*}{\ding{203}}
+    & La réaction \textbf{a lieu} (Oui) & 0,5 & \\
+    \cline{2-4}
+    & Demi-éq. réduction : \ch{Pt\pch[2] + 2 e\mch[] -> Pt} & 0,5 & \\
+    \cline{2-4}
+    & Demi-éq. oxydation : \ch{Zn -> Zn\pch[2] + 2 e\mch[]} & 0,5 & \\
+    \cline{2-4}
+    & Équation bilan : \ch{Pt\pch[2] + Zn -> Pt + Zn\pch[2]} & 1,5 & \\
+  \hline
+  \multirow{4}{*}{\ding{204}}
+    & La réaction \textbf{a lieu} (Oui) & 0,5 & \\
+    \cline{2-4}
+    & Demi-éq. réduction : \ch{Sn\pch[2] + 2 e\mch[] -> Sn} & 0,5 & \\
+    \cline{2-4}
+    & Demi-éq. oxydation : \ch{Al -> Al\pch[3] + 3 e\mch[]} & 0,5 & \\
+    \cline{2-4}
+    & Éq. bilan ($\times 3$ / $\times 2$) : $3\,\ch{Sn\pch[2]} + 2\,\ch{Al} \to 3\,\ch{Sn} + 2\,\ch{Al\pch[3]}$ & 1,5 & \\
+  \hline
+  \multirow{4}{*}{\ding{205}}
+    & La réaction \textbf{a lieu} (Oui) & 0,5 & \\
+    \cline{2-4}
+    & Demi-éq. réduction : \ch{Fe\pch[2] + 2 e\mch[] -> Fe} & 0,5 & \\
+    \cline{2-4}
+    & Demi-éq. oxydation : \ch{Mg -> Mg\pch[2] + 2 e\mch[]} & 0,5 & \\
+    \cline{2-4}
+    & Équation bilan : \ch{Fe\pch[2] + Mg -> Fe + Mg\pch[2]} & 1,5 & \\
+  \hline
+  \rowcolor{totalrow}
+  \multicolumn{3}{|r|}{\textbf{Sous-total Exercice 3}} & \textbf{/10} \\
+  \hline
+\end{tabularx}
+
+\end{minipage}
+
+\end{document}

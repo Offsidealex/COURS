@@ -1,0 +1,177 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\setlength{\parindent}{0pt}
+\usepackage{multicol}
+\setlength{\columnseprule}{1pt}
+\usepackage{tikz-osci}
+\usetikzlibrary{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de Terminale}
+\setcounter{page}{5}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\renewcommand{\arraystretch}{2}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\usepackage{array}
+\begin{document}
+\center \LARGE{Contrôle 1 - Lecture d'oscillogrammes}\\[0,3cm]
+\normalsize
+\hrule\vspace{2mm}
+\flushleft \textbf{NOM :\\[0.2cm]
+Prénom:\\[0,2cm]}
+\hrule\vspace{2mm}
+\vfill 
+\textbf{Consigne :} Lire sur l'oscillogramme les valeurs de U\textsubscript{max} et T, puis calculer les valeurs de U (arrondir à 0,1) et \textit{f} (arrondir à l'unité)
+\vfill
+
+% Oscillogramme 1 - 12V, T=0.02s, 4V/div, 5ms/div
+\begin{minipage}{0.45\textwidth}
+\centering
+\osci[%
+scale=0.75,
+second channel=0,
+screen offset one=0,
+time div=5,
+voltage div one=4,
+sample rate=200,
+xy mode=0,
+func one=12*sin(2*180/0.02*x),
+color one=003399,
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+\vspace{0.1cm}
+
+\centering
+\begin{tabular}{|m{3.2cm}|m{3.4cm}|}
+\hline
+$\mathrm{U}_{\text{max}} =$ & $\mathrm{T} =$ \\
+\hline
+$\mathrm{U} =$ & $\mathrm{f} =$ \\
+\hline
+\end{tabular}
+\end{minipage}
+\hfill
+% Oscillogramme 2 - 32V, T=0.008s, 10V/div, 4ms/div
+\begin{minipage}{0.45\textwidth}
+\centering
+\osci[%
+scale=0.75,
+second channel=0,
+screen offset one=0,
+time div=4,
+voltage div one=10,
+sample rate=200,
+xy mode=0,
+func one=32*sin(2*180/0.008*x),
+color one=CC3300,
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+\vspace{0.1cm}
+
+\begin{tabular}{|m{3.2cm}|m{3.4cm}|}
+\hline
+$\mathrm{U}_{\text{max}} =$ & $\mathrm{T} =$ \\
+\hline
+$\mathrm{U} =$ & $\mathrm{f} =$ \\
+\hline
+\end{tabular}
+\end{minipage}
+
+\vspace{1cm}
+
+% Oscillogramme 3 - 7.6V, T=0.055s, 2V/div, 10ms/div
+\begin{minipage}{0.45\textwidth}
+\centering
+\osci[%
+scale=0.75,
+second channel=0,
+screen offset one=0,
+time div=10,
+voltage div one=2,
+sample rate=200,
+xy mode=0,
+func one=7.6*sin(2*180/0.05*x),
+color one=009900,
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+\vspace{0.1cm}
+
+\begin{tabular}{|m{3.2cm}|m{3.4cm}|}
+\hline
+$\mathrm{U}_{\text{max}} =$ & $\mathrm{T} =$ \\
+\hline
+$\mathrm{U} =$ & $\mathrm{f} =$ \\
+\hline
+\end{tabular}
+\end{minipage}
+\hfill
+% Oscillogramme 4 - 14V, T=0.0048s, 5V/div, 2ms/div
+\begin{minipage}{0.45\textwidth}
+\centering
+\osci[%
+scale=0.75,
+second channel=0,
+screen offset one=0,
+time div=2,
+voltage div one=5,
+sample rate=200,
+xy mode=0,
+func one=14*sin(2*180/0.0048*x),
+color one=990099,
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+
+\vspace{0.1cm}
+
+\begin{tabular}{|m{3.2cm}|m{3.4cm}|}
+\hline
+$\mathrm{U}_{\text{max}} =$ & $\mathrm{T} =$ \\
+\hline
+$\mathrm{U} =$ & $\mathrm{f} =$ \\
+\hline
+\end{tabular}
+\end{minipage}
+
+\vfill 
+\end{document}

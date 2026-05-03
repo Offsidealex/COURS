@@ -1,0 +1,421 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{tikz-osci}
+\usetikzlibrary{babel}
+
+\geometry{a4paper, margin=2cm}
+
+\begin{document}
+
+% En-tête du contrôle
+\noindent
+\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Mercredi 20 octobre} & \textbf{Sciences -- Contrôle 1} & \textbf{Classe de TSN1} \\
+\hline
+\textbf{Nom :} & & \textbf{Note :} \\
+ & & \\
+\textbf{Prénom :} & & \\
+\hline
+\end{tabular}
+
+\vspace{1em}
+
+\section*{Exercice 1 :}
+Les oscillogrammes ci-dessous ont été obtenus avec le même balayage (5 ms/div) et la même sensibilité (2 V/div).
+
+\vspace{0.5em}
+
+\begin{center}
+\begin{minipage}{0.18\textwidth}\centering\textbf{oscillogramme n°1}\\[0.2cm]
+\osci[scale=0.25,second channel=0,screen offset one=0,time div=5,voltage div one=2,sample rate=200,xy mode=0,func one=4*sin(2*pi*50*x),color one=009900,graph back color=FFFFFF,info back color=D6D6D6,info text color=000000,main axis color=000000,grid color=CCCCCC]
+\end{minipage}
+\begin{minipage}{0.18\textwidth}\centering\textbf{oscillogramme n°2}\\[0.2cm]
+\osci[scale=0.25,second channel=0,screen offset one=0,time div=5,voltage div one=2,sample rate=200,xy mode=0,func one=5,color one=009900,graph back color=FFFFFF,info back color=D6D6D6,info text color=000000,main axis color=000000,grid color=CCCCCC]
+\end{minipage}
+\begin{minipage}{0.18\textwidth}\centering\textbf{oscillogramme n°3}\\[0.2cm]
+\osci[scale=0.25,second channel=0,screen offset one=0,time div=5,voltage div one=2,sample rate=200,xy mode=0,func one=6*sin(2*pi*50*x),color one=009900,graph back color=FFFFFF,info back color=D6D6D6,info text color=000000,main axis color=000000,grid color=CCCCCC]
+\end{minipage}
+\begin{minipage}{0.18\textwidth}\centering\textbf{oscillogramme n°4}\\[0.2cm]
+\osci[scale=0.25,second channel=0,screen offset one=0,time div=5,voltage div one=2,sample rate=200,xy mode=0,func one=6*abs(sin(2*pi*50*x)),color one=009900,graph back color=FFFFFF,info back color=D6D6D6,info text color=000000,main axis color=000000,grid color=CCCCCC]
+\end{minipage}
+\begin{minipage}{0.18\textwidth}\centering\textbf{oscillogramme n°5}\\[0.2cm]
+\osci[scale=0.25,second channel=0,screen offset one=0,time div=5,voltage div one=2,sample rate=200,xy mode=0,func one=(sin(2*pi*250*x)>0)*6,color one=009900,graph back color=FFFFFF,info back color=D6D6D6,info text color=000000,main axis color=000000,grid color=CCCCCC]
+\end{minipage}
+\end{center}
+
+\vspace{1em}
+
+\begin{enumerate}
+\item Quelles sont les tensions qui ont la même période ? Calculer alors cette période et la fréquence correspondante.
+
+\vspace{3cm}
+
+\item Quels sont les oscillogrammes qui ont la même tension maximale ? Calculer alors sa valeur.
+
+\vspace{3cm}
+
+\item Pour l'oscillogramme numéro 3, calculer la tension maximale, puis la tension efficace.
+
+\vspace{3cm}
+
+\end{enumerate}
+
+\begin{minipage}[t]{0.48\textwidth}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item Si pour l'oscillogramme numéro 3 on avait réglé la sensibilité à 1 V/div, quel aurait été son aspect ?
+
+\vspace{0.3cm}
+
+\begin{center}
+% Grille vide pour la réponse de l'élève
+\osci[%
+scale=0.75,
+second channel=0,
+screen offset one=0,
+time div=5,
+voltage div one=1,
+sample rate=200,
+xy mode=0,
+func one=0,
+color one=009900,
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+\end{center}
+\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Si pour l'oscillogramme n°3 on avait réglé le balayage à 10 ms/div (en remettant la sensibilité à 2 V/div), quel aurait été son aspect ?
+
+\vspace{0.3cm}
+
+\begin{center}
+% Grille vide pour la réponse de l'élève
+\osci[%
+scale=0.75,
+second channel=0,
+screen offset one=0,
+time div=10,
+voltage div one=2,
+sample rate=200,
+xy mode=0,
+func one=0,
+color one=009900,
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+\end{center}
+\end{enumerate}
+\end{minipage}
+
+\newpage
+
+\section*{Exercice 2 :} 
+QCM (cocher la ou les bonnes réponses)
+
+\vspace{0.5em}
+
+\small
+\begin{enumerate}
+\item Le redressement à l'aide d'un pont de diodes permet:
+\begin{itemize}[label=$\square$]
+\item de fournir une tension continue à partir d'une tension alternative
+\item d'obtenir un interrupteur dans le circuit
+\item de fournir une tension alternative à partir d'une tension continue
+\end{itemize}
+
+\item En observant la diode, le courant circule de :
+\begin{itemize}[label=$\square$]
+\item la droite vers la gauche
+\item la gauche vers la droite
+\item dans les deux sens
+\end{itemize}
+
+\item Une diode est un composant:
+\begin{itemize}[label=$\square$]
+\item polarisé
+\item linéaire
+\item possédant trois bornes
+\end{itemize}
+
+\item Le chargeur délivre:
+\begin{itemize}[label=$\square$]
+\item du courant continu
+\item du courant alternatif
+\item de l'énergie chimique
+\end{itemize}
+
+\item Il est possible de recharger:
+\begin{itemize}[label=$\square$]
+\item uniquement des accumulateurs
+\item les accumulateurs et les piles
+\item uniquement les piles
+\end{itemize}
+
+\item Un accumulateur délivre un courant :
+\begin{itemize}[label=$\square$]
+\item alternatif
+\item continu
+\item redressé
+\end{itemize}
+
+\item Une diode :
+\begin{itemize}[label=$\square$]
+\item autorise le passage du courant dans les deux sens
+\item autorise le passage du courant dans un seul sens
+\item n'autorise pas le passage du courant
+\end{itemize}
+
+\item Une tension redressée est une tension :
+\begin{itemize}[label=$\square$]
+\item qui garde la même valeur
+\item qui garde le même signe
+\item toujours positive
+\end{itemize}
+
+\item Lorsque l'on réalise le montage correspondant au schéma ci-dessus et que l'on ferme l'interrupteur :
+\begin{itemize}[label=$\square$]
+\item Le courant ne circule pas dans le circuit
+\item La lampe ne s'allume pas dans le circuit
+\item La lampe s'allume dans le circuit
+\end{itemize}
+
+\item Une tension redressée par un pont de diode correspond :
+
+\begin{minipage}{0.3\textwidth}
+$\square$ 
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+\draw[domain=0:4*pi,smooth,variable=\x,blue,thick] plot ({\x},{sin(\x r)});
+\draw[->] (0,-1.2) -- (0,1.5);
+\draw[->] (0,0) -- (13,0);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+$\square$
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+\draw[domain=0:4*pi,smooth,variable=\x,blue,thick] plot ({\x},{abs(sin(\x r))});
+\draw[->] (0,-0.2) -- (0,1.5);
+\draw[->] (0,0) -- (13,0);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+$\square$
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+\draw[blue,thick] (0,1) -- (12.5,1);
+\draw[->] (0,-0.2) -- (0,1.5);
+\draw[->] (0,0) -- (13,0);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+\item La tension obtenue après un chargeur est :
+
+\begin{minipage}{0.3\textwidth}
+$\square$ 
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+\draw[domain=0:4*pi,smooth,variable=\x,blue,thick] plot ({\x},{sin(\x r)});
+\draw[->] (0,-1.2) -- (0,1.5);
+\draw[->] (0,0) -- (13,0);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+$\square$
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+\draw[domain=0:4*pi,smooth,variable=\x,blue,thick] plot ({\x},{abs(sin(\x r))});
+\draw[->] (0,-0.2) -- (0,1.5);
+\draw[->] (0,0) -- (13,0);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\begin{minipage}{0.3\textwidth}
+$\square$
+\begin{center}
+\begin{tikzpicture}[scale=0.4]
+\draw[blue,thick] (0,1) -- (12.5,1);
+\draw[->] (0,-0.2) -- (0,1.5);
+\draw[->] (0,0) -- (13,0);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+
+\end{enumerate}
+\normalsize
+
+\vspace{1em}
+
+\section*{Exercice 3 :} 
+Pour chacun des schémas suivants, indiquer les lampes qui s'allument.
+
+\vspace{0.5em}
+
+\begin{center}
+\textit{[Insérer les 3 schémas de circuits avec lampes et diodes]}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{Schéma 1 :}
+
+La lampe L$_1$ est \dotfill
+
+La lampe L$_2$ est \dotfill
+
+\vspace{1cm}
+
+\textbf{Schéma 2 :}
+
+La lampe L$_1$ est \dotfill
+
+La lampe L$_2$ est \dotfill
+
+La lampe L$_3$ est \dotfill
+
+\vspace{1cm}
+
+\textbf{Schéma 3 :}
+
+La lampe L$_1$ est \dotfill
+
+La lampe L$_2$ est \dotfill
+
+La lampe L$_3$ est \dotfill
+
+\newpage
+
+\section*{Exercice 4 :}
+Le schéma suivant représente une partie d'une alimentation d'antenne parabolique de télévision.
+
+\vspace{0.5cm}
+
+\begin{center}
+\textit{[Insérer le schéma du circuit avec pont de diodes, condensateur C, résistance R et générateur G]}
+\end{center}
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}\centering\textbf{Oscillogramme 1}\\[0.2cm]
+\osci[scale=0.7,second channel=0,screen offset one=0,time div=5,voltage div one=2,sample rate=200,xy mode=0,func one=15*sin(2*pi*50*x),color one=009900,graph back color=FFFFFF,info back color=D6D6D6,info text color=000000,main axis color=000000,grid color=CCCCCC]
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}\centering\textbf{Oscillogramme 2}\\[0.2cm]
+\osci[scale=0.7,second channel=0,screen offset one=0,time div=5,voltage div one=2,sample rate=200,xy mode=0,func one=15*abs(sin(2*pi*50*x)),color one=009900,graph back color=FFFFFF,info back color=D6D6D6,info text color=000000,main axis color=000000,grid color=CCCCCC]
+\end{minipage}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{Oscillogramme 3} (après fermeture de K) :
+
+\begin{center}
+% Oscillogramme 3 : UR lissée par le condensateur
+\osci[%
+scale=0.8,
+second channel=0,
+screen offset one=0,
+time div=5,
+voltage div one=2,
+sample rate=200,
+xy mode=0,
+func one=13.5+0.5*sin(2*pi*100*x),
+color one=009900,
+graph back color=FFFFFF,
+info back color=D6D6D6,
+info text color=000000,
+main axis color=000000,
+grid color=CCCCCC
+]
+\end{center}
+
+\vspace{1em}
+
+\begin{enumerate}
+\item L'interrupteur K étant ouvert. À l'aide d'un oscilloscope, on obtient les oscillogrammes représentés ci-dessus :
+\begin{itemize}[label=--]
+\item oscillogramme 1 : tension U$_G$ délivrée par le générateur
+\item oscillogramme 2 : tension U$_R$ aux bornes de la résistance R.
+\end{itemize}
+
+\begin{enumerate}
+\item Quel est le rôle du pont de diodes, appelé "Pont de Graëtz" ?
+
+\dotfill
+
+\dotfill
+
+\item À l'aide de l'oscillogramme 1, \textbf{déterminer} la période, la fréquence puis la valeur maximale U$_{Gmax}$ de la tension délivrée par le générateur.
+
+\dotfill
+
+\dotfill
+
+\dotfill
+\end{enumerate}
+
+\item A l'aide de l'oscillogramme 2,
+
+\begin{enumerate}
+\item \textbf{Déterminer} la période, la fréquence puis la valeur maximale U$_{Rmax}$ de la tension visualisée aux bornes de la résistance.
+
+\dotfill
+
+\dotfill
+
+\dotfill
+
+\item \textbf{Entourer} quelles sont les deux valeurs qui ne peuvent pas être lues sur le voltmètre (en dérivation par rapport à la résistance) parmi les trois valeurs suivantes : 0 V ; 15 V ; 10,6 V.
+\end{enumerate}
+
+\item On ferme l'interrupteur K.
+
+À l'aide de l'oscilloscope, on obtient l'oscillogramme 3, représentant la nouvelle tension U$_R$ aux bornes de la résistance.
+
+\begin{enumerate}
+\item Quel est le rôle du condensateur ?
+
+\dotfill
+
+\dotfill
+
+\item Le voltmètre indique une tension $U_R = 13{,}5$ V lorsque la résistance est $R = 10\,\Omega$. \textbf{Calculer} l'intensité du courant traversant la résistance R.
+
+\vspace{3cm}
+
+\end{enumerate}
+
+\item Flécher le sens du courant sur le schéma du montage lors des deux alternances, un schéma pour chaque alternance.
+
+\vspace{0.5cm}
+
+\begin{center}
+\textit{[Insérer les deux schémas du pont de diodes avec flèches indiquant le sens du courant]}
+\end{center}
+
+\vspace{3cm}
+
+\end{enumerate}
+
+\end{document}

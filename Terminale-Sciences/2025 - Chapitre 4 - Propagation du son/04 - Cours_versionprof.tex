@@ -1,0 +1,130 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+
+
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de TRPMICRO}
+\setcounter{page}{2}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\setlength{\columnseprule}{.25mm}
+
+
+
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+
+\frenchbsetup{StandardLists=true}
+\begin{document}
+
+
+
+\begin{center}
+\LARGE{COURS}
+\end{center}
+
+
+
+
+\hrule
+
+\vspace{1cm}
+
+
+\fbox{\textbf{Propagation d'un son}}
+
+\vspace{2mm}
+\begin{itemize}
+    \item \textcolor{blue}{Le son est une onde qui a pour origine un émetteur. Il se propage à travers un milieu matériel (gaz, liquide ou solide) avant d'atteindre un récepteur. }
+    \item \textcolor{blue}{Sa vitesse de déplacement $C_{son}$ appelée aussi célérité, dépend du milieu. Elle est plus élevée dans les liquides ou les métaux que dans l'air, par exemple : 343 m/s (air à $20^\circ C$), 1 500 m/s (eau) et 5 000 m/s (acier)}
+\end{itemize}
+
+\vfill
+\fbox{\textbf{Caractéristiques d'une onde sonore}}
+\begin{multicols}{2}
+\textbf{Période}
+
+\color{blue}
+
+La période $T$ (en s) est déterminée : 
+\begin{itemize}
+    \item Expérimentalement : avec un oscilloscope ou par ExAO
+    \item Par le calcul : connaissant la fréquence $f$ (en Hz) du son, on a \fbox{$T=\dfrac{1}{f}$}
+\end{itemize}
+~~\\
+~~\\
+~~
+
+
+
+
+\textcolor{black}{\textbf{Longueur d'onde}}
+
+La longueur d'onde $\lambda$ (en mm) est déterminée : 
+\begin{itemize}
+  \item Expérimentalement : en déplaçant un microphone sur une distance permettant de retrouver le même état vibratoire (signaux en phase) 
+  \item Par le calcul ; connaissant la vitesse du son $c_son$ (en m/s) et le temps $T$ (en s) pour parcourir $\lambda$ soit \fbox{$\lambda=C_{son} \times T$}
+\end{itemize}
+
+\end{multicols}
+\vfill
+\fbox{\textbf{Pression acoustique et intensité acoustique}}
+\begin{itemize}
+\item Une onde sonore transporte de l'énergie, elle est caractérisée par l'intensité acoustique $I$ en W/$m^2$ qui représente la puissance moyenne transportée par l'onde par unité de surface. 
+\item On mesure le niveau d'intensité acoustique $L$ en décibels (dB) avec un sonomètre, il est lié à l'intensité par la relation : \fbox{$L = 10 log \left(\dfrac{I}{I_0}\right)$} où $I_0$ est le seuil d'audibilité avec $I_0=10^{-12}~ W/m^2$.
+\item \textcolor{blue}{Une onde s'atténue en se propageant, ainsi le niveau d'intensité diminue avec la distance : de 6 dB lorsque la distance double.}
+
+\end{itemize}
+
+\vfill
+
+\fbox{\textbf{Caractéristique de l'oreille humaine}}\\
+\color{blue}
+\begin{itemize}
+    \item L'oreille humaine possède une membrane (tympan) qui permet de détecter les sons dont la fréquence se situe entre 20 Hz et 20 000 Hz.
+    \item Une échelle de niveau d'intensité acoustique permet d'évaluer la dangerosité d'un son pour l'oreille humaine. Au delà de 85 dB le niveau sonore est dangereux pour notre oreille, il peut avoir un effet néfaste et irréversible sur l'audition. 
+\end{itemize}
+\vfill
+\end{document}

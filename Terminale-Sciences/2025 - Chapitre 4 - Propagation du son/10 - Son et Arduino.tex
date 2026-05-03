@@ -1,0 +1,369 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[francais]{babel}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{sistyle} % incompatible avec siunitx (chargé par chemmacros)
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+
+\usepackage{setspace}
+\singlespacing
+
+\usepackage{pstricks}
+\usepackage{xkeyval}
+\usepackage{pst-labo}
+\usepackage[tikz]{bclogo} 
+\usepackage{multicol}
+
+\usepackage{tipfr}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de TSN1}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{Année 2025 2026}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\setlength{\columnseprule}{.25mm}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage{chemmacros}
+\chemsetup{modules=all}
+\usepackage{array,multirow,makecell}
+\renewcommand{\arraystretch}{3}
+
+\setcellgapes{1pt}
+\makegapedcells
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\appel}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\frenchbsetup{StandardLists=true}
+
+%%%%%%%%%%%%%%%%%%%Règle%%%%%%%%%%%%%
+
+%******************************* Paquetages ******************************
+
+%Conventions fran\c{c}aises
+% babel, inputenc et fontenc déjà chargés plus haut
+%\usepackage[francais]{babel}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{listing}
+%Pour la g\'eom\'etrie.
+\usepackage{pstricks-add}
+%pour les calculs
+\usepackage{fp}
+
+\author{Fran\c cois Boerkmann \\francois.boerkmann@ac-poitiers.fr}
+\title{R\'ealisation d'une r\`egle en Pstricks}
+
+\newcommand{\regle}[1]{
+\FPset{\longueur}{#1}
+\FPclip{\longueur}{\longueur}
+\FPset{\longregle}{#1}
+\FPadd{\longregle}{\longregle}{1}
+\FPclip{\longregle}{\longregle}
+\psframe(-1,2)(\longregle,0.97)
+\FPadd{\a}{\longregle}{0.5}
+\FPadd{\b}{\longregle}{0.25}
+\FPclip{\a}{\a}
+\FPclip{\b}{\b}
+%les petits graduations
+\FPmul{\nbpetitesgrad}{\longueur}{10}
+\FPadd{\nbpetitesgrad}{\nbpetitesgrad}{1}
+\FPclip{\nbpetitesgrad}{\nbpetitesgrad}
+  \multido{\r=0+0.1}{\nbpetitesgrad}
+  {
+  \psline(\r,2)(\r,1.75)
+  }
+%les moyennes graduations
+\FPmul{\nbmoygrad}{\longueur}{2}
+\FPadd{\nbmoygrad}{\nbmoygrad}{1}
+\FPtrunc{\nbmoygrad}{\nbmoygrad}{0}
+\FPclip{\nbmoygrad}{\nbmoygrad}
+  \multido{\r=0+0.5}{\nbmoygrad}
+  {
+  \psline(\r,2)(\r,1.55)
+  }
+%les grandes graduations
+\FPset{\nbgrdgrad}{#1}
+\FPadd{\nbgrdgrad}{\nbgrdgrad}{1}
+\FPtrunc{\nbgrdgrad}{\nbgrdgrad}{0}
+\FPclip{\nbgrdgrad}{\nbgrdgrad}
+\multido{\r=0+1}{\nbgrdgrad}
+  {
+  \psline(\r,2)(\r,1.5)
+  }
+%la num\'erotation
+\FPset{\nombre}{0}
+\multido{\r=0+1}{\nbgrdgrad}
+{\FPclip{\nombre}{\nombre}
+\rput(\r,1.25){\nombre}
+\FPadd{\nombre}{\nombre}{1}
+}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\begin{document}
+
+
+
+\center \LARGE{TP - Mesurer la vitesse d'une onde sonore grâce à un module Arduino}
+\\[0,3cm]
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+\flushleft \textbf{NOM :\\
+Prénom:\\[0,2cm]
+}
+\hrule\
+\\[0,2cm]
+
+Dans ce TP, nous allons mesurer la vitesse d'une onde sonore, ici des ultrasons. Le boîtier que vous aller utiliser est composé d'une carte Arduino, d'un émetteur récepteur d'ultrasons ainsi que d'un écran LED. Celui ci vous donnera,en microsecondes, le temps mis par l'onde sonore pour arriver à un obstacle puis revenir au récepteur. \\[4mm] 
+
+
+\ding{202} Spectre des ondes sonores : \\[4mm]
+Compléter le schéma ci-dessous avec les mots Infrason / Son audible / Ultrason
+
+
+\begin{center}
+\begin{tabular}{L{4cm}|C{5cm}|L{4cm}}
+0 Hz & 20 Hz ~~~~~~~~~~~~~~~~~~~~~~~~ 20 000 Hz & \\
+\hline  .......................................  & ..........................................  & ..........................................  \\
+\end{tabular}
+\end{center}
+
+\vfill 
+
+
+\textbf{Exercice - QCM} -
+Cocher la ou les bonnes réponses\\
+\begin{multicols}{3}
+\ding{202} La fréquence du son le plus grave est  : 
+\begin{itemize}[label=$\square$]
+	\item 4 000 Hz
+	\item 1 500 Hz
+	\item 13 0000 Hz
+\end{itemize}
+
+\vspace{2mm}
+
+\ding{203} Le niveau d'intensité acoustique se mesure avec  : 
+\begin{itemize}[label=$\square$]
+	\item un micromètre
+	\item un décibelomètre
+	\item un sonomètre
+\end{itemize}
+
+\vspace{2mm}
+
+\ding{204} Un son de 90 dB est : 
+\begin{itemize}[label=$\square$]
+	\item reposant
+	\item fatiguant
+	\item douloureux
+\end{itemize}
+
+\vspace{5mm}
+
+
+\ding{205} L'unité de fréquence d'un son est  : 
+\begin{itemize}[label=$\square$]
+	\item le décibel
+	\item le hertz
+	\item le farad 
+\end{itemize}
+
+
+\ding{206} Un sonomètre permet de  : 
+\begin{itemize}[label=$\square$]
+	\item visualiser un son
+	\item mesurer $L$ en dB
+	\item mesurer le niveau d'intensité sonore
+\end{itemize}
+
+\ding{207} On effectue une mesure de l'intensité sonore à 1m d'un haut parleur, $L = 90db$, si on se situe à 8m  : 
+\begin{itemize}[label=$\square$]
+	\item $L = 90 db$
+	\item $L = 78 db$
+	\item $L = 72 db$
+\end{itemize}
+
+\columnbreak
+
+\ding{208} Une onde sonore de 4 000 Hz, possède une période T égale à  : 
+\begin{itemize}[label=$\square$]
+	\item $2,5 \times 10^{-4} s $
+	\item $2,5 s$
+	\item $0,25 ms$
+\end{itemize}
+
+\ding{209} Le son est plus rapide : 
+\begin{itemize}[label=$\square$]
+	\item dans l'air
+	\item dans l'acier
+	\item dans l'eau
+\end{itemize}
+
+\ding{210}  Un son possédant une période de $20 \mu s$ est : 
+\begin{itemize}[label=$\square$]
+	\item un ultrason
+	\item un infrason
+	\item un son audible 
+\end{itemize}
+
+\end{multicols}
+
+\vfill 
+
+\newpage 
+
+
+\ding{203} Montage : Réaliser le montage suivant \\
+\vspace{1cm}
+\psframe(0,0)(2,-1.2)
+\psframe(12,0)(12.1,-1.2)
+
+\begin{pspicture}(-2,3)(8,3)
+ \regle{13.3}
+\end{pspicture}
+
+\rput(1,1.2){Boîtier}
+\rput(12.1,1.2){Écran}
+
+\vspace{2cm}
+
+\ding{204} Mesures :
+Compléter le tableau suivant : 
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{|L{4cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|}
+\hline
+Temps ($\mu$s) & & & & & & & & & \\
+\hline
+Distance (cm) & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90\\
+
+\hline
+
+\end{tabular}
+\end{center}
+
+\ding{205} Exploitation : \\
+\Calculatrice* 
+\begin{minipage}{16cm}{
+~~Nous allons utiliser la calculatrice et la méthode vue en cours de mathématiques pour afficher le nuage de points puis tracer la droite de régression. \\
+\vspace{5mm}
+}
+
+\end{minipage}
+
+
+    
+\begin{multicols}{2}
+\begin{enumerate}
+    \item Commençons par effacer les listes en mémoire. \\
+    
+\begin{itemize}
+\item pour accéder au menu :\\ \hspace{11pt}\Touche[style=second,  raise=-0.5ex]
+    \Touche[style=operation, principal=+, second=mém,alpha=", raise=-0.5ex]
+\item effacer toutes les listes :            \hspace{-25pt}
+    \raisebox{-3pt}
+    {\Menu[size=10pt, select=true, text={$\blacktriangleright$EffToutListes}]{4 :}}
+
+\item ne pas oublier de valider : \Touche[style=enter,fontsize=7pt, 
+principal=entrer, second=préc, 
+alpha=résol, position=0.95, fontsize=7pt, raise=-1.5ex].
+
+\end{itemize}
+
+
+
+\item Remplissons les liste L1 et L2.\\
+\begin{itemize}
+    \vspace{0cm}
+    \item appuyer sur \Touche[principal=stat, raise=-0.7ex]
+    \item sélectionner la fonction 
+    \hspace{-15pt}
+    \raisebox{-3pt}
+    {\Menu[size=10pt, select=true, text={$\blacktriangleright$Edit}]{1 :}}
+    \item entrer les valeurs de la distance dans L2
+    \item entrer les valeurs du temps dans L1
+\end{itemize}
+
+\item Représentons le nuage de points : 
+\begin{itemize}
+    \item sélectionner \Touche[style=second,  raise=-0.5ex]
+    \Touche[style=graph,principal=$f(x)$, second={gr.stats}, alpha=f1, position=0.95, raise=-1.7ex]
+
+    \item sélectionner :            \hspace{-15pt}
+    \raisebox{-3pt}
+    {\Menu[size=10pt, select=true, text={$\blacktriangleright$Graph1}]{1 :}}
+    \item appuyer sur  \Touche[style=graph,principal=zoom, second={format}, alpha=f3, position=0.95, raise=-2ex]
+    \item puis choisir \hspace{-15pt}
+    \raisebox{-3pt}
+    {\Menu[size=10pt, select=true, text={$\blacktriangleright$Zoomstat}]{9 :}}
+\end{itemize}
+
+\item Obtenons la droite d'ajustement linéaire 
+\begin{itemize}
+    \item appuyer sur \Touche[principal=stat, raise=-0.7ex]
+    \item puis choisir : \hspace{-28pt}
+    \raisebox{-6pt}
+    {\Menu[size=10pt, select=true, text={CALC}]{}}
+    \item puis : \raisebox{-3pt}
+    {\Menu[size=10pt, select=true, text={$\blacktriangleright$Reglin(ax+b)}]{4 :}}
+\end{itemize}
+
+
+\end{enumerate}
+\end{multicols}
+\vfill 
+
+\ding{206} Noter l'équation de la droite d'ajustement. \dotfill 
+
+\vfill 
+
+\ding{207} Le coefficient directeur de la droite correspond à la vitesse du son dans l'air. Convertir votre mesure en m/s. \\
+\cadreblanc{10}
+\vfill 
+
+
+
+
+
+
+\end{document}
