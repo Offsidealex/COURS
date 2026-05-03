@@ -179,20 +179,20 @@ Cocher la ou les bonnes réponses\\
 \vspace{5mm}
 \begin{center}
 \begin{tikzpicture}[x=1cm, y=1cm]
-  % Boîtier Arduino (émetteur/récepteur ultrasons)
-  \draw[thick] (0,0) rectangle (2,-1.2);
-  \node[align=center] at (1,-0.6) {\small Boîtier};
   % Règle graduée de 0 à 13 cm
-  \draw (0,0) -- (14.5,0);
+  \draw (-0.5,0) -- (14,0);
   \foreach \x in {0,1,...,13}{
     \draw (\x,0) -- (\x,0.55);
     \node[above, font=\scriptsize] at (\x,0.55) {\x};
   }
   \foreach \i in {1,...,129}{\draw ({0.1*\i},0) -- ({0.1*\i},0.2);}
   \foreach \i in {1,3,...,25}{\draw ({0.5*\i},0) -- ({0.5*\i},0.38);}
-  % Écran LED (obstacle)
-  \draw[thick] (12,0) rectangle (12.3,-1.2);
-  \node[align=center] at (13.2,-0.6) {\small Écran};
+  % Boîtier Arduino (émetteur/récepteur ultrasons)
+  \draw[thick] (0,0) rectangle (2,-1.2);
+  \node[above, font=\small] at (1,0) {Boîtier};
+  % Écran (obstacle — ligne fine)
+  \draw[line width=2pt] (12,0) -- (12,-1.2);
+  \node[right, font=\small] at (12.1,0) {Écran};
 \end{tikzpicture}
 \end{center}
 \vspace{3mm}
