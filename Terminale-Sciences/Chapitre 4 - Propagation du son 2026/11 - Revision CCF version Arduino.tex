@@ -1,0 +1,315 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsfonts}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fouriernc}
+\usepackage{graphicx}
+\usepackage{setspace}
+\singlespacing
+\usepackage[tikz]{bclogo}
+\usetikzlibrary{babel}
+\usepackage{multicol}
+
+\usepackage{tipfr}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Lycée Denis Diderot }
+\fancyhead[R]{Classe de TSN1}
+\setcounter{page}{1}\fancyfoot[C]{page \thepage}
+\fancyfoot[R]{\today}
+\fancyfoot[L]{Alexis RUIZ}
+\usepackage{multirow,tabularx,booktabs}
+\newcommand{\cadreblanc}[1]{%
+\medskip\framebox[\linewidth][c]{%
+\rule{0mm}{#1mm}}\par
+\medskip}
+\setlength{\columnseprule}{.25mm}
+
+\usepackage{awesomebox}
+\setlength{\aweboxvskip}{0mm}
+\usepackage{pifont}
+\usepackage[modules=all]{chemmacros}
+\usepackage{array,multirow,makecell}
+\renewcommand{\arraystretch}{3}
+
+\setcellgapes{1pt}
+\makegapedcells
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+\newcommand*\acocher{\quitvmode{\fboxsep0pt \fboxrule0.8pt \fbox{\vrule height1.8ex depth.1ex width0pt \vrule height0pt depth0pt width1.9ex }}}
+
+\newcommand{\defproblem}{\awesomebox[black]{2pt}{\rotatebox{90}{\large{\textbf{Problématique}}}}{black}}
+\newcommand{\defconclusion}{\awesomebox[black]{2pt}{\rotatebox{90}{\Large{\textbf{Conclusion}}}}{black}}
+\newcommand{\appel}{\awesomebox[black]{2pt}{\includegraphics[scale=0.5]{images/appel exam.png}}{black}}
+
+
+
+
+
+\begin{document}
+
+
+
+\center \LARGE{TP - Mesurer la vitesse d'une onde sonore grâce à un module Arduino}
+\\[0,3cm]
+
+\normalsize
+
+\hrule\
+\\[0,2cm]
+
+\flushleft \textbf{NOM :\\
+Prénom:\\[0,2cm]
+}
+\hrule\
+\\[0,2cm]
+
+Dans ce TP, nous allons mesurer la vitesse d'une onde sonore, ici des ultrasons. Le boîtier que vous aller utiliser est composé d'une carte Arduino, d'un émetteur récepteur d'ultrasons ainsi que d'un écran LED. Celui ci vous donnera,en microsecondes, le temps mis par l'onde sonore pour arriver à un obstacle puis revenir au récepteur. \\[4mm] 
+
+
+\ding{202} Spectre des ondes sonores : \\[4mm]
+Compléter le schéma ci-dessous avec les mots Infrason / Son audible / Ultrason
+
+
+\begin{center}
+\begin{tabular}{L{4cm}|C{5cm}|L{4cm}}
+0 Hz & 20 Hz ~~~~~~~~~~~~~~~~~~~~~~~~ 20 000 Hz & \\
+\hline  .......................................  & ..........................................  & ..........................................  \\
+\end{tabular}
+\end{center}
+
+\vfill 
+
+
+\textbf{Exercice - QCM} -
+Cocher la ou les bonnes réponses\\
+\begin{multicols}{3}
+\ding{202} La fréquence du son le plus grave est  : 
+\begin{itemize}[label=$\square$]
+	\item 4 000 Hz
+	\item 1 500 Hz
+	\item 13 0000 Hz
+\end{itemize}
+
+\vspace{2mm}
+
+\ding{203} Le niveau d'intensité acoustique se mesure avec  : 
+\begin{itemize}[label=$\square$]
+	\item un micromètre
+	\item un décibelomètre
+	\item un sonomètre
+\end{itemize}
+
+\vspace{2mm}
+
+\ding{204} Un son de 90 dB est : 
+\begin{itemize}[label=$\square$]
+	\item reposant
+	\item fatiguant
+	\item douloureux
+\end{itemize}
+
+\vspace{5mm}
+
+
+\ding{205} L'unité de fréquence d'un son est  : 
+\begin{itemize}[label=$\square$]
+	\item le décibel
+	\item le hertz
+	\item le farad 
+\end{itemize}
+
+
+\ding{206} Un sonomètre permet de  : 
+\begin{itemize}[label=$\square$]
+	\item visualiser un son
+	\item mesurer $L$ en dB
+	\item mesurer le niveau d'intensité sonore
+\end{itemize}
+
+\ding{207} On effectue une mesure de l'intensité sonore à 1m d'un haut parleur, $L = 90db$, si on se situe à 8m  : 
+\begin{itemize}[label=$\square$]
+	\item $L = 90 db$
+	\item $L = 78 db$
+	\item $L = 72 db$
+\end{itemize}
+
+\columnbreak
+
+\ding{208} Une onde sonore de 4 000 Hz, possède une période T égale à  : 
+\begin{itemize}[label=$\square$]
+	\item $2,5 \times 10^{-4} s $
+	\item $2,5 s$
+	\item $0,25 ms$
+\end{itemize}
+
+\ding{209} Le son est plus rapide : 
+\begin{itemize}[label=$\square$]
+	\item dans l'air
+	\item dans l'acier
+	\item dans l'eau
+\end{itemize}
+
+\ding{210}  Un son possédant une période de $20 \mu s$ est : 
+\begin{itemize}[label=$\square$]
+	\item un ultrason
+	\item un infrason
+	\item un son audible 
+\end{itemize}
+
+\end{multicols}
+
+\vfill 
+
+\newpage 
+
+
+\ding{203} Montage : Réaliser le montage suivant \\
+\vspace{5mm}
+\begin{center}
+\begin{tikzpicture}[x=1cm, y=1cm]
+  % Boîtier Arduino (émetteur/récepteur ultrasons)
+  \draw[thick] (0,0) rectangle (2,-1.2);
+  \node[align=center] at (1,-0.6) {\small Boîtier};
+  % Règle graduée de 0 à 13 cm
+  \draw (0,0) -- (14.5,0);
+  \foreach \x in {0,1,...,13}{
+    \draw (\x,0) -- (\x,0.55);
+    \node[above, font=\scriptsize] at (\x,0.55) {\x};
+  }
+  \foreach \i in {1,...,129}{\draw ({0.1*\i},0) -- ({0.1*\i},0.2);}
+  \foreach \i in {1,3,...,25}{\draw ({0.5*\i},0) -- ({0.5*\i},0.38);}
+  % Écran LED (obstacle)
+  \draw[thick] (12,0) rectangle (12.3,-1.2);
+  \node[align=center] at (13.2,-0.6) {\small Écran};
+\end{tikzpicture}
+\end{center}
+\vspace{3mm}
+
+\vspace{2cm}
+
+\ding{204} Mesures :
+Compléter le tableau suivant : 
+\renewcommand{\arraystretch}{1.8}
+\begin{center}
+\begin{tabular}{|L{4cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|}
+\hline
+Temps ($\mu$s) & & & & & & & & & \\
+\hline
+Distance (cm) & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90\\
+
+\hline
+
+\end{tabular}
+\end{center}
+\ding{205} Exploitation : \\[3mm]
+
+\textbf{Tracé du graphique :}\\[2mm]
+Sur le repère ci-dessous, placer les points expérimentaux en prenant :
+\begin{itemize}
+  \item en abscisse : le temps $t$ (en $\mu$s)
+  \item en ordonnée : la distance $d$ (en cm)
+\end{itemize}
+Tracer ensuite la droite d'ajustement qui passe \textit{au mieux} par l'ensemble des points.
+
+\vspace{3mm}
+
+\begin{center}
+\begin{tikzpicture}
+  \draw[very thin, gray!40] (0,0) grid[xstep=0.5, ystep=0.5] (12,9);
+  \draw[thin, gray!70] (0,0) grid[xstep=1, ystep=1] (12,9);
+  % Axes
+  \draw[->, thick] (0,0) -- (12.4,0) node[right] {$t$ ($\mu$s)};
+  \draw[->, thick] (0,0) -- (0,9.4) node[above] {$d$ (cm)};
+  % Graduation x : 0 à 6000 µs, 1 cm = 500 µs
+  \foreach \x/\val in {0/0, 1/500, 2/1000, 3/1500, 4/2000, 5/2500,
+                        6/3000, 7/3500, 8/4000, 9/4500, 10/5000, 11/5500, 12/6000}{
+    \draw (\x, 0) -- (\x, -0.15) node[below, font=\small] {\val};
+  }
+  % Graduation y : 0 à 90 cm, 1 cm = 10 cm
+  \foreach \y/\val in {0/0, 1/10, 2/20, 3/30, 4/40, 5/50,
+                        6/60, 7/70, 8/80, 9/90}{
+    \draw (0, \y) -- (-0.15, \y) node[left, font=\small] {\val};
+  }
+  % Titre axes
+  \node[below=8mm] at (6,0) {\textit{Temps} ($\mu$s)};
+  \node[rotate=90, above=8mm] at (0,4.5) {\textit{Distance} (cm)};
+\end{tikzpicture}
+\end{center}
+
+\vspace{2mm}
+
+\newpage
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+\ding{206} \textbf{Calcul du rapport $d/t$ pour chaque mesure :}\\[3mm]
+ 
+La droite passe-t-elle par l'origine ? Justifier physiquement.
+ 
+\cadreblanc{12}
+ 
+Si la droite passe par l'origine, le rapport $\dfrac{d}{t}$ est constant et correspond à une vitesse.
+Compléter le tableau ci-dessous :
+ 
+\vspace{3mm}
+\begin{center}
+\renewcommand{\arraystretch}{2.5}
+\begin{tabular}{|L{3cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|C{1cm}|}
+\hline
+Distance $d$ (cm) & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 \\
+\hline
+Temps $t$ ($\mu$s) & & & & & & & & & \\
+\hline
+$\dfrac{d}{t}$ $\left(\dfrac{\text{cm}}{\mu\text{s}}\right)$ & & & & & & & & & \\
+\hline
+\end{tabular}
+\end{center}
+ 
+\vspace{5mm}
+ 
+Calculer la \textbf{valeur moyenne} du rapport $\dfrac{d}{t}$ :
+ 
+\[
+  \overline{\left(\frac{d}{t}\right)}
+  = \frac{1}{9}\Bigl( \ldots + \ldots + \ldots + \ldots + \ldots + \ldots + \ldots + \ldots + \ldots \Bigr)
+  = \ldots\ldots\ldots\;\left(\frac{\text{cm}}{\mu\text{s}}\right)
+\]
+ 
+\vfill
+ 
+%------------------------------------------------------------------
+\ding{207} \textbf{Calcul de la vitesse du son dans l'air :}\\[3mm]
+ 
+Le coefficient directeur $a = \dfrac{d}{t}$ correspond à la vitesse du son $v_{\text{son}}$.\\[3mm]
+Convertir votre résultat en m/s
+(rappel : $1\;\mu\text{s} = 10^{-6}\;\text{s}$~~et~~$1\;\text{cm} = 10^{-2}\;\text{m}$) :\\[3mm]
+\textit{Attention : le module mesure un aller-retour ! La distance réelle est la moitié de la distance affichée.}
+ 
+\cadreblanc{22}
+ 
+\vfill
+ 
+%------------------------------------------------------------------
+\ding{208} \textbf{Conclusion :}\\[2mm]
+Comparer votre résultat à la valeur de référence $v_{\text{ref}} = 343$\,m/s à $20^\circ\text{C}$ . Calculer l'écart relatif.
+ 
+\cadreblanc{16}
+
+\vfill 
+ 
+
+
+
+
+\end{document}
